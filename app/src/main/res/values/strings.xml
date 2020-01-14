@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">ShizuruNotes</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">シズルノーツ</string>
+    <string name="nav_header_subtitle">弟くんのためのツールだよ～</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="app_bar_filter">Filter</string>
+    <string name="menu_chara">キャラ</string>
+    <string name="menu_clan_battle">クラバト</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+    <string name="text_ok">OK</string>
+    <string name="db_update_dialog_title">データベース更新</string>
+    <string name="db_update_dialog_text">データベースの新しいバージョンがあります、今すぐ更新しますか？</string>
+    <string name="db_update_dialog_confirm">更新</string>
+    <string name="db_update_dialog_cancel">あとで</string>
+    <string name="db_update_progress_title">データベース更新</string>
+    <string name="db_update_progress_text">アップデート中...</string>
+    <string name="db_update_finished_title">データベース更新</string>
+    <string name="db_update_download_finished_text">ダウンロード完了、解凍中...</string>
+    <string name="db_update_finished_text">アップデート完了しました</string>
+
+    <string name="ui_text_filter">絞り込み</string>
+    <string name="ui_text_position">ポジション</string>
+    <string name="ui_text_atk_type">攻撃タイプ</string>
+    <string name="ui_text_sort">並び替え</string>
+    <string name="ui_text_all">ALL</string>
+
+    <string name="ui_chip_position_forward">前衛</string>
+    <string name="ui_chip_position_middle">中衛</string>
+    <string name="ui_chip_position_rear">後衛</string>
+    <string name="ui_chip_atk_type_physical">物理</string>
+    <string name="ui_chip_atk_type_magical">魔法</string>
+    <string name="ui_btn_reset">リセット</string>
+
+    <string name="ui_chip_sort_new">更新日時</string>
+    <string name="ui_chip_sort_position">ポジション</string>
+    <string name="ui_chip_sort_physical_atk">物理攻撃力</string>
+    <string name="ui_chip_sort_magical_atk">魔法攻撃力</string>
+    <string name="ui_chip_sort_physical_def">物理防御力</string>
+    <string name="ui_chip_sort_magical_def">魔法防御力</string>
+    <string name="ui_chip_sort_age">年齢</string>
+    <string name="ui_chip_sort_height">身長</string>
+    <string name="ui_chip_sort_weight">体重</string>
+    <string name="ui_chip_sort_burst_size">バストサイズ</string>
+    <string name="ui_chip_sort_way_up">昇順</string>
+    <string name="ui_chip_sort_way_down">降順</string>
+
+    <string name="permission_request_explanation_title">ストレージ権限</string>
+    <string name="permission_request_explanation_text">本アプリはストレージを使ってキャラクターデータベースの保存とアプリのアップデートを行います、許可しないと正常に動作しない恐れがあります。</string>
+</resources>
