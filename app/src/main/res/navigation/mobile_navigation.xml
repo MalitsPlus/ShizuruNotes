@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_chara">
+
+    <fragment
+        android:id="@+id/nav_chara"
+        android:name="com.github.malitsplus.shizurunotes.ui.charalist.CharaListFragment"
+        android:label="@string/menu_chara"
+        tools:layout="@layout/fragment_chara" >
+        <action
+            android:id="@+id/action_nav_chara_to_nav_chara_details"
+            app:destination="@id/nav_chara_details" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_clan_battle"
+        android:name="com.github.malitsplus.shizurunotes.ui.clanbattle.ClanBattleFragment"
+        android:label="@string/menu_clan_battle"
+        tools:layout="@layout/fragment_clan_battle" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.github.malitsplus.shizurunotes.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_tools"
+        android:name="com.github.malitsplus.shizurunotes.ui.tools.ToolsFragment"
+        android:label="@string/menu_tools"
+        tools:layout="@layout/fragment_tools" />
+
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="com.github.malitsplus.shizurunotes.ui.share.ShareFragment"
+        android:label="@string/menu_share"
+        tools:layout="@layout/fragment_share" />
+
+    <fragment
+        android:id="@+id/nav_send"
+        android:name="com.github.malitsplus.shizurunotes.ui.send.SendFragment"
+        android:label="@string/menu_send"
+        tools:layout="@layout/fragment_send" />
+
+    <fragment
+        android:id="@+id/nav_chara_details"
+        android:name="com.github.malitsplus.shizurunotes.ui.charadetails.CharaDetailsFragment"
+        tools:layout="@layout/fragment_chara_details">
+        <argument
+            android:name="charaId"
+            app:argType="string" />
+    </fragment>
+</navigation>
