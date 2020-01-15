@@ -6,7 +6,10 @@
 
     <data>
         <variable
-            name="viewModel"
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="detailsViewModel"
             type="com.github.malitsplus.shizurunotes.ui.charadetails.CharaDetailsViewModel" />
         <import type="com.github.malitsplus.shizurunotes.R"/>
     </data>
@@ -17,36 +20,109 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/bigImageLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
+                    android:id="@+id/bigImageView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="0dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginEnd="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    bind:imageUrl="@{viewModel.imageUrl}"
-                    bind:placeHolder="@{R.drawable.place_holder_full}"
-                    android:contentDescription="读取中..."
-                    />
+                    bind:imageUrl="@{detailsViewModel.chara.imageUrl}"
+                    bind:placeHolder="@{R.drawable.place_holder_full}" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/detailsItemChara"
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:onClick="@{clickListener}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bigImageLayout">
+
+                <View
+                    android:id="@+id/divider1"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageView
+                    android:id="@+id/detailsCharaIcon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/positionIcon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    bind:imageUrl="@{detailsViewModel.chara.iconUrl}"
+                    bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
+
+                <TextView
+                    android:id="@+id/detailsCharaNameKataText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{detailsViewModel.chara.unitName, default=unitName}"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@+id/detailsCharaIcon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/detailsCharaNameKanjiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{detailsViewModel.chara.actualName, default=actualName}"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/detailsCharaIcon"
+                    app:layout_constraintTop_toBottomOf="@+id/detailsCharaNameKataText" />
+
+                <ImageView
+                    android:id="@+id/positionIcon"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    bind:src="@{detailsViewModel.chara.positionIcon}" />
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

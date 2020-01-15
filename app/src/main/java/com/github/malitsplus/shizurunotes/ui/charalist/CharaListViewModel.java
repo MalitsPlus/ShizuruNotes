@@ -10,31 +10,23 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.github.malitsplus.shizurunotes.db.DBHelper;
 import com.github.malitsplus.shizurunotes.data.Chara;
+import com.github.malitsplus.shizurunotes.ui.charadetails.CharaDetailsViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CharaListViewModel extends AndroidViewModel {
 
-    //private MutableLiveData<String> mText;
-    //private List<Chara> charaList;
-    //private DBHelper dbHelper;
-
-    private MutableLiveData<List<Chara>> mutableCharaModelList;
+    private MutableLiveData<List<CharaDetailsViewModel>> mutableCharaDetailsViewModels;
 
     public CharaListViewModel(Application application) {
         super(application);
-        //mText = new MutableLiveData<>();
-        //mText.setValue("This is home fragment");
-        mutableCharaModelList = new MutableLiveData<>();
+        mutableCharaDetailsViewModels = new MutableLiveData<>();
         loadData("", null);
     }
 
-
-
     public void loadData(String condition, @Nullable String sortValue){
-
-        List<Chara> charaList = new ArrayList<>();
+        List<CharaDetailsViewModel> listCharaDetailsViewModel = new ArrayList<>();
         Cursor cursor = DBHelper.get(getApplication()).getCharaBase(condition);
         if(cursor == null)
             return;
@@ -49,19 +41,25 @@ public class CharaListViewModel extends AndroidViewModel {
                     cursor.getInt(cursor.getColumnIndex("atk_type")),
                     cursor.getString(cursor.getColumnIndex("actual_name")),
                     cursor.getString(cursor.getColumnIndex("age")),
+                    cursor.getString(cursor.getColumnIndex("guild")),
+                    cursor.getString(cursor.getColumnIndex("race")),
                     cursor.getString(cursor.getColumnIndex("height")),
                     cursor.getString(cursor.getColumnIndex("weight")),
+                    cursor.getString(cursor.getColumnIndex("birth_month")),
+                    cursor.getString(cursor.getColumnIndex("birth_day")),
+                    cursor.getString(cursor.getColumnIndex("blood_type")),
+                    cursor.getString(cursor.getColumnIndex("favorite")),
+                    cursor.getString(cursor.getColumnIndex("voice")),
+                    cursor.getString(cursor.getColumnIndex("catch_copy")),
                     sortValue == null ? "" : cursor.getString(cursor.getColumnIndex(sortValue))
             );
-
-            charaList.add(chara);
+            listCharaDetailsViewModel.add(new CharaDetailsViewModel(chara));
         }
         cursor.close();
-        mutableCharaModelList.setValue(charaList);
+        mutableCharaDetailsViewModels.setValue(listCharaDetailsViewModel);
     }
 
-    public LiveData<List<Chara>> getCharaList(){
-        return mutableCharaModelList;
+    public LiveData<List<CharaDetailsViewModel>> getCharaDetailsViewModel(){
+        return mutableCharaDetailsViewModels;
     }
-
 }

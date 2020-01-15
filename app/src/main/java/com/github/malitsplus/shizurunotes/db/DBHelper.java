@@ -195,13 +195,22 @@ public class DBHelper extends SQLiteOpenHelper {
             return null;
         else
             return getReadableDatabase()
-                .rawQuery("SELECT ud.unit_id, ud.unit_name, ud.prefab_id, ud.search_area_width, ud.atk_type, up.age, up.height, up.weight, IFNULL(au.unit_name, ud.unit_name) 'actual_name', ud.comment " +
+                .rawQuery("SELECT ud.unit_id, ud.unit_name, ud.prefab_id, ud.search_area_width, ud.atk_type, up.age, up.guild, up.race, up.height, up.weight, up.birth_month, up.birth_day, up.blood_type, up.favorite, up.voice, up.catch_copy, IFNULL(au.unit_name, ud.unit_name) 'actual_name' " +
                         "FROM unit_data AS ud " +
                         "LEFT JOIN unit_profile AS up ON ud.unit_id = up.unit_id " +
                         "LEFT JOIN actual_unit_background AS au ON substr(ud.unit_id,1,4) = substr(au.unit_id,1,4) " +
                         "WHERE ud.comment <> '' " + condition, null);
     }
 
+    public Cursor getCharaProfile(String charaId){
+        if(!Utils.checkFile(DB_PATH + DB_NAME))
+            return null;
+        else
+            return getReadableDatabase()
+                    .rawQuery("SELECT up.*, au.unit_name 'actual_name' FROM unit_profile as up " +
+                            "LEFT JOIN actual_unit_background AS au ON substr(up.unit_id,1,4) = substr(au.unit_id,1,4) " +
+                            "WHERE up.unit_id = " + charaId, null);
+    }
 
     /***
      * 获取所有角色Id

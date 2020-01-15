@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class BrotliUtil {
+public class BrotliUtils {
     /**缓冲字节*/
     public static final int BUFFER = 1024;
     /**后缀名*/
