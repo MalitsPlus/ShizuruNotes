@@ -6,10 +6,6 @@ import android.text.TextUtils;
 import android.view.View;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.db.DBHelper;
@@ -131,7 +127,7 @@ public class UpdateManager {
                     }
                     fos.close();
                     is.close();
-                    BrotliUtil.deCompress(DB_FILE_SAVE_FOLDER + DB_FILE_NAME_COMPRESSED, true);
+                    BrotliUtils.deCompress(DB_FILE_SAVE_FOLDER + DB_FILE_NAME_COMPRESSED, true);
                     Utils.copyFile(DB_FILE_NAME, DB_FILE_SAVE_FOLDER, DB_FILE_INNER_FOLDER, true);
 
                     updateHandler.sendEmptyMessage(UPDATE_COMPLETED);

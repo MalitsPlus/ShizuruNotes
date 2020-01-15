@@ -23,23 +23,30 @@ import java.lang.reflect.InvocationTargetException;
 
 public class CharaDetailsFragment extends Fragment {
 
-    private CharaDetailsViewModel mViewModel;
-    private String charaId;
+    private CharaDetailsViewModel detailsViewModel;
+    private String unitId;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        this.charaId =CharaDetailsFragmentArgs.fromBundle(getArguments()).getCharaId();
+        this.unitId = CharaDetailsFragmentArgs.fromBundle(getArguments()).getUnitId();
         FragmentCharaDetailsBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_chara_details, container, false);
         //需要传参数，必须新建一个factory
-        CharaDetailsViewModelFactory factory = new CharaDetailsViewModelFactory(charaId);
-        mViewModel = ViewModelProviders.of(this, factory).get(CharaDetailsViewModel.class);
-        binding.setViewModel(mViewModel);
+        CharaDetailsViewModelFactory factory = new CharaDetailsViewModelFactory(unitId);
+        detailsViewModel = ViewModelProviders.of(this, factory).get(CharaDetailsViewModel.class);
+
+        binding.setDetailsViewModel(detailsViewModel);
+
+
+        //设置观察者
+        detailsViewModel.getChara().observe(this, (chara) -> {
+            //detailsViewModel.setChara(chara);
+            binding.setDetailsViewModel(detailsViewModel);
+        });
+
         return binding.getRoot();
     }
-
-
 
 }

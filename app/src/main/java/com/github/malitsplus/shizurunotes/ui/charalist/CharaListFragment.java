@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.databinding.FragmentCharaBinding;
 import com.github.malitsplus.shizurunotes.data.Chara;
+import com.github.malitsplus.shizurunotes.ui.charadetails.CharaDetailsViewModel;
 
 import java.util.List;
 
@@ -58,9 +59,10 @@ public class CharaListFragment extends Fragment {
         recyclerView.setItemViewCacheSize(200);
 
         //设置观察者
-        charaListViewModel.getCharaList().observe(this, (charaList) ->
-            adapter.update(charaList)
+        charaListViewModel.getCharaDetailsViewModel().observe(this, (charaDetailsViewModels) ->
+            adapter.update(charaDetailsViewModels)
         );
+
 
         setHasOptionsMenu(true);
         setButtonListener(binding);

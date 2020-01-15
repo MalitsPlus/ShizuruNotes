@@ -1,35 +1,34 @@
 package com.github.malitsplus.shizurunotes.ui.charadetails;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.github.malitsplus.shizurunotes.common.JsonUtils;
+import com.github.malitsplus.shizurunotes.data.Chara;
+
+import java.util.List;
 
 public class CharaDetailsViewModel extends ViewModel {
 
-    //region getters and setters
+    public MutableLiveData<Chara> chara = new MutableLiveData<>();
 
-    public String getCharaId() {
-        return charaId;
+
+
+    public CharaDetailsViewModel(String charaJson){
+        this.chara.setValue(JsonUtils.getBeanFromJson(charaJson, Chara.class));
     }
 
-    public void setCharaId(String charaId) {
-        this.charaId = charaId;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-//endregion
-
-    private String charaId;
-    private String imageUrl = "https://redive.estertion.win/card/full/112031.webp";
-
-    public CharaDetailsViewModel(String charaId){
-        this.charaId = charaId;
+    public CharaDetailsViewModel(Chara chara){
+        this.chara.setValue(chara);
     }
 
 
+    public void setChara(Chara chara){
+        this.chara.setValue(chara);
+    }
+
+    public LiveData<Chara> getChara(){
+        return chara;
+    }
 }

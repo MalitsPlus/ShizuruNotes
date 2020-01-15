@@ -1,6 +1,10 @@
 package com.github.malitsplus.shizurunotes.common;
 
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.squareup.picasso.Picasso;
 
 public class BindingAdapter {
@@ -24,12 +28,5 @@ public class BindingAdapter {
         view.setImageResource(src);
     }
 
-    @androidx.databinding.BindingAdapter("bind:imageUrl2")
-    public static void loadImage2(ImageView view, String imageUrl) {
 
-        Picasso.get()
-                .load(imageUrl)
-                .resize(view.getWidth(), view.getWidth())
-                .into(view);
-    }
 }

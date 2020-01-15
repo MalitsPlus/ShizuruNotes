@@ -52,6 +52,9 @@
     <string name="ui_chip_sort_way_up">昇順</string>
     <string name="ui_chip_sort_way_down">降順</string>
 
+    <string name="text_month">月</string>
+    <string name="text_day">日</string>
+
     <string name="permission_request_explanation_title">ストレージ権限</string>
     <string name="permission_request_explanation_text">本アプリはストレージを使ってキャラクターデータベースの保存とアプリのアップデートを行います、許可しないと正常に動作しない恐れがあります。</string>
 </resources>
