@@ -17,12 +17,17 @@ public class CharaDetailsViewModel extends ViewModel {
 
     public CharaDetailsViewModel(String charaJson){
         this.chara.setValue(JsonUtils.getBeanFromJson(charaJson, Chara.class));
+
     }
 
     public CharaDetailsViewModel(Chara chara){
         this.chara.setValue(chara);
     }
 
+    public void initProperties(){
+        this.chara.getValue().setRarityProperty();
+        this.chara.getValue().setPropertyGrowth();
+    }
 
     public void setChara(Chara chara){
         this.chara.setValue(chara);
