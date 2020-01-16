@@ -189,6 +189,18 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    public String getOne(String sql){
+        if(!Utils.checkFile(DB_PATH + DB_NAME))
+            return null;
+        else
+            Cursor cursor = getReadableDatabase().rawQuery(sql, null)
+
+
+        while (cursor.moveToNext()) {
+            //result.put(cursor.getString(cursor.getColumnIndex(key)), cursor.getString(cursor.getColumnIndex(columnName)));
+            result.put("result3", cursor.getString(3));
+        }
+    }
 
     public Cursor getCharaBase(String condition){
         if(!Utils.checkFile(DB_PATH + DB_NAME))
@@ -202,15 +214,14 @@ public class DBHelper extends SQLiteOpenHelper {
                         "WHERE ud.comment <> '' " + condition, null);
     }
 
-    public Cursor getCharaProfile(String charaId){
+    public Cursor getPreloadData(){
         if(!Utils.checkFile(DB_PATH + DB_NAME))
             return null;
         else
             return getReadableDatabase()
-                    .rawQuery("SELECT up.*, au.unit_name 'actual_name' FROM unit_profile as up " +
-                            "LEFT JOIN actual_unit_background AS au ON substr(up.unit_id,1,4) = substr(au.unit_id,1,4) " +
-                            "WHERE up.unit_id = " + charaId, null);
+                    .rawQuery("", null);
     }
+
 
     /***
      * 获取所有角色Id

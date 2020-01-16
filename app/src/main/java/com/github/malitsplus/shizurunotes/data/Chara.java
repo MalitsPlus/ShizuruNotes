@@ -30,6 +30,8 @@ public class Chara {
     public String catchCopy;
 
 
+
+    public int charaId;
     public String iconUrl;
     public String imageUrl;
     public int positionIcon;
@@ -40,6 +42,8 @@ public class Chara {
                          String actualName, String age, String guild, String race, String height,
                          String weight, String birthMonth, String birthDay, String bloodType, String favorite,
                          String voice, String catchCopy, String sortValue){
+
+        this.charaId = unitId / 100;
 
         this.unitId = unitId;
         this.unitName = unitName;
@@ -77,4 +81,16 @@ public class Chara {
             this.positionIcon = R.drawable.mic_chara_icon_place_holder;
     }
 
+
+
+    public Property rarityProperty;
+    public PropertyGrowth propertyGrowth;
+
+    public void setRarityProperty(Property rarityProperty){
+        this.rarityProperty = rarityProperty;
+    }
+
+    public void setPropertyGrowth(PropertyGrowth propertyGrowth) {
+        this.propertyGrowth = propertyGrowth;
+    }
 }
