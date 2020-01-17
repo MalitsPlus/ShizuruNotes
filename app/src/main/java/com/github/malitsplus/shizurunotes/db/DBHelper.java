@@ -189,24 +189,30 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    /***
+     * 获取查询语句的第一行第一列值
+     * @param sql
+     * @return
+     */
     public String getOne(String sql){
         if(!Utils.checkFile(DB_PATH + DB_NAME))
             return null;
-        else
-            Cursor cursor = getReadableDatabase().rawQuery(sql, null)
-
-
-        while (cursor.moveToNext()) {
-            //result.put(cursor.getString(cursor.getColumnIndex(key)), cursor.getString(cursor.getColumnIndex(columnName)));
-            result.put("result3", cursor.getString(3));
-        }
+        Cursor cursor = getReadableDatabase().rawQuery(sql, null);
+        cursor.moveToNext();
+        String result = cursor.getString(0);
+        cursor.close();
+        return result;
     }
 
+    /***
+     * 获取角色基础数据
+     * @param condition 排序规则
+     * @return 角色数据游标
+     */
     public Cursor getCharaBase(String condition){
         if(!Utils.checkFile(DB_PATH + DB_NAME))
             return null;
-        else
-            return getReadableDatabase()
+        return getReadableDatabase()
                 .rawQuery("SELECT ud.unit_id, ud.unit_name, ud.prefab_id, ud.search_area_width, ud.atk_type, up.age, up.guild, up.race, up.height, up.weight, up.birth_month, up.birth_day, up.blood_type, up.favorite, up.voice, up.catch_copy, IFNULL(au.unit_name, ud.unit_name) 'actual_name' " +
                         "FROM unit_data AS ud " +
                         "LEFT JOIN unit_profile AS up ON ud.unit_id = up.unit_id " +
@@ -214,14 +220,48 @@ public class DBHelper extends SQLiteOpenHelper {
                         "WHERE ud.comment <> '' " + condition, null);
     }
 
-    public Cursor getPreloadData(){
+    /***
+     * 获取角色星级数据
+     * @param unitId 角色id
+     * @return
+     */
+    public Cursor getCharaRarity(int unitId){
         if(!Utils.checkFile(DB_PATH + DB_NAME))
             return null;
-        else
-            return getReadableDatabase()
-                    .rawQuery("", null);
+        return getReadableDatabase()
+                .rawQuery("SELECT * FROM unit_rarity WHERE unit_id=? ORDER BY rarity DESC ", new String[] {String.valueOf(unitId)});
     }
 
+    /***
+     * 获取角色星级数据
+     * @param charaId 角色id的前4位
+     * @return
+     */
+    public Cursor getCharaStoryStatus(int charaId){
+        if(!Utils.checkFile(DB_PATH + DB_NAME))
+            return null;
+        String mCharaId = String.valueOf(charaId);
+        return getReadableDatabase()
+                .rawQuery("SELECT * FROM chara_story_status WHERE chara_id_1 = ? OR chara_id_2 = ? OR chara_id_3 = ? OR chara_id_4 = ? OR chara_id_5 = ? OR chara_id_6 = ? ", new String[] {mCharaId});
+    }
+
+    public double getMaxCharaLevel(){
+        if(!Utils.checkFile(DB_PATH + DB_NAME))
+            return 0;
+        return Double.parseDouble(getOne("SELECT max(team_level) FROM experience_team "));
+    }
+
+    public double getMaxCharaRank(){
+        if(!Utils.checkFile(DB_PATH + DB_NAME))
+            return 0;
+        return Double.parseDouble(getOne("SELECT max(promotion_level) FROM unit_promotion "));
+    }
+
+    public double getMaxUniqueEquipmentLevel(){
+        if(!Utils.checkFile(DB_PATH + DB_NAME))
+            return 0;
+        return Double.parseDouble(getOne("SELECT max(enhance_level) FROM unique_equipment_enhance_data "));
+    }
 
     /***
      * 获取所有角色Id

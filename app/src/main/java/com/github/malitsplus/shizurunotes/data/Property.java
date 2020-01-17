@@ -1,68 +1,91 @@
 package com.github.malitsplus.shizurunotes.data;
 
 public class Property {
+    int rarity;
+    double hp;
     double atk;
+    double magicStr;
     double def;
+    double magicDef;
+    double physicalCritical;
+    double magicCritical;
+    double waveHpRecovery;
+    double waveEnergyRecovery;
     double dodge;
+    double physicalPenetrate;
+    double magicPenetrate;
+    double lifeSteal;
+    double hpRecoveryRate;
     double energyRecoveryRate;
     double energyReduceRate;
-    double hp;
-    double hpRecoveryRate;
-    double lifeSteal;
-    double magicCritical;
-    double magicDef;
-    double magicPenetrate;
-    double magicStr;
-    double physicalCritical;
-    double physicalPenetrate;
-    double waveEnergyRecovery;
-    double waveHpRecovery;
     double accuracy;
 
     public Property(){
 
     }
 
-    public Property(double atk, double def, double dodge, double energyRecoveryRate, double energyReduceRate, double hp, double hpRecoveryRate, double lifeSteal, double magicCritical, double magicDef, double magicPenetrate, double magicStr, double physicalCritical, double physicalPenetrate, double waveEnergyRecovery, double waveHpRecovery, double accuracy) {
+    public Property(int rarity, double hp, double atk, double magicStr, double def, double magicDef, double physicalCritical, double magicCritical, double waveHpRecovery, double waveEnergyRecovery, double dodge, double physicalPenetrate, double magicPenetrate, double lifeSteal, double hpRecoveryRate, double energyRecoveryRate, double energyReduceRate, double accuracy) {
+        this.rarity = rarity;
+        this.hp = hp;
         this.atk = atk;
+        this.magicStr = magicStr;
         this.def = def;
+        this.magicDef = magicDef;
+        this.physicalCritical = physicalCritical;
+        this.magicCritical = magicCritical;
+        this.waveHpRecovery = waveHpRecovery;
+        this.waveEnergyRecovery = waveEnergyRecovery;
         this.dodge = dodge;
+        this.physicalPenetrate = physicalPenetrate;
+        this.magicPenetrate = magicPenetrate;
+        this.lifeSteal = lifeSteal;
+        this.hpRecoveryRate = hpRecoveryRate;
         this.energyRecoveryRate = energyRecoveryRate;
         this.energyReduceRate = energyReduceRate;
-        this.hp = hp;
-        this.hpRecoveryRate = hpRecoveryRate;
-        this.lifeSteal = lifeSteal;
-        this.magicCritical = magicCritical;
-        this.magicDef = magicDef;
-        this.magicPenetrate = magicPenetrate;
-        this.magicStr = magicStr;
-        this.physicalCritical = physicalCritical;
-        this.physicalPenetrate = physicalPenetrate;
-        this.waveEnergyRecovery = waveEnergyRecovery;
-        this.waveHpRecovery = waveHpRecovery;
         this.accuracy = accuracy;
     }
 
-
     public Property plus(Property rProperty){
+        this.hp += rProperty.hp;
         this.atk += rProperty.atk;
+        this.magicStr += rProperty.magicStr;
         this.def += rProperty.def;
+        this.magicDef += rProperty.magicDef;
+        this.physicalCritical += rProperty.physicalCritical;
+        this.magicCritical += rProperty.magicCritical;
+        this.waveHpRecovery += rProperty.waveHpRecovery;
+        this.waveEnergyRecovery += rProperty.waveEnergyRecovery;
         this.dodge += rProperty.dodge;
+        this.physicalPenetrate += rProperty.physicalPenetrate;
+        this.magicPenetrate += rProperty.magicPenetrate;
+        this.lifeSteal += rProperty.lifeSteal;
+        this.hpRecoveryRate += rProperty.hpRecoveryRate;
         this.energyRecoveryRate += rProperty.energyRecoveryRate;
         this.energyReduceRate += rProperty.energyReduceRate;
-        this.hp += rProperty.hp;
-        this.hpRecoveryRate += rProperty.hpRecoveryRate;
-        this.lifeSteal += rProperty.lifeSteal;
-        this.magicCritical += rProperty.magicCritical;
-        this.magicDef += rProperty.magicDef;
-        this.magicPenetrate += rProperty.magicPenetrate;
-        this.magicStr += rProperty.magicStr;
-        this.physicalCritical += rProperty.physicalCritical;
-        this.physicalPenetrate += rProperty.physicalPenetrate;
-        this.waveEnergyRecovery += rProperty.waveEnergyRecovery;
-        this.waveHpRecovery += rProperty.waveHpRecovery;
         this.accuracy += rProperty.accuracy;
 
         return  this;
+    }
+
+    public Property multiply(double multiplier){
+        this.hp *= multiplier;
+        this.atk *= multiplier;
+        this.magicStr *= multiplier;
+        this.def *= multiplier;
+        this.magicDef *= multiplier;
+        this.physicalCritical *= multiplier;
+        this.magicCritical *= multiplier;
+        this.waveHpRecovery *= multiplier;
+        this.waveEnergyRecovery *= multiplier;
+        this.dodge *= multiplier;
+        this.physicalPenetrate *= multiplier;
+        this.magicPenetrate *= multiplier;
+        this.lifeSteal *= multiplier;
+        this.hpRecoveryRate *= multiplier;
+        this.energyRecoveryRate *= multiplier;
+        this.energyReduceRate *= multiplier;
+        this.accuracy *= multiplier;
+
+        return this;
     }
 }

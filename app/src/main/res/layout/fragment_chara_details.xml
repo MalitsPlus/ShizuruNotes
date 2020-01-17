@@ -42,7 +42,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    bind:imageUrl="@{detailsViewModel.chara.imageUrl}"
+                    bind:imageUrl="@{detailsViewModel.mutableChara.imageUrl}"
                     bind:placeHolder="@{R.drawable.place_holder_full}" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -76,7 +76,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/positionIcon"
                     app:layout_constraintTop_toTopOf="parent"
-                    bind:imageUrl="@{detailsViewModel.chara.iconUrl}"
+                    bind:imageUrl="@{detailsViewModel.mutableChara.iconUrl}"
                     bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
 
                 <TextView
@@ -85,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:text="@{detailsViewModel.chara.unitName, default=unitName}"
+                    android:text="@{detailsViewModel.mutableChara.unitName, default=unitName}"
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/detailsCharaIcon"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -96,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:text="@{detailsViewModel.chara.actualName, default=actualName}"
+                    android:text="@{detailsViewModel.mutableChara.actualName, default=actualName}"
                     android:textSize="12sp"
                     app:layout_constraintStart_toEndOf="@+id/detailsCharaIcon"
                     app:layout_constraintTop_toBottomOf="@+id/detailsCharaNameKataText" />
@@ -109,7 +109,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    bind:src="@{detailsViewModel.chara.positionIcon}" />
+                    bind:src="@{detailsViewModel.mutableChara.positionIcon}" />
 
                 <View
                     android:id="@+id/divider2"
