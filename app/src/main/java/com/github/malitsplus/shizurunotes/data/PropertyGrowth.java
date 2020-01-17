@@ -47,6 +47,7 @@ public class PropertyGrowth {
 
     public Property multiply(double multiplier){
         return new Property(
+                this.rarity,
                 this.atkGrowth * multiplier,
                 this.defGrowth * multiplier,
                 this.dodgeGrowth * multiplier,

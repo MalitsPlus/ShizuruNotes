@@ -7,7 +7,7 @@ import java.util.Locale;
 
 public class Chara {
 
-
+    //basic params
     public int unitId;
     public String unitName;
     public int prefabId;
@@ -35,6 +35,11 @@ public class Chara {
     public String iconUrl;
     public String imageUrl;
     public int positionIcon;
+
+    //preload params
+    public double maxCharaLevel;
+    public double maxCharaRank;
+    public double maxUniqueEquipmentLevel;
 
     public String sortValue;
 
@@ -84,13 +89,18 @@ public class Chara {
 
 
     public Property rarityProperty;
-    public PropertyGrowth propertyGrowth;
+    public Property rarityPropertyGrowth;
+    public Property storyProperty;
 
     public void setRarityProperty(Property rarityProperty){
         this.rarityProperty = rarityProperty;
     }
 
-    public void setPropertyGrowth(PropertyGrowth propertyGrowth) {
-        this.propertyGrowth = propertyGrowth;
+    public void setRarityPropertyGrowth(Property rarityPropertyGrowth) {
+        this.rarityPropertyGrowth = rarityPropertyGrowth;
+    }
+
+    public void setStoryProperty(Property storyProperty){
+        this.storyProperty = storyProperty;
     }
 }
