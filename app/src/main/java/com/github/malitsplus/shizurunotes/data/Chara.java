@@ -1,8 +1,11 @@
 package com.github.malitsplus.shizurunotes.data;
 
+import android.util.SparseArray;
+
 import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.Statics;
 
+import java.util.List;
 import java.util.Locale;
 
 public class Chara {
@@ -91,16 +94,34 @@ public class Chara {
     public Property rarityProperty;
     public Property rarityPropertyGrowth;
     public Property storyProperty;
+    public Property promotionStatus;
+    public SparseArray<Equipment> equipments;
 
     public void setRarityProperty(Property rarityProperty){
         this.rarityProperty = rarityProperty;
     }
-
     public void setRarityPropertyGrowth(Property rarityPropertyGrowth) {
         this.rarityPropertyGrowth = rarityPropertyGrowth;
     }
-
     public void setStoryProperty(Property storyProperty){
         this.storyProperty = storyProperty;
     }
+    public void setPromotionStatus(Property promotionStatus){
+        this.promotionStatus = promotionStatus;
+    }
+    public void setEquipments(SparseArray<Equipment> equipments){
+        this.equipments = equipments;
+    }
+
+    public Property getAllEquipmentProperty(){
+        Property property = new Property();
+        for(int i = 0; i < equipments.size(); i++){
+            Equipment item = equipments.valueAt(i);
+            property.plus(item.getEquipmentData())
+                    .plus(item.getEquipmentEnhanceRate()
+                            .multiply(item.getPromotionLevel()));
+        }
+        return property;
+    }
+
 }

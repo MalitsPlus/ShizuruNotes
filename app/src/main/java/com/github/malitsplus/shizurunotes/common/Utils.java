@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Utils {
     /***
@@ -48,5 +49,22 @@ public class Utils {
             return true;
         else
             return false;
+    }
+
+    /***
+     * 以逗号分隔字符串
+     * @param list
+     * @return
+     */
+    public static String splitIntegerWithComma(ArrayList<Integer> list){
+        if(list.isEmpty())
+            return null;
+
+        StringBuilder sb = new StringBuilder();
+        for(Integer item : list){
+            sb.append(item).append(",");
+        }
+        sb.deleteCharAt(sb.lastIndexOf(","));
+        return sb.toString();
     }
 }

@@ -1,7 +1,6 @@
 package com.github.malitsplus.shizurunotes.data;
 
 public class Property {
-    int rarity;
     double hp;
     double atk;
     double magicStr;
@@ -24,8 +23,7 @@ public class Property {
 
     }
 
-    public Property(int rarity, double hp, double atk, double magicStr, double def, double magicDef, double physicalCritical, double magicCritical, double waveHpRecovery, double waveEnergyRecovery, double dodge, double physicalPenetrate, double magicPenetrate, double lifeSteal, double hpRecoveryRate, double energyRecoveryRate, double energyReduceRate, double accuracy) {
-        this.rarity = rarity;
+    public Property(double hp, double atk, double magicStr, double def, double magicDef, double physicalCritical, double magicCritical, double waveHpRecovery, double waveEnergyRecovery, double dodge, double physicalPenetrate, double magicPenetrate, double lifeSteal, double hpRecoveryRate, double energyRecoveryRate, double energyReduceRate, double accuracy) {
         this.hp = hp;
         this.atk = atk;
         this.magicStr = magicStr;

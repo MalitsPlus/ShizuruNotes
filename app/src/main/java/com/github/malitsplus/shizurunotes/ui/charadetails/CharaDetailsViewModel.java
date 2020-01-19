@@ -2,17 +2,21 @@ package com.github.malitsplus.shizurunotes.ui.charadetails;
 
 import android.app.Application;
 import android.database.Cursor;
+import android.util.SparseArray;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.github.malitsplus.shizurunotes.common.JsonUtils;
+import com.github.malitsplus.shizurunotes.common.Utils;
 import com.github.malitsplus.shizurunotes.data.Chara;
 import com.github.malitsplus.shizurunotes.data.CharaStoryStatus;
+import com.github.malitsplus.shizurunotes.data.Equipment;
 import com.github.malitsplus.shizurunotes.data.Property;
 import com.github.malitsplus.shizurunotes.db.DBHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CharaDetailsViewModel extends ViewModel {
@@ -38,6 +42,9 @@ public class CharaDetailsViewModel extends ViewModel {
         setCharaMaxData();
         setCharaRarity();
         setCharaStoryStatus();
+        setCharaPromotionStatus();
+        setCharaEquipments();
+        int i = 1;
     }
 
 
@@ -48,68 +55,117 @@ public class CharaDetailsViewModel extends ViewModel {
     }
 
     private void setCharaRarity(){
-        Cursor rarityCursor = dbHelper.getCharaRarity(chara.unitId);
-        rarityCursor.moveToNext();
-        chara.setRarityProperty(new Property(
-                rarityCursor.getInt(rarityCursor.getColumnIndex("rarity")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("hp")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("atk")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("magic_str")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("def")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("magic_def")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("physical_critical")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("magic_critical")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("wave_hp_recovery")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("wave_energy_recovery")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("dodge")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("physical_penetrate")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("magic_penetrate")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("life_steal")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("hp_recovery_rate")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("energy_recovery_rate")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("energy_reduce_rate")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("accuracy"))
-        ));
-        chara.setRarityPropertyGrowth(new Property(
-                rarityCursor.getInt(rarityCursor.getColumnIndex("rarity")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("hp_growth")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("atk_growth")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("magic_str_growth")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("def_growth")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("magic_def_growth")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("physical_critical_growth")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("magic_critical_growth")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("wave_hp_recovery_growth")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("wave_energy_recovery_growth")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("dodge_growth")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("physical_penetrate_growth")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("magic_penetrate_growth")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("life_steal_growth")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("hp_recovery_rate_growth")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("energy_recovery_rate_growth")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("energy_reduce_rate_growth")),
-                rarityCursor.getDouble(rarityCursor.getColumnIndex("accuracy_growth"))
-        ));
+        Cursor cursor = dbHelper.getCharaRarity(chara.unitId);
+        cursor.moveToNext();
+        chara.setRarityProperty(getPropertyFromCursor(cursor));
+        chara.setRarityPropertyGrowth(getPropertyGrowthFromCursor(cursor));
+        cursor.close();
     }
 
     private void setCharaStoryStatus(){
-        Cursor storyCursor = dbHelper.getCharaStoryStatus(chara.charaId);
+        Cursor cursor = dbHelper.getCharaStoryStatus(chara.charaId);
         Property storyStatus = new Property();
-        while (storyCursor.moveToNext()){
+        while (cursor.moveToNext()){
             for(int i = 1; i <= 5; i++) {
-                int statusType = storyCursor.getInt(storyCursor.getColumnIndex("status_type_" + i));
-                //如果为0直接跳过节省资源
+                int statusType = cursor.getInt(cursor.getColumnIndex("status_type_" + i));
+                //如果为0直接跳过
                 if (statusType == 0)
                     continue;
                 storyStatus.plus(new CharaStoryStatus(
                         chara.charaId,
                         statusType,
-                        storyCursor.getDouble(storyCursor.getColumnIndex("status_rate_" + i)))
+                        cursor.getDouble(cursor.getColumnIndex("status_rate_" + i)))
                         .getProperty()
                 );
             }
         }
+        cursor.close();
         chara.setStoryProperty(storyStatus);
+    }
+
+    private void setCharaPromotionStatus(){
+        Cursor cursor = dbHelper.getCharaPromotionStatus(chara.unitId);
+        cursor.moveToNext();
+        chara.setPromotionStatus(getPropertyFromCursor(cursor));
+        cursor.close();
+    }
+
+    private void setCharaEquipments(){
+        ArrayList<Integer> slots = new ArrayList<>();
+
+        Cursor slotsCursor = dbHelper.getCharaEquipmentSlots(chara.unitId);
+        slotsCursor.moveToNext();
+
+        for(int i = 1; i <= 6; i++){
+            int slot = slotsCursor.getInt(slotsCursor.getColumnIndex("equip_slot_" + i));
+            if(slot != 999999)
+                slots.add(slot);
+        }
+        slotsCursor.close();
+
+        SparseArray<Equipment> equipments = new SparseArray<>();
+        //List<Equipment> equipments = new ArrayList<>();
+        Cursor equipmentsCursor = dbHelper.getEquipments(slots);
+        Cursor enhanceCursor = dbHelper.getEquipmentEnhance(slots);
+
+        while(equipmentsCursor.moveToNext()){
+            Equipment equipment = new Equipment();
+            int equipmentId = equipmentsCursor.getInt(equipmentsCursor.getColumnIndex("equipment_id"));
+            equipment.setEquipmentId(equipmentId);
+            equipment.setEquipmentName(equipmentsCursor.getString(equipmentsCursor.getColumnIndex("equipment_name")));
+            equipment.setEquipmentData(getPropertyFromCursor(equipmentsCursor));
+            equipments.put(equipmentId, equipment);
+        }
+        while(enhanceCursor.moveToNext()){
+            equipments.get(enhanceCursor.getInt(enhanceCursor.getColumnIndex("equipment_id")))
+                    .setEquipmentEnhanceRateRoll(getPropertyFromCursor(enhanceCursor))
+                    .setPromotionLevel(enhanceCursor.getInt(enhanceCursor.getColumnIndex("promotion_level")));
+        }
+
+        chara.setEquipments(equipments);
+
+    }
+
+    private Property getPropertyFromCursor(Cursor cursor){
+        return new Property(
+                cursor.getDouble(cursor.getColumnIndex("hp")),
+                cursor.getDouble(cursor.getColumnIndex("atk")),
+                cursor.getDouble(cursor.getColumnIndex("magic_str")),
+                cursor.getDouble(cursor.getColumnIndex("def")),
+                cursor.getDouble(cursor.getColumnIndex("magic_def")),
+                cursor.getDouble(cursor.getColumnIndex("physical_critical")),
+                cursor.getDouble(cursor.getColumnIndex("magic_critical")),
+                cursor.getDouble(cursor.getColumnIndex("wave_hp_recovery")),
+                cursor.getDouble(cursor.getColumnIndex("wave_energy_recovery")),
+                cursor.getDouble(cursor.getColumnIndex("dodge")),
+                cursor.getDouble(cursor.getColumnIndex("physical_penetrate")),
+                cursor.getDouble(cursor.getColumnIndex("magic_penetrate")),
+                cursor.getDouble(cursor.getColumnIndex("life_steal")),
+                cursor.getDouble(cursor.getColumnIndex("hp_recovery_rate")),
+                cursor.getDouble(cursor.getColumnIndex("energy_recovery_rate")),
+                cursor.getDouble(cursor.getColumnIndex("energy_reduce_rate")),
+                cursor.getDouble(cursor.getColumnIndex("accuracy")));
+    }
+
+    private Property getPropertyGrowthFromCursor(Cursor cursor){
+        return new Property(
+                cursor.getDouble(cursor.getColumnIndex("hp_growth")),
+                cursor.getDouble(cursor.getColumnIndex("atk_growth")),
+                cursor.getDouble(cursor.getColumnIndex("magic_str_growth")),
+                cursor.getDouble(cursor.getColumnIndex("def_growth")),
+                cursor.getDouble(cursor.getColumnIndex("magic_def_growth")),
+                cursor.getDouble(cursor.getColumnIndex("physical_critical_growth")),
+                cursor.getDouble(cursor.getColumnIndex("magic_critical_growth")),
+                cursor.getDouble(cursor.getColumnIndex("wave_hp_recovery_growth")),
+                cursor.getDouble(cursor.getColumnIndex("wave_energy_recovery_growth")),
+                cursor.getDouble(cursor.getColumnIndex("dodge_growth")),
+                cursor.getDouble(cursor.getColumnIndex("physical_penetrate_growth")),
+                cursor.getDouble(cursor.getColumnIndex("magic_penetrate_growth")),
+                cursor.getDouble(cursor.getColumnIndex("life_steal_growth")),
+                cursor.getDouble(cursor.getColumnIndex("hp_recovery_rate_growth")),
+                cursor.getDouble(cursor.getColumnIndex("energy_recovery_rate_growth")),
+                cursor.getDouble(cursor.getColumnIndex("energy_reduce_rate_growth")),
+                cursor.getDouble(cursor.getColumnIndex("accuracy_growth")));
     }
 
     public void setChara(Chara chara){
