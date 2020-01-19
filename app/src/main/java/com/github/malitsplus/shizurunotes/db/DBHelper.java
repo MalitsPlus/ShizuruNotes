@@ -233,7 +233,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     /***
-     * 获取角色星级数据
+     * 获取角色剧情数据
      * @param charaId 角色id的前4位
      * @return
      */
@@ -243,6 +243,54 @@ public class DBHelper extends SQLiteOpenHelper {
         String mCharaId = String.valueOf(charaId);
         return getReadableDatabase()
                 .rawQuery("SELECT * FROM chara_story_status WHERE chara_id_1 = ? OR chara_id_2 = ? OR chara_id_3 = ? OR chara_id_4 = ? OR chara_id_5 = ? OR chara_id_6 = ? ", new String[] {mCharaId});
+    }
+
+    /***
+     * 获取角色Rank汇总数据
+     * @param unitId 角色id
+     * @return
+     */
+    public Cursor getCharaPromotionStatus(int unitId){
+        if(!Utils.checkFile(DB_PATH + DB_NAME))
+            return null;
+        return getReadableDatabase()
+                .rawQuery("SELECT * FROM unit_promotion_status WHERE unit_id=? ORDER BY promotion_level DESC ", new String[] {String.valueOf(unitId)});
+    }
+
+    /***
+     * 获取角色装备数据
+     * @param unitId 角色id
+     * @return
+     */
+    public Cursor getCharaEquipmentSlots(int unitId){
+        if(!Utils.checkFile(DB_PATH + DB_NAME))
+            return null;
+        return getReadableDatabase()
+                .rawQuery("SELECT * FROM unit_promotion WHERE unit_id=? ORDER BY promotion_level DESC ", new String[] {String.valueOf(unitId)});
+    }
+
+    /***
+     * 获取装备数据
+     * @param slots 装备ids
+     * @return
+     */
+    public Cursor getEquipments(ArrayList<Integer> slots){
+        if(!Utils.checkFile(DB_PATH + DB_NAME))
+            return null;
+        return getReadableDatabase()
+                .rawQuery("SELECT * FROM equipment_data WHERE equipment_id IN (" + Utils.splitIntegerWithComma(slots) + ") ", null);
+    }
+
+    /***
+     * 获取装备强化数据
+     * @param slots 装备ids
+     * @return
+     */
+    public Cursor getEquipmentEnhance(ArrayList<Integer> slots){
+        if(!Utils.checkFile(DB_PATH + DB_NAME))
+            return null;
+        return getReadableDatabase()
+                .rawQuery("SELECT * FROM equipment_enhance_rate WHERE equipment_id IN (" + Utils.splitIntegerWithComma(slots) + ") ", null);
     }
 
     public double getMaxCharaLevel(){
