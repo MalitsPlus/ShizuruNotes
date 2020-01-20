@@ -40,9 +40,9 @@ public class Chara {
     public int positionIcon;
 
     //preload params
-    public double maxCharaLevel;
-    public double maxCharaRank;
-    public double maxUniqueEquipmentLevel;
+    public int maxCharaLevel;
+    public int maxCharaRank;
+    public int maxUniqueEquipmentLevel;
 
     public String sortValue;
 
@@ -89,13 +89,13 @@ public class Chara {
             this.positionIcon = R.drawable.mic_chara_icon_place_holder;
     }
 
-
-
+    public Property charaProperty;
     public Property rarityProperty;
     public Property rarityPropertyGrowth;
     public Property storyProperty;
     public Property promotionStatus;
     public SparseArray<Equipment> equipments;
+    public Equipment uniqueEquipment;
 
     public void setRarityProperty(Property rarityProperty){
         this.rarityProperty = rarityProperty;
@@ -112,16 +112,31 @@ public class Chara {
     public void setEquipments(SparseArray<Equipment> equipments){
         this.equipments = equipments;
     }
+    public void setUniqueEquipment(Equipment uniqueEquipment){
+        this.uniqueEquipment = uniqueEquipment;
+    }
 
+    public Property getRarityGrowthProperty(){
+        return rarityPropertyGrowth.multiply(maxCharaLevel + maxCharaRank);
+    }
     public Property getAllEquipmentProperty(){
         Property property = new Property();
         for(int i = 0; i < equipments.size(); i++){
-            Equipment item = equipments.valueAt(i);
-            property.plus(item.getEquipmentData())
-                    .plus(item.getEquipmentEnhanceRate()
-                            .multiply(item.getPromotionLevel()));
+            property = property.plus(equipments.valueAt(i).getCeiledProperty());
         }
         return property;
     }
+    public Property getUniqueEquipmentProperty(){
+        return uniqueEquipment.getEquipmentData()
+                .plus(uniqueEquipment.getEquipmentEnhanceRate().multiply(maxUniqueEquipmentLevel - 1));
+    }
 
+    public void setCharaProperty() {
+        charaProperty = rarityProperty
+                .plus(getRarityGrowthProperty())
+                .plus(storyProperty)
+                .plus(promotionStatus)
+                .plus(getAllEquipmentProperty())
+                .plus(getUniqueEquipmentProperty());
+    }
 }

@@ -11,6 +11,14 @@ public class Equipment {
 
     }
 
+    public Equipment(int equipmentId, String equipmentName, int promotionLevel, Property equipmentData, Property equipmentEnhanceRate) {
+        this.equipmentId = equipmentId;
+        this.equipmentName = equipmentName;
+        this.promotionLevel = promotionLevel;
+        this.equipmentData = equipmentData;
+        this.equipmentEnhanceRate = equipmentEnhanceRate;
+    }
+
     public Property getCeiledProperty(){
         return equipmentData.plus(equipmentEnhanceRate.multiply(promotionLevel));
     }
@@ -55,7 +63,7 @@ public class Equipment {
         this.equipmentEnhanceRate = equipmentEnhanceRate;
     }
 
-    public Equipment setEquipmentEnhanceRateRoll(Property equipmentEnhanceRate) {
+    public Equipment setEquipmentEnhanceRateChain(Property equipmentEnhanceRate) {
         this.equipmentEnhanceRate = equipmentEnhanceRate;
         return this;
     }
