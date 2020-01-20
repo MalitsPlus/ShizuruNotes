@@ -24,6 +24,10 @@
         <item name="sLeftTextBackground">@drawable/color_text_background</item>
         <item name="sLeftTextColor">#FFFFFF</item>
         <item name="sLeftViewMarginLeft">0dp</item>
+        <item name="sLeftViewMarginRight">0dp</item>
+        <item name="sRightViewMarginLeft">0dp</item>
+        <item name="sRightViewMarginRight">0dp</item>
+        <item name="sLeftTextSize">14sp</item>
         <item name="sUseRipple">false</item>
     </style>
 

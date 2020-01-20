@@ -14,6 +14,8 @@ import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.JsonUtils;
 import com.github.malitsplus.shizurunotes.databinding.ListItemCharaBinding;
 import com.github.malitsplus.shizurunotes.ui.charadetails.CharaDetailsViewModel;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class CharaListAdapter extends RecyclerView.Adapter<CharaListAdapter.CharaListViewHolder> {
@@ -23,6 +25,7 @@ public class CharaListAdapter extends RecyclerView.Adapter<CharaListAdapter.Char
 
     public CharaListAdapter(Context context){
         mContext = context;
+        charaDetailsViewModels = new ArrayList<>();
     }
 
 

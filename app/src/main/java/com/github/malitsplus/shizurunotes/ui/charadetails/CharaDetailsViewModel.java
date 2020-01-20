@@ -126,19 +126,25 @@ public class CharaDetailsViewModel extends ViewModel {
     }
     private void setUniqueEquipment(){
         Equipment equipment = new Equipment();
-        Cursor equipCursor = dbHelper.getUniqueEquipment(chara.unitId);
 
+        Cursor equipCursor = dbHelper.getUniqueEquipment(chara.unitId);
         if(equipCursor.moveToNext()){
             equipment.setEquipmentId(equipCursor.getInt(equipCursor.getColumnIndex("equipment_id")));
             equipment.setEquipmentName(equipCursor.getString(equipCursor.getColumnIndex("equipment_name")));
             equipment.setEquipmentData(getPropertyFromCursor(equipCursor));
+        } else {
+            equipment.setEquipmentData(new Property());
         }
         equipCursor.close();
 
         Cursor enhanceCursor = dbHelper.getUniqueEquipmentEnhance(chara.unitId);
-        if(enhanceCursor.moveToNext())
+        if(enhanceCursor.moveToNext()) {
             equipment.setEquipmentEnhanceRate(getPropertyFromCursor(enhanceCursor));
+        } else {
+            equipment.setEquipmentEnhanceRate(new Property());
+        }
         enhanceCursor.close();
+
         chara.setUniqueEquipment(equipment);
     }
 
