@@ -293,22 +293,46 @@ public class DBHelper extends SQLiteOpenHelper {
                 .rawQuery("SELECT * FROM equipment_enhance_rate WHERE equipment_id IN (" + Utils.splitIntegerWithComma(slots) + ") ", null);
     }
 
-    public double getMaxCharaLevel(){
+    /***
+     * 获取专属装备数据
+     * @param unitId 角色id
+     * @return
+     */
+    public Cursor getUniqueEquipment(int unitId){
         if(!Utils.checkFile(DB_PATH + DB_NAME))
-            return 0;
-        return Double.parseDouble(getOne("SELECT max(team_level) FROM experience_team "));
+            return null;
+        return getReadableDatabase()
+                .rawQuery("SELECT e.* FROM unique_equipment_data AS e JOIN unit_unique_equip AS u ON e.equipment_id=u.equip_id WHERE u.unit_id=? ", new String[]{String.valueOf(unitId)});
     }
 
-    public double getMaxCharaRank(){
+    /***
+     * 获取专属装备强化数据
+     * @param unitId 角色id
+     * @return
+     */
+    public Cursor getUniqueEquipmentEnhance(int unitId){
         if(!Utils.checkFile(DB_PATH + DB_NAME))
-            return 0;
-        return Double.parseDouble(getOne("SELECT max(promotion_level) FROM unit_promotion "));
+            return null;
+        return getReadableDatabase()
+                .rawQuery("SELECT e.* FROM unique_equipment_enhance_rate AS e JOIN unit_unique_equip AS u ON e.equipment_id=u.equip_id WHERE u.unit_id=? ", new String[]{String.valueOf(unitId)});
     }
 
-    public double getMaxUniqueEquipmentLevel(){
+    public int getMaxCharaLevel(){
         if(!Utils.checkFile(DB_PATH + DB_NAME))
             return 0;
-        return Double.parseDouble(getOne("SELECT max(enhance_level) FROM unique_equipment_enhance_data "));
+        return Integer.parseInt(getOne("SELECT max(team_level) FROM experience_team "));
+    }
+
+    public int getMaxCharaRank(){
+        if(!Utils.checkFile(DB_PATH + DB_NAME))
+            return 0;
+        return Integer.parseInt(getOne("SELECT max(promotion_level) FROM unit_promotion "));
+    }
+
+    public int getMaxUniqueEquipmentLevel(){
+        if(!Utils.checkFile(DB_PATH + DB_NAME))
+            return 0;
+        return Integer.parseInt(getOne("SELECT max(enhance_level) FROM unique_equipment_enhance_data "));
     }
 
     /***

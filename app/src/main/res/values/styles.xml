@@ -19,6 +19,13 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="StatusSuperTextView">
+        <item name="sDividerLineColor">#5C95EF</item>
+        <item name="sLeftTextBackground">@drawable/color_text_background</item>
+        <item name="sLeftTextColor">#FFFFFF</item>
+        <item name="sLeftViewMarginLeft">0dp</item>
+        <item name="sUseRipple">false</item>
+    </style>
 
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

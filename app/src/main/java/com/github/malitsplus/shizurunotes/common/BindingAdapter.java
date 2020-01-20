@@ -5,6 +5,7 @@ import android.widget.LinearLayout;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.allen.library.SuperTextView;
 import com.squareup.picasso.Picasso;
 
 public class BindingAdapter {
@@ -28,5 +29,8 @@ public class BindingAdapter {
         view.setImageResource(src);
     }
 
-
+    @androidx.databinding.BindingAdapter("bind:sRightText")
+    public static void setRightString(SuperTextView view, String src) {
+        view.setRightString(src);
+    }
 }
