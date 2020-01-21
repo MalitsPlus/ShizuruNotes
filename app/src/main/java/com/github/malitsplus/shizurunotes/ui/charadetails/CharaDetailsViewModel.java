@@ -70,7 +70,7 @@ public class CharaDetailsViewModel extends ViewModel {
                 //如果为0直接跳过
                 if (statusType == 0)
                     continue;
-                storyStatus = storyStatus.plus(new CharaStoryStatus(
+                storyStatus.plusEqual(new CharaStoryStatus(
                         chara.charaId,
                         statusType,
                         cursor.getDouble(cursor.getColumnIndex("status_rate_" + i)))

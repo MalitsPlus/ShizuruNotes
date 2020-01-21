@@ -212,6 +212,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public Cursor getCharaBase(String condition){
         if(!Utils.checkFile(DB_PATH + DB_NAME))
             return null;
+        if(TextUtils.isEmpty(condition))
+            condition = "ORDER BY ud.start_time DESC, ud.unit_id DESC ";
         return getReadableDatabase()
                 .rawQuery("SELECT ud.unit_id, ud.unit_name, ud.prefab_id, ud.search_area_width, ud.atk_type, up.age, up.guild, up.race, up.height, up.weight, up.birth_month, up.birth_day, up.blood_type, up.favorite, up.voice, up.catch_copy, IFNULL(au.unit_name, ud.unit_name) 'actual_name' " +
                         "FROM unit_data AS ud " +

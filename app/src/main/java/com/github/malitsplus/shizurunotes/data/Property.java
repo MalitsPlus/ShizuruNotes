@@ -65,8 +65,28 @@ public class Property {
         );
     }
 
-    public Property multiply(double multiplier){
+    public Property plusEqual(Property rProperty){
+        this.hp += rProperty.hp;
+        this.atk += rProperty.atk;
+        this.magicStr += rProperty.magicStr;
+        this.def += rProperty.def;
+        this.magicDef += rProperty.magicDef;
+        this.physicalCritical += rProperty.physicalCritical;
+        this.magicCritical += rProperty.magicCritical;
+        this.waveHpRecovery += rProperty.waveHpRecovery;
+        this.waveEnergyRecovery += rProperty.waveEnergyRecovery;
+        this.dodge += rProperty.dodge;
+        this.physicalPenetrate += rProperty.physicalPenetrate;
+        this.magicPenetrate += rProperty.magicPenetrate;
+        this.lifeSteal += rProperty.lifeSteal;
+        this.hpRecoveryRate += rProperty.hpRecoveryRate;
+        this.energyRecoveryRate += rProperty.energyRecoveryRate;
+        this.energyReduceRate += rProperty.energyReduceRate;
+        this.accuracy += rProperty.accuracy;
+        return this;
+    }
 
+    public Property multiply(double multiplier){
         return new Property(
             this.hp * multiplier,
             this.atk * multiplier,
@@ -86,6 +106,27 @@ public class Property {
             this.energyReduceRate * multiplier,
             this.accuracy * multiplier
         );
+    }
+
+    public Property multiplyEqual(double multiplier){
+        this.hp *= multiplier;
+        this.atk *= multiplier;
+        this.magicStr *= multiplier;
+        this.def *= multiplier;
+        this.magicDef *= multiplier;
+        this.physicalCritical *= multiplier;
+        this.magicCritical *= multiplier;
+        this.waveHpRecovery *= multiplier;
+        this.waveEnergyRecovery *= multiplier;
+        this.dodge *= multiplier;
+        this.physicalPenetrate *= multiplier;
+        this.magicPenetrate *= multiplier;
+        this.lifeSteal *= multiplier;
+        this.hpRecoveryRate *= multiplier;
+        this.energyRecoveryRate *= multiplier;
+        this.energyReduceRate *= multiplier;
+        this.accuracy *= multiplier;
+        return this;
     }
 
     //region setters and getters

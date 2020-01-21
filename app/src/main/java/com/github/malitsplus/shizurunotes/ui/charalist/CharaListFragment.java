@@ -1,5 +1,6 @@
 package com.github.malitsplus.shizurunotes.ui.charalist;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,25 +14,28 @@ import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.github.malitsplus.shizurunotes.ui.MainActivity;
 import com.github.malitsplus.shizurunotes.R;
+import com.github.malitsplus.shizurunotes.common.UpdateManager;
 import com.github.malitsplus.shizurunotes.databinding.FragmentCharaBinding;
-import com.github.malitsplus.shizurunotes.data.Chara;
-import com.github.malitsplus.shizurunotes.ui.charadetails.CharaDetailsViewModel;
 
-import java.util.List;
-
-public class CharaListFragment extends Fragment {
+public class CharaListFragment extends Fragment implements UpdateManager.IFragmentCallBack {
 
     private CharaListViewModel charaListViewModel;
     private CharaListAdapter adapter;
     private LinearLayoutManager layoutManager;
     private RecyclerView recyclerView;
     private DrawerLayout drawerLayout;
+
+    @Override
+    public void onAttach(@NonNull Context context){
+        super.onAttach(context);
+        ((MainActivity)context).updateManager.setIFragmentCallBack(this);
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -46,6 +50,7 @@ public class CharaListFragment extends Fragment {
         FragmentCharaBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_chara, container, false);
         binding.setViewModel(charaListViewModel);
         binding.setLifecycleOwner(this);
+
         drawerLayout = binding.charaDrawer;
         recyclerView = binding.charaListRecycler;
 
@@ -62,7 +67,6 @@ public class CharaListFragment extends Fragment {
         charaListViewModel.getCharaDetailsViewModel().observe(this, (charaDetailsViewModels) ->
             adapter.update(charaDetailsViewModels)
         );
-
 
         setHasOptionsMenu(true);
         setButtonListener(binding);
@@ -87,7 +91,6 @@ public class CharaListFragment extends Fragment {
         }
         return false;
     }
-
 
     private void setButtonListener(FragmentCharaBinding binding){
         binding.btnConfirm.setOnClickListener((v) ->{
@@ -151,6 +154,11 @@ public class CharaListFragment extends Fragment {
 
             charaListViewModel.loadData(condition, sortValue);
         });
+    }
+
+    @Override
+    public void dbUpdateFinished(){
+        charaListViewModel.loadData(null, null);
     }
 
 }

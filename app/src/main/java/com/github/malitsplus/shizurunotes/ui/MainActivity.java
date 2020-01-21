@@ -1,4 +1,4 @@
-package com.github.malitsplus.shizurunotes;
+package com.github.malitsplus.shizurunotes.ui;
 
 import android.Manifest;
 import android.app.Activity;
@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.UpdateManager;
 import com.github.malitsplus.shizurunotes.db.DBHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
-    private UpdateManager updateManager;
+    public UpdateManager updateManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,22 +47,15 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
-        DBHelper dbHelper = new DBHelper(this);
-        updateManager = new UpdateManager(this, drawer, dbHelper);
-
-        if(checkStoragePermission())
-            updateManager.checkDatabaseVersion();
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_chara, R.id.nav_clan_battle, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
+                R.id.nav_setting, R.id.nav_share, R.id.nav_send)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -70,6 +64,12 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         //NavigationUI.setupWithNavController(toolbar, navController);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        DBHelper dbHelper = new DBHelper(this);
+        updateManager = new UpdateManager(this, drawer, dbHelper);
+
+        if(checkStoragePermission())
+            updateManager.checkDatabaseVersion();
     }
 
     @Override
@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
             return true;
         }
     }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -117,4 +118,6 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
             // permissions this app might request.
         }
     }
+
+
 }
