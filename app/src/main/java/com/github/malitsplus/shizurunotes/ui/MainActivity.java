@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     };
     public UpdateManager updateManager;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +67,10 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         //NavigationUI.setupWithNavController(toolbar, navController);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
+        SharedViewModel sharedViewModel = ViewModelProviders.of(this).get(SharedViewModel.class);
+        sharedViewModel.init(getApplication());
 
         DBHelper dbHelper = new DBHelper(this);
         updateManager = new UpdateManager(this, drawer, dbHelper);

@@ -1,6 +1,7 @@
 package com.github.malitsplus.shizurunotes.ui.charalist;
 
 import android.content.Context;
+import android.icu.text.Transliterator;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,16 +16,20 @@ import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.github.malitsplus.shizurunotes.common.Statics;
 import com.github.malitsplus.shizurunotes.ui.MainActivity;
 import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.UpdateManager;
 import com.github.malitsplus.shizurunotes.databinding.FragmentCharaBinding;
+import com.github.malitsplus.shizurunotes.ui.SharedViewModel;
 
 public class CharaListFragment extends Fragment implements UpdateManager.IFragmentCallBack {
 
+    private SharedViewModel sharedViewModel;
     private CharaListViewModel charaListViewModel;
     private CharaListAdapter adapter;
     private LinearLayoutManager layoutManager;
@@ -47,6 +52,9 @@ public class CharaListFragment extends Fragment implements UpdateManager.IFragme
                         ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()));
         charaListViewModel = viewModelProvider.get(CharaListViewModel.class);
 
+        sharedViewModel = ViewModelProviders.of(getActivity()).get(SharedViewModel.class);
+        charaListViewModel.setSharedViewModel(sharedViewModel);
+
         FragmentCharaBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_chara, container, false);
         binding.setViewModel(charaListViewModel);
         binding.setLifecycleOwner(this);
@@ -64,13 +72,14 @@ public class CharaListFragment extends Fragment implements UpdateManager.IFragme
         recyclerView.setItemViewCacheSize(200);
 
         //设置观察者
-        charaListViewModel.getCharaDetailsViewModel().observe(this, (charaDetailsViewModels) ->
-            adapter.update(charaDetailsViewModels)
+        charaListViewModel.getLiveCharaList().observe(this, (charaList) ->
+            adapter.update(charaList)
         );
+
+
 
         setHasOptionsMenu(true);
         setButtonListener(binding);
-
         return binding.getRoot();
     }
 
@@ -94,71 +103,82 @@ public class CharaListFragment extends Fragment implements UpdateManager.IFragme
 
     private void setButtonListener(FragmentCharaBinding binding){
         binding.btnConfirm.setOnClickListener((v) ->{
-            String condition = "";
-            String sortValue = null;
+
+            String position;
             switch (binding.chipGroupPosition.getCheckedChipId()){
                 case R.id.chip_position_forward :
-                    condition += " AND search_area_width < 300 ";
+                    position = Statics.FILTER_FORWARD;
                     break;
                 case R.id.chip_position_middle :
-                    condition += " AND search_area_width BETWEEN 300 AND 600 ";
+                    position = Statics.FILTER_MIDDLE;
                     break;
                 case R.id.chip_position_rear :
-                    condition += " AND search_area_width BETWEEN 600 AND 900 ";
+                    position = Statics.FILTER_REAR;
                     break;
                 default :
+                    position = "";
                     break;
             }
 
+            int type;
             switch (binding.chipGroupAtkType.getCheckedChipId()){
                 case R.id.chip_type_physical :
-                    condition += " AND atk_type = 1 ";
+                    type = 1;
                     break;
                 case R.id.chip_type_magical :
-                    condition += " AND atk_type = 2 ";
+                    type = 2;
                     break;
                 default :
+                    type = 0;
                     break;
             }
 
+            CharaListViewModel.SortValue sortValue;
             switch (binding.chipGroupSort.getCheckedChipId()){
                 case R.id.chip_sort_position :
-                    condition += " ORDER BY search_area_width ";
-                    sortValue = "search_area_width";
+                    sortValue = CharaListViewModel.SortValue.POSITION;
+                    break;
+                case R.id.chip_sort_physical_atk :
+                    sortValue = CharaListViewModel.SortValue.ATK;
+                    break;
+                case R.id.chip_sort_magical_atk :
+                    sortValue = CharaListViewModel.SortValue.MAGIC_ATK;
+                    break;
+                case R.id.chip_sort_physical_def :
+                    sortValue = CharaListViewModel.SortValue.DEF;
+                    break;
+                case R.id.chip_sort_magical_def :
+                    sortValue = CharaListViewModel.SortValue.MAGIC_DEF;
                     break;
                 case R.id.chip_sort_age :
-                    condition += " ORDER BY CAST(up.age AS int) ";
-                    sortValue = "age";
+                    sortValue = CharaListViewModel.SortValue.AGE;
                     break;
                 case R.id.chip_sort_height :
-                    condition += " ORDER BY CAST(up.height AS int) ";
-                    sortValue = "height";
+                    sortValue = CharaListViewModel.SortValue.HEIGHT;
                     break;
                 case R.id.chip_sort_weight :
-                    condition += " ORDER BY CAST(up.weight AS int) ";
-                    sortValue = "weight";
+                    sortValue = CharaListViewModel.SortValue.WEIGHT;
+                    break;
+                case R.id.chip_sort_burst_size:
+                    sortValue = CharaListViewModel.SortValue.BUST_SIZE;
                     break;
                 default :
-                    condition += " ORDER BY start_time ";
+                    sortValue = CharaListViewModel.SortValue.NEW;
                     break;
             }
 
-            switch (binding.chipGroupSortWay.getCheckedChipId()){
-                case R.id.chip_asc :
-                    condition += " ASC ";
-                    break;
-                default :
-                    condition += " DESC ";
-                    break;
-            }
-
-            charaListViewModel.loadData(condition, sortValue);
+            boolean desc;
+            if(binding.chipGroupSortWay.getCheckedChipId() == R.id.chip_asc)
+                desc = false;
+            else
+                desc = true;
+            charaListViewModel.filter(position, type, sortValue, desc);
         });
     }
 
     @Override
     public void dbUpdateFinished(){
-        charaListViewModel.loadData(null, null);
+        sharedViewModel.loadData();
     }
 
 }
