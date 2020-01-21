@@ -11,7 +11,7 @@
     <string name="menu_chara">キャラ</string>
     <string name="menu_clan_battle">クラバト</string>
     <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
+    <string name="menu_setting">設定</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
 
@@ -69,8 +69,11 @@
     <string name="text_dodge">&#160;回避&#160;</string>
     <string name="text_wave_hp_recovery">&#160;HP自動回復&#160;</string>
     <string name="text_wave_energy_recovery">&#160;TP自動回復&#160;</string>
+    <string name="text_physical_penetrate">&#160;物理貫通&#160;</string>
+    <string name="text_magical_penetrate">&#160;魔法貫通&#160;</string>
     <string name="text_hp_recovery">&#160;回復量上昇&#160;</string>
     <string name="text_status_tips">*上記のステータスは☆MAX、LvMAX、RankMAX、装備&amp;専用装備フル強化、Exスキル加算の値になります。</string>
+    <string name="text_attack_pattern">行動パターン</string>
 
     <string name="permission_request_explanation_title">ストレージ権限</string>
     <string name="permission_request_explanation_text">本アプリはストレージを使ってキャラクターデータベースの保存とアプリのアップデートを行います、許可しないと正常に動作しない恐れがあります。</string>

@@ -25,7 +25,7 @@ public class CharaListViewModel extends AndroidViewModel {
         loadData("", null);
     }
 
-    public void loadData(String condition, @Nullable String sortValue){
+    public void loadData(@Nullable String condition, @Nullable String sortValue){
         List<CharaDetailsViewModel> listCharaDetailsViewModel = new ArrayList<>();
         Cursor cursor = DBHelper.get(getApplication()).getCharaBase(condition);
         if(cursor == null)

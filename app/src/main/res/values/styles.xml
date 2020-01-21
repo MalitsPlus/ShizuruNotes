@@ -23,6 +23,9 @@
         <item name="sDividerLineColor">#5C95EF</item>
         <item name="sLeftTextBackground">@drawable/color_text_background</item>
         <item name="sLeftTextColor">#FFFFFF</item>
+        <item name="android:layout_width">180dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="sDividerLineHeight">0.5dp</item>
         <item name="sLeftViewMarginLeft">0dp</item>
         <item name="sLeftViewMarginRight">0dp</item>
         <item name="sRightViewMarginLeft">0dp</item>

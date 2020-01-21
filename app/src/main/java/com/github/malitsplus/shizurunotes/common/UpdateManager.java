@@ -40,6 +40,7 @@ public class UpdateManager {
     private DBHelper dbHelper;
     private MaterialDialog progressDialog;
     private int maxLength;
+    private IFragmentCallBack iFragmentCallBack;
 
     private static final int UPDATE_CHECK_COMPLETED = 1;
     private static final int UPDATE_DOWNLOADING = 2;
@@ -177,8 +178,12 @@ public class UpdateManager {
         public void updateCompleted(){
             progressDialog.cancel();
             Snackbar.make(mView, R.string.db_update_finished_text, Snackbar.LENGTH_LONG).show();
+            if(iFragmentCallBack != null)
+                iFragmentCallBack.dbUpdateFinished();
         }
     };
+
+
 
     private Handler updateHandler = new Handler(msg -> {
         switch (msg.what) {
@@ -204,6 +209,10 @@ public class UpdateManager {
         return true;
     });
 
+    public void setIFragmentCallBack(IFragmentCallBack callBack){
+        this.iFragmentCallBack = callBack;
+    }
+
     public interface UpdateCallBack {
         void checkUpdateCompleted(Boolean hasUpdate, CharSequence updateInfo);
         void downloadProgressChanged(int progress, int maxLength);
@@ -211,4 +220,9 @@ public class UpdateManager {
         void downloadCompleted(Boolean success, CharSequence errorMsg);
         void updateCompleted();
     }
+
+    public interface IFragmentCallBack{
+        void dbUpdateFinished();
+    }
+
 }

@@ -131,6 +131,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detailsItemChara">
@@ -164,8 +165,6 @@
                         <com.allen.library.SuperTextView
                             android:id="@+id/txtPhyAtk"
                             style="@style/StatusSuperTextView"
-                            android:layout_width="180dp"
-                            android:layout_height="20dp"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -176,8 +175,6 @@
                         <com.allen.library.SuperTextView
                             android:id="@+id/txtMagAtk"
                             style="@style/StatusSuperTextView"
-                            android:layout_width="180dp"
-                            android:layout_height="20dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="8dp"
                             app:layout_constraintBottom_toBottomOf="@+id/txtPhyAtk"
@@ -190,8 +187,6 @@
                         <com.allen.library.SuperTextView
                             android:id="@+id/txtPhyCrt"
                             style="@style/StatusSuperTextView"
-                            android:layout_width="180dp"
-                            android:layout_height="20dp"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -202,8 +197,6 @@
                         <com.allen.library.SuperTextView
                             android:id="@+id/txtMagCrt"
                             style="@style/StatusSuperTextView"
-                            android:layout_width="180dp"
-                            android:layout_height="20dp"
                             android:layout_marginEnd="8dp"
                             app:layout_constraintBottom_toBottomOf="@+id/txtPhyCrt"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -214,8 +207,6 @@
                         <com.allen.library.SuperTextView
                             android:id="@+id/txtPhyDef"
                             style="@style/StatusSuperTextView"
-                            android:layout_width="180dp"
-                            android:layout_height="20dp"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -226,8 +217,6 @@
                         <com.allen.library.SuperTextView
                             android:id="@+id/txtMagDef"
                             style="@style/StatusSuperTextView"
-                            android:layout_width="180dp"
-                            android:layout_height="20dp"
                             android:layout_marginEnd="8dp"
                             app:layout_constraintBottom_toBottomOf="@+id/txtPhyDef"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -238,8 +227,6 @@
                         <com.allen.library.SuperTextView
                             android:id="@+id/txtHp"
                             style="@style/StatusSuperTextView"
-                            android:layout_width="180dp"
-                            android:layout_height="20dp"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -250,8 +237,6 @@
                         <com.allen.library.SuperTextView
                             android:id="@+id/txtLifeSteal"
                             style="@style/StatusSuperTextView"
-                            android:layout_width="180dp"
-                            android:layout_height="20dp"
                             android:layout_marginEnd="8dp"
                             app:layout_constraintBottom_toBottomOf="@+id/txtHp"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -262,8 +247,6 @@
                         <com.allen.library.SuperTextView
                             android:id="@+id/txtEngRcv"
                             style="@style/StatusSuperTextView"
-                            android:layout_width="180dp"
-                            android:layout_height="20dp"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -274,8 +257,6 @@
                         <com.allen.library.SuperTextView
                             android:id="@+id/txtEngRdc"
                             style="@style/StatusSuperTextView"
-                            android:layout_width="180dp"
-                            android:layout_height="20dp"
                             android:layout_marginEnd="8dp"
                             app:layout_constraintBottom_toBottomOf="@+id/txtEngRcv"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -286,8 +267,6 @@
                         <com.allen.library.SuperTextView
                             android:id="@+id/txtAcc"
                             style="@style/StatusSuperTextView"
-                            android:layout_width="180dp"
-                            android:layout_height="20dp"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -298,8 +277,6 @@
                         <com.allen.library.SuperTextView
                             android:id="@+id/txtDdg"
                             style="@style/StatusSuperTextView"
-                            android:layout_width="180dp"
-                            android:layout_height="20dp"
                             android:layout_marginEnd="8dp"
                             app:layout_constraintBottom_toBottomOf="@+id/txtAcc"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -310,8 +287,6 @@
                         <com.allen.library.SuperTextView
                             android:id="@+id/txtWavHp"
                             style="@style/StatusSuperTextView"
-                            android:layout_width="180dp"
-                            android:layout_height="20dp"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -322,8 +297,6 @@
                         <com.allen.library.SuperTextView
                             android:id="@+id/txtWavEng"
                             style="@style/StatusSuperTextView"
-                            android:layout_width="180dp"
-                            android:layout_height="20dp"
                             android:layout_marginEnd="8dp"
                             app:layout_constraintBottom_toBottomOf="@+id/txtWavHp"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -332,16 +305,34 @@
                             bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.waveEnergyRecovery)}" />
 
                         <com.allen.library.SuperTextView
+                            android:id="@+id/txtPhyPnt"
+                            style="@style/StatusSuperTextView"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtWavHp"
+                            app:sLeftTextString="@string/text_physical_penetrate"
+                            bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.physicalPenetrate)}" />
+
+                        <com.allen.library.SuperTextView
+                            android:id="@+id/txtMagPnt"
+                            style="@style/StatusSuperTextView"
+                            android:layout_marginEnd="8dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/txtPhyPnt"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/txtPhyPnt"
+                            app:sLeftTextString="@string/text_magical_penetrate"
+                            bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.magicPenetrate)}" />
+
+                        <com.allen.library.SuperTextView
                             android:id="@+id/txtHpRcv"
                             style="@style/StatusSuperTextView"
-                            android:layout_width="180dp"
-                            android:layout_height="20dp"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtWavHp"
+                            app:layout_constraintTop_toBottomOf="@+id/txtPhyPnt"
                             app:layout_constraintVertical_bias="0.0"
                             app:sLeftTextString="@string/text_hp_recovery"
                             bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.hpRecoveryRate)}" />
@@ -368,6 +359,53 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/attackPattern"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detailsCharaStatus"
+                app:layout_constraintVertical_bias="0.0">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/text_attack_pattern"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/attackPatternRecycler"
+                        android:layout_width="379dp"
+                        android:layout_height="184dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView4"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

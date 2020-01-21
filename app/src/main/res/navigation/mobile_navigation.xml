@@ -28,10 +28,10 @@
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.github.malitsplus.shizurunotes.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        android:id="@+id/nav_setting"
+        android:name="com.github.malitsplus.shizurunotes.ui.setting.SettingFragment"
+        android:label="@string/menu_setting"
+        tools:layout="@layout/fragment_setting" />
 
     <fragment
         android:id="@+id/nav_share"

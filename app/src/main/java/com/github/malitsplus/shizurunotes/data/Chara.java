@@ -122,21 +122,25 @@ public class Chara {
     public Property getAllEquipmentProperty(){
         Property property = new Property();
         for(int i = 0; i < equipments.size(); i++){
-            property = property.plus(equipments.valueAt(i).getCeiledProperty());
+            property.plusEqual(equipments.valueAt(i).getCeiledProperty());
         }
         return property;
     }
     public Property getUniqueEquipmentProperty(){
-        return uniqueEquipment.getEquipmentData()
-                .plus(uniqueEquipment.getEquipmentEnhanceRate().multiply(maxUniqueEquipmentLevel - 1));
+        Property property = new Property();
+        return property
+                .plusEqual(uniqueEquipment.getEquipmentData())
+                .plusEqual(uniqueEquipment.getEquipmentEnhanceRate().multiply(maxUniqueEquipmentLevel - 1));
     }
 
     public void setCharaProperty() {
-        charaProperty = rarityProperty
-                .plus(getRarityGrowthProperty())
-                .plus(storyProperty)
-                .plus(promotionStatus)
-                .plus(getAllEquipmentProperty())
-                .plus(getUniqueEquipmentProperty());
+        charaProperty = new Property();
+        charaProperty
+                .plusEqual(rarityProperty)
+                .plusEqual(getRarityGrowthProperty())
+                .plusEqual(storyProperty)
+                .plusEqual(promotionStatus)
+                .plusEqual(getAllEquipmentProperty())
+                .plusEqual(getUniqueEquipmentProperty());
     }
 }
