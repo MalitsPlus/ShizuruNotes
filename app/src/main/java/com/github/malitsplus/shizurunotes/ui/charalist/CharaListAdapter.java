@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.JsonUtils;
+import com.github.malitsplus.shizurunotes.data.Chara;
 import com.github.malitsplus.shizurunotes.databinding.ListItemCharaBinding;
 import com.github.malitsplus.shizurunotes.ui.charadetails.CharaDetailsViewModel;
 
@@ -21,11 +22,11 @@ import java.util.List;
 public class CharaListAdapter extends RecyclerView.Adapter<CharaListAdapter.CharaListViewHolder> {
 
     private Context mContext;
-    private List<CharaDetailsViewModel> charaDetailsViewModels;
+    private List<Chara> charaList;
 
     public CharaListAdapter(Context context){
         mContext = context;
-        charaDetailsViewModels = new ArrayList<>();
+        charaList = new ArrayList<>();
     }
 
 
@@ -50,18 +51,18 @@ public class CharaListAdapter extends RecyclerView.Adapter<CharaListAdapter.Char
     //填充每个item的视图
     @Override
     public void onBindViewHolder(CharaListViewHolder holder, int position){
-        holder.getBinding().setCharaViewModel(charaDetailsViewModels.get(position));
+        holder.getBinding().setChara(charaList.get(position));
         holder.getBinding().executePendingBindings();
     }
 
     @Override
     public int getItemCount(){
-        return charaDetailsViewModels.size();
+        return charaList.size();
     }
 
 
-    public void update(List<CharaDetailsViewModel> charaDetailsViewModels){
-        this.charaDetailsViewModels = charaDetailsViewModels;
+    public void update(List<Chara> charaList){
+        this.charaList = charaList;
         notifyDataSetChanged();
     }
 
