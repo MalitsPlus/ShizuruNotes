@@ -14,6 +14,7 @@ import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.JsonUtils;
 import com.github.malitsplus.shizurunotes.data.Chara;
 import com.github.malitsplus.shizurunotes.databinding.ListItemCharaBinding;
+import com.github.malitsplus.shizurunotes.ui.SharedViewModel;
 import com.github.malitsplus.shizurunotes.ui.charadetails.CharaDetailsViewModel;
 
 import java.util.ArrayList;
@@ -22,11 +23,12 @@ import java.util.List;
 public class CharaListAdapter extends RecyclerView.Adapter<CharaListAdapter.CharaListViewHolder> {
 
     private Context mContext;
-    private List<Chara> charaList;
+    private List<Chara> charaList = new ArrayList<>();
+    private SharedViewModel sharedViewModel;
 
-    public CharaListAdapter(Context context){
+    public CharaListAdapter(Context context, SharedViewModel sharedViewModel){
         mContext = context;
-        charaList = new ArrayList<>();
+        this.sharedViewModel = sharedViewModel;
     }
 
 
@@ -39,8 +41,8 @@ public class CharaListAdapter extends RecyclerView.Adapter<CharaListAdapter.Char
 
         //向每个item设置点击监听事件
         binding.setClickListener((v) -> {
-            NavDirections action = CharaListFragmentDirections.actionNavCharaToNavCharaDetails(
-                    binding.getChara().unitId);
+            sharedViewModel.setSelectedChara(binding.getChara());
+            NavDirections action = CharaListFragmentDirections.actionNavCharaToNavCharaDetails();
             Navigation.findNavController(v).navigate(action);
         });
 

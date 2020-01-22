@@ -11,29 +11,14 @@ import com.github.malitsplus.shizurunotes.ui.SharedViewModel;
 
 public class CharaDetailsViewModel extends ViewModel {
 
-    int unitId;
     private SharedViewModel sharedViewModel;
     public MutableLiveData<Chara> mutableChara = new MutableLiveData<>();
 
-
-
-    public CharaDetailsViewModel(int unitId){
-        this.unitId = unitId;
-    }
-
-    public void inflateData(){
-        for(Chara chara : sharedViewModel.getCharaList()){
-            if(unitId == chara.unitId){
-                setChara(chara);
-                break;
-            }
-        }
-    }
-
-
-    public void setSharedViewModel(SharedViewModel sharedViewModel){
+    public CharaDetailsViewModel(SharedViewModel sharedViewModel){
         this.sharedViewModel = sharedViewModel;
+        setChara(sharedViewModel.getSelectedChara());
     }
+
     public void setChara(Chara chara){
         this.mutableChara.setValue(chara);
     }

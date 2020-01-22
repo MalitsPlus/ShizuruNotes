@@ -1,6 +1,4 @@
-package com.github.malitsplus.shizurunotes.ui.charadetails;
-
-import android.app.Application;
+package com.github.malitsplus.shizurunotes.ui;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
@@ -8,22 +6,20 @@ import androidx.lifecycle.ViewModelProvider;
 
 import java.lang.reflect.InvocationTargetException;
 
-public class CharaDetailsViewModelFactory implements ViewModelProvider.Factory {
+public class SharedViewModelFactory implements ViewModelProvider.Factory {
+    private SharedViewModel sharedViewModel;
 
-    private int unitId;
-
-    CharaDetailsViewModelFactory(int unitId){
-        this.unitId = unitId;
+    public SharedViewModelFactory(SharedViewModel sharedViewModel){
+        this.sharedViewModel = sharedViewModel;
     }
 
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         try {
-            return modelClass.getConstructor(Application.class ,String.class).newInstance(unitId);
+            return modelClass.getConstructor(SharedViewModel.class).newInstance(sharedViewModel);
         } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             throw new RuntimeException("Cannot create an instance of " + modelClass, e);
         }
     }
-
 }
