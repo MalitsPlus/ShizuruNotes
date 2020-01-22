@@ -50,7 +50,7 @@
         android:name="com.github.malitsplus.shizurunotes.ui.charadetails.CharaDetailsFragment"
         tools:layout="@layout/fragment_chara_details">
         <argument
-            android:name="charaJson"
-            app:argType="string" />
+            android:name="unitId"
+            app:argType="integer" />
     </fragment>
 </navigation>

@@ -40,7 +40,7 @@ public class CharaListAdapter extends RecyclerView.Adapter<CharaListAdapter.Char
         //向每个item设置点击监听事件
         binding.setClickListener((v) -> {
             NavDirections action = CharaListFragmentDirections.actionNavCharaToNavCharaDetails(
-                    JsonUtils.getJsonFromBean(binding.getCharaViewModel().mutableChara.getValue()));
+                    binding.getChara().unitId);
             Navigation.findNavController(v).navigate(action);
         });
 
