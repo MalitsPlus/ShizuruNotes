@@ -20,10 +20,7 @@ public class SharedViewModel extends ViewModel {
 
     private List<Chara> charaList = new ArrayList<>();
     private DBHelper dbHelper;
-
-    public List<Chara> getCharaList() {
-        return charaList;
-    }
+    private Chara selectedChara;
 
     public void init(Application application){
         dbHelper = new DBHelper(application);
@@ -223,5 +220,16 @@ public class SharedViewModel extends ViewModel {
                 cursor.getDouble(cursor.getColumnIndex("energy_recovery_rate_growth")),
                 cursor.getDouble(cursor.getColumnIndex("energy_reduce_rate_growth")),
                 cursor.getDouble(cursor.getColumnIndex("accuracy_growth")));
+    }
+
+
+    public Chara getSelectedChara() {
+        return selectedChara;
+    }
+    public void setSelectedChara(Chara selectedChara) {
+        this.selectedChara = selectedChara;
+    }
+    public List<Chara> getCharaList() {
+        return charaList;
     }
 }

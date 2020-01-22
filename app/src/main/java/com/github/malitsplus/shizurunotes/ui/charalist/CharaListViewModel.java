@@ -21,6 +21,11 @@ public class CharaListViewModel extends ViewModel {
     private SharedViewModel sharedViewModel;
     public MutableLiveData<List<Chara>> liveCharaList = new MutableLiveData<>();
 
+    public CharaListViewModel(SharedViewModel sharedViewModel){
+        this.sharedViewModel = sharedViewModel;
+        filterDefault();
+    }
+
     public void filter(@NonNull String position,
                        int type,
                        @NonNull SortValue sortValue,
@@ -29,7 +34,7 @@ public class CharaListViewModel extends ViewModel {
         List<Chara> charaToShow = new ArrayList<>();
         for(Chara chara : sharedViewModel.getCharaList()){
             if(checkPosition(chara, position) && checkType(chara, type)) {
-
+                setSortValue(chara, sortValue);
                 charaToShow.add(chara);
             }
         }
@@ -84,11 +89,46 @@ public class CharaListViewModel extends ViewModel {
         liveCharaList.setValue(charaToShow);
     }
 
+    public void filterDefault(){
+        filter(Statics.FILTER_NULL, 0, SortValue.NEW, false);
+    }
+
     private boolean checkPosition(Chara chara, String position){
         return position.equals(Statics.FILTER_NULL) || position.equals(chara.position);
     }
     private boolean checkType(Chara chara, int type){
         return type == 0 || type == chara.atkType;
+    }
+    private void setSortValue(Chara chara, SortValue sortValue){
+        switch (sortValue){
+            case POSITION:
+                chara.sortValue = String.valueOf(chara.searchAreaWidth);
+                break;
+            case ATK:
+                chara.sortValue = String.valueOf(chara.charaProperty.getAtk());
+                break;
+            case MAGIC_ATK:
+                chara.sortValue = String.valueOf(chara.charaProperty.getMagicStr());
+                break;
+            case DEF:
+                chara.sortValue = String.valueOf(chara.charaProperty.getDef());
+                break;
+            case MAGIC_DEF:
+                chara.sortValue = String.valueOf(chara.charaProperty.getMagicDef());
+                break;
+            case AGE:
+                chara.sortValue = chara.age;
+                break;
+            case HEIGHT:
+                chara.sortValue = chara.height;
+                break;
+            case WEIGHT:
+                chara.sortValue = chara.weight;
+                break;
+            default:
+                chara.sortValue = "";
+                break;
+        }
     }
 
     public MutableLiveData<List<Chara>> getLiveCharaList(){

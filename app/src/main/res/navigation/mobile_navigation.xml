@@ -48,9 +48,5 @@
     <fragment
         android:id="@+id/nav_chara_details"
         android:name="com.github.malitsplus.shizurunotes.ui.charadetails.CharaDetailsFragment"
-        tools:layout="@layout/fragment_chara_details">
-        <argument
-            android:name="unitId"
-            app:argType="integer" />
-    </fragment>
+        tools:layout="@layout/fragment_chara_details" />
 </navigation>

@@ -26,6 +26,7 @@ import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.UpdateManager;
 import com.github.malitsplus.shizurunotes.databinding.FragmentCharaBinding;
 import com.github.malitsplus.shizurunotes.ui.SharedViewModel;
+import com.github.malitsplus.shizurunotes.ui.SharedViewModelFactory;
 
 public class CharaListFragment extends Fragment implements UpdateManager.IFragmentCallBack {
 
@@ -47,33 +48,34 @@ public class CharaListFragment extends Fragment implements UpdateManager.IFragme
                              ViewGroup container,
                              Bundle savedInstanceState) {
 
-        charaListViewModel = ViewModelProviders.of(this).get(CharaListViewModel.class);
         sharedViewModel = ViewModelProviders.of(getActivity()).get(SharedViewModel.class);
-        charaListViewModel.setSharedViewModel(sharedViewModel);
-        charaListViewModel.filter(Statics.FILTER_NULL, 0, CharaListViewModel.SortValue.NEW, false);
+        SharedViewModelFactory factory = new SharedViewModelFactory(sharedViewModel);
+        charaListViewModel = ViewModelProviders.of(this, factory).get(CharaListViewModel.class);
 
         FragmentCharaBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_chara, container, false);
         binding.setViewModel(charaListViewModel);
         binding.setLifecycleOwner(this);
 
+        //get controls
         drawerLayout = binding.charaDrawer;
         recyclerView = binding.charaListRecycler;
 
+        //set layout manager
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new CharaListAdapter(this.getContext());
+
+        //set adapter
+        adapter = new CharaListAdapter(this.getContext(), sharedViewModel);
         recyclerView.setAdapter(adapter);
 
+        //减少开销
         recyclerView.setHasFixedSize(true);
-        //recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setItemViewCacheSize(200);
 
-        //设置观察者
+        //set observer
         charaListViewModel.getLiveCharaList().observe(this, (charaList) ->
             adapter.update(charaList)
         );
-
-
 
         setHasOptionsMenu(true);
         setButtonListener(binding);
@@ -176,6 +178,7 @@ public class CharaListFragment extends Fragment implements UpdateManager.IFragme
     @Override
     public void dbUpdateFinished(){
         sharedViewModel.loadData();
+        charaListViewModel.filterDefault();
     }
 
 }

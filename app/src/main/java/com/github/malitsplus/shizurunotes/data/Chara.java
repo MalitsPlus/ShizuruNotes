@@ -9,6 +9,8 @@ import com.github.malitsplus.shizurunotes.common.Statics;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class Chara {
@@ -41,7 +43,6 @@ public class Chara {
     public String comment;
     public String selfText;
     public long startTime;
-
 
     public int charaId;
     public String iconUrl;
@@ -135,6 +136,17 @@ public class Chara {
         this.uniqueEquipment = uniqueEquipment;
     }
 
+    public void setCharaProperty() {
+        charaProperty = new Property();
+        charaProperty
+                .plusEqual(rarityProperty)
+                .plusEqual(getRarityGrowthProperty())
+                .plusEqual(storyProperty)
+                .plusEqual(promotionStatus)
+                .plusEqual(getAllEquipmentProperty())
+                .plusEqual(getUniqueEquipmentProperty());
+    }
+
     public Property getRarityGrowthProperty(){
         return rarityPropertyGrowth.multiply(maxCharaLevel + maxCharaRank);
     }
@@ -152,14 +164,6 @@ public class Chara {
                 .plusEqual(uniqueEquipment.getEquipmentEnhanceRate().multiply(maxUniqueEquipmentLevel - 1));
     }
 
-    public void setCharaProperty() {
-        charaProperty = new Property();
-        charaProperty
-                .plusEqual(rarityProperty)
-                .plusEqual(getRarityGrowthProperty())
-                .plusEqual(storyProperty)
-                .plusEqual(promotionStatus)
-                .plusEqual(getAllEquipmentProperty())
-                .plusEqual(getUniqueEquipmentProperty());
-    }
+    public List<Skill> skillList = new ArrayList<>();
+
 }
