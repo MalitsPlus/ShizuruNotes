@@ -10,19 +10,17 @@ import java.lang.reflect.InvocationTargetException;
 
 public class CharaDetailsViewModelFactory implements ViewModelProvider.Factory {
 
-    private Application application;
-    private String charaJson;
+    private int unitId;
 
-    CharaDetailsViewModelFactory(Application application, String charaJson){
-        this.application = application;
-        this.charaJson = charaJson;
+    CharaDetailsViewModelFactory(int unitId){
+        this.unitId = unitId;
     }
 
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         try {
-            return modelClass.getConstructor(Application.class ,String.class).newInstance(application, charaJson);
+            return modelClass.getConstructor(Application.class ,String.class).newInstance(unitId);
         } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             throw new RuntimeException("Cannot create an instance of " + modelClass, e);
         }

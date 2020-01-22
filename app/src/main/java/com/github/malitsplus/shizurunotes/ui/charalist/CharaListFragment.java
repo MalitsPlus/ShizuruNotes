@@ -47,13 +47,10 @@ public class CharaListFragment extends Fragment implements UpdateManager.IFragme
                              ViewGroup container,
                              Bundle savedInstanceState) {
 
-        //需要用到AndroidViewModelFactory，不能用默认的创建方式
-        ViewModelProvider viewModelProvider = new ViewModelProvider(this,
-                        ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()));
-        charaListViewModel = viewModelProvider.get(CharaListViewModel.class);
-
+        charaListViewModel = ViewModelProviders.of(this).get(CharaListViewModel.class);
         sharedViewModel = ViewModelProviders.of(getActivity()).get(SharedViewModel.class);
         charaListViewModel.setSharedViewModel(sharedViewModel);
+        charaListViewModel.filter(Statics.FILTER_NULL, 0, CharaListViewModel.SortValue.NEW, false);
 
         FragmentCharaBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_chara, container, false);
         binding.setViewModel(charaListViewModel);
@@ -116,7 +113,7 @@ public class CharaListFragment extends Fragment implements UpdateManager.IFragme
                     position = Statics.FILTER_REAR;
                     break;
                 default :
-                    position = "";
+                    position = Statics.FILTER_NULL;
                     break;
             }
 
@@ -167,12 +164,12 @@ public class CharaListFragment extends Fragment implements UpdateManager.IFragme
                     break;
             }
 
-            boolean desc;
+            boolean asc;
             if(binding.chipGroupSortWay.getCheckedChipId() == R.id.chip_asc)
-                desc = false;
+                asc = true;
             else
-                desc = true;
-            charaListViewModel.filter(position, type, sortValue, desc);
+                asc = false;
+            charaListViewModel.filter(position, type, sortValue, asc);
         });
     }
 

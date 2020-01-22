@@ -31,7 +31,8 @@ public class SharedViewModel extends ViewModel {
     }
 
     /***
-     * 从数据库读取所有角色数据，此方法只应在程序初始化时或数据库下载更新完成后使用。
+     * 从数据库读取所有角色数据。
+     * 注意：此方法应该且仅应该在程序初始化时或数据库更新完成后使用。
      */
     public void loadData(){
         charaList.clear();
@@ -43,6 +44,7 @@ public class SharedViewModel extends ViewModel {
             setCharaPromotionStatus(chara);
             setCharaEquipments(chara);
             setUniqueEquipment(chara);
+            chara.setCharaProperty();
         }
     }
 
@@ -63,7 +65,7 @@ public class SharedViewModel extends ViewModel {
                     cursor.getDouble(cursor.getColumnIndex("normal_atk_cast_time")),
                     cursor.getString(cursor.getColumnIndex("actual_name")),
                     cursor.getString(cursor.getColumnIndex("age")),
-                    cursor.getInt(cursor.getColumnIndex("guildId")),
+                    cursor.getInt(cursor.getColumnIndex("guild_id")),
                     cursor.getString(cursor.getColumnIndex("guild")),
                     cursor.getString(cursor.getColumnIndex("race")),
                     cursor.getString(cursor.getColumnIndex("height")),

@@ -9,7 +9,6 @@ import com.github.malitsplus.shizurunotes.common.Statics;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 import java.util.Locale;
 
 public class Chara {
@@ -48,6 +47,8 @@ public class Chara {
     public String iconUrl;
     public String imageUrl;
     public String position;
+    public int positionIcon;
+    public String sortValue;
 
     //preload params
     public int maxCharaLevel;
@@ -90,16 +91,21 @@ public class Chara {
         this.selfText = selfText;
 
         //需要处理的字串
-        this.startTime = LocalDateTime.parse(startTime).toEpochSecond(ZoneOffset.of("+9"));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        this.startTime = LocalDateTime.parse(startTime, formatter).toEpochSecond(ZoneOffset.of("+9"));
         this.iconUrl = String.format(Locale.US, Statics.ICON_URL, prefabId + 30);
         this.imageUrl = String.format(Locale.US, Statics.IMAGE_URL, prefabId + 30);
 
-        if(searchAreaWidth < 300)
+        if(searchAreaWidth < 300) {
             this.position = Statics.FILTER_FORWARD;
-        else if(searchAreaWidth > 300 && searchAreaWidth < 600)
+            this.positionIcon = R.drawable.position_forward;
+        } else if(searchAreaWidth > 300 && searchAreaWidth < 600){
             this.position = Statics.FILTER_MIDDLE;
-        else if(searchAreaWidth > 600)
+            this.positionIcon = R.drawable.position_middle;
+        } else if(searchAreaWidth > 600) {
             this.position = Statics.FILTER_REAR;
+            this.positionIcon = R.drawable.position_rear;
+        }
     }
 
     public Property charaProperty;

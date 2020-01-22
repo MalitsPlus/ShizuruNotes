@@ -1,9 +1,12 @@
 package com.github.malitsplus.shizurunotes.ui.charalist;
 
 import android.app.Application;
+import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.github.malitsplus.shizurunotes.common.Statics;
 import com.github.malitsplus.shizurunotes.data.Chara;
@@ -13,21 +16,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class CharaListViewModel extends AndroidViewModel {
+public class CharaListViewModel extends ViewModel {
 
     private SharedViewModel sharedViewModel;
     public MutableLiveData<List<Chara>> liveCharaList = new MutableLiveData<>();
 
-    public CharaListViewModel(Application application) {
-        super(application);
-        liveCharaList.setValue(sharedViewModel.getCharaList());
-    }
+    public void filter(@NonNull String position,
+                       int type,
+                       @NonNull SortValue sortValue,
+                       boolean asc){
 
-    public void filter(String position, int type, SortValue sortValue, boolean desc){
         List<Chara> charaToShow = new ArrayList<>();
-        for(Chara chara : liveCharaList.getValue()){
-            if(checkPosition(chara, position) && checkType(chara, type))
+        for(Chara chara : sharedViewModel.getCharaList()){
+            if(checkPosition(chara, position) && checkType(chara, type)) {
+
                 charaToShow.add(chara);
+            }
         }
 
         Collections.sort(charaToShow, (a, b) -> {
@@ -52,7 +56,7 @@ public class CharaListViewModel extends AndroidViewModel {
                     break;
                 case DEF:
                     valueA = a.charaProperty.getDef();
-                    valueB = b.charaProperty.getMagicDef();
+                    valueB = b.charaProperty.getDef();
                     break;
                 case MAGIC_DEF:
                     valueA = a.charaProperty.getMagicDef();
@@ -75,7 +79,7 @@ public class CharaListViewModel extends AndroidViewModel {
                     valueB = b.unitId;
                     break;
             }
-            return (desc ? 1 : -1) * Long.compare(valueB, valueA);
+            return (asc ? -1 : 1) * Long.compare(valueB, valueA);
         });
         liveCharaList.setValue(charaToShow);
     }
@@ -83,16 +87,13 @@ public class CharaListViewModel extends AndroidViewModel {
     private boolean checkPosition(Chara chara, String position){
         return position.equals(Statics.FILTER_NULL) || position.equals(chara.position);
     }
-
     private boolean checkType(Chara chara, int type){
         return type == 0 || type == chara.atkType;
     }
 
-
     public MutableLiveData<List<Chara>> getLiveCharaList(){
         return liveCharaList;
     }
-
     public void setSharedViewModel(SharedViewModel sharedViewModel) {
         this.sharedViewModel = sharedViewModel;
     }
