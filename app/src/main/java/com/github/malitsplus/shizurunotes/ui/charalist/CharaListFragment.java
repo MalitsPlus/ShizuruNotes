@@ -15,6 +15,7 @@ import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -48,9 +49,9 @@ public class CharaListFragment extends Fragment implements UpdateManager.IFragme
                              ViewGroup container,
                              Bundle savedInstanceState) {
 
-        sharedViewModel = ViewModelProviders.of(getActivity()).get(SharedViewModel.class);
+        sharedViewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
         SharedViewModelFactory factory = new SharedViewModelFactory(sharedViewModel);
-        charaListViewModel = ViewModelProviders.of(this, factory).get(CharaListViewModel.class);
+        charaListViewModel = new ViewModelProvider(this, factory).get(CharaListViewModel.class);
 
         FragmentCharaBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_chara, container, false);
         binding.setViewModel(charaListViewModel);

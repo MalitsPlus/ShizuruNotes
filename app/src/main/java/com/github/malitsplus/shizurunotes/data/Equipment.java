@@ -3,7 +3,7 @@ package com.github.malitsplus.shizurunotes.data;
 public class Equipment {
     public int equipmentId;
     public String equipmentName;
-    public int promotionLevel;
+    public int maxEnhanceLevel;
     public Property equipmentData;
     public Property equipmentEnhanceRate;
 
@@ -11,16 +11,16 @@ public class Equipment {
 
     }
 
-    public Equipment(int equipmentId, String equipmentName, int promotionLevel, Property equipmentData, Property equipmentEnhanceRate) {
+    public Equipment(int equipmentId, String equipmentName, int maxEnhanceLevel, Property equipmentData, Property equipmentEnhanceRate) {
         this.equipmentId = equipmentId;
         this.equipmentName = equipmentName;
-        this.promotionLevel = promotionLevel;
+        this.maxEnhanceLevel = maxEnhanceLevel;
         this.equipmentData = equipmentData;
         this.equipmentEnhanceRate = equipmentEnhanceRate;
     }
 
     public Property getCeiledProperty(){
-        return equipmentData.plus(equipmentEnhanceRate.multiply(promotionLevel));
+        return equipmentData.plus(equipmentEnhanceRate.multiply(maxEnhanceLevel));
     }
 
     public int getEquipmentId() {
@@ -39,12 +39,12 @@ public class Equipment {
         this.equipmentName = equipmentName;
     }
 
-    public int getPromotionLevel() {
-        return promotionLevel;
+    public int getMaxEnhanceLevel() {
+        return maxEnhanceLevel;
     }
 
-    public void setPromotionLevel(int promotionLevel) {
-        this.promotionLevel = promotionLevel;
+    public void setMaxEnhanceLevel(int maxEnhanceLevel) {
+        this.maxEnhanceLevel = maxEnhanceLevel;
     }
 
     public Property getEquipmentData() {

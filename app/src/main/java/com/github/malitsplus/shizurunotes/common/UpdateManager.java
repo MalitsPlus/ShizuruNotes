@@ -37,7 +37,6 @@ public class UpdateManager {
     private boolean canceled;
     private UpdateCallBack callBack;
     private String versionInfo;
-    private DBHelper dbHelper;
     private MaterialDialog progressDialog;
     private int maxLength;
     private IFragmentCallBack iFragmentCallBack;
@@ -53,11 +52,10 @@ public class UpdateManager {
     private static final String DB_FILE_NAME_COMPRESSED = "redive_jp.db.br";
     private static final String DB_FILE_NAME = "redive_jp.db";
 
-    public UpdateManager(Context context,View view, DBHelper dbHelper){
+    public UpdateManager(Context context,View view){
         mContext = context;
         mView = view;
         callBack = defaultCallBack;
-        this.dbHelper = dbHelper;
     }
 
     public void checkDatabaseVersion(){

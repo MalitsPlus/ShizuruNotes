@@ -68,12 +68,11 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         //NavigationUI.setupWithNavController(toolbar, navController);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        DBHelper.with(getApplication());
+        SharedViewModel sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
 
-        SharedViewModel sharedViewModel = ViewModelProviders.of(this).get(SharedViewModel.class);
-        sharedViewModel.init(getApplication());
 
-        DBHelper dbHelper = new DBHelper(this);
-        updateManager = new UpdateManager(this, drawer, dbHelper);
+        updateManager = new UpdateManager(this, drawer);
 
         if(checkStoragePermission())
             updateManager.checkDatabaseVersion();

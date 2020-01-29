@@ -27,5 +27,8 @@ public class Skill {
 
     public String iconUrl;
 
-
+    public Skill(int skillTag, int skillId) {
+        this.skillTag = skillTag;
+        this.skillId = skillId;
+    }
 }
