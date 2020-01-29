@@ -36,14 +36,14 @@ public class CharaDetailsFragment extends Fragment {
 
         FragmentCharaDetailsBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_chara_details, container, false);
 
-        sharedViewModel = ViewModelProviders.of(getActivity()).get(SharedViewModel.class);
+        sharedViewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
         SharedViewModelFactory factory = new SharedViewModelFactory(sharedViewModel);
-        detailsViewModel = ViewModelProviders.of(this, factory).get(CharaDetailsViewModel.class);
+        detailsViewModel = new ViewModelProvider(this, factory).get(CharaDetailsViewModel.class);
 
         binding.setDetailsViewModel(detailsViewModel);
 
         //设置观察者
-        detailsViewModel.getMutableChara().observe(this, (chara) -> {
+        detailsViewModel.getMutableChara().observe(getViewLifecycleOwner(), (chara) -> {
             binding.setDetailsViewModel(detailsViewModel);
         });
 

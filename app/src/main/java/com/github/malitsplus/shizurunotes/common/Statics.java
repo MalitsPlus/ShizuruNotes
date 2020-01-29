@@ -1,5 +1,8 @@
 package com.github.malitsplus.shizurunotes.common;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Statics {
     public final static String API_URL = "https://redive.estertion.win";
     public final static String LAST_VERSION_URL = API_URL + "/last_version_jp.json";
@@ -11,4 +14,25 @@ public class Statics {
     public final static String FILTER_FORWARD = "F";
     public final static String FILTER_MIDDLE = "M";
     public final static String FILTER_REAR = "R";
+
+    public final static List<String> SKILL_TAGS;
+    static {
+        SKILL_TAGS = new ArrayList<>();
+        SKILL_TAGS.add("union_burst");
+        SKILL_TAGS.add("main_skill_1");
+        SKILL_TAGS.add("union_burst");
+        SKILL_TAGS.add("union_burst");
+        SKILL_TAGS.add("union_burst");
+        SKILL_TAGS.add("union_burst");
+        SKILL_TAGS.add("union_burst");
+        SKILL_TAGS.add("union_burst");
+        SKILL_TAGS.add("union_burst");
+        SKILL_TAGS.add("union_burst");
+        SKILL_TAGS.add("union_burst");
+        SKILL_TAGS.add("union_burst");
+        SKILL_TAGS.add("union_burst");
+        SKILL_TAGS.add("union_burst");
+        SKILL_TAGS.add("union_burst");
+        SKILL_TAGS.add("union_burst");
+    }
 }
