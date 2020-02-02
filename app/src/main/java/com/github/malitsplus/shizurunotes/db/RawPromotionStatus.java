@@ -44,6 +44,6 @@ public class RawPromotionStatus {
                 energy_reduce_rate,
                 accuracy
         );
-        chara.setPromotionStatus(property);
+        chara.promotionStatus = property;
     }
 }

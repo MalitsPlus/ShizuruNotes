@@ -1,23 +1,19 @@
 package com.github.malitsplus.shizurunotes.ui;
 
 import android.Manifest;
-import android.app.Activity;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.malitsplus.shizurunotes.R;
+import com.github.malitsplus.shizurunotes.common.App;
 import com.github.malitsplus.shizurunotes.common.UpdateManager;
 import com.github.malitsplus.shizurunotes.db.DBHelper;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import android.view.View;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -30,8 +26,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.Menu;
-
 public class MainActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -42,6 +36,10 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     };
     public UpdateManager updateManager;
 
+    @Override
+    protected void attachBaseContext(Context base){
+        super.attachBaseContext(App.localeManager.setLocale(base));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +94,6 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         }
     }
 
-
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String[] permissions, int[] grantResults) {
@@ -124,6 +121,5 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
             // permissions this app might request.
         }
     }
-
 
 }

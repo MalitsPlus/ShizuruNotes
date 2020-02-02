@@ -1,5 +1,7 @@
 package com.github.malitsplus.shizurunotes.common;
 
+import android.os.Build;
+
 import androidx.annotation.NonNull;
 
 import java.io.File;
@@ -104,5 +106,9 @@ public class Utils {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static boolean isAtLeastVersion(int version) {
+        return Build.VERSION.SDK_INT >= version;
     }
 }

@@ -37,6 +37,6 @@ public class RawUnitPromotion {
             }
         }
 
-        chara.setEquipments(equipmentList);
+        chara.equipments = equipmentList;
     }
 }
