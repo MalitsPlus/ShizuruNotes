@@ -41,6 +41,7 @@ public class CharaListFragment extends Fragment implements UpdateManager.IFragme
     @Override
     public void onAttach(@NonNull Context context){
         super.onAttach(context);
+        //sometimes will throw NPE?
         ((MainActivity)context).updateManager.setIFragmentCallBack(this);
     }
 
@@ -74,7 +75,7 @@ public class CharaListFragment extends Fragment implements UpdateManager.IFragme
         recyclerView.setItemViewCacheSize(200);
 
         //set observer
-        charaListViewModel.getLiveCharaList().observe(this, (charaList) ->
+        charaListViewModel.getLiveCharaList().observe(getViewLifecycleOwner(), (charaList) ->
             adapter.update(charaList)
         );
 

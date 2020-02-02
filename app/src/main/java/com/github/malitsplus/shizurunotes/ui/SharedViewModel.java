@@ -1,22 +1,14 @@
 package com.github.malitsplus.shizurunotes.ui;
 
-import android.app.Application;
-import android.database.Cursor;
-import android.util.SparseArray;
-
 import androidx.lifecycle.ViewModel;
 
 import com.github.malitsplus.shizurunotes.data.Chara;
-import com.github.malitsplus.shizurunotes.data.CharaStoryStatus;
-import com.github.malitsplus.shizurunotes.data.Equipment;
 import com.github.malitsplus.shizurunotes.data.Property;
 import com.github.malitsplus.shizurunotes.data.Skill;
-import com.github.malitsplus.shizurunotes.data.UnitSkillData;
 import com.github.malitsplus.shizurunotes.db.DBHelper;
 import com.github.malitsplus.shizurunotes.db.RawCharaStoryStatus;
 import com.github.malitsplus.shizurunotes.db.RawUniqueEquipmentData;
 import com.github.malitsplus.shizurunotes.db.RawUnitBasic;
-import com.github.malitsplus.shizurunotes.db.RawUnitRarity;
 
 
 import java.util.ArrayList;
@@ -77,7 +69,7 @@ public class SharedViewModel extends ViewModel {
         for(RawCharaStoryStatus raw : rawList){
             storyStatus.plusEqual(raw.getCharaStoryStatus(chara));
         }
-        chara.setStoryProperty(storyStatus);
+        chara.storyProperty = storyStatus;
     }
     private void setCharaPromotionStatus(Chara chara){
         DBHelper.get().getCharaPromotionStatus(chara.unitId).setPromotionStatus(chara);
@@ -93,24 +85,42 @@ public class SharedViewModel extends ViewModel {
     }
 
     private void setUnitSkillData(Chara chara){
-        chara.setUnitSkillData(DBHelper.get().getCharaUnitSkillData(chara.unitId));
+        DBHelper.get().getUnitSkillData(chara.unitId).setCharaSkillMap(chara);
+
+
+        chara.skillMap.forEach((key, skill) -> {
+            DBHelper.get().getSkillData(skill.skillId).setSkillData(skill);
+
+
+            for (Skill.Action action : skill.actions){
+                DBHelper.get().getSkillAction(action.actionId).setActionData(action);
+            }
+
+
+            for (Skill.Action action : skill.actions){
+
+                if(action.dependActionId != 0){
+
+                    for(Skill.Action searched : skill.actions){
+                        if(searched.actionId == action.dependActionId){
+                            action.dependAction = searched;
+                            break;
+                        }
+                    }
+
+                }
+
+                action.buildParameter();
+            }
+        });
+
+
+
     }
 
 
-    private Skill setCharaSkill(int skillId){
-        if(skillId == 0)
-            return null;
 
-        Cursor cursor = DBHelper.get().getSkill(skillId);
-        if(cursor.moveToNext()){
 
-        }
-        cursor.close();
-        return null;
-    }
-    private void setSkillAction(Chara chara){
-
-    }
 
     public Chara getSelectedChara() {
         return selectedChara;

@@ -1,18 +1,7 @@
 package com.github.malitsplus.shizurunotes.data;
 
-import android.content.pm.PackageManager;
-import android.util.SparseArray;
-
-import com.github.malitsplus.shizurunotes.R;
-import com.github.malitsplus.shizurunotes.common.Statics;
-
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 public class Chara {
@@ -66,25 +55,6 @@ public class Chara {
     public List<Equipment> equipments;
     public Equipment uniqueEquipment;
 
-    public void setRarityProperty(Property rarityProperty){
-        this.rarityProperty = rarityProperty;
-    }
-    public void setRarityPropertyGrowth(Property rarityPropertyGrowth) {
-        this.rarityPropertyGrowth = rarityPropertyGrowth;
-    }
-    public void setStoryProperty(Property storyProperty){
-        this.storyProperty = storyProperty;
-    }
-    public void setPromotionStatus(Property promotionStatus){
-        this.promotionStatus = promotionStatus;
-    }
-    public void setEquipments(List<Equipment> equipments){
-        this.equipments = equipments;
-    }
-    public void setUniqueEquipment(Equipment uniqueEquipment){
-        this.uniqueEquipment = uniqueEquipment;
-    }
-
     public void setCharaProperty() {
         charaProperty = new Property();
         charaProperty
@@ -116,10 +86,8 @@ public class Chara {
         return property;
     }
 
-    public UnitSkillData unitSkillData;
-    public void setUnitSkillData(UnitSkillData unitSkillData){
-        this.unitSkillData = unitSkillData;
-    }
-    public List<Skill> skillList = new ArrayList<>();
+
+    public Map<Skill.SkillClass, Skill> skillMap = new HashMap<>();
+
 
 }

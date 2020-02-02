@@ -82,7 +82,7 @@ public class RawUnitRarity {
                 accuracy_growth
         );
 
-        chara.setRarityProperty(rarityProperty);
-        chara.setRarityPropertyGrowth(rarityPropertyGrowth);
+        chara.rarityProperty = rarityProperty;
+        chara.rarityPropertyGrowth = rarityPropertyGrowth;
     }
 }

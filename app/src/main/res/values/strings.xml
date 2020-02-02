@@ -1,4 +1,7 @@
-<resources>
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
+
     <string name="app_name">ShizuruNotes</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -14,6 +17,17 @@
     <string name="menu_setting">設定</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    <string name="setting_language">Language</string>
+    <string name="setting_language_dialog_title">Choose your language</string>
+    <string-array name="setting_language_options">
+        <item>日本語</item>
+        <item>简体中文</item>
+    </string-array>
+    <string-array name="setting_language_values">
+        <item>ja</item>
+        <item>zh</item>
+    </string-array>
 
     <string name="text_ok">OK</string>
     <string name="db_update_dialog_title">データベース更新</string>

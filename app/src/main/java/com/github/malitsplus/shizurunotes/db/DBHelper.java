@@ -6,22 +6,18 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
-import android.widget.TabHost;
 
 import androidx.annotation.Nullable;
 
 import com.github.malitsplus.shizurunotes.common.Utils;
-import com.github.malitsplus.shizurunotes.data.UnitSkillData;
 
 import java.lang.reflect.Field;
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.Scanner;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final int DB_VERSION = 10014050;
@@ -546,26 +542,18 @@ public class DBHelper extends SQLiteOpenHelper {
      * @param unitId
      * @return
      */
-    public UnitSkillData getCharaUnitSkillData(int unitId){
-        UnitSkillData result;
+    public RawUnitSkillData getUnitSkillData(int unitId){
+        RawUnitSkillData raw;
         try{
-            result = DBHelper.get().getBean("unit_skill_data", UnitSkillData.class, "unit_id", String.valueOf(unitId));
+            raw = getBeanByRaw("SELECT * FROM unit_skill_data WHERE unit_id=? ",
+                    String.valueOf(unitId),
+                    RawUnitSkillData.class
+            );
         } catch (InstantiationException | IllegalAccessException e){
-            result = null;
-        }
-        return result;
-    }
-
-    /***
-     * 获取角色技能数据
-     * @param unitId
-     * @return
-     */
-    public Cursor getCharaSkills(int unitId){
-        if(!Utils.checkFile(DB_PATH + DB_NAME))
+            e.printStackTrace();
             return null;
-        return getReadableDatabase()
-                .rawQuery("SELECT * FROM unit_skill_data WHERE unit_id=? ", new String[]{String.valueOf(unitId)});
+        }
+        return raw;
     }
 
     /***
@@ -573,11 +561,37 @@ public class DBHelper extends SQLiteOpenHelper {
      * @param skillId
      * @return
      */
-    public Cursor getSkill(int skillId){
-        if(!Utils.checkFile(DB_PATH + DB_NAME))
+    public RawSkillData getSkillData(int skillId){
+        RawSkillData raw;
+        try{
+            raw = getBeanByRaw("SELECT * FROM skill_data WHERE skill_id=? ",
+                    String.valueOf(skillId),
+                    RawSkillData.class
+            );
+        } catch (InstantiationException | IllegalAccessException e){
+            e.printStackTrace();
             return null;
-        return getReadableDatabase()
-                .rawQuery("SELECT * FROM skill_data WHERE skill_id=? ", new String[]{String.valueOf(skillId)});
+        }
+        return raw;
+    }
+
+    /***
+     * 获取技能动作数据
+     * @param actionId
+     * @return
+     */
+    public RawSkillAction getSkillAction(int actionId){
+        RawSkillAction raw;
+        try{
+            raw = getBeanByRaw("SELECT * FROM skill_action WHERE action_id=? ",
+                    String.valueOf(actionId),
+                    RawSkillAction.class
+            );
+        } catch (InstantiationException | IllegalAccessException e){
+            e.printStackTrace();
+            return null;
+        }
+        return raw;
     }
 
     public int getMaxCharaLevel(){
