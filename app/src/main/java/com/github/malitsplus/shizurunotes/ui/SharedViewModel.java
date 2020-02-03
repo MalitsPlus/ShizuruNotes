@@ -89,10 +89,12 @@ public class SharedViewModel extends ViewModel {
 
 
         chara.skillMap.forEach((key, skill) -> {
+            //填充Skill中只有actionId和dependActionId（可能为0）的actionList
             DBHelper.get().getSkillData(skill.skillId).setSkillData(skill);
 
 
             for (Skill.Action action : skill.actions){
+                //向actionList中填入其他具体值
                 DBHelper.get().getSkillAction(action.actionId).setActionData(action);
             }
 
@@ -103,6 +105,8 @@ public class SharedViewModel extends ViewModel {
 
                     for(Skill.Action searched : skill.actions){
                         if(searched.actionId == action.dependActionId){
+                            //需要先建立params
+                            searched.buildParameter();
                             action.dependAction = searched;
                             break;
                         }
