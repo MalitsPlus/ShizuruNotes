@@ -89,6 +89,127 @@
     <string name="text_status_tips">*上記のステータスは☆MAX、LvMAX、RankMAX、装備&amp;専用装備フル強化、Exスキル加算の値になります。</string>
     <string name="text_attack_pattern">行動パターン</string>
 
+
+
+    <!--**************** 拼接字符串领域开始 *****************-->
+
+    <string name="enemy">敵</string>
+    <string name="friendly">味方</string>
+    <string name="both_sides">敵と味方両側</string>
+    <string name="first">1番目</string>
+    <string name="second">2番目</string>
+    <string name="third">3番目</string>
+    <string name="fourth">4番目</string>
+    <string name="fifth">5番目</string>
+    <string name="unknown">不明</string>
+    <string name="random">ランダムな</string>
+    <string name="the_nearest">最も近い</string>
+    <string name="the_farthest">最も遠い</string>
+    <string name="the_lowest_HP_ratio">HP割合の一番低い</string>
+    <string name="the_highest_HP_ratio">HP割合の一番高い</string>
+    <string name="self">自分</string>
+    <string name="the_most_backward">一番後ろの</string>
+    <string name="the_most_forward">一番前の</string>
+    <string name="targets_within_the_scope">範囲内のターゲット</string>
+    <string name="the_highest_TP">TPの一番高い</string>
+    <string name="the_lowest_TP">TPの一番低い</string>
+    <string name="the_highest_ATK">物理攻撃力の一番高い</string>
+    <string name="the_lowest_ATK">物理攻撃力の一番低い</string>
+    <string name="the_highest_Magic_STR">魔法攻撃力の一番高い</string>
+    <string name="the_lowest_Magic_STR">魔法攻撃力の一番低い</string>
+    <string name="minion">召喚物</string>
+    <string name="physics">物理攻撃をするの</string>
+    <string name="magic">魔法攻撃をするの</string>
+    <string name="random_minion">ランダムなミニオン</string>
+    <string name="random_self_minion">ランダムな自分のミニオン</string>
+    <string name="boss">ボス級</string>
+    <string name="one">1体</string>
+    <string name="two">2体</string>
+    <string name="three">3体</string>
+    <string name="four">4体</string>
+    <string name="all">全体</string>
+    <string name="target">目標</string>
+    <string name="targets">目標</string>
+
+    <string name="front">前方</string>
+    <string name="front_including_self">自分を含めて前方</string>
+    <string name="front_and_back">前方と後方</string>
+
+    <string name="s_unknown_type">不明種類%s</string>
+    <string name="s_nearest">最も近い%s</string>
+    <string name="s_farthest">最も遠い%s</string>
+    <string name="s_lowest_HP_ratio">HP割合の一番低い%s</string>
+    <string name="s_highest_HP_ratio">HP割合の一番高い%s</string>
+    <string name="s_most_backward">一番後ろの%s</string>
+    <string name="s_most_forward">一番前の%s</string>
+    <string name="s_highest_TP">TPの一番高い%s</string>
+    <string name="s_lowest_TP">TPの一番低い%s</string>
+    <string name="s_highest_ATK">物理攻撃力の一番高い%s</string>
+    <string name="s_lowest_ATK">物理攻撃力の一番低い%s</string>
+    <string name="s_highest_Magic_STR">魔法攻撃力の一番高い%s</string>
+    <string name="s_lowest_Magic_STR">魔法攻撃力の一番低い%s</string>
+    <string name="s_random">ランダムな%s</string>
+    <string name="s_minion">%s召喚物</string>
+    <string name="s_physics">物理攻撃をする%s</string>
+    <string name="s_magic">魔法攻撃をする%s</string>
+    <string name="s_boss">ボス級%s</string>
+    <string name="the_s_unknown_type">%s不明種類</string>
+    <string name="the_s_nearest">%s近い</string>
+    <string name="the_s_farthest">%s遠い</string>
+    <string name="the_s_lowest_HP_ratio">HP割合の%s低い</string>
+    <string name="the_s_highest_HP_ratio">HP割合の%s高い</string>
+    <string name="the_s_most_backward">%s後の</string>
+    <string name="the_s_most_forward">%s前の</string>
+    <string name="the_s_highest_TP">TPの%s高い</string>
+    <string name="the_s_lowest_TP">TPの%s低い</string>
+    <string name="the_s_highest_ATK">物理攻撃力の%s高い</string>
+    <string name="the_s_lowest_ATK">物理攻撃力の%s低い</string>
+    <string name="the_s_highest_Magic_STR">魔法攻撃力の%s高い</string>
+    <string name="the_s_lowest_Magic_STR">魔法攻撃力の%s低い</string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+
+    <!--**************** 拼接字符串领域结束 *****************-->
+
+
+
     <string name="permission_request_explanation_title">ストレージ権限</string>
     <string name="permission_request_explanation_text">本アプリはストレージを使ってキャラクターデータベースの保存とアプリのアップデートを行います、許可しないと正常に動作しない恐れがあります。</string>
 </resources>

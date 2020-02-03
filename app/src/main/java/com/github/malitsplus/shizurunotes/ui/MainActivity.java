@@ -8,17 +8,20 @@ import android.os.Bundle;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.App;
+import com.github.malitsplus.shizurunotes.common.I18N;
 import com.github.malitsplus.shizurunotes.common.UpdateManager;
 import com.github.malitsplus.shizurunotes.db.DBHelper;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.github.malitsplus.shizurunotes.ui.charalist.CharaListFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -26,7 +29,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class MainActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback, UpdateManager.IFragmentCallBack {
 
     private AppBarConfiguration mAppBarConfiguration;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
@@ -35,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
     public UpdateManager updateManager;
+    private SharedViewModel sharedViewModel;
 
     @Override
     protected void attachBaseContext(Context base){
@@ -66,11 +72,15 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         //NavigationUI.setupWithNavController(toolbar, navController);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+
         DBHelper.with(getApplication());
-        SharedViewModel sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
+        I18N.application = getApplication();
+
+        sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
 
 
         updateManager = new UpdateManager(this, drawer);
+        updateManager.setIFragmentCallBack(this);
 
         if(checkStoragePermission())
             updateManager.checkDatabaseVersion();
@@ -122,4 +132,12 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         }
     }
 
+    @Override
+    public void dbUpdateFinished() {
+        sharedViewModel.loadData();
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment).getChildFragmentManager().getFragments().get(0);
+        if(fragment instanceof CharaListFragment){
+            ((CharaListFragment)fragment).updateList();
+        }
+    }
 }

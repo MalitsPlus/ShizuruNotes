@@ -39,7 +39,7 @@ public class UpdateManager {
     private String versionInfo;
     private MaterialDialog progressDialog;
     private int maxLength;
-    private IFragmentCallBack iFragmentCallBack;
+
 
     private static final int UPDATE_CHECK_COMPLETED = 1;
     private static final int UPDATE_DOWNLOADING = 2;
@@ -207,16 +207,17 @@ public class UpdateManager {
         return true;
     });
 
-    public void setIFragmentCallBack(IFragmentCallBack callBack){
-        this.iFragmentCallBack = callBack;
-    }
-
     public interface UpdateCallBack {
         void checkUpdateCompleted(Boolean hasUpdate, CharSequence updateInfo);
         void downloadProgressChanged(int progress, int maxLength);
         void downloadCanceled();
         void downloadCompleted(Boolean success, CharSequence errorMsg);
         void updateCompleted();
+    }
+
+    private IFragmentCallBack iFragmentCallBack;
+    public void setIFragmentCallBack(IFragmentCallBack callBack){
+        this.iFragmentCallBack = callBack;
     }
 
     public interface IFragmentCallBack{
