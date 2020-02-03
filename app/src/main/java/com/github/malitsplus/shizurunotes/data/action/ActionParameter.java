@@ -62,7 +62,7 @@ public class ActionParameter {
         this.targetType = targetType;
         this.targetNumber = targetNumber;
         this.targetCount = targetCount;
-        targetParameter = new TargetParameter();
+        targetParameter = new TargetParameter(targetAssignment, targetNumber, targetType, targetRange, targetArea, targetCount, dependAction);
         return this;
     }
 }

@@ -29,7 +29,7 @@ import com.github.malitsplus.shizurunotes.databinding.FragmentCharaBinding;
 import com.github.malitsplus.shizurunotes.ui.SharedViewModel;
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelFactory;
 
-public class CharaListFragment extends Fragment implements UpdateManager.IFragmentCallBack {
+public class CharaListFragment extends Fragment {
 
     private SharedViewModel sharedViewModel;
     private CharaListViewModel charaListViewModel;
@@ -41,8 +41,8 @@ public class CharaListFragment extends Fragment implements UpdateManager.IFragme
     @Override
     public void onAttach(@NonNull Context context){
         super.onAttach(context);
-        //sometimes will throw NPE?
-        ((MainActivity)context).updateManager.setIFragmentCallBack(this);
+        //sometimes will occur NPE?
+        //((MainActivity)context).updateManager.setIFragmentCallBack(this);
     }
 
     @Override
@@ -74,7 +74,7 @@ public class CharaListFragment extends Fragment implements UpdateManager.IFragme
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemViewCacheSize(200);
 
-        //set observer
+        //设置观察者
         charaListViewModel.getLiveCharaList().observe(getViewLifecycleOwner(), (charaList) ->
             adapter.update(charaList)
         );
@@ -177,10 +177,7 @@ public class CharaListFragment extends Fragment implements UpdateManager.IFragme
         });
     }
 
-    @Override
-    public void dbUpdateFinished(){
-        sharedViewModel.loadData();
+    public void updateList(){
         charaListViewModel.filterDefault();
     }
-
 }
