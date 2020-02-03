@@ -1,7 +1,5 @@
 package com.github.malitsplus.shizurunotes.data.action;
 
-import android.widget.Switch;
-
 import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.I18N;
 import com.github.malitsplus.shizurunotes.data.Skill;
@@ -27,10 +25,147 @@ public class TargetParameter {
         this.direction = DirectionType.parse(targetArea);
         this.targetCount = TargetCount.parse(targetCount);
         this.dependAction = dependAction;
-        String aaa = this.targetType.description(this.targetCount, null);
+        setBooleans();
+        String sss = buildTargetClause();
+    }
+
+    private boolean hasRelationPhrase;
+    private boolean hasCountPhrase;
+    private boolean hasRangePhrase;
+    private boolean hasNthModifier;
+    private boolean hasDirectionPhrase;
+    private boolean hasDependAction;
+    private boolean hasTargetType;
+
+    private void setBooleans(){
+        hasRelationPhrase = targetType != TargetType.self
+                && targetType != TargetType.absolute;
+        hasCountPhrase = targetType != TargetType.self
+                && !(targetType == TargetType.none && targetCount == TargetCount.zero);
+
+        hasRangePhrase = targetRange == TargetRange.finite;
+
+        hasNthModifier = targetNumber == TargetNumber.second
+                || targetNumber == TargetNumber.third
+                || targetNumber == TargetNumber.fourth
+                || targetNumber == TargetNumber.fifth;
+        hasDirectionPhrase = direction == DirectionType.front
+                &&(hasRangePhrase || targetCount == TargetCount.all);
+        hasDependAction = dependAction != null && (dependAction.actionId != 0
+                && targetType != TargetType.absolute
+                && (ActionType.ifForChildren == dependAction.parameter.actionType
+                || ActionType.ifForAll == dependAction.parameter.actionType
+                || ActionType.damage == dependAction.parameter.actionType
+                || ActionType.knock == dependAction.parameter.actionType));
+        hasTargetType = !(targetType.isExclusiveWithAll() && targetCount == TargetCount.all);
     }
 
 
+
+
+    public String buildTargetClause(){
+        if(hasDependAction){
+            if(dependAction.parameter.actionType == ActionType.damage)
+                return I18N.getString(R.string.targets_those_damaged_by_effect_d, dependAction.actionId % 100);
+            else
+                return I18N.getString(R.string.targets_of_effect_d, dependAction.actionId % 100);
+        } else if (!hasRelationPhrase){
+            return targetType.description();
+        } else if (!hasCountPhrase && !hasNthModifier && !hasRangePhrase && hasRelationPhrase) {
+            return I18N.getString(R.string.targets_of_last_effect);
+        } else if (hasCountPhrase && !hasNthModifier && !hasRangePhrase && hasRelationPhrase && !hasDirectionPhrase){
+            if(targetCount == TargetCount.all){
+                if(targetType.isExclusiveWithAll())
+                    return I18N.getString(R.string.all_s_targets, targetAssignment.description());
+                else
+                    return I18N.getString(R.string.all_s_s_targets, targetAssignment.description(), targetType.description());
+            } else if (targetCount == TargetCount.one && targetType.ignoresOne()){
+                return I18N.getString(R.string.s_s_target, targetType.description(), targetAssignment.description());
+            } else {
+                return I18N.getString(R.string.s_s_s, targetType.description(targetCount, null), targetAssignment.description(), targetCount.pluralModifier.description());
+            }
+        } else if (hasCountPhrase && !hasNthModifier && !hasRangePhrase && hasRelationPhrase && hasDirectionPhrase && targetType.isExclusiveWithAll()){
+            switch (targetAssignment){
+                case enemy:
+                    return I18N.getString(R.string.all_front_enemy_targets);
+                case friendly:
+                    return I18N.getString(R.string.all_front_including_self_friendly_targets);
+                default:
+                    return I18N.getString(R.string.all_front_targets);
+            }
+        } else if (hasCountPhrase && !hasNthModifier && !hasRangePhrase && hasRelationPhrase && hasDirectionPhrase && !targetType.isExclusiveWithAll()){
+            switch (targetAssignment){
+                case enemy:
+                    return I18N.getString(R.string.all_front_s_enemy_targets, targetType.description());
+                case friendly:
+                    return I18N.getString(R.string.all_front_including_self_s_friendly_targets, targetType.description());
+                default:
+                    return I18N.getString(R.string.all_front_s_targets, targetType.description());
+            }
+        } else if (!hasCountPhrase && !hasNthModifier && hasRangePhrase && hasRelationPhrase && !hasDirectionPhrase){
+            return I18N.getString(R.string.s_targets_in_range_d, targetAssignment.description(), targetRange.rawRange);
+        } else if (!hasCountPhrase && !hasNthModifier && hasRangePhrase && hasRelationPhrase && hasDirectionPhrase){
+            return I18N.getString(R.string.front_s_targets_in_range_d, targetAssignment.description(), targetRange.rawRange);
+        } else if (!hasCountPhrase && hasNthModifier && hasRangePhrase && hasRelationPhrase){
+            return I18N.getString(R.string.targets_of_last_effect);
+        } else if (hasCountPhrase && !hasNthModifier && hasRangePhrase && hasRelationPhrase && !hasDirectionPhrase){
+            if(targetCount == TargetCount.all){
+                if(targetType.isExclusiveWithAll())
+                    return I18N.getString(R.string.s_targets_in_range_d, targetAssignment.description(), targetRange.rawRange);
+                else
+                    return I18N.getString(R.string.s_s_target_in_range_d, targetAssignment.description(), targetType.description(), targetRange.rawRange);
+            } else if (targetCount == TargetCount.one && targetType.ignoresOne()){
+                return I18N.getString(R.string.s_s_target_in_range_d, targetType.description(), targetAssignment.description(), targetRange.rawRange);
+            } else {
+                return I18N.getString(R.string.s_s_s_in_range_d, targetType.description(targetCount, null), targetAssignment.description(), targetCount.pluralModifier.description(), targetRange.rawRange);
+            }
+        } else if (hasCountPhrase && !hasNthModifier && hasRangePhrase && hasRelationPhrase && hasDirectionPhrase){
+            if(targetCount == TargetCount.all){
+                if(targetType.isExclusiveWithAll())
+                    return I18N.getString(R.string.front_s_targets_in_range_d, targetAssignment.description(), targetRange.rawRange);
+                else
+                    return I18N.getString(R.string.front_s_s_targets_in_range_d, targetAssignment.description(), targetType.description(), targetRange.rawRange);
+            } else if(targetCount == TargetCount.one && targetType.ignoresOne()){
+                return I18N.getString(R.string.s_front_s_target_in_range_d, targetType.description(), targetAssignment.description(), targetRange.rawRange);
+            } else {
+                return I18N.getString(R.string.s_front_s_s_in_range_d, targetType.description(targetCount, null), targetAssignment.description(), targetCount.pluralModifier.description(), targetRange.rawRange);
+            }
+        } else if(hasCountPhrase && hasNthModifier && !hasRangePhrase && hasRelationPhrase && !hasDirectionPhrase){
+            if(targetCount == TargetCount.one && targetType.ignoresOne()){
+                return I18N.getString(R.string.s_s_target, targetType.description(targetNumber, null), targetAssignment.description());
+            } else {
+                String modifier = I18N.getString(R.string.s_to_s, targetNumber.description(), getUntilNumber().description());
+                return I18N.getString(R.string.s_s_s, targetType.description(targetNumber, modifier), targetAssignment.description(), targetCount.pluralModifier.description());
+            }
+        } else if(hasCountPhrase && hasNthModifier && !hasRangePhrase && hasRelationPhrase && hasDirectionPhrase){
+            String modifier = I18N.getString(R.string.s_to_s, targetNumber.description(), getUntilNumber().description());
+            return I18N.getString(R.string.s_front_s_s, targetType.description(targetNumber, modifier), targetAssignment.description(), targetCount.pluralModifier.description());
+        } else if(hasCountPhrase && hasNthModifier && hasRangePhrase && hasRelationPhrase && !hasDirectionPhrase){
+            if(targetCount == TargetCount.one && targetType.ignoresOne()) {
+                return I18N.getString(R.string.s_s_target_in_range_d, targetType.description(targetNumber, null), targetAssignment.description(), targetRange.rawRange);
+            } else {
+                String modifier = I18N.getString(R.string.s_to_s, targetNumber.description(), getUntilNumber().description());
+                return I18N.getString(R.string.s_s_s_in_range_d, targetType.description(targetNumber, modifier), targetAssignment.description(), targetCount.pluralModifier.description(), targetRange.rawRange);
+            }
+        } else if (hasCountPhrase && hasNthModifier && hasRangePhrase && hasRelationPhrase && hasDirectionPhrase){
+            if(targetCount == TargetCount.one && targetType.ignoresOne()){
+                return I18N.getString(R.string.s_front_s_target_in_range_d, targetType.description(targetNumber, null), targetAssignment.description(), targetRange.rawRange);
+            } else {
+                String modifier = I18N.getString(R.string.s_to_s, targetNumber.description(), getUntilNumber().description());
+                return I18N.getString(R.string.s_front_s_s_in_range_d, targetType.description(targetNumber, modifier), targetAssignment.description(), targetCount.pluralModifier.description(), targetRange.rawRange);
+            }
+        } else {
+            return "";
+        }
+    }
+
+    private TargetNumber getUntilNumber(){
+        TargetNumber tUntil = TargetNumber.parse(targetNumber.getValue() + targetCount.getValue());
+        if(tUntil == TargetNumber.other)
+            return TargetNumber.fifth;
+        else
+            return tUntil;
+    }
 
 }
 
@@ -312,8 +447,57 @@ enum TargetType{
 
     public String description(TargetNumber targetNumber, String localizedNumer){
 
-    }
+        if(targetNumber == TargetNumber.second
+            ||targetNumber == TargetNumber.third
+            ||targetNumber == TargetNumber.fourth
+            ||targetNumber == TargetNumber.fifth){
 
+            String localizedModifier = localizedNumer == null ? targetNumber.description() : localizedNumer;
+            switch (this){
+                case unknown:
+                    return I18N.getString(R.string.the_s_unknown_type, localizedModifier);
+                case zero:
+                case near:
+                case none:
+                    return I18N.getString(R.string.the_s_nearest, localizedModifier);
+                case far:
+                    return I18N.getString(R.string.the_s_farthest, localizedModifier);
+                case hpAscending:
+                case hpAscendingOrNear:
+                    return I18N.getString(R.string.the_s_lowest_HP_ratio, localizedModifier);
+                case hpDescending:
+                case hpDescendingOrNear:
+                    return I18N.getString(R.string.the_s_highest_HP_ratio, localizedModifier);
+                case forward:
+                    return I18N.getString(R.string.the_s_most_backward, localizedModifier);
+                case backward:
+                    return I18N.getString(R.string.the_s_most_forward, localizedModifier);
+                case tpDescending:
+                case tpDescendingOrNear:
+                    return I18N.getString(R.string.the_s_highest_TP, localizedModifier);
+                case tpAscending:
+                case tpReducing:
+                case tpAscendingOrNear:
+                    return I18N.getString(R.string.the_s_lowest_TP, localizedModifier);
+                case atkDescending:
+                case atkDescendingOrNear:
+                    return I18N.getString(R.string.the_s_highest_ATK, localizedModifier);
+                case atkAscending:
+                case atkAscendingOrNear:
+                    return I18N.getString(R.string.the_s_lowest_ATK, localizedModifier);
+                case magicSTRDescending:
+                case magicSTRDescendingOrNear:
+                    return I18N.getString(R.string.the_s_highest_Magic_STR, localizedModifier);
+                case magicSTRAscending:
+                case magicSTRAscendingOrNear:
+                    return I18N.getString(R.string.the_s_lowest_Magic_STR, localizedModifier);
+                default:
+                    return description();
+            }
+        } else {
+            return description();
+        }
+    }
 }
 
 enum TargetCount{
