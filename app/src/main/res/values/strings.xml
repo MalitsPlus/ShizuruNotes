@@ -89,7 +89,25 @@
     <string name="text_status_tips">*上記のステータスは☆MAX、LvMAX、RankMAX、装備&amp;専用装備フル強化、Exスキル加算の値になります。</string>
     <string name="text_attack_pattern">行動パターン</string>
 
-
+    <string name="ATK">物理攻撃力</string>
+    <string name="DEF">物理防御力</string>
+    <string name="Dodge">回避</string>
+    <string name="Energy_Recovery_Rate">TP上昇</string>
+    <string name="Energy_Reduce_Rate">TP消費軽減</string>
+    <string name="HP">HP</string>
+    <string name="HP_Recovery_Rate">回復量上昇</string>
+    <string name="Life_Steal">HP吸収</string>
+    <string name="Magic_Critical">魔法クリティカル</string>
+    <string name="Magic_DEF">魔法防御力</string>
+    <string name="Magic_Penetrate">魔法貫通</string>
+    <string name="Magic_STR">魔法攻撃力</string>
+    <string name="Physical_Critical">物理クリティカル</string>
+    <string name="Physical_Penetrate">物理貫通</string>
+    <string name="Wave_Energy_Recovery">TP自動回復</string>
+    <string name="Wave_HP_Recovery">HP自動回復</string>
+    <string name="Accuracy">命中</string>
+    <string name="Unknown">不明</string>
+    <string name="SLv">スキルLv</string>
 
     <!--**************** 拼接字符串领域开始 *****************-->
 
@@ -141,7 +159,7 @@
     <string name="s_most_backward">一番後ろの %s</string>
     <string name="s_most_forward">一番前の %s</string>
     <string name="s_highest_TP">TPの一番高い %s</string>
-    <string name="s_lowest_TP">TPの一番低い  %s</string>
+    <string name="s_lowest_TP">TPの一番低い %s</string>
     <string name="s_highest_ATK">物理攻撃力の一番高い %s</string>
     <string name="s_lowest_ATK">物理攻撃力の一番低い %s</string>
     <string name="s_highest_Magic_STR">魔法攻撃力の一番高い %s</string>
@@ -165,7 +183,7 @@
     <string name="the_s_highest_Magic_STR">魔法攻撃力の %s 高い</string>
     <string name="the_s_lowest_Magic_STR">魔法攻撃力の %s 低い</string>
     <string name="targets_those_damaged_by_effect_d">アクション [%d] にダメージを与えられたターゲット</string>
-    <string name="targets_of_effect_d">アクション [%d] のターゲット</string>
+    <string name="targets_of_effect_d">アクション[%d] に影響されたターゲット</string>
     <string name="targets_of_last_effect">前のアクションのターゲット</string>
     <string name="all_s_targets">%s 全体</string>  <!--all [enemy] targets-->
     <string name="all_s_s_targets">%2$s %1$s 全体</string>  <!--all 1[enemy] 2[physics] targets-->
@@ -175,7 +193,7 @@
     <string name="all_front_including_self_friendly_targets">自分を含めて前方すべての味方</string>
     <string name="all_front_targets">前方のターゲットすべて</string>
     <string name="all_front_s_enemy_targets">前方 %s 敵すべて</string>
-    <string name="all_front_including_self_s_friendly_targets">自分を含めて前方%sすべての味方</string>
+    <string name="all_front_including_self_s_friendly_targets">自分を含めて前方 %s すべての味方</string>
     <string name="all_front_s_targets">前方 %s ターゲットすべて</string>
     <string name="s_targets_in_range_d">範囲 [%2$d] 内の %1$s</string> <!--1[enemy] targets in range 2[500]-->
     <string name="front_s_targets_in_range_d">前方範囲 [%2$d] 内の %1$s</string> <!--front 1[enemy] targets in range 2[500]-->
@@ -185,10 +203,16 @@
     <string name="front_s_s_targets_in_range_d">前方範囲 [%3$d] 内の %2$s %1$s</string>   <!--front 1[friendly] 2[physics] targets in range 3[500]-->
     <string name="s_front_s_target_in_range_d">前方範囲 [%3$d] 内の %1$s %2$s</string>    <!--1[the nearest] front 2[enemy] target in range 3[500]-->
     <string name="s_front_s_s_in_range_d">前方範囲 [%4$d] 内の %1$s %2$s %3$s</string> <!--1[the second to fourth farthest] front 2[enemy] 3[targets] in range 4[500]-->
-    <string name="s_to_s">%1$s から %2$s　まで</string>
+    <string name="s_to_s">%1$s から %2$s まで</string>
     <string name="s_front_s_s">前方 %1$s %2$s %3$s</string>    <!--1[the second to fourth farthest] front 2[enemy] 3[targets]-->
     <string name="any_of_s">%s の中から任意の1</string>
-
+    <string name="Unknown_effect_d_to_s_with_details_s_values_s">%2$s に不明な効果 [%1$d]、内容%3$s、値%4$s。</string>
+    <string name="magical">魔法</string>
+    <string name="physical">物理</string>
+    <string name="inevitable_physical">必中の物理</string>
+    <string name="Deal_s_s_damage_to_s">%3$s に [%1$s] の %2$s ダメージを与える。</string>
+    <string name="Deal_s_s_damage_to_s_and_this_attack_is_ensured_critical">%3$s に [%1$s] の %2$s ダメージを与える。このアクションは必ずクリティカルする。</string>
+    <string name="Critical_damage_is_s_times_as_normal_damage">クリティカルした場合、ダメージが %s 倍になる。</string>
 
     <!--**************** 拼接字符串领域结束 *****************-->
 
@@ -196,4 +220,5 @@
 
     <string name="permission_request_explanation_title">ストレージ権限</string>
     <string name="permission_request_explanation_text">本アプリはストレージを使ってキャラクターデータベースの保存とアプリのアップデートを行います、許可しないと正常に動作しない恐れがあります。</string>
+
 </resources>

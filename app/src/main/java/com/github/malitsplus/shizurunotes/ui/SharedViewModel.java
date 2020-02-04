@@ -41,6 +41,11 @@ public class SharedViewModel extends ViewModel {
             setUnitSkillData(chara);
 
             chara.setCharaProperty();
+
+            for(Skill.Action action : chara.skillMap.get(Skill.SkillClass.UB).actions){
+                String actionString = action.parameter.localizedDetail(chara.maxCharaLevel, chara.charaProperty);
+                String x = "";
+            }
         }
     }
 
@@ -113,7 +118,6 @@ public class SharedViewModel extends ViewModel {
                     }
 
                 }
-
                 action.buildParameter();
             }
         });

@@ -176,7 +176,7 @@ enum TargetAssignment {
     all(3);
 
     private int value;
-    private TargetAssignment(int value){
+    TargetAssignment(int value){
         this.value = value;
     }
     public int getValue(){
@@ -214,7 +214,7 @@ enum TargetNumber{
     other(5);
 
     private int value;
-    private TargetNumber(int value){
+    TargetNumber(int value){
         this.value = value;
     }
     public int getValue(){
@@ -284,7 +284,7 @@ enum TargetType{
     magicSTRAscendingOrNear(32);
 
     private int value;
-    private TargetType(int value){
+    TargetType(int value){
         this.value = value;
     }
     public int getValue(){
@@ -509,7 +509,7 @@ enum TargetCount{
     all(99);
 
     private int value;
-    private TargetCount(int value){
+    TargetCount(int value){
         this.value = value;
         if(value == 1)
             pluralModifier = PluralModifier.one;
@@ -595,7 +595,7 @@ enum DirectionType{
     all(3);
 
     private int value;
-    private DirectionType(int value){
+    DirectionType(int value){
         this.value = value;
     }
     public int getValue(){
