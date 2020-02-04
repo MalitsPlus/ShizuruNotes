@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Utils {
@@ -110,5 +111,10 @@ public class Utils {
 
     public static boolean isAtLeastVersion(int version) {
         return Build.VERSION.SDK_INT >= version;
+    }
+
+    private static DecimalFormat format = new DecimalFormat("#");
+    public static String roundDownDouble(double value){
+        return format.format(Math.floor(value));
     }
 }

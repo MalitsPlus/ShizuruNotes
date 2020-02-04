@@ -18,4 +18,12 @@
         app:entries="@array/setting_language_options"
         app:entryValues="@array/setting_language_values"
         app:dialogTitle="@string/setting_language_dialog_title" />
+
+
+
+
+    <SwitchPreferenceCompat
+        app:key="expressionStyle"
+        app:defaultValue="false"
+        app:title="The style of skill action to show."/>
 </PreferenceScreen>

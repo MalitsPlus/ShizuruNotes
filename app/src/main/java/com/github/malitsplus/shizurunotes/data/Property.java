@@ -1,23 +1,23 @@
 package com.github.malitsplus.shizurunotes.data;
 
 public class Property {
-    double hp;
-    double atk;
-    double magicStr;
-    double def;
-    double magicDef;
-    double physicalCritical;
-    double magicCritical;
-    double waveHpRecovery;
-    double waveEnergyRecovery;
-    double dodge;
-    double physicalPenetrate;
-    double magicPenetrate;
-    double lifeSteal;
-    double hpRecoveryRate;
-    double energyRecoveryRate;
-    double energyReduceRate;
-    double accuracy;
+    public double hp;
+    public double atk;
+    public double magicStr;
+    public double def;
+    public double magicDef;
+    public double physicalCritical;
+    public double magicCritical;
+    public double waveHpRecovery;
+    public double waveEnergyRecovery;
+    public double dodge;
+    public double physicalPenetrate;
+    public double magicPenetrate;
+    public double lifeSteal;
+    public double hpRecoveryRate;
+    public double energyRecoveryRate;
+    public double energyReduceRate;
+    public double accuracy;
 
     public Property(){
 
@@ -127,6 +127,47 @@ public class Property {
         this.energyReduceRate *= multiplier;
         this.accuracy *= multiplier;
         return this;
+    }
+
+    public double getItem(PropertyKey key){
+        switch (key){
+            case atk:
+                return atk;
+            case def:
+                return def;
+            case dodge:
+                return dodge;
+            case energyRecoveryRate:
+                return energyRecoveryRate;
+            case energyReduceRate:
+                return energyReduceRate;
+            case hp:
+                return hp;
+            case hpRecoveryRate:
+                return hpRecoveryRate;
+            case lifeSteal:
+                return lifeSteal;
+            case magicCritical:
+                return magicCritical;
+            case magicDef:
+                return magicDef;
+            case magicPenetrate:
+                return magicPenetrate;
+            case magicStr:
+                return magicStr;
+            case physicalCritical:
+                return physicalCritical;
+            case physicalPenetrate:
+                return physicalPenetrate;
+            case waveEnergyRecovery:
+                return waveEnergyRecovery;
+            case waveHpRecovery:
+                return waveHpRecovery;
+            case accuracy:
+                return accuracy;
+            default:
+                return 0;
+        }
     }
 
     //region setters and getters

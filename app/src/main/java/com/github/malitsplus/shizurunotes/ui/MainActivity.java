@@ -10,6 +10,7 @@ import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.App;
 import com.github.malitsplus.shizurunotes.common.I18N;
 import com.github.malitsplus.shizurunotes.common.UpdateManager;
+import com.github.malitsplus.shizurunotes.common.UserSettings;
 import com.github.malitsplus.shizurunotes.db.DBHelper;
 
 import androidx.core.app.ActivityCompat;
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
 
         DBHelper.with(getApplication());
+        UserSettings.with(getApplication());
         I18N.application = getApplication();
 
         sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
