@@ -353,13 +353,11 @@ public class ActionParameter {
         protected String initial;
         protected String perLevel;
         protected PropertyKey key;
-        protected int startIndex;
 
-        protected ActionValue(double initial, double perLevel, PropertyKey key, int startIndex){
+        protected ActionValue(double initial, double perLevel, PropertyKey key){
             this.initial = String.valueOf(initial);
             this.perLevel = String.valueOf(perLevel);
             this.key = key;
-            this.startIndex = startIndex;
         }
     }
 
