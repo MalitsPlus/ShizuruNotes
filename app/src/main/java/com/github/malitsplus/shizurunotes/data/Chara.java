@@ -1,5 +1,6 @@
 package com.github.malitsplus.shizurunotes.data;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -86,8 +87,8 @@ public class Chara {
         return property;
     }
 
+    public List<AttackPattern> attackPatternList = new ArrayList<>();
 
     public Map<Skill.SkillClass, Skill> skillMap = new HashMap<>();
-
 
 }

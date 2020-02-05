@@ -88,6 +88,8 @@
     <string name="text_hp_recovery">&#160;回復量上昇&#160;</string>
     <string name="text_status_tips">*上記のステータスは☆MAX、LvMAX、RankMAX、装備&amp;専用装備フル強化、Exスキル加算の値になります。</string>
     <string name="text_attack_pattern">行動パターン</string>
+    <string name="text_normal_mode">通常モード</string>
+    <string name="text_another_mode">特殊モード</string>
 
     <string name="ATK">物理攻撃力</string>
     <string name="DEF">物理防御力</string>
@@ -108,6 +110,21 @@
     <string name="Accuracy">命中</string>
     <string name="Unknown">不明</string>
     <string name="SLv">スキルLv</string>
+    <string name="loop_start">ループ開始</string>
+    <string name="loop_end">ループ終了</string>
+    <string name="hit">通常攻撃</string>
+    <string name="main_skill_1">Main 1</string>
+    <string name="main_skill_2">Main 2</string>
+    <string name="main_skill_3">Main 3</string>
+    <string name="main_skill_4">Main 4</string>
+    <string name="main_skill_5">Main 5</string>
+    <string name="main_skill_6">Main 6</string>
+    <string name="main_skill_7">Main 7</string>
+    <string name="sp_skill_1">SP 1</string>
+    <string name="sp_skill_2">SP 2</string>
+    <string name="sp_skill_3">SP 3</string>
+    <string name="sp_skill_4">SP 4</string>
+    <string name="sp_skill_5">SP 5</string>
 
     <!--**************** 拼接字符串领域开始 *****************-->
 
