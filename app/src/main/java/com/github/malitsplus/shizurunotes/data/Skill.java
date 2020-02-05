@@ -41,7 +41,8 @@ public class Skill {
         EX4,
         EX4_EVO,
         EX5,
-        EX5_EVO
+        EX5_EVO,
+        UNKNOWN
     }
 
     public List<ActionRaw> actionRawList = new ArrayList<>();

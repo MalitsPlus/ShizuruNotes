@@ -63,11 +63,11 @@ public class CharaListFragment extends Fragment {
         recyclerView = binding.charaListRecycler;
 
         //set layout manager
-        layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
         //set adapter
-        adapter = new CharaListAdapter(this.getContext(), sharedViewModel);
+        adapter = new CharaListAdapter(getContext(), sharedViewModel);
         recyclerView.setAdapter(adapter);
 
         //减少开销

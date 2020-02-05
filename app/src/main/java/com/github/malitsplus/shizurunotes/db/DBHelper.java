@@ -240,6 +240,7 @@ public class DBHelper extends SQLiteOpenHelper {
     /***
      * 由SQL语句[无条件]从数据库获取实体列表
      * @param sql SQL语句
+     * @param keyValue 替换？的值
      * @param theClass 类名
      * @param <T> theClass的类
      * @return 生成的实体列表
@@ -586,6 +587,25 @@ public class DBHelper extends SQLiteOpenHelper {
             raw = getBeanByRaw("SELECT * FROM skill_action WHERE action_id=? ",
                     String.valueOf(actionId),
                     RawSkillAction.class
+            );
+        } catch (InstantiationException | IllegalAccessException e){
+            e.printStackTrace();
+            return null;
+        }
+        return raw;
+    }
+
+    /***
+     * 获取角色技能释放顺序
+     * @param unitId
+     * @return
+     */
+    public List<RawUnitAttackPattern> getUnitAttackPattern(int unitId){
+        List<RawUnitAttackPattern> raw;
+        try{
+            raw = getBeanListByRaw("SELECT * FROM unit_attack_pattern WHERE unit_id=? ORDER BY pattern_id ",
+                    String.valueOf(unitId),
+                    RawUnitAttackPattern.class
             );
         } catch (InstantiationException | IllegalAccessException e){
             e.printStackTrace();

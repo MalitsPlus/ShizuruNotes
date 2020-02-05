@@ -377,8 +377,9 @@
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/attackPatternConstraint"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:id="@+id/textView4"
@@ -392,8 +393,8 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/attackPatternRecycler"
-                        android:layout_width="379dp"
-                        android:layout_height="184dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
@@ -403,7 +404,29 @@
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView4"
+
                         app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/textAnotherMode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/text_another_mode"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/attackPatternRecycler" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/attackPatternRecycler2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textAnotherMode" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>

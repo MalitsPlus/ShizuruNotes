@@ -11,6 +11,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,12 +44,33 @@ public class CharaDetailsFragment extends Fragment {
 
         binding.setDetailsViewModel(detailsViewModel);
 
+        //角色技能顺序
+        RecyclerView recyclerView = binding.attackPatternRecycler;
+        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 6);
+        AttackPatternAdapter adapter = new AttackPatternAdapter(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setNestedScrollingEnabled(false);
+
         //设置观察者
         detailsViewModel.getMutableChara().observe(getViewLifecycleOwner(), (chara) -> {
             binding.setDetailsViewModel(detailsViewModel);
+            adapter.update(chara.attackPatternList.get(0).items);
+
+            if(chara.attackPatternList.size() == 1){
+                binding.attackPatternConstraint.removeView(binding.textAnotherMode);
+                binding.attackPatternConstraint.removeView(binding.attackPatternRecycler2);
+            } else {
+                RecyclerView recyclerView2 = binding.attackPatternRecycler2;
+                GridLayoutManager layoutManager2 = new GridLayoutManager(getContext(), 6);
+                AttackPatternAdapter adapter2 = new AttackPatternAdapter(getContext());
+                recyclerView2.setLayoutManager(layoutManager2);
+                recyclerView2.setAdapter(adapter2);
+                recyclerView2.setNestedScrollingEnabled(false);
+                adapter2.update(chara.attackPatternList.get(1).items);
+            }
         });
 
         return binding.getRoot();
     }
-
 }

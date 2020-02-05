@@ -3,12 +3,14 @@ package com.github.malitsplus.shizurunotes.ui;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.github.malitsplus.shizurunotes.data.AttackPattern;
 import com.github.malitsplus.shizurunotes.data.Chara;
 import com.github.malitsplus.shizurunotes.data.Property;
 import com.github.malitsplus.shizurunotes.data.Skill;
 import com.github.malitsplus.shizurunotes.db.DBHelper;
 import com.github.malitsplus.shizurunotes.db.RawCharaStoryStatus;
 import com.github.malitsplus.shizurunotes.db.RawUniqueEquipmentData;
+import com.github.malitsplus.shizurunotes.db.RawUnitAttackPattern;
 import com.github.malitsplus.shizurunotes.db.RawUnitBasic;
 
 
@@ -37,10 +39,13 @@ public class SharedViewModel extends ViewModel {
             setCharaPromotionStatus(chara);
             setCharaEquipments(chara);
             setUniqueEquipment(chara);
+            chara.setCharaProperty();
 
             setUnitSkillData(chara);
+            setUnitAttackPattern(chara);
 
-            chara.setCharaProperty();
+
+
 
             for(Skill.Action action : chara.skillMap.get(Skill.SkillClass.UB).actions){
                 String actionString = action.parameter.localizedDetail(chara.maxCharaLevel, chara.charaProperty);
@@ -89,25 +94,18 @@ public class SharedViewModel extends ViewModel {
         }
     }
 
+    //测试时暂时放在这里，优化时记得移动到setSelectedChara中
     private void setUnitSkillData(Chara chara){
         DBHelper.get().getUnitSkillData(chara.unitId).setCharaSkillMap(chara);
-
-
         chara.skillMap.forEach((key, skill) -> {
             //填充Skill中只有actionId和dependActionId（可能为0）的actionList
             DBHelper.get().getSkillData(skill.skillId).setSkillData(skill);
-
-
             for (Skill.Action action : skill.actions){
                 //向actionList中填入其他具体值
                 DBHelper.get().getSkillAction(action.actionId).setActionData(action);
             }
-
-
             for (Skill.Action action : skill.actions){
-
                 if(action.dependActionId != 0){
-
                     for(Skill.Action searched : skill.actions){
                         if(searched.actionId == action.dependActionId){
                             //需要先建立params
@@ -116,14 +114,20 @@ public class SharedViewModel extends ViewModel {
                             break;
                         }
                     }
-
                 }
                 action.buildParameter();
             }
         });
+    }
 
 
+    //测试时暂时放在这里，优化时记得移动到setSelectedChara中
+    private void setUnitAttackPattern(Chara chara){
+        List<RawUnitAttackPattern> rawList = DBHelper.get().getUnitAttackPattern(chara.unitId);
 
+        for(RawUnitAttackPattern raw : rawList){
+            chara.attackPatternList.add(raw.getAttackPattern().setItems(chara.skillMap, chara.atkType));
+        }
     }
 
 
