@@ -1,5 +1,8 @@
 package com.github.malitsplus.shizurunotes.data;
 
+import com.github.malitsplus.shizurunotes.R;
+import com.github.malitsplus.shizurunotes.common.I18N;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +38,7 @@ public class Chara {
     public String comment;
     public String selfText;
     public long startTime;
+    public String kana;
 
     public int charaId;
     public String iconUrl;
@@ -55,6 +59,10 @@ public class Chara {
     public Property promotionStatus;
     public List<Equipment> equipments;
     public Equipment uniqueEquipment;
+
+    public String getBirthDate(){
+        return birthMonth + I18N.getString(R.string.text_month) + birthDay + I18N.getString(R.string.text_day);
+    }
 
     public void setCharaProperty() {
         charaProperty = new Property();
@@ -89,6 +97,7 @@ public class Chara {
 
     public List<AttackPattern> attackPatternList = new ArrayList<>();
 
-    public Map<Skill.SkillClass, Skill> skillMap = new HashMap<>();
+    public List<Skill> skills = new ArrayList<>();
+    //public Map<Skill.SkillClass, Skill> skillMap = new HashMap<>();
 
 }

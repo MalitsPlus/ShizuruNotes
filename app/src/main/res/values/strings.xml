@@ -1,6 +1,4 @@
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <string name="app_name">ShizuruNotes</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -65,6 +63,7 @@
     <string name="ui_chip_sort_burst_size">バストサイズ</string>
     <string name="ui_chip_sort_way_up">昇順</string>
     <string name="ui_chip_sort_way_down">降順</string>
+    <string name="ui_switch_change_value">表示切替</string>
 
     <string name="text_month">月</string>
     <string name="text_day">日</string>
@@ -90,6 +89,20 @@
     <string name="text_attack_pattern">行動パターン</string>
     <string name="text_normal_mode">通常モード</string>
     <string name="text_another_mode">特殊モード</string>
+    <string name="text_cast_time">キャストタイム：</string>
+    <string name="text_skill_action">スキルアクション</string>
+    <string name="text_profile">プロフィール</string>
+    <string name="text_age">&#160;年齢&#160;</string>
+    <string name="text_guild">&#160;ギルド&#160;</string>
+    <string name="text_race">&#160;種族&#160;</string>
+    <string name="text_height">&#160;身長&#160;</string>
+    <string name="text_weight">&#160;体重&#160;</string>
+    <string name="text_birth_date">&#160;誕生日&#160;</string>
+    <string name="text_blood_type">&#160;血液型&#160;</string>
+    <string name="text_favorite">&#160;趣味&#160;</string>
+    <string name="text_cv">&#160;CV&#160;</string>
+    <string name="text_catch_copy">キャッチコピー</string>
+    <string name="text_self_text">自己紹介</string>
 
     <string name="ATK">物理攻撃力</string>
     <string name="DEF">物理防御力</string>
@@ -113,6 +126,8 @@
     <string name="loop_start">ループ開始</string>
     <string name="loop_end">ループ終了</string>
     <string name="hit">通常攻撃</string>
+    <string name="union_burst">UB</string>
+    <string name="union_burst_evo">UB+</string>
     <string name="main_skill_1">Main 1</string>
     <string name="main_skill_2">Main 2</string>
     <string name="main_skill_3">Main 3</string>
@@ -120,11 +135,26 @@
     <string name="main_skill_5">Main 5</string>
     <string name="main_skill_6">Main 6</string>
     <string name="main_skill_7">Main 7</string>
+    <string name="main_skill_8">Main 8</string>
+    <string name="main_skill_9">Main 9</string>
+    <string name="main_skill_10">Main 10</string>
+    <string name="main_skill_1_evo">Main 1+</string>
+    <string name="main_skill_2_evo">Main 2+</string>
     <string name="sp_skill_1">SP 1</string>
     <string name="sp_skill_2">SP 2</string>
     <string name="sp_skill_3">SP 3</string>
     <string name="sp_skill_4">SP 4</string>
     <string name="sp_skill_5">SP 5</string>
+    <string name="ex_skill_1">EX 1</string>
+    <string name="ex_skill_2">EX 2</string>
+    <string name="ex_skill_3">EX 3</string>
+    <string name="ex_skill_4">EX 4</string>
+    <string name="ex_skill_5">EX 5</string>
+    <string name="ex_skill_1_evo">EX 1+</string>
+    <string name="ex_skill_2_evo">EX 2+</string>
+    <string name="ex_skill_3_evo">EX 3+</string>
+    <string name="ex_skill_4_evo">EX 4+</string>
+    <string name="ex_skill_5_evo">EX 5+</string>
 
     <!--**************** 拼接字符串领域开始 *****************-->
 
@@ -168,74 +198,86 @@
     <string name="front">前方</string>
     <string name="front_including_self">自分を含めて前方</string>
     <string name="front_and_back">前方と後方</string>
-    <string name="s_unknown_type">不明種類 %s</string>
-    <string name="s_nearest">最も近い %s</string>
-    <string name="s_farthest">最も遠い %s</string>
-    <string name="s_lowest_HP_ratio">HP割合の一番低い %s</string>
-    <string name="s_highest_HP_ratio">HP割合の一番高い %s</string>
-    <string name="s_most_backward">一番後ろの %s</string>
-    <string name="s_most_forward">一番前の %s</string>
-    <string name="s_highest_TP">TPの一番高い %s</string>
-    <string name="s_lowest_TP">TPの一番低い %s</string>
-    <string name="s_highest_ATK">物理攻撃力の一番高い %s</string>
-    <string name="s_lowest_ATK">物理攻撃力の一番低い %s</string>
-    <string name="s_highest_Magic_STR">魔法攻撃力の一番高い %s</string>
-    <string name="s_lowest_Magic_STR">魔法攻撃力の一番低い %s</string>
-    <string name="s_random">ランダムな %s</string>
-    <string name="s_minion">%s 召喚物</string>
-    <string name="s_physics">物理攻撃をする %s</string>
-    <string name="s_magic">魔法攻撃をする %s</string>
-    <string name="s_boss">ボス級 %s</string>
-    <string name="the_s_unknown_type">%s 不明種類</string>
-    <string name="the_s_nearest">%s 近い</string>
-    <string name="the_s_farthest">%s 遠い</string>
-    <string name="the_s_lowest_HP_ratio">HP割合の %s 低い</string>
-    <string name="the_s_highest_HP_ratio">HP割合の %s 高い</string>
-    <string name="the_s_most_backward">%s 後の</string>
-    <string name="the_s_most_forward">%s 前の</string>
-    <string name="the_s_highest_TP">TPの %s 高い</string>
-    <string name="the_s_lowest_TP">TPの %s 低い</string>
-    <string name="the_s_highest_ATK">物理攻撃力の %s 高い</string>
-    <string name="the_s_lowest_ATK">物理攻撃力の %s 低い</string>
-    <string name="the_s_highest_Magic_STR">魔法攻撃力の %s 高い</string>
-    <string name="the_s_lowest_Magic_STR">魔法攻撃力の %s 低い</string>
-    <string name="targets_those_damaged_by_effect_d">アクション [%d] にダメージを与えられたターゲット</string>
-    <string name="targets_of_effect_d">アクション[%d] に影響されたターゲット</string>
+    <string name="s_unknown_type">不明種類%s</string>
+    <string name="s_nearest">最も近い%s</string>
+    <string name="s_farthest">最も遠い%s</string>
+    <string name="s_lowest_HP_ratio">HP割合の一番低い%s</string>
+    <string name="s_highest_HP_ratio">HP割合の一番高い%s</string>
+    <string name="s_most_backward">一番後ろの%s</string>
+    <string name="s_most_forward">一番前の%s</string>
+    <string name="s_highest_TP">TPの一番高い%s</string>
+    <string name="s_lowest_TP">TPの一番低い%s</string>
+    <string name="s_highest_ATK">物理攻撃力の一番高い%s</string>
+    <string name="s_lowest_ATK">物理攻撃力の一番低い%s</string>
+    <string name="s_highest_Magic_STR">魔法攻撃力の一番高い%s</string>
+    <string name="s_lowest_Magic_STR">魔法攻撃力の一番低い%s</string>
+    <string name="s_random">ランダムな%s</string>
+    <string name="s_minion">%s召喚物</string>
+    <string name="s_physics">物理攻撃をする%s</string>
+    <string name="s_magic">魔法攻撃をする%s</string>
+    <string name="s_boss">ボス級%s</string>
+    <string name="the_s_unknown_type">%s不明種類</string>
+    <string name="the_s_nearest">%s近い</string>
+    <string name="the_s_farthest">%s遠い</string>
+    <string name="the_s_lowest_HP_ratio">HP割合の%s低い</string>
+    <string name="the_s_highest_HP_ratio">HP割合の%s高い</string>
+    <string name="the_s_most_backward">%s後の</string>
+    <string name="the_s_most_forward">%s前の</string>
+    <string name="the_s_highest_TP">TPの%s高い</string>
+    <string name="the_s_lowest_TP">TPの%s低い</string>
+    <string name="the_s_highest_ATK">物理攻撃力の%s高い</string>
+    <string name="the_s_lowest_ATK">物理攻撃力の%s低い</string>
+    <string name="the_s_highest_Magic_STR">魔法攻撃力の%s高い</string>
+    <string name="the_s_lowest_Magic_STR">魔法攻撃力の%s低い</string>
+    <string name="targets_those_damaged_by_effect_d">アクション[%d]にダメージを与えられたターゲット</string>
+    <string name="targets_of_effect_d">アクション[%d]に影響されたターゲット</string>
     <string name="targets_of_last_effect">前のアクションのターゲット</string>
-    <string name="all_s_targets">%s 全体</string>  <!--all [enemy] targets-->
-    <string name="all_s_s_targets">%2$s %1$s 全体</string>  <!--all 1[enemy] 2[physics] targets-->
-    <string name="s_s_target">%1$s %2$s</string>    <!--[the nearest] [enemy] target-->
-    <string name="s_s_s">%1$s %2$s %3$s</string>  <!--[the farthest two] [enemy] [targets]-->
+    <string name="all_s_targets">%s全体</string>    <!--all [enemy] targets-->
+    <string name="all_s_s_targets">%2$s%1$s全体</string>    <!--all1 [enemy] 2[physics] targets-->
+    <string name="s_s_target">%1$s%2$s</string>    <!--[the nearest] [enemy] target-->
+    <string name="s_s_s">%1$s%2$s%3$s</string>    <!--[the farthest two] [enemy] [targets]-->
     <string name="all_front_enemy_targets">前方の敵すべて</string>
     <string name="all_front_including_self_friendly_targets">自分を含めて前方すべての味方</string>
     <string name="all_front_targets">前方のターゲットすべて</string>
-    <string name="all_front_s_enemy_targets">前方 %s 敵すべて</string>
-    <string name="all_front_including_self_s_friendly_targets">自分を含めて前方 %s すべての味方</string>
-    <string name="all_front_s_targets">前方 %s ターゲットすべて</string>
-    <string name="s_targets_in_range_d">範囲 [%2$d] 内の %1$s</string> <!--1[enemy] targets in range 2[500]-->
-    <string name="front_s_targets_in_range_d">前方範囲 [%2$d] 内の %1$s</string> <!--front 1[enemy] targets in range 2[500]-->
-    <string name="s_s_targets_in_range_d">範囲 [%3$d] 内の %2$s %1$s</string> <!--1[friendly] 2[physics] targets in range 3[500]-->
-    <string name="s_s_target_in_range_d">範囲 [%3$d] 内の %1$s %2$s</string>  <!--1[the nearest] 2[enemy] target in range 3[500]-->
-    <string name="s_s_s_in_range_d">範囲 [%4$d] 内の %1$s %2$s %3$s</string>   <!--1[the second to fourth farthest] 2[enemy] 3[targets] in range 4[500]-->
-    <string name="front_s_s_targets_in_range_d">前方範囲 [%3$d] 内の %2$s %1$s</string>   <!--front 1[friendly] 2[physics] targets in range 3[500]-->
-    <string name="s_front_s_target_in_range_d">前方範囲 [%3$d] 内の %1$s %2$s</string>    <!--1[the nearest] front 2[enemy] target in range 3[500]-->
-    <string name="s_front_s_s_in_range_d">前方範囲 [%4$d] 内の %1$s %2$s %3$s</string> <!--1[the second to fourth farthest] front 2[enemy] 3[targets] in range 4[500]-->
-    <string name="s_to_s">%1$s から %2$s まで</string>
-    <string name="s_front_s_s">前方 %1$s %2$s %3$s</string>    <!--1[the second to fourth farthest] front 2[enemy] 3[targets]-->
-    <string name="any_of_s">%s の中から任意の1</string>
-    <string name="Unknown_effect_d_to_s_with_details_s_values_s">%2$s に不明な効果 [%1$d]、内容%3$s、値%4$s。</string>
+    <string name="all_front_s_enemy_targets">前方%s敵すべて</string>
+    <string name="all_front_including_self_s_friendly_targets">自分を含めて前方%sすべての味方</string>
+    <string name="all_front_s_targets">前方%sターゲットすべて</string>
+    <string name="s_targets_in_range_d">範囲[%2$d]内の%1$s</string>    <!--1[enemy] target s in range 2[500]-->
+    <string name="front_s_targets_in_range_d">前方範囲[%2$d]内の%1$s</string>    <!--front 1[enemy] target s in range 2[500]-->
+    <string name="s_s_targets_in_range_d">範囲[%3$d]内の%2$s%1$s</string>    <!--1[friendly] 2[physics] target s in range 3[500]-->
+    <string name="s_s_target_in_range_d">範囲[%3$d]内の%1$s%2$s</string>    <!--1[the nearest] 2[enemy] target in range 3[500]-->
+    <string name="s_s_s_in_range_d">範囲[%4$d]内の%1$s%2$s%3$s</string>    <!--1[the second to fourth farthest] 2[enemy] 3[targets] in range 4[500]-->
+    <string name="front_s_s_targets_in_range_d">前方範囲[%3$d]内の%2$s%1$s</string>    <!--front 1[friendly] 2[physics] target s in range 3[500]-->
+    <string name="s_front_s_target_in_range_d">前方範囲[%3$d]内の%1$s%2$s</string>    <!--1[the nearest] front 2[enemy] target in range 3[500]-->
+    <string name="s_front_s_s_in_range_d">前方範囲[%4$d]内の%1$s%2$s%3$s</string>    <!--1[the second to fourth farthest] front 2[enemy] 3[targets] in range 4[500]-->
+    <string name="s_to_s">%1$sから%2$sまで</string>
+    <string name="s_front_s_s">前方%1$s%2$s%3$s</string>    <!--1[the second to fourth farthest] front 2[enemy] 3[targets]-->
+    <string name="any_of_s">%sの中から任意の1</string>
+    <string name="Unknown_effect_d_to_s_with_details_s_values_s">%2$sに不明な効果[%1$d]、内容%3$s、値%4$s。</string>
     <string name="magical">魔法</string>
     <string name="physical">物理</string>
     <string name="inevitable_physical">必中の物理</string>
-    <string name="Deal_s_s_damage_to_s">%3$s に [%1$s] の %2$s ダメージを与える。</string>
-    <string name="Deal_s_s_damage_to_s_and_this_attack_is_ensured_critical">%3$s に [%1$s] の %2$s ダメージを与える。このアクションは必ずクリティカルする。</string>
-    <string name="Critical_damage_is_s_times_as_normal_damage">クリティカルした場合、ダメージが %s 倍になる。</string>
+    <string name="Deal_s_s_damage_to_s">%3$sに[%1$s]の%2$sダメージを与える。</string>
+    <string name="Deal_s_s_damage_to_s_and_this_attack_is_ensured_critical">%3$sに[%1$s]の%2$sダメージを与える。このアクションは必ずクリティカルする。</string>
+    <string name="Critical_damage_is_s_times_as_normal_damage">クリティカルした場合、ダメージが%s倍になる。</string>
+    <string name="Change_self_position_to_s_then_return">[%s]まで移動する、スキルモーション終了後元の位置に戻る。</string>
+    <string name="Change_self_position_s_forward_then_return">前へ[%s]単位移動する、スキルモーション終了後元の位置に戻る。</string>
+    <string name="Change_self_position_s_backward_then_return">後ろへ[%s]単位移動する、スキルモーション終了後元の位置に戻る。</string>
+    <string name="Change_self_position_to_s">[%s]まで移動する。</string>
+    <string name="Change_self_position_s_forward">前へ[%s]単位移動する。</string>
+    <string name="Change_self_position_s_backward">後ろへ[%s]単位移動する。</string>
+    <string name="Move_to_s_in_front_of_s_with_velocity_s_sec">[%3$s]の速度で%2$sの前[%1$s]単位の位置まで移動する。</string>
+    <string name="Move_to_s_behind_of_s_with_velocity_s_sec">[%3$s]の速度で%2$sの後ろ[%1$s]単位の位置まで移動する。</string>
+    <string name="Move_forward_s_with_velocity_s_sec">[%2$s]の速度で前へ[%1$s]単位移動する。</string>
+    <string name="Move_backward_s_with_velocity_s_sec">[%2$s]の速度で後ろへ[%1$s]単位移動する。</string>
 
     <!--**************** 拼接字符串领域结束 *****************-->
 
 
-
     <string name="permission_request_explanation_title">ストレージ権限</string>
     <string name="permission_request_explanation_text">本アプリはストレージを使ってキャラクターデータベースの保存とアプリのアップデートを行います、許可しないと正常に動作しない恐れがあります。</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -33,6 +33,7 @@ public class RawUnitBasic {
     public String catch_copy;
     public String self_text;
     public String actual_name;
+    public String kana;
 
     public void setCharaBasic(Chara chara){
         chara.charaId = unit_id / 100;
@@ -62,7 +63,8 @@ public class RawUnitBasic {
         chara.catchCopy = catch_copy;
 
         chara.comment = comment;
-        chara.selfText = self_text;
+        chara.kana = kana;
+        chara.selfText = self_text.replaceAll("\\\\n", "\n") ;
 
         //需要处理的字串
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");

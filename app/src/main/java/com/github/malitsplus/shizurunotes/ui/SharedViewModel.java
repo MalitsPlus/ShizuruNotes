@@ -41,16 +41,6 @@ public class SharedViewModel extends ViewModel {
             setUniqueEquipment(chara);
             chara.setCharaProperty();
 
-            setUnitSkillData(chara);
-            setUnitAttackPattern(chara);
-
-
-
-
-            for(Skill.Action action : chara.skillMap.get(Skill.SkillClass.UB).actions){
-                String actionString = action.parameter.localizedDetail(chara.maxCharaLevel, chara.charaProperty);
-                String x = "";
-            }
         }
     }
 
@@ -97,7 +87,7 @@ public class SharedViewModel extends ViewModel {
     //测试时暂时放在这里，优化时记得移动到setSelectedChara中
     private void setUnitSkillData(Chara chara){
         DBHelper.get().getUnitSkillData(chara.unitId).setCharaSkillMap(chara);
-        chara.skillMap.forEach((key, skill) -> {
+        chara.skills.forEach((skill) -> {
             //填充Skill中只有actionId和dependActionId（可能为0）的actionList
             DBHelper.get().getSkillData(skill.skillId).setSkillData(skill);
             for (Skill.Action action : skill.actions){
@@ -126,7 +116,7 @@ public class SharedViewModel extends ViewModel {
         List<RawUnitAttackPattern> rawList = DBHelper.get().getUnitAttackPattern(chara.unitId);
 
         for(RawUnitAttackPattern raw : rawList){
-            chara.attackPatternList.add(raw.getAttackPattern().setItems(chara.skillMap, chara.atkType));
+            chara.attackPatternList.add(raw.getAttackPattern().setItems(chara.skills, chara.atkType));
         }
     }
 
@@ -138,6 +128,17 @@ public class SharedViewModel extends ViewModel {
         return selectedChara;
     }
     public void setSelectedChara(Chara selectedChara) {
+
+        selectedChara.skills.clear();
+        setUnitSkillData(selectedChara);
+
+        selectedChara.attackPatternList.clear();
+        setUnitAttackPattern(selectedChara);
+
+        for(Skill skill : selectedChara.skills){
+            skill.setActionDescriptions(selectedChara.maxCharaLevel, selectedChara.charaProperty);
+        }
+
         this.selectedChara = selectedChara;
     }
     public List<Chara> getCharaList() {
