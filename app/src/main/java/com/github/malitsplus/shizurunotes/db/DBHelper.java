@@ -377,7 +377,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public List<RawUnitBasic> getCharaBase(){
         List<RawUnitBasic> rawList;
         try{
-            rawList = getBeanListByRaw("SELECT ud.unit_id, ud.unit_name, ud.prefab_id, ud.move_speed, ud.search_area_width, ud.atk_type, ud.normal_atk_cast_time, ud.guild_id, ud.comment, ud.start_time, up.age, up.guild, up.race, up.height, up.weight, up.birth_month, up.birth_day, up.blood_type, up.favorite, up.voice, up.catch_copy, up.self_text, IFNULL(au.unit_name, ud.unit_name) 'actual_name' " +
+            rawList = getBeanListByRaw("SELECT ud.unit_id, ud.unit_name, ud.kana, ud.prefab_id, ud.move_speed, ud.search_area_width, ud.atk_type, ud.normal_atk_cast_time, ud.guild_id, ud.comment, ud.start_time, up.age, up.guild, up.race, up.height, up.weight, up.birth_month, up.birth_day, up.blood_type, up.favorite, up.voice, up.catch_copy, up.self_text, IFNULL(au.unit_name, ud.unit_name) 'actual_name' " +
                     "FROM unit_data AS ud " +
                     "LEFT JOIN unit_profile AS up ON ud.unit_id = up.unit_id " +
                     "LEFT JOIN actual_unit_background AS au ON substr(ud.unit_id,1,4) = substr(au.unit_id,1,4) " +

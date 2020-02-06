@@ -27,7 +27,7 @@ public class AttackPattern {
         this.rawAttackPatterns = rawAttackPatterns;
     }
 
-    public AttackPattern setItems(Map<Skill.SkillClass, Skill> skillMap, int atkType){
+    public AttackPattern setItems(List<Skill> skills, int atkType){
         for(int i = 0; i < rawAttackPatterns.size(); i++){
             int raw = rawAttackPatterns.get(i);
 
@@ -41,7 +41,13 @@ public class AttackPattern {
                     iconUrl = PHY_ICON;
                 }
             } else {
-                Skill skill = skillMap.get(PatternType.parse(raw).skillClass());
+                Skill skill = null;
+                for(Skill innerSkill : skills){
+                    if(innerSkill.skillClass == PatternType.parse(raw).skillClass()){
+                        skill = innerSkill;
+                        break;
+                    }
+                }
                 if (skill != null) {
                     iconUrl = skill.iconUrl;
                 } else {

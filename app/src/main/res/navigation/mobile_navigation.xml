@@ -48,5 +48,14 @@
     <fragment
         android:id="@+id/nav_chara_details"
         android:name="com.github.malitsplus.shizurunotes.ui.charadetails.CharaDetailsFragment"
-        tools:layout="@layout/fragment_chara_details" />
+        tools:layout="@layout/fragment_chara_details" >
+        <action
+            android:id="@+id/action_nav_chara_details_to_nav_chara_profile"
+            app:destination="@id/nav_chara_profile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_chara_profile"
+        android:name="com.github.malitsplus.shizurunotes.ui.charaprofile.CharaProfile"
+        tools:layout="@layout/fragment_chara_profile" />
 </navigation>

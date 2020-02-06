@@ -1,6 +1,8 @@
 package com.github.malitsplus.shizurunotes.data;
 
 
+import com.github.malitsplus.shizurunotes.R;
+import com.github.malitsplus.shizurunotes.common.I18N;
 import com.github.malitsplus.shizurunotes.common.Statics;
 import com.github.malitsplus.shizurunotes.data.action.ActionParameter;
 import com.github.malitsplus.shizurunotes.data.action.ActionRaw;
@@ -42,7 +44,72 @@ public class Skill {
         EX4_EVO,
         EX5,
         EX5_EVO,
-        UNKNOWN
+        UNKNOWN;
+
+        public String description(){
+            switch (this){
+                case UB:
+                    return I18N.getString(R.string.union_burst);
+                case UB_EVO:
+                    return I18N.getString(R.string.union_burst_evo);
+                case MAIN1:
+                    return I18N.getString(R.string.main_skill_1);
+                case MAIN2:
+                    return I18N.getString(R.string.main_skill_2);
+                case MAIN3:
+                    return I18N.getString(R.string.main_skill_3);
+                case MAIN4:
+                    return I18N.getString(R.string.main_skill_4);
+                case MAIN5:
+                    return I18N.getString(R.string.main_skill_5);
+                case MAIN6:
+                    return I18N.getString(R.string.main_skill_6);
+                case MAIN7:
+                    return I18N.getString(R.string.main_skill_7);
+                case MAIN8:
+                    return I18N.getString(R.string.main_skill_8);
+                case MAIN9:
+                    return I18N.getString(R.string.main_skill_9);
+                case MAIN10:
+                    return I18N.getString(R.string.main_skill_10);
+                case MAIN1_EVO:
+                    return I18N.getString(R.string.main_skill_1_evo);
+                case MAIN2_EVO:
+                    return I18N.getString(R.string.main_skill_2_evo);
+                case SP1:
+                    return I18N.getString(R.string.sp_skill_1);
+                case SP2:
+                    return I18N.getString(R.string.sp_skill_2);
+                case SP3:
+                    return I18N.getString(R.string.sp_skill_3);
+                case SP4:
+                    return I18N.getString(R.string.sp_skill_4);
+                case SP5:
+                    return I18N.getString(R.string.sp_skill_5);
+                case EX1:
+                    return I18N.getString(R.string.ex_skill_1);
+                case EX2:
+                    return I18N.getString(R.string.ex_skill_2);
+                case EX3:
+                    return I18N.getString(R.string.ex_skill_3);
+                case EX4:
+                    return I18N.getString(R.string.ex_skill_4);
+                case EX5:
+                    return I18N.getString(R.string.ex_skill_5);
+                case EX1_EVO:
+                    return I18N.getString(R.string.ex_skill_1_evo);
+                case EX2_EVO:
+                    return I18N.getString(R.string.ex_skill_2_evo);
+                case EX3_EVO:
+                    return I18N.getString(R.string.ex_skill_3_evo);
+                case EX4_EVO:
+                    return I18N.getString(R.string.ex_skill_4_evo);
+                case EX5_EVO:
+                    return I18N.getString(R.string.ex_skill_5_evo);
+                default:
+                    return I18N.getString(R.string.unknown);
+            }
+        }
     }
 
     public List<ActionRaw> actionRawList = new ArrayList<>();
@@ -54,11 +121,14 @@ public class Skill {
     public double skillCastTime;
     public String description;
     public int iconType;
+    public SkillClass skillClass;
 
     public String iconUrl;
+    public String actionDescriptions;
 
-    public Skill(int skillId){
+    public Skill(int skillId, SkillClass skillClass){
         this.skillId = skillId;
+        this.skillClass = skillClass;
     }
 
     public void setSkillData(String skillName, int skillType, int skillAreaWidth, double skillCastTime, String description, int iconType){
@@ -71,6 +141,21 @@ public class Skill {
         this.iconUrl = String.format(Locale.US, Statics.SKILL_ICON_URL, iconType);
     }
 
+    public void setActionDescriptions(int level, Property property){
+        StringBuilder sb = new StringBuilder();
+        for (int i = 1; i <= actions.size(); i++){
+            sb.append("[").append(i).append("] ").append(actions.get(i - 1).parameter.localizedDetail(level, property)).append("\n");
+        }
+        actionDescriptions = sb.toString();
+    }
+
+    public String getActionDescriptions(){
+        return this.actionDescriptions;
+    }
+
+    public String getCastTimeText(){
+        return I18N.getString(R.string.text_cast_time) + this.skillCastTime + "s";
+    }
 
     public List<Action> actions = new ArrayList<>();
 
