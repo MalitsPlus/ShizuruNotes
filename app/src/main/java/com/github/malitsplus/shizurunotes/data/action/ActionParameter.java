@@ -8,6 +8,7 @@ import com.github.malitsplus.shizurunotes.data.Property;
 import com.github.malitsplus.shizurunotes.data.PropertyKey;
 import com.github.malitsplus.shizurunotes.data.Skill;
 
+import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class ActionParameter {
                 return new DamageAction();
             case 2:
                 return new MoveAction();
-                /*
+
             case 3:
                 return new KnockAction();
             case 4:
@@ -30,8 +31,12 @@ public class ActionParameter {
                 return new BarrierAction();
             case 7:
                 return new ReflexiveAction();
-            case 8, 9, 12, 13:
+            case 8:
+            case 9:
+            case 12:
+            case 13:
                 return new AilmentAction();
+                /*
             case 10:
                 return new AuraAction();
             case 11:
@@ -167,13 +172,6 @@ public class ActionParameter {
     public double actionValue7;
     public ArrayList<Double> rawActionValues = new ArrayList<>();
 
-    public int targetAssignment;
-    public int targetArea;
-    public int targetRange;
-    public int targetType;
-    public int targetNumber;
-    public int targetCount;
-
     public ActionType actionType;
 
     public TargetParameter targetParameter;
@@ -217,12 +215,6 @@ public class ActionParameter {
         if(actionValue7 != 0)
             rawActionValues.add(actionValue7);
 
-        this.targetAssignment = targetAssignment;
-        this.targetArea = targetArea;
-        this.targetRange = targetRange;
-        this.targetType = targetType;
-        this.targetNumber = targetNumber;
-        this.targetCount = targetCount;
         targetParameter = new TargetParameter(targetAssignment, targetNumber, targetType, targetRange, targetArea, targetCount, dependAction);
 
         childInit();
@@ -241,7 +233,7 @@ public class ActionParameter {
     }
 
     public String localizedDetail(int level, Property property){
-        return I18N.getString(R.string.Unknown_effect_d_to_s_with_details_s_values_s,
+        return I18N.getString(R.string.Unknown_effect_d1_to_s2_with_details_s3_values_s4,
                 rawActionType,
                 targetParameter.buildTargetClause(),
                 actionDetails.toString(),
@@ -250,17 +242,20 @@ public class ActionParameter {
 
 
     public String buildExpression(int level, Property property){
-        return buildExpression(level, actionValues, null, UserSettings.get().getPreference().getBoolean("expressionStyle", false), property, false, false, false);
+        return buildExpression(level, actionValues, null, property, false, false, false);
     }
 
-    public String buildExpression(int level, List<ActionValue> actionValues, Property property, boolean hasBracesIfNeeded){
-        return buildExpression(level, actionValues, null, UserSettings.get().getPreference().getBoolean("expressionStyle", false), property, false, false, hasBracesIfNeeded);
+    public String buildExpression(int level, RoundingMode roundingMode, Property property){
+        return buildExpression(level, actionValues, roundingMode, property, false, false, false);
+    }
+
+    public String buildExpression(int level,RoundingMode roundingMode, List<ActionValue> actionValues, Property property){
+        return buildExpression(level, actionValues, roundingMode, property, false, false, false);
     }
 
     public String buildExpression(int level,
                                   List<ActionValue> actionValues,
                                   RoundingMode roundingMode,
-                                  boolean expressionStyle,
                                   Property property,
                                   boolean isHealing,
                                   boolean isSelfTPRestoring,
@@ -272,7 +267,7 @@ public class ActionParameter {
         if(property == null)
             property = new Property();
 
-        if(expressionStyle){
+        if(UserSettings.get().getPreference().getBoolean("expressionStyle", false)){
             StringBuilder expression = new StringBuilder();
             for(ActionValue value : actionValues){
                 StringBuilder part = new StringBuilder();
@@ -334,7 +329,11 @@ public class ActionParameter {
             if(isSelfTPRestoring){
                 fixedValue *= (property.energyRecoveryRate / 100 + 1);
             */
-            return Utils.roundDownDouble(fixedValue);
+            if(roundingMode == RoundingMode.UNNECESSARY)
+                return String.valueOf(fixedValue);
+
+            BigDecimal bigDecimal = new BigDecimal(fixedValue);
+            return bigDecimal.setScale(0, roundingMode).toString();
         }
     }
 

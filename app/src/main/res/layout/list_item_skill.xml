@@ -17,7 +17,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
@@ -29,7 +29,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/textSkillType"
@@ -67,6 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+
                     android:text="@{skill.skillName, default=skillName}"
                     app:layout_constraintStart_toEndOf="@+id/imageSkillIcon"
                     app:layout_constraintTop_toTopOf="@+id/imageSkillIcon" />
@@ -80,7 +81,8 @@
                     android:layout_marginEnd="8dp"
                     android:text="@{skill.description, default=skillDescription}"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageSkillIcon"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageSkillIcon" />
 
                 <TextView
@@ -96,17 +98,17 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textActionLable" />
+                    app:layout_constraintTop_toBottomOf="@+id/textActionLable"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
                     android:id="@+id/textCastTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
                     android:text="@{skill.castTimeText, default=castTime}"
-                    app:layout_constraintStart_toEndOf="@+id/imageSkillIcon"
-                    app:layout_constraintTop_toBottomOf="@+id/textSkillName" />
+                    app:layout_constraintBottom_toBottomOf="@+id/imageSkillIcon"
+                    app:layout_constraintStart_toEndOf="@+id/imageSkillIcon" />
 
                 <TextView
                     android:id="@+id/textActionLable"

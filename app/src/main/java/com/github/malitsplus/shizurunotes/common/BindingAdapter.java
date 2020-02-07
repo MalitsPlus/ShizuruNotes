@@ -1,9 +1,6 @@
 package com.github.malitsplus.shizurunotes.common;
 
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.allen.library.SuperTextView;
 import com.squareup.picasso.Picasso;
