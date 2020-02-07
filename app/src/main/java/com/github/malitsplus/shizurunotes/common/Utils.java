@@ -113,8 +113,14 @@ public class Utils {
         return Build.VERSION.SDK_INT >= version;
     }
 
+
+
+
     private static DecimalFormat format = new DecimalFormat("#");
     public static String roundDownDouble(double value){
         return format.format(Math.floor(value));
+    }
+    public static String roundUpDouble(double value){
+        return format.format(Math.ceil(value));
     }
 }

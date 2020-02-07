@@ -6,13 +6,13 @@ import com.github.malitsplus.shizurunotes.data.Skill;
 
 public class TargetParameter {
 
-    private TargetAssignment targetAssignment;
-    private TargetNumber targetNumber;
-    private int rawTargetType;
-    private TargetType targetType;
-    private TargetRange targetRange;
-    private DirectionType direction;
-    private TargetCount targetCount;
+    public TargetAssignment targetAssignment;
+    public TargetNumber targetNumber;
+    public int rawTargetType;
+    public TargetType targetType;
+    public TargetRange targetRange;
+    public DirectionType direction;
+    public TargetCount targetCount;
 
     private Skill.Action dependAction;
 
@@ -103,56 +103,56 @@ public class TargetParameter {
                     return I18N.getString(R.string.all_front_s_targets, targetType.description());
             }
         } else if (!hasCountPhrase && !hasNthModifier && hasRangePhrase && hasRelationPhrase && !hasDirectionPhrase){
-            return I18N.getString(R.string.s_targets_in_range_d, targetAssignment.description(), targetRange.rawRange);
+            return I18N.getString(R.string.s1_targets_in_range_d2, targetAssignment.description(), targetRange.rawRange);
         } else if (!hasCountPhrase && !hasNthModifier && hasRangePhrase && hasRelationPhrase && hasDirectionPhrase){
-            return I18N.getString(R.string.front_s_targets_in_range_d, targetAssignment.description(), targetRange.rawRange);
+            return I18N.getString(R.string.front_s1_targets_in_range_d2, targetAssignment.description(), targetRange.rawRange);
         } else if (!hasCountPhrase && hasNthModifier && hasRangePhrase && hasRelationPhrase){
             return I18N.getString(R.string.targets_of_last_effect);
         } else if (hasCountPhrase && !hasNthModifier && hasRangePhrase && hasRelationPhrase && !hasDirectionPhrase){
             if(targetCount == TargetCount.all){
                 if(targetType.isExclusiveWithAll())
-                    return I18N.getString(R.string.s_targets_in_range_d, targetAssignment.description(), targetRange.rawRange);
+                    return I18N.getString(R.string.s1_targets_in_range_d2, targetAssignment.description(), targetRange.rawRange);
                 else
-                    return I18N.getString(R.string.s_s_target_in_range_d, targetAssignment.description(), targetType.description(), targetRange.rawRange);
+                    return I18N.getString(R.string.s1_s2_target_in_range_d3, targetAssignment.description(), targetType.description(), targetRange.rawRange);
             } else if (targetCount == TargetCount.one && targetType.ignoresOne()){
-                return I18N.getString(R.string.s_s_target_in_range_d, targetType.description(), targetAssignment.description(), targetRange.rawRange);
+                return I18N.getString(R.string.s1_s2_target_in_range_d3, targetType.description(), targetAssignment.description(), targetRange.rawRange);
             } else {
-                return I18N.getString(R.string.s_s_s_in_range_d, targetType.description(targetCount, null), targetAssignment.description(), targetCount.pluralModifier.description(), targetRange.rawRange);
+                return I18N.getString(R.string.s1_s2_s3_in_range_d4, targetType.description(targetCount, null), targetAssignment.description(), targetCount.pluralModifier.description(), targetRange.rawRange);
             }
         } else if (hasCountPhrase && !hasNthModifier && hasRangePhrase && hasRelationPhrase && hasDirectionPhrase){
             if(targetCount == TargetCount.all){
                 if(targetType.isExclusiveWithAll())
-                    return I18N.getString(R.string.front_s_targets_in_range_d, targetAssignment.description(), targetRange.rawRange);
+                    return I18N.getString(R.string.front_s1_targets_in_range_d2, targetAssignment.description(), targetRange.rawRange);
                 else
-                    return I18N.getString(R.string.front_s_s_targets_in_range_d, targetAssignment.description(), targetType.description(), targetRange.rawRange);
+                    return I18N.getString(R.string.front_s1_s2_targets_in_range_d3, targetAssignment.description(), targetType.description(), targetRange.rawRange);
             } else if(targetCount == TargetCount.one && targetType.ignoresOne()){
-                return I18N.getString(R.string.s_front_s_target_in_range_d, targetType.description(), targetAssignment.description(), targetRange.rawRange);
+                return I18N.getString(R.string.s1_front_s2_target_in_range_d3, targetType.description(), targetAssignment.description(), targetRange.rawRange);
             } else {
-                return I18N.getString(R.string.s_front_s_s_in_range_d, targetType.description(targetCount, null), targetAssignment.description(), targetCount.pluralModifier.description(), targetRange.rawRange);
+                return I18N.getString(R.string.s1_front_s2_s3_in_range_d4, targetType.description(targetCount, null), targetAssignment.description(), targetCount.pluralModifier.description(), targetRange.rawRange);
             }
         } else if(hasCountPhrase && hasNthModifier && !hasRangePhrase && hasRelationPhrase && !hasDirectionPhrase){
             if(targetCount == TargetCount.one && targetType.ignoresOne()){
                 return I18N.getString(R.string.s_s_target, targetType.description(targetNumber, null), targetAssignment.description());
             } else {
-                String modifier = I18N.getString(R.string.s_to_s, targetNumber.description(), getUntilNumber().description());
+                String modifier = I18N.getString(R.string.s1_to_s2, targetNumber.description(), getUntilNumber().description());
                 return I18N.getString(R.string.s_s_s, targetType.description(targetNumber, modifier), targetAssignment.description(), targetCount.pluralModifier.description());
             }
         } else if(hasCountPhrase && hasNthModifier && !hasRangePhrase && hasRelationPhrase && hasDirectionPhrase){
-            String modifier = I18N.getString(R.string.s_to_s, targetNumber.description(), getUntilNumber().description());
-            return I18N.getString(R.string.s_front_s_s, targetType.description(targetNumber, modifier), targetAssignment.description(), targetCount.pluralModifier.description());
+            String modifier = I18N.getString(R.string.s1_to_s2, targetNumber.description(), getUntilNumber().description());
+            return I18N.getString(R.string.s1_front_s2_s3, targetType.description(targetNumber, modifier), targetAssignment.description(), targetCount.pluralModifier.description());
         } else if(hasCountPhrase && hasNthModifier && hasRangePhrase && hasRelationPhrase && !hasDirectionPhrase){
             if(targetCount == TargetCount.one && targetType.ignoresOne()) {
-                return I18N.getString(R.string.s_s_target_in_range_d, targetType.description(targetNumber, null), targetAssignment.description(), targetRange.rawRange);
+                return I18N.getString(R.string.s1_s2_target_in_range_d3, targetType.description(targetNumber, null), targetAssignment.description(), targetRange.rawRange);
             } else {
-                String modifier = I18N.getString(R.string.s_to_s, targetNumber.description(), getUntilNumber().description());
-                return I18N.getString(R.string.s_s_s_in_range_d, targetType.description(targetNumber, modifier), targetAssignment.description(), targetCount.pluralModifier.description(), targetRange.rawRange);
+                String modifier = I18N.getString(R.string.s1_to_s2, targetNumber.description(), getUntilNumber().description());
+                return I18N.getString(R.string.s1_s2_s3_in_range_d4, targetType.description(targetNumber, modifier), targetAssignment.description(), targetCount.pluralModifier.description(), targetRange.rawRange);
             }
         } else if (hasCountPhrase && hasNthModifier && hasRangePhrase && hasRelationPhrase && hasDirectionPhrase){
             if(targetCount == TargetCount.one && targetType.ignoresOne()){
-                return I18N.getString(R.string.s_front_s_target_in_range_d, targetType.description(targetNumber, null), targetAssignment.description(), targetRange.rawRange);
+                return I18N.getString(R.string.s1_front_s2_target_in_range_d3, targetType.description(targetNumber, null), targetAssignment.description(), targetRange.rawRange);
             } else {
-                String modifier = I18N.getString(R.string.s_to_s, targetNumber.description(), getUntilNumber().description());
-                return I18N.getString(R.string.s_front_s_s_in_range_d, targetType.description(targetNumber, modifier), targetAssignment.description(), targetCount.pluralModifier.description(), targetRange.rawRange);
+                String modifier = I18N.getString(R.string.s1_to_s2, targetNumber.description(), getUntilNumber().description());
+                return I18N.getString(R.string.s1_front_s2_s3_in_range_d4, targetType.description(targetNumber, modifier), targetAssignment.description(), targetCount.pluralModifier.description(), targetRange.rawRange);
             }
         } else {
             return "";

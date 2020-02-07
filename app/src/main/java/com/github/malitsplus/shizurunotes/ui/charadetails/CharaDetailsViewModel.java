@@ -1,6 +1,10 @@
 package com.github.malitsplus.shizurunotes.ui.charadetails;
 
 import android.app.Application;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.BackgroundColorSpan;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

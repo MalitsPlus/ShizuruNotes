@@ -61,14 +61,14 @@ public class MoveAction extends ActionParameter {
                     return I18N.getString(R.string.Change_self_position_s_backward, Utils.roundDownDouble(-actionValue1));
             case targetByVelocity:
                 if(actionValue1 > 0)
-                    return I18N.getString(R.string.Move_to_s_in_front_of_s_with_velocity_s_sec, Utils.roundDownDouble(actionValue1), targetParameter.buildTargetClause(), actionValue2);
+                    return I18N.getString(R.string.Move_to_s1_in_front_of_s2_with_velocity_s3_sec, Utils.roundDownDouble(actionValue1), targetParameter.buildTargetClause(), actionValue2);
                 else
-                    return I18N.getString(R.string.Move_to_s_behind_of_s_with_velocity_s_sec, Utils.roundDownDouble(-actionValue1), targetParameter.buildTargetClause(), actionValue2);
+                    return I18N.getString(R.string.Move_to_s1_behind_of_s2_with_velocity_s3_sec, Utils.roundDownDouble(-actionValue1), targetParameter.buildTargetClause(), actionValue2);
             case absoluteByVelocity:
                 if(actionValue1 > 0)
-                    return I18N.getString(R.string.Move_forward_s_with_velocity_s_sec, Utils.roundDownDouble(actionValue1), actionValue2);
+                    return I18N.getString(R.string.Move_forward_s1_with_velocity_s2_sec, Utils.roundDownDouble(actionValue1), actionValue2);
                 else
-                    return I18N.getString(R.string.Move_backward_s_with_velocity_s_sec, Utils.roundDownDouble(-actionValue1), actionValue2);
+                    return I18N.getString(R.string.Move_backward_s1_with_velocity_s2_sec, Utils.roundDownDouble(-actionValue1), actionValue2);
             default:
                 return super.localizedDetail(level, property);
         }
