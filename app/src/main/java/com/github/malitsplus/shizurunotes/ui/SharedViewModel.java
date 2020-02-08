@@ -31,6 +31,7 @@ public class SharedViewModel extends ViewModel {
      * 注意：此方法应该且仅应该在程序初始化时或数据库更新完成后使用。
      */
     public void loadData(){
+        charaList.clear();
         loadBasic();
         for(Chara chara : charaList){
             setCharaMaxData(chara);

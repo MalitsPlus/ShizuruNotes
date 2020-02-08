@@ -17,13 +17,13 @@ public class DamageAction extends ActionParameter {
 
         switch (damageClass){
             case magical:
-                actionValues.add(new ActionValue(actionValue3, actionValue4, PropertyKey.magicStr));
                 actionValues.add(new ActionValue(actionValue1, actionValue2, null));
+                actionValues.add(new ActionValue(actionValue3, actionValue4, PropertyKey.magicStr));
                 break;
             case physical:
             case inevitablePhysical:
-                actionValues.add(new ActionValue(actionValue3, actionValue4, PropertyKey.atk));
                 actionValues.add(new ActionValue(actionValue1, actionValue2, null));
+                actionValues.add(new ActionValue(actionValue3, actionValue4, PropertyKey.atk));
                 break;
             default:
         }

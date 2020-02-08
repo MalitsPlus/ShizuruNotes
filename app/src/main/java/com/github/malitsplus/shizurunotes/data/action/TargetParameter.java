@@ -26,7 +26,6 @@ public class TargetParameter {
         this.targetCount = TargetCount.parse(targetCount);
         this.dependAction = dependAction;
         setBooleans();
-        String sss = buildTargetClause();
     }
 
     private boolean hasRelationPhrase;
@@ -61,7 +60,12 @@ public class TargetParameter {
     }
 
 
-
+    public String buildTargetClause(boolean anyOfModifier){
+        if(targetCount.pluralModifier == TargetCount.PluralModifier.many && anyOfModifier)
+            return I18N.getString(R.string.any_of_s, buildTargetClause());
+        else
+            return buildTargetClause();
+    }
 
     public String buildTargetClause(){
         if(hasDependAction){

@@ -1,7 +1,11 @@
 package com.github.malitsplus.shizurunotes.data;
 
 
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+
 import com.github.malitsplus.shizurunotes.R;
+import com.github.malitsplus.shizurunotes.common.BackgroundSpan;
 import com.github.malitsplus.shizurunotes.common.I18N;
 import com.github.malitsplus.shizurunotes.common.Statics;
 import com.github.malitsplus.shizurunotes.data.action.ActionParameter;
@@ -124,7 +128,7 @@ public class Skill {
     public SkillClass skillClass;
 
     public String iconUrl;
-    public String actionDescriptions;
+
 
     public Skill(int skillId, SkillClass skillClass){
         this.skillId = skillId;
@@ -141,15 +145,20 @@ public class Skill {
         this.iconUrl = String.format(Locale.US, Statics.SKILL_ICON_URL, iconType);
     }
 
+
+    public SpannableStringBuilder actionDescriptions;
     public void setActionDescriptions(int level, Property property){
-        StringBuilder sb = new StringBuilder();
+
+        SpannableStringBuilder builder = new SpannableStringBuilder();
         for (int i = 1; i <= actions.size(); i++){
-            sb.append("[").append(i).append("] ").append(actions.get(i - 1).parameter.localizedDetail(level, property)).append("\n");
+            builder.append("  ").append(String.valueOf(i)).append("  ");
+            builder.setSpan(new BackgroundSpan(BackgroundSpan.BORDER_RECT), builder.length() - 4, builder.length() - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            builder.append(actions.get(i - 1).parameter.localizedDetail(level, property)).append("\n");
         }
-        actionDescriptions = sb.toString();
+        actionDescriptions = builder;
     }
 
-    public String getActionDescriptions(){
+    public SpannableStringBuilder getActionDescriptions(){
         return this.actionDescriptions;
     }
 

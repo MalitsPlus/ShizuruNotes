@@ -36,7 +36,6 @@ public class ActionParameter {
             case 12:
             case 13:
                 return new AilmentAction();
-                /*
             case 10:
                 return new AuraAction();
             case 11:
@@ -58,7 +57,7 @@ public class ActionParameter {
             case 21:
                 return new NoDamageAction();
             case 22:
-                return new ChangePatterAction();
+                return new ChangePatternAction();
             case 23:
                 return new IfForChildrenAction();
             case 24:
@@ -67,10 +66,12 @@ public class ActionParameter {
                 return new ContinuousAttackAction();
             case 26:
                 return new AdditiveAction();
+
             case 27:
                 return new MultipleAction();
             case 28:
                 return new IfForAllAction();
+                /*
             case 29:
                 return new SearchAreaChangeAction();
             case 30:
@@ -249,7 +250,7 @@ public class ActionParameter {
         return buildExpression(level, actionValues, roundingMode, property, false, false, false);
     }
 
-    public String buildExpression(int level,RoundingMode roundingMode, List<ActionValue> actionValues, Property property){
+    public String buildExpression(int level, List<ActionValue> actionValues, RoundingMode roundingMode, Property property){
         return buildExpression(level, actionValues, roundingMode, property, false, false, false);
     }
 
@@ -280,7 +281,7 @@ public class ActionParameter {
                         part.append(String.format("%s * %s", perLevelValue, I18N.getString(R.string.SLv)));
                     } else if(perLevelValue == 0){
                         if(value.key == null)
-                            part.append(Math.floor(initialValue));
+                            part.append(initialValue);
                         else
                             part.append(initialValue);
                     } else {
