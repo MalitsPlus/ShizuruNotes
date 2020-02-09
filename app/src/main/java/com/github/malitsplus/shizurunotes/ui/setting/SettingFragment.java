@@ -20,6 +20,7 @@ import androidx.preference.PreferenceManager;
 import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.App;
 import com.github.malitsplus.shizurunotes.common.LocaleManager;
+import com.github.malitsplus.shizurunotes.common.UserSettings;
 import com.github.malitsplus.shizurunotes.ui.MainActivity;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -33,6 +34,9 @@ public class SettingFragment extends PreferenceFragmentCompat {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
+
+        Preference dbVersionPreference = findPreference("dbVersion");
+        dbVersionPreference.setSummary(String.valueOf(UserSettings.get().getPreference().getInt("dbVersion", 0)));
 
         ListPreference languagePreference = findPreference(LANGUAGE_KEY);
         if(languagePreference != null) {

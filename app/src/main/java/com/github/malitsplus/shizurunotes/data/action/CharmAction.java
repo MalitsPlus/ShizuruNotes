@@ -38,9 +38,16 @@ public class CharmAction extends ActionParameter {
 
     @Override
     protected void childInit() {
-        chanceValues.add(new ActionValue(actionValue3 * 100, actionValue4 * 100, null));
-        durationValues.add(new ActionValue(actionValue1, actionValue2, null));
         charmType = CharmType.parse(actionDetail1);
+        durationValues.add(new ActionValue(actionValue1, actionValue2, null));
+        switch (charmType){
+            case charm:
+                chanceValues.add(new ActionValue(actionValue3, actionValue4 * 100, null));
+                break;
+            default:
+                chanceValues.add(new ActionValue(actionValue3 * 100, actionValue4 * 100, null));
+                break;
+        }
     }
 
     @Override

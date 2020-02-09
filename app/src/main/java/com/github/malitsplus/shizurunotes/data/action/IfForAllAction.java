@@ -48,31 +48,31 @@ public class IfForAllAction extends ActionParameter {
             if(actionDetail1 == 710){
                 IfType ifType = IfType.parse(actionDetail1);
                 if (ifType != null)
-                    trueClause = I18N.getString(R.string.use_d1_to_s2_if_not_s3,
+                    falseClause = I18N.getString(R.string.use_d1_to_s2_if_not_s3,
                             actionDetail3 % 100, targetParameter.buildTargetClause(true), ifType.description());
             } else if(actionDetail1 >= 0 && actionDetail1 < 100){
-                trueClause = I18N.getString(R.string.d1_chance_use_d2,
+                falseClause = I18N.getString(R.string.d1_chance_use_d2,
                         100 - actionDetail1, actionDetail3 % 10);
             } else if(actionDetail1 == 599){
-                trueClause = I18N.getString(R.string.use_d1_if_s2_has_no_dot_debuff,
+                falseClause = I18N.getString(R.string.use_d1_if_s2_has_no_dot_debuff,
                         actionDetail3 % 10, targetParameter.buildTargetClause());
             } else if(actionDetail1 >= 600 && actionDetail1 < 700){
-                trueClause = I18N.getString(R.string.use_d1_if_s2_is_not_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4,
+                falseClause = I18N.getString(R.string.use_d1_if_s2_is_not_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4,
                         actionDetail3 % 10, targetParameter.buildTargetClause(), actionDetail1 - 600, (int)actionValue3);
             } else if(actionDetail1 == 700){
-                trueClause = I18N.getString(R.string.use_d1_if_s2_is_not_alone,
+                falseClause = I18N.getString(R.string.use_d1_if_s2_is_not_alone,
                         actionDetail3 % 10, targetParameter.buildTargetClause());
             } else if(actionDetail1 >= 701 && actionDetail1 < 710){
-                trueClause = I18N.getString(R.string.use_d1_if_the_count_of_s2_except_stealth_units_is_not_d3,
+                falseClause = I18N.getString(R.string.use_d1_if_the_count_of_s2_except_stealth_units_is_not_d3,
                         actionDetail3 % 10, targetParameter.buildTargetClause(), actionDetail1 - 700);
             } else if(actionDetail1 == 720){
-                trueClause = I18N.getString(R.string.use_d1_if_among_s2_does_not_exists_unit_ID_d3,
+                falseClause = I18N.getString(R.string.use_d1_if_among_s2_does_not_exists_unit_ID_d3,
                         actionDetail3 % 10, targetParameter.buildTargetClause(), (int)actionValue3);
             } else if(actionDetail1 == 1000){
-                trueClause = I18N.getString(R.string.if_target_is_not_defeated_by_the_last_effect_then_use_d,
+                falseClause = I18N.getString(R.string.if_target_is_not_defeated_by_the_last_effect_then_use_d,
                         actionDetail3 % 10);
             } else if(actionDetail1 >= 1200 && actionDetail1 < 1300){
-                trueClause = I18N.getString(R.string.counter_is_less_than_d1_then_use_d2,
+                falseClause = I18N.getString(R.string.counter_is_less_than_d1_then_use_d2,
                         actionDetail1 % 10, actionDetail3 % 10);
             }
         }

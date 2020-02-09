@@ -104,11 +104,11 @@ public class AuraAction extends ActionParameter {
         }
     }
 
-    private  PercentModifier percentModifier;
-    private List<ActionValue> durationValues = new ArrayList<>();
-    private AuraActionType auraActionType;
-    private AuraType auraType;
-    private BreakType breakType;
+    protected PercentModifier percentModifier;
+    protected List<ActionValue> durationValues = new ArrayList<>();
+    protected AuraActionType auraActionType;
+    protected AuraType auraType;
+    protected BreakType breakType;
 
     @Override
     protected void childInit() {

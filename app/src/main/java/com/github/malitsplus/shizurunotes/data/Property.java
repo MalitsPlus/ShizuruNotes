@@ -129,6 +129,67 @@ public class Property {
         return this;
     }
 
+    public static Property getPropertyWithKeyAndValue(Property property, PropertyKey key, double value){
+        if(property == null)
+            property = new Property();
+
+        switch (key){
+            case atk:
+                property.atk += value;
+                return property;
+            case def:
+                property.def += value;
+                return property;
+            case dodge:
+                property.dodge += value;
+                return property;
+            case energyRecoveryRate:
+                property.energyRecoveryRate += value;
+                return property;
+            case energyReduceRate:
+                property.energyReduceRate += value;
+                return property;
+            case hp:
+                property.hp += value;
+                return property;
+            case hpRecoveryRate:
+                property.hpRecoveryRate += value;
+                return property;
+            case lifeSteal:
+                property.lifeSteal += value;
+                return property;
+            case magicCritical:
+                property.magicCritical += value;
+                return property;
+            case magicDef:
+                property.magicDef += value;
+                return property;
+            case magicPenetrate:
+                property.magicPenetrate += value;
+                return property;
+            case magicStr:
+                property.magicStr += value;
+                return property;
+            case physicalCritical:
+                property.physicalCritical += value;
+                return property;
+            case physicalPenetrate:
+                property.physicalPenetrate += value;
+                return property;
+            case waveEnergyRecovery:
+                property.waveEnergyRecovery += value;
+                return property;
+            case waveHpRecovery:
+                property.waveHpRecovery += value;
+                return property;
+            case accuracy:
+                property.accuracy += value;
+                return property;
+            default:
+                return property;
+        }
+    }
+
     public double getItem(PropertyKey key){
         switch (key){
             case atk:
