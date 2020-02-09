@@ -1,6 +1,7 @@
 package com.github.malitsplus.shizurunotes.common;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
@@ -78,7 +79,7 @@ public class UpdateManager {
                     try {
                         JSONObject obj = new JSONObject(lastVersionJson);
                         serverVersion = obj.getInt("TruthVersion");
-                        if(serverVersion != DBHelper.DB_VERSION)
+                        if(serverVersion != UserSettings.get().getPreference().getInt("dbVersion", 0))
                             hasNewVersion = true;
                         updateHandler.sendEmptyMessage(UPDATE_CHECK_COMPLETED);
                     } catch (Exception ex){
@@ -174,6 +175,8 @@ public class UpdateManager {
 
         @Override   //数据库更新完成
         public void updateCompleted(){
+            UserSettings.get().getPreference().edit().putInt("dbVersion", serverVersion).apply();
+
             progressDialog.cancel();
             Snackbar.make(mView, R.string.db_update_finished_text, Snackbar.LENGTH_LONG).show();
             if(iFragmentCallBack != null)

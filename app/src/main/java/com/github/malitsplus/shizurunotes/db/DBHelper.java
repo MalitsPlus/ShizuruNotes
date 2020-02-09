@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.Random;
 
 public class DBHelper extends SQLiteOpenHelper {
-    public static final int DB_VERSION = 10014050;
+    public static final int DB_VERSION = 1;
     private static final String DB_PATH = "data/data/com.github.malitsplus.shizurunotes/databases/";
     private static final String DB_NAME = "redive_jp.db";
 

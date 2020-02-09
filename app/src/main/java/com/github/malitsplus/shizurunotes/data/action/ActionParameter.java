@@ -71,7 +71,6 @@ public class ActionParameter {
                 return new MultipleAction();
             case 28:
                 return new IfForAllAction();
-                /*
             case 29:
                 return new SearchAreaChangeAction();
             case 30:
@@ -146,8 +145,6 @@ public class ActionParameter {
                 return new PassiveAction();
             case 91:
                 return new PassiveInermittentAction();
-
-                 */
             default:
                 return new ActionParameter();
         }
@@ -334,7 +331,7 @@ public class ActionParameter {
                 return String.valueOf(fixedValue);
 
             BigDecimal bigDecimal = new BigDecimal(fixedValue);
-            return bigDecimal.setScale(0, roundingMode).toString();
+            return String.valueOf(bigDecimal.setScale(0, roundingMode).intValue());
         }
     }
 

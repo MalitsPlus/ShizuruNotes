@@ -32,7 +32,7 @@ public class BarrierAction extends ActionParameter {
         }
     }
 
-    private BarrierType barrierType;
+    protected BarrierType barrierType;
 
     @Override
     protected void childInit() {

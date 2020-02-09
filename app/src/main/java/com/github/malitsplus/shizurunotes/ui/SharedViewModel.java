@@ -42,6 +42,14 @@ public class SharedViewModel extends ViewModel {
             setUniqueEquipment(chara);
             chara.setCharaProperty();
 
+            /* 用于测试所有字串是否抛异常
+            setUnitSkillData(chara);
+            for(Skill skill : chara.skills){
+                for(Skill.Action action : skill.actions){
+                    String acs = action.parameter.localizedDetail(chara.maxCharaLevel, chara.charaProperty);
+                }
+            }
+            */
         }
     }
 
@@ -85,7 +93,6 @@ public class SharedViewModel extends ViewModel {
         }
     }
 
-    //测试时暂时放在这里，优化时记得移动到setSelectedChara中
     private void setUnitSkillData(Chara chara){
         DBHelper.get().getUnitSkillData(chara.unitId).setCharaSkillMap(chara);
         chara.skills.forEach((skill) -> {
@@ -111,8 +118,6 @@ public class SharedViewModel extends ViewModel {
         });
     }
 
-
-    //测试时暂时放在这里，优化时记得移动到setSelectedChara中
     private void setUnitAttackPattern(Chara chara){
         List<RawUnitAttackPattern> rawList = DBHelper.get().getUnitAttackPattern(chara.unitId);
 
@@ -120,10 +125,6 @@ public class SharedViewModel extends ViewModel {
             chara.attackPatternList.add(raw.getAttackPattern().setItems(chara.skills, chara.atkType));
         }
     }
-
-
-
-
 
     public Chara getSelectedChara() {
         return selectedChara;
