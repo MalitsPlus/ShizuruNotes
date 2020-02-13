@@ -21,8 +21,10 @@ public class SharedViewModel extends ViewModel {
 
     private List<Chara> charaList = new ArrayList<>();;
     private Chara selectedChara;
+    public MutableLiveData<Integer> reloadFlag = new MutableLiveData<>();
 
     public SharedViewModel(){
+        reloadFlag.setValue(0);
         loadData();
     }
 
@@ -40,17 +42,24 @@ public class SharedViewModel extends ViewModel {
             setCharaPromotionStatus(chara);
             setCharaEquipments(chara);
             setUniqueEquipment(chara);
+
+            setUnitSkillData(chara);
+
             chara.setCharaProperty();
 
+
+
             /* 用于测试所有字串是否抛异常
-            setUnitSkillData(chara);
+            setUnitAttackPattern(chara);
+
+
             for(Skill skill : chara.skills){
-                for(Skill.Action action : skill.actions){
-                    String acs = action.parameter.localizedDetail(chara.maxCharaLevel, chara.charaProperty);
-                }
-            }
-            */
+                skill.setActionDescriptions(chara.maxCharaLevel, chara.charaProperty);
+
+            }*/
         }
+
+        reloadFlag.setValue(reloadFlag.getValue() + 1);
     }
 
     private void loadBasic(){
@@ -131,8 +140,8 @@ public class SharedViewModel extends ViewModel {
     }
     public void setSelectedChara(Chara selectedChara) {
 
-        selectedChara.skills.clear();
-        setUnitSkillData(selectedChara);
+        //selectedChara.skills.clear();
+        //setUnitSkillData(selectedChara);
 
         selectedChara.attackPatternList.clear();
         setUnitAttackPattern(selectedChara);

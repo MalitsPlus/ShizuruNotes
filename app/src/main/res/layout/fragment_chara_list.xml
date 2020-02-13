@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.github.malitsplus.shizurunotes.ui.charalist.CharaListViewModel" />
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/chara_coordinator">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="@string/title_chara_list"
+                app:layout_scrollFlags="scroll|enterAlways" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                tools:ignore="LabelFor"
+                android:background="?attr/colorSurface">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myDropdown"
+                    android:layout_width="match_parent"
+                    android:layout_weight="5"
+                    android:hint="@string/ui_text_atk_type">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/dropdownText1"
+                        style="@style/myDropdownAutoText"
+                        android:layout_width="match_parent" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myDropdown"
+                    android:layout_width="match_parent"
+                    android:layout_weight="5"
+                    android:hint="@string/ui_text_position">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/dropdownText2"
+                        style="@style/myDropdownAutoText"
+                        android:layout_width="match_parent"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myDropdown"
+                    android:layout_width="match_parent"
+                    android:layout_weight="4"
+                    android:hint="@string/ui_text_sort">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/dropdownText3"
+                        style="@style/myDropdownAutoText"
+                        android:layout_width="match_parent"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/charaListRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:listitem="@layout/list_item_chara" />
+
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

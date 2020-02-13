@@ -1,20 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
-    <string name="app_name">ShizuruNotes</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">シズルノーツ</string>
-    <string name="nav_header_subtitle">弟くんのためのツールだよ～</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">シズノツ</string>
 
     <string name="app_bar_filter">Filter</string>
-    <string name="menu_chara">キャラ</string>
-    <string name="menu_clan_battle">クラバト</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_setting">設定</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
+    <string name="title_chara_list">キャラ</string>
+    <string name="title_clan_battle">クラバト</string>
+    <string name="title_setting">設定</string>
 
     <string name="setting_language">Language</string>
     <string name="setting_language_dialog_title">Choose your language</string>
@@ -39,9 +30,9 @@
     <string name="db_update_finished_text">アップデート完了しました</string>
 
     <string name="ui_text_filter">絞り込み</string>
-    <string name="ui_text_position">ポジション</string>
-    <string name="ui_text_atk_type">攻撃タイプ</string>
-    <string name="ui_text_sort">並び替え</string>
+    <string name="ui_text_position">位置</string>
+    <string name="ui_text_atk_type">タイプ</string>
+    <string name="ui_text_sort">ソート</string>
     <string name="ui_text_all">ALL</string>
 
     <string name="ui_chip_position_forward">前衛</string>
@@ -50,8 +41,9 @@
     <string name="ui_chip_atk_type_physical">物理</string>
     <string name="ui_chip_atk_type_magical">魔法</string>
     <string name="ui_btn_reset">リセット</string>
+    <string name="ui_chip_any">ALL</string>
 
-    <string name="ui_chip_sort_new">更新日時</string>
+    <string name="ui_chip_sort_new">更新日</string>
     <string name="ui_chip_sort_position">ポジション</string>
     <string name="ui_chip_sort_physical_atk">物理攻撃力</string>
     <string name="ui_chip_sort_magical_atk">魔法攻撃力</string>
@@ -64,6 +56,7 @@
     <string name="ui_chip_sort_way_up">昇順</string>
     <string name="ui_chip_sort_way_down">降順</string>
     <string name="ui_switch_change_value">表示切替</string>
+    <string name="snack_bar_cant_sort">データが不十分のためこのソートはまだ使えません</string>
 
     <string name="text_month">月</string>
     <string name="text_day">日</string>
@@ -271,9 +264,9 @@
     <string name="Move_to_s1_behind_of_s2_with_velocity_s3_sec">[%3$s]の速度で%2$sの後ろ[%1$s]の位置まで移動する。</string>
     <string name="Move_forward_s1_with_velocity_s2_sec">[%2$s]の速度で前へ[%1$s]移動する。</string>
     <string name="Move_backward_s1_with_velocity_s2_sec">[%2$s]の速度で後ろへ[%1$s]移動する。</string>
-    <string name="Knock_s_up_d">%sをノックアップする、高度[%d]。</string>
-    <string name="Knock_s_away_d">%sをノックバックする、距離[%d]。</string>
-    <string name="Draw_s_toward_self_d">%sを引き寄せる、距離[%d]。</string>
+    <string name="Knock_s1_up_d2">%1$sをノックアップする、高度[%2$d]。</string>
+    <string name="Knock_s1_away_d2">%1$sをノックバックする、距離[%2$d]。</string>
+    <string name="Draw_s1_toward_self_d2">%1$sを引き寄せる、距離[%2$d]。</string>
     <string name="Restore_s1_s2_s3_HP">%1$sのHPを[%2$s%3$s]回復させる。</string>   <!--恢复%1s [%2s]%3s HP。-->
     <string name="Cast_an_unknown_barrier_d1_on_s2_for_s3_sec">%2$sにタイプ[%1$d]のバリアを展開する、効果時間[%3$s]秒。</string>
     <string name="Cast_a_barrier_on_s1_to_nullify_s2_physical_damage_for_s3_sec">%1$sに[%2$s]ダメージ分の物理無効バリアを展開する、効果時間[%3$s]秒。</string>
@@ -383,7 +376,7 @@
     <string name="breaking">Break状態中</string>
     <string name="Condition_s">条件分岐：%s</string>
     <string name="separator">、</string>
-    <string name="Revive_s1_with_d2_HP">%s$1を復活させ、HPを[%2$d%%]回復させる。</string>
+    <string name="Revive_s1_with_d2_HP">%1$sを復活させ、HPを[%2$d%%]回復させる。</string>
     <string name="Modifier_add_s1_HP_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dを[%1$s * HP]アップさせる。</string>
     <string name="Modifier_add_s1_lost_HP_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dを[%1$s * 損失したHP]アップさせる。</string>
     <string name="Modifier_add_s1_count_of_defeated_enemies_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dを[%1$s * 倒した敵の数]アップさせる。</string>
@@ -425,13 +418,13 @@
     <string name="Add_additional_s1_damage_per_attack_with_max_s2_stacks_to_current_target">現在のターゲットに攻撃するたび、ダメージ量が[%1$s]追加する、この効果は[%2$s]回まで累計する。</string>
     <string name="Add_s1_mark_stacks_max_s2_ID_s3_on_s4_for_s5_sec">%4$sにマーク（ID：%3$s）を%1$sスタック追加する、効果時間[%5$s]秒、この効果は最大[%2$s]までスタックする。</string>
     <string name="Remove_s1_mark_stacks_ID_s2_on_s3">%3$sのマーク（ID：%2$s）を%1$sスタック減らせる。</string>
-    <string name="Summon_a_field_of_radius_d1_to_deal_s2_s3_damage_per_second_for_s4_sec_to_s5">半径%1$dのフィルドを展開し、%5$sに毎秒[%2$s]の%3$sダメージを与える、効果時間[%4$s]秒。</string>
-    <string name="Summon_a_field_of_radius_d1_at_position_of_s2_to_deal_s3_s4_damage_per_second_for_s5_sec">%2$sの位置で半径%1$dのフィルドを展開し、毎秒[%3$s]の%4$sダメージを与える、効果時間[%5$s]秒。</string>
-    <string name="Summon_a_healing_field_of_radius_d1_to_heal_s2_s3_s4_HP_per_second_for_5s_sec">半径%1$dのフィルドを展開し、%2$sに毎秒[%3$s%4$s]のHPを回復させる、効果時間[%5$s]秒。</string>
-    <string name="Summon_a_healing_field_of_radius_d1_at_position_of_s2_to_heal_s3_s4_HP_per_second_for_s5_sec">%2$sの位置で半径%1$dのフィルドを展開し、毎秒[%3$s%4$s]のHPを回復させる、効果時間[%5$s]秒。</string>
-    <string name="Summon_a_field_of_radius_d1_to_s2_s3_s4_s5_for_s6_sec">半径%1$dのフィルドを展開し、%3$sの%5$sを[%4$s]%2$sさせる、効果時間[%6$s]秒。</string>
-    <string name="Summon_a_field_of_radius_d1_at_position_of_s2_to_s3_s4_s5_for_s6_sec">%2$sの位置で半径%1$dのフィルドを展開し、%5$sを[%4$s]%3$sさせる、効果時間[%6$s]秒。</string>
-    <string name="Summon_a_field_of_radius_d1_on_s2_to_cast_effect_d3_for_s4_sec">%2$sの位置で半径%1$dのフィルドを展開し、[アクション%3$d]を継続的に放る、効果時間[%4$s]秒。</string>
+    <string name="Summon_a_field_of_radius_d1_to_deal_s2_s3_damage_per_second_for_s4_sec_to_s5">半径%1$dのフィールドを展開し、%5$sに毎秒[%2$s]の%3$sダメージを与える、効果時間[%4$s]秒。</string>
+    <string name="Summon_a_field_of_radius_d1_at_position_of_s2_to_deal_s3_s4_damage_per_second_for_s5_sec">%2$sの位置で半径%1$dのフィールドを展開し、毎秒[%3$s]の%4$sダメージを与える、効果時間[%5$s]秒。</string>
+    <string name="Summon_a_healing_field_of_radius_d1_to_heal_s2_s3_s4_HP_per_second_for_5s_sec">半径%1$dのフィールドを展開し、%2$sに毎秒[%3$s%4$s]のHPを回復させる、効果時間[%5$s]秒。</string>
+    <string name="Summon_a_healing_field_of_radius_d1_at_position_of_s2_to_heal_s3_s4_HP_per_second_for_s5_sec">%2$sの位置で半径%1$dのフィールドを展開し、毎秒[%3$s%4$s]のHPを回復させる、効果時間[%5$s]秒。</string>
+    <string name="Summon_a_field_of_radius_d1_to_s2_s3_s4_s5_for_s6_sec">半径%1$dのフィールドを展開し、%3$sの%5$sを[%4$s]%2$sさせる、効果時間[%6$s]秒。</string>
+    <string name="Summon_a_field_of_radius_d1_at_position_of_s2_to_s3_s4_s5_for_s6_sec">%2$sの位置で半径%1$dのフィールドを展開し、%5$sを[%4$s]%3$sさせる、効果時間[%6$s]秒。</string>
+    <string name="Summon_a_field_of_radius_d1_on_s2_to_cast_effect_d3_for_s4_sec">%2$sの位置で半径%1$dのフィールドを展開し、[アクション%3$d]を継続的に放る、効果時間[%4$s]秒。</string>
     <string name="Condition_s1_chance_use_d2_when_takes_damage_within_s3_sec">条件分岐：[%3$s]秒内ダメージを受けた場合、[%1$s%%]の確率で[アクション%2$d]を使う。</string>
     <string name="Appear_after_s_sec_since_wave_start">ウェーブ開始%s秒後入場する。</string>
     <string name="Add_d_to_the_counter">カウンターの数を%d増やせる。</string>
@@ -441,15 +434,15 @@
     <string name="Restore_s1_s2_s3_per_second_for_s4_sec">%1$sの%3$sを毎秒[%2$s]回復させる、効果時間[%4$s]秒。</string>
     <string name="Channeling_for_s1_sec_disrupted_by_taking_damage_d2_times_s3_s4_s5_s6_s7">%4$sの%7$sを[%5$s%6$s]%3$sさせる、このアクションは[%1$s]秒継続し、ダメージを%2$d回受けた時中断される。</string>
     <string name="Change_body_width_to_s">モデルの幅を%sにする。</string>
-    <string name="Condition_if_the_specific_field_exists_then_use_d1_otherwise_d2">条件分岐：特定なフィルド効果が存在する場合[アクション%1$d]を使う、そうでなければ[アクション%2$d]を使う。</string>
-    <string name="Condition_if_the_specific_field_exists_then_use_d">条件分岐：特定なフィルド効果が存在する場合[アクション%d]を使う。</string>
+    <string name="Condition_if_the_specific_field_exists_then_use_d1_otherwise_d2">条件分岐：特定なフィールド効果が存在する場合[アクション%1$d]を使う、そうでなければ[アクション%2$d]を使う。</string>
+    <string name="Condition_if_the_specific_field_exists_then_use_d">条件分岐：特定なフィールド効果が存在する場合[アクション%d]を使う。</string>
     <string name="Stealth_for_s_sec">潜伏状態に入る、効果時間[%s]秒。</string>
     <string name="Move_Part_d1_d2_forward_then_return">部位%1$dを前へ%2$d移動させ、その後元の位置に戻させる。</string>
     <string name="In_nex_s1_sec_s2_physical_attacks_will_miss">%2$sの物理攻撃を必ずミスさせる、効果時間[%1$s]秒。</string>
     <string name="In_next_s1_attacks_s2_physical_attacks_will_miss">%2$sの次の[%1$s]回物理攻撃を必ずミスさせる。</string>
     <string name="Set_a_countdown_timer_on_s1_trigger_effect_d2_after_s3_sec">%1$sにカウントダウンを設置する、[%3$s]秒後[アクション%2$d]を発動させる。</string>
-    <string name="Remove_field_of_skill_d1_1_represents_the_first_skill_in_this_list_effect_d2">[スキル%1$d]の[アクション%2$d]が展開したフィルドを取り除く。</string>
-    <string name="When_s1_receive_healing_deal_s2_healing_amount_damage_instead_last_for_s3_sec_or_unlimited_time_if_triggered_by_field">%1$sが回復を受けた時、それを無効にし、[%2$s]分のダメージを与える、効果時間[%3$s]秒。この効果はフィルド効果の場合、効果時間は無限大。</string>
+    <string name="Remove_field_of_skill_d1_1_represents_the_first_skill_in_this_list_effect_d2">[スキル%1$d]の[アクション%2$d]が展開したフィールドを取り除く。</string>
+    <string name="When_s1_receive_healing_deal_s2_healing_amount_damage_instead_last_for_s3_sec_or_unlimited_time_if_triggered_by_field">%1$sが回復を受けた時、それを無効にし、[%2$s]分のダメージを与える、効果時間[%3$s]秒。この効果はフィールド効果の場合、効果時間は無限大。</string>
     <string name="Make_s1_when_get_one_hit_by_the_caster_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">%1$sが自分にHitされるたび、マーク（ID：%3$s）を1スタック増やせる、効果時間[%4$s]秒、この効果は最大[%2$s]までスタックする。</string>
     <string name="Make_s1_when_deal_damage_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">%1$sがダメージを与えるたび、マーク（ID：%3$s）を1スタック増やせる、効果時間[%4$s]秒、この効果は最大[%2$s]までスタックする。</string>
     <string name="Fear_s1_with_s2_chance_for_s3_sec">[%2$s%%]の確率で%1$sを恐慌状態にする、効果時間[%3$s]秒。</string>
@@ -469,6 +462,9 @@
 
     <string name="permission_request_explanation_title">ストレージ権限</string>
     <string name="permission_request_explanation_text">本アプリはストレージを使ってキャラクターデータベースの保存とアプリのアップデートを行います、許可しないと正常に動作しない恐れがあります。</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

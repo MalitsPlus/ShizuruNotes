@@ -73,13 +73,13 @@ public class RawUnitBasic {
         chara.imageUrl = String.format(Locale.US, Statics.IMAGE_URL, prefab_id + 30);
 
         if(search_area_width < 300) {
-            chara.position = Statics.FILTER_FORWARD;
+            chara.position = "1";
             chara.positionIcon = R.drawable.position_forward;
         } else if(search_area_width > 300 && search_area_width < 600){
-            chara.position = Statics.FILTER_MIDDLE;
+            chara.position = "2";
             chara.positionIcon = R.drawable.position_middle;
         } else if(search_area_width > 600) {
-            chara.position = Statics.FILTER_REAR;
+            chara.position = "3";
             chara.positionIcon = R.drawable.position_rear;
         }
     }

@@ -3,47 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_chara">
+    app:startDestination="@+id/nav_view_pager">
+
 
     <fragment
-        android:id="@+id/nav_chara"
+        android:id="@+id/nav_view_pager"
+        android:name="com.github.malitsplus.shizurunotes.ui.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" >
+        <action
+            android:id="@+id/action_nav_view_pager_to_nav_chara_details"
+            app:destination="@id/nav_chara_details"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_chara_list"
         android:name="com.github.malitsplus.shizurunotes.ui.charalist.CharaListFragment"
-        android:label="@string/menu_chara"
-        tools:layout="@layout/fragment_chara" >
+        android:label="@string/title_chara_list"
+        tools:layout="@layout/fragment_chara_list">
         <action
             android:id="@+id/action_nav_chara_to_nav_chara_details"
             app:destination="@id/nav_chara_details" />
     </fragment>
-
-    <fragment
-        android:id="@+id/nav_clan_battle"
-        android:name="com.github.malitsplus.shizurunotes.ui.clanbattle.ClanBattleFragment"
-        android:label="@string/menu_clan_battle"
-        tools:layout="@layout/fragment_clan_battle" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.github.malitsplus.shizurunotes.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-
-    <fragment
-        android:id="@+id/nav_setting"
-        android:name="com.github.malitsplus.shizurunotes.ui.setting.SettingFragment"
-        android:label="@string/menu_setting"
-        tools:layout="@layout/fragment_setting" />
-
-    <fragment
-        android:id="@+id/nav_share"
-        android:name="com.github.malitsplus.shizurunotes.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
-
-    <fragment
-        android:id="@+id/nav_send"
-        android:name="com.github.malitsplus.shizurunotes.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
 
     <fragment
         android:id="@+id/nav_chara_details"
@@ -56,6 +42,27 @@
 
     <fragment
         android:id="@+id/nav_chara_profile"
-        android:name="com.github.malitsplus.shizurunotes.ui.charaprofile.CharaProfile"
+        android:name="com.github.malitsplus.shizurunotes.ui.charaprofile.CharaProfileFragment"
         tools:layout="@layout/fragment_chara_profile" />
+
+
+
+    <fragment
+        android:id="@+id/nav_clan_battle"
+        android:name="com.github.malitsplus.shizurunotes.ui.clanbattle.ClanbattleFragment"
+        android:label="@string/title_clan_battle"
+        tools:layout="@layout/fragment_clan_battle" />
+
+    <fragment
+        android:id="@+id/nav_setting"
+        android:name="com.github.malitsplus.shizurunotes.ui.setting.SettingFragment"
+        android:label="@string/title_setting"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/nav_setting_container"
+        android:name="com.github.malitsplus.shizurunotes.ui.setting.SettingContainerFragment"
+        android:label="fragment_setting_container"
+        tools:layout="@layout/fragment_setting_container" />
+
+
 </navigation>
