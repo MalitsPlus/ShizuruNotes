@@ -14,444 +14,471 @@
         <import type="com.github.malitsplus.shizurunotes.R"/>
     </data>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/bigImageLayout"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/toolbar_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="match_parent"
+                android:minHeight="?attr/actionBarSize"
+                app:collapsedTitleGravity="left"
+                app:contentScrim="?attr/colorPrimary"
+                app:expandedTitleTextAppearance="@style/expandedToolbarText"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:title="@{detailsViewModel.mutableChara.unitName, default=unitName}"
+                app:titleEnabled="true"
+                app:toolbarId="@id/toolbar">
 
                 <ImageView
                     android:id="@+id/bigImageView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginEnd="0dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_collapseMode="parallax"
                     bind:imageUrl="@{detailsViewModel.mutableChara.imageUrl}"
                     bind:placeHolder="@{R.drawable.place_holder_full}" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:contentInsetStartWithNavigation="0dp"
+                    app:layout_collapseMode="pin"
+                    app:navigationIcon="@drawable/ic_detail_back" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#EFEFEF"
+            android:clipToPadding="false"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/detailsItemChara"
                 android:layout_width="match_parent"
-                android:layout_height="66dp"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:onClick="@{clickListener}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bigImageLayout">
+                android:layout_height="match_parent">
 
-                <View
-                    android:id="@+id/divider1"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="0dp"
-                    android:background="?android:attr/listDivider"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/detailsCharaIcon"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/positionIcon"
-                    app:layout_constraintTop_toTopOf="parent"
-                    bind:imageUrl="@{detailsViewModel.mutableChara.iconUrl}"
-                    bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
-
-                <TextView
-                    android:id="@+id/detailsCharaNameKataText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@{detailsViewModel.mutableChara.unitName, default=unitName}"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toEndOf="@+id/detailsCharaIcon"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/detailsCharaNameKanjiText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@{detailsViewModel.mutableChara.actualName, default=actualName}"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toEndOf="@+id/detailsCharaIcon"
-                    app:layout_constraintTop_toBottomOf="@+id/detailsCharaNameKataText" />
-
-                <ImageView
-                    android:id="@+id/positionIcon"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    bind:src="@{detailsViewModel.mutableChara.positionIcon}" />
-
-                <View
-                    android:id="@+id/divider2"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="0dp"
-                    android:background="?android:attr/listDivider"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    bind:srcCompat="@drawable/mic_navigate_next" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/detailsCharaStatus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detailsItemChara">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/detailsItemChara"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:onClick="@{clickListener}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/text_status"
+                    <View
+                        android:id="@+id/divider1"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/statusValues"
-                        android:layout_width="match_parent"
+                    <ImageView
+                        android:id="@+id/detailsCharaIcon"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/positionIcon"
+                        app:layout_constraintTop_toTopOf="parent"
+                        bind:imageUrl="@{detailsViewModel.mutableChara.iconUrl}"
+                        bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
+
+                    <TextView
+                        android:id="@+id/detailsCharaNameKataText"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginStart="16dp"
+                        android:text="@{detailsViewModel.mutableChara.unitName, default=unitName}"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toEndOf="@+id/detailsCharaIcon"
+                        app:layout_constraintTop_toTopOf="@+id/detailsCharaIcon" />
+
+                    <TextView
+                        android:id="@+id/detailsCharaNameKanjiText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@{detailsViewModel.mutableChara.actualName, default=actualName}"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toEndOf="@+id/detailsCharaIcon"
+                        app:layout_constraintTop_toBottomOf="@+id/detailsCharaNameKataText" />
+
+                    <ImageView
+                        android:id="@+id/positionIcon"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/detailsCharaIcon"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView2">
+                        app:layout_constraintTop_toTopOf="@+id/detailsCharaIcon"
+                        bind:src="@{detailsViewModel.mutableChara.positionIcon}" />
 
-                        <com.allen.library.SuperTextView
-                            android:id="@+id/txtPhyAtk"
-                            style="@style/StatusSuperTextView"
+                    <View
+                        android:id="@+id/divider2"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        bind:srcCompat="@drawable/mic_navigate_next" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/detailsCharaStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/detailsItemChara">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
+                            android:text="@string/text_status"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:sLeftTextString="@string/text_physical_atk"
-                            bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.atk)}" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                        <com.allen.library.SuperTextView
-                            android:id="@+id/txtMagAtk"
-                            style="@style/StatusSuperTextView"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/statusValues"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+                            <com.allen.library.SuperTextView
+                                android:id="@+id/txtPhyAtk"
+                                style="@style/StatusSuperTextView"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:sLeftTextString="@string/text_physical_atk"
+                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.atk)}" />
+
+                            <com.allen.library.SuperTextView
+                                android:id="@+id/txtMagAtk"
+                                style="@style/StatusSuperTextView"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="8dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/txtPhyAtk"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/txtPhyAtk"
+                                app:layout_constraintVertical_bias="1.0"
+                                app:sLeftTextString="@string/text_magical_atk"
+                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.magicStr)}" />
+
+                            <com.allen.library.SuperTextView
+                                android:id="@+id/txtPhyCrt"
+                                style="@style/StatusSuperTextView"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/txtPhyAtk"
+                                app:sLeftTextString="@string/text_physical_crt"
+                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.physicalCritical)}" />
+
+                            <com.allen.library.SuperTextView
+                                android:id="@+id/txtMagCrt"
+                                style="@style/StatusSuperTextView"
+                                android:layout_marginEnd="8dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/txtPhyCrt"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/txtPhyCrt"
+                                app:sLeftTextString="@string/text_magical_crt"
+                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.magicCritical)}" />
+
+                            <com.allen.library.SuperTextView
+                                android:id="@+id/txtPhyDef"
+                                style="@style/StatusSuperTextView"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/txtPhyCrt"
+                                app:sLeftTextString="@string/text_physical_def"
+                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.def)}" />
+
+                            <com.allen.library.SuperTextView
+                                android:id="@+id/txtMagDef"
+                                style="@style/StatusSuperTextView"
+                                android:layout_marginEnd="8dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/txtPhyDef"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/txtPhyDef"
+                                app:sLeftTextString="@string/text_magical_def"
+                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.magicDef)}" />
+
+                            <com.allen.library.SuperTextView
+                                android:id="@+id/txtHp"
+                                style="@style/StatusSuperTextView"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/txtPhyDef"
+                                app:sLeftTextString="@string/text_hp"
+                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.hp)}" />
+
+                            <com.allen.library.SuperTextView
+                                android:id="@+id/txtLifeSteal"
+                                style="@style/StatusSuperTextView"
+                                android:layout_marginEnd="8dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/txtHp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/txtHp"
+                                app:sLeftTextString="@string/text_life_steal"
+                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.lifeSteal)}" />
+
+                            <com.allen.library.SuperTextView
+                                android:id="@+id/txtEngRcv"
+                                style="@style/StatusSuperTextView"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/txtHp"
+                                app:sLeftTextString="@string/text_energy_recovery"
+                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.energyRecoveryRate)}" />
+
+                            <com.allen.library.SuperTextView
+                                android:id="@+id/txtEngRdc"
+                                style="@style/StatusSuperTextView"
+                                android:layout_marginEnd="8dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/txtEngRcv"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/txtEngRcv"
+                                app:sLeftTextString="@string/text_energy_reduce"
+                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.energyReduceRate)}" />
+
+                            <com.allen.library.SuperTextView
+                                android:id="@+id/txtAcc"
+                                style="@style/StatusSuperTextView"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/txtEngRcv"
+                                app:sLeftTextString="@string/text_accuracy"
+                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.accuracy)}" />
+
+                            <com.allen.library.SuperTextView
+                                android:id="@+id/txtDdg"
+                                style="@style/StatusSuperTextView"
+                                android:layout_marginEnd="8dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/txtAcc"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/txtAcc"
+                                app:sLeftTextString="@string/text_dodge"
+                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.dodge)}" />
+
+                            <com.allen.library.SuperTextView
+                                android:id="@+id/txtWavHp"
+                                style="@style/StatusSuperTextView"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/txtAcc"
+                                app:sLeftTextString="@string/text_wave_hp_recovery"
+                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.waveHpRecovery)}" />
+
+                            <com.allen.library.SuperTextView
+                                android:id="@+id/txtWavEng"
+                                style="@style/StatusSuperTextView"
+                                android:layout_marginEnd="8dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/txtWavHp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/txtWavHp"
+                                app:sLeftTextString="@string/text_wave_energy_recovery"
+                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.waveEnergyRecovery)}" />
+
+                            <com.allen.library.SuperTextView
+                                android:id="@+id/txtPhyPnt"
+                                style="@style/StatusSuperTextView"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/txtWavHp"
+                                app:sLeftTextString="@string/text_physical_penetrate"
+                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.physicalPenetrate)}" />
+
+                            <com.allen.library.SuperTextView
+                                android:id="@+id/txtMagPnt"
+                                style="@style/StatusSuperTextView"
+                                android:layout_marginEnd="8dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/txtPhyPnt"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/txtPhyPnt"
+                                app:sLeftTextString="@string/text_magical_penetrate"
+                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.magicPenetrate)}" />
+
+                            <com.allen.library.SuperTextView
+                                android:id="@+id/txtHpRcv"
+                                style="@style/StatusSuperTextView"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="8dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/txtPhyPnt"
+                                app:layout_constraintVertical_bias="0.0"
+                                app:sLeftTextString="@string/text_hp_recovery"
+                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.hpRecoveryRate)}" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/txtPhyAtk"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/txtPhyAtk"
-                            app:layout_constraintVertical_bias="1.0"
-                            app:sLeftTextString="@string/text_magical_atk"
-                            bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.magicStr)}" />
-
-                        <com.allen.library.SuperTextView
-                            android:id="@+id/txtPhyCrt"
-                            style="@style/StatusSuperTextView"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtPhyAtk"
-                            app:sLeftTextString="@string/text_physical_crt"
-                            bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.physicalCritical)}" />
-
-                        <com.allen.library.SuperTextView
-                            android:id="@+id/txtMagCrt"
-                            style="@style/StatusSuperTextView"
-                            android:layout_marginEnd="8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/txtPhyCrt"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/txtPhyCrt"
-                            app:sLeftTextString="@string/text_magical_crt"
-                            bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.magicCritical)}" />
-
-                        <com.allen.library.SuperTextView
-                            android:id="@+id/txtPhyDef"
-                            style="@style/StatusSuperTextView"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtPhyCrt"
-                            app:sLeftTextString="@string/text_physical_def"
-                            bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.def)}" />
-
-                        <com.allen.library.SuperTextView
-                            android:id="@+id/txtMagDef"
-                            style="@style/StatusSuperTextView"
-                            android:layout_marginEnd="8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/txtPhyDef"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/txtPhyDef"
-                            app:sLeftTextString="@string/text_magical_def"
-                            bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.magicDef)}" />
-
-                        <com.allen.library.SuperTextView
-                            android:id="@+id/txtHp"
-                            style="@style/StatusSuperTextView"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtPhyDef"
-                            app:sLeftTextString="@string/text_hp"
-                            bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.hp)}" />
-
-                        <com.allen.library.SuperTextView
-                            android:id="@+id/txtLifeSteal"
-                            style="@style/StatusSuperTextView"
-                            android:layout_marginEnd="8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/txtHp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/txtHp"
-                            app:sLeftTextString="@string/text_life_steal"
-                            bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.lifeSteal)}" />
-
-                        <com.allen.library.SuperTextView
-                            android:id="@+id/txtEngRcv"
-                            style="@style/StatusSuperTextView"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtHp"
-                            app:sLeftTextString="@string/text_energy_recovery"
-                            bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.energyRecoveryRate)}" />
-
-                        <com.allen.library.SuperTextView
-                            android:id="@+id/txtEngRdc"
-                            style="@style/StatusSuperTextView"
-                            android:layout_marginEnd="8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/txtEngRcv"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/txtEngRcv"
-                            app:sLeftTextString="@string/text_energy_reduce"
-                            bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.energyReduceRate)}" />
-
-                        <com.allen.library.SuperTextView
-                            android:id="@+id/txtAcc"
-                            style="@style/StatusSuperTextView"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtEngRcv"
-                            app:sLeftTextString="@string/text_accuracy"
-                            bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.accuracy)}" />
-
-                        <com.allen.library.SuperTextView
-                            android:id="@+id/txtDdg"
-                            style="@style/StatusSuperTextView"
-                            android:layout_marginEnd="8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/txtAcc"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/txtAcc"
-                            app:sLeftTextString="@string/text_dodge"
-                            bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.dodge)}" />
-
-                        <com.allen.library.SuperTextView
-                            android:id="@+id/txtWavHp"
-                            style="@style/StatusSuperTextView"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtAcc"
-                            app:sLeftTextString="@string/text_wave_hp_recovery"
-                            bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.waveHpRecovery)}" />
-
-                        <com.allen.library.SuperTextView
-                            android:id="@+id/txtWavEng"
-                            style="@style/StatusSuperTextView"
-                            android:layout_marginEnd="8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/txtWavHp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/txtWavHp"
-                            app:sLeftTextString="@string/text_wave_energy_recovery"
-                            bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.waveEnergyRecovery)}" />
-
-                        <com.allen.library.SuperTextView
-                            android:id="@+id/txtPhyPnt"
-                            style="@style/StatusSuperTextView"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtWavHp"
-                            app:sLeftTextString="@string/text_physical_penetrate"
-                            bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.physicalPenetrate)}" />
-
-                        <com.allen.library.SuperTextView
-                            android:id="@+id/txtMagPnt"
-                            style="@style/StatusSuperTextView"
-                            android:layout_marginEnd="8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/txtPhyPnt"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/txtPhyPnt"
-                            app:sLeftTextString="@string/text_magical_penetrate"
-                            bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.magicPenetrate)}" />
-
-                        <com.allen.library.SuperTextView
-                            android:id="@+id/txtHpRcv"
-                            style="@style/StatusSuperTextView"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp"
+                            android:text="@string/text_status_tips"
                             app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtPhyPnt"
-                            app:layout_constraintVertical_bias="0.0"
-                            app:sLeftTextString="@string/text_hp_recovery"
-                            bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.hpRecoveryRate)}" />
+                            app:layout_constraintTop_toBottomOf="@+id/statusValues"
+                            app:layout_constraintVertical_bias="0.0" />
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:text="@string/text_status_tips"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/statusValues"
-                        app:layout_constraintVertical_bias="0.0" />
 
+                </androidx.cardview.widget.CardView>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/attackPattern"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detailsCharaStatus"
-                app:layout_constraintVertical_bias="0.0">
-
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/attackPatternConstraint"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/attackPattern"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/detailsCharaStatus">
 
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/text_attack_pattern"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/attackPatternRecycler"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/attackPatternConstraint"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView4"
+                        android:layout_height="match_parent">
 
-                        />
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/text_attack_pattern"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/textAnotherMode"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/text_another_mode"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/attackPatternRecycler" />
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/attackPatternRecycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView4"
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/attackPatternRecycler2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="4dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textAnotherMode" />
+                            />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:id="@+id/textAnotherMode"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/text_another_mode"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/attackPatternRecycler" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/skillRecycler"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/attackPattern" />
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/attackPatternRecycler2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="4dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textAnotherMode" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
 
-    </androidx.core.widget.NestedScrollView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/skillRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/attackPattern" />
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

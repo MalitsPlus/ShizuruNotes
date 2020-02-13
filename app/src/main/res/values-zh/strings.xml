@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <string name="app_name">静流笔记</string>
     <string name="menu_chara">角色</string>
 
-    <string name="ui_text_filter">类型</string>
 </resources>

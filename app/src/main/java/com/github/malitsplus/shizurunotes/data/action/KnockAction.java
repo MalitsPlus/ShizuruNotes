@@ -43,13 +43,13 @@ public class KnockAction extends ActionParameter {
     public String localizedDetail(int level, Property property) {
         switch (knockType){
             case upDown:
-                return I18N.getString(R.string.Knock_s_up_d, targetParameter.buildTargetClause(), (int)actionValue1);
+                return I18N.getString(R.string.Knock_s1_up_d2, targetParameter.buildTargetClause(), (int)actionValue1);
             case back:
             case backLimited:
                 if(actionValue1 >= 0)
-                    return I18N.getString(R.string.Knock_s_away_d, targetParameter.buildTargetClause(), (int)actionValue1);
+                    return I18N.getString(R.string.Knock_s1_away_d2, targetParameter.buildTargetClause(), (int)actionValue1);
                 else
-                    return I18N.getString(R.string.Draw_s_toward_self_d, targetParameter.buildTargetClause(), (int)-actionValue1);
+                    return I18N.getString(R.string.Draw_s1_toward_self_d2, targetParameter.buildTargetClause(), (int)-actionValue1);
             default:
                 return super.localizedDetail(level, property);
         }

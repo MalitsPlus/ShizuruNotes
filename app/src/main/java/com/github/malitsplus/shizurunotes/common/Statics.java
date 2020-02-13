@@ -13,10 +13,4 @@ public class Statics {
 
     public final static String UNKNOWN_ICON = API_URL + "/icon/equipment/999999.webp";
 
-    public final static String FILTER_NULL = "N";
-    public final static String FILTER_FORWARD = "F";
-    public final static String FILTER_MIDDLE = "M";
-    public final static String FILTER_REAR = "R";
-
-
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_chara_list"
+        android:icon="@drawable/mic_cake"
+        android:title="@string/title_chara_list" />
+
+    <item
+        android:id="@+id/nav_clan_battle"
+        android:icon="@drawable/mic_defend"
+        android:title="@string/title_clan_battle" />
+
+    <item
+        android:id="@+id/nav_setting"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/title_setting" />
+
+</menu>

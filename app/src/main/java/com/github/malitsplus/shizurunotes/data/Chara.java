@@ -2,6 +2,7 @@ package com.github.malitsplus.shizurunotes.data;
 
 import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.I18N;
+import com.github.malitsplus.shizurunotes.data.action.PassiveAction;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -72,7 +73,8 @@ public class Chara {
                 .plusEqual(storyProperty)
                 .plusEqual(promotionStatus)
                 .plusEqual(getAllEquipmentProperty())
-                .plusEqual(getUniqueEquipmentProperty());
+                .plusEqual(getUniqueEquipmentProperty())
+                .plusEqual(getPassiveSkillProperty());
     }
 
     public Property getRarityGrowthProperty(){
@@ -91,6 +93,18 @@ public class Chara {
             property
                 .plusEqual(uniqueEquipment.getEquipmentData())
                 .plusEqual(uniqueEquipment.getEquipmentEnhanceRate().multiply(maxUniqueEquipmentLevel - 1));
+        }
+        return property;
+    }
+    public Property getPassiveSkillProperty(){
+        Property property = new Property();
+        for (Skill skill: skills){
+            if (skill.skillClass == Skill.SkillClass.EX1_EVO){
+                for (Skill.Action action: skill.actions){
+                    if (action.parameter instanceof PassiveAction)
+                        property.plusEqual(((PassiveAction)action.parameter).propertyItem(maxCharaLevel));
+                }
+            }
         }
         return property;
     }

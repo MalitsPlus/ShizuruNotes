@@ -8,15 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
     <style name="MyChipChoice" parent="@style/Widget.MaterialComponents.Chip.Choice">
         <item name="chipBackgroundColor">@color/chip_state_background_color_list</item>
         <item name="android:textColor">@color/chip_state_text_color_list</item>
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="expandedToolbarText" parent="AppTheme">
+        <item name="android:textColor">#00FFFFFF</item>
+        <item name="android:textSize">1sp</item>
     </style>
 
     <style name="StatusSuperTextView">
@@ -34,8 +34,24 @@
         <item name="sUseRipple">false</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="hintText" parent="@style/TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">8sp</item>
+    </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="myDropdown" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+        <item name="boxCornerRadiusBottomStart">24dp</item>
+        <item name="boxCornerRadiusBottomEnd">24dp</item>
+        <item name="boxCornerRadiusTopStart">24dp</item>
+        <item name="boxCornerRadiusTopEnd">24dp</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxBackgroundColor">#00FFFFFF</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 
+    <style name="myDropdownAutoText" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+        <item name="android:textColor">#000000</item>
+        <item name="android:editable">false</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>

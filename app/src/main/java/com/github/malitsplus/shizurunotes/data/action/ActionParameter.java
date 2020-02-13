@@ -20,7 +20,6 @@ public class ActionParameter {
                 return new DamageAction();
             case 2:
                 return new MoveAction();
-
             case 3:
                 return new KnockAction();
             case 4:
@@ -273,7 +272,7 @@ public class ActionParameter {
                     double initialValue = Double.parseDouble(value.initial);
                     double perLevelValue = Double.parseDouble(value.perLevel);
                     if(initialValue == 0 && perLevelValue == 0) {
-                        break;
+                        continue;
                     } else if(initialValue == 0){
                         part.append(String.format("%s * %s", perLevelValue, I18N.getString(R.string.SLv)));
                     } else if(perLevelValue == 0){
@@ -286,7 +285,7 @@ public class ActionParameter {
                     }
                     if(value.key != null){
                          if(initialValue == 0 && perLevelValue == 0){
-                             break;
+                             continue;
                          } else if (initialValue == 0 || perLevelValue == 0){
                              part.append(String.format(" * %s", value.key.description()));
                          } else {
