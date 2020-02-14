@@ -58,6 +58,7 @@
     <string name="ui_switch_change_value">表示切替</string>
     <string name="snack_bar_cant_sort">データが不十分のためこのソートはまだ使えません</string>
 
+    <string name="text_year">年</string>
     <string name="text_month">月</string>
     <string name="text_day">日</string>
     <string name="text_status">ステータス</string>

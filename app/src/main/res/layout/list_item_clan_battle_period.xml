@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="period"
+            type="com.github.malitsplus.shizurunotes.data.ClanBattlePeriod" />
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+        <import type="com.github.malitsplus.shizurunotes.R"/>
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:cardCornerRadius="24dp"
+        android:onClick="@{clickListener}"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/period_item_layout"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginEnd="8dp"
+                android:adjustViewBounds="true"
+                android:scaleType="center"
+                android:alpha="0.1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                bind:src="@{period.zodiacImage}" />
+
+
+            <TextView
+                android:id="@+id/period_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@{period.periodText, default=periodText}"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/clan_b1_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                bind:imageUrl="@{period.iconBoss1}"
+                bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
+
+            <ImageView
+                android:id="@+id/clan_b2_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/clan_b1_icon"
+                app:layout_constraintStart_toEndOf="@+id/clan_b1_icon"
+                app:layout_constraintTop_toTopOf="@+id/clan_b1_icon"
+                bind:imageUrl="@{period.iconBoss2}"
+                bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
+
+            <ImageView
+                android:id="@+id/clan_b3_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/clan_b2_icon"
+                app:layout_constraintStart_toEndOf="@+id/clan_b2_icon"
+                app:layout_constraintTop_toTopOf="@+id/clan_b2_icon"
+                bind:imageUrl="@{period.iconBoss3}"
+                bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
+
+            <ImageView
+                android:id="@+id/clan_b4_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/clan_b3_icon"
+                app:layout_constraintStart_toEndOf="@+id/clan_b3_icon"
+                app:layout_constraintTop_toTopOf="@+id/clan_b3_icon"
+                bind:imageUrl="@{period.iconBoss4}"
+                bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
+
+            <ImageView
+                android:id="@+id/clan_b5_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/clan_b4_icon"
+                app:layout_constraintStart_toEndOf="@+id/clan_b4_icon"
+                app:layout_constraintTop_toTopOf="@+id/clan_b4_icon"
+                bind:imageUrl="@{period.iconBoss5}"
+                bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

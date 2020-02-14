@@ -3,10 +3,7 @@ package com.github.malitsplus.shizurunotes.ui.charalist
 import android.os.Bundle
 import android.view.*
 import android.widget.AdapterView
-import android.widget.AutoCompleteTextView
-import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,13 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.common.MaterialSpinnerAdapter
-import com.github.malitsplus.shizurunotes.common.Statics
 import com.github.malitsplus.shizurunotes.data.Chara
 import com.github.malitsplus.shizurunotes.databinding.FragmentCharaListBinding
-import com.github.malitsplus.shizurunotes.ui.SharedViewModel
-import com.github.malitsplus.shizurunotes.ui.SharedViewModelFactory
+import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
+import com.github.malitsplus.shizurunotes.ui.SharedViewModelCharaFactory
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textview.MaterialTextView
 
 
 class CharaListFragment : Fragment() {
@@ -34,13 +29,14 @@ class CharaListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val sharedViewModel = ViewModelProvider(activity!!).get(SharedViewModel::class.java)
+        val sharedViewModel = ViewModelProvider(activity!!).get(SharedViewModelChara::class.java)
 
         charaListViewModel = ViewModelProvider(
-            this, SharedViewModelFactory(sharedViewModel)).get(CharaListViewModel::class.java)
-
-
-
+            this,
+            SharedViewModelCharaFactory(
+                sharedViewModel
+            )
+        ).get(CharaListViewModel::class.java)
 
         val binding =
             DataBindingUtil.inflate<FragmentCharaListBinding>(
@@ -112,18 +108,14 @@ class CharaListFragment : Fragment() {
             Observer<Int>{ updateList() }
         )
 
-        //setHasOptionsMenu(true)
-
-
-        //charaListViewModel.filterDefault()
-
         return binding.root
     }
 
+    /*
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.fragment_chara_bar, menu)
     }
-
+*/
     fun updateList() {
         charaListViewModel.filterDefault()
     }

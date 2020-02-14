@@ -4,12 +4,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
-import com.github.malitsplus.shizurunotes.common.Statics
 import com.github.malitsplus.shizurunotes.data.Chara
-import com.github.malitsplus.shizurunotes.ui.SharedViewModel
+import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
 import java.util.*
 
-class CharaListViewModel(private val sharedViewModel: SharedViewModel) : ViewModel() {
+class CharaListViewModel(private val sharedViewModelChara: SharedViewModelChara) : ViewModel() {
 
     val liveCharaList = MutableLiveData<List<Chara>>()
 
@@ -62,7 +61,7 @@ class CharaListViewModel(private val sharedViewModel: SharedViewModel) : ViewMod
         asc?.apply { isAsc = this }
 
         val charaToShow: MutableList<Chara> = ArrayList()
-        for (chara in sharedViewModel.charaList) {
+        for (chara in sharedViewModelChara.charaList) {
             if (checkAttackType(chara, selectedAttackType) && checkPosition(chara, selectedPosition)) {
                 setSortValue(chara, selectedSort)
                 charaToShow.add(chara)

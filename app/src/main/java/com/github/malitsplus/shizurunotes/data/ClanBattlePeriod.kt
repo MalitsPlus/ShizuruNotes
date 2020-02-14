@@ -1,0 +1,56 @@
+package com.github.malitsplus.shizurunotes.data
+
+import androidx.annotation.IntegerRes
+import com.github.malitsplus.shizurunotes.R
+import com.github.malitsplus.shizurunotes.common.I18N
+import com.github.malitsplus.shizurunotes.db.DBHelper
+import java.lang.StringBuilder
+import java.time.LocalDateTime
+
+class ClanBattlePeriod(
+    val clanBattleId: Int,
+    val startTime: LocalDateTime,
+    val endTime: LocalDateTime
+) {
+
+    val periodText: String = startTime.year.toString() +
+            I18N.getString(R.string.text_year) +
+            startTime.monthValue.toString() +
+            I18N.getString(R.string.text_month)
+
+    val phaseList = ArrayList<ClanBattlePhase>().apply {
+        DBHelper.get().getClanBattlePhase(clanBattleId).forEach {
+            this.add(it.clanBattlePhase)
+        }
+    }
+
+    val iconBoss1 = phaseList[0].waveGroupList[0].bossList[0].iconUrl
+    val iconBoss2 = phaseList[0].waveGroupList[1].bossList[0].iconUrl
+    val iconBoss3 = phaseList[0].waveGroupList[2].bossList[0].iconUrl
+    val iconBoss4 = phaseList[0].waveGroupList[3].bossList[0].iconUrl
+    val iconBoss5 = phaseList[0].waveGroupList[4].bossList[0].iconUrl
+
+    val zodiacImage: Int? = when(startTime.monthValue){
+        1 -> R.drawable.zodiac_aquarious
+        2 -> R.drawable.zodiac_pisces
+        3 -> R.drawable.zodiac_aries
+        4 -> R.drawable.zodiac_taurus
+        5 -> R.drawable.zodiac_gemini
+        6 -> R.drawable.zodiac_cancer
+        7 -> R.drawable.zodiac_leo
+        8 -> R.drawable.zodiac_virgo
+        9 -> R.drawable.zodiac_libra
+        10 -> R.drawable.zodiac_scorpio
+        11 -> R.drawable.zodiac_sagittarious
+        12 -> R.drawable.zodiac_capricorn
+        else -> R.drawable.mic_chara_icon_place_holder
+    }
+
+/*
+    init {
+        DBHelper.get().getClanBattlePhase(clanBattleId).forEach {
+            phaseList.add(it.clanBattlePhase)
+        }
+    }
+*/
+}

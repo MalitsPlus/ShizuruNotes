@@ -18,6 +18,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_nav_view_pager_to_nav_clan_battle_details"
+            app:destination="@id/nav_clan_battle_details"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
 
@@ -49,9 +56,16 @@
 
     <fragment
         android:id="@+id/nav_clan_battle"
-        android:name="com.github.malitsplus.shizurunotes.ui.clanbattle.ClanbattleFragment"
+        android:name="com.github.malitsplus.shizurunotes.ui.clanbattle.ClanBattleFragment"
         android:label="@string/title_clan_battle"
         tools:layout="@layout/fragment_clan_battle" />
+
+    <fragment
+        android:id="@+id/nav_clan_battle_details"
+        android:name="com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleDetailsFragment"
+        android:label="fragment_clan_battle_details"
+        tools:layout="@layout/fragment_clan_battle_details" />
+
 
     <fragment
         android:id="@+id/nav_setting"
@@ -63,6 +77,7 @@
         android:name="com.github.malitsplus.shizurunotes.ui.setting.SettingContainerFragment"
         android:label="fragment_setting_container"
         tools:layout="@layout/fragment_setting_container" />
+
 
 
 </navigation>

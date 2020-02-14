@@ -4,17 +4,12 @@ import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.afollestad.materialdialogs.MaterialDialog
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.App
@@ -23,8 +18,6 @@ import com.github.malitsplus.shizurunotes.common.UpdateManager
 import com.github.malitsplus.shizurunotes.common.UserSettings
 import com.github.malitsplus.shizurunotes.databinding.ActivityMainBinding
 import com.github.malitsplus.shizurunotes.db.DBHelper
-import com.github.malitsplus.shizurunotes.ui.charalist.CharaListFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(), UpdateManager.IFragmentCallBack, OnRequestPermissionsResultCallback {
 
@@ -37,7 +30,8 @@ class MainActivity : AppCompatActivity(), UpdateManager.IFragmentCallBack, OnReq
     }
 
     private lateinit var updateManager: UpdateManager
-    private lateinit var sharedViewModel: SharedViewModel
+    private lateinit var sharedViewModelChara: SharedViewModelChara
+    private lateinit var sharedViewModelClanBattle: SharedViewModelClanBattle
 
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(App.localeManager.setLocale(base))
@@ -52,10 +46,11 @@ class MainActivity : AppCompatActivity(), UpdateManager.IFragmentCallBack, OnReq
         UserSettings.with(application)
         I18N.application = application
 
-        sharedViewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
-
         updateManager = UpdateManager(this, findViewById(R.id.nav_host_fragment))
         updateManager.setIFragmentCallBack(this)
+
+        sharedViewModelChara = ViewModelProvider(this).get(SharedViewModelChara::class.java)
+        sharedViewModelClanBattle = ViewModelProvider(this).get(SharedViewModelClanBattle::class.java)
 
         if (checkStoragePermission()) updateManager.checkDatabaseVersion()
 
@@ -112,7 +107,8 @@ class MainActivity : AppCompatActivity(), UpdateManager.IFragmentCallBack, OnReq
     }
 
     override fun dbUpdateFinished() {
-        sharedViewModel.loadData()
+        sharedViewModelChara.loadData()
+        sharedViewModelClanBattle.loadData()
 //        val fragment =
 //            supportFragmentManager.fragments[0].childFragmentManager.fragments[0].childFragmentManager.fragments[0]
 //        if (fragment is CharaListFragment) {

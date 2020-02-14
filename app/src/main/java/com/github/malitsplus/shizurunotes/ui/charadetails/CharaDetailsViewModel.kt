@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.malitsplus.shizurunotes.data.Chara
-import com.github.malitsplus.shizurunotes.ui.SharedViewModel
+import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
 
-class CharaDetailsViewModel(private val sharedViewModel: SharedViewModel) : ViewModel() {
+class CharaDetailsViewModel(private val sharedViewModelChara: SharedViewModelChara) : ViewModel() {
 
     val mutableChara = MutableLiveData<Chara>()
 
@@ -19,6 +19,6 @@ class CharaDetailsViewModel(private val sharedViewModel: SharedViewModel) : View
     }
 
     init {
-        setChara(sharedViewModel.selectedChara)
+        setChara(sharedViewModelChara.selectedChara)
     }
 }
