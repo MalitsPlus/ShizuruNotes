@@ -13,6 +13,7 @@ import com.github.malitsplus.shizurunotes.common.Utils;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -613,6 +614,146 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return raw;
     }
+
+    /***
+     * 获取会战期次
+     * @param
+     * @return
+     */
+    public List<RawClanBattlePeriod> getClanBattlePeriod(){
+        List<RawClanBattlePeriod> raw;
+        try{
+            raw = getBeanListByRaw("SELECT * FROM clan_battle_period WHERE clan_battle_id > 1014 ORDER BY clan_battle_id DESC ",
+                    RawClanBattlePeriod.class
+            );
+        } catch (InstantiationException | IllegalAccessException e){
+            e.printStackTrace();
+            return null;
+        }
+        return raw;
+    }
+
+    /***
+     * 获取会战phase
+     * @param
+     * @return
+     */
+    public List<RawClanBattlePhase> getClanBattlePhase(int clanBattleId){
+        List<RawClanBattlePhase> raw;
+        try{
+            raw = getBeanListByRaw("SELECT DISTINCT phase " +
+                            ",wave_group_id_1 " +
+                            ",wave_group_id_2 " +
+                            ",wave_group_id_3 " +
+                            ",wave_group_id_4 " +
+                            ",wave_group_id_5 " +
+                            "FROM clan_battle_2_map_data WHERE clan_battle_id=? " +
+                            "ORDER BY phase DESC ",
+                    String.valueOf(clanBattleId),
+                    RawClanBattlePhase.class
+            );
+        } catch (InstantiationException | IllegalAccessException e){
+            e.printStackTrace();
+            return null;
+        }
+        return raw;
+    }
+
+    /***
+     * 获取会战phase-wave
+     * @param
+     * @return
+     */
+    public List<RawWaveGroup> getClanBattleWaveEnemy(List<Integer> waveGroupList){
+        List<RawWaveGroup> raw;
+        try{
+            raw = getBeanListByRaw(String.format("SELECT * FROM wave_group_data WHERE wave_group_id IN (%s) ",
+                    waveGroupList.toString().replace("[","").replace("]","")),
+                    RawWaveGroup.class
+            );
+        } catch (InstantiationException | IllegalAccessException e){
+            e.printStackTrace();
+            return null;
+        }
+        return raw;
+    }
+
+    /***
+     * 获取会战bossList
+     * @param
+     * @return
+     */
+    public List<RawClanBattleBoss> getClanBattleBoss(List<Integer> enemyIdList){
+        List<RawClanBattleBoss> raw;
+        try{
+            raw = getBeanListByRaw(String.format("SELECT " +
+                            "a.*, " +
+                            "b.union_burst, " +
+                            "b.union_burst_evolution, " +
+                            "b.main_skill_1, " +
+                            "b.main_skill_evolution_1, " +
+                            "b.main_skill_2, " +
+                            "b.main_skill_evolution_2, " +
+                            "b.ex_skill_1, " +
+                            "b.ex_skill_evolution_1, " +
+                            "b.main_skill_3, " +
+                            "b.main_skill_4, " +
+                            "b.main_skill_5, " +
+                            "b.main_skill_6, " +
+                            "b.main_skill_7, " +
+                            "b.main_skill_8, " +
+                            "b.main_skill_9, " +
+                            "b.main_skill_10, " +
+                            "b.ex_skill_2, " +
+                            "b.ex_skill_evolution_2, " +
+                            "b.ex_skill_3, " +
+                            "b.ex_skill_evolution_3, " +
+                            "b.ex_skill_4, " +
+                            "b.ex_skill_evolution_4, " +
+                            "b.ex_skill_5, " +
+                            "b.sp_skill_1, " +
+                            "b.ex_skill_evolution_5, " +
+                            "b.sp_skill_2, " +
+                            "b.sp_skill_3, " +
+                            "b.sp_skill_4, " +
+                            "b.sp_skill_5, " +
+                            "c.child_enemy_parameter_1, " +
+                            "c.child_enemy_parameter_2, " +
+                            "c.child_enemy_parameter_3, " +
+                            "c.child_enemy_parameter_4, " +
+                            "c.child_enemy_parameter_5, " +
+                            "u.prefab_id " +
+                            "FROM " +
+                            "unit_skill_data b, " +
+                            "enemy_parameter a " +
+                            "LEFT JOIN enemy_m_parts c ON a.enemy_id = c.enemy_id " +
+                            "LEFT JOIN unit_enemy_data u ON a.unit_id = u.unit_id " +
+                            "WHERE " +
+                            "a.unit_id = b.unit_id " +
+                            "AND a.enemy_id in ( %s ) ",
+                    enemyIdList.toString().replace("[","").replace("]","")),
+                    RawClanBattleBoss.class
+            );
+        } catch (InstantiationException | IllegalAccessException e){
+            e.printStackTrace();
+            return null;
+        }
+        return raw;
+    }
+
+    /***
+     * 获取会战boss
+     * @param
+     * @return
+     */
+    public RawClanBattleBoss getClanBattleBoss(int enemyId){
+        List<RawClanBattleBoss> raw = getClanBattleBoss(Collections.singletonList(enemyId));
+        if (raw.isEmpty())
+            return null;
+        else
+            return raw.get(0);
+    }
+
 
     public int getMaxCharaLevel(){
         String result = getOne("SELECT max(team_level) FROM experience_team ");

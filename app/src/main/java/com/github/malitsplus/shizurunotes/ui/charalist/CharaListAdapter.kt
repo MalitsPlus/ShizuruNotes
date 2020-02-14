@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.Chara
 import com.github.malitsplus.shizurunotes.databinding.ListItemCharaBinding
-import com.github.malitsplus.shizurunotes.ui.SharedViewModel
+import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
 import com.github.malitsplus.shizurunotes.ui.ViewPagerFragmentDirections
 import java.util.*
 
 class CharaListAdapter(
     private val mContext: Context,
-    private val sharedViewModel: SharedViewModel
+    private val sharedViewModelChara: SharedViewModelChara
 ) :
     RecyclerView.Adapter<CharaListAdapter.CharaListViewHolder>() {
     private var charaList: List<Chara> = ArrayList()
@@ -31,7 +31,7 @@ class CharaListAdapter(
         )
         //向每个item设置点击监听事件
         binding.clickListener = View.OnClickListener { v: View? ->
-            sharedViewModel.selectedChara = binding.chara
+            sharedViewModelChara.selectedChara = binding.chara
             val action: NavDirections =
                 ViewPagerFragmentDirections.actionNavViewPagerToNavCharaDetails()
                 //CharaListFragmentDirections.actionNavCharaToNavCharaDetails()

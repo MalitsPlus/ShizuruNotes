@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.NestedScrollView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -17,8 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.Chara
 import com.github.malitsplus.shizurunotes.databinding.FragmentCharaDetailsBinding
-import com.github.malitsplus.shizurunotes.ui.SharedViewModel
-import com.github.malitsplus.shizurunotes.ui.SharedViewModelFactory
+import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
+import com.github.malitsplus.shizurunotes.ui.SharedViewModelCharaFactory
 
 class CharaDetailsFragment : Fragment(), View.OnClickListener {
 
@@ -38,9 +36,13 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
             false
         )
 
-        val sharedViewModel = ViewModelProvider(activity!!).get(SharedViewModel::class.java)
+        val sharedViewModel = ViewModelProvider(activity!!).get(SharedViewModelChara::class.java)
         detailsViewModel = ViewModelProvider(
-            this, SharedViewModelFactory(sharedViewModel)).get(CharaDetailsViewModel::class.java
+            this,
+            SharedViewModelCharaFactory(
+                sharedViewModel
+            )
+        ).get(CharaDetailsViewModel::class.java
         )
 
         binding.detailsViewModel = detailsViewModel

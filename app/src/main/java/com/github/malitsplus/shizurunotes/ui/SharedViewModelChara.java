@@ -17,13 +17,13 @@ import com.github.malitsplus.shizurunotes.db.RawUnitBasic;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SharedViewModel extends ViewModel {
+public class SharedViewModelChara extends ViewModel {
 
     private List<Chara> charaList = new ArrayList<>();;
     private Chara selectedChara;
     public MutableLiveData<Integer> reloadFlag = new MutableLiveData<>();
 
-    public SharedViewModel(){
+    public SharedViewModelChara(){
         reloadFlag.setValue(0);
         loadData();
     }

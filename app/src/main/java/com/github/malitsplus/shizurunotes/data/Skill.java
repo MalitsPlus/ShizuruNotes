@@ -19,36 +19,52 @@ import java.util.Locale;
 
 public class Skill {
     public enum SkillClass {
-        UB,
-        UB_EVO,
-        MAIN1,
-        MAIN1_EVO,
-        MAIN2,
-        MAIN2_EVO,
-        MAIN3,
-        MAIN4,
-        MAIN5,
-        MAIN6,
-        MAIN7,
-        MAIN8,
-        MAIN9,
-        MAIN10,
-        SP1,
-        SP2,
-        SP3,
-        SP4,
-        SP5,
-        EX1,
-        EX1_EVO,
-        EX2,
-        EX2_EVO,
-        EX3,
-        EX3_EVO,
-        EX4,
-        EX4_EVO,
-        EX5,
-        EX5_EVO,
-        UNKNOWN;
+        UB("UB"),
+        UB_EVO("UB+"),
+        MAIN1("M1"),
+        MAIN1_EVO("M1+"),
+        MAIN2("M2"),
+        MAIN2_EVO("M2+"),
+        MAIN3("M3"),
+        MAIN4("M4"),
+        MAIN5("M5"),
+        MAIN6("M6"),
+        MAIN7("M7"),
+        MAIN8("M8"),
+        MAIN9("M9"),
+        MAIN10("M10"),
+        SP1("S1"),
+        SP2("S2"),
+        SP3("S3"),
+        SP4("S4"),
+        SP5("S5"),
+        EX1("E1"),
+        EX1_EVO("E1+"),
+        EX2("E2"),
+        EX2_EVO("E2+"),
+        EX3("E3"),
+        EX3_EVO("E3+"),
+        EX4("E4"),
+        EX4_EVO("E4+"),
+        EX5("E5"),
+        EX5_EVO("E5+"),
+        UNKNOWN("");
+
+        private String value;
+        SkillClass(String value){
+            this.value = value;
+        }
+        public String getValue(){
+            return value;
+        }
+
+        public static SkillClass parse(String value){
+            for(SkillClass item : SkillClass.values()){
+                if(item.getValue().equals(value))
+                    return item;
+            }
+            return UNKNOWN;
+        }
 
         public String description(){
             switch (this){
@@ -126,13 +142,21 @@ public class Skill {
     public String description;
     public int iconType;
     public SkillClass skillClass;
-
     public String iconUrl;
+
+    //敌人用
+    public int enemySkillLevel;
 
 
     public Skill(int skillId, SkillClass skillClass){
         this.skillId = skillId;
         this.skillClass = skillClass;
+    }
+
+    public Skill(int skillId, SkillClass skillClass, int enemySkillLevel){
+        this.skillId = skillId;
+        this.skillClass = skillClass;
+        this.enemySkillLevel = enemySkillLevel;
     }
 
     public void setSkillData(String skillName, int skillType, int skillAreaWidth, double skillCastTime, String description, int iconType){
