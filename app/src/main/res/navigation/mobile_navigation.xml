@@ -20,7 +20,7 @@
             app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_nav_view_pager_to_nav_clan_battle_details"
-            app:destination="@id/nav_clan_battle_details"
+            app:destination="@id/nav_clan_battle_view_pager"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -32,11 +32,7 @@
         android:id="@+id/nav_chara_list"
         android:name="com.github.malitsplus.shizurunotes.ui.charalist.CharaListFragment"
         android:label="@string/title_chara_list"
-        tools:layout="@layout/fragment_chara_list">
-        <action
-            android:id="@+id/action_nav_chara_to_nav_chara_details"
-            app:destination="@id/nav_chara_details" />
-    </fragment>
+        tools:layout="@layout/fragment_chara_list"/>
 
     <fragment
         android:id="@+id/nav_chara_details"
@@ -61,10 +57,10 @@
         tools:layout="@layout/fragment_clan_battle" />
 
     <fragment
-        android:id="@+id/nav_clan_battle_details"
-        android:name="com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleDetailsFragment"
-        android:label="fragment_clan_battle_details"
-        tools:layout="@layout/fragment_clan_battle_details" />
+        android:id="@+id/nav_clan_battle_view_pager"
+        android:name="com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleViewPagerFragment"
+        android:label="fragment_clan_battle_view_pager"
+        tools:layout="@layout/fragment_clan_battle_view_pager" />
 
 
     <fragment
@@ -77,7 +73,11 @@
         android:name="com.github.malitsplus.shizurunotes.ui.setting.SettingContainerFragment"
         android:label="fragment_setting_container"
         tools:layout="@layout/fragment_setting_container" />
-
+    <fragment
+        android:id="@+id/nav_clan_battle_details"
+        android:name="com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleDetailsFragment"
+        android:label="fragment_clan_battle_details"
+        tools:layout="@layout/fragment_clan_battle_details" />
 
 
 </navigation>

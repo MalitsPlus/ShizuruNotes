@@ -27,6 +27,14 @@ public class AttackPattern {
         this.rawAttackPatterns = rawAttackPatterns;
     }
 
+    public AttackPattern setItems(){
+        for(int i = 0; i < rawAttackPatterns.size(); i++){
+            int raw = rawAttackPatterns.get(i);
+            items.add(new AttackPatternItem(raw, getLoopText(i), ""));
+        }
+        return this;
+    }
+
     public AttackPattern setItems(List<Skill> skills, int atkType){
         for(int i = 0; i < rawAttackPatterns.size(); i++){
             int raw = rawAttackPatterns.get(i);
@@ -65,6 +73,32 @@ public class AttackPattern {
         if(index + 1 == loopEnd)
             return I18N.getString(R.string.loop_end);
         return "";
+    }
+
+    public String getEnemyPatternText(){
+        boolean isSinglePattern = true;
+        for (int it: rawAttackPatterns){
+            if (it != 1 && it != 0) {
+                isSinglePattern = false;
+                break;
+            }
+        }
+        if (isSinglePattern)
+            return I18N.getString(R.string.text_normal_attack_only);
+
+        StringBuilder sb = new StringBuilder();
+        for (AttackPatternItem it: items){
+            if (it.loopText.equals("")){
+                sb.append(it.skillText);
+            } else if (it.loopText.equals(I18N.getString(R.string.loop_start))){
+                sb.append(I18N.getString(R.string.text_loop_start)).append(it.skillText);
+            } else if (it.loopText.equals(I18N.getString(R.string.loop_end))){
+                sb.append(it.skillText).append(I18N.getString(R.string.text_loop_end)).append("→");
+                break;
+            }
+            sb.append("→");
+        }
+        return sb.deleteCharAt(sb.lastIndexOf("→")).toString();
     }
 
     public class AttackPatternItem{

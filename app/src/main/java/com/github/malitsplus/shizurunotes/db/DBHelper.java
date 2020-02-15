@@ -372,6 +372,26 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     /***
+     * 获取 int-string map
+     * @param sql
+     * @return
+     */
+    public Map<Integer, String> getIntStringMap(String sql, String key, String value){
+        if(!Utils.checkFile(DB_PATH + DB_NAME))
+            return null;
+        Cursor cursor = getReadableDatabase().rawQuery(sql, null);
+        Map<Integer, String> result = new HashMap<>();
+        while (cursor.moveToNext()){
+            result.put(
+                    cursor.getInt(cursor.getColumnIndex(key)),
+                    cursor.getString(cursor.getColumnIndex(value))
+            );
+        }
+        cursor.close();
+        return result;
+    }
+
+    /***
      * 获取角色基础数据
      * @return 角色数据游标
      */
@@ -597,7 +617,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     /***
-     * 获取角色技能释放顺序
+     * 获取行动顺序
      * @param unitId
      * @return
      */
@@ -754,6 +774,35 @@ public class DBHelper extends SQLiteOpenHelper {
             return raw.get(0);
     }
 
+    /***
+     * 获取敌人抗性值
+     * @param
+     * @return
+     */
+    public RawResistData getResistData(int resistStatusId){
+        RawResistData raw;
+        try{
+            raw = getBeanByRaw("SELECT * FROM resist_data WHERE resist_status_id=? ",
+                    String.valueOf(resistStatusId),
+                    RawResistData.class
+            );
+        } catch (InstantiationException | IllegalAccessException e){
+            e.printStackTrace();
+            return null;
+        }
+        return raw;
+    }
+
+    /***
+     * 获取异常状态map
+     * @param
+     * @return
+     */
+    public Map<Integer, String> getAilmentMap(){
+        return getIntStringMap("SELECT * FROM ailment_data ",
+                "ailment_id",
+                "ailment_name");
+    }
 
     public int getMaxCharaLevel(){
         String result = getOne("SELECT max(team_level) FROM experience_team ");

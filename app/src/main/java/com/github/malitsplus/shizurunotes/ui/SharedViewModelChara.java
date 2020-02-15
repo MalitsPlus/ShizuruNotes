@@ -3,7 +3,6 @@ package com.github.malitsplus.shizurunotes.ui;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.github.malitsplus.shizurunotes.data.AttackPattern;
 import com.github.malitsplus.shizurunotes.data.Chara;
 import com.github.malitsplus.shizurunotes.data.Property;
 import com.github.malitsplus.shizurunotes.data.Skill;
@@ -103,7 +102,7 @@ public class SharedViewModelChara extends ViewModel {
     }
 
     private void setUnitSkillData(Chara chara){
-        DBHelper.get().getUnitSkillData(chara.unitId).setCharaSkillMap(chara);
+        DBHelper.get().getUnitSkillData(chara.unitId).setCharaSkillList(chara);
         chara.skills.forEach((skill) -> {
             //填充Skill中只有actionId和dependActionId（可能为0）的actionList
             DBHelper.get().getSkillData(skill.skillId).setSkillData(skill);

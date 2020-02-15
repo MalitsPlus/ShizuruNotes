@@ -198,180 +198,278 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/textView2">
 
-                            <com.allen.library.SuperTextView
-                                android:id="@+id/txtPhyAtk"
-                                style="@style/StatusSuperTextView"
+                            <LinearLayout
+                                android:id="@+id/linearLayout2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:orientation="horizontal"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:sLeftTextString="@string/text_physical_atk"
-                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.atk)}" />
+                                app:layout_constraintTop_toTopOf="parent">
 
-                            <com.allen.library.SuperTextView
-                                android:id="@+id/txtMagAtk"
-                                style="@style/StatusSuperTextView"
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/txtPhyAtk"
+                                    style="@style/StatusSuperTextView"
+                                    android:layout_marginEnd="4dp"
+                                    android:layout_weight="1"
+                                    app:sLeftTextString="@string/text_physical_atk"
+                                    bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.atk)}" />
+
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/txtMagAtk"
+                                    style="@style/StatusSuperTextView"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    app:sLeftTextString="@string/text_magical_atk"
+                                    bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.magicStr)}" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/linearLayout3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginEnd="8dp"
-                                app:layout_constraintBottom_toBottomOf="@+id/txtPhyAtk"
+                                android:orientation="horizontal"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="@+id/txtPhyAtk"
-                                app:layout_constraintVertical_bias="1.0"
-                                app:sLeftTextString="@string/text_magical_atk"
-                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.magicStr)}" />
-
-                            <com.allen.library.SuperTextView
-                                android:id="@+id/txtPhyCrt"
-                                style="@style/StatusSuperTextView"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/txtPhyAtk"
-                                app:sLeftTextString="@string/text_physical_crt"
-                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.physicalCritical)}" />
+                                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-                            <com.allen.library.SuperTextView
-                                android:id="@+id/txtMagCrt"
-                                style="@style/StatusSuperTextView"
-                                android:layout_marginEnd="8dp"
-                                app:layout_constraintBottom_toBottomOf="@+id/txtPhyCrt"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="@+id/txtPhyCrt"
-                                app:sLeftTextString="@string/text_magical_crt"
-                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.magicCritical)}" />
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/txtPhyCrt"
+                                    style="@style/StatusSuperTextView"
+                                    android:layout_marginEnd="4dp"
+                                    android:layout_weight="1"
+                                    app:sLeftTextString="@string/text_physical_crt"
+                                    bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.physicalCritical)}" />
 
-                            <com.allen.library.SuperTextView
-                                android:id="@+id/txtPhyDef"
-                                style="@style/StatusSuperTextView"
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/txtMagCrt"
+                                    style="@style/StatusSuperTextView"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    app:sLeftTextString="@string/text_magical_crt"
+                                    bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.magicCritical)}" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/linearLayout4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginTop="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:orientation="horizontal"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/txtPhyCrt"
-                                app:sLeftTextString="@string/text_physical_def"
-                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.def)}" />
+                                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
-                            <com.allen.library.SuperTextView
-                                android:id="@+id/txtMagDef"
-                                style="@style/StatusSuperTextView"
-                                android:layout_marginEnd="8dp"
-                                app:layout_constraintBottom_toBottomOf="@+id/txtPhyDef"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="@+id/txtPhyDef"
-                                app:sLeftTextString="@string/text_magical_def"
-                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.magicDef)}" />
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/txtPhyDef"
+                                    style="@style/StatusSuperTextView"
+                                    android:layout_marginEnd="4dp"
+                                    android:layout_weight="1"
+                                    app:sLeftTextString="@string/text_physical_def"
+                                    bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.def)}" />
 
-                            <com.allen.library.SuperTextView
-                                android:id="@+id/txtHp"
-                                style="@style/StatusSuperTextView"
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/txtMagDef"
+                                    style="@style/StatusSuperTextView"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    app:sLeftTextString="@string/text_magical_def"
+                                    bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.magicDef)}" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linearLayout5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginTop="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:orientation="horizontal"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/txtPhyDef"
-                                app:sLeftTextString="@string/text_hp"
-                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.hp)}" />
+                                app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
-                            <com.allen.library.SuperTextView
-                                android:id="@+id/txtLifeSteal"
-                                style="@style/StatusSuperTextView"
-                                android:layout_marginEnd="8dp"
-                                app:layout_constraintBottom_toBottomOf="@+id/txtHp"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="@+id/txtHp"
-                                app:sLeftTextString="@string/text_life_steal"
-                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.lifeSteal)}" />
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/txtHp"
+                                    style="@style/StatusSuperTextView"
+                                    android:layout_marginEnd="4dp"
+                                    android:layout_weight="1"
+                                    app:sLeftTextString="@string/text_hp"
+                                    bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.hp)}" />
 
-                            <com.allen.library.SuperTextView
-                                android:id="@+id/txtEngRcv"
-                                style="@style/StatusSuperTextView"
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/txtLifeSteal"
+                                    style="@style/StatusSuperTextView"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    app:sLeftTextString="@string/text_life_steal"
+                                    bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.lifeSteal)}" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linearLayout6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginTop="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:orientation="horizontal"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/txtHp"
-                                app:sLeftTextString="@string/text_energy_recovery"
-                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.energyRecoveryRate)}" />
+                                app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
 
-                            <com.allen.library.SuperTextView
-                                android:id="@+id/txtEngRdc"
-                                style="@style/StatusSuperTextView"
-                                android:layout_marginEnd="8dp"
-                                app:layout_constraintBottom_toBottomOf="@+id/txtEngRcv"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="@+id/txtEngRcv"
-                                app:sLeftTextString="@string/text_energy_reduce"
-                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.energyReduceRate)}" />
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/txtEngRcv"
+                                    style="@style/StatusSuperTextView"
+                                    android:layout_marginEnd="4dp"
+                                    android:layout_weight="1"
+                                    app:sLeftTextString="@string/text_energy_recovery"
+                                    bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.energyRecoveryRate)}" />
 
-                            <com.allen.library.SuperTextView
-                                android:id="@+id/txtAcc"
-                                style="@style/StatusSuperTextView"
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/txtEngRdc"
+                                    style="@style/StatusSuperTextView"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    app:sLeftTextString="@string/text_energy_reduce"
+                                    bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.energyReduceRate)}" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linearLayout7"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginTop="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:orientation="horizontal"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/txtEngRcv"
-                                app:sLeftTextString="@string/text_accuracy"
-                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.accuracy)}" />
+                                app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
 
-                            <com.allen.library.SuperTextView
-                                android:id="@+id/txtDdg"
-                                style="@style/StatusSuperTextView"
-                                android:layout_marginEnd="8dp"
-                                app:layout_constraintBottom_toBottomOf="@+id/txtAcc"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="@+id/txtAcc"
-                                app:sLeftTextString="@string/text_dodge"
-                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.dodge)}" />
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/txtAcc"
+                                    style="@style/StatusSuperTextView"
+                                    android:layout_marginEnd="4dp"
+                                    android:layout_weight="1"
+                                    app:sLeftTextString="@string/text_accuracy"
+                                    bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.accuracy)}" />
 
-                            <com.allen.library.SuperTextView
-                                android:id="@+id/txtWavHp"
-                                style="@style/StatusSuperTextView"
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/txtDdg"
+                                    style="@style/StatusSuperTextView"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    app:sLeftTextString="@string/text_dodge"
+                                    bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.dodge)}" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linearLayout8"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginTop="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:orientation="horizontal"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/txtAcc"
-                                app:sLeftTextString="@string/text_wave_hp_recovery"
-                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.waveHpRecovery)}" />
+                                app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
-                            <com.allen.library.SuperTextView
-                                android:id="@+id/txtWavEng"
-                                style="@style/StatusSuperTextView"
-                                android:layout_marginEnd="8dp"
-                                app:layout_constraintBottom_toBottomOf="@+id/txtWavHp"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="@+id/txtWavHp"
-                                app:sLeftTextString="@string/text_wave_energy_recovery"
-                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.waveEnergyRecovery)}" />
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/txtWavHp"
+                                    style="@style/StatusSuperTextView"
+                                    android:layout_marginEnd="4dp"
+                                    android:layout_weight="1"
+                                    app:sLeftTextString="@string/text_wave_hp_recovery"
+                                    bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.waveHpRecovery)}" />
 
-                            <com.allen.library.SuperTextView
-                                android:id="@+id/txtPhyPnt"
-                                style="@style/StatusSuperTextView"
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/txtWavEng"
+                                    style="@style/StatusSuperTextView"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    app:sLeftTextString="@string/text_wave_energy_recovery"
+                                    bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.waveEnergyRecovery)}" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linearLayout9"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginTop="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:orientation="horizontal"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/txtWavHp"
-                                app:sLeftTextString="@string/text_physical_penetrate"
-                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.physicalPenetrate)}" />
+                                app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
 
-                            <com.allen.library.SuperTextView
-                                android:id="@+id/txtMagPnt"
-                                style="@style/StatusSuperTextView"
-                                android:layout_marginEnd="8dp"
-                                app:layout_constraintBottom_toBottomOf="@+id/txtPhyPnt"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="@+id/txtPhyPnt"
-                                app:sLeftTextString="@string/text_magical_penetrate"
-                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.magicPenetrate)}" />
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/txtPhyPnt"
+                                    style="@style/StatusSuperTextView"
+                                    android:layout_marginEnd="4dp"
+                                    android:layout_weight="1"
+                                    app:sLeftTextString="@string/text_physical_penetrate"
+                                    bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.physicalPenetrate)}" />
 
-                            <com.allen.library.SuperTextView
-                                android:id="@+id/txtHpRcv"
-                                style="@style/StatusSuperTextView"
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/txtMagPnt"
+                                    style="@style/StatusSuperTextView"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    app:sLeftTextString="@string/text_magical_penetrate"
+                                    bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.magicPenetrate)}" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linearLayout10"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginTop="8dp"
+                                android:layout_marginEnd="8dp"
                                 android:layout_marginBottom="8dp"
+                                android:orientation="horizontal"
                                 app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/txtPhyPnt"
-                                app:layout_constraintVertical_bias="0.0"
-                                app:sLeftTextString="@string/text_hp_recovery"
-                                bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.hpRecoveryRate)}" />
+                                app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
+
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/txtHpRcv"
+                                    style="@style/StatusSuperTextView"
+                                    android:layout_marginEnd="4dp"
+                                    android:layout_weight="1"
+                                    app:sLeftTextString="@string/text_hp_recovery"
+                                    bind:sRightText="@{String.valueOf(detailsViewModel.mutableChara.charaProperty.hpRecoveryRate)}" />
+
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/txtPlaceHolder"
+                                    style="@style/StatusSuperTextViewPlaceHolder"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    app:sLeftTextString="" />
+
+                            </LinearLayout>
+
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 

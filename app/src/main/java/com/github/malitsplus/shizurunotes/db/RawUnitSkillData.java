@@ -36,7 +36,7 @@ public class RawUnitSkillData {
     public int main_skill_evolution_2;
 
 
-    public void setCharaSkillMap(Chara chara){
+    public void setCharaSkillList(Chara chara){
         if(union_burst != 0)
             chara.skills.add(new Skill(union_burst, Skill.SkillClass.UB));
         if(union_burst_evolution != 0)

@@ -179,6 +179,7 @@ public class Skill {
             builder.setSpan(new BackgroundSpan(BackgroundSpan.BORDER_RECT), builder.length() - 4, builder.length() - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             builder.append(actions.get(i - 1).parameter.localizedDetail(level, property)).append("\n");
         }
+        builder.delete(builder.length() - 1, builder.length());
         actionDescriptions = builder;
     }
 
