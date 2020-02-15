@@ -13,15 +13,13 @@ import com.github.malitsplus.shizurunotes.data.ClanBattlePeriod
 import com.github.malitsplus.shizurunotes.databinding.ListItemClanBattlePeriodBinding
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattle
 import com.github.malitsplus.shizurunotes.ui.ViewPagerFragmentDirections
-import java.util.ArrayList
 
 class ClanBattleAdapter (
     private val mContext: Context,
     private val sharedViewModelClanBattle: SharedViewModelClanBattle
-) :
-    RecyclerView.Adapter<ClanBattleAdapter.ClanBattleViewHolder>() {
+) : RecyclerView.Adapter<ClanBattleAdapter.ClanBattleViewHolder>() {
 
-    private var periodList: List<ClanBattlePeriod> = ArrayList()
+    private var periodList: List<ClanBattlePeriod> = mutableListOf()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -32,12 +30,12 @@ class ClanBattleAdapter (
             R.layout.list_item_clan_battle_period, parent, false
         )
         //向每个item设置点击监听事件
-        binding.clickListener = View.OnClickListener { v: View? ->
-            sharedViewModelClanBattle.selectedPeriod = binding.period
+        binding.clickListener = View.OnClickListener { v: View ->
+            sharedViewModelClanBattle.mSetSelectedPeriod(binding.period)
 
             val action: NavDirections =
                 ViewPagerFragmentDirections.actionNavViewPagerToNavClanBattleDetails()
-            Navigation.findNavController(v!!).navigate(action)
+            Navigation.findNavController(v).navigate(action)
         }
 
         return ClanBattleViewHolder(binding)

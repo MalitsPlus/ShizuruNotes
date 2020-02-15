@@ -10,15 +10,18 @@ class ClanBattlePhase(
     val waveGroupId4: Int?,
     val waveGroupId5: Int?) {
 
-    val waveGroupIdList: List<Int> = listOfNotNull(
-        waveGroupId1, waveGroupId2, waveGroupId3, waveGroupId4, waveGroupId5
-    )
-
-    val waveGroupList = ArrayList<WaveGroup>()
+    val bossList = mutableListOf<ClanBattleBoss>()
 
     init {
-        DBHelper.get().getClanBattleWaveEnemy(waveGroupIdList).forEach {
+        val waveGroupList = mutableListOf<WaveGroup>()
+        DBHelper.get().getClanBattleWaveEnemy(listOfNotNull(
+            waveGroupId1, waveGroupId2, waveGroupId3, waveGroupId4, waveGroupId5
+        )).forEach {
             waveGroupList.add(it.waveGroup)
+        }
+
+        waveGroupList.forEach{ w ->
+            w.bossList.forEach { bossList.add(it) }
         }
     }
 

@@ -229,6 +229,8 @@ public class ActionParameter {
             return content;
     }
 
+
+
     public String localizedDetail(int level, Property property){
         return I18N.getString(R.string.Unknown_effect_d1_to_s2_with_details_s3_values_s4,
                 rawActionType,
@@ -236,7 +238,6 @@ public class ActionParameter {
                 actionDetails.toString(),
                 rawActionValues.toString());
     }
-
 
     public String buildExpression(int level, Property property){
         return buildExpression(level, actionValues, null, property, false, false, false);

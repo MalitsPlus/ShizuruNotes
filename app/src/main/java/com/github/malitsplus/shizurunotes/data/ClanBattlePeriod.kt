@@ -1,6 +1,5 @@
 package com.github.malitsplus.shizurunotes.data
 
-import androidx.annotation.IntegerRes
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.db.DBHelper
@@ -18,17 +17,17 @@ class ClanBattlePeriod(
             startTime.monthValue.toString() +
             I18N.getString(R.string.text_month)
 
-    val phaseList = ArrayList<ClanBattlePhase>().apply {
+    val phaseList = mutableListOf<ClanBattlePhase>().apply {
         DBHelper.get().getClanBattlePhase(clanBattleId).forEach {
             this.add(it.clanBattlePhase)
         }
     }
 
-    val iconBoss1 = phaseList[0].waveGroupList[0].bossList[0].iconUrl
-    val iconBoss2 = phaseList[0].waveGroupList[1].bossList[0].iconUrl
-    val iconBoss3 = phaseList[0].waveGroupList[2].bossList[0].iconUrl
-    val iconBoss4 = phaseList[0].waveGroupList[3].bossList[0].iconUrl
-    val iconBoss5 = phaseList[0].waveGroupList[4].bossList[0].iconUrl
+    val iconBoss1 = phaseList[0].bossList[0].iconUrl
+    val iconBoss2 = phaseList[0].bossList[1].iconUrl
+    val iconBoss3 = phaseList[0].bossList[2].iconUrl
+    val iconBoss4 = phaseList[0].bossList[3].iconUrl
+    val iconBoss5 = phaseList[0].bossList[4].iconUrl
 
     val zodiacImage: Int? = when(startTime.monthValue){
         1 -> R.drawable.zodiac_aquarious

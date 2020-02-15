@@ -5,19 +5,29 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.malitsplus.shizurunotes.R
+import com.github.malitsplus.shizurunotes.data.ClanBattlePhase
+import com.github.malitsplus.shizurunotes.databinding.FragmentClanBattleDetailsBinding
 
-/**
- * A simple [Fragment] subclass.
- */
-class ClanBattleDetailsFragment : Fragment() {
+class ClanBattleDetailsFragment(
+    val phase: ClanBattlePhase
+) : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_clan_battle_details, container, false)
+        val binding = DataBindingUtil.inflate<FragmentClanBattleDetailsBinding>(
+            inflater, R.layout.fragment_clan_battle_details, container, false
+        ).apply {
+            lifecycleOwner = viewLifecycleOwner
+            clanBattleBossRecycler.layoutManager = LinearLayoutManager(context)
+            clanBattleBossRecycler.adapter = ClanBattleDetailsBossAdapter(context!!, phase.bossList)
+        }
+
+        return binding.root
     }
 
 }
