@@ -52,15 +52,16 @@ class MainActivity : AppCompatActivity(), UpdateManager.IFragmentCallBack, OnReq
         sharedViewModelChara = ViewModelProvider(this).get(SharedViewModelChara::class.java)
         sharedViewModelClanBattle = ViewModelProvider(this).get(SharedViewModelClanBattle::class.java)
 
-        if (checkStoragePermission()) updateManager.checkDatabaseVersion()
+        //if (checkStoragePermission())
+            updateManager.checkDatabaseVersion()
+
+
 
     }
 
     private fun checkStoragePermission(): Boolean {
-        return if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            )
+        return if (
+            ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
             != PackageManager.PERMISSION_GRANTED
         ) {
             ActivityCompat.requestPermissions(

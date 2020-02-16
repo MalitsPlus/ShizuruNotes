@@ -48,6 +48,11 @@
         <item name="sUseRipple">false</item>
     </style>
 
+    <style name="textTag">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/text_tag_background</item>
+    </style>
+
     <style name="hintText" parent="@style/TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">8sp</item>
     </style>

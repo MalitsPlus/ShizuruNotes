@@ -27,6 +27,11 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.internal.Util;
+
+import static com.github.malitsplus.shizurunotes.common.Statics.DB_PATH;
+import static com.github.malitsplus.shizurunotes.common.Statics.DB_FILE_COMPRESSED;
+import static com.github.malitsplus.shizurunotes.common.Statics.DB_FILE;
 
 public class UpdateManager {
     private Context mContext;
@@ -41,17 +46,16 @@ public class UpdateManager {
     private MaterialDialog progressDialog;
     private int maxLength;
 
-
     private static final int UPDATE_CHECK_COMPLETED = 1;
     private static final int UPDATE_DOWNLOADING = 2;
     private static final int UPDATE_DOWNLOAD_ERROR = 3;
     private static final int UPDATE_DOWNLOAD_COMPLETED = 4;
     private static final int UPDATE_COMPLETED = 5;
     private static final int UPDATE_DOWNLOAD_CANCELED = 6;
-    private static final String DB_FILE_SAVE_FOLDER = "mnt/sdcard/";
-    private static final String DB_FILE_INNER_FOLDER = "data/data/com.github.malitsplus.shizurunotes/databases/";
-    private static final String DB_FILE_NAME_COMPRESSED = "redive_jp.db.br";
-    private static final String DB_FILE_NAME = "redive_jp.db";
+    //private static final String DB_FILE_SAVE_FOLDER = "mnt/sdcard/";
+    //private static final String DB_FILE_INNER_FOLDER = "data/data/com.github.malitsplus.shizurunotes/databases/";
+    //private static final String DB_FILE_NAME_COMPRESSED = "redive_jp.db.br";
+    //private static final String DB_FILE_NAME = "redive_jp.db";
 
     public UpdateManager(Context context,View view){
         mContext = context;
@@ -79,7 +83,7 @@ public class UpdateManager {
                     try {
                         JSONObject obj = new JSONObject(lastVersionJson);
                         serverVersion = obj.getInt("TruthVersion");
-                        if(serverVersion != UserSettings.get().getPreference().getInt("dbVersion", 0))
+                        if(serverVersion != UserSettings.get().getPreference().getInt("dbVerssion", 0))
                             hasNewVersion = true;
                         updateHandler.sendEmptyMessage(UPDATE_CHECK_COMPLETED);
                     } catch (Exception ex){
@@ -105,13 +109,23 @@ public class UpdateManager {
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     maxLength = conn.getContentLength();
                     InputStream is = conn.getInputStream();
-                    File compressedFile = new File(DB_FILE_SAVE_FOLDER, DB_FILE_NAME_COMPRESSED);
-                    if(compressedFile.exists())
-                        compressedFile.delete();
+
+                    if (!new File(DB_PATH).exists()) {
+                        if(!new File(DB_PATH).mkdirs())
+                            throw new Exception("Cannot create DB path.");
+                    }
+
+                    File compressedFile = new File(DB_PATH, DB_FILE_COMPRESSED);
+
+                    if(compressedFile.exists()) {
+                        Utils.deleteFile(compressedFile);
+                    }
+
                     FileOutputStream fos = new FileOutputStream(compressedFile);
 
                     int totalDownload = 0;
-                    byte buf[] = new byte[1024*1024];
+                    byte[] buf = new byte[1024*1024];
+                    //byte[] buf = new byte[is.available()];
                     int numRead = 0;
 
                     while (true){
@@ -125,13 +139,14 @@ public class UpdateManager {
                         }
                         fos.write(buf, 0, numRead);
                     }
-                    fos.close();
                     is.close();
-                    BrotliUtils.deCompress(DB_FILE_SAVE_FOLDER + DB_FILE_NAME_COMPRESSED, true);
-                    Utils.copyFile(DB_FILE_NAME, DB_FILE_SAVE_FOLDER, DB_FILE_INNER_FOLDER, true);
+                    fos.close();
+
+                    BrotliUtils.deCompress(DB_PATH + DB_FILE_COMPRESSED, true);
 
                     updateHandler.sendEmptyMessage(UPDATE_COMPLETED);
-                } catch (IOException e){
+
+                } catch (Exception e){
                     e.printStackTrace();
                 }
 

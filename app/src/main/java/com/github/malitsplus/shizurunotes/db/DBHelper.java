@@ -9,28 +9,27 @@ import android.text.TextUtils;
 
 import androidx.annotation.Nullable;
 
+import com.github.malitsplus.shizurunotes.common.Statics;
 import com.github.malitsplus.shizurunotes.common.Utils;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import static com.github.malitsplus.shizurunotes.common.Statics.DB_PATH;
+import static com.github.malitsplus.shizurunotes.common.Statics.DB_FILE;
+
 public class DBHelper extends SQLiteOpenHelper {
     public static final int DB_VERSION = 1;
-    private static final String DB_PATH = "data/data/com.github.malitsplus.shizurunotes/databases/";
-    private static final String DB_NAME = "redive_jp.db";
 
     private static volatile DBHelper instance;
 
-    private int serverVersion;
-
     public DBHelper(Application application){
-        super(application, DB_NAME, null, DB_VERSION);
+        super(application, DB_FILE, null, DB_VERSION);
     }
 
     public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -117,7 +116,7 @@ public class DBHelper extends SQLiteOpenHelper {
      * @return 存有数据的游标
      */
     private Cursor prepareCursor(String tableName, @Nullable String key, @Nullable List<String> keyValue){
-        if(!Utils.checkFile(DB_PATH + DB_NAME))
+        if(!Utils.checkFile(DB_PATH + DB_FILE))
             return null;
         SQLiteDatabase db = getReadableDatabase();
         if (db == null){
@@ -209,7 +208,7 @@ public class DBHelper extends SQLiteOpenHelper {
      * @throws IllegalAccessException
      */
     public <T> T getBeanByRaw(String sql, String keyValue, Class theClass) throws InstantiationException, IllegalAccessException {
-        if(!Utils.checkFile(DB_PATH + DB_NAME))
+        if(!Utils.checkFile(DB_PATH + DB_FILE))
             return null;
         Cursor cursor = getReadableDatabase().rawQuery(sql, new String[]{keyValue});
         if (cursor == null)
@@ -230,7 +229,7 @@ public class DBHelper extends SQLiteOpenHelper {
      * @throws IllegalAccessException
      */
     public <T> List<T> getBeanListByRaw(String sql, Class theClass) throws InstantiationException, IllegalAccessException {
-        if(!Utils.checkFile(DB_PATH + DB_NAME))
+        if(!Utils.checkFile(DB_PATH + DB_FILE))
             return null;
         Cursor cursor = getReadableDatabase().rawQuery(sql, null);
         if (cursor == null)
@@ -249,7 +248,7 @@ public class DBHelper extends SQLiteOpenHelper {
      * @throws IllegalAccessException
      */
     public <T> List<T> getBeanListByRaw(String sql, String keyValue, Class theClass) throws InstantiationException, IllegalAccessException {
-        if(!Utils.checkFile(DB_PATH + DB_NAME))
+        if(!Utils.checkFile(DB_PATH + DB_FILE))
             return null;
         Cursor cursor = getReadableDatabase().rawQuery(sql, new String[]{keyValue});
         if (cursor == null)
@@ -362,7 +361,7 @@ public class DBHelper extends SQLiteOpenHelper {
      * @return
      */
     public String getOne(String sql){
-        if(!Utils.checkFile(DB_PATH + DB_NAME))
+        if(!Utils.checkFile(DB_PATH + DB_FILE))
             return null;
         Cursor cursor = getReadableDatabase().rawQuery(sql, null);
         cursor.moveToNext();
@@ -377,7 +376,7 @@ public class DBHelper extends SQLiteOpenHelper {
      * @return
      */
     public Map<Integer, String> getIntStringMap(String sql, String key, String value){
-        if(!Utils.checkFile(DB_PATH + DB_NAME))
+        if(!Utils.checkFile(DB_PATH + DB_FILE))
             return null;
         Cursor cursor = getReadableDatabase().rawQuery(sql, null);
         Map<Integer, String> result = new HashMap<>();
@@ -640,6 +639,7 @@ public class DBHelper extends SQLiteOpenHelper {
      * @param
      * @return
      */
+    @Nullable
     public List<RawClanBattlePeriod> getClanBattlePeriod(){
         List<RawClanBattlePeriod> raw;
         try{

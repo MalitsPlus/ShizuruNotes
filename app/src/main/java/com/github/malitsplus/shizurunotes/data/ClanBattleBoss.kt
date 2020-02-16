@@ -16,8 +16,9 @@ class ClanBattleBoss(
     lateinit var name: String
     lateinit var property: Property
     lateinit var  iconUrl: String
-    lateinit var attackPatternText: String
     var resistMap: MutableMap<String, Int>? = null
+
+    val attackPatternList = mutableListOf<AttackPattern>()
 
     val skills = mutableListOf<Skill>()
     val children = mutableListOf<ClanBattleBoss>()
@@ -30,17 +31,14 @@ class ClanBattleBoss(
         this.resistStatusId = resistStatusId
         this.property = property
 
+        DBHelper.get().getUnitAttackPattern(unitId).forEach {
+            attackPatternList.add(it.attackPattern.setItems())
+        }
+
         iconUrl = Statics.ICON_URL.format(prefabId);
 
         if (resistStatusId != 0)
             resistMap = DBHelper.get().getResistData(resistStatusId).resistData
-    }
-
-    fun setAttackPatternText(){
-        attackPatternText = DBHelper.get()
-            .getUnitAttackPattern(unitId)[0]
-            .attackPattern.setItems()
-            .enemyPatternText
     }
 
     fun getLevelString(): String{

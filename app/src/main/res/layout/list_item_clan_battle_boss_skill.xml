@@ -19,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            style="@style/textTag"
             android:layout_marginTop="8dp"
             android:text="@{skill.skillClass.description(), default=skillType}"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,16 +36,6 @@
             app:layout_constraintTop_toBottomOf="@+id/boss_skill_type" />
 
         <TextView
-            android:id="@+id/text_boss_skill_action"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/text_skill_action"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boss_skill_cast_time" />
-
-        <TextView
             android:id="@+id/boss_skill_actions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,8 +48,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_boss_skill_action"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/boss_skill_cast_time" />
 
         <View
             android:id="@+id/divider"

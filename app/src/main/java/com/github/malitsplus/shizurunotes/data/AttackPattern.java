@@ -75,7 +75,9 @@ public class AttackPattern {
         return "";
     }
 
-    public String getEnemyPatternText(){
+    public String getEnemyPatternText(String prefix){
+        StringBuilder sb = new StringBuilder().append(prefix);
+
         boolean isSinglePattern = true;
         for (int it: rawAttackPatterns){
             if (it != 1 && it != 0) {
@@ -84,21 +86,21 @@ public class AttackPattern {
             }
         }
         if (isSinglePattern)
-            return I18N.getString(R.string.text_normal_attack_only);
+            return sb.append(I18N.getString(R.string.text_normal_attack_only)).toString();
 
-        StringBuilder sb = new StringBuilder();
+
         for (AttackPatternItem it: items){
             if (it.loopText.equals("")){
                 sb.append(it.skillText);
             } else if (it.loopText.equals(I18N.getString(R.string.loop_start))){
                 sb.append(I18N.getString(R.string.text_loop_start)).append(it.skillText);
             } else if (it.loopText.equals(I18N.getString(R.string.loop_end))){
-                sb.append(it.skillText).append(I18N.getString(R.string.text_loop_end)).append("→");
+                sb.append(it.skillText).append(I18N.getString(R.string.text_loop_end)).append("-");
                 break;
             }
-            sb.append("→");
+            sb.append("-");
         }
-        return sb.deleteCharAt(sb.lastIndexOf("→")).toString();
+        return sb.deleteCharAt(sb.lastIndexOf("-")).toString();
     }
 
     public class AttackPatternItem{

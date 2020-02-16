@@ -247,7 +247,11 @@ public class Skill {
         public Action dependAction;
         public ActionParameter parameter;
         public void buildParameter(){
+            boolean isEnemySkill = false;
+            if (enemySkillLevel != 0)
+                isEnemySkill = true;
             parameter = ActionParameter.type(actionType).init(
+                    isEnemySkill,
                     actionId,
                     dependActionId,
                     classId,

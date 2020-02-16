@@ -1,5 +1,7 @@
 package com.github.malitsplus.shizurunotes.data.action;
 
+import android.net.IpSecManager;
+
 import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.I18N;
 import com.github.malitsplus.shizurunotes.common.UserSettings;
@@ -65,7 +67,6 @@ public class ActionParameter {
                 return new ContinuousAttackAction();
             case 26:
                 return new AdditiveAction();
-
             case 27:
                 return new MultipleAction();
             case 28:
@@ -140,6 +141,8 @@ public class ActionParameter {
                 return new LoopMotionRepeatAction();
             case 69:
                 return new ToadAction();
+            case 71:
+                return new KnightGuardAction();
             case 90:
                 return new PassiveAction();
             case 91:
@@ -149,6 +152,7 @@ public class ActionParameter {
         }
     }
 
+    public boolean isEnemySkill;
     public int dependActionId;
 
     public int actionId;
@@ -173,7 +177,8 @@ public class ActionParameter {
 
     public TargetParameter targetParameter;
 
-    public ActionParameter init(int actionId, int dependActionId, int classId, int actionType, int actionDetail1, int actionDetail2, int actionDetail3, double actionValue1, double actionValue2, double actionValue3, double actionValue4, double actionValue5, double actionValue6, double actionValue7, int targetAssignment, int targetArea, int targetRange, int targetType, int targetNumber, int targetCount, Skill.Action dependAction){
+    public ActionParameter init(boolean isEnemySkill, int actionId, int dependActionId, int classId, int actionType, int actionDetail1, int actionDetail2, int actionDetail3, double actionValue1, double actionValue2, double actionValue3, double actionValue4, double actionValue5, double actionValue6, double actionValue7, int targetAssignment, int targetArea, int targetRange, int targetType, int targetNumber, int targetCount, Skill.Action dependAction){
+        this.isEnemySkill = isEnemySkill;
         this.actionId = actionId;
         this.dependActionId = dependActionId;
         this.classId = classId;
@@ -265,7 +270,7 @@ public class ActionParameter {
         if(property == null)
             property = new Property();
 
-        if(UserSettings.get().getPreference().getBoolean("expressionStyle", false)){
+        if(UserSettings.get().getPreference().getBoolean("expressionStyle", false) && !isEnemySkill){
             StringBuilder expression = new StringBuilder();
             for(ActionValue value : actionValues){
                 StringBuilder part = new StringBuilder();
@@ -277,10 +282,12 @@ public class ActionParameter {
                     } else if(initialValue == 0){
                         part.append(String.format("%s * %s", perLevelValue, I18N.getString(R.string.SLv)));
                     } else if(perLevelValue == 0){
-                        if(value.key == null)
+                        if(value.key == null && roundingMode != RoundingMode.UNNECESSARY) {
+                            BigDecimal bigDecimal = new BigDecimal(initialValue);
+                            part.append(bigDecimal.setScale(0, roundingMode).intValue());
+                        } else {
                             part.append(initialValue);
-                        else
-                            part.append(initialValue);
+                        }
                     } else {
                         part.append(String.format("%s + %s * %s", initialValue, perLevelValue, I18N.getString(R.string.SLv)));
                     }

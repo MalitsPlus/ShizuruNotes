@@ -15,9 +15,15 @@ public class SealAction extends ActionParameter {
     public String localizedDetail(int level, Property property) {
         if(actionValue4 > 0)
             return I18N.getString(R.string.Add_s1_mark_stacks_max_s2_ID_s3_on_s4_for_s5_sec,
-                    Utils.roundDownDouble(actionValue4), Utils.roundDownDouble(actionValue1), Utils.roundDownDouble(actionValue2), targetParameter.buildTargetClause(), actionValue3);
+                    Utils.roundDownDouble(actionValue4),
+                    Utils.roundDownDouble(actionValue1),
+                    Utils.roundDownDouble(actionValue2),
+                    targetParameter.buildTargetClause(),
+                    Utils.roundDouble(actionValue3));
         else
             return I18N.getString(R.string.Remove_s1_mark_stacks_ID_s2_on_s3,
-                    Utils.roundDownDouble(-actionValue4), Utils.roundDownDouble(actionValue2), targetParameter.buildTargetClause());
+                    Utils.roundDownDouble(-actionValue4),
+                    Utils.roundDownDouble(actionValue2),
+                    targetParameter.buildTargetClause());
     }
 }

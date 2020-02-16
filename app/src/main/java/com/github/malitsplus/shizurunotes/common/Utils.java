@@ -50,12 +50,17 @@ public class Utils {
         }
     }
 
+    public static void deleteFile(File file){
+        try {
+            file.delete();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     public static boolean checkFile(String filePath){
         File file = new File(filePath);
-        if(file.exists())
-            return true;
-        else
-            return false;
+        return file.exists();
     }
 
     /***
@@ -122,5 +127,8 @@ public class Utils {
     }
     public static String roundUpDouble(double value){
         return format.format(Math.ceil(value));
+    }
+    public static String roundDouble(double value){
+        return format.format(Math.round(value));
     }
 }

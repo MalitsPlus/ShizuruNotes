@@ -3,6 +3,7 @@ package com.github.malitsplus.shizurunotes.ui
 import androidx.lifecycle.ViewModel
 import com.github.malitsplus.shizurunotes.data.ClanBattlePeriod
 import com.github.malitsplus.shizurunotes.db.DBHelper
+import com.github.malitsplus.shizurunotes.db.RawClanBattlePeriod
 
 class SharedViewModelClanBattle : ViewModel() {
 
@@ -15,14 +16,13 @@ class SharedViewModelClanBattle : ViewModel() {
 
     fun loadData(){
         periodList.clear()
-        DBHelper.get().clanBattlePeriod.forEach {
+        DBHelper.get().clanBattlePeriod?.forEach {
             periodList.add(it.transToClanBattlePeriod())
         }
 
         periodList.forEach { period ->
             period.phaseList.forEach { p ->
                 p.bossList.forEach { b ->
-                    b.setAttackPatternText()
                     b.skills.forEach { s ->
                         DBHelper.get().getSkillData(s.skillId).setSkillData(s)
                         //向actionList中填入其他具体值
