@@ -8,7 +8,7 @@
     <string name="title_setting">設定</string>
 
     <string name="setting_language">Language</string>
-    <string name="setting_language_dialog_title">Choose your language</string>
+    <string name="setting_language_dialog_title">Language</string>
     <string-array name="setting_language_options">
         <item>日本語</item>
         <item>简体中文</item>
@@ -24,9 +24,9 @@
     <string name="db_update_dialog_confirm">更新</string>
     <string name="db_update_dialog_cancel">あとで</string>
     <string name="db_update_progress_title">データベース更新</string>
-    <string name="db_update_progress_text">アップデート中...</string>
+    <string name="db_update_progress_text">アップデート中…</string>
     <string name="db_update_finished_title">データベース更新</string>
-    <string name="db_update_download_finished_text">ダウンロード完了、解凍中...</string>
+    <string name="db_update_download_finished_text">ダウンロード完了、解凍中…</string>
     <string name="db_update_finished_text">アップデート完了しました</string>
 
     <string name="ui_text_filter">絞り込み</string>
@@ -60,7 +60,7 @@
 
     <string name="text_normal_attack_only">通常攻撃のみ</string>
     <string name="text_level">Lv.</string>
-    <string name="text_loop_start">ループ（</string>
+    <string name="text_loop_start">（</string>
     <string name="text_loop_end">）</string>
     <string name="tab_phase">Phase&#160;</string>
     <string name="text_year">年</string>
@@ -87,7 +87,7 @@
     <string name="text_status_tips">*上記のステータスは☆MAX、LvMAX、RankMAX、装備&amp;専用装備フル強化、ストーリーステータス&amp;Exスキル加算の値になります。</string>
     <string name="text_attack_pattern">行動パターン</string>
     <string name="text_normal_mode">通常モード</string>
-    <string name="text_another_mode">特殊モード</string>
+    <string name="text_attack_pattern2">行動パターン2</string>
     <string name="text_cast_time">キャストタイム：</string>
     <string name="text_skill_action">スキルアクション</string>
     <string name="text_profile">プロフィール</string>
@@ -102,6 +102,9 @@
     <string name="text_cv">&#160;CV&#160;</string>
     <string name="text_catch_copy">キャッチコピー</string>
     <string name="text_self_text">自己紹介</string>
+    <string name="text_attack_pattern_prefix">行動パターン：</string>
+    <string name="text_attack_pattern_prefix2">行動パターン2：</string>
+    <string name="text_attack_pattern_prefix3">行動パターン3：</string>
 
     <string name="ATK">物理攻撃力</string>
     <string name="DEF">物理防御力</string>
@@ -125,36 +128,36 @@
     <string name="SLv">スキルLv</string>
     <string name="loop_start">ループ開始</string>
     <string name="loop_end">ループ終了</string>
-    <string name="hit">通常攻撃</string>
-    <string name="union_burst">UB</string>
-    <string name="union_burst_evo">UB+</string>
-    <string name="main_skill_1">Main 1</string>
-    <string name="main_skill_2">Main 2</string>
-    <string name="main_skill_3">Main 3</string>
-    <string name="main_skill_4">Main 4</string>
-    <string name="main_skill_5">Main 5</string>
-    <string name="main_skill_6">Main 6</string>
-    <string name="main_skill_7">Main 7</string>
-    <string name="main_skill_8">Main 8</string>
-    <string name="main_skill_9">Main 9</string>
-    <string name="main_skill_10">Main 10</string>
-    <string name="main_skill_1_evo">Main 1+</string>
-    <string name="main_skill_2_evo">Main 2+</string>
-    <string name="sp_skill_1">SP 1</string>
-    <string name="sp_skill_2">SP 2</string>
-    <string name="sp_skill_3">SP 3</string>
-    <string name="sp_skill_4">SP 4</string>
-    <string name="sp_skill_5">SP 5</string>
-    <string name="ex_skill_1">EX 1</string>
-    <string name="ex_skill_2">EX 2</string>
-    <string name="ex_skill_3">EX 3</string>
-    <string name="ex_skill_4">EX 4</string>
-    <string name="ex_skill_5">EX 5</string>
-    <string name="ex_skill_1_evo">EX 1+</string>
-    <string name="ex_skill_2_evo">EX 2+</string>
-    <string name="ex_skill_3_evo">EX 3+</string>
-    <string name="ex_skill_4_evo">EX 4+</string>
-    <string name="ex_skill_5_evo">EX 5+</string>
+    <string name="hit">&#160;通常攻撃&#160;</string>
+    <string name="union_burst">&#160;UB&#160;</string>
+    <string name="union_burst_evo">&#160;UB+&#160;</string>
+    <string name="main_skill_1">&#160;Main 1&#160;</string>
+    <string name="main_skill_2">&#160;Main 2&#160;</string>
+    <string name="main_skill_3">&#160;Main 3&#160;</string>
+    <string name="main_skill_4">&#160;Main 4&#160;</string>
+    <string name="main_skill_5">&#160;Main 5&#160;</string>
+    <string name="main_skill_6">&#160;Main 6&#160;</string>
+    <string name="main_skill_7">&#160;Main 7&#160;</string>
+    <string name="main_skill_8">&#160;Main 8&#160;</string>
+    <string name="main_skill_9">&#160;Main 9&#160;</string>
+    <string name="main_skill_10">&#160;Main 10&#160;</string>
+    <string name="main_skill_1_evo">&#160;Main 1+&#160;</string>
+    <string name="main_skill_2_evo">&#160;Main 2+&#160;</string>
+    <string name="sp_skill_1">&#160;SP 1&#160;</string>
+    <string name="sp_skill_2">&#160;SP 2&#160;</string>
+    <string name="sp_skill_3">&#160;SP 3&#160;</string>
+    <string name="sp_skill_4">&#160;SP 4&#160;</string>
+    <string name="sp_skill_5">&#160;SP 5&#160;</string>
+    <string name="ex_skill_1">&#160;EX 1&#160;</string>
+    <string name="ex_skill_2">&#160;EX 2&#160;</string>
+    <string name="ex_skill_3">&#160;EX 3&#160;</string>
+    <string name="ex_skill_4">&#160;EX 4&#160;</string>
+    <string name="ex_skill_5">&#160;EX 5&#160;</string>
+    <string name="ex_skill_1_evo">&#160;EX 1+&#160;</string>
+    <string name="ex_skill_2_evo">&#160;EX 2+&#160;</string>
+    <string name="ex_skill_3_evo">&#160;EX 3+&#160;</string>
+    <string name="ex_skill_4_evo">&#160;EX 4+&#160;</string>
+    <string name="ex_skill_5_evo">&#160;EX 5+&#160;</string>
 
     <!--**************** 拼接字符串领域开始 *****************-->
 
@@ -236,12 +239,12 @@
     <string name="all_s_s_targets">%2$s%1$s全体</string>    <!--all1 [enemy] 2[physics] targets-->
     <string name="s_s_target">%1$s%2$s</string>    <!--[the nearest] [enemy] target-->
     <string name="s_s_s">%1$s%2$s%3$s</string>    <!--[the farthest two] [enemy] [targets]-->
-    <string name="all_front_enemy_targets">前方の敵すべて</string>
+    <string name="all_front_enemy_targets">前方すべての敵</string>
     <string name="all_front_including_self_friendly_targets">自分を含めて前方すべての味方</string>
     <string name="all_front_targets">前方のターゲットすべて</string>
-    <string name="all_front_s_enemy_targets">前方%s敵すべて</string>
+    <string name="all_front_s_enemy_targets">前方%sすべての敵</string>
     <string name="all_front_including_self_s_friendly_targets">自分を含めて前方%sすべての味方</string>
-    <string name="all_front_s_targets">前方%sターゲットすべて</string>
+    <string name="all_front_s_targets">前方%sすべてのターゲット</string>
     <string name="s1_targets_in_range_d2">範囲[%2$d]内の%1$s</string>    <!--1[enemy] target s in range 2[500]-->
     <string name="front_s1_targets_in_range_d2">前方範囲[%2$d]内の%1$s</string>    <!--front 1[enemy] target s in range 2[500]-->
     <string name="s1_s2_targets_in_range_d3">範囲[%3$d]内の%2$s%1$s</string>    <!--1[friendly] 2[physics] target s in range 3[500]-->
@@ -252,7 +255,7 @@
     <string name="s1_front_s2_s3_in_range_d4">前方範囲[%4$d]内の%1$s%2$s%3$s</string>    <!--1[the second to fourth farthest] front 2[enemy] 3[targets] in range 4[500]-->
     <string name="s1_to_s2">%1$sから%2$sまで</string>
     <string name="s1_front_s2_s3">前方%1$s%2$s%3$s</string>    <!--1[the second to fourth farthest] front 2[enemy] 3[targets]-->
-    <string name="any_of_s">%sの中任意の1つ</string>
+    <string name="any_of_s">%sの中任意の数のターゲット</string>
     <string name="Unknown_effect_d1_to_s2_with_details_s3_values_s4">%2$sに不明な効果[%1$d]、内容%3$s、媒介変数%4$s。</string>
     <string name="magical">魔法</string>
     <string name="physical">物理</string>
@@ -360,12 +363,12 @@
     <string name="Make_s1_to_be_invulnerable_for_s2_sec">%1$sに物理&amp;魔法攻撃無効状態、効果時間[%2$s]秒。</string>
     <string name="Make_s1_to_be_invulnerable_to_physical_damage_for_s2_sec">%1$sに物理攻撃無効状態、効果時間[%2$s]秒。</string>
     <string name="Change_skill_visual_effect_for_s_sec">スキルのビジュアルを変化させる、効果時間[%s]秒。</string>
-    <string name="use_d1_to_s2_if_s3">%2$sが%3$sの場合、[アクション%1$d]を使う。</string>
-    <string name="use_d1_to_s2_in_state_of_ID_d3">%2$sがマーク（ID：%3$d）を持っている場合、[アクション%1$d]を使う。</string>
+    <string name="use_d1_to_s2_if_s3">%2$sが%3$sの場合、それに[アクション%1$d]を使う。</string>
+    <string name="use_d1_to_s2_in_state_of_ID_d3">%2$sがマーク[ID：%3$d]を持っている場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_to_s2_if_it_is_alone">%2$sが独りの場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_to_s2_if_HP_is_below_d">%2$sのHPが%3$d%%以下の場合、[アクション%1$d]を使う。</string>
-    <string name="use_d1_to_s2_if_not_s3">%2$sが%3$sでない場合、[アクション%1$d]を使う。</string>
-    <string name="use_d1_to_s2_if_not_in_state_of_ID_d3">%2$sがマーク（ID：%3$d）を持っていない場合、[アクション%1$d]を使う。</string>
+    <string name="use_d1_to_s2_if_not_s3">%2$sが%3$sでない場合、それに[アクション%1$d]を使う。</string>
+    <string name="use_d1_to_s2_if_not_in_state_of_ID_d3">%2$sがマーク[ID：%3$d]を持っていない場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_to_s2_if_it_is_not_alone">%2$sが独りでない場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_to_s2_if_HP_is_not_below_d">%2$sのHPが%3$d%%以下でない場合、[アクション%1$d]を使う。</string>
     <string name="Random_event_d1_chance_use_d2_otherwise_d3">ランダム事件：[%1$d%%]の確率で[アクション%2$d]を使う、それ以外の場合は[アクション%3$d]を使う。</string>
@@ -386,7 +389,7 @@
     <string name="Modifier_add_s1_HP_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dを[%1$s * HP]アップさせる。</string>
     <string name="Modifier_add_s1_lost_HP_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dを[%1$s * 損失したHP]アップさせる。</string>
     <string name="Modifier_add_s1_count_of_defeated_enemies_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dを[%1$s * 倒した敵の数]アップさせる。</string>
-    <string name="Modifier_add_s1_stacks_of_mark_ID_d2_to_value_d3_of_effect_d4">[アクション%4$d]の媒介変数%3$dを[%1$s * マーク（ID：%2$d）のスタック数]アップさせる。</string>
+    <string name="Modifier_add_s1_stacks_of_mark_ID_d2_to_value_d3_of_effect_d4">[アクション%4$d]の媒介変数%3$dを[%1$s * マーク[ID：%2$d]のスタック数]アップさせる。</string>
     <string name="Modifier_add_s1_count_of_targets_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dを[%1$s * ターゲットの数]アップさせる。</string>
     <string name="Modifier_add_s1_total_damage_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dを[%1$s * ダメージ量]アップさせる。</string>
     <string name="Modifier_add_s1_s2_of_s3_to_value_d4_of_effect_d5">[アクション%5$d]の媒介変数%4$dを[%1$s * %3$sの%2$s]アップさせる。</string>
@@ -395,18 +398,18 @@
     <string name="Modifier_multiple_s1_HP_max_HP_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dに[%1$s * HP / MaxHP]を乗じる。</string>
     <string name="Modifier_multiple_s1_lost_HP_max_HP_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dに[%1$s * 損失したHP / MaxHP]を乗じる。</string>
     <string name="Modifier_multiple_s1_count_of_defeated_enemies_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dに[%1$s * 倒した敵の数]を乗じる。</string>
-    <string name="Modifier_multiple_s1_stacks_of_mark_ID_d2_to_value_d3_of_effect_d4">[アクション%4$d]の媒介変数%3$dに[%1$s * マーク（ID：%2$d）のスタック数]を乗じる。</string>
+    <string name="Modifier_multiple_s1_stacks_of_mark_ID_d2_to_value_d3_of_effect_d4">[アクション%4$d]の媒介変数%3$dに[%1$s * マーク[ID：%2$d]のスタック数]を乗じる。</string>
     <string name="d1_chance_use_d2">[%1$d%%]の確率で[アクション%2$d]を使う。</string>
 
     <string name="use_d1_if_s2_has_any_dot_debuff">%2$sが継続ダメージデバフを掛けられている場合、[アクション%1$d]を使う。</string>
-    <string name="use_d1_if_s2_is_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4">%2$sが持っているマーク（ID：%3$d）のスタック数が%4$d以上の場合、[アクション%1$d]を使う。</string>
+    <string name="use_d1_if_s2_is_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4">%2$sが持っているマーク[ID：%3$d]のスタック数が%4$d以上の場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_if_s2_is_alone">%2$sが独りの場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_if_the_count_of_s2_except_stealth_units_is_d3">潜伏状態のユニットを除いて、%2$sの数が%3$dの場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_if_among_s2_exists_unit_ID_d3">潜伏状態のユニットを除いて、%2$sの中ユニット（ID：%3$d）が存在する場合、[アクション%1$d]を使う。</string>
     <string name="if_target_is_defeated_by_the_last_effect_then_use_d">前のアクションがターゲットを倒した場合、[アクション%d]を使う。</string>
     <string name="counter_is_greater_than_or_equal_to_d1_then_use_d2">カウンターの数が%1$d以上の場合、[アクション%2$d]を使う。</string>
     <string name="use_d1_if_s2_has_no_dot_debuff">%2$sが継続ダメージデバフを掛けられていない場合、[アクション%1$d]を使う。</string>
-    <string name="use_d1_if_s2_is_not_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4">%2$sが持っているマーク（ID：%3$d）のスタック数が%4$d未満の場合、[アクション%1$d]を使う。</string>
+    <string name="use_d1_if_s2_is_not_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4">%2$sが持っているマーク[ID：%3$d]のスタック数が%4$d未満の場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_if_s2_is_not_alone">%2$sが独りでない場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_if_the_count_of_s2_except_stealth_units_is_not_d3">潜伏状態のユニットを除いて、%2$sの数が%3$dでない場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_if_among_s2_does_not_exists_unit_ID_d3">潜伏状態のユニットを除いて、%2$sの中ユニット（ID：%3$d）が存在しない場合、[アクション%1$d]を使う。</string>
@@ -422,8 +425,8 @@
     <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_damage">%1$sにシールドを展開する、ダメージを受けた時[%2$s]分のダメージを反射し、自分のHPを同等の値回復させる。</string>
     <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_damage">%1$sにシールドを展開する、ダメージを受けた時[%2$s]分のダメージを反射する。</string>
     <string name="Add_additional_s1_damage_per_attack_with_max_s2_stacks_to_current_target">現在のターゲットに攻撃するたび、ダメージ量が[%1$s]追加する、この効果は[%2$s]回まで累計する。</string>
-    <string name="Add_s1_mark_stacks_max_s2_ID_s3_on_s4_for_s5_sec">%4$sにマーク（ID：%3$s）を%1$sスタック追加する、効果時間[%5$s]秒、この効果は最大[%2$s]までスタックする。</string>
-    <string name="Remove_s1_mark_stacks_ID_s2_on_s3">%3$sのマーク（ID：%2$s）を%1$sスタック減らせる。</string>
+    <string name="Add_s1_mark_stacks_max_s2_ID_s3_on_s4_for_s5_sec">%4$sにマーク[ID：%3$s]を%1$sスタック追加する、効果時間[%5$s]秒、この効果は最大[%2$s]までスタックする。</string>
+    <string name="Remove_s1_mark_stacks_ID_s2_on_s3">%3$sのマーク[ID：%2$s]を%1$sスタック減らせる。</string>
     <string name="Summon_a_field_of_radius_d1_to_deal_s2_s3_damage_per_second_for_s4_sec_to_s5">半径%1$dのフィールドを展開し、%5$sに毎秒[%2$s]の%3$sダメージを与える、効果時間[%4$s]秒。</string>
     <string name="Summon_a_field_of_radius_d1_at_position_of_s2_to_deal_s3_s4_damage_per_second_for_s5_sec">%2$sの位置で半径%1$dのフィールドを展開し、毎秒[%3$s]の%4$sダメージを与える、効果時間[%5$s]秒。</string>
     <string name="Summon_a_healing_field_of_radius_d1_to_heal_s2_s3_s4_HP_per_second_for_5s_sec">半径%1$dのフィールドを展開し、%2$sに毎秒[%3$s%4$s]のHPを回復させる、効果時間[%5$s]秒。</string>
@@ -449,8 +452,8 @@
     <string name="Set_a_countdown_timer_on_s1_trigger_effect_d2_after_s3_sec">%1$sにカウントダウンを設置する、[%3$s]秒後[アクション%2$d]を発動させる。</string>
     <string name="Remove_field_of_skill_d1_1_represents_the_first_skill_in_this_list_effect_d2">[スキル%1$d]の[アクション%2$d]が展開したフィールドを取り除く。</string>
     <string name="When_s1_receive_healing_deal_s2_healing_amount_damage_instead_last_for_s3_sec_or_unlimited_time_if_triggered_by_field">%1$sが回復を受けた時、それを無効にし、[%2$s]分のダメージを与える、効果時間[%3$s]秒。この効果はフィールド効果の場合、効果時間は無限大。</string>
-    <string name="Make_s1_when_get_one_hit_by_the_caster_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">%1$sが自分にHitされるたび、マーク（ID：%3$s）を1スタック増やせる、効果時間[%4$s]秒、この効果は最大[%2$s]までスタックする。</string>
-    <string name="Make_s1_when_deal_damage_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">%1$sがダメージを与えるたび、マーク（ID：%3$s）を1スタック増やせる、効果時間[%4$s]秒、この効果は最大[%2$s]までスタックする。</string>
+    <string name="Make_s1_when_get_one_hit_by_the_caster_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">%1$sが自分にHitされるたび、マーク[ID：%3$s]を1スタック増やせる、効果時間[%4$s]秒、この効果は最大[%2$s]までスタックする。</string>
+    <string name="Make_s1_when_deal_damage_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">%1$sがダメージを与えるたび、マーク[ID：%3$s]を1スタック増やせる、効果時間[%4$s]秒、この効果は最大[%2$s]までスタックする。</string>
     <string name="Fear_s1_with_s2_chance_for_s3_sec">[%2$s%%]の確率で%1$sを恐慌状態にする、効果時間[%3$s]秒。</string>
     <string name="Reduce_s1_damage_or_instant_healing_effect_of_union_burst_and_main_skills_cast_by_s2_for_s3_sec">%2$sのユニオンバーストかスキルが任意のターゲットにダメージか直接回復を与えるたび、その値を[%1$s%%]ダウンさせる、効果時間[%3$s]秒。</string>
     <string name="Reduce_s1_damage_or_instant_healing_effect_of_union_burst_cast_by_s2_for_s3_sec">%2$sのユニオンバーストが任意のターゲットにダメージか直接回復を与えるたび、その値を[%1$s%%]ダウンさせる、効果時間[%3$s]秒。</string>
@@ -462,6 +465,7 @@
     <string name="buffs">バフ</string>
     <string name="debuffs">デバフ</string>
     <string name="Raise_s1_s2">%2$sを[%1$s]アップさせる。</string>
+    <string name="When_s1_HP_reaches_0_restore_s2_HP_once_in_next_s3_sec">[%3$s]秒内、%1$sのHPが0になる直前、HPを[%2$s]回復し、このバフを解除する。</string>
 
     <!--**************** 拼接字符串领域结束 *****************-->
 
