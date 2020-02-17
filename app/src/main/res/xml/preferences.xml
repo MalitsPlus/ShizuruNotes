@@ -19,6 +19,7 @@
     <SwitchPreferenceCompat
         app:key="expressionStyle"
         app:defaultValue="false"
-        app:title="The style of skill action to show."/>
+        app:summary="@string/setting_kill_expression_summary"
+        app:title="@string/setting_kill_expression_title"/>
 
 </PreferenceScreen>

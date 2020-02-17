@@ -80,27 +80,6 @@ public class Utils {
         return sb.toString();
     }
 
-    /***
-     * 驼峰命名转下划线命名
-     * @param para
-     * @return
-     */
-    public static String Camelcase2Underline(String para){
-        StringBuilder sb = new StringBuilder(para);
-        int temp = 0;//定位
-        if (!para.contains("_")) {
-            for (int i = 0; i < para.length(); i++) {
-                if (Character.isUpperCase(para.charAt(i))) {
-                    sb.insert(i + temp, "_");
-                    temp++;
-                }
-            }
-            //特殊处理词尾数字的情况
-            if(Character.isDigit(sb.charAt(sb.length() - 1)))
-                sb.insert(sb.length() - 1, "_");
-        }
-        return sb.toString().toLowerCase();
-    }
 
     public static Object getValueFromObject(@NonNull Object object, @NonNull String fieldName) {
         Field field;

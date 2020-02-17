@@ -17,18 +17,8 @@ class WaveGroup(
     )
 
     val bossList = mutableListOf<ClanBattleBoss>().apply {
-        DBHelper.get().getClanBattleBoss(bossIdList).forEach {
+        DBHelper.get().getClanBattleBoss(bossIdList)?.forEach {
             this.add(it.clanBattleBoss)
         }
     }
-
-
-/*
-    init {
-        DBHelper.get().getClanBattleBoss(bossIdList).forEach {
-            bossList.add(it.clanBattleBoss)
-        }
-    }
-
- */
 }

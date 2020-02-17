@@ -13,7 +13,7 @@ import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.ClanBattlePeriod
 import com.github.malitsplus.shizurunotes.databinding.FragmentClanBattleBinding
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattle
-import kotlinx.android.synthetic.main.fragment_clan_battle.*
+import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattleFactory
 
 class ClanBattleFragment : Fragment() {
 
@@ -25,30 +25,39 @@ class ClanBattleFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val sharedViewModel = ViewModelProvider(activity!!).get(SharedViewModelClanBattle::class.java)
-        clanBattleViewModel = ViewModelProvider(this).get(ClanBattleViewModel::class.java)
 
         val binding =
             DataBindingUtil.inflate<FragmentClanBattleBinding>(
                 inflater, R.layout.fragment_clan_battle, container, false
             ).apply{
-                viewModel = clanBattleViewModel
                 lifecycleOwner = viewLifecycleOwner
-
                 adapter = ClanBattleAdapter(context!!, sharedViewModel)
                 clanBattleListRecycler.layoutManager = LinearLayoutManager(context)
                 clanBattleListRecycler.adapter = adapter
                 clanBattleListRecycler.setHasFixedSize(true)
-
-
             }
 
-        clanBattleViewModel.periodList.observe(
-            viewLifecycleOwner, Observer<List<ClanBattlePeriod>>{
-            adapter.update(it)
-        })
+        sharedViewModel.apply {
+            periodList.observe(
+                viewLifecycleOwner, Observer{
+                    adapter.update(it)
+                }
+            )
+            loadingFlag.observe(
+                viewLifecycleOwner, Observer {
+                    if (it) binding.clanBattleProgressBar.visibility = View.VISIBLE
+                    else binding.clanBattleProgressBar.visibility = View.GONE
+                }
+            )
+        }
 
-        clanBattleViewModel.periodList.value = sharedViewModel.periodList
+        clanBattleViewModel = ViewModelProvider(this,
+            SharedViewModelClanBattleFactory(sharedViewModel)
+        ).get(ClanBattleViewModel::class.java)
+
+        binding.viewModel = clanBattleViewModel
 
         return binding.root
     }
