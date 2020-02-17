@@ -40,7 +40,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/myDropdown"
                     android:layout_width="match_parent"
-                    android:layout_weight="5"
+                    android:layout_weight="6"
                     android:hint="@string/ui_text_atk_type">
 
                     <AutoCompleteTextView
@@ -53,7 +53,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/myDropdown"
                     android:layout_width="match_parent"
-                    android:layout_weight="5"
+                    android:layout_weight="6"
                     android:hint="@string/ui_text_position">
 
                     <AutoCompleteTextView
@@ -66,7 +66,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/myDropdown"
                     android:layout_width="match_parent"
-                    android:layout_weight="4"
+                    android:layout_weight="5"
                     android:hint="@string/ui_text_sort">
 
                     <AutoCompleteTextView
@@ -88,6 +88,13 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:listitem="@layout/list_item_chara" />
 
+        <ProgressBar
+            android:id="@+id/charaListProgressBar"
+            android:visibility="gone"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

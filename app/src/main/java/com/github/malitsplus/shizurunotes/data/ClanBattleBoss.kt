@@ -31,14 +31,14 @@ class ClanBattleBoss(
         this.resistStatusId = resistStatusId
         this.property = property
 
-        DBHelper.get().getUnitAttackPattern(unitId).forEach {
+        DBHelper.get().getUnitAttackPattern(unitId)?.forEach {
             attackPatternList.add(it.attackPattern.setItems())
         }
 
         iconUrl = Statics.ICON_URL.format(prefabId);
 
         if (resistStatusId != 0)
-            resistMap = DBHelper.get().getResistData(resistStatusId).resistData
+            resistMap = DBHelper.get().getResistData(resistStatusId)?.resistData
     }
 
     fun getLevelString(): String{

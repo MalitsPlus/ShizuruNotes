@@ -16,7 +16,7 @@ class ClanBattlePhase(
         val waveGroupList = mutableListOf<WaveGroup>()
         DBHelper.get().getClanBattleWaveEnemy(listOfNotNull(
             waveGroupId1, waveGroupId2, waveGroupId3, waveGroupId4, waveGroupId5
-        )).forEach {
+        ))?.forEach {
             waveGroupList.add(it.waveGroup)
         }
 

@@ -3,7 +3,6 @@ package com.github.malitsplus.shizurunotes.data
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.db.DBHelper
-import java.lang.StringBuilder
 import java.time.LocalDateTime
 
 class ClanBattlePeriod(
@@ -18,7 +17,7 @@ class ClanBattlePeriod(
             I18N.getString(R.string.text_month)
 
     val phaseList = mutableListOf<ClanBattlePhase>().apply {
-        DBHelper.get().getClanBattlePhase(clanBattleId).forEach {
+        DBHelper.get().getClanBattlePhase(clanBattleId)?.forEach {
             this.add(it.clanBattlePhase)
         }
     }

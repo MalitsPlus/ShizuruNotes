@@ -1,54 +1,60 @@
 package com.github.malitsplus.shizurunotes.ui
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.malitsplus.shizurunotes.data.ClanBattlePeriod
 import com.github.malitsplus.shizurunotes.db.DBHelper
-import com.github.malitsplus.shizurunotes.db.RawClanBattlePeriod
+import kotlin.concurrent.thread
 
 class SharedViewModelClanBattle : ViewModel() {
 
-    val periodList = ArrayList<ClanBattlePeriod>()
+    val periodList = MutableLiveData<MutableList<ClanBattlePeriod>>()
+    val loadingFlag = MutableLiveData<Boolean>(false)
     var selectedPeriod: ClanBattlePeriod? = null
 
-    init {
-        loadData()
-    }
 
+
+    /***
+     * 从数据库读取所有会战数据。
+     * 注意：此方法应该且仅应该在程序初始化时或数据库更新完成后使用。
+     */
     fun loadData(){
-        periodList.clear()
-        DBHelper.get().clanBattlePeriod?.forEach {
-            periodList.add(it.transToClanBattlePeriod())
-        }
+        loadingFlag.value = true
 
-        periodList.forEach { period ->
-            period.phaseList.forEach { p ->
-                p.bossList.forEach { b ->
-                    b.skills.forEach { s ->
-                        DBHelper.get().getSkillData(s.skillId).setSkillData(s)
-                        //向actionList中填入其他具体值
-                        s.actions.forEach {
-                            DBHelper.get().getSkillAction(it.actionId).setActionData(it)
-                        }
-                        s.actions.forEach {
-                            if (it.dependActionId != 0) {
-                                for (searched in s.actions) {
-                                    if (searched.actionId == it.dependActionId) { //需要先建立params
-                                        searched.buildParameter()
-                                        it.dependAction = searched
-                                        break
+        thread(start = true){
+            val innerPeriodList = mutableListOf<ClanBattlePeriod>()
+            DBHelper.get().getClanBattlePeriod()?.forEach {
+                innerPeriodList.add(it.transToClanBattlePeriod())
+            }
+            innerPeriodList.forEach { period ->
+                period.phaseList.forEach { p ->
+                    p.bossList.forEach { b ->
+                        b.skills.forEach { s ->
+                            DBHelper.get().getSkillData(s.skillId)?.setSkillData(s)
+                            //向actionList中填入其他具体值
+                            s.actions.forEach {
+                                DBHelper.get().getSkillAction(it.actionId)?.setActionData(it)
+                            }
+                            s.actions.forEach {
+                                if (it.dependActionId != 0) {
+                                    for (searched in s.actions) {
+                                        if (searched.actionId == it.dependActionId) {
+                                            searched.buildParameter()
+                                            it.dependAction = searched
+                                            break
+                                        }
                                     }
                                 }
+                                it.buildParameter()
                             }
-                            it.buildParameter()
+                            s.setActionDescriptions(s.enemySkillLevel, b.property)
                         }
-                        s.setActionDescriptions(s.enemySkillLevel, b.property)
                     }
                 }
             }
+            periodList.postValue(innerPeriodList)
+            loadingFlag.postValue(false)
         }
-    }
 
-    fun mSetSelectedPeriod(period: ClanBattlePeriod?){
-        selectedPeriod = period
     }
 }

@@ -1,13 +1,13 @@
 package com.github.malitsplus.shizurunotes.ui.clanbattle
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.github.malitsplus.shizurunotes.data.ClanBattlePeriod
+import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattle
 
-class ClanBattleViewModel : ViewModel() {
+class ClanBattleViewModel(
+    val sharedViewModel: SharedViewModelClanBattle
+) : ViewModel() {
 
-    val periodList = MutableLiveData<List<ClanBattlePeriod>>()
-
-
+    init {
+        sharedViewModel.loadData()
+    }
 }

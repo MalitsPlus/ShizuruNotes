@@ -18,6 +18,7 @@ import com.github.malitsplus.shizurunotes.common.UpdateManager
 import com.github.malitsplus.shizurunotes.common.UserSettings
 import com.github.malitsplus.shizurunotes.databinding.ActivityMainBinding
 import com.github.malitsplus.shizurunotes.db.DBHelper
+import com.google.gson.Gson
 
 class MainActivity : AppCompatActivity(), UpdateManager.IFragmentCallBack, OnRequestPermissionsResultCallback {
 
@@ -52,8 +53,7 @@ class MainActivity : AppCompatActivity(), UpdateManager.IFragmentCallBack, OnReq
         sharedViewModelChara = ViewModelProvider(this).get(SharedViewModelChara::class.java)
         sharedViewModelClanBattle = ViewModelProvider(this).get(SharedViewModelClanBattle::class.java)
 
-        //if (checkStoragePermission())
-            updateManager.checkDatabaseVersion()
+        updateManager.checkDatabaseVersion()
 
 
 

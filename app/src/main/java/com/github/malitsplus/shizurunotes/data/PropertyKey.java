@@ -28,8 +28,8 @@ public enum PropertyKey {
     accuracy,
     unknown;
 
-    public static List<PropertyKey> all = new ArrayList<>();
-    static {
+    public List<PropertyKey> getKeys(){
+        List<PropertyKey> all = new ArrayList<>();
         all.add(atk);
         all.add(def);
         all.add(dodge);
@@ -47,7 +47,9 @@ public enum PropertyKey {
         all.add(waveEnergyRecovery);
         all.add(waveHpRecovery);
         all.add(accuracy);
+        return all;
     }
+
 
     public String description(){
         switch (this){

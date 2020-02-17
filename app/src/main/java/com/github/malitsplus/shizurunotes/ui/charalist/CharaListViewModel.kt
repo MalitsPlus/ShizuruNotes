@@ -6,9 +6,13 @@ import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.Chara
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
+import java.security.cert.TrustAnchor
+import java.time.format.DateTimeFormatter
 import java.util.*
 
-class CharaListViewModel(private val sharedViewModelChara: SharedViewModelChara) : ViewModel() {
+class CharaListViewModel(
+    private val sharedViewModelChara: SharedViewModelChara
+) : ViewModel() {
 
     val liveCharaList = MutableLiveData<List<Chara>>()
 
@@ -16,6 +20,11 @@ class CharaListViewModel(private val sharedViewModelChara: SharedViewModelChara)
     var selectedPosition: String = "0"
     var selectedSort: String = "0"
     var isAsc: Boolean = false
+
+    init {
+        //sharedViewModelChara.charaLoadFinishedCallBack = this
+        sharedViewModelChara.loadData()
+    }
 
     val attackTypeMap = mapOf(
         0 to I18N.getString(R.string.ui_chip_any),
@@ -50,7 +59,6 @@ class CharaListViewModel(private val sharedViewModelChara: SharedViewModelChara)
         sortValue: String?,
         asc: Boolean?
     ) {
-
         selectedAttackType = attackType?: selectedAttackType
         selectedPosition = position?: selectedPosition
         sortValue?.apply {
@@ -61,7 +69,7 @@ class CharaListViewModel(private val sharedViewModelChara: SharedViewModelChara)
         asc?.apply { isAsc = this }
 
         val charaToShow: MutableList<Chara> = ArrayList()
-        for (chara in sharedViewModelChara.charaList) {
+        sharedViewModelChara.charaList.value?.forEach { chara ->
             if (checkAttackType(chara, selectedAttackType) && checkPosition(chara, selectedPosition)) {
                 setSortValue(chara, selectedSort)
                 charaToShow.add(chara)
@@ -69,53 +77,52 @@ class CharaListViewModel(private val sharedViewModelChara: SharedViewModelChara)
         }
 
         charaToShow.sortWith(kotlin.Comparator{ a: Chara, b: Chara ->
-            val valueA: Long
-            val valueB: Long
+            val valueA : Int
+            val valueB : Int
             when (selectedSort) {
                 "0" -> {
-                    valueA = a.startTime
-                    valueB = b.startTime
+                    return@Comparator if (b.startTime.isEqual(a.startTime)) 0 else if (b.startTime.isAfter(a.startTime) == isAsc) -1 else 1
                 }
                 "1" -> {
-                    valueA = a.searchAreaWidth.toLong()
-                    valueB = b.searchAreaWidth.toLong()
+                    valueA = a.searchAreaWidth
+                    valueB = b.searchAreaWidth
                 }
                 "2" -> {
-                    valueA = a.charaProperty.getAtk().toLong()
-                    valueB = b.charaProperty.getAtk().toLong()
+                    valueA = a.charaProperty.getAtk()
+                    valueB = b.charaProperty.getAtk()
                 }
                 "3" -> {
-                    valueA = a.charaProperty.getMagicStr().toLong()
-                    valueB = b.charaProperty.getMagicStr().toLong()
+                    valueA = a.charaProperty.getMagicStr()
+                    valueB = b.charaProperty.getMagicStr()
                 }
                 "4" -> {
-                    valueA = a.charaProperty.getDef().toLong()
-                    valueB = b.charaProperty.getDef().toLong()
+                    valueA = a.charaProperty.getDef()
+                    valueB = b.charaProperty.getDef()
                 }
                 "5" -> {
-                    valueA = a.charaProperty.getMagicDef().toLong()
-                    valueB = b.charaProperty.getMagicDef().toLong()
+                    valueA = a.charaProperty.getMagicDef()
+                    valueB = b.charaProperty.getMagicDef()
                 }
                 "6" -> {
-                    valueA = if (a.age.contains("?")) 9999 else a.age.toLong()
-                    valueB = if (b.age.contains("?")) 9999 else b.age.toLong()
+                    valueA = if (a.age.contains("?")) 9999 else a.age.toInt()
+                    valueB = if (b.age.contains("?")) 9999 else b.age.toInt()
                 }
                 "7" -> {
-                    valueA = if (a.height.contains("?")) 9999 else a.height.toLong()
-                    valueB = if (b.height.contains("?")) 9999 else b.height.toLong()
+                    valueA = if (a.height.contains("?")) 9999 else a.height.toInt()
+                    valueB = if (b.height.contains("?")) 9999 else b.height.toInt()
                 }
                 "8" -> {
-                    valueA = if (a.weight.contains("?")) 9999 else a.weight.toLong()
-                    valueB = if (b.weight.contains("?")) 9999 else b.weight.toLong()
+                    valueA = if (a.weight.contains("?")) 9999 else a.weight.toInt()
+                    valueB = if (b.weight.contains("?")) 9999 else b.weight.toInt()
                 }
                 else -> {
-                    valueA = a.unitId.toLong()
-                    valueB = b.unitId.toLong()
+                    valueA = a.unitId
+                    valueB = b.unitId
                 }
             }
             (if (isAsc) -1 else 1) * valueB.compareTo(valueA)
         })
-        liveCharaList.value = charaToShow
+        liveCharaList.postValue(charaToShow)
     }
 
     fun filterDefault() {
@@ -143,4 +150,8 @@ class CharaListViewModel(private val sharedViewModelChara: SharedViewModelChara)
             else -> chara.sortValue = ""
         }
     }
+
+//    override fun doCharaListLoadFinished() {
+//        //filterDefault()
+//    }
 }

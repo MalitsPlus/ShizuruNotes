@@ -10,7 +10,7 @@ class CharaDetailsViewModel(private val sharedViewModelChara: SharedViewModelCha
 
     val mutableChara = MutableLiveData<Chara>()
 
-    fun setChara(chara: Chara) {
+    fun setChara(chara: Chara?) {
         mutableChara.value = chara
     }
 

@@ -16,6 +16,7 @@ import com.github.malitsplus.shizurunotes.databinding.FragmentCharaListBinding
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelCharaFactory
 import com.google.android.material.snackbar.Snackbar
+import kotlin.concurrent.thread
 
 
 class CharaListFragment : Fragment() {
@@ -77,12 +78,39 @@ class CharaListFragment : Fragment() {
             }
         }
 
+        setDropdownText(binding)
 
-        binding.dropdownText1.setAdapter(MaterialSpinnerAdapter(
-            context!!,
-            R.layout.dropdown_item_chara_list,
-            charaListViewModel.attackTypeMap.values.toTypedArray<String>()
-        ))
+        //设置观察者
+        charaListViewModel.liveCharaList.observe(viewLifecycleOwner,
+            Observer<List<Chara>> {
+                adapter.update(it)
+            }
+        )
+
+        sharedViewModel.loadingFlag.observe(viewLifecycleOwner,
+            Observer<Boolean> {
+                if (it) binding.charaListProgressBar.visibility = View.VISIBLE
+                else binding.charaListProgressBar.visibility = View.GONE
+            }
+        )
+
+        sharedViewModel.charaList.observe(viewLifecycleOwner,
+            Observer {
+                updateList()
+            }
+        )
+
+        return binding.root
+    }
+
+
+    private fun setDropdownText(binding: FragmentCharaListBinding){
+        binding.dropdownText1.setAdapter(
+            MaterialSpinnerAdapter(
+                context!!,
+                R.layout.dropdown_item_chara_list,
+                charaListViewModel.attackTypeMap.values.toTypedArray<String>()
+            ))
 
         binding.dropdownText2.setAdapter(MaterialSpinnerAdapter(
             context!!,
@@ -95,20 +123,6 @@ class CharaListFragment : Fragment() {
             R.layout.dropdown_item_chara_list,
             charaListViewModel.sortMap.values.toTypedArray<String>()
         ))
-
-
-        //设置观察者
-        charaListViewModel.liveCharaList.observe(viewLifecycleOwner,
-            Observer<List<Chara>> {
-                adapter.update(it)
-            }
-        )
-
-        sharedViewModel.reloadFlag.observe(viewLifecycleOwner,
-            Observer<Int>{ updateList() }
-        )
-
-        return binding.root
     }
 
     /*
@@ -116,7 +130,7 @@ class CharaListFragment : Fragment() {
         inflater.inflate(R.menu.fragment_chara_bar, menu)
     }
 */
-    fun updateList() {
+    private fun updateList() {
         charaListViewModel.filterDefault()
     }
 }

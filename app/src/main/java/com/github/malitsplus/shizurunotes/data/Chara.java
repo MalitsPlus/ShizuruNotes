@@ -4,6 +4,7 @@ import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.I18N;
 import com.github.malitsplus.shizurunotes.data.action.PassiveAction;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,7 +39,7 @@ public class Chara {
 
     public String comment;
     public String selfText;
-    public long startTime;
+    public LocalDateTime startTime;
     public String kana;
 
     public int charaId;

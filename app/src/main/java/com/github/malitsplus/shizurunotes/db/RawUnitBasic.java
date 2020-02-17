@@ -67,8 +67,8 @@ public class RawUnitBasic {
         chara.selfText = self_text.replaceAll("\\\\n", "\n") ;
 
         //需要处理的字串
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        chara.startTime = LocalDateTime.parse(start_time, formatter).toEpochSecond(ZoneOffset.of("+9"));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd H:mm:ss");
+        chara.startTime = LocalDateTime.parse(start_time, formatter);
         chara.iconUrl = String.format(Locale.US, Statics.ICON_URL, prefab_id + 30);
         chara.imageUrl = String.format(Locale.US, Statics.IMAGE_URL, prefab_id + 30);
 
