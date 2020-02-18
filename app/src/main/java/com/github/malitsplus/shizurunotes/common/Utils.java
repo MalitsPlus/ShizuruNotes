@@ -63,6 +63,11 @@ public class Utils {
         return file.exists();
     }
 
+    public static void checkFileAndDeleteIfExists(File file){
+        if (file.exists())
+            deleteFile(file);
+    }
+
     /***
      * 以逗号分隔字符串
      * @param list

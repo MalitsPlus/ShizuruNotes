@@ -12,11 +12,6 @@ import kotlin.concurrent.thread
 
 class SharedViewModelChara : ViewModel() {
 
-    interface CharaListLoadFinished {
-        fun doCharaListLoadFinished()
-    }
-    var charaLoadFinishedCallBack: CharaListLoadFinished? = null
-
     val loadingFlag = MutableLiveData<Boolean>(false)
     val charaList = MutableLiveData<MutableList<Chara>>()
     var selectedChara: Chara? = null
@@ -26,8 +21,8 @@ class SharedViewModelChara : ViewModel() {
      * 注意：此方法应该且仅应该在程序初始化时或数据库更新完成后使用。
      */
     fun loadData() {
-        charaList.value = mutableListOf()
         thread(start = true){
+            charaList.postValue(mutableListOf())
             loadingFlag.postValue(true)
             val innerCharaList = mutableListOf<Chara>()
             loadBasic(innerCharaList)
@@ -47,7 +42,6 @@ class SharedViewModelChara : ViewModel() {
             }
             charaList.postValue(innerCharaList)
             loadingFlag.postValue(false)
-            //charaLoadFinishedCallBack?.doCharaListLoadFinished()
         }
     }
 

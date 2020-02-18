@@ -32,7 +32,7 @@ class DBHelper : SQLiteOpenHelper {
         fun get(): DBHelper = instance
     }
 
-    constructor(application: Application?) : super(
+    private constructor(application: Application?) : super(
         application,
         Statics.DB_FILE,
         null,
@@ -40,7 +40,7 @@ class DBHelper : SQLiteOpenHelper {
     ) {
     }
 
-    constructor(
+    private constructor(
         context: Context?,
         name: String?,
         factory: CursorFactory?,

@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattle
 
 class ClanBattleViewModel(
-    val sharedViewModel: SharedViewModelClanBattle
+    sharedViewModel: SharedViewModelClanBattle
 ) : ViewModel() {
 
     init {

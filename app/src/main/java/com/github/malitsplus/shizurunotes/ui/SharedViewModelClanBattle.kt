@@ -12,16 +12,14 @@ class SharedViewModelClanBattle : ViewModel() {
     val loadingFlag = MutableLiveData<Boolean>(false)
     var selectedPeriod: ClanBattlePeriod? = null
 
-
-
     /***
      * 从数据库读取所有会战数据。
      * 注意：此方法应该且仅应该在程序初始化时或数据库更新完成后使用。
      */
     fun loadData(){
-        loadingFlag.value = true
-
         thread(start = true){
+            periodList.postValue(mutableListOf())
+            loadingFlag.postValue(true)
             val innerPeriodList = mutableListOf<ClanBattlePeriod>()
             DBHelper.get().getClanBattlePeriod()?.forEach {
                 innerPeriodList.add(it.transToClanBattlePeriod())
