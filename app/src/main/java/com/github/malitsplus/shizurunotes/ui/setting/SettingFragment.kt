@@ -22,13 +22,17 @@ class SettingFragment : PreferenceFragmentCompat() {
         const val LANGUAGE_KEY = "language"
     }
 
+    override fun onResume() {
+        super.onResume()
+        findPreference<Preference>("dbVersion")
+            ?.summary = UserSettings.get().preference.getInt("dbVersion", 0).toString()
+    }
+
     override fun onCreatePreferences(
         savedInstanceState: Bundle?,
         rootKey: String?
     ) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
-        findPreference<Preference>("dbVersion")
-            ?.summary = UserSettings.get().preference.getInt("dbVersion", 0).toString()
 
         val languagePreference = findPreference<ListPreference>(LANGUAGE_KEY)
         if (languagePreference != null) {
