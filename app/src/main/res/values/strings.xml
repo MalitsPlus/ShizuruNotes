@@ -71,7 +71,7 @@
     <string name="text_year">年</string>
     <string name="text_month">月</string>
     <string name="text_day">日</string>
-    <string name="text_status">ステータス</string>
+    <string name="text_status">&#160;ステータス&#160;</string>
     <string name="text_physical_atk">&#160;物理攻撃力&#160;</string>
     <string name="text_magical_atk">&#160;魔法攻撃力&#160;</string>
     <string name="text_physical_crt">&#160;物理クリティカル&#160;</string>
@@ -90,9 +90,9 @@
     <string name="text_magical_penetrate">&#160;魔法貫通&#160;</string>
     <string name="text_hp_recovery">&#160;回復量上昇&#160;</string>
     <string name="text_status_tips">*上記のステータスは☆MAX、LvMAX、RankMAX、装備&amp;専用装備フル強化、ストーリーステータス&amp;Exスキル加算の値になります。</string>
-    <string name="text_attack_pattern">行動パターン</string>
+    <string name="text_attack_pattern">&#160;行動パターン&#160;</string>
     <string name="text_normal_mode">通常モード</string>
-    <string name="text_attack_pattern2">行動パターン2</string>
+    <string name="text_attack_pattern2">&#160;行動パターン2&#160;</string>
     <string name="text_cast_time">キャストタイム：</string>
     <string name="text_skill_action">スキルアクション</string>
     <string name="text_profile">プロフィール</string>
@@ -110,6 +110,7 @@
     <string name="text_attack_pattern_prefix">行動パターン：</string>
     <string name="text_attack_pattern_prefix2">行動パターン2：</string>
     <string name="text_attack_pattern_prefix3">行動パターン3：</string>
+    <string name="text_normal_attack_cast_time">通常攻撃キャストタイム：%ss</string>
 
     <string name="ATK">物理攻撃力</string>
     <string name="DEF">物理防御力</string>

@@ -23,13 +23,13 @@
 
         <ImageView
             android:id="@+id/charaIcon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            style="@style/unitIcon"
             android:layout_marginStart="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/positionIcon"
             app:layout_constraintTop_toTopOf="parent"
             bind:imageUrl="@{chara.iconUrl}"
+            bind:errorHolder="@{R.drawable.mic_chara_icon_error}"
             bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
 
         <TextView
@@ -58,7 +58,7 @@
             android:id="@+id/positionIcon"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

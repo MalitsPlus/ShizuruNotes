@@ -29,9 +29,9 @@ class ViewPagerFragment : Fragment() {
 
     private fun getTabIcon(position: Int): Int {
         return when (position) {
-            CHARA_INDEX -> R.drawable.mic_cake
+            CHARA_INDEX -> R.drawable.mic_queen
             CLAN_BATTLE_INDEX -> R.drawable.mic_defend
-            SETTING_INDEX -> R.drawable.ic_notifications_black_24dp
+            SETTING_INDEX -> R.drawable.mic_setting
             else -> throw IndexOutOfBoundsException()
         }
     }

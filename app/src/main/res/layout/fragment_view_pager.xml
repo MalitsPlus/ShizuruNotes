@@ -32,7 +32,7 @@
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:icon="@drawable/mic_cake"
+                android:icon="@drawable/mic_queen"
                 android:text="@string/title_chara_list" />
 
             <com.google.android.material.tabs.TabItem
@@ -44,7 +44,7 @@
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:icon="@drawable/ic_notifications_black_24dp"
+                android:icon="@drawable/mic_setting"
                 android:text="@string/title_setting" />
         </com.google.android.material.tabs.TabLayout>
     </LinearLayout>

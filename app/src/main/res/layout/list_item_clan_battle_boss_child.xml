@@ -39,8 +39,17 @@
             <com.allen.library.SuperTextView
                 android:id="@+id/txt_hp"
                 style="@style/StatusSuperTextView"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
                 app:sLeftTextString="@string/text_hp"
                 bind:sRightText="@{String.valueOf(bossChild.property.hp)}" />
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/txtPlaceHolder"
+                style="@style/StatusSuperTextViewPlaceHolder"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                app:sLeftTextString="" />
 
         </LinearLayout>
 

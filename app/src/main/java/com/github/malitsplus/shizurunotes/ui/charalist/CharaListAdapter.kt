@@ -5,8 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.Chara
@@ -29,17 +33,26 @@ class CharaListAdapter(
             LayoutInflater.from(parent.context),
             R.layout.list_item_chara, parent, false
         )
+
         //向每个item设置点击监听事件
-        binding.clickListener = View.OnClickListener { v: View? ->
+        binding.clickListener = View.OnClickListener { v: View ->
             sharedViewModelChara.selectedChara = binding.chara
-            val action: NavDirections =
-                ViewPagerFragmentDirections.actionNavViewPagerToNavCharaDetails()
-                //CharaListFragmentDirections.actionNavCharaToNavCharaDetails()
-            Navigation.findNavController(v!!).navigate(action)
+            var extras: FragmentNavigator.Extras
+            binding.apply {
+                chara?.charaId.also {
+                    extras = FragmentNavigatorExtras(
+                        itemChara to "transItem_$it"
+                    )
+                }
+            }
+
+            val action = ViewPagerFragmentDirections
+                .actionNavViewPagerToNavCharaDetails()
+                .setCharaId(binding.chara!!.charaId)
+
+            v.findNavController().navigate(action, extras)
         }
-        return CharaListViewHolder(
-            binding
-        )
+        return CharaListViewHolder(binding)
     }
 
     //填充每个item的视图
@@ -47,7 +60,10 @@ class CharaListAdapter(
         holder: CharaListViewHolder,
         position: Int
     ) {
-        holder.binding.chara = charaList[position]
+        holder.binding.apply {
+            chara = charaList[position]
+            itemChara.transitionName = "transItem_${charaList[position].charaId}"
+        }
         holder.binding.executePendingBindings()
     }
 
@@ -58,9 +74,11 @@ class CharaListAdapter(
     fun update(charaList: List<Chara>) {
         this.charaList = charaList
         notifyDataSetChanged()
+
     }
 
 
-    class CharaListViewHolder internal constructor(val binding: ListItemCharaBinding) :
-        RecyclerView.ViewHolder(binding.root)
+    class CharaListViewHolder internal constructor(
+        val binding: ListItemCharaBinding
+    ) : RecyclerView.ViewHolder(binding.root)
 }
