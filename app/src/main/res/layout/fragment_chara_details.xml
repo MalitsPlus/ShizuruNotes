@@ -46,6 +46,7 @@
                     android:scaleType="fitCenter"
                     app:layout_collapseMode="parallax"
                     bind:imageUrl="@{detailsViewModel.mutableChara.imageUrl}"
+                    bind:errorHolder="@{R.drawable.place_holder_full_error}"
                     bind:placeHolder="@{R.drawable.place_holder_full}" />
 
                 <androidx.appcompat.widget.Toolbar
@@ -73,9 +74,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/detailsItemChara"
+                    android:id="@+id/detailsItemCharaContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFFFFF"
@@ -96,49 +96,72 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageView
-                        android:id="@+id/detailsCharaIcon"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/positionIcon"
-                        app:layout_constraintTop_toTopOf="parent"
-                        bind:imageUrl="@{detailsViewModel.mutableChara.iconUrl}"
-                        bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
 
-                    <TextView
-                        android:id="@+id/detailsCharaNameKataText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="@{detailsViewModel.mutableChara.unitName, default=unitName}"
-                        android:textSize="16sp"
-                        app:layout_constraintStart_toEndOf="@+id/detailsCharaIcon"
-                        app:layout_constraintTop_toTopOf="@+id/detailsCharaIcon" />
-
-                    <TextView
-                        android:id="@+id/detailsCharaNameKanjiText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="@{detailsViewModel.mutableChara.actualName, default=actualName}"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toEndOf="@+id/detailsCharaIcon"
-                        app:layout_constraintTop_toBottomOf="@+id/detailsCharaNameKataText" />
-
-                    <ImageView
-                        android:id="@+id/positionIcon"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:layout_marginStart="16dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/detailsCharaIcon"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/detailsItemChara"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/detailsCharaIcon"
-                        bind:src="@{detailsViewModel.mutableChara.positionIcon}" />
+                        app:layout_constraintTop_toTopOf="parent">
+
+
+                        <ImageView
+                            android:id="@+id/detailsCharaIcon"
+                            style="@style/unitIcon"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/positionIcon"
+                            app:layout_constraintTop_toTopOf="parent"
+                            bind:imageUrl="@{detailsViewModel.mutableChara.iconUrl}"
+                            bind:errorHolder="@{R.drawable.mic_chara_icon_error}"
+                            bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
+
+                        <TextView
+                            android:id="@+id/detailsCharaNameKataText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="@{detailsViewModel.mutableChara.unitName, default=unitName}"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toEndOf="@+id/detailsCharaIcon"
+                            app:layout_constraintTop_toTopOf="@+id/detailsCharaIcon" />
+
+                        <TextView
+                            android:id="@+id/detailsCharaNameKanjiText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@{detailsViewModel.mutableChara.actualName, default=actualName}"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toEndOf="@+id/detailsCharaIcon"
+                            app:layout_constraintTop_toBottomOf="@+id/detailsCharaNameKataText" />
+
+                        <ImageView
+                            android:id="@+id/positionIcon"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginStart="16dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/detailsCharaIcon"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/detailsCharaIcon"
+                            bind:src="@{detailsViewModel.mutableChara.positionIcon}" />
+
+
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            bind:srcCompat="@drawable/mic_navigate_next" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <View
                         android:id="@+id/divider2"
@@ -150,16 +173,6 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/imageView3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        bind:srcCompat="@drawable/mic_navigate_next" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -173,7 +186,7 @@
                     app:cardCornerRadius="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/detailsItemChara">
+                    app:layout_constraintTop_toBottomOf="@+id/detailsItemCharaContainer">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -185,6 +198,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
+                            style="@style/textTag"
                             android:text="@string/text_status"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -193,10 +207,10 @@
                             android:id="@+id/statusValues"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="8dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView2">
+                            app:layout_constraintTop_toBottomOf="@+id/normalAttackCastTime">
 
                             <LinearLayout
                                 android:id="@+id/linearLayout2"
@@ -489,6 +503,16 @@
                             app:layout_constraintTop_toBottomOf="@+id/statusValues"
                             app:layout_constraintVertical_bias="0.0" />
 
+                        <TextView
+                            android:id="@+id/normalAttackCastTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@{@string/text_normal_attack_cast_time(detailsViewModel.mutableChara.normalAtkCastTime), default=normalAttackCastTime}"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -519,6 +543,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
+                            style="@style/textTag"
                             android:text="@string/text_attack_pattern"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -543,6 +568,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
+                            style="@style/textTag"
                             android:text="@string/text_attack_pattern2"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/attackPatternRecycler" />

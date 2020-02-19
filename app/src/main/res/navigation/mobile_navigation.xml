@@ -14,10 +14,15 @@
         <action
             android:id="@+id/action_nav_view_pager_to_nav_chara_details"
             app:destination="@id/nav_chara_details"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" >
+            <argument
+                android:name="charaId"
+                app:argType="integer"
+                android:defaultValue="0" />
+        </action>
         <action
             android:id="@+id/action_nav_view_pager_to_nav_clan_battle_details"
             app:destination="@id/nav_clan_battle_view_pager"
@@ -45,6 +50,10 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <argument
+            android:name="charaId"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 
     <fragment
@@ -66,12 +75,6 @@
         android:label="fragment_clan_battle_view_pager"
         tools:layout="@layout/fragment_clan_battle_view_pager" />
 
-
-    <fragment
-        android:id="@+id/nav_setting"
-        android:name="com.github.malitsplus.shizurunotes.ui.setting.SettingFragment"
-        android:label="@string/title_setting"
-        tools:layout="@layout/fragment_setting" />
     <fragment
         android:id="@+id/nav_setting_container"
         android:name="com.github.malitsplus.shizurunotes.ui.setting.SettingContainerFragment"

@@ -37,8 +37,7 @@
 
                 <ImageView
                     android:id="@+id/boss_icon"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    style="@style/unitIcon"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
@@ -46,6 +45,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     bind:imageUrl="@{boss.iconUrl}"
+                    bind:errorHolder="@{R.drawable.mic_chara_icon_error}"
                     bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
 
                 <TextView
@@ -159,8 +159,17 @@
                     <com.allen.library.SuperTextView
                         android:id="@+id/txt_hp"
                         style="@style/StatusSuperTextView"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
                         app:sLeftTextString="@string/text_hp"
                         bind:sRightText="@{String.valueOf(boss.property.hp)}" />
+
+                    <com.allen.library.SuperTextView
+                        android:id="@+id/txtPlaceHolder"
+                        style="@style/StatusSuperTextViewPlaceHolder"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="1"
+                        app:sLeftTextString="" />
 
                 </LinearLayout>
 

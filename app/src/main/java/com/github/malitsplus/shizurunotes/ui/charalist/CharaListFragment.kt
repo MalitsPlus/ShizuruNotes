@@ -2,12 +2,14 @@ package com.github.malitsplus.shizurunotes.ui.charalist
 
 import android.os.Bundle
 import android.view.*
+import android.view.animation.AnimationUtils
 import android.widget.AdapterView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.TransitionInflater
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.common.MaterialSpinnerAdapter
@@ -49,7 +51,14 @@ class CharaListFragment : Fragment() {
                 adapter = CharaListAdapter(context!!, sharedViewModel)
                 charaListRecycler.layoutManager = LinearLayoutManager(context)
                 charaListRecycler.adapter = adapter
-                charaListRecycler.setHasFixedSize(true)
+                charaListRecycler.apply {
+                    setHasFixedSize(true)
+                    parentFragment?.postponeEnterTransition()
+                    viewTreeObserver.addOnPreDrawListener {
+                        parentFragment?.startPostponedEnterTransition()
+                        true
+                    }
+                }
 
                 dropdownText1.apply {
                     onItemClickListener = AdapterView.OnItemClickListener {

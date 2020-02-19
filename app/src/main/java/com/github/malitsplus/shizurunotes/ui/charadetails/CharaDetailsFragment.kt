@@ -10,8 +10,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.TransitionInflater
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.Chara
 import com.github.malitsplus.shizurunotes.databinding.FragmentCharaDetailsBinding
@@ -22,6 +24,17 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
 
     private lateinit var detailsViewModel: CharaDetailsViewModel
     private lateinit var binding: FragmentCharaDetailsBinding
+    private val args: CharaDetailsFragmentArgs by navArgs()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedElementEnterTransition = TransitionInflater
+            .from(context)
+            .inflateTransition(android.R.transition.move).setDuration(300)
+        sharedElementReturnTransition = TransitionInflater
+            .from(context)
+            .inflateTransition(android.R.transition.move).setDuration(300)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,18 +58,15 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
         ).get(CharaDetailsViewModel::class.java
         )
 
-        binding.detailsViewModel = detailsViewModel
-        binding.clickListener = this
-
-
-        binding.toolbar.setNavigationOnClickListener { view ->
-            view.findNavController().navigateUp()
+        binding.run {
+            detailsViewModel = detailsViewModel
+            detailsItemChara.transitionName = "transItem_${args.charaId}"
+            toolbar.setNavigationOnClickListener { view ->
+                view.findNavController().navigateUp()
+            }
         }
 
-
-
-        //set title
-        //(activity as AppCompatActivity).supportActionBar!!.title = sharedViewModel.selectedChara.unitName
+        binding.clickListener = this
 
         //角色技能顺序
         val recyclerView = binding.attackPatternRecycler
@@ -98,7 +108,7 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        if (v?.id == R.id.detailsItemChara) {
+        if (v?.id == R.id.detailsItemCharaContainer) {
             val action =
                 CharaDetailsFragmentDirections.actionNavCharaDetailsToNavCharaProfile()
             Navigation.findNavController(v).navigate(action)

@@ -42,6 +42,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textSkillType"
                     bind:imageUrl="@{skill.iconUrl}"
+                    bind:errorHolder="@{R.drawable.mic_chara_icon_error}"
                     bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
 
                 <TextView
@@ -49,8 +50,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-
                     android:text="@{skill.skillName, default=skillName}"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/imageSkillIcon"
                     app:layout_constraintTop_toTopOf="@+id/imageSkillIcon" />
 
@@ -61,6 +62,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
+                    style="@style/longMultipleLineText"
                     android:text="@{skill.description, default=skillDescription}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -75,6 +77,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
+                    style="@style/longMultipleLineText"
                     android:text="@{skill.actionDescriptions, default=actionDescriptions}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
