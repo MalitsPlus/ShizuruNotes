@@ -178,7 +178,11 @@ class UpdateManager private constructor(
             override fun onResponse(call: Call, response: Response) {
                 val lastVersionJson = response.body?.string()
                 try {
-                    if (lastVersionJson.isNullOrEmpty()) throw Exception("No response from server.")
+                    if (lastVersionJson.isNullOrEmpty())
+                        throw Exception("No response from server.")
+                    if (response.code != 200)
+                        throw Exception("Abnormal connection state code: %d.".format(response.code))
+
                     appVersionJsonInstance = JsonUtils.getBeanFromJson<AppVersionJson>(lastVersionJson, AppVersionJson::class.java)
                     appVersionJsonInstance?.versionCode?.let {
                         if (it > getAppVersionCode()){
