@@ -49,9 +49,11 @@ class CharaListFragment : Fragment() {
                 lifecycleOwner = viewLifecycleOwner
 
                 adapter = CharaListAdapter(context!!, sharedViewModel)
-                charaListRecycler.layoutManager = LinearLayoutManager(context)
-                charaListRecycler.adapter = adapter
-                charaListRecycler.apply {
+                charaListRecycler.let {
+                    it.layoutManager = LinearLayoutManager(context)
+                    it.adapter = adapter
+                    it
+                }.apply {
                     setHasFixedSize(true)
                     parentFragment?.postponeEnterTransition()
                     viewTreeObserver.addOnPreDrawListener {
@@ -92,14 +94,22 @@ class CharaListFragment : Fragment() {
         //设置观察者
         charaListViewModel.liveCharaList.observe(viewLifecycleOwner,
             Observer<List<Chara>> {
+                binding.downloadDbHint.visibility = if (it.isEmpty() && sharedViewModel.loadingFlag.value == false){
+                    View.VISIBLE
+                } else {
+                    View.GONE
+                }
                 adapter.update(it)
             }
         )
 
         sharedViewModel.loadingFlag.observe(viewLifecycleOwner,
-            Observer<Boolean> {
-                if (it) binding.charaListProgressBar.visibility = View.VISIBLE
-                else binding.charaListProgressBar.visibility = View.GONE
+            Observer {
+                if (it) {
+                    binding.charaListProgressBar.visibility = View.VISIBLE
+                } else {
+                    binding.charaListProgressBar.visibility = View.GONE
+                }
             }
         )
 

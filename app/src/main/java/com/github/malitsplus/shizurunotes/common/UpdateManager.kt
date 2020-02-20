@@ -207,7 +207,6 @@ class UpdateManager private constructor(
         val call = client.newCall(request)
         call.enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                //iActivityCallBack?.showSnackBar(R.string.db_update_check_failed)
                 updateHandler.sendEmptyMessage(UPDATE_DOWNLOAD_ERROR)
             }
 
@@ -219,12 +218,11 @@ class UpdateManager private constructor(
                         throw Exception("No response from server.")
                     val obj = JSONObject(lastVersionJson)
                     serverVersion = obj.getInt("TruthVersion")
-                    if (serverVersion != UserSettings.get().preference.getInt("dbVersion1", 0))
+                    if (serverVersion != UserSettings.get().preference.getInt("dbVersion", 0))
                         hasNewVersion = true
                     updateHandler.sendEmptyMessage(UPDATE_CHECK_COMPLETED)
                 } catch (ex: Exception) {
                     ex.printStackTrace()
-                    //iActivityCallBack?.showSnackBar(R.string.db_update_check_failed)
                     updateHandler.sendEmptyMessage(UPDATE_DOWNLOAD_ERROR)
                 }
             }
@@ -309,8 +307,6 @@ class UpdateManager private constructor(
                 iActivityCallBack?.dbDownloadFinished()
             } catch (e: Exception) {
                 e.printStackTrace()
-                //progressDialog?.cancel()
-                //iActivityCallBack?.showSnackBar(R.string.db_update_failed)
                 updateHandler.sendEmptyMessage(UPDATE_DOWNLOAD_ERROR)
             }
         }

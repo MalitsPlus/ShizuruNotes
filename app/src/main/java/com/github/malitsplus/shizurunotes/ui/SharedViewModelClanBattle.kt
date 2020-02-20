@@ -2,6 +2,7 @@ package com.github.malitsplus.shizurunotes.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.github.malitsplus.shizurunotes.data.ClanBattleBoss
 import com.github.malitsplus.shizurunotes.data.ClanBattlePeriod
 import com.github.malitsplus.shizurunotes.db.DBHelper
 import kotlin.concurrent.thread
@@ -11,6 +12,7 @@ class SharedViewModelClanBattle : ViewModel() {
     val periodList = MutableLiveData<MutableList<ClanBattlePeriod>>()
     val loadingFlag = MutableLiveData<Boolean>(false)
     var selectedPeriod: ClanBattlePeriod? = null
+    var selectedBoss: ClanBattleBoss? = null
 
     /***
      * 从数据库读取所有会战数据。

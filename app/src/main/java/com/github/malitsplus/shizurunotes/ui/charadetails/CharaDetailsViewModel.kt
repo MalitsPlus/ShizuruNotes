@@ -12,9 +12,11 @@ class CharaDetailsViewModel(private val sharedViewModelChara: SharedViewModelCha
 
     fun changeRank(rankString: String){
         val rank = rankString.toInt()
-        mutableChara.value?.let {
-            it.setCharaProperty(rank = rank)
-            it
+        mutableChara.value = mutableChara.value?.apply {
+            setCharaProperty(rank = rank)
+            skills.forEach {
+                it.setActionDescriptions(maxCharaLevel, charaProperty)
+            }
         }
     }
 

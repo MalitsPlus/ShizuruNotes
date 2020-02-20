@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.adapters.AdapterViewBindingAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -19,7 +20,7 @@ import com.github.malitsplus.shizurunotes.data.Chara
 import com.github.malitsplus.shizurunotes.databinding.FragmentCharaDetailsBinding
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelCharaFactory
-import com.jaredrummler.materialspinner.MaterialSpinner
+import org.angmarch.views.OnSpinnerItemSelectedListener
 
 class CharaDetailsFragment : Fragment(), View.OnClickListener {
 
@@ -63,14 +64,12 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
                 view.findNavController().navigateUp()
             }
 
-            val rankList: List<Int>? = detailsViewModel.getChara()!!.promotionStatus.keys.toList()
+            val rankList: List<Int> = detailsViewModel.getChara()!!.promotionStatus.keys.toList()
             rankSpinner.apply {
-                setItems(rankList?: "No Items")
-                setOnItemSelectedListener(
-                    MaterialSpinner.OnItemSelectedListener { _, _, _, item: String ->
-                        detailsViewModel.changeRank(item)
-                    }
-                )
+                attachDataSource(rankList)
+                onSpinnerItemSelectedListener = OnSpinnerItemSelectedListener { parent, _, position, _ ->
+                    detailsViewModel.changeRank(parent.getItemAtPosition(position).toString())
+                }
             }
         }.also {
             it.clickListener = this

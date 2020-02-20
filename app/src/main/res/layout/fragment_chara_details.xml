@@ -203,12 +203,23 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <com.jaredrummler.materialspinner.MaterialSpinner
-                            android:id="@+id/rankSpinner"
+                        <TextView
+                            android:id="@+id/normalAttackCastTime"
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@{@string/text_normal_attack_cast_time(detailsVM.mutableChara.normalAtkCastTime), default=normalAttackCastTime}"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+                        <org.angmarch.views.NiceSpinner
+                            android:id="@+id/rankSpinner"
+                            android:layout_width="56dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="8dp"
+                            app:hideArrow="true"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -513,14 +524,14 @@
                             app:layout_constraintVertical_bias="0.0" />
 
                         <TextView
-                            android:id="@+id/normalAttackCastTime"
+                            android:id="@+id/textRank"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:text="@{@string/text_normal_attack_cast_time(detailsVM.mutableChara.normalAtkCastTime), default=normalAttackCastTime}"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/text_rank"
+                            app:layout_constraintBottom_toBottomOf="@+id/rankSpinner"
+                            app:layout_constraintEnd_toStartOf="@+id/rankSpinner"
+                            app:layout_constraintTop_toTopOf="@+id/rankSpinner" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -567,9 +578,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView4"
 
-                            />
+                            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
                         <TextView
                             android:id="@+id/textAnotherMode"
