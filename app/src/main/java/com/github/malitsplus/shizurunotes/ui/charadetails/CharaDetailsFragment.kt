@@ -19,6 +19,7 @@ import com.github.malitsplus.shizurunotes.data.Chara
 import com.github.malitsplus.shizurunotes.databinding.FragmentCharaDetailsBinding
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelCharaFactory
+import com.jaredrummler.materialspinner.MaterialSpinner
 
 class CharaDetailsFragment : Fragment(), View.OnClickListener {
 
@@ -28,12 +29,13 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedElementEnterTransition = TransitionInflater
-            .from(context)
-            .inflateTransition(android.R.transition.move).setDuration(300)
-        sharedElementReturnTransition = TransitionInflater
-            .from(context)
-            .inflateTransition(android.R.transition.move).setDuration(300)
+        sharedElementEnterTransition =
+            TransitionInflater.from(context)
+                .inflateTransition(android.R.transition.move).setDuration(300)
+
+        sharedElementReturnTransition =
+            TransitionInflater.from(context)
+                .inflateTransition(android.R.transition.move).setDuration(300)
     }
 
     override fun onCreateView(
@@ -52,59 +54,77 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
         val sharedViewModel = ViewModelProvider(activity!!).get(SharedViewModelChara::class.java)
         detailsViewModel = ViewModelProvider(
             this,
-            SharedViewModelCharaFactory(
-                sharedViewModel
-            )
-        ).get(CharaDetailsViewModel::class.java
+            SharedViewModelCharaFactory(sharedViewModel)).get(CharaDetailsViewModel::class.java
         )
 
-        binding.run {
-            detailsViewModel = detailsViewModel
+        binding.apply {
             detailsItemChara.transitionName = "transItem_${args.charaId}"
             toolbar.setNavigationOnClickListener { view ->
                 view.findNavController().navigateUp()
             }
+
+            val rankList: List<Int>? = detailsViewModel.getChara()!!.promotionStatus.keys.toList()
+            rankSpinner.apply {
+                setItems(rankList?: "No Items")
+                setOnItemSelectedListener(
+                    MaterialSpinner.OnItemSelectedListener { _, _, _, item: String ->
+                        detailsViewModel.changeRank(item)
+                    }
+                )
+            }
+        }.also {
+            it.clickListener = this
         }
 
-        binding.clickListener = this
+        //角色技能顺序 Recycler
+        val attackPatternLayoutManager = GridLayoutManager(context, 6)
+        val attackPatternAdapter = AttackPatternAdapter(context!!)
+        binding.attackPatternRecycler.apply {
+            layoutManager = attackPatternLayoutManager
+            adapter = attackPatternAdapter.apply {
+                update(detailsViewModel.getChara()!!.attackPatternList[0].items)
+            }
+            isNestedScrollingEnabled = false
+        }
 
-        //角色技能顺序
-        val recyclerView = binding.attackPatternRecycler
-        val layoutManager = GridLayoutManager(context, 6)
-        val adapter = AttackPatternAdapter(context!!)
-        recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = adapter
-        recyclerView.isNestedScrollingEnabled = false
+        //2套攻击顺序 Recycler
+        if (detailsViewModel.getChara()!!.attackPatternList.size == 1){
+            binding.textAnotherMode.visibility = View.GONE
+            binding.attackPatternRecycler2.visibility = View.GONE
+        } else {
+            val layoutManager2 = GridLayoutManager(context, 6)
+            val adapter2 = AttackPatternAdapter(context!!)
+            binding.attackPatternRecycler2.apply {
+                layoutManager = layoutManager2
+                isNestedScrollingEnabled = false
+                adapter = adapter2.apply {
+                    update(detailsViewModel.getChara()!!.attackPatternList[1].items)
+                }
+            }
+        }
 
-        //技能
-        val recyclerViewSkill = binding.skillRecycler
+        //技能 Recycler
         val layoutManagerSkill = LinearLayoutManager(context)
         val adapterSkill = SkillAdapter(context!!)
-        recyclerViewSkill.layoutManager = layoutManagerSkill
-        recyclerViewSkill.adapter = adapterSkill
-        recyclerViewSkill.isNestedScrollingEnabled = false
+        binding.skillRecycler.apply {
+            layoutManager = layoutManagerSkill
+            adapter = adapterSkill
+            isNestedScrollingEnabled = false
+        }
 
-
-        detailsViewModel.mutableChara.observe(viewLifecycleOwner, Observer<Chara>{ chara: Chara ->
-                binding.detailsViewModel = detailsViewModel
-                adapter.update(chara.attackPatternList[0].items)
+        //观察chara变化
+        detailsViewModel.mutableChara.observe(
+            viewLifecycleOwner,
+            Observer<Chara> { chara: Chara ->
+                binding.detailsVM = detailsViewModel
                 adapterSkill.update(chara.skills)
-                if (chara.attackPatternList.size == 1){
-                    binding.textAnotherMode.visibility = View.GONE
-                    binding.attackPatternRecycler2.visibility = View.GONE
-                } else{
-                    val recyclerView2 = binding.attackPatternRecycler2
-                    val layoutManager2 = GridLayoutManager(context, 6)
-                    val adapter2 = AttackPatternAdapter(context!!)
-                    recyclerView2.layoutManager = layoutManager2
-                    recyclerView2.adapter = adapter2
-                    recyclerView2.isNestedScrollingEnabled = false
-                    adapter2.update(chara.attackPatternList[1].items)
-                }
             }
         )
 
-        return binding.root
+        return binding.run {
+            detailsVM = detailsViewModel
+            root
+        }
     }
 
     override fun onClick(v: View?) {

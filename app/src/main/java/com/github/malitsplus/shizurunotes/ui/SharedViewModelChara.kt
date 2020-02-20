@@ -3,6 +3,7 @@ package com.github.malitsplus.shizurunotes.ui
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.malitsplus.shizurunotes.data.Chara
+import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.data.Property
 import com.github.malitsplus.shizurunotes.data.Skill
 import com.github.malitsplus.shizurunotes.db.DBHelper.Companion.get
@@ -72,11 +73,19 @@ class SharedViewModelChara : ViewModel() {
     }
 
     private fun setCharaPromotionStatus(chara: Chara) {
-        get().getCharaPromotionStatus(chara.unitId)?.setPromotionStatus(chara)
+        val promotionStatus = mutableMapOf<Int, Property>()
+        get().getCharaPromotionStatus(chara.unitId)?.forEach {
+            promotionStatus[it.promotion_level] = it.promotionStatus
+        }
+        chara.promotionStatus = promotionStatus
     }
 
     private fun setCharaEquipments(chara: Chara) {
-        get().getCharaPromotion(chara.unitId)?.setCharaEquipments(chara)
+        val equipmentMap = mutableMapOf<Int, List<Equipment>>()
+        get().getCharaPromotion(chara.unitId)?.forEach {
+            equipmentMap[it.promotion_level] = it.charaEquipments
+        }
+        chara.rankEquipments = equipmentMap
     }
 
     private fun setUniqueEquipment(chara: Chara) {
@@ -89,7 +98,7 @@ class SharedViewModelChara : ViewModel() {
             //填充Skill中只有actionId和dependActionId（可能为0）的actionList
             get().getSkillData(skill.skillId)?.setSkillData(skill)
             skill.actions.forEach { action: Skill.Action ->
-                //向actionList中填入其他具体值
+                //向actionList中填入具体值
                 get().getSkillAction(action.actionId)?.setActionData(action)
             }
             skill.actions.forEach { action: Skill.Action ->

@@ -29,13 +29,13 @@ public class RawUniqueEquipmentData {
     public double accuracy;
 
     public void setCharaUniqueEquipment(Chara chara){
-        chara.uniqueEquipment = new Equipment(
+        chara.setUniqueEquipment(new Equipment(
                 equipment_id,
                 equipment_name,
-                chara.maxUniqueEquipmentLevel,
+                chara.getMaxUniqueEquipmentLevel(),
                 this.getProperty(),
-                DBHelper.get().getUniqueEquipmentEnhance(chara.unitId).getProperty()
-        );
+                DBHelper.get().getUniqueEquipmentEnhance(chara.getUnitId()).getProperty()
+        ));
     }
 
     public Property getProperty(){

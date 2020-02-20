@@ -36,19 +36,19 @@ public class RawUnitBasic {
     public String kana;
 
     public void setCharaBasic(Chara chara){
-        chara.charaId = unit_id / 100;
+        chara.setCharaId(unit_id / 100);
 
-        chara.unitId = unit_id;
+        chara.setUnitId(unit_id);
         chara.unitName = unit_name;
-        chara.prefabId = prefab_id;
-        chara.searchAreaWidth = search_area_width;
-        chara.atkType = atk_type;
+        chara.setPrefabId(prefab_id);
+        chara.setSearchAreaWidth(search_area_width);
+        chara.setAtkType(atk_type);
 
-        chara.moveSpeed = move_speed;
-        chara.normalAtkCastTime = normal_atk_cast_time;
+        chara.setMoveSpeed(move_speed);
+        chara.setNormalAtkCastTime(normal_atk_cast_time);
         chara.actualName = actual_name;
         chara.age = age;
-        chara.guildId = guild_id;
+        chara.setGuildId(guild_id);
 
         chara.guild = guild;
         chara.race = race;
@@ -62,9 +62,9 @@ public class RawUnitBasic {
         chara.voice = voice;
         chara.catchCopy = catch_copy;
 
-        chara.comment = comment;
+        chara.setComment(comment);
         chara.kana = kana;
-        chara.selfText = self_text.replaceAll("\\\\n", "\n") ;
+        chara.setSelfText(self_text.replaceAll("\\\\n", "\n"));
 
         //需要处理的字串
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd H:mm:ss");
@@ -74,13 +74,13 @@ public class RawUnitBasic {
 
         if(search_area_width < 300) {
             chara.position = "1";
-            chara.positionIcon = R.drawable.position_forward;
+            chara.setPositionIcon(R.drawable.position_forward);
         } else if(search_area_width > 300 && search_area_width < 600){
             chara.position = "2";
-            chara.positionIcon = R.drawable.position_middle;
+            chara.setPositionIcon(R.drawable.position_middle);
         } else if(search_area_width > 600) {
             chara.position = "3";
-            chara.positionIcon = R.drawable.position_rear;
+            chara.setPositionIcon(R.drawable.position_rear);
         }
     }
 }

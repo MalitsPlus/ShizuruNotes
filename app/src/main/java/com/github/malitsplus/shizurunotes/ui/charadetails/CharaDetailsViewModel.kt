@@ -10,12 +10,20 @@ class CharaDetailsViewModel(private val sharedViewModelChara: SharedViewModelCha
 
     val mutableChara = MutableLiveData<Chara>()
 
+    fun changeRank(rankString: String){
+        val rank = rankString.toInt()
+        mutableChara.value?.let {
+            it.setCharaProperty(rank = rank)
+            it
+        }
+    }
+
     fun setChara(chara: Chara?) {
         mutableChara.value = chara
     }
 
-    fun getMutableChara(): LiveData<Chara> {
-        return mutableChara
+    fun getChara(): Chara?{
+        return mutableChara.value
     }
 
     init {
