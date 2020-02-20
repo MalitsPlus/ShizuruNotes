@@ -62,7 +62,7 @@ class DBHelper : SQLiteOpenHelper {
         cursor: Cursor,
         theClass: Class<*>
     ): List<T>? {
-        val result: MutableList<T> = ArrayList()
+        val result: MutableList<T> = mutableListOf()
         val arrField = theClass.declaredFields
         try {
             while (cursor.moveToNext()) {
@@ -203,6 +203,27 @@ class DBHelper : SQLiteOpenHelper {
         return if (data?.isNotEmpty() == true) data[0] else null
     }
 
+//    /***
+//     * 由SQL语句、SQL中的键值从数据库获取单个实体
+//     * @param sql SQL语句
+//     * @param keyValue IN (?) => ?=keyValue
+//     * @param theClass 类名
+//     * @param <T> theClass的类
+//     * @return 生成的实体
+//    </T> */
+//    @SuppressLint("Recycle")
+//    private fun <T> getBeanByRaw(
+//        sql: String?,
+//        keyValue: String,
+//        theClass: Class<*>
+//    ): T? {
+//        if (!Utils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
+//        val cursor =
+//            readableDatabase.rawQuery(sql, arrayOf(keyValue)) ?: return null
+//        val data: List<T>? = cursor2List(cursor, theClass)
+//        return if (data?.isNotEmpty() == true) data[0] else null
+//    }
+
     /***
      * 由SQL语句、SQL中的键值从数据库获取单个实体
      * @param sql SQL语句
@@ -214,35 +235,34 @@ class DBHelper : SQLiteOpenHelper {
     @SuppressLint("Recycle")
     private fun <T> getBeanByRaw(
         sql: String?,
-        keyValue: String,
         theClass: Class<*>
     ): T? {
         if (!Utils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
         val cursor =
-            readableDatabase.rawQuery(sql, arrayOf(keyValue)) ?: return null
+            readableDatabase.rawQuery(sql, null) ?: return null
         val data: List<T>? = cursor2List(cursor, theClass)
         return if (data?.isNotEmpty() == true) data[0] else null
     }
 
-    /***
-     * 由SQL语句[无条件]从数据库获取实体列表
-     * @param sql SQL语句
-     * @param theClass 类名
-     * @param <T> theClass的类
-     * @return 生成的实体列表
-    </T> */
-    @SuppressLint("Recycle")
-    private fun <T> getBeanListByRaw(
-        sql: String?,
-        theClass: Class<*>
-    ): List<T>? {
-        if (!Utils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
-        val cursor = readableDatabase.rawQuery(sql, null) ?: return null
-        return cursor2List(cursor, theClass)
-    }
+//    /***
+//     * 由SQL语句无条件从数据库获取实体列表
+//     * @param sql SQL语句
+//     * @param theClass 类名
+//     * @param <T> theClass的类
+//     * @return 生成的实体列表
+//    </T> */
+//    @SuppressLint("Recycle")
+//    private fun <T> getBeanListByRaw(
+//        sql: String?,
+//        theClass: Class<*>
+//    ): List<T>? {
+//        if (!Utils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
+//        val cursor = readableDatabase.rawQuery(sql, null) ?: return null
+//        return cursor2List(cursor, theClass)
+//    }
 
     /***
-     * 由SQL语句[无条件]从数据库获取实体列表
+     * 由SQL语句无条件从数据库获取实体列表
      * @param sql SQL语句
      * @param keyValue 替换？的值
      * @param theClass 类名
@@ -252,12 +272,15 @@ class DBHelper : SQLiteOpenHelper {
     @SuppressLint("Recycle")
     private fun <T> getBeanListByRaw(
         sql: String?,
-        keyValue: String,
-        theClass: Class<*>
+        theClass: Class<*>,
+        keyValue: String? = null
     ): List<T>? {
         if (!Utils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
         val cursor =
-            readableDatabase.rawQuery(sql, arrayOf(keyValue)) ?: return null
+            readableDatabase.rawQuery(
+                sql,
+                if (keyValue == null) null else arrayOf(keyValue)
+            ) ?: return null
         return cursor2List(cursor, theClass)
     }
 
@@ -387,10 +410,9 @@ class DBHelper : SQLiteOpenHelper {
             """
                 SELECT * 
                 FROM unit_rarity 
-                WHERE unit_id=? 
+                WHERE unit_id=$unitId 
                 ORDER BY rarity DESC 
                 """,
-            unitId.toString(),
             RawUnitRarity::class.java
         )
     }
@@ -416,8 +438,8 @@ class DBHelper : SQLiteOpenHelper {
                 OR chara_id_9 = ? 
                 OR chara_id_10 = ? 
                 """,
-            charaId.toString(),
-            RawCharaStoryStatus::class.java
+            RawCharaStoryStatus::class.java,
+            charaId.toString()
         )
     }
 
@@ -426,15 +448,14 @@ class DBHelper : SQLiteOpenHelper {
      * @param unitId 角色id
      * @return
      */
-    fun getCharaPromotionStatus(unitId: Int): RawPromotionStatus? {
-        return  getBeanByRaw<RawPromotionStatus>(
+    fun getCharaPromotionStatus(unitId: Int): List<RawPromotionStatus>? {
+        return  getBeanListByRaw(
             """
                 SELECT * 
                 FROM unit_promotion_status 
-                WHERE unit_id=? 
+                WHERE unit_id=$unitId 
                 ORDER BY promotion_level DESC 
                 """,
-            unitId.toString(),
             RawPromotionStatus::class.java
         )
     }
@@ -444,15 +465,14 @@ class DBHelper : SQLiteOpenHelper {
      * @param unitId 角色id
      * @return
      */
-    fun getCharaPromotion(unitId: Int): RawUnitPromotion? {
-        return getBeanByRaw<RawUnitPromotion>(
+    fun getCharaPromotion(unitId: Int): List<RawUnitPromotion>? {
+        return getBeanListByRaw(
             """
                 SELECT * 
                 FROM unit_promotion 
-                WHERE unit_id=? 
+                WHERE unit_id=$unitId
                 ORDER BY promotion_level DESC 
                 """,
-            unitId.toString(),
             RawUnitPromotion::class.java
         )
     }
@@ -471,8 +491,8 @@ class DBHelper : SQLiteOpenHelper {
                 FROM equipment_data a, 
                 ( SELECT promotion_level, max( equipment_enhance_level ) max_equipment_enhance_level FROM equipment_enhance_data GROUP BY promotion_level ) b 
                 WHERE a.promotion_level = b.promotion_level 
-                AND a.equipment_id IN ( %s ) 
-                """.format(Utils.splitIntegerWithComma(slots)),
+                AND a.equipment_id IN ( ${Utils.splitIntegerWithComma(slots)} ) 
+                """,
             RawEquipmentData::class.java
         )
     }
@@ -487,8 +507,8 @@ class DBHelper : SQLiteOpenHelper {
             """
                 SELECT * 
                 FROM equipment_enhance_rate 
-                WHERE equipment_id IN ( %s ) 
-                """.format(Utils.splitIntegerWithComma(slots)),
+                WHERE equipment_id IN ( ${Utils.splitIntegerWithComma(slots)} ) 
+                """,
             RawEquipmentEnhanceData::class.java
         )
     }
@@ -504,9 +524,8 @@ class DBHelper : SQLiteOpenHelper {
                 SELECT e.* 
                 FROM unique_equipment_data AS e 
                 JOIN unit_unique_equip AS u ON e.equipment_id=u.equip_id 
-                WHERE u.unit_id=? 
+                WHERE u.unit_id=$unitId 
                 """,
-            unitId.toString(),
             RawUniqueEquipmentData::class.java
         )
     }
@@ -522,9 +541,8 @@ class DBHelper : SQLiteOpenHelper {
                 SELECT e.* 
                 FROM unique_equipment_enhance_rate AS e 
                 JOIN unit_unique_equip AS u ON e.equipment_id=u.equip_id 
-                WHERE u.unit_id=? 
+                WHERE u.unit_id=$unitId 
                 """,
-            unitId.toString(),
             RawUniqueEquipmentEnhanceData::class.java
         )
     }
@@ -539,9 +557,8 @@ class DBHelper : SQLiteOpenHelper {
             """
                 SELECT * 
                 FROM unit_skill_data 
-                WHERE unit_id=? 
+                WHERE unit_id=$unitId 
                 """,
-            unitId.toString(),
             RawUnitSkillData::class.java
         )
     }
@@ -556,9 +573,8 @@ class DBHelper : SQLiteOpenHelper {
             """
                 SELECT * 
                 FROM skill_data 
-                WHERE skill_id=? 
+                WHERE skill_id=$skillId 
                 """,
-            skillId.toString(),
             RawSkillData::class.java
         )
     }
@@ -573,9 +589,8 @@ class DBHelper : SQLiteOpenHelper {
             """
                 SELECT * 
                 FROM skill_action 
-                WHERE action_id=? 
+                WHERE action_id=$actionId 
                 """,
-            actionId.toString(),
             RawSkillAction::class.java
         )
     }
@@ -590,10 +605,9 @@ class DBHelper : SQLiteOpenHelper {
         """
             SELECT * 
             FROM unit_attack_pattern 
-            WHERE unit_id=? 
+            WHERE unit_id=$unitId 
             ORDER BY pattern_id 
             """,
-            unitId.toString(),
             RawUnitAttackPattern::class.java
         )
     }
@@ -630,10 +644,9 @@ class DBHelper : SQLiteOpenHelper {
                 ,wave_group_id_3 
                 ,wave_group_id_4 
                 ,wave_group_id_5 
-                FROM clan_battle_2_map_data WHERE clan_battle_id=? 
+                FROM clan_battle_2_map_data WHERE clan_battle_id=$clanBattleId 
                 ORDER BY phase DESC 
                 """,
-            clanBattleId.toString(),
             RawClanBattlePhase::class.java
         )
     }
@@ -649,8 +662,7 @@ class DBHelper : SQLiteOpenHelper {
                     SELECT * 
                     FROM wave_group_data 
                     WHERE wave_group_id IN ( %s ) 
-                    """
-                    .format(waveGroupList.toString()
+                    """.format(waveGroupList.toString()
                         .replace("[", "")
                         .replace("]", "")),
             RawWaveGroup::class.java
@@ -710,8 +722,7 @@ class DBHelper : SQLiteOpenHelper {
                     WHERE 
                     a.unit_id = b.unit_id 
                     AND a.enemy_id in ( %s )  
-                    """
-                    .format(enemyIdList.toString()
+                    """.format(enemyIdList.toString()
                         .replace("[", "")
                         .replace("]", "")),
                 RawClanBattleBoss::class.java
@@ -737,9 +748,8 @@ class DBHelper : SQLiteOpenHelper {
             """
                 SELECT * 
                 FROM resist_data 
-                WHERE resist_status_id=? 
+                WHERE resist_status_id=$resistStatusId  
                 """,
-            resistStatusId.toString(),
             RawResistData::class.java
         )
     }

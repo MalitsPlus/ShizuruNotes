@@ -4,8 +4,8 @@ import com.github.malitsplus.shizurunotes.data.Chara;
 import com.github.malitsplus.shizurunotes.data.Property;
 
 public class RawPromotionStatus {
-    //public int unit_id;
-    //public int promotion_level;
+    public int unit_id;
+    public int promotion_level;
     public double hp;
     public double atk;
     public double magic_str;
@@ -24,8 +24,8 @@ public class RawPromotionStatus {
     public double energy_reduce_rate;
     public double accuracy;
 
-    public void setPromotionStatus(Chara chara){
-        Property property = new Property(
+    public Property getPromotionStatus(){
+        return new Property(
                 hp,
                 atk,
                 magic_str,
@@ -44,6 +44,5 @@ public class RawPromotionStatus {
                 energy_reduce_rate,
                 accuracy
         );
-        chara.promotionStatus = property;
     }
 }

@@ -1,5 +1,7 @@
 package com.github.malitsplus.shizurunotes.data;
 
+import androidx.annotation.Nullable;
+
 public class Property {
     public double hp;
     public double atk;
@@ -43,7 +45,9 @@ public class Property {
         this.accuracy = accuracy;
     }
 
-    public Property plus(Property rProperty){
+    public Property plus(@Nullable Property rProperty){
+        if (rProperty == null)
+            return this;
         return new Property(
             this.hp + rProperty.hp,
             this.atk + rProperty.atk,
@@ -65,7 +69,9 @@ public class Property {
         );
     }
 
-    public Property plusEqual(Property rProperty){
+    public Property plusEqual(@Nullable Property rProperty){
+        if (rProperty == null)
+            return this;
         this.hp += rProperty.hp;
         this.atk += rProperty.atk;
         this.magicStr += rProperty.magicStr;

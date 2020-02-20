@@ -25,7 +25,7 @@ public class RawCharaStoryStatus {
             int typeValue = (int)Utils.getValueFromObject(this, "status_type_" + i);
             if(typeValue != 0){
                 int typeRate = (int)Utils.getValueFromObject(this, "status_rate_" + i);
-                CharaStoryStatus charaStoryStatus = new CharaStoryStatus(chara.charaId, typeValue, typeRate);
+                CharaStoryStatus charaStoryStatus = new CharaStoryStatus(chara.getCharaId(), typeValue, typeRate);
                 storyProperty.plusEqual(charaStoryStatus.getProperty());
             }
         }
