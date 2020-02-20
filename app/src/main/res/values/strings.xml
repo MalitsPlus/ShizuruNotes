@@ -34,6 +34,7 @@
     <string name="db_update_failed">データベースのアップデートが失敗しました</string>
     <string name="app_update_check_failed">アプリのアップデートチェックが失敗しました</string>
 
+
     <string name="ui_text_filter">絞り込み</string>
     <string name="ui_text_position">位置</string>
     <string name="ui_text_atk_type">タイプ</string>
@@ -89,7 +90,7 @@
     <string name="text_physical_penetrate">&#160;物理貫通&#160;</string>
     <string name="text_magical_penetrate">&#160;魔法貫通&#160;</string>
     <string name="text_hp_recovery">&#160;回復量上昇&#160;</string>
-    <string name="text_status_tips">*上記のステータスは☆MAX、LvMAX、RankMAX、装備&amp;専用装備フル強化、ストーリーステータス&amp;Exスキル加算の値になります。</string>
+    <string name="text_status_tips">*上記のステータスは☆MAX、LvMAX、装備&amp;専用装備フル強化、ストーリーステータス&amp;Exスキル加算の値になります。</string>
     <string name="text_attack_pattern">&#160;行動パターン&#160;</string>
     <string name="text_normal_mode">通常モード</string>
     <string name="text_attack_pattern2">&#160;行動パターン2&#160;</string>
@@ -111,6 +112,9 @@
     <string name="text_attack_pattern_prefix2">行動パターン2：</string>
     <string name="text_attack_pattern_prefix3">行動パターン3：</string>
     <string name="text_normal_attack_cast_time">通常攻撃キャストタイム：%ss</string>
+    <string name="text_rank">Rank</string>
+    <string name="text_please_download_db">データベースをダウンロードしてください</string>
+    <string name="text_resist_data">異常状態耐性データ</string>
 
     <string name="ATK">物理攻撃力</string>
     <string name="DEF">物理防御力</string>
@@ -478,5 +482,8 @@
 
     <string name="permission_request_explanation_title">ストレージ権限</string>
     <string name="permission_request_explanation_text">本アプリはストレージを使ってキャラクターデータベースの保存とアプリのアップデートを行います、許可しないと正常に動作しない恐れがあります。</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
