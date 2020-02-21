@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.databinding.FragmentClanBattleBossResistBinding
@@ -30,6 +31,9 @@ class ClanBattleBossResistFragment : Fragment() {
             false
         ).apply {
             boss = sharedClanBattleVM.selectedBoss
+            toolbarBossResistFragment.setNavigationOnClickListener { view ->
+                view.findNavController().navigateUp()
+            }
             resistRecycler.apply {
                 layoutManager = GridLayoutManager(context, 2)
                 adapter = ClanBattleBossResistAdapter(
@@ -38,6 +42,8 @@ class ClanBattleBossResistFragment : Fragment() {
                 )
             }
         }
+
+
 
         return binding.root
     }

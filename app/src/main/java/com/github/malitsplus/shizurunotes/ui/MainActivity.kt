@@ -8,6 +8,8 @@ import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.preference.Preference
+import androidx.preference.PreferenceFragmentCompat
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.App
 import com.github.malitsplus.shizurunotes.common.I18N
@@ -61,22 +63,9 @@ class MainActivity : AppCompatActivity(),
                 })
             }
 
-//        mainActivityViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(MainActivityViewModel::class.java)
-
-
-//        sharedViewModelChara.loadingFlag.observe(this, Observer {
-//            synchronized(isDatabaseBusy){
-//                isDatabaseBusy = it || sharedViewModelClanBattle.loadingFlag.value!!
-//            }
-//        })
-//        sharedViewModelClanBattle.loadingFlag.observe(this, Observer {
-//            synchronized(isDatabaseBusy){
-//                isDatabaseBusy = sharedViewModelChara.loadingFlag.value!! ||  it
-//            }
-//        })
-
-        UpdateManager.get().checkAppVersion()
-
+        sharedViewModelChara.loadData()
+        sharedViewModelClanBattle.loadData()
+        UpdateManager.get().checkAppVersion(true)
     }
 
     override fun dbDownloadFinished() {

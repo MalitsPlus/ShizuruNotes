@@ -7,10 +7,19 @@ import com.github.malitsplus.shizurunotes.data.action.PassiveAction
 import java.lang.StringBuilder
 import java.time.LocalDateTime
 
-class Chara {
+class Chara: Cloneable {
+
+    @Throws(CloneNotSupportedException::class)
+    override fun clone(): Chara {
+        return super.clone() as Chara
+    }
+
+    fun shallowCopy(): Chara {
+        return clone()
+    }
 
     var unitId: Int = 0
-    public var charaId: Int = 0
+    var charaId: Int = 0
     var prefabId: Int = 0
     var searchAreaWidth: Int = 0
     var atkType: Int = 0

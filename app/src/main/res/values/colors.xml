@@ -8,7 +8,7 @@
     <color name="secondaryDarkColor">#000000</color>
     <color name="primaryTextColor">#ffffff</color>
     <color name="secondaryTextColor">#ffffff</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#9c4dcc</color>
 
     <color name="colorPrimaryTransparent">#889c4dcc</color>
 </resources>

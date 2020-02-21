@@ -4,6 +4,8 @@ import android.os.Build;
 
 import androidx.annotation.NonNull;
 
+import com.github.malitsplus.shizurunotes.data.Chara;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -101,8 +103,6 @@ public class Utils {
     public static boolean isAtLeastVersion(int version) {
         return Build.VERSION.SDK_INT >= version;
     }
-
-
 
 
     private static DecimalFormat format = new DecimalFormat("#");

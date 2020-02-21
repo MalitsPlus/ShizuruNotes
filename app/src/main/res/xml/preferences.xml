@@ -3,23 +3,49 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ListPreference
-        app:key="language"
-        app:title="@string/setting_language"
-        app:useSimpleSummaryProvider="true"
-        app:entries="@array/setting_language_options"
-        app:entryValues="@array/setting_language_values"
-        app:dialogTitle="@string/setting_language_dialog_title" />
+    <PreferenceCategory
+        android:theme="@style/AppTheme"
+        app:key="appearance_category"
+        app:title="@string/setting_appearance">
 
-    <Preference
-        app:key="dbVersion"
-        app:title="データベースバージョン"
-        app:summary="0"/>
+        <ListPreference
+            app:key="language"
+            app:title="@string/setting_language"
+            app:useSimpleSummaryProvider="true"
+            app:entries="@array/setting_language_options"
+            app:entryValues="@array/setting_language_values"
+            app:dialogTitle="@string/setting_language_dialog_title" />
 
-    <SwitchPreferenceCompat
-        app:key="expressionStyle"
-        app:defaultValue="false"
-        app:summary="@string/setting_kill_expression_summary"
-        app:title="@string/setting_kill_expression_title"/>
+        <SwitchPreferenceCompat
+            app:key="expressionStyle"
+            app:defaultValue="false"
+            app:summary="@string/setting_kill_expression_summary"
+            app:title="@string/setting_kill_expression_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="system_category"
+        app:title="@string/setting_system">
+
+        <Preference
+            app:key="dbVersion"
+            app:title="@string/setting_db_version"
+            app:summary="0"/>
+
+        <Preference
+            app:key="appVersion"
+            app:title="@string/setting_app_version"
+            app:summary="0"/>
+
+        <Preference
+            app:key="about"
+            app:title="@string/setting_about" >
+        </Preference>
+
+
+    </PreferenceCategory>
+
+
 
 </PreferenceScreen>

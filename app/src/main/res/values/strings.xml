@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <string name="app_name">シズノツ</string>
+    <string name="app_full_name">シズルノーツ</string>
 
     <string name="app_bar_filter">Filter</string>
     <string name="title_chara_list">キャラ</string>
@@ -17,8 +18,15 @@
         <item>ja</item>
         <item>zh</item>
     </string-array>
-    <string name="setting_kill_expression_title">数式</string>
-    <string name="setting_kill_expression_summary">スキルアクションの数式を表示</string>
+    <string name="setting_kill_expression_title">スキル計算式</string>
+    <string name="setting_kill_expression_summary">スキルアクションの計算式を表示</string>
+    <string name="setting_appearance">表示</string>
+    <string name="setting_system">システム</string>
+    <string name="setting_db_version">データベースバージョン</string>
+    <string name="setting_app_version">アプリバージョン</string>
+    <string name="setting_about">シズルノーツについて</string>
+    <string name="about_version">Version: %s</string>
+    <string name="about_disclaimer">Disclaimer: This is an unofficial fan-made application, has no association with Cygames.\nCopyright of all the resource in the game are belong to Cygames, Inc. </string>
 
     <string name="text_ok">OK</string>
     <string name="db_update_dialog_title">データベース更新</string>
@@ -483,7 +491,5 @@
     <string name="permission_request_explanation_title">ストレージ権限</string>
     <string name="permission_request_explanation_text">本アプリはストレージを使ってキャラクターデータベースの保存とアプリのアップデートを行います、許可しないと正常に動作しない恐れがあります。</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

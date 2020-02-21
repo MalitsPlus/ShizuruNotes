@@ -8,13 +8,11 @@ import android.content.IntentFilter
 import android.net.Uri
 import android.os.Handler
 import android.os.Message
-import android.os.Process
 import androidx.annotation.StringRes
 import androidx.core.content.FileProvider
 import com.afollestad.materialdialogs.MaterialDialog
 import com.github.malitsplus.shizurunotes.BuildConfig
 import com.github.malitsplus.shizurunotes.R
-import kotlinx.coroutines.flow.callbackFlow
 import okhttp3.*
 import org.json.JSONObject
 import java.io.File
@@ -163,7 +161,7 @@ class UpdateManager private constructor(
         var messageZh: String? =null
     }
 
-    fun checkAppVersion() {
+    fun checkAppVersion(checkDb: Boolean) {
         val client = OkHttpClient()
         val request = Request.Builder()
             .url(Statics.APP_UPDATE_LOG)
@@ -172,7 +170,7 @@ class UpdateManager private constructor(
         call.enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 iActivityCallBack?.showSnackBar(R.string.app_update_check_failed)
-                checkDatabaseVersion()
+                if (checkDb) checkDatabaseVersion()
             }
 
             override fun onResponse(call: Call, response: Response) {
