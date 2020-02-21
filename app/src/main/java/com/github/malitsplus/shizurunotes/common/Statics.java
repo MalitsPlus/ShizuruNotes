@@ -17,11 +17,9 @@ public class Statics {
     public static final String DB_FILE_URL = API_URL + "/db/redive_jp.db.br";
 
     public static final String APP_RAW = "https://raw.githubusercontent.com/MalitsPlus/ShizuruNotes/master";
-    public static final String APP_UPDATE_LOG =  APP_RAW + "/update_log.json?token=AL7TV24GBRZAJSC7EWNMCLS6JPTFA";
-    //public static final String APP_PACKAGE = APP_RAW + "/";
-    public static final String APP_PACKAGE = "https://github.com/MalitsPlus/HitCard/releases/latest/download/app-debug.apk";
+    public static final String APP_UPDATE_LOG =  APP_RAW + "/update_log.json";
+    public static final String APP_PACKAGE = "https://github.com/MalitsPlus/ShizuruNotes/releases/latest/download/app-release.apk";
     public static final String APK_NAME = "shizurunotes.apk";
-    //public static final String APK_NAME = "shizurunotes.webp";
 
     public static final String UNKNOWN_ICON = API_URL + "/icon/equipment/999999.webp";
 

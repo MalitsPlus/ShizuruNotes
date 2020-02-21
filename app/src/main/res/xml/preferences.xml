@@ -12,6 +12,7 @@
             app:key="language"
             app:title="@string/setting_language"
             app:useSimpleSummaryProvider="true"
+            app:icon="@drawable/mic_language"
             app:entries="@array/setting_language_options"
             app:entryValues="@array/setting_language_values"
             app:dialogTitle="@string/setting_language_dialog_title" />
@@ -19,6 +20,7 @@
         <SwitchPreferenceCompat
             app:key="expressionStyle"
             app:defaultValue="false"
+            app:icon="@drawable/mic_symbols"
             app:summary="@string/setting_kill_expression_summary"
             app:title="@string/setting_kill_expression_title" />
 
@@ -30,11 +32,13 @@
 
         <Preference
             app:key="dbVersion"
+            app:icon="@drawable/mic_chart"
             app:title="@string/setting_db_version"
             app:summary="0"/>
 
         <Preference
             app:key="appVersion"
+            app:icon="@drawable/mic_appversion"
             app:title="@string/setting_app_version"
             app:summary="0"/>
 

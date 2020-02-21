@@ -26,7 +26,11 @@
     <string name="setting_app_version">アプリバージョン</string>
     <string name="setting_about">シズルノーツについて</string>
     <string name="about_version">Version: %s</string>
-    <string name="about_disclaimer">Disclaimer: This is an unofficial fan-made application, has no association with Cygames.\nCopyright of all the resource in the game are belong to Cygames, Inc. </string>
+    <string name="about_disclaimer">Disclaimer: This is an unofficial fan-made application, copyright of all resources associate with the game \"Princess Connect Re:Dive\" are belong to Cygames, Inc. </string>
+    <string name="about_hp">Open source home page: \nhttps://github.com/MalitsPlus/ShizuruNotes</string>
+    <string name="about_developer">Developer: Vibbit&lt;a href=\"https://twitter.com/L8102259\">@L8102259&lt;/a></string>
+    <string name="about_api">API from: https://redive.estertion.win</string>
+    <string name="about_license">This application is licensed under the &lt;a href=\"http://www.apache.org/licenses/LICENSE-2.0.txt\">Apache License 2.0&lt;/a></string>
 
     <string name="text_ok">OK</string>
     <string name="db_update_dialog_title">データベース更新</string>
