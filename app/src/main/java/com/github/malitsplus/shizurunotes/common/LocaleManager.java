@@ -66,7 +66,7 @@ public class LocaleManager {
         prefs.edit().putString(LANGUAGE_KEY, language).commit();
     }
 
-    @SuppressWarnings("deprecation")
+
     private Context updateResources(Context context, String language) {
         Locale locale = new Locale(language);
         Locale.setDefault(locale);
@@ -80,8 +80,10 @@ public class LocaleManager {
             config.setLocale(locale);
             context = context.createConfigurationContext(config);
         } else {
-            config.locale = locale;
-            res.updateConfiguration(config, res.getDisplayMetrics());
+            config.setLocale(locale);
+            context = context.createConfigurationContext(config);
+//            config.locale = locale;
+//            res.updateConfiguration(config, res.getDisplayMetrics());
         }
         return context;
     }

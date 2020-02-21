@@ -86,7 +86,7 @@ public class TargetParameter {
             } else if (targetCount == TargetCount.one && targetType.ignoresOne()){
                 return I18N.getString(R.string.s_s_target, targetType.description(), targetAssignment.description());
             } else {
-                return I18N.getString(R.string.s_s_s, targetType.description(targetCount, null), targetAssignment.description(), targetCount.pluralModifier.description());
+                return I18N.getString(R.string.s_s_s, targetType.description(), targetAssignment.description(), targetCount.description());
             }
         } else if (hasCountPhrase && !hasNthModifier && !hasRangePhrase && hasRelationPhrase && hasDirectionPhrase && targetType.isExclusiveWithAll()){
             switch (targetAssignment){
@@ -121,7 +121,7 @@ public class TargetParameter {
             } else if (targetCount == TargetCount.one && targetType.ignoresOne()){
                 return I18N.getString(R.string.s1_s2_target_in_range_d3, targetType.description(), targetAssignment.description(), targetRange.rawRange);
             } else {
-                return I18N.getString(R.string.s1_s2_s3_in_range_d4, targetType.description(targetCount, null), targetAssignment.description(), targetCount.pluralModifier.description(), targetRange.rawRange);
+                return I18N.getString(R.string.s1_s2_s3_in_range_d4, targetType.description(), targetAssignment.description(), targetCount.description(), targetRange.rawRange);
             }
         } else if (hasCountPhrase && !hasNthModifier && hasRangePhrase && hasRelationPhrase && hasDirectionPhrase){
             if(targetCount == TargetCount.all){
@@ -132,7 +132,7 @@ public class TargetParameter {
             } else if(targetCount == TargetCount.one && targetType.ignoresOne()){
                 return I18N.getString(R.string.s1_front_s2_target_in_range_d3, targetType.description(), targetAssignment.description(), targetRange.rawRange);
             } else {
-                return I18N.getString(R.string.s1_front_s2_s3_in_range_d4, targetType.description(targetCount, null), targetAssignment.description(), targetCount.pluralModifier.description(), targetRange.rawRange);
+                return I18N.getString(R.string.s1_front_s2_s3_in_range_d4, targetType.description(), targetAssignment.description(), targetCount.description(), targetRange.rawRange);
             }
         } else if(hasCountPhrase && hasNthModifier && !hasRangePhrase && hasRelationPhrase && !hasDirectionPhrase){
             if(targetCount == TargetCount.one && targetType.ignoresOne()){

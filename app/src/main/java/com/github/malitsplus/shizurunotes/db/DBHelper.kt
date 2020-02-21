@@ -272,15 +272,11 @@ class DBHelper : SQLiteOpenHelper {
     @SuppressLint("Recycle")
     private fun <T> getBeanListByRaw(
         sql: String?,
-        theClass: Class<*>,
-        keyValue: String? = null
+        theClass: Class<*>
     ): List<T>? {
         if (!Utils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
         val cursor =
-            readableDatabase.rawQuery(
-                sql,
-                if (keyValue == null) null else arrayOf(keyValue)
-            ) ?: return null
+            readableDatabase.rawQuery(sql, null) ?: return null
         return cursor2List(cursor, theClass)
     }
 
@@ -423,23 +419,23 @@ class DBHelper : SQLiteOpenHelper {
      * @return
      */
     fun getCharaStoryStatus(charaId: Int): List<RawCharaStoryStatus>? {
+
         return getBeanListByRaw(
             """
                 SELECT * 
                 FROM chara_story_status 
-                WHERE chara_id_1 = ? 
-                OR chara_id_2 = ? 
-                OR chara_id_3 = ? 
-                OR chara_id_4 = ? 
-                OR chara_id_5 = ? 
-                OR chara_id_6 = ? 
-                OR chara_id_7 = ? 
-                OR chara_id_8 = ? 
-                OR chara_id_9 = ? 
-                OR chara_id_10 = ? 
+                WHERE chara_id_1 = $charaId 
+                OR chara_id_2 = $charaId 
+                OR chara_id_3 = $charaId 
+                OR chara_id_4 = $charaId 
+                OR chara_id_5 = $charaId 
+                OR chara_id_6 = $charaId 
+                OR chara_id_7 = $charaId 
+                OR chara_id_8 = $charaId 
+                OR chara_id_9 = $charaId 
+                OR chara_id_10 = $charaId 
                 """,
-            RawCharaStoryStatus::class.java,
-            charaId.toString()
+            RawCharaStoryStatus::class.java
         )
     }
 

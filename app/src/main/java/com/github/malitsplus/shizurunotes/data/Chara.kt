@@ -76,7 +76,7 @@ class Chara: Cloneable {
     fun setCharaProperty(rarity: Int = 0, rank: Int = maxCharaRank, hasUnique: Boolean = true) {
         charaProperty = Property()
             .plusEqual(rarityProperty)
-            .plusEqual(rarityGrowthProperty)
+            .plusEqual(getRarityGrowthProperty(rank))
             .plusEqual(storyProperty)
             .plusEqual(promotionStatus[rank])
             .plusEqual(getAllEquipmentProperty(rank))
@@ -84,10 +84,9 @@ class Chara: Cloneable {
             .plusEqual(if (hasUnique) uniqueEquipmentProperty else null)
     }
 
-    private val rarityGrowthProperty: Property
-        get() {
-            return rarityPropertyGrowth.multiply(maxCharaLevel + maxCharaRank.toDouble())
-        }
+    private fun getRarityGrowthProperty(rank: Int): Property{
+        return rarityPropertyGrowth.multiply(maxCharaLevel.toDouble() + rank)
+    }
 
     fun getAllEquipmentProperty(rank: Int): Property {
         val property = Property()

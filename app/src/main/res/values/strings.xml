@@ -29,7 +29,7 @@
     <string name="about_disclaimer">Disclaimer: This is an unofficial fan-made application, copyright of all resources associate with the game \"Princess Connect Re:Dive\" are belong to Cygames, Inc. </string>
     <string name="about_hp">Open source home page: \nhttps://github.com/MalitsPlus/ShizuruNotes</string>
     <string name="about_developer">Developer: Vibbit&lt;a href=\"https://twitter.com/L8102259\">@L8102259&lt;/a></string>
-    <string name="about_api">API from: https://redive.estertion.win</string>
+    <string name="about_api">API by: https://redive.estertion.win</string>
     <string name="about_license">This application is licensed under the &lt;a href=\"http://www.apache.org/licenses/LICENSE-2.0.txt\">Apache License 2.0&lt;/a></string>
 
     <string name="text_ok">OK</string>
@@ -259,7 +259,7 @@
     <string name="targets_of_last_effect">前のアクションのターゲット</string>
     <string name="all_s_targets">%s全体</string>    <!--all [enemy] targets-->
     <string name="all_s_s_targets">%2$s%1$s全体</string>    <!--all1 [enemy] 2[physics] targets-->
-    <string name="s_s_target">%1$s%2$s</string>    <!--[the nearest] [enemy] target-->
+    <string name="s_s_target">%1$s%2$s</string>    <!--[the nearest] [enemy] -->
     <string name="s_s_s">%1$s%2$s%3$s</string>    <!--[the farthest two] [enemy] [targets]-->
     <string name="all_front_enemy_targets">前方すべての敵</string>
     <string name="all_front_including_self_friendly_targets">自分を含めて前方すべての味方</string>
@@ -382,7 +382,7 @@
     <string name="Trigger_d_on_dot_damaged">トリガー：継続ダメージを受けた時[%d%%]の確率で発動。</string>
     <string name="Charge_for_s1_sec_and_deal_s2_damage_taken_additional_damage_on_the_next_effect">%1$s秒チャージし、次のアクションの効果を[%2$s * チャージ中受けたダメージ]アップ。</string>
     <string name="Make_s1_attract_enemy_attacks_last_for_s2_sec">%1$sに挑発状態、効果時間[%2$s]秒。</string>
-    <string name="Make_s1_to_be_invulnerable_for_s2_sec">%1$sに物理&amp;魔法攻撃無効状態、効果時間[%2$s]秒。</string>
+    <string name="Make_s1_to_be_invulnerable_for_s2_sec">%1$sに無敵状態、効果時間[%2$s]秒。</string>
     <string name="Make_s1_to_be_invulnerable_to_physical_damage_for_s2_sec">%1$sに物理攻撃無効状態、効果時間[%2$s]秒。</string>
     <string name="Change_skill_visual_effect_for_s_sec">スキルのビジュアルを変化させる、効果時間[%s]秒。</string>
     <string name="use_d1_to_s2_if_s3">%2$sが%3$sの場合、それに[アクション%1$d]を使う。</string>
@@ -437,7 +437,7 @@
     <string name="use_d1_if_among_s2_does_not_exists_unit_ID_d3">潜伏状態のユニットを除いて、%2$sの中ユニット（ID：%3$d）が存在しない場合、[アクション%1$d]を使う。</string>
     <string name="if_target_is_not_defeated_by_the_last_effect_then_use_d">前のアクションがターゲットを倒してない場合、[アクション%d]を使う。</string>
     <string name="counter_is_less_than_d1_then_use_d2">カウンターの数が%1$d未満の場合、[アクション%2$d]を使う。</string>
-    <string name="Exclusive_condition_s">排他的条件分岐：%s</string>
+    <string name="Exclusive_condition_s">全体的条件分岐：%s</string>
     <string name="Kill_s_instantly">%sを即死させる。</string>
     <string name="Add_additional_s1_s2_to_s3_for_next_s4_attacks">%3$sの次の%4$s回攻撃に[%1$s]%2$s効果を付与する。</string>
     <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_physical_damage">%1$sにシールドを展開する、物理ダメージを受けた時[%2$s]分のダメージを反射する。</string>
@@ -472,7 +472,7 @@
     <string name="In_nex_s1_sec_s2_physical_attacks_will_miss">%2$sの物理攻撃を必ずミスさせる、効果時間[%1$s]秒。</string>
     <string name="In_next_s1_attacks_s2_physical_attacks_will_miss">%2$sの次の[%1$s]回物理攻撃を必ずミスさせる。</string>
     <string name="Set_a_countdown_timer_on_s1_trigger_effect_d2_after_s3_sec">%1$sにカウントダウンを設置する、[%3$s]秒後[アクション%2$d]を発動させる。</string>
-    <string name="Remove_field_of_skill_d1_1_represents_the_first_skill_in_this_list_effect_d2">[スキル%1$d]の[アクション%2$d]が展開したフィールドを取り除く。</string>
+    <string name="Remove_field_of_skill_d1_1_represents_the_first_skill_in_this_list_effect_d2">[スキル%1$d]の[アクション%2$d]が展開したフィールドを解除する。</string>
     <string name="When_s1_receive_healing_deal_s2_healing_amount_damage_instead_last_for_s3_sec_or_unlimited_time_if_triggered_by_field">%1$sが回復を受けた時、それを無効にし、[%2$s]分のダメージを与える、効果時間[%3$s]秒。この効果はフィールド効果の場合、効果時間は無限大。</string>
     <string name="Make_s1_when_get_one_hit_by_the_caster_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">%1$sが自分にHitされるたび、マーク[ID：%3$s]を1スタック増やせる、効果時間[%4$s]秒、この効果は最大[%2$s]までスタックする。</string>
     <string name="Make_s1_when_deal_damage_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">%1$sがダメージを与えるたび、マーク[ID：%3$s]を1スタック増やせる、効果時間[%4$s]秒、この効果は最大[%2$s]までスタックする。</string>
@@ -483,7 +483,7 @@
     <string name="use_d_after_time_up">効果時間終了後、[アクション%d]を使う。</string>
     <string name="use_d_after_break">効果が中断されたあと、[アクション%d]を使う。</string>
     <string name="Polymorph_s1_for_s2_sec">%1$sを%2$s秒変貌させる。</string>
-    <string name="Clear_all_s1_on_s2_with_chance_s3">[%3$s%%]の確率で%2$sの%1$sをすべて取り除く。</string>
+    <string name="Clear_all_s1_on_s2_with_chance_s3">[%3$s%%]の確率で%2$sの%1$sをすべて解除する。</string>
     <string name="buffs">バフ</string>
     <string name="debuffs">デバフ</string>
     <string name="Raise_s1_s2">%2$sを[%1$s]アップさせる。</string>

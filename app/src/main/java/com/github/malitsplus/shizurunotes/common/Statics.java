@@ -1,11 +1,13 @@
 package com.github.malitsplus.shizurunotes.common;
 
+import com.github.malitsplus.shizurunotes.BuildConfig;
+
 import java.net.PortUnreachableException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Statics {
-    public static final String DB_PATH = "data/data/com.github.malitsplus.shizurunotes/databases/";
+    public static final String DB_PATH = "data/data/" + BuildConfig.APPLICATION_ID + "/databases/";
     public static final String DB_FILE_COMPRESSED = "redive_jp.db.br";
     public static final String DB_FILE = "redive_jp.db";
 
