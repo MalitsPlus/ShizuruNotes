@@ -5,7 +5,7 @@ An unofficial Android tool application of the game ã€ŠPrincess Connect Re:Diveã€
 * Android 8+ 
 
 ## Build
-Builded on Android Studio 3.6 RC 3. 
+Builded on Android Studio 3.6 RC 3.  
 Gradle building configuration could be found in `./app/build.gradle` and it might be changed time to time.
 
 ## Features
@@ -25,7 +25,7 @@ Gradle building configuration could be found in `./app/build.gradle` and it migh
 And more functions has been planned. 
 
 ## Localization 
-Japanese fully supported, partially Chinese supported at present (would be fully supported in the near future). 
+Japanese fully supported, partially Chinese supported at present (would be fully supported in the near future).  
 If you would like to translate this application to other languages, you can edit `values/strings.xml` and contact me. 
 
 ## References 
