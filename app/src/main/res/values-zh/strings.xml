@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">静流笔记</string>
-    <string name="menu_chara">角色</string>
+    <string name="app_full_name">静流笔记</string>
+
+    <string name="app_bar_filter">Filter</string>
+    <string name="title_chara_list">角色</string>
+    <string name="title_clan_battle">公会战</string>
+    <string name="title_setting">设定</string>
 
 </resources>
