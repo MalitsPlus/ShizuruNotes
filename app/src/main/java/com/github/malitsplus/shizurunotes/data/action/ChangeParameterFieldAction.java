@@ -24,7 +24,7 @@ public class ChangeParameterFieldAction extends AuraAction {
                     auraActionType.description(),
                     targetParameter.buildTargetClause(),
                     buildExpression(level, RoundingMode.UP, property),
-                    auraActionType.description(),
+                    auraType.description(),
                     buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property));
         } else {
             return I18N.getString(R.string.Summon_a_field_of_radius_d1_at_position_of_s2_to_s3_s4_s5_for_s6_sec,
