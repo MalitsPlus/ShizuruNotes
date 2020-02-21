@@ -4,6 +4,8 @@ package com.github.malitsplus.shizurunotes.data;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 
+import androidx.annotation.Nullable;
+
 import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.BackgroundSpan;
 import com.github.malitsplus.shizurunotes.common.I18N;
@@ -168,6 +170,7 @@ public class Skill {
         this.iconType = iconType;
         this.iconUrl = String.format(Locale.US, Statics.SKILL_ICON_URL, iconType);
     }
+
 
 
     public SpannableStringBuilder actionDescriptions;

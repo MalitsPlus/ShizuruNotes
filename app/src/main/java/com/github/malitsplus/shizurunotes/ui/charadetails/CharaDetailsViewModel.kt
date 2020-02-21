@@ -1,6 +1,5 @@
 package com.github.malitsplus.shizurunotes.ui.charadetails
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.malitsplus.shizurunotes.data.Chara
@@ -12,12 +11,14 @@ class CharaDetailsViewModel(private val sharedViewModelChara: SharedViewModelCha
 
     fun changeRank(rankString: String){
         val rank = rankString.toInt()
-        mutableChara.value = mutableChara.value?.apply {
+        val chara = mutableChara.value?.shallowCopy()
+        chara?.apply {
             setCharaProperty(rank = rank)
             skills.forEach {
                 it.setActionDescriptions(maxCharaLevel, charaProperty)
             }
         }
+        mutableChara.value = chara
     }
 
     fun setChara(chara: Chara?) {

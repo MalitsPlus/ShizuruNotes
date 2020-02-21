@@ -16,7 +16,7 @@ class SharedViewModelClanBattle : ViewModel() {
 
     /***
      * 从数据库读取所有会战数据。
-     * 注意：此方法应该且仅应该在程序初始化时或数据库更新完成后使用。
+     * 此方法应该且仅应该在程序初始化时或数据库更新完成后使用。
      */
     fun loadData(){
         thread(start = true){

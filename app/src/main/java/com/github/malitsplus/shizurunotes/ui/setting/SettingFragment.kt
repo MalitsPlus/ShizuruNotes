@@ -2,19 +2,25 @@ package com.github.malitsplus.shizurunotes.ui.setting
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.github.malitsplus.shizurunotes.BuildConfig
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.App
+import com.github.malitsplus.shizurunotes.common.UpdateManager
 import com.github.malitsplus.shizurunotes.common.UserSettings
 import com.github.malitsplus.shizurunotes.ui.MainActivity
+import com.github.malitsplus.shizurunotes.ui.ViewPagerFragmentDirections
 
 class SettingFragment : PreferenceFragmentCompat() {
 
@@ -34,6 +40,33 @@ class SettingFragment : PreferenceFragmentCompat() {
     ) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
 
+        //app版本提示
+        findPreference<Preference>("appVersion")?.apply {
+            summary = BuildConfig.VERSION_NAME
+            onPreferenceClickListener = Preference.OnPreferenceClickListener {
+                UpdateManager.get().checkAppVersion(false)
+                true
+            }
+        }
+
+        //数据库版本
+        findPreference<Preference>("dbVersion")?.apply {
+            onPreferenceClickListener = Preference.OnPreferenceClickListener {
+                UpdateManager.get().checkDatabaseVersion()
+                true
+            }
+        }
+
+        //关于
+        findPreference<Preference>("about")?.apply {
+            onPreferenceClickListener = Preference.OnPreferenceClickListener {
+                val action = ViewPagerFragmentDirections.actionNavViewPagerToNavSettingAbout()
+                findNavController().navigate(action)
+                true
+            }
+        }
+
+        //语言选择框
         val languagePreference = findPreference<ListPreference>(LANGUAGE_KEY)
         if (languagePreference != null) {
             languagePreference.onPreferenceChangeListener =
@@ -47,5 +80,8 @@ class SettingFragment : PreferenceFragmentCompat() {
                     true
                 }
         }
+
+        //手动点击更新数据库
+
     }
 }

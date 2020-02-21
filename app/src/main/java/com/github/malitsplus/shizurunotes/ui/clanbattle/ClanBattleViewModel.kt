@@ -7,7 +7,5 @@ class ClanBattleViewModel(
     sharedViewModel: SharedViewModelClanBattle
 ) : ViewModel() {
 
-    init {
-        sharedViewModel.loadData()
-    }
+
 }

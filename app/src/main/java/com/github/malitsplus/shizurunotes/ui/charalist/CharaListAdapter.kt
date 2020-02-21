@@ -36,7 +36,7 @@ class CharaListAdapter(
 
         //向每个item设置点击监听事件
         binding.clickListener = View.OnClickListener { v: View ->
-            sharedViewModelChara.selectedChara = binding.chara
+            sharedViewModelChara.mSetSelectedChara(binding.chara)
             var extras: FragmentNavigator.Extras
             binding.apply {
                 chara?.charaId.also {

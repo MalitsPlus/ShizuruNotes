@@ -19,7 +19,7 @@ class SharedViewModelChara : ViewModel() {
 
     /***
      * 从数据库读取所有角色数据。
-     * 注意：此方法应该且仅应该在程序初始化时或数据库更新完成后使用。
+     * 此方法应该且仅应该在程序初始化时或数据库更新完成后使用。
      */
     fun loadData() {
         thread(start = true){
@@ -37,9 +37,6 @@ class SharedViewModelChara : ViewModel() {
                 setUnitSkillData(it)
                 setUnitAttackPattern(it)
                 it.setCharaProperty()
-                for (skill in it.skills) {
-                    skill.setActionDescriptions(it.maxCharaLevel, it.charaProperty)
-                }
             }
             charaList.postValue(innerCharaList)
             loadingFlag.postValue(false)
@@ -127,6 +124,15 @@ class SharedViewModelChara : ViewModel() {
                 )
             )
         }
+    }
+
+    fun mSetSelectedChara(chara: Chara?){
+        chara?.apply {
+            skills.forEach {
+                it.setActionDescriptions(chara.maxCharaLevel, chara.charaProperty)
+            }
+        }
+        this.selectedChara = chara
     }
 
 }

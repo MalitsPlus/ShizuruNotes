@@ -25,9 +25,9 @@ class SettingContainerFragment : Fragment() {
             inflater, R.layout.fragment_setting_container, container, false
         )
 
-        childFragmentManager.beginTransaction().replace(
-            R.id.settingFragmentContainer, SettingFragment()
-        ).commit()
+        childFragmentManager.beginTransaction()
+            .replace(R.id.settingFragmentContainer, SettingFragment())
+            .commit()
 
         return binding.root
     }

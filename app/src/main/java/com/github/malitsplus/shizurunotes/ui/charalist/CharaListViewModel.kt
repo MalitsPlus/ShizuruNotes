@@ -21,11 +21,6 @@ class CharaListViewModel(
     var selectedSort: String = "0"
     var isAsc: Boolean = false
 
-    init {
-        //sharedViewModelChara.charaLoadFinishedCallBack = this
-        sharedViewModelChara.loadData()
-    }
-
     val attackTypeMap = mapOf(
         0 to I18N.getString(R.string.ui_chip_any),
         1 to I18N.getString(R.string.ui_chip_atk_type_physical),
