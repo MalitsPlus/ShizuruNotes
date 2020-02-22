@@ -21,6 +21,7 @@ import com.github.malitsplus.shizurunotes.common.UpdateManager
 import com.github.malitsplus.shizurunotes.common.UserSettings
 import com.github.malitsplus.shizurunotes.ui.MainActivity
 import com.github.malitsplus.shizurunotes.ui.ViewPagerFragmentDirections
+import kotlin.concurrent.thread
 
 class SettingFragment : PreferenceFragmentCompat() {
 
@@ -44,15 +45,30 @@ class SettingFragment : PreferenceFragmentCompat() {
         findPreference<Preference>("appVersion")?.apply {
             summary = BuildConfig.VERSION_NAME
             onPreferenceClickListener = Preference.OnPreferenceClickListener {
+                it.isEnabled = false
                 UpdateManager.get().checkAppVersion(false)
+                thread(start = true) {
+                    Thread.sleep(5000)
+                    activity!!.runOnUiThread {
+                        it.isEnabled = true
+                    }
+                }
                 true
             }
         }
 
+
         //数据库版本
         findPreference<Preference>("dbVersion")?.apply {
             onPreferenceClickListener = Preference.OnPreferenceClickListener {
+                it.isEnabled = false
                 UpdateManager.get().checkDatabaseVersion()
+                thread(start = true){
+                    Thread.sleep(5000)
+                    activity!!.runOnUiThread {
+                        it.isEnabled = true
+                    }
+                }
                 true
             }
         }
