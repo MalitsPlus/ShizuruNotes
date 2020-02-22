@@ -2,7 +2,8 @@
 An unofficial Android tool application of the game "Princess Connect Re:Dive".
 
 ## Requirement
-* Android 8+ 
+* Android 8+  
+> If you are located at Chinese mainland, it is highly recommend you to set ShizuruNotes and system download manager to go through your proxy software since there are some **UNKNOWN** reasons that you may get holy terrible connection speed to Github while ShizuruNotes will try to connect Github to fetch update information every time it is launched. 
 
 ## Build
 Builded on Android Studio 3.6 RC 3.  
@@ -25,12 +26,13 @@ Gradle building configuration could be found in `./app/build.gradle` and it migh
 And more functions has been planned. 
 
 ## Localization 
-Japanese fully supported, partially Chinese supported at present (would be fully supported in the near future).  
+Japanese fully supported, Chinese partially supported at present (would be fully supported in the near future).  
 If you would like to translate this application to other languages, you can edit `values/strings.xml` and contact me. 
 
 ## References 
 * [PrincessGuide](https://github.com/superk589/PrincessGuide) 
 * [redive_master_db_diff](https://github.com/esterTion/redive_master_db_diff) 
+
 ### API
 * https://redive.estertion.win/
 
