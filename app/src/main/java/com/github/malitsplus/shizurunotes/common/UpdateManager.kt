@@ -216,8 +216,8 @@ class UpdateManager private constructor(
                         throw Exception("No response from server.")
                     val obj = JSONObject(lastVersionJson)
                     serverVersion = obj.getInt("TruthVersion")
-                    if (serverVersion != UserSettings.get().preference.getInt("dbVersion", 0))
-                        hasNewVersion = true
+                    hasNewVersion =
+                        serverVersion != UserSettings.get().preference.getInt("dbVersion", 0)
                     updateHandler.sendEmptyMessage(UPDATE_CHECK_COMPLETED)
                 } catch (ex: Exception) {
                     ex.printStackTrace()

@@ -8,7 +8,7 @@
     <string name="title_clan_battle">クラバト</string>
     <string name="title_setting">設定</string>
 
-    <string name="setting_language">Language</string>
+    <string name="setting_language" translatable="false">Language</string>
     <string name="setting_language_dialog_title">Language</string>
     <string-array name="setting_language_options">
         <item>日本語</item>
@@ -25,14 +25,14 @@
     <string name="setting_db_version">データベースバージョン</string>
     <string name="setting_app_version">アプリバージョン</string>
     <string name="setting_about">シズルノーツについて</string>
-    <string name="about_version">Version: %s</string>
-    <string name="about_disclaimer">Disclaimer: This is an unofficial fan-made application, copyright of all resources associate with the game \"Princess Connect Re:Dive\" are belong to Cygames, Inc. </string>
-    <string name="about_hp">Open source home page: \nhttps://github.com/MalitsPlus/ShizuruNotes</string>
-    <string name="about_developer">Developer: Vibbit&lt;a href=\"https://twitter.com/L8102259\">@L8102259&lt;/a></string>
-    <string name="about_api">API by: https://redive.estertion.win</string>
-    <string name="about_license">This application is licensed under the &lt;a href=\"http://www.apache.org/licenses/LICENSE-2.0.txt\">Apache License 2.0&lt;/a></string>
+    <string name="about_version" translatable="false">Version: %s</string>
+    <string name="about_disclaimer" translatable="false">This is an unofficial fan-made application, copyright of all resources associate with the game \"Princess Connect Re:Dive\" are belong to Cygames, Inc. </string>
+    <string name="about_hp" translatable="false">Open source home page: \nhttps://github.com/MalitsPlus/ShizuruNotes</string>
+    <string name="about_developer" translatable="false">Developer: Vibbit&lt;a href=\"https://twitter.com/L8102259\">@L8102259&lt;/a></string>
+    <string name="about_api" translatable="false">API by: https://redive.estertion.win</string>
+    <string name="about_license" translatable="false">This application is licensed under the &lt;a href=\"http://www.apache.org/licenses/LICENSE-2.0.txt\">Apache License 2.0&lt;/a></string>
 
-    <string name="text_ok">OK</string>
+    <string name="text_ok" translatable="false">OK</string>
     <string name="db_update_dialog_title">データベース更新</string>
     <string name="db_update_dialog_text">データベースの新しいバージョンがあります、今すぐ更新しますか？</string>
     <string name="db_update_dialog_confirm">更新</string>
@@ -77,9 +77,9 @@
     <string name="snack_bar_cant_sort">データが不十分のためこのソートはまだ使えません</string>
 
     <string name="text_normal_attack_only">通常攻撃のみ</string>
-    <string name="text_level">Lv.</string>
-    <string name="text_loop_start">（</string>
-    <string name="text_loop_end">）</string>
+    <string name="text_level" translatable="false">Lv.</string>
+    <string name="text_loop_start" translatable="false">（</string>
+    <string name="text_loop_end" translatable="false">）</string>
     <string name="tab_phase">Phase&#160;</string>
     <string name="text_year">年</string>
     <string name="text_month">月</string>
@@ -102,7 +102,7 @@
     <string name="text_physical_penetrate">&#160;物理貫通&#160;</string>
     <string name="text_magical_penetrate">&#160;魔法貫通&#160;</string>
     <string name="text_hp_recovery">&#160;回復量上昇&#160;</string>
-    <string name="text_status_tips">*上記のステータスは☆MAX、LvMAX、装備&amp;専用装備フル強化、ストーリーステータス&amp;Exスキル加算の値になります。</string>
+    <string name="text_status_tips">*上記のステータスは☆MAX、LvMAX、装備&amp;専用装備フル強化、ストーリーステータス&amp;Exスキルを含めての値になります。</string>
     <string name="text_attack_pattern">&#160;行動パターン&#160;</string>
     <string name="text_normal_mode">通常モード</string>
     <string name="text_attack_pattern2">&#160;行動パターン2&#160;</string>
@@ -277,7 +277,7 @@
     <string name="s1_front_s2_s3_in_range_d4">前方範囲[%4$d]内の%1$s%2$s%3$s</string>    <!--1[the second to fourth farthest] front 2[enemy] 3[targets] in range 4[500]-->
     <string name="s1_to_s2">%1$sから%2$sまで</string>
     <string name="s1_front_s2_s3">前方%1$s%2$s%3$s</string>    <!--1[the second to fourth farthest] front 2[enemy] 3[targets]-->
-    <string name="any_of_s">%sの中任意の数のターゲット</string>
+    <string name="any_of_s">（ターゲット別）%sの中任意のターゲット</string>
     <string name="Unknown_effect_d1_to_s2_with_details_s3_values_s4">%2$sに不明な効果[%1$d]、内容%3$s、媒介変数%4$s。</string>
     <string name="magical">魔法</string>
     <string name="physical">物理</string>
@@ -385,11 +385,11 @@
     <string name="Make_s1_to_be_invulnerable_for_s2_sec">%1$sに無敵状態、効果時間[%2$s]秒。</string>
     <string name="Make_s1_to_be_invulnerable_to_physical_damage_for_s2_sec">%1$sに物理攻撃無効状態、効果時間[%2$s]秒。</string>
     <string name="Change_skill_visual_effect_for_s_sec">スキルのビジュアルを変化させる、効果時間[%s]秒。</string>
-    <string name="use_d1_to_s2_if_s3">%2$sが%3$sの場合、それに[アクション%1$d]を使う。</string>
+    <string name="use_d1_to_s2_if_s3">%2$sが%3$sの場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_to_s2_in_state_of_ID_d3">%2$sがマーク[ID：%3$d]を持っている場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_to_s2_if_it_is_alone">%2$sが独りの場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_to_s2_if_HP_is_below_d">%2$sのHPが%3$d%%以下の場合、[アクション%1$d]を使う。</string>
-    <string name="use_d1_to_s2_if_not_s3">%2$sが%3$sでない場合、それに[アクション%1$d]を使う。</string>
+    <string name="use_d1_to_s2_if_not_s3">%2$sが%3$sでない場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_to_s2_if_not_in_state_of_ID_d3">%2$sがマーク[ID：%3$d]を持っていない場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_to_s2_if_it_is_not_alone">%2$sが独りでない場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_to_s2_if_HP_is_not_below_d">%2$sのHPが%3$d%%以下でない場合、[アクション%1$d]を使う。</string>
@@ -474,7 +474,7 @@
     <string name="Set_a_countdown_timer_on_s1_trigger_effect_d2_after_s3_sec">%1$sにカウントダウンを設置する、[%3$s]秒後[アクション%2$d]を発動させる。</string>
     <string name="Remove_field_of_skill_d1_1_represents_the_first_skill_in_this_list_effect_d2">[スキル%1$d]の[アクション%2$d]が展開したフィールドを解除する。</string>
     <string name="When_s1_receive_healing_deal_s2_healing_amount_damage_instead_last_for_s3_sec_or_unlimited_time_if_triggered_by_field">%1$sが回復を受けた時、それを無効にし、[%2$s]分のダメージを与える、効果時間[%3$s]秒。この効果はフィールド効果の場合、効果時間は無限大。</string>
-    <string name="Make_s1_when_get_one_hit_by_the_caster_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">%1$sが自分にHitされるたび、マーク[ID：%3$s]を1スタック増やせる、効果時間[%4$s]秒、この効果は最大[%2$s]までスタックする。</string>
+    <string name="Make_s1_when_get_one_hit_by_the_caster_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">自分が%1$sをHitするたび、それにマーク[ID：%3$s]を1スタック増やせる、効果時間[%4$s]秒、この効果は最大[%2$s]までスタックする。</string>
     <string name="Make_s1_when_deal_damage_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">%1$sがダメージを与えるたび、マーク[ID：%3$s]を1スタック増やせる、効果時間[%4$s]秒、この効果は最大[%2$s]までスタックする。</string>
     <string name="Fear_s1_with_s2_chance_for_s3_sec">[%2$s%%]の確率で%1$sを恐慌状態にする、効果時間[%3$s]秒。</string>
     <string name="Reduce_s1_damage_or_instant_healing_effect_of_union_burst_and_main_skills_cast_by_s2_for_s3_sec">%2$sのユニオンバーストかスキルが任意のターゲットにダメージか直接回復を与えるたび、その値を[%1$s%%]ダウンさせる、効果時間[%3$s]秒。</string>
@@ -487,7 +487,7 @@
     <string name="buffs">バフ</string>
     <string name="debuffs">デバフ</string>
     <string name="Raise_s1_s2">%2$sを[%1$s]アップさせる。</string>
-    <string name="When_s1_HP_reaches_0_restore_s2_HP_once_in_next_s3_sec">[%3$s]秒内、%1$sのHPが0になる直前、HPを[%2$s]回復し、このバフを解除する。</string>
+    <string name="When_s1_HP_reaches_0_restore_s2_HP_once_in_next_s3_sec">%1$sに「HPが0になる直前、HPを[%2$s]回復し、このバフを解除する」の効果を付与する、効果時間[%3$s]秒。</string>
 
     <!--**************** 拼接字符串领域结束 *****************-->
 
