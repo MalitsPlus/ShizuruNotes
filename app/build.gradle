@@ -26,7 +26,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
-            applicationIdSuffix ".debug"
+//            applicationIdSuffix ".debug"
         }
     }
     compileOptions {
@@ -69,4 +69,5 @@ dependencies {
     implementation 'com.google.guava:guava:28.2-android'
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation 'com.github.arcadefire:nice-spinner:1.4.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
 }

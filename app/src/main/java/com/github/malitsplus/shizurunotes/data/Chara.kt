@@ -30,6 +30,7 @@ class Chara: Cloneable {
     var maxCharaLevel: Int = 0
     var maxCharaRank: Int = 0
     var maxUniqueEquipmentLevel: Int = 0
+    var rarity: Int = 0
 
     lateinit var actualName: String
     lateinit var age: String

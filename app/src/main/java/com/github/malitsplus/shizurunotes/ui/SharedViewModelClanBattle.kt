@@ -26,35 +26,47 @@ class SharedViewModelClanBattle : ViewModel() {
             DBHelper.get().getClanBattlePeriod()?.forEach {
                 innerPeriodList.add(it.transToClanBattlePeriod())
             }
-            innerPeriodList.forEach { period ->
-                period.phaseList.forEach { p ->
-                    p.bossList.forEach { b ->
-                        b.skills.forEach { s ->
-                            DBHelper.get().getSkillData(s.skillId)?.setSkillData(s)
-                            //向actionList中填入其他具体值
-                            s.actions.forEach {
-                                DBHelper.get().getSkillAction(it.actionId)?.setActionData(it)
-                            }
-                            s.actions.forEach {
-                                if (it.dependActionId != 0) {
-                                    for (searched in s.actions) {
-                                        if (searched.actionId == it.dependActionId) {
-                                            searched.buildParameter()
-                                            it.dependAction = searched
-                                            break
-                                        }
-                                    }
-                                }
-                                it.buildParameter()
-                            }
-                            s.setActionDescriptions(s.enemySkillLevel, b.property)
-                        }
-                    }
-                }
-            }
+//            innerPeriodList.forEach { period ->
+//                period.phaseList.forEach { p ->
+//                    p.bossList.forEach { b ->
+//                        b.skills.forEach { s ->
+//                            DBHelper.get().getSkillData(s.skillId)?.setSkillData(s)
+//                            //向actionList中填入其他具体值
+//                            s.actions.forEach {
+//                                DBHelper.get().getSkillAction(it.actionId)?.setActionData(it)
+//                            }
+//                            s.actions.forEach {
+//                                if (it.dependActionId != 0) {
+//                                    for (searched in s.actions) {
+//                                        if (searched.actionId == it.dependActionId) {
+//                                            searched.buildParameter()
+//                                            it.dependAction = searched
+//                                            break
+//                                        }
+//                                    }
+//                                }
+//                                it.buildParameter()
+//                            }
+//                            s.setActionDescriptions(s.enemySkillLevel, b.property)
+//                        }
+//                    }
+//                }
+//            }
             periodList.postValue(innerPeriodList)
             loadingFlag.postValue(false)
         }
 
     }
+
+    fun mSetSelectedPeriod(period: ClanBattlePeriod){
+        period.phaseList.forEach { p ->
+            p.bossList.forEach { b ->
+                b.skills.forEach { s ->
+                    s.setActionDescriptions(s.enemySkillLevel, b.property)
+                }
+            }
+        }
+        this.selectedPeriod = period
+    }
+
 }

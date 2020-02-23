@@ -4,6 +4,8 @@ import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.I18N;
 import com.github.malitsplus.shizurunotes.data.Property;
 
+import java.util.List;
+
 public class SummonAction extends ActionParameter {
 
     enum Side{
@@ -68,6 +70,7 @@ public class SummonAction extends ActionParameter {
 
     private Side side;
     private UnitType unitType;
+
 
     @Override
     protected void childInit() {

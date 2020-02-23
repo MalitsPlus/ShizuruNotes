@@ -358,7 +358,6 @@ class DBHelper : SQLiteOpenHelper {
 
     /***
      * 获取角色基础数据
-     * @return 角色数据游标
      */
     fun getCharaBase(): List<RawUnitBasic>? {
         return getBeanListByRaw(
@@ -398,10 +397,8 @@ class DBHelper : SQLiteOpenHelper {
 
     /***
      * 获取角色星级数据
-     * @param unitId 角色id
-     * @return
      */
-    fun getCharaRarity(unitId: Int): RawUnitRarity? {
+    fun getUnitRarity(unitId: Int): RawUnitRarity? {
         return getBeanByRaw<RawUnitRarity>(
             """
                 SELECT * 
@@ -414,9 +411,22 @@ class DBHelper : SQLiteOpenHelper {
     }
 
     /***
+     * 获取角色星级数据
+     */
+    fun getUnitRarityList(unitId: Int): List<RawUnitRarity>? {
+        return getBeanListByRaw<RawUnitRarity>(
+            """
+                SELECT * 
+                FROM unit_rarity 
+                WHERE unit_id=$unitId 
+                ORDER BY rarity DESC 
+                """,
+            RawUnitRarity::class.java
+        )
+    }
+
+    /***
      * 获取角色剧情数据
-     * @param charaId 角色id的前4位
-     * @return
      */
     fun getCharaStoryStatus(charaId: Int): List<RawCharaStoryStatus>? {
 
@@ -747,6 +757,51 @@ class DBHelper : SQLiteOpenHelper {
                 WHERE resist_status_id=$resistStatusId  
                 """,
             RawResistData::class.java
+        )
+    }
+
+    fun getUnitMinion(minionId: Int): RawUnitMinion? {
+        return getBeanByRaw<RawUnitMinion>(
+            """
+                SELECT
+                a.*,
+                b.union_burst,
+                b.union_burst_evolution,
+                b.main_skill_1,
+                b.main_skill_evolution_1,
+                b.main_skill_2,
+                b.main_skill_evolution_2,
+                b.ex_skill_1,
+                b.ex_skill_evolution_1,
+                b.main_skill_3,
+                b.main_skill_4,
+                b.main_skill_5,
+                b.main_skill_6,
+                b.main_skill_7,
+                b.main_skill_8,
+                b.main_skill_9,
+                b.main_skill_10,
+                b.ex_skill_2,
+                b.ex_skill_evolution_2,
+                b.ex_skill_3,
+                b.ex_skill_evolution_3,
+                b.ex_skill_4,
+                b.ex_skill_evolution_4,
+                b.ex_skill_5,
+                b.sp_skill_1,
+                b.ex_skill_evolution_5,
+                b.sp_skill_2,
+                b.sp_skill_3,
+                b.sp_skill_4,
+                b.sp_skill_5
+            FROM
+                unit_skill_data b,
+                unit_data a
+            WHERE
+                a.unit_id = b.unit_id
+                AND a.unit_id = $minionId
+                """,
+            RawUnitMinion::class.java
         )
     }
 

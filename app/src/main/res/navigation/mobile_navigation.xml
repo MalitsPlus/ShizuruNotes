@@ -61,6 +61,13 @@
             android:name="charaId"
             app:argType="integer"
             android:defaultValue="0" />
+        <action
+            android:id="@+id/action_nav_chara_details_to_nav_minion"
+            app:destination="@id/nav_minion"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -111,6 +118,11 @@
         android:name="com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleBossResistFragment"
         android:label="fragment_clan_battle_boss_resist"
         tools:layout="@layout/fragment_clan_battle_boss_resist" />
+    <fragment
+        android:id="@+id/nav_minion"
+        android:name="com.github.malitsplus.shizurunotes.ui.minion.MinionFragment"
+        android:label="fragment_minion"
+        tools:layout="@layout/fragment_minion" />
 
 
 </navigation>

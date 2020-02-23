@@ -19,7 +19,6 @@ class ClanBattleBoss(
     val resistName = mutableListOf<String>()
     val resistRate = mutableListOf<Int>()
 
-
     val attackPatternList = mutableListOf<AttackPattern>()
 
     val skills = mutableListOf<Skill>()
