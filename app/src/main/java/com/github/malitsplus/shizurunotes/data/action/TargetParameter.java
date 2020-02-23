@@ -50,7 +50,7 @@ public class TargetParameter {
                 || targetNumber == TargetNumber.fifth;
         hasDirectionPhrase = direction == DirectionType.front
                 &&(hasRangePhrase || targetCount == TargetCount.all);
-        hasDependAction = dependAction != null && (dependAction.actionId != 0
+        hasDependAction = dependAction != null && (dependAction.getActionId() != 0
                 && targetType != TargetType.absolute
                 && (ActionType.ifForChildren == dependAction.parameter.actionType
                 || ActionType.ifForAll == dependAction.parameter.actionType
@@ -70,9 +70,9 @@ public class TargetParameter {
     public String buildTargetClause(){
         if(hasDependAction){
             if(dependAction.parameter.actionType == ActionType.damage)
-                return I18N.getString(R.string.targets_those_damaged_by_effect_d, dependAction.actionId % 100);
+                return I18N.getString(R.string.targets_those_damaged_by_effect_d, dependAction.getActionId() % 100);
             else
-                return I18N.getString(R.string.targets_of_effect_d, dependAction.actionId % 100);
+                return I18N.getString(R.string.targets_of_effect_d, dependAction.getActionId() % 100);
         } else if (!hasRelationPhrase){
             return targetType.description();
         } else if (!hasCountPhrase && !hasNthModifier && !hasRangePhrase && hasRelationPhrase) {

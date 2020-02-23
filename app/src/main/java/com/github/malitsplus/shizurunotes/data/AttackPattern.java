@@ -51,7 +51,7 @@ public class AttackPattern {
             } else {
                 Skill skill = null;
                 for(Skill innerSkill : skills){
-                    if(innerSkill.skillClass == PatternType.parse(raw).skillClass()){
+                    if(innerSkill.getSkillClass() == PatternType.parse(raw).skillClass()){
                         skill = innerSkill;
                         break;
                     }

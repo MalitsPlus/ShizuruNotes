@@ -39,7 +39,7 @@ public class RawSkillData {
         for(int i = 1; i <= 7; i++){
             int action = (int)Utils.getValueFromObject(this, "action_" + i);
             if(action != 0) {
-                skill.actions.add(skill.new Action(action, (int) Utils.getValueFromObject(this, "depend_action_" + i)));
+                skill.getActions().add(skill.new Action(action, (int) Utils.getValueFromObject(this, "depend_action_" + i)));
             }
         }
     }

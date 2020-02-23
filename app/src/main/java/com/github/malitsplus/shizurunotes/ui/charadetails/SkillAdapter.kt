@@ -2,16 +2,20 @@ package com.github.malitsplus.shizurunotes.ui.charadetails
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.Skill
 import com.github.malitsplus.shizurunotes.databinding.ListItemSkillBinding
+import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
 import java.util.*
 
-class SkillAdapter(private val mContext: Context) :
-    RecyclerView.Adapter<SkillAdapter.SkillViewHolder>() {
+class SkillAdapter(
+    private val sharedChara: SharedViewModelChara
+) : RecyclerView.Adapter<SkillAdapter.SkillViewHolder>() {
 
     private var itemList: List<Skill> = ArrayList()
 
@@ -33,8 +37,22 @@ class SkillAdapter(private val mContext: Context) :
         holder: SkillViewHolder,
         position: Int
     ) {
-        holder.binding.skill = itemList[position]
-        holder.binding.executePendingBindings()
+        with(holder.binding){
+            skill = itemList[position].also { s ->
+                if (s.friendlyMinionList.isNotEmpty()){
+                    minionButton.visibility = View.VISIBLE
+                    minionButton.setOnClickListener {
+                        sharedChara.selectedMinion = s.friendlyMinionList
+                        it.findNavController()
+                            .navigate(CharaDetailsFragmentDirections
+                                .actionNavCharaDetailsToNavMinion()
+                            )
+                    }
+                }
+            }
+
+            executePendingBindings()
+        }
     }
 
     override fun getItemCount(): Int {

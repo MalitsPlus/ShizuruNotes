@@ -2,10 +2,11 @@ package com.github.malitsplus.shizurunotes.db;
 
 import com.github.malitsplus.shizurunotes.data.Chara;
 import com.github.malitsplus.shizurunotes.data.Property;
+import java.security.PublicKey;
 
 public class RawUnitRarity {
-    //public int unit_id;
-    //public int rarity;
+    public int unit_id;
+    public int rarity;
     public double hp;
     public double atk;
     public double magic_str;
@@ -82,7 +83,32 @@ public class RawUnitRarity {
                 accuracy_growth
         );
 
+        chara.setRarity(rarity);
         chara.rarityProperty = rarityProperty;
         chara.rarityPropertyGrowth = rarityPropertyGrowth;
     }
+
+    public Property getProperty(){
+        return new Property(
+                hp,
+                atk,
+                magic_str,
+                def,
+                magic_def,
+                physical_critical,
+                magic_critical,
+                wave_hp_recovery,
+                wave_energy_recovery,
+                dodge,
+                physical_penetrate,
+                magic_penetrate,
+                life_steal,
+                hp_recovery_rate,
+                energy_recovery_rate,
+                energy_reduce_rate,
+                accuracy
+        );
+    }
+
+
 }

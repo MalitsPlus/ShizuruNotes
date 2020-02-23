@@ -7,6 +7,7 @@
     <string name="title_chara_list">キャラ</string>
     <string name="title_clan_battle">クラバト</string>
     <string name="title_setting">設定</string>
+    <string name="title_minion">召喚物</string>
 
     <string name="setting_language" translatable="false">Language</string>
     <string name="setting_language_dialog_title">Language</string>
@@ -75,6 +76,7 @@
     <string name="ui_chip_sort_way_down">降順</string>
     <string name="ui_switch_change_value">表示切替</string>
     <string name="snack_bar_cant_sort">データが不十分のためこのソートはまだ使えません</string>
+    <string name="button_minion_info">召喚物情報</string>
 
     <string name="text_normal_attack_only">通常攻撃のみ</string>
     <string name="text_level" translatable="false">Lv.</string>
@@ -494,6 +496,9 @@
 
     <string name="permission_request_explanation_title">ストレージ権限</string>
     <string name="permission_request_explanation_text">本アプリはストレージを使ってキャラクターデータベースの保存とアプリのアップデートを行います、許可しないと正常に動作しない恐れがあります。</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

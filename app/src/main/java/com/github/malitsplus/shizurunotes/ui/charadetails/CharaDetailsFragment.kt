@@ -104,7 +104,7 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
 
         //技能 Recycler
         val layoutManagerSkill = LinearLayoutManager(context)
-        val adapterSkill = SkillAdapter(context!!)
+        val adapterSkill = SkillAdapter(sharedViewModel)
         binding.skillRecycler.apply {
             layoutManager = layoutManagerSkill
             adapter = adapterSkill
