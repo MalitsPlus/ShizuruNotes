@@ -37,16 +37,13 @@ class DBHelper : SQLiteOpenHelper {
         Statics.DB_FILE,
         null,
         DB_VERSION
-    ) {
-    }
-
+    )
     private constructor(
         context: Context?,
         name: String?,
         factory: CursorFactory?,
         version: Int
-    ) : super(context, name, factory, version) {
-    }
+    ) : super(context, name, factory, version)
 
     override fun onCreate(db: SQLiteDatabase) {}
     override fun onUpgrade(
@@ -143,7 +140,7 @@ class DBHelper : SQLiteOpenHelper {
             paraBuilder.append(")")
             db.rawQuery(
                 "SELECT * FROM $tableName WHERE $key IN $paraBuilder ",
-                keyValue.toTypedArray()                                                     // -???
+                keyValue.toTypedArray()
             )
         }
     }

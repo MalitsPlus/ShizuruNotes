@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="minion"
+            type="com.github.malitsplus.shizurunotes.data.Minion" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/minion_title_constraint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/minion_icon"
+                    style="@style/unitIcon"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/minion_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="minionName"
+                    app:layout_constraintStart_toEndOf="@+id/minion_icon"
+                    app:layout_constraintTop_toTopOf="@+id/minion_icon" />
+
+                <TextView
+                    android:id="@+id/minion_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="minionLevelId"
+                    app:layout_constraintStart_toEndOf="@+id/minion_icon"
+                    app:layout_constraintTop_toBottomOf="@+id/minion_name" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/minion_title_constraint">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.allen.library.SuperTextView
+                        android:id="@+id/txt_hp"
+                        style="@style/StatusSuperTextView"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        app:sLeftTextString="@string/text_hp"
+                        bind:sRightText="HP" />
+
+                    <com.allen.library.SuperTextView
+                        android:id="@+id/txtPlaceHolder"
+                        style="@style/StatusSuperTextViewPlaceHolder"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="1"
+                        app:sLeftTextString="" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                    <com.allen.library.SuperTextView
+                        android:id="@+id/txt_atk"
+                        style="@style/StatusSuperTextView"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        app:sLeftTextString="@string/text_physical_atk"
+                        bind:sRightText="ATK" />
+
+                    <com.allen.library.SuperTextView
+                        android:id="@+id/txt_magic_str"
+                        style="@style/StatusSuperTextView"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="1"
+                        app:sLeftTextString="@string/text_magical_atk"
+                        bind:sRightText="MagicStr" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+                    <com.allen.library.SuperTextView
+                        android:id="@+id/txt_def"
+                        style="@style/StatusSuperTextView"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        app:sLeftTextString="@string/text_physical_def"
+                        bind:sRightText="DEF" />
+
+                    <com.allen.library.SuperTextView
+                        android:id="@+id/txt_magic_def"
+                        style="@style/StatusSuperTextView"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="1"
+                        app:sLeftTextString="@string/text_magical_def"
+                        bind:sRightText="MagicDef" />
+
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/minion_attack_pattern"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/minion_skill_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/minion_attack_pattern" />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -47,7 +47,6 @@
     <string name="db_update_failed">データベースのアップデートが失敗しました</string>
     <string name="app_update_check_failed">アプリのアップデートチェックが失敗しました</string>
 
-
     <string name="ui_text_filter">絞り込み</string>
     <string name="ui_text_position">位置</string>
     <string name="ui_text_atk_type">タイプ</string>

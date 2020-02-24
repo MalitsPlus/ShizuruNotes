@@ -150,7 +150,7 @@ class Skill(
     val enemyMinionList = mutableListOf<ClanBattleBoss>()
 
     /***
-    * ！！！此类必须在协程中进行初始化！！！
+    * ！！！此类必须在协程中进行实例化！！！
     */
     init {
         DBHelper.get().getSkillData(this.skillId)?.setSkillData(this)
@@ -182,15 +182,16 @@ class Skill(
                             minion?.apply {
                                 propertyMap[it.rarity] = it.property
                                 propertyGrowthMap[it.rarity] = it.property
-                                friendlyMinionList.add(this)
                             }
                         }
+                        if (minion != null)
+                            friendlyMinionList.add(minion)
                         unitId
                     }
                 }
                 //敌方召唤物
                 else {
-                    TODO()
+                    //TODO()
                 }
             }
 
