@@ -55,6 +55,7 @@ class CharaListAdapter(
         return CharaListViewHolder(binding)
     }
 
+
     //填充每个item的视图
     override fun onBindViewHolder(
         holder: CharaListViewHolder,

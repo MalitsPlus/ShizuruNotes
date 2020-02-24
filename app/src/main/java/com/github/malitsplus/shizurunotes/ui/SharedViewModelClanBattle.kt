@@ -58,8 +58,8 @@ class SharedViewModelClanBattle : ViewModel() {
 
     }
 
-    fun mSetSelectedPeriod(period: ClanBattlePeriod){
-        period.phaseList.forEach { p ->
+    fun mSetSelectedPeriod(period: ClanBattlePeriod?){
+        period?.phaseList?.forEach { p ->
             p.bossList.forEach { b ->
                 b.skills.forEach { s ->
                     s.setActionDescriptions(s.enemySkillLevel, b.property)
