@@ -70,14 +70,25 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/minion_title_constraint">
 
+                <TextView
+                    android:id="@+id/text_cast_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="CastTime"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <LinearLayout
                     android:id="@+id/linearLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toBottomOf="@+id/text_cast_time">
 
                     <com.allen.library.SuperTextView
                         android:id="@+id/txt_hp"
@@ -85,14 +96,15 @@
                         android:layout_marginEnd="4dp"
                         android:layout_weight="1"
                         app:sLeftTextString="@string/text_hp"
-                        bind:sRightText="HP" />
+                        bind:sRightTextString="HP" />
 
                     <com.allen.library.SuperTextView
-                        android:id="@+id/txtPlaceHolder"
-                        style="@style/StatusSuperTextViewPlaceHolder"
+                        android:id="@+id/txtSearchAreaWidth"
+                        style="@style/StatusSuperTextView"
                         android:layout_marginStart="4dp"
                         android:layout_weight="1"
-                        app:sLeftTextString="" />
+                        app:sRightTextString="AreaWidth"
+                        app:sLeftTextString="@string/text_search_area_width" />
 
                 </LinearLayout>
 
@@ -112,7 +124,7 @@
                         android:layout_marginEnd="4dp"
                         android:layout_weight="1"
                         app:sLeftTextString="@string/text_physical_atk"
-                        bind:sRightText="ATK" />
+                        bind:sRightTextString="ATK" />
 
                     <com.allen.library.SuperTextView
                         android:id="@+id/txt_magic_str"
@@ -120,7 +132,7 @@
                         android:layout_marginStart="4dp"
                         android:layout_weight="1"
                         app:sLeftTextString="@string/text_magical_atk"
-                        bind:sRightText="MagicStr" />
+                        bind:sRightTextString="MagicStr" />
 
                 </LinearLayout>
 
@@ -139,7 +151,7 @@
                         android:layout_marginEnd="4dp"
                         android:layout_weight="1"
                         app:sLeftTextString="@string/text_physical_def"
-                        bind:sRightText="DEF" />
+                        bind:sRightTextString="DEF" />
 
                     <com.allen.library.SuperTextView
                         android:id="@+id/txt_magic_def"
@@ -147,21 +159,34 @@
                         android:layout_marginStart="4dp"
                         android:layout_weight="1"
                         app:sLeftTextString="@string/text_magical_def"
-                        bind:sRightText="MagicDef" />
+                        bind:sRightTextString="MagicDef" />
 
                 </LinearLayout>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <TextView
+                android:id="@+id/text_attack_pattern"
+                style="@style/textTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/text_attack_pattern"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/minion_attack_pattern"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/text_attack_pattern" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/minion_skill_recycler"
@@ -174,7 +199,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/minion_attack_pattern" />
-
 
 
 

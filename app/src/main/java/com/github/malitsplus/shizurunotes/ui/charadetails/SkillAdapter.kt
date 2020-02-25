@@ -17,7 +17,7 @@ class SkillAdapter(
     private val sharedChara: SharedViewModelChara
 ) : RecyclerView.Adapter<SkillAdapter.SkillViewHolder>() {
 
-    private var itemList: List<Skill> = ArrayList()
+    var itemList: List<Skill> = ArrayList()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -50,7 +50,6 @@ class SkillAdapter(
                     }
                 }
             }
-
             executePendingBindings()
         }
     }

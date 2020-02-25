@@ -20,6 +20,8 @@ import com.github.malitsplus.shizurunotes.data.Chara
 import com.github.malitsplus.shizurunotes.databinding.FragmentCharaDetailsBinding
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelCharaFactory
+import com.github.malitsplus.shizurunotes.ui.basic.AttackPatternContainerAdapter
+import kotlinx.android.synthetic.main.fragment_chara_details.view.*
 import org.angmarch.views.OnSpinnerItemSelectedListener
 
 class CharaDetailsFragment : Fragment(), View.OnClickListener {
@@ -75,9 +77,22 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
             it.clickListener = this
         }
 
+
+
+
+
+        binding.attackPatternRecycler.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = AttackPatternContainerAdapter().apply { itemList = detailsViewModel.getChara()!!.attackPatternList }
+        }
+
+
+
+
+
         //角色技能顺序 Recycler
         val attackPatternLayoutManager = GridLayoutManager(context, 6)
-        val attackPatternAdapter = AttackPatternAdapter(context!!)
+        val attackPatternAdapter = AttackPatternAdapter()
         binding.attackPatternRecycler.apply {
             layoutManager = attackPatternLayoutManager
             adapter = attackPatternAdapter.apply {
@@ -92,7 +107,7 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
             binding.attackPatternRecycler2.visibility = View.GONE
         } else {
             val layoutManager2 = GridLayoutManager(context, 6)
-            val adapter2 = AttackPatternAdapter(context!!)
+            val adapter2 = AttackPatternAdapter()
             binding.attackPatternRecycler2.apply {
                 layoutManager = layoutManager2
                 isNestedScrollingEnabled = false
