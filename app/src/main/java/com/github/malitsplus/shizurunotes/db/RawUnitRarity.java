@@ -110,5 +110,27 @@ public class RawUnitRarity {
         );
     }
 
+    public Property getPropertyGrowth(){
+        return new Property(
+                hp_growth,
+                atk_growth,
+                magic_str_growth,
+                def_growth,
+                magic_def_growth,
+                physical_critical_growth,
+                magic_critical_growth,
+                wave_hp_recovery_growth,
+                wave_energy_recovery_growth,
+                dodge_growth,
+                physical_penetrate_growth,
+                magic_penetrate_growth,
+                life_steal_growth,
+                hp_recovery_rate_growth,
+                energy_recovery_rate_growth,
+                energy_reduce_rate_growth,
+                accuracy_growth
+        );
+    }
+
 
 }

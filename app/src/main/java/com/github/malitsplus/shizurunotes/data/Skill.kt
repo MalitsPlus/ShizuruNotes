@@ -181,8 +181,11 @@ class Skill(
                         DBHelper.get().getUnitRarityList(unitId)?.forEach {
                             minion?.apply {
                                 propertyMap[it.rarity] = it.property
-                                propertyGrowthMap[it.rarity] = it.property
+                                propertyGrowthMap[it.rarity] = it.propertyGrowth
                             }
+                        }
+                        DBHelper.get().getUnitAttackPattern(unitId)?.forEach {
+                            minion?.attackPattern?.add(it.attackPattern)
                         }
                         if (minion != null)
                             friendlyMinionList.add(minion)

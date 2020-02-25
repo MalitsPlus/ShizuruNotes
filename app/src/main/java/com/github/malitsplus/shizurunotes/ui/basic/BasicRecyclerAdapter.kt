@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 abstract class BasicRecyclerAdapter<T, V: ViewDataBinding>(private val itemLayout: Int) : RecyclerView.Adapter<BasicRecyclerAdapter.VH<V>>() {
 
-    var itemList: List<T> = listOf()
+    var itemList = mutableListOf<T>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH<V>{
         val binding = DataBindingUtil.inflate<V>(LayoutInflater.from(parent.context), itemLayout, parent, false)
@@ -22,7 +22,7 @@ abstract class BasicRecyclerAdapter<T, V: ViewDataBinding>(private val itemLayou
         return itemList.size
     }
 
-    fun update(itemList: List<T>){
+    fun update(itemList: MutableList<T>){
         this.itemList = itemList
         notifyDataSetChanged()
     }

@@ -411,7 +411,7 @@ class DBHelper : SQLiteOpenHelper {
      * 获取角色星级数据
      */
     fun getUnitRarityList(unitId: Int): List<RawUnitRarity>? {
-        return getBeanListByRaw<RawUnitRarity>(
+        return getBeanListByRaw(
             """
                 SELECT * 
                 FROM unit_rarity 

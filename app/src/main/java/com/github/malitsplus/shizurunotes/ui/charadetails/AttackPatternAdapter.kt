@@ -10,10 +10,10 @@ import com.github.malitsplus.shizurunotes.data.AttackPattern.AttackPatternItem
 import com.github.malitsplus.shizurunotes.databinding.ListItemAttackPatternBinding
 import java.util.*
 
-class AttackPatternAdapter(private val mContext: Context) :
+class AttackPatternAdapter :
     RecyclerView.Adapter<AttackPatternAdapter.AttackPatternViewHolder>() {
 
-    private var itemList: List<AttackPatternItem> = ArrayList()
+    var itemList = mutableListOf<AttackPatternItem>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -42,7 +42,7 @@ class AttackPatternAdapter(private val mContext: Context) :
         return itemList.size
     }
 
-    fun update(itemList: List<AttackPatternItem>) {
+    fun update(itemList: MutableList<AttackPatternItem>) {
         this.itemList = itemList
         notifyDataSetChanged()
     }
