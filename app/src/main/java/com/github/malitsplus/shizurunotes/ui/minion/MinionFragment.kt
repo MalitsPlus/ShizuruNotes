@@ -8,12 +8,17 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.databinding.FragmentMinionBinding
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
+import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattle
+import com.github.malitsplus.shizurunotes.ui.charadetails.CharaDetailsFragmentArgs
 
 class MinionFragment : Fragment() {
+
+    private val args: MinionFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,23 +26,31 @@ class MinionFragment : Fragment() {
     ): View? {
 
         val sharedChara = ViewModelProvider(activity!!)[SharedViewModelChara::class.java]
+        val sharedClanBattle = ViewModelProvider(activity!!)[SharedViewModelClanBattle::class.java]
 
         val binding = DataBindingUtil.inflate<FragmentMinionBinding>(
             inflater, R.layout.fragment_minion, container, false
         ).apply {
+            lifecycleOwner = viewLifecycleOwner
             toolbarMinion.setNavigationOnClickListener {
                 it.findNavController().navigateUp()
             }
-            with(minionRecycler){
+        }
+
+        when(args.minionType){
+            1 -> with(binding.minionRecycler) {
                 adapter = MinionAdapter(R.layout.list_item_minion, sharedChara).apply {
                     sharedChara.selectedMinion?.let { itemList = it }
                 }
                 layoutManager = LinearLayoutManager(this@MinionFragment.context)
             }
-
+            2 -> with(binding.minionRecycler) {
+                adapter = EnemyMinionAdapter(R.layout.list_item_minion, sharedClanBattle).apply {
+                    sharedClanBattle.selectedMinion?.let { itemList = it }
+                }
+                layoutManager = LinearLayoutManager(this@MinionFragment.context)
+            }
         }
-
-
 
         return binding.root
     }

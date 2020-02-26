@@ -20,7 +20,7 @@ class SharedViewModelChara : ViewModel() {
 
 
     var selectedChara: Chara? = null
-    var selectedMinion: List<Minion>? = null
+    var selectedMinion: MutableList<Minion>? = null
 
 
     /***
@@ -101,28 +101,6 @@ class SharedViewModelChara : ViewModel() {
 
     private fun setUnitSkillData(chara: Chara) {
         get().getUnitSkillData(chara.unitId)?.setCharaSkillList(chara)
-//        chara.skills.forEach { skill: Skill ->
-//            //填充Skill中只有actionId和dependActionId（可能为0）的actionList
-//            get().getSkillData(skill.skillId)?.setSkillData(skill)
-//            skill.actions.forEach { action: Skill.Action ->
-//                //向actionList中填入具体值
-//                get().getSkillAction(action.actionId)?.setActionData(action)
-//            }
-//            skill.actions.forEach { action: Skill.Action ->
-//                //先检查dependAction
-//                if (action.dependActionId != 0) {
-//                    for (searched in skill.actions) {
-//                        if (searched.actionId == action.dependActionId) {
-//                            //需要先为其建立params
-//                            searched.buildParameter()
-//                            action.dependAction = searched
-//                            break
-//                        }
-//                    }
-//                }
-//                action.buildParameter()
-//            }
-//        }
     }
 
     private fun setUnitAttackPattern(chara: Chara) {

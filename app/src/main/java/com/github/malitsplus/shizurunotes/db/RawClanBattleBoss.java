@@ -17,6 +17,9 @@ public class RawClanBattleBoss {
     public int level;
     public int resist_status_id;
     public int prefab_id;
+    public int atk_type;
+    public int search_area_width;
+    public double normal_atk_cast_time;
 
     public int hp;
     public int atk;
@@ -97,7 +100,7 @@ public class RawClanBattleBoss {
                 energy_recovery_rate, energy_reduce_rate, accuracy
         );
 
-        boss.setBasic(unit_id, name, level, prefab_id, resist_status_id, property);
+        boss.setBasic(unit_id, name, level, prefab_id, atk_type, search_area_width, normal_atk_cast_time, resist_status_id, property);
 
         //children part
         for (int i = 1; i <= 5; i++){

@@ -44,11 +44,4 @@ class ClanBattlePeriod(
         else -> R.drawable.mic_chara_icon_place_holder
     }
 
-/*
-    init {
-        DBHelper.get().getClanBattlePhase(clanBattleId).forEach {
-            phaseList.add(it.clanBattlePhase)
-        }
-    }
-*/
 }

@@ -1,32 +1,30 @@
 package com.github.malitsplus.shizurunotes.ui.minion
 
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
-import com.github.malitsplus.shizurunotes.data.Minion
+import com.github.malitsplus.shizurunotes.data.ClanBattleBoss
 import com.github.malitsplus.shizurunotes.databinding.ListItemMinionBinding
-import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattle
 import com.github.malitsplus.shizurunotes.ui.basic.AttackPatternContainerAdapter
 import com.github.malitsplus.shizurunotes.ui.basic.BasicRecyclerAdapter
-import com.github.malitsplus.shizurunotes.ui.charadetails.AttackPatternAdapter
-import com.github.malitsplus.shizurunotes.ui.charadetails.SkillAdapter
 import com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleBossSkillAdapter
 
-class MinionAdapter(
+class EnemyMinionAdapter(
     layout: Int,
-    private val sharedChara: SharedViewModelChara
-) : BasicRecyclerAdapter<Minion, ListItemMinionBinding>(layout)
+    private val sharedClanBattle: SharedViewModelClanBattle
+) : BasicRecyclerAdapter<ClanBattleBoss, ListItemMinionBinding>(layout)
 {
     override fun onBindViewHolder(holder: VH<ListItemMinionBinding>, position: Int) {
         holder.binding.apply {
             val item = itemList[position]
 
             //初始化属性，技能
-            item.initialMinion(sharedChara.maxCharaLevel, sharedChara.maxCharaRank, sharedChara.selectedChara?.rarity ?: 5)
+            item.skills.forEach {
+                it.setActionDescriptions(it.enemySkillLevel, item.property)
+            }
 
             //获取icon，虽然多半没有
 //            Glide.with(minionIcon.context)
@@ -37,12 +35,12 @@ class MinionAdapter(
 //                .into(minionIcon)
 
             //设置控件文本
-            textCastTime.text = I18N.getString(R.string.text_normal_attack_cast_time).format(item.normalAttackCastTime)
-            minionName.text = item.unitName
-            minionId.text = "ID：" + item.unitId.toString()
+            textCastTime.text = I18N.getString(R.string.text_normal_attack_cast_time).format(item.normalAtkCastTime)
+            minionName.text = item.name
+            minionId.text = "ID：" + item.enemyId.toString()
 
             //设置属性
-            with(item.minionProperty) {
+            with(item.property) {
                 txtSearchAreaWidth.setRightString(item.searchAreaWidth.toString())
                 txtHp.setRightString(getHp().toString())
                 txtAtk.setRightString(getAtk().toString())
@@ -53,12 +51,12 @@ class MinionAdapter(
             }
 
             //行动顺序
-            item.attackPattern.forEach {
+            item.attackPatternList.forEach {
                 it.setItems(item.skills, item.atkType)
             }
             minionAttackPattern.apply {
                 layoutManager = LinearLayoutManager(context)
-                adapter = AttackPatternContainerAdapter().apply { itemList = item.attackPattern }
+                adapter = AttackPatternContainerAdapter().apply { itemList = item.attackPatternList }
             }
 
             //技能部分

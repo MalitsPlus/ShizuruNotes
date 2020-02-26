@@ -1,6 +1,7 @@
 package com.github.malitsplus.shizurunotes.ui.clanbattledetails
 
 import android.content.Context
+import android.icu.text.Transliterator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +14,9 @@ import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.ClanBattleBoss
 import com.github.malitsplus.shizurunotes.databinding.ListItemClanBattleBossBinding
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattle
+import com.github.malitsplus.shizurunotes.ui.basic.AttackPatternContainerAdapter
 
 class ClanBattleDetailsBossAdapter (
-    private val mContext: Context,
     private var bossList: List<ClanBattleBoss>
 ) : RecyclerView.Adapter<ClanBattleDetailsBossAdapter.ClanBattleDetailsBossHolder>() {
 
@@ -38,27 +39,23 @@ class ClanBattleDetailsBossAdapter (
         position: Int
     ) {
         holder.binding.apply {
-            boss = bossList[position]
+            val mBoss = bossList[position]
+            boss = mBoss
 
-            bossAttackPattern.text = bossList[position].attackPatternList[0]
-                .getEnemyPatternText(I18N.getString(R.string.text_attack_pattern_prefix))
-            if (bossList[position].attackPatternList.size > 1)
-                bossAttackPattern2.text = bossList[position].attackPatternList[1]
-                    .getEnemyPatternText(I18N.getString(R.string.text_attack_pattern_prefix2))
-            else
-                bossAttackPattern2.visibility = View.GONE
+            bossAttackPatternRecyclerView.apply {
+                layoutManager = LinearLayoutManager(context)
+                adapter = AttackPatternContainerAdapter().apply { itemList = mBoss.attackPatternList }
+            }
 
-            if (bossList[position].attackPatternList.size > 2)
-                bossAttackPattern3.text = bossList[position].attackPatternList[2]
-                    .getEnemyPatternText(I18N.getString(R.string.text_attack_pattern_prefix3))
-            else
-                bossAttackPattern3.visibility = View.GONE
+            childrenRecycler.apply {
+                layoutManager = LinearLayoutManager(context)
+                adapter = ClanBattleBossChildAdapter(mBoss.children)
+            }
 
-            childrenRecycler.layoutManager = LinearLayoutManager(childrenRecycler.context)
-            childrenRecycler.adapter = ClanBattleBossChildAdapter(bossList[position].children)
-
-            bossSkillRecycler.layoutManager = LinearLayoutManager(childrenRecycler.context)
-            bossSkillRecycler.adapter = ClanBattleBossSkillAdapter(bossList[position].skills)
+            bossSkillRecycler.apply {
+                layoutManager = LinearLayoutManager(context)
+                adapter = ClanBattleBossSkillAdapter(mBoss.skills, sharedClanBattleVM)
+            }
 
             clickListener = View.OnClickListener {
                 if (it?.id == R.id.boss_title_constraint){
@@ -67,10 +64,8 @@ class ClanBattleDetailsBossAdapter (
                     it.findNavController().navigate(action)
                 }
             }
-
         }
 
-        holder.binding.executePendingBindings()
     }
 
     override fun getItemCount(): Int {

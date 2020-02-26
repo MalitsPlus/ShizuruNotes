@@ -2,16 +2,20 @@ package com.github.malitsplus.shizurunotes.ui.clanbattledetails
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.Skill
 import com.github.malitsplus.shizurunotes.databinding.ListItemClanBattleBossSkillBinding
+import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattle
 
 class ClanBattleBossSkillAdapter (
-    private var skillList: List<Skill>
+    private var skillList: List<Skill>,
+    private val sharedClanBattle: SharedViewModelClanBattle?
 ) : RecyclerView.Adapter<ClanBattleBossSkillAdapter.ClanBattleBossSkillHolder>() {
 
     override fun onCreateViewHolder(
@@ -30,10 +34,21 @@ class ClanBattleBossSkillAdapter (
         holder: ClanBattleBossSkillHolder,
         position: Int
     ) {
-        holder.binding.skill = skillList[position]
-
-
-        holder.binding.executePendingBindings()
+        holder.binding.skill
+        with(holder.binding){
+            skill = skillList[position].also { s ->
+                if (s.enemyMinionList.isNotEmpty()){
+                    enemyMinionButton.visibility = View.VISIBLE
+                    enemyMinionButton.setOnClickListener {
+                        sharedClanBattle?.selectedMinion = s.enemyMinionList
+                        it.findNavController().navigate(
+                            ClanBattleViewPagerFragmentDirections.actionNavClanBattleViewPagerToNavMinion()
+                        )
+                    }
+                }
+            }
+            this
+        }
     }
 
     override fun getItemCount(): Int {

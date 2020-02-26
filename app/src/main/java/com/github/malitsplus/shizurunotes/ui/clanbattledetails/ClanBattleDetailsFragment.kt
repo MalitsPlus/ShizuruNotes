@@ -27,8 +27,9 @@ class ClanBattleDetailsFragment(
             inflater, R.layout.fragment_clan_battle_details, container, false
         ).apply {
             lifecycleOwner = viewLifecycleOwner
+
             clanBattleBossRecycler.layoutManager = LinearLayoutManager(context)
-            clanBattleBossRecycler.adapter = ClanBattleDetailsBossAdapter(context!!, phase.bossList).apply {
+            clanBattleBossRecycler.adapter = ClanBattleDetailsBossAdapter(phase.bossList).apply {
                 setSharedClanBattleVM(sharedClanBattleVM)
             }
         }

@@ -35,7 +35,6 @@ class AttackPatternAdapter :
         position: Int
     ) {
         holder.binding.patternItem = itemList[position]
-        holder.binding.executePendingBindings()
     }
 
     override fun getItemCount(): Int {

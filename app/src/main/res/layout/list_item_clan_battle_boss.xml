@@ -44,8 +44,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    bind:imageUrl="@{boss.iconUrl}"
                     bind:errorHolder="@{R.drawable.mic_chara_icon_error}"
+                    bind:imageUrl="@{boss.iconUrl}"
                     bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
 
                 <TextView
@@ -79,62 +79,15 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/boss_attack_pattern_container"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/boss_attack_pattern_recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
+                android:nestedScrollingEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/boss_title_constraint">
-
-                <TextView
-                    android:id="@+id/boss_attack_pattern"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:text=""
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
-
-                <TextView
-                    android:id="@+id/boss_attack_pattern2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:text=""
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/boss_attack_pattern"
-                    app:layout_constraintVertical_bias="0.0" />
-
-                <TextView
-                    android:id="@+id/boss_attack_pattern3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:text=""
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/boss_attack_pattern2"
-                    app:layout_constraintVertical_bias="0.0" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
@@ -145,7 +98,7 @@
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/boss_attack_pattern_container">
+                app:layout_constraintTop_toBottomOf="@+id/boss_title_constraint">
 
                 <LinearLayout
                     android:id="@+id/linearLayout"
@@ -159,8 +112,8 @@
                     <com.allen.library.SuperTextView
                         android:id="@+id/txt_hp"
                         style="@style/StatusSuperTextView"
-                        android:layout_weight="1"
                         android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
                         app:sLeftTextString="@string/text_hp"
                         bind:sRightText="@{String.valueOf(boss.property.hp)}" />
 
@@ -239,7 +192,7 @@
                 android:nestedScrollingEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/boss_attack_pattern_recyclerView" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/boss_skill_recycler"
