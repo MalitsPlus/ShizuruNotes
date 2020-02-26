@@ -30,7 +30,6 @@ class ClanBattleBossChildAdapter (
         position: Int
     ) {
         holder.binding.bossChild = bossChildList[position]
-        holder.binding.executePendingBindings()
     }
 
     override fun getItemCount(): Int {

@@ -717,6 +717,9 @@ class DBHelper : SQLiteOpenHelper {
                     ,c.child_enemy_parameter_4 
                     ,c.child_enemy_parameter_5 
                     ,u.prefab_id 
+                    ,u.atk_type 
+                    ,u.normal_atk_cast_time
+					,u.search_area_width
                     FROM 
                     unit_skill_data b 
                     ,enemy_parameter a 
@@ -757,6 +760,9 @@ class DBHelper : SQLiteOpenHelper {
         )
     }
 
+    /***
+     * 获取友方召唤物
+     */
     fun getUnitMinion(minionId: Int): RawUnitMinion? {
         return getBeanByRaw<RawUnitMinion>(
             """
@@ -799,6 +805,37 @@ class DBHelper : SQLiteOpenHelper {
                 AND a.unit_id = $minionId
                 """,
             RawUnitMinion::class.java
+        )
+    }
+
+    /***
+     * 获取敌方召唤物
+     */
+    fun getEnemyMinion(enemyId: Int): RawClanBattleBoss? {
+        return getBeanByRaw<RawClanBattleBoss>(
+            """
+                SELECT
+                d.unit_name,
+                d.prefab_id,
+                d.search_area_width,
+                d.atk_type,
+                d.move_speed,
+                a.*,
+                b.*,
+                d.normal_atk_cast_time,
+                c.child_enemy_parameter_1,
+                c.child_enemy_parameter_2,
+                c.child_enemy_parameter_3,
+                c.child_enemy_parameter_4,
+                c.child_enemy_parameter_5
+                FROM
+                enemy_parameter a
+                JOIN unit_skill_data AS b ON a.unit_id = b.unit_id
+                JOIN unit_enemy_data AS d ON a.unit_id = d.unit_id
+                LEFT JOIN enemy_m_parts c ON a.enemy_id = c.enemy_id
+                WHERE a.enemy_id = $enemyId
+                """,
+            RawClanBattleBoss::class.java
         )
     }
 

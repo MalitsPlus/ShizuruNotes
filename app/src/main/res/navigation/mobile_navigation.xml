@@ -67,15 +67,18 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="minionType"
+                app:argType="integer"
+                android:defaultValue="1" />
+        </action>
     </fragment>
 
     <fragment
         android:id="@+id/nav_chara_profile"
         android:name="com.github.malitsplus.shizurunotes.ui.charaprofile.CharaProfileFragment"
         tools:layout="@layout/fragment_chara_profile" />
-
-
 
     <fragment
         android:id="@+id/nav_clan_battle"
@@ -95,6 +98,18 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_nav_clan_battle_view_pager_to_nav_minion"
+            app:destination="@id/nav_minion"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="minionType"
+                app:argType="integer"
+                android:defaultValue="2" />
+        </action>
     </fragment>
 
     <fragment
@@ -122,7 +137,12 @@
         android:id="@+id/nav_minion"
         android:name="com.github.malitsplus.shizurunotes.ui.minion.MinionFragment"
         android:label="fragment_minion"
-        tools:layout="@layout/fragment_minion" />
+        tools:layout="@layout/fragment_minion">
+        <argument
+            android:name="minionType"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 
 
 </navigation>

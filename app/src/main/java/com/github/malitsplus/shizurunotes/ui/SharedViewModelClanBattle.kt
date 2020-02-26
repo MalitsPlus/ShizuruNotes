@@ -13,6 +13,7 @@ class SharedViewModelClanBattle : ViewModel() {
     val loadingFlag = MutableLiveData<Boolean>(false)
     var selectedPeriod: ClanBattlePeriod? = null
     var selectedBoss: ClanBattleBoss? = null
+    var selectedMinion: MutableList<ClanBattleBoss>? = null
 
     /***
      * 从数据库读取所有会战数据。
@@ -27,27 +28,10 @@ class SharedViewModelClanBattle : ViewModel() {
                 innerPeriodList.add(it.transToClanBattlePeriod())
             }
 //            innerPeriodList.forEach { period ->
-//                period.phaseList.forEach { p ->
-//                    p.bossList.forEach { b ->
-//                        b.skills.forEach { s ->
-//                            DBHelper.get().getSkillData(s.skillId)?.setSkillData(s)
-//                            //向actionList中填入其他具体值
-//                            s.actions.forEach {
-//                                DBHelper.get().getSkillAction(it.actionId)?.setActionData(it)
-//                            }
-//                            s.actions.forEach {
-//                                if (it.dependActionId != 0) {
-//                                    for (searched in s.actions) {
-//                                        if (searched.actionId == it.dependActionId) {
-//                                            searched.buildParameter()
-//                                            it.dependAction = searched
-//                                            break
-//                                        }
-//                                    }
-//                                }
-//                                it.buildParameter()
-//                            }
-//                            s.setActionDescriptions(s.enemySkillLevel, b.property)
+//                period.phaseList.forEach { phase ->
+//                    phase.bossList.forEach { boss ->
+//                        boss.skills.forEach {
+//                            it.setActionDescriptions(it.enemySkillLevel, boss.property)
 //                        }
 //                    }
 //                }

@@ -172,7 +172,7 @@ class Skill(
             }
             action.buildParameter()
 
-            //如果有召唤物还需要再读库
+            //如果是召唤技能还需要再读库
             if (action.parameter is SummonAction){
                 //我方召唤物
                 if (enemySkillLevel == 0) {
@@ -194,10 +194,19 @@ class Skill(
                 }
                 //敌方召唤物
                 else {
-                    //TODO()
+                    action.parameter.actionDetail2.let { enemyId ->
+                        val enemyMinion = DBHelper.get().getEnemyMinion(enemyId)?.clanBattleBoss?.let { minion ->
+                            DBHelper.get().getUnitAttackPattern(minion.unitId)?.forEach {
+                                minion.attackPatternList.add(it.attackPattern)
+                            }
+                            minion
+                        }
+                        if (enemyMinion != null)
+                            enemyMinionList.add(enemyMinion)
+                        enemyId
+                    }
                 }
             }
-
         }
     }
 

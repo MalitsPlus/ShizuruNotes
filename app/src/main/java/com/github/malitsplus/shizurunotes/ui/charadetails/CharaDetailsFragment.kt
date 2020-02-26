@@ -77,44 +77,10 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
             it.clickListener = this
         }
 
-
-
-
-
+        //攻击顺序
         binding.attackPatternRecycler.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = AttackPatternContainerAdapter().apply { itemList = detailsViewModel.getChara()!!.attackPatternList }
-        }
-
-
-
-
-
-        //角色技能顺序 Recycler
-        val attackPatternLayoutManager = GridLayoutManager(context, 6)
-        val attackPatternAdapter = AttackPatternAdapter()
-        binding.attackPatternRecycler.apply {
-            layoutManager = attackPatternLayoutManager
-            adapter = attackPatternAdapter.apply {
-                update(detailsViewModel.getChara()!!.attackPatternList[0].items)
-            }
-            isNestedScrollingEnabled = false
-        }
-
-        //2套攻击顺序 Recycler
-        if (detailsViewModel.getChara()!!.attackPatternList.size == 1){
-            binding.textAnotherMode.visibility = View.GONE
-            binding.attackPatternRecycler2.visibility = View.GONE
-        } else {
-            val layoutManager2 = GridLayoutManager(context, 6)
-            val adapter2 = AttackPatternAdapter()
-            binding.attackPatternRecycler2.apply {
-                layoutManager = layoutManager2
-                isNestedScrollingEnabled = false
-                adapter = adapter2.apply {
-                    update(detailsViewModel.getChara()!!.attackPatternList[1].items)
-                }
-            }
         }
 
         //技能 Recycler
@@ -123,7 +89,6 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
         binding.skillRecycler.apply {
             layoutManager = layoutManagerSkill
             adapter = adapterSkill
-            isNestedScrollingEnabled = false
         }
 
         //观察chara变化

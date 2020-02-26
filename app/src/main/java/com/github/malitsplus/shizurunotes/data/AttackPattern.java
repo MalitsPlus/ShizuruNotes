@@ -27,18 +27,24 @@ public class AttackPattern {
         this.rawAttackPatterns = rawAttackPatterns;
     }
 
-    public AttackPattern setItems(){
-        items.clear();
-        for(int i = 0; i < rawAttackPatterns.size(); i++){
-            int raw = rawAttackPatterns.get(i);
-            items.add(new AttackPatternItem(raw, getLoopText(i), ""));
-        }
-        return this;
-    }
+//    public AttackPattern setItems(){
+//        items.clear();
+//        for(int i = 0; i < rawAttackPatterns.size(); i++){
+//            if (i >= loopEnd)
+//                break;
+//
+//            int raw = rawAttackPatterns.get(i);
+//            items.add(new AttackPatternItem(raw, getLoopText(i), ""));
+//        }
+//        return this;
+//    }
 
     public AttackPattern setItems(List<Skill> skills, int atkType){
         items.clear();
         for(int i = 0; i < rawAttackPatterns.size(); i++){
+            if (i >= loopEnd)
+                break;
+
             int raw = rawAttackPatterns.get(i);
 
             String iconUrl;
