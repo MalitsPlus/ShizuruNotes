@@ -31,7 +31,7 @@ class ViewPagerFragment : Fragment() {
         return when (position) {
             CHARA_INDEX -> R.drawable.mic_queen
             CLAN_BATTLE_INDEX -> R.drawable.mic_defend
-            SETTING_INDEX -> R.drawable.mic_setting
+            MENU_INDEX -> R.drawable.mic_menu
             else -> throw IndexOutOfBoundsException()
         }
     }
@@ -40,7 +40,7 @@ class ViewPagerFragment : Fragment() {
         return when (position) {
             CHARA_INDEX -> getString(R.string.title_chara_list)
             CLAN_BATTLE_INDEX -> getString(R.string.title_clan_battle)
-            SETTING_INDEX -> getString(R.string.title_setting)
+            MENU_INDEX -> getString(R.string.title_menu)
             else -> null
         }
     }

@@ -840,6 +840,28 @@ class DBHelper : SQLiteOpenHelper {
     }
 
     /***
+     * 获取会战bossList
+     * @param
+     * @return
+     */
+    fun getDungeons(): List<RawDungeon>? {
+        return getBeanListByRaw(
+            """
+                SELECT
+                a.dungeon_area_id,
+                a.dungeon_name,
+                a.description,
+                b.*
+                FROM
+                dungeon_area_data AS a 
+                JOIN wave_group_data AS b ON a.wave_group_id=b.wave_group_id 
+                ORDER BY a.dungeon_area_id DESC 
+                """,
+            RawDungeon::class.java
+        )
+    }
+
+    /***
      * 获取异常状态map
      * @param
      * @return

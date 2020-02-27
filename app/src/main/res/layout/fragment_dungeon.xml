@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
 
     <LinearLayout
-        android:layout_height="match_parent"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:orientation="vertical">
-
+        android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
@@ -17,20 +18,18 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbarSettingFragment"
+                android:id="@+id/toolbarDungeonFragment"
                 android:layout_width="match_parent"
                 app:navigationIcon="@drawable/ic_detail_back"
-                app:title="@string/title_setting"
+                app:title="@string/title_dungeon"
                 android:layout_height="?attr/actionBarSize" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <FrameLayout
-            android:id="@+id/settingFragmentContainer"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_dungeon"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ui.setting.SettingContainerFragment">
+            android:layout_height="match_parent" />
 
-        </FrameLayout>
     </LinearLayout>
 </layout>

@@ -37,10 +37,11 @@ class ClanBattlePhaseAdapter (
         position: Int
     ) {
         holder.binding.apply {
-            boss = bossList[position]
+            val thisBoss = bossList[position]
+            boss = thisBoss
             clickListener = View.OnClickListener {
                 if (it?.id == R.id.clan_battle_phase_boss){
-                    sharedClanBattleVM.selectedBoss = boss
+                    sharedClanBattleVM.mSetSelectedBoss(thisBoss)
                     val action =
                         ClanBattleViewPagerFragmentDirections.actionNavClanBattleViewPagerToNavClanBattleBossDetails()
                     it.findNavController().navigate(action)

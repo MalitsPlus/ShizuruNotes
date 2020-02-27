@@ -22,14 +22,6 @@ class MinionAdapter(
             //初始化属性，技能
             item.initialMinion(sharedChara.maxCharaLevel, sharedChara.maxCharaRank, sharedChara.selectedChara?.rarity ?: 5)
 
-            //获取icon，虽然多半没有
-//            Glide.with(minionIcon.context)
-//                .load(item.iconUrl)
-//                .placeholder(R.drawable.mic_chara_icon_place_holder)
-//                .error(R.drawable.mic_chara_icon_error)
-//                .transition(DrawableTransitionOptions.withCrossFade())
-//                .into(minionIcon)
-
             //设置控件文本
             textCastTime.text = I18N.getString(R.string.text_normal_attack_cast_time).format(item.normalAttackCastTime)
             minionName.text = item.unitName

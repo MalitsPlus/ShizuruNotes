@@ -76,7 +76,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         //关于
         findPreference<Preference>("about")?.apply {
             onPreferenceClickListener = Preference.OnPreferenceClickListener {
-                val action = ViewPagerFragmentDirections.actionNavViewPagerToNavSettingAbout()
+                val action = SettingContainerFragmentDirections.actionNavSettingContainerToNavSettingAbout()
                 findNavController().navigate(action)
                 true
             }
@@ -97,7 +97,6 @@ class SettingFragment : PreferenceFragmentCompat() {
                 }
         }
 
-        //手动点击更新数据库
 
     }
 }
