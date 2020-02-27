@@ -1,8 +1,9 @@
-package com.github.malitsplus.shizurunotes.ui.clanbattledetails
+package com.github.malitsplus.shizurunotes.ui.clanbattledetails.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.github.malitsplus.shizurunotes.data.ClanBattlePhase
+import com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleDetailsFragment
 
 class ClanBattleViewPagerAdapter(
     fragment: Fragment,
@@ -13,7 +14,11 @@ class ClanBattleViewPagerAdapter(
 
     init {
         phaseList.forEach {
-            tabFragmentCreator[it.phase - 1] = { ClanBattleDetailsFragment(it) }
+            tabFragmentCreator[it.phase - 1] = {
+                ClanBattleDetailsFragment(
+                    it
+                )
+            }
         }
     }
 

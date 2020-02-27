@@ -92,24 +92,12 @@
         android:label="fragment_clan_battle_view_pager"
         tools:layout="@layout/fragment_clan_battle_view_pager" >
         <action
-            android:id="@+id/action_nav_clan_battle_view_pager_to_nav_clan_battle_resist"
-            app:destination="@id/nav_clan_battle_resist"
+            android:id="@+id/action_nav_clan_battle_view_pager_to_nav_clan_battle_boss_details"
+            app:destination="@+id/nav_clan_battle_boss_details"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
-        <action
-            android:id="@+id/action_nav_clan_battle_view_pager_to_nav_minion"
-            app:destination="@id/nav_minion"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right">
-            <argument
-                android:name="minionType"
-                app:argType="integer"
-                android:defaultValue="2" />
-        </action>
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -129,10 +117,23 @@
         android:label="fragment_clan_battle_details"
         tools:layout="@layout/fragment_clan_battle_details" />
     <fragment
-        android:id="@+id/nav_clan_battle_resist"
-        android:name="com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleBossResistFragment"
+        android:id="@+id/nav_clan_battle_boss_details"
+        android:name="com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleBossDetailsFragment"
         android:label="fragment_clan_battle_boss_resist"
-        tools:layout="@layout/fragment_clan_battle_boss_resist" />
+        tools:layout="@layout/fragment_clan_battle_boss_details" >
+        <action
+            android:id="@+id/action_nav_clan_battle_boss_details_to_nav_minion"
+            app:destination="@id/nav_minion"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="minionType"
+                app:argType="integer"
+                android:defaultValue="2" />
+        </action>
+    </fragment>
     <fragment
         android:id="@+id/nav_minion"
         android:name="com.github.malitsplus.shizurunotes.ui.minion.MinionFragment"

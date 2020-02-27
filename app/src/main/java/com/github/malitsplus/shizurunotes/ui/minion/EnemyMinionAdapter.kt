@@ -1,8 +1,6 @@
 package com.github.malitsplus.shizurunotes.ui.minion
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.ClanBattleBoss
@@ -10,7 +8,7 @@ import com.github.malitsplus.shizurunotes.databinding.ListItemMinionBinding
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattle
 import com.github.malitsplus.shizurunotes.ui.basic.AttackPatternContainerAdapter
 import com.github.malitsplus.shizurunotes.ui.basic.BasicRecyclerAdapter
-import com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleBossSkillAdapter
+import com.github.malitsplus.shizurunotes.ui.clanbattledetails.adapters.ClanBattleBossSkillAdapter
 
 class EnemyMinionAdapter(
     layout: Int,
@@ -62,7 +60,11 @@ class EnemyMinionAdapter(
             //技能部分
             minionSkillRecycler.apply {
                 layoutManager = LinearLayoutManager(minionSkillRecycler.context)
-                adapter = ClanBattleBossSkillAdapter(item.skills, null)
+                adapter =
+                    ClanBattleBossSkillAdapter(
+                        item.skills,
+                        null
+                    )
             }
 
             executePendingBindings()

@@ -1,6 +1,5 @@
-package com.github.malitsplus.shizurunotes.ui.clanbattledetails
+package com.github.malitsplus.shizurunotes.ui.clanbattledetails.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -21,7 +20,9 @@ class ClanBattleBossChildAdapter (
             LayoutInflater.from(parent.context),
             R.layout.list_item_clan_battle_boss_child, parent, false
         )
-        return ClanBattleBossChildHolder(binding)
+        return ClanBattleBossChildHolder(
+            binding
+        )
     }
 
 

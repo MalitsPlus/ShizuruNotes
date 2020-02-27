@@ -195,14 +195,24 @@ class Skill(
                 //敌方召唤物
                 else {
                     action.parameter.actionDetail2.let { enemyId ->
-                        val enemyMinion = DBHelper.get().getEnemyMinion(enemyId)?.clanBattleBoss?.let { minion ->
-                            DBHelper.get().getUnitAttackPattern(minion.unitId)?.forEach {
-                                minion.attackPatternList.add(it.attackPattern)
+                        var isDuplicate = false
+                        for (it in enemyMinionList){
+                            if (it.enemyId == enemyId){
+                                isDuplicate = true
+                                break
                             }
-                            minion
                         }
-                        if (enemyMinion != null)
-                            enemyMinionList.add(enemyMinion)
+                        if (!isDuplicate) {
+                            val enemyMinion = DBHelper.get().getEnemyMinion(enemyId)
+                                ?.clanBattleBoss?.let { minion ->
+                                DBHelper.get().getUnitAttackPattern(minion.unitId)?.forEach {
+                                    minion.attackPatternList.add(it.attackPattern)
+                                }
+                                minion
+                            }
+                            if (enemyMinion != null)
+                                enemyMinionList.add(enemyMinion)
+                        }
                         enemyId
                     }
                 }

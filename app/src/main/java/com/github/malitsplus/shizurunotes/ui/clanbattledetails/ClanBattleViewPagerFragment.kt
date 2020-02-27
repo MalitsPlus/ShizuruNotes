@@ -12,8 +12,7 @@ import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.ClanBattlePeriod
 import com.github.malitsplus.shizurunotes.databinding.FragmentClanBattleViewPagerBinding
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattle
-import com.github.malitsplus.shizurunotes.ui.ViewPagerAdapter
-import com.github.malitsplus.shizurunotes.ui.clanbattle.ClanBattleViewModel
+import com.github.malitsplus.shizurunotes.ui.clanbattledetails.adapters.ClanBattleViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
 class ClanBattleViewPagerFragment : Fragment() {
@@ -32,7 +31,11 @@ class ClanBattleViewPagerFragment : Fragment() {
 
         val tabLayout = binding.clanBattleViewPagerTab
         val viewPager = binding.clanBattleViewPager2
-        viewPager.adapter = ClanBattleViewPagerAdapter(this, period.phaseList)
+        viewPager.adapter =
+            ClanBattleViewPagerAdapter(
+                this,
+                period.phaseList
+            )
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = getTabTitle(position)
         }.attach()
