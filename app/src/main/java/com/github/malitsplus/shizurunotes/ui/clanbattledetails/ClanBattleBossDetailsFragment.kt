@@ -56,6 +56,8 @@ class ClanBattleBossDetailsFragment : Fragment() {
                     setHasFixedSize(true)
                 }
 
+                clanBattleBossDetailsToolbar.title = it.name
+
 //                resistRecycler.apply {
 //                    layoutManager = GridLayoutManager(context, 2)
 //                    adapter = ClanBattleBossResistAdapter(

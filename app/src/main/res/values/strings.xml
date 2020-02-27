@@ -6,8 +6,11 @@
     <string name="app_bar_filter">Filter</string>
     <string name="title_chara_list">キャラ</string>
     <string name="title_clan_battle">クラバト</string>
+    <string name="title_menu">メニュー</string>
     <string name="title_setting">設定</string>
     <string name="title_minion">召喚物</string>
+    <string name="title_dungeon">ダンジョン</string>
+    <string name="title_enemy">モンスター</string>
 
     <string name="setting_language" translatable="false">Language</string>
     <string name="setting_language_dialog_title">Language</string>

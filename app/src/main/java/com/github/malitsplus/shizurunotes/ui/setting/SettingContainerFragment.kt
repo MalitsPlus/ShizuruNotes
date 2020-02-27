@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.findNavController
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.databinding.FragmentSettingContainerBinding
@@ -23,7 +24,11 @@ class SettingContainerFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentSettingContainerBinding>(
             inflater, R.layout.fragment_setting_container, container, false
-        )
+        ).apply {
+            toolbarSettingFragment.setNavigationOnClickListener { view ->
+                view.findNavController().navigateUp()
+            }
+        }
 
         childFragmentManager.beginTransaction()
             .replace(R.id.settingFragmentContainer, SettingFragment())

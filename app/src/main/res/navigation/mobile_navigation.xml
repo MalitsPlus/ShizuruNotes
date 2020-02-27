@@ -31,8 +31,15 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
         <action
-            android:id="@+id/action_nav_view_pager_to_nav_setting_about"
-            app:destination="@id/nav_setting_about"
+            android:id="@+id/action_nav_view_pager_to_nav_setting_container"
+            app:destination="@id/nav_setting_container"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_nav_view_pager_to_nav_dungeon"
+            app:destination="@id/nav_dungeon"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -104,7 +111,15 @@
         android:id="@+id/nav_setting_container"
         android:name="com.github.malitsplus.shizurunotes.ui.setting.SettingContainerFragment"
         android:label="fragment_setting_container"
-        tools:layout="@layout/fragment_setting_container" />
+        tools:layout="@layout/fragment_setting_container" >
+        <action
+            android:id="@+id/action_nav_setting_container_to_nav_setting_about"
+            app:destination="@id/nav_setting_about"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
     <fragment
         android:id="@+id/nav_setting_about"
         android:name="com.github.malitsplus.shizurunotes.ui.setting.AboutFragment"
@@ -143,6 +158,24 @@
             android:name="minionType"
             app:argType="integer"
             android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_menu"
+        android:name="com.github.malitsplus.shizurunotes.ui.menu.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" />
+    <fragment
+        android:id="@+id/nav_dungeon"
+        android:name="com.github.malitsplus.shizurunotes.ui.dungeon.DungeonFragment"
+        android:label="fragment_dungeon"
+        tools:layout="@layout/fragment_dungeon" >
+        <action
+            android:id="@+id/action_nav_dungeon_to_nav_clan_battle_boss_details"
+            app:destination="@id/nav_clan_battle_boss_details"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
 
