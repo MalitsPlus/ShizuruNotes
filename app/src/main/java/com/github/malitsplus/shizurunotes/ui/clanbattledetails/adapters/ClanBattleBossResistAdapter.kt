@@ -1,4 +1,4 @@
-package com.github.malitsplus.shizurunotes.ui.clanbattledetails
+package com.github.malitsplus.shizurunotes.ui.clanbattledetails.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -21,9 +21,10 @@ class ClanBattleBossResistAdapter (
             LayoutInflater.from(parent.context),
             R.layout.list_item_clan_battle_boss_resist, parent, false
         )
-        return ClanBattleBossResistHolder(binding)
+        return ClanBattleBossResistHolder(
+            binding
+        )
     }
-
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(
@@ -34,7 +35,6 @@ class ClanBattleBossResistAdapter (
             leftTextView.text = " ${resistName[position]} "
             rightTextView.text = "${resistRate[position]}%"
         }
-        holder.binding.executePendingBindings()
     }
 
     override fun getItemCount(): Int {
