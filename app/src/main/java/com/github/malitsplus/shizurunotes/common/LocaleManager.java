@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.LocaleList;
-import android.preference.PreferenceManager;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -20,6 +19,7 @@ import static android.os.Build.VERSION_CODES.N;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
 import static com.github.malitsplus.shizurunotes.ui.setting.SettingFragment.LANGUAGE_KEY;
 
+@SuppressWarnings("deprecation")
 public class LocaleManager {
 
     private static List<String> SUPPORTED_LANGUAGE = new ArrayList<>();
@@ -31,7 +31,7 @@ public class LocaleManager {
     private final SharedPreferences prefs;
 
     public LocaleManager(Context context) {
-        prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        prefs = android.preference.PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     public Context setLocale(Context context) {
@@ -103,6 +103,7 @@ public class LocaleManager {
         Locale[] locales = set.toArray(new Locale[0]);
         config.setLocales(new LocaleList(locales));
     }
+
 
     public static Locale getLocale(Resources res) {
         Configuration config = res.getConfiguration();

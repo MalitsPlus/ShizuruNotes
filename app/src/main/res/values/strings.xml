@@ -189,7 +189,7 @@
 
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>
-    <string name="both_sides">敵と味方両側</string>
+    <string name="both_sides">敵と味方</string>
     <string name="first">1番目</string>
     <string name="second">2番目</string>
     <string name="third">3番目</string>
@@ -492,15 +492,13 @@
     <string name="debuffs">デバフ</string>
     <string name="Raise_s1_s2">%2$sを[%1$s]アップさせる。</string>
     <string name="When_s1_HP_reaches_0_restore_s2_HP_once_in_next_s3_sec">%1$sに「HPが0になる直前、HPを[%2$s]回復し、このバフを解除する」の効果を付与する、効果時間[%3$s]秒。</string>
+    <string name="Cast_a_barrier_on_s1_to_reduce_damage_over_s2_with_coefficient_s3_the_greater_the_less_reduced_amount_for_s4_s">%1$sにバリアを展開する、一回の行動で受けたダメージが[%2$s]を超えた場合、ダメージが減衰される、減衰係数[%3$s]（この値が小さいほど減衰しやすい）、効果時間[%4$s]秒。</string>
 
     <!--**************** 拼接字符串领域结束 *****************-->
 
 
     <string name="permission_request_explanation_title">ストレージ権限</string>
     <string name="permission_request_explanation_text">本アプリはストレージを使ってキャラクターデータベースの保存とアプリのアップデートを行います、許可しないと正常に動作しない恐れがあります。</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

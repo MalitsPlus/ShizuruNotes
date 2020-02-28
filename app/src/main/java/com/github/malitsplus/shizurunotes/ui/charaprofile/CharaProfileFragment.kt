@@ -27,13 +27,8 @@ class CharaProfileFragment : Fragment() {
                 false
             )
         val sharedViewModel = ViewModelProvider(activity!!).get(SharedViewModelChara::class.java)
-        val profileViewModel = ViewModelProvider(this,
-            SharedViewModelCharaFactory(
-                sharedViewModel
-            )
-        ).get(
-            CharaProfileViewModel::class.java
-        )
+
+        sharedViewModel.backFlag = false
 
         binding.toolbarCharaProfile.setNavigationOnClickListener { view ->
             view.findNavController().navigateUp()
