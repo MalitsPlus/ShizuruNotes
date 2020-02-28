@@ -16,18 +16,22 @@ Gradle building configuration could be found in `./app/build.gradle` and it migh
 	* Attack pattern
 	* Image view
 	* Profile
+	* Minion
 
 * Clan Battle Boss
 	* status
 	* Skill details
 	* Attack pattern
 	* Ailment resistant data
+	* Minion
+
+* Dungeon Boss
 
 And more functions has been planned. 
 
 ## Localization 
 Japanese fully supported, Chinese partially supported at present (would be fully supported in the near future).  
-If you would like to translate this application to other languages, you can edit `values/strings.xml` and contact me. 
+If you would like to translate this application to other languages, please edit `values/strings.xml` and contact me. 
 
 ## References 
 * [PrincessGuide](https://github.com/superk589/PrincessGuide) 
