@@ -55,6 +55,7 @@ class DBHelper : SQLiteOpenHelper {
         onCreate(db)
     }
 
+    @Suppress("UNCHECKED_CAST")
     private fun <T> cursor2List(
         cursor: Cursor,
         theClass: Class<*>

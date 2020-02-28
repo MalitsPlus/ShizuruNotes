@@ -18,9 +18,9 @@ class SharedViewModelChara : ViewModel() {
     var maxCharaRank: Int = 0
     var maxUniqueEquipmentLevel: Int = 0
 
-
     var selectedChara: Chara? = null
     var selectedMinion: MutableList<Minion>? = null
+    var backFlag = false
 
 
     /***

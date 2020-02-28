@@ -1,8 +1,10 @@
 package com.github.malitsplus.shizurunotes.db;
 
+import com.github.malitsplus.shizurunotes.common.Statics;
 import com.github.malitsplus.shizurunotes.data.Chara;
 import com.github.malitsplus.shizurunotes.data.Property;
 import java.security.PublicKey;
+import java.util.Locale;
 
 public class RawUnitRarity {
     public int unit_id;
@@ -84,6 +86,10 @@ public class RawUnitRarity {
         );
 
         chara.setRarity(rarity);
+        if (rarity == 6){
+            chara.iconUrl = String.format(Locale.US, Statics.ICON_URL, chara.getPrefabId() + 60);
+            chara.imageUrl = String.format(Locale.US, Statics.IMAGE_URL, chara.getPrefabId() + 60);
+        }
         chara.rarityProperty = rarityProperty;
         chara.rarityPropertyGrowth = rarityPropertyGrowth;
     }

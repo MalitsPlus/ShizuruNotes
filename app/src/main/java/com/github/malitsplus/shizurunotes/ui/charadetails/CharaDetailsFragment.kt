@@ -73,6 +73,11 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
                     detailsViewModel.changeRank(parent.getItemAtPosition(position).toString())
                 }
             }
+
+            if (sharedViewModel.backFlag)
+                appbar.setExpanded(false, false)
+
+
         }.also {
             it.clickListener = this
         }

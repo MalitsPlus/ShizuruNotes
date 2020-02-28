@@ -143,6 +143,8 @@ public class ActionParameter {
                 return new ToadAction();
             case 71:
                 return new KnightGuardAction();
+            case 73:
+                return new LogBarrierAction();
             case 90:
                 return new PassiveAction();
             case 91:

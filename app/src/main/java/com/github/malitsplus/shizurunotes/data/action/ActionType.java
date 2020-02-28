@@ -66,6 +66,7 @@ public enum ActionType {
     loop(63),
     toad(69),
     knightGuard(71),
+    logBarrier(73),
     ex(90),
     exPlus(91);
 
