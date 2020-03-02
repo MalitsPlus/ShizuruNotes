@@ -15,7 +15,8 @@ public class NoDamageAction extends ActionParameter {
         dodgePhysics(2),
         dodgeAll(3),
         abnormal(4),
-        debuff(5);
+        debuff(5),
+        Break(6);
 
         private int value;
         NoDamageType(int value){
@@ -47,10 +48,16 @@ public class NoDamageAction extends ActionParameter {
         switch (noDamageType){
             case noDamage:
                 return I18N.getString(R.string.Make_s1_to_be_invulnerable_for_s2_sec,
-                        targetParameter.buildTargetClause(), buildExpression(level, RoundingMode.UNNECESSARY, property));
+                        targetParameter.buildTargetClause(),
+                        buildExpression(level, RoundingMode.UNNECESSARY, property));
             case dodgePhysics:
                 return I18N.getString(R.string.Make_s1_to_be_invulnerable_to_physical_damage_for_s2_sec,
-                        targetParameter.buildTargetClause(), buildExpression(level, RoundingMode.UNNECESSARY, property));
+                        targetParameter.buildTargetClause(),
+                        buildExpression(level, RoundingMode.UNNECESSARY, property));
+            case Break:
+                return I18N.getString(R.string.Make_s1_to_be_invulnerable_to_break_for_s2_sec,
+                        targetParameter.buildTargetClause(),
+                        buildExpression(level, RoundingMode.UNNECESSARY, property));
             default:
                 return super.localizedDetail(level, property);
         }

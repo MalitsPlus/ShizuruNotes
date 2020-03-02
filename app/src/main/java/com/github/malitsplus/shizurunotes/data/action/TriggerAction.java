@@ -2,6 +2,7 @@ package com.github.malitsplus.shizurunotes.data.action;
 
 import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.I18N;
+import com.github.malitsplus.shizurunotes.common.Utils;
 import com.github.malitsplus.shizurunotes.data.Property;
 
 public class TriggerAction extends ActionParameter {
@@ -17,7 +18,8 @@ public class TriggerAction extends ActionParameter {
         limitTime(7),
         stealthFree(8),
         Break(9),
-        dot(10);
+        dot(10),
+        allBreak(11);
 
         private int value;
         TriggerType(int value){
@@ -62,6 +64,9 @@ public class TriggerAction extends ActionParameter {
                 return I18N.getString(R.string.Trigger_d1_on_break_and_last_for_s2_sec, Math.round(actionValue1), actionValue3);
             case dot:
                 return I18N.getString(R.string.Trigger_d_on_dot_damaged, Math.round(actionValue1));
+            case allBreak:
+                return I18N.getString(R.string.Trigger_d_on_all_targets_break,
+                        Math.round(actionValue1));
             default:
                 return super.localizedDetail(level, property);
         }
