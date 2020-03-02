@@ -71,4 +71,5 @@ dependencies {
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation 'com.github.arcadefire:nice-spinner:1.4.4'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    implementation 'com.jakewharton:process-phoenix:2.0.0'
 }

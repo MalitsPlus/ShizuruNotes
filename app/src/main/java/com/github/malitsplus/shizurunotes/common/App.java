@@ -16,9 +16,9 @@ public class App extends Application {
         super.attachBaseContext(localeManager.setLocale(base));
     }
 
-    @Override
-    public void onConfigurationChanged(@NonNull Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        localeManager.setLocale(this);
-    }
+//    @Override
+//    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+//        super.onConfigurationChanged(newConfig);
+//        localeManager.setLocale(this);
+//    }
 }

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">静流笔记</string>
     <string name="app_full_name">静流笔记</string>
@@ -17,13 +18,6 @@
     <string name="setting_db_version">数据库版本</string>
     <string name="setting_app_version">应用版本</string>
     <string name="setting_about">关于静流笔记</string>
-    <string name="about_version" translatable="false">Version: %s</string>
-    <string name="about_disclaimer" translatable="false">This is an unofficial fan-made application, copyright of all resources associate with the game \"Princess Connect Re:Dive\" are belong to Cygames, Inc. </string>
-    <string name="about_hp" translatable="false">Open source home page: \nhttps://github.com/MalitsPlus/ShizuruNotes</string>
-    <string name="about_developer" translatable="false">Developer: Vibbit&lt;a href=\"https://twitter.com/L8102259\">@L8102259&lt;/a></string>
-    <string name="about_api" translatable="false">API by: https://redive.estertion.win</string>
-    <string name="about_license" translatable="false">This application is licensed under the &lt;a href=\"http://www.apache.org/licenses/LICENSE-2.0.txt\">Apache License 2.0&lt;/a></string>
-    <string name="text_ok" translatable="false">OK</string>
     <string name="db_update_dialog_title">数据库更新</string>
     <string name="db_update_dialog_text">检测到数据库有新版本，需要现在更新吗？</string>
     <string name="db_update_dialog_confirm">更新</string>
@@ -163,7 +157,6 @@
     <string name="ex_skill_3_evo">&#160;EX 3+&#160;</string>
     <string name="ex_skill_4_evo">&#160;EX 4+&#160;</string>
     <string name="ex_skill_5_evo">&#160;EX 5+&#160;</string>
-	
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敌方</string>
     <string name="friendly">我方</string>
@@ -236,29 +229,29 @@
     <string name="the_s_lowest_ATK">物理攻击力%s最低的</string>
     <string name="the_s_highest_Magic_STR">魔法攻击力%s最高的</string>
     <string name="the_s_lowest_Magic_STR">魔法攻击力%s最低的</string>
-    <string name="targets_those_damaged_by_effect_d">受到[动作%d]伤害的</string>
+    <string name="targets_those_damaged_by_effect_d">受到[动作%d]伤害的目标</string>
     <string name="targets_of_effect_d">[动作%d]的目标</string>
     <string name="targets_of_last_effect">上一个动作的目标</string>
-    <string name="all_s_targets">%s全体</string>    <!--all [enemy] targets-->
-    <string name="all_s_s_targets">%2$s%1$s全体</string>    <!--all1 [enemy] 2[physics] targets-->
-    <string name="s_s_target">%1$s%2$s</string>    <!--[the nearest] [enemy] -->
-    <string name="s_s_s">%1$s%2$s%3$s</string>    <!--[the farthest two] [enemy] [targets]-->
+    <string name="all_s_targets">%s全体</string>
+    <string name="all_s_s_targets">%2$s%1$s全体</string>
+    <string name="s_s_target">%1$s%2$s</string>
+    <string name="s_s_s">%1$s%2$s%3$s</string>
     <string name="all_front_enemy_targets">前方所有的敌方</string>
     <string name="all_front_including_self_friendly_targets">前方所有的友方（包括自身）</string>
     <string name="all_front_targets">前方所有的目标</string>
     <string name="all_front_s_enemy_targets">前方%s所有的敌方</string>
     <string name="all_front_including_self_s_friendly_targets">前方%s所有的友方（包括自身）</string>
     <string name="all_front_s_targets">前方%s所有的目标</string>
-    <string name="s1_targets_in_range_d2">范围[%2$d]内的%1$s</string>    <!--1[enemy] target s in range 2[500]-->
-    <string name="front_s1_targets_in_range_d2">前方范围[%2$d]内的%1$s</string>    <!--front 1[enemy] target s in range 2[500]-->
-    <string name="s1_s2_targets_in_range_d3">范围[%3$d]内的%2$s%1$s</string>    <!--1[friendly] 2[physics] target s in range 3[500]-->
-    <string name="s1_s2_target_in_range_d3">范围[%3$d]内的%1$s%2$s</string>    <!--1[the nearest] 2[enemy] target in range 3[500]-->
-    <string name="s1_s2_s3_in_range_d4">范围[%4$d]内的%1$s%2$s%3$s</string>    <!--1[the second to fourth farthest] 2[enemy] 3[targets] in range 4[500]-->
-    <string name="front_s1_s2_targets_in_range_d3">前方范围[%3$d]内的%2$s%1$s</string>    <!--front 1[friendly] 2[physics] target s in range 3[500]-->
-    <string name="s1_front_s2_target_in_range_d3">前方范围[%3$d]内的%1$s%2$s</string>    <!--1[the nearest] front 2[enemy] target in range 3[500]-->
-    <string name="s1_front_s2_s3_in_range_d4">前方范围[%4$d]内的%1$s%2$s%3$s</string>    <!--1[the second to fourth farthest] front 2[enemy] 3[targets] in range 4[500]-->
+    <string name="s1_targets_in_range_d2">范围[%2$d]内的%1$s</string>
+    <string name="front_s1_targets_in_range_d2">前方范围[%2$d]内的%1$s</string>
+    <string name="s1_s2_targets_in_range_d3">范围[%3$d]内的%2$s%1$s</string>
+    <string name="s1_s2_target_in_range_d3">范围[%3$d]内的%1$s%2$s</string>
+    <string name="s1_s2_s3_in_range_d4">范围[%4$d]内的%1$s%2$s%3$s</string>
+    <string name="front_s1_s2_targets_in_range_d3">前方范围[%3$d]内的%2$s%1$s</string>
+    <string name="s1_front_s2_target_in_range_d3">前方范围[%3$d]内的%1$s%2$s</string>
+    <string name="s1_front_s2_s3_in_range_d4">前方范围[%4$d]内的%1$s%2$s%3$s</string>
     <string name="s1_to_s2">从%1$s至%2$s</string>
-    <string name="s1_front_s2_s3">前方%1$s%2$s%3$s</string>    <!--1[the second to fourth farthest] front 2[enemy] 3[targets]-->
+    <string name="s1_front_s2_s3">前方%1$s%2$s%3$s</string>
     <string name="any_of_s">（仅对符合条件的目标使用）%s中任意的目标</string>
     <string name="Unknown_effect_d1_to_s2_with_details_s3_values_s4">对%2$s使用不明的效果[%1$d]，内容%3$s，系数%4$s。</string>
     <string name="magical">魔法</string>
@@ -280,7 +273,7 @@
     <string name="Knock_s1_up_d2">击飞%1$s，高度[%2$d]。</string>
     <string name="Knock_s1_away_d2">击退%1$s，距离[%2$d]。</string>
     <string name="Draw_s1_toward_self_d2">吸引%1$s，距离[%2$d]。</string>
-    <string name="Restore_s1_s2_s3_HP">回复%1$s的HP[%2$s%3$s]。</string>   <!--恢复%1s [%2s]%3s HP。-->
+    <string name="Restore_s1_s2_s3_HP">回复%1$s的HP[%2$s%3$s]。</string>
     <string name="Cast_an_unknown_barrier_d1_on_s2_for_s3_sec">对%2$s展开类型[%1$d]的护盾，持续时间[%3$s]秒。</string>
     <string name="Cast_a_barrier_on_s1_to_nullify_s2_physical_damage_for_s3_sec">对%1$s展开可承受[%2$s]物理伤害的护盾，持续时间[%3$s]秒。</string>
     <string name="Cast_a_barrier_on_s1_to_nullify_s2_magical_damage_for_s3_sec">对%1$s展开可承受[%2$s]魔法伤害的护盾，持续时间[%3$s]秒。</string>
@@ -339,7 +332,7 @@
     <string name="Raise">提高</string>
     <string name="Reduce">降低</string>
     <string name="s1_s2_s3_s4_s5_during_break">Break期间中，%1$s%2$s[%3$s%4$s]的%5$s。</string>
-    <string name="s1_s2_s3_s4_s5_for_s6_sec">%1$s%2$s[%3$s%4$s]的%5$s，持续时间[%6$s]秒。</string> <!--2[自分]の5[物理攻撃]を[10[%]]アップ-->
+    <string name="s1_s2_s3_s4_s5_for_s6_sec">%1$s%2$s[%3$s%4$s]的%5$s，持续时间[%6$s]秒。</string>
     <string name="Charm_s1_with_s2_chance_for_s3_sec">以[%2$s%%]的概率使%1$s进入魅惑状态，持续时间[%3$s]秒。</string>
     <string name="Confuse_s1_with_s2_chance_for_s3_sec">以[%2$s%%]的概率使%1$s进入混乱状态，持续时间[%3$s]秒。</string>
     <string name="Change_attack_pattern_to_d1_for_s2_sec">切换至技能循环%1$d，持续时间[%2$s]秒。</string>
@@ -408,14 +401,14 @@
     <string name="use_d1_if_s2_is_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4">%2$s的标记[ID：%3$d]层数在%4$d以上的场合，使用[动作%1$d]。</string>
     <string name="use_d1_if_s2_is_alone">%2$s是单独的场合，使用[动作%1$d]。</string>
     <string name="use_d1_if_the_count_of_s2_except_stealth_units_is_d3">排除潜伏状态的单位，%2$s的数量是%3$d的场合，使用[动作%1$d]。</string>
-    <string name="use_d1_if_among_s2_exists_unit_ID_d3">排除潜伏状态的单位、%2$s中存在单位（ID：%3$d）的场合，使用[动作%1$d]。</string>
+    <string name="use_d1_if_among_s2_exists_unit_ID_d3">排除潜伏状态的单位，%2$s中存在ID为%3$d的单位的场合，使用[动作%1$d]。</string>
     <string name="if_target_is_defeated_by_the_last_effect_then_use_d">上一个动作击杀了单位的场合，使用[动作%d]。</string>
     <string name="counter_is_greater_than_or_equal_to_d1_then_use_d2">计数器在%1$d以上的场合，使用[动作%2$d]。</string>
     <string name="use_d1_if_s2_has_no_dot_debuff">%2$s身上没有dot的场合，使用[动作%1$d]。</string>
     <string name="use_d1_if_s2_is_not_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4">%2$s的标记[ID：%3$d]层数不足%4$d的场合，使用[动作%1$d]。</string>
     <string name="use_d1_if_s2_is_not_alone">%2$s不是单独的场合，使用[动作%1$d]。</string>
     <string name="use_d1_if_the_count_of_s2_except_stealth_units_is_not_d3">排除潜伏状态的单位，%2$s的数量不是%3$d的场合，使用[动作%1$d]。</string>
-    <string name="use_d1_if_among_s2_does_not_exists_unit_ID_d3">排除潜伏状态的单位、%2$s中不存在单位（ID：%3$d）的场合，使用[动作%1$d]。</string>
+    <string name="use_d1_if_among_s2_does_not_exists_unit_ID_d3">排除潜伏状态的单位，%2$s中不存在ID为%3$d的单位的场合，使用[动作%1$d]。</string>
     <string name="if_target_is_not_defeated_by_the_last_effect_then_use_d">上一个动作没有击杀单位的场合，使用[动作%d]。</string>
     <string name="counter_is_less_than_d1_then_use_d2">计数器的数量不足%1$d的场合，使用[动作%2$d]。</string>
     <string name="Exclusive_condition_s">全体条件分歧：%s</string>

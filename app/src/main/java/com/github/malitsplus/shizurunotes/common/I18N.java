@@ -1,5 +1,6 @@
 package com.github.malitsplus.shizurunotes.common;
 
+import android.app.Activity;
 import android.app.Application;
 
 import androidx.annotation.StringRes;

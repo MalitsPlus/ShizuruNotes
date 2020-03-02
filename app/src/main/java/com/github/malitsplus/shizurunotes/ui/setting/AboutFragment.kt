@@ -31,6 +31,10 @@ class AboutFragment: Fragment() {
                 text = aboutViewModel.developer
                 movementMethod = LinkMovementMethod.getInstance()
             }
+            textTranslator.apply {
+                text = aboutViewModel.translator
+                movementMethod = LinkMovementMethod.getInstance()
+            }
             textLicense.apply {
                 text = aboutViewModel.license
                 movementMethod = LinkMovementMethod.getInstance()
