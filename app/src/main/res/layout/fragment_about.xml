@@ -35,7 +35,7 @@
             android:id="@+id/imageView6"
             android:layout_width="432px"
             android:layout_height="432px"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/about_appbar"
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="16dp"
             android:text="@string/about_disclaimer"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -68,10 +68,10 @@
             android:id="@+id/text_home_page"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:autoLink="web"
-            android:textAlignment="center"
             android:text="@string/about_hp"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_version" />
@@ -80,8 +80,9 @@
             android:id="@+id/text_developer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="developer"
+            android:layout_marginTop="24dp"
+            android:text="Developer"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_home_page" />
@@ -90,12 +91,12 @@
             android:id="@+id/text_api"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/about_api"
+            android:layout_marginTop="24dp"
             android:autoLink="web"
+            android:text="@string/about_api"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_developer" />
+            app:layout_constraintTop_toBottomOf="@+id/text_translator" />
 
         <TextView
             android:id="@+id/text_license"
@@ -108,6 +109,17 @@
             app:layout_constraintBottom_toTopOf="@+id/text_disclaimer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/text_translator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Translator"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_developer" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

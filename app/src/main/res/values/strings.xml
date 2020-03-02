@@ -13,10 +13,12 @@
     <string-array name="setting_language_options">
         <item>日本語</item>
         <item>简体中文</item>
+        <item>한국어</item>
     </string-array>
     <string-array name="setting_language_values">
         <item>ja</item>
         <item>zh</item>
+        <item>ko</item>
     </string-array>
     <string name="setting_kill_expression_title">スキル計算式</string>
     <string name="setting_kill_expression_summary">スキルアクションの計算式を表示</string>
@@ -27,8 +29,9 @@
     <string name="setting_about">シズルノーツについて</string>
     <string name="about_version" translatable="false">Version: %s</string>
     <string name="about_disclaimer" translatable="false">This is an unofficial fan-made application, copyright of all resources associate with the game \"Princess Connect Re:Dive\" are belong to Cygames, Inc. </string>
-    <string name="about_hp" translatable="false">Open source home page: \nhttps://github.com/MalitsPlus/ShizuruNotes</string>
-    <string name="about_developer" translatable="false">Developer: Vibbit&lt;a href=\"https://twitter.com/L8102259\">@L8102259&lt;/a></string>
+    <string name="about_hp" translatable="false">Open source home page \nhttps://github.com/MalitsPlus/ShizuruNotes</string>
+    <string name="about_developer" translatable="false">Developer &lt;br/>Vibbit&lt;a href=\"https://twitter.com/L8102259\">@L8102259&lt;/a></string>
+    <string name="about_translator" translatable="false">Translator &lt;br/>(Korean)applemintia&lt;a href=\"https://twitter.com/_applemintia\">@_applemintia&lt;/a></string>
     <string name="about_api" translatable="false">API by: https://redive.estertion.win</string>
     <string name="about_license" translatable="false">This application is licensed under the &lt;a href=\"http://www.apache.org/licenses/LICENSE-2.0.txt\">Apache License 2.0&lt;/a></string>
     <string name="text_ok" translatable="false">OK</string>
@@ -171,8 +174,7 @@
     <string name="ex_skill_3_evo">&#160;EX 3+&#160;</string>
     <string name="ex_skill_4_evo">&#160;EX 4+&#160;</string>
     <string name="ex_skill_5_evo">&#160;EX 5+&#160;</string>
-
-    <!--**************** 拼接字符串领域开始 *****************-->
+    <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>
     <string name="both_sides">敵と味方</string>

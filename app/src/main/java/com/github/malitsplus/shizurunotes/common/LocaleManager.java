@@ -26,11 +26,12 @@ public class LocaleManager {
     static {
         SUPPORTED_LANGUAGE.add(Locale.JAPANESE.getLanguage());
         SUPPORTED_LANGUAGE.add(Locale.CHINESE.getLanguage());
+        SUPPORTED_LANGUAGE.add(Locale.KOREAN.getLanguage());
     }
 
     private final SharedPreferences prefs;
 
-    public LocaleManager(Context context) {
+    LocaleManager(Context context) {
         prefs = android.preference.PreferenceManager.getDefaultSharedPreferences(context);
     }
 

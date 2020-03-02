@@ -17,10 +17,12 @@ import androidx.preference.PreferenceFragmentCompat
 import com.github.malitsplus.shizurunotes.BuildConfig
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.App
+import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.common.UpdateManager
 import com.github.malitsplus.shizurunotes.common.UserSettings
 import com.github.malitsplus.shizurunotes.ui.MainActivity
 import com.github.malitsplus.shizurunotes.ui.ViewPagerFragmentDirections
+import com.jakewharton.processphoenix.ProcessPhoenix
 import kotlin.concurrent.thread
 
 class SettingFragment : PreferenceFragmentCompat() {
@@ -91,8 +93,12 @@ class SettingFragment : PreferenceFragmentCompat() {
                         activity!!.application,
                         newValue as String?
                     )
-                    val i = Intent(activity, MainActivity::class.java)
-                    startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
+                    thread(start = true){
+                        Thread.sleep(100)
+                        ProcessPhoenix.triggerRebirth(activity)
+                    }
+//                    val i = Intent(activity, MainActivity::class.java)
+//                    startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
                     true
                 }
         }

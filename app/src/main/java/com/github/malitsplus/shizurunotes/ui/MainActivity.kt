@@ -40,6 +40,8 @@ class MainActivity : AppCompatActivity(),
 
         DBHelper.with(application)
         UserSettings.with(application)
+        //To be a good citizen, or prefer a simple solution despite the memory leak, shit.
+        //I18N.activity = this
         I18N.application = application
 
         UpdateManager.with(this).setIActivityCallBack(this)
