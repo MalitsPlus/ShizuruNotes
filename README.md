@@ -30,7 +30,8 @@ Gradle building configuration could be found in `./app/build.gradle` and it migh
 And more functions has been planned. 
 
 ## Localization 
-Japanese fully supported, Chinese partially supported at present (would be fully supported in the near future).  
+Japanese, Chinese, Korean supported.  
+Korean strings provided by [@applemintia](https://twitter.com/_applemintia)  
 If you would like to translate this application to other languages, please edit `values/strings.xml` and contact me. 
 
 ## References 
