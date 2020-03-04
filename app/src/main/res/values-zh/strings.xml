@@ -273,7 +273,7 @@
     <string name="Knock_s1_up_d2">击飞%1$s，高度[%2$d]。</string>
     <string name="Knock_s1_away_d2">击退%1$s，距离[%2$d]。</string>
     <string name="Draw_s1_toward_self_d2">吸引%1$s，距离[%2$d]。</string>
-    <string name="Restore_s1_s2_s3_HP">回复%1$s的HP[%2$s%3$s]。</string>
+    <string name="Restore_s1_s2_s3_HP">恢复%1$s的HP[%2$s%3$s]（未计算回复量上升产生的影响）。</string>
     <string name="Cast_an_unknown_barrier_d1_on_s2_for_s3_sec">对%2$s展开类型[%1$d]的护盾，持续时间[%3$s]秒。</string>
     <string name="Cast_a_barrier_on_s1_to_nullify_s2_physical_damage_for_s3_sec">对%1$s展开可承受[%2$s]物理伤害的护盾，持续时间[%3$s]秒。</string>
     <string name="Cast_a_barrier_on_s1_to_nullify_s2_magical_damage_for_s3_sec">对%1$s展开可承受[%2$s]魔法伤害的护盾，持续时间[%3$s]秒。</string>
@@ -345,7 +345,7 @@
     <string name="At_d1_in_front_of_s2_summon_a_minion_id_d3">在%2$s的前方%1$d的位置，召唤ID为%3$d的召唤物。</string>
     <string name="At_d1_behind_of_s2_summon_a_minion_id_d3">在%2$s的后方%1$d的位置，召唤ID为%3$d的召唤物。</string>
     <string name="At_the_position_of_s1_summon_a_minion_id_d2">在%1$s的位置，召唤ID为%2$d的召唤物。</string>
-    <string name="Restore_s1_s2_TP">恢复%1$s[%2$s]TP。</string>
+    <string name="Restore_s1_s2_TP">恢复%1$s[%2$s]TP（此值会受到被恢复角色的TP上升值影响）。</string>
     <string name="Make_s1_lose_s2_TP">使%1$s失去[%2$s]TP。</string>
     <string name="Trigger_HP_is_below_d">触发条件：HP为[%d%%]以下时触发。</string>
     <string name="Trigger_Left_time_is_below_s_sec">触发条件：战斗剩余时间为%s秒以下时触发。</string>
@@ -382,7 +382,7 @@
     <string name="breaking">Break状态中</string>
     <string name="Condition_s">条件分歧：%s</string>
     <string name="separator">，</string>
-    <string name="Revive_s1_with_d2_HP">使%1$s复活，并恢复其[%2$d%%]HP。</string>
+    <string name="Revive_s1_with_d2_HP">使%1$s复活，并恢复其[%2$d%%]HP（未计算回复量上升产生的影响）。</string>
     <string name="Modifier_add_s1_HP_to_value_d2_of_effect_d3">使[动作%3$d]的系数%2$d提高[%1$s * HP]。</string>
     <string name="Modifier_add_s1_lost_HP_to_value_d2_of_effect_d3">使[动作%3$d]的系数%2$d提高[%1$s * 损失的HP]。</string>
     <string name="Modifier_add_s1_count_of_defeated_enemies_to_value_d2_of_effect_d3">使[动作%3$d]的系数%2$d提高[%1$s * 击杀的敌方数量]。</string>
@@ -403,7 +403,7 @@
     <string name="use_d1_if_the_count_of_s2_except_stealth_units_is_d3">排除潜伏状态的单位，%2$s的数量是%3$d的场合，使用[动作%1$d]。</string>
     <string name="use_d1_if_among_s2_exists_unit_ID_d3">排除潜伏状态的单位，%2$s中存在ID为%3$d的单位的场合，使用[动作%1$d]。</string>
     <string name="if_target_is_defeated_by_the_last_effect_then_use_d">上一个动作击杀了单位的场合，使用[动作%d]。</string>
-    <string name="counter_is_greater_than_or_equal_to_d1_then_use_d2">计数器在%1$d以上的场合，使用[动作%2$d]。</string>
+    <string name="counter_is_greater_than_or_equal_to_d1_then_use_d2">计数器的数量在%1$d以上的场合，使用[动作%2$d]。</string>
     <string name="use_d1_if_s2_has_no_dot_debuff">%2$s身上没有dot的场合，使用[动作%1$d]。</string>
     <string name="use_d1_if_s2_is_not_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4">%2$s的标记[ID：%3$d]层数不足%4$d的场合，使用[动作%1$d]。</string>
     <string name="use_d1_if_s2_is_not_alone">%2$s不是单独的场合，使用[动作%1$d]。</string>

@@ -5,14 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.adapters.AdapterViewBindingAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.TransitionInflater
 import com.github.malitsplus.shizurunotes.R
@@ -20,8 +18,7 @@ import com.github.malitsplus.shizurunotes.data.Chara
 import com.github.malitsplus.shizurunotes.databinding.FragmentCharaDetailsBinding
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelCharaFactory
-import com.github.malitsplus.shizurunotes.ui.basic.AttackPatternContainerAdapter
-import kotlinx.android.synthetic.main.fragment_chara_details.view.*
+import com.github.malitsplus.shizurunotes.ui.base.AttackPatternContainerAdapter
 import org.angmarch.views.OnSpinnerItemSelectedListener
 
 class CharaDetailsFragment : Fragment(), View.OnClickListener {

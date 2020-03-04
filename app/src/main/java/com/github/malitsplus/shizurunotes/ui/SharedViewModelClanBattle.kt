@@ -47,22 +47,17 @@ class SharedViewModelClanBattle : ViewModel() {
         }
     }
 
-//    fun mSetSelectedPeriod(period: ClanBattlePeriod?){
-//        period?.phaseList?.forEach { p ->
-//            p.bossList.forEach { b ->
-//                b.skills.forEach { s ->
-//                    s.setActionDescriptions(s.enemySkillLevel, b.property)
-//                }
-//            }
-//        }
-//        this.selectedPeriod = period
-//    }
-
     fun mSetSelectedBoss(clanBattleBoss: ClanBattleBoss){
-        clanBattleBoss.skills.forEach {
-            it.setActionDescriptions(it.enemySkillLevel, clanBattleBoss.property)
+        if (clanBattleBoss.isMultiTarget) {
+            clanBattleBoss.skills.forEach {
+                //多目标Boss技能值暂时仅供参考，非准确值
+                it.setActionDescriptions(it.enemySkillLevel, clanBattleBoss.children[0].property)
+            }
+        } else {
+            clanBattleBoss.skills.forEach {
+                it.setActionDescriptions(it.enemySkillLevel, clanBattleBoss.property)
+            }
         }
         this.selectedBoss = clanBattleBoss
     }
-
 }

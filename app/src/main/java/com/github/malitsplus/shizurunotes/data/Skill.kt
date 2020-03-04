@@ -129,7 +129,6 @@ class Skill(
                 return UNKNOWN
             }
         }
-
     }
 
     val actions: List<Action> = mutableListOf()
@@ -220,7 +219,6 @@ class Skill(
         }
     }
 
-
     fun setSkillData(
         skillName: String,
         skillType: Int,
@@ -260,10 +258,6 @@ class Skill(
             builder.delete(builder.length - 1, builder.length)
         actionDescriptions = builder
     }
-
-
-
-
 
     inner class Action(
         val actionId: Int,

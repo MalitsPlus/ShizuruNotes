@@ -108,6 +108,7 @@ public class RawClanBattleBoss {
             if (childId != 0){
                 ClanBattleBoss child = DBHelper.get().getClanBattleBoss(childId).getClanBattleBoss();
                 boss.getChildren().add(child);
+                boss.setMultiTarget(true);
             }
         }
 

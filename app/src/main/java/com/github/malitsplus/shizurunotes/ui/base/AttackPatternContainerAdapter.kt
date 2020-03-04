@@ -1,4 +1,4 @@
-package com.github.malitsplus.shizurunotes.ui.basic
+package com.github.malitsplus.shizurunotes.ui.base
 
 import androidx.recyclerview.widget.GridLayoutManager
 import com.github.malitsplus.shizurunotes.R
@@ -7,7 +7,7 @@ import com.github.malitsplus.shizurunotes.data.AttackPattern
 import com.github.malitsplus.shizurunotes.databinding.ListItemAttackPatternContainerBinding
 import com.github.malitsplus.shizurunotes.ui.charadetails.AttackPatternAdapter
 
-class AttackPatternContainerAdapter : BasicRecyclerAdapter<AttackPattern, ListItemAttackPatternContainerBinding>(
+class AttackPatternContainerAdapter : BaseRecyclerAdapter<AttackPattern, ListItemAttackPatternContainerBinding>(
     R.layout.list_item_attack_pattern_container) {
 
     override fun onBindViewHolder(holder: VH<ListItemAttackPatternContainerBinding>, position: Int) {

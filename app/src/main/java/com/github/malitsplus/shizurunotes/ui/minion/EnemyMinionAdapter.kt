@@ -6,14 +6,14 @@ import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.ClanBattleBoss
 import com.github.malitsplus.shizurunotes.databinding.ListItemMinionBinding
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattle
-import com.github.malitsplus.shizurunotes.ui.basic.AttackPatternContainerAdapter
-import com.github.malitsplus.shizurunotes.ui.basic.BasicRecyclerAdapter
+import com.github.malitsplus.shizurunotes.ui.base.AttackPatternContainerAdapter
+import com.github.malitsplus.shizurunotes.ui.base.BaseRecyclerAdapter
 import com.github.malitsplus.shizurunotes.ui.clanbattledetails.adapters.ClanBattleBossSkillAdapter
 
 class EnemyMinionAdapter(
     layout: Int,
     private val sharedClanBattle: SharedViewModelClanBattle
-) : BasicRecyclerAdapter<ClanBattleBoss, ListItemMinionBinding>(layout)
+) : BaseRecyclerAdapter<ClanBattleBoss, ListItemMinionBinding>(layout)
 {
     override fun onBindViewHolder(holder: VH<ListItemMinionBinding>, position: Int) {
         holder.binding.apply {
@@ -23,14 +23,6 @@ class EnemyMinionAdapter(
             item.skills.forEach {
                 it.setActionDescriptions(it.enemySkillLevel, item.property)
             }
-
-            //获取icon，虽然多半没有
-//            Glide.with(minionIcon.context)
-//                .load(item.iconUrl)
-//                .placeholder(R.drawable.mic_chara_icon_place_holder)
-//                .error(R.drawable.mic_chara_icon_error)
-//                .transition(DrawableTransitionOptions.withCrossFade())
-//                .into(minionIcon)
 
             //设置控件文本
             textCastTime.text = I18N.getString(R.string.text_normal_attack_cast_time).format(item.normalAtkCastTime)

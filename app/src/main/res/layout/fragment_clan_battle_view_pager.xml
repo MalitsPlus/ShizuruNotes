@@ -11,53 +11,52 @@
         <import type="com.github.malitsplus.shizurunotes.R" />
     </data>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/clan_battle_view_pager_coordinator">
+        android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/clan_battle_view_pager_appbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/clan_battle_view_pager_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:title="@string/title_clan_battle"
                 app:navigationIcon="@drawable/ic_detail_back"
-                app:layout_scrollFlags="scroll|enterAlways" />
+                app:title="@string/title_clan_battle" />
 
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/clan_battle_view_pager_tab"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:tabIndicatorHeight="1dp"
                 android:translationZ="5dp"
-                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:tabIndicatorHeight="1dp"
+                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget">
 
             </com.google.android.material.tabs.TabLayout>
 
         </com.google.android.material.appbar.AppBarLayout>
 
-
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/clan_battle_view_pager2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:layout_constraintBottom_toTopOf="@+id/tabLayout"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/clan_battle_view_pager_appbar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
