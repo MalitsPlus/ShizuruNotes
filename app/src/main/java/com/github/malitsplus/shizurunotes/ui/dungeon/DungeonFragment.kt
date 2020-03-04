@@ -47,6 +47,16 @@ class DungeonFragment : Fragment() {
             }
         })
 
+        sharedClanBattle.loadingFlag.observe(viewLifecycleOwner,
+            Observer {
+                if (it) {
+                    binding.dungeonListProgressBar.visibility = View.VISIBLE
+                } else {
+                    binding.dungeonListProgressBar.visibility = View.GONE
+                }
+            }
+        )
+
         return binding.root
     }
 

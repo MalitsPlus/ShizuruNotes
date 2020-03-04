@@ -230,7 +230,6 @@ public class Ailment {
         }
     }
 
-
     public AilmentType ailmentType;
     public AilmentDetail ailmentDetail;
 

@@ -35,39 +35,41 @@ class MainActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        DBHelper.with(application)
-        UserSettings.with(application)
-        //To be a good citizen, or prefer a simple solution despite the memory leak, shit.
-        //I18N.activity = this
-        I18N.application = application
-
-        UpdateManager.with(this).setIActivityCallBack(this)
-
-
-        sharedViewModelChara = ViewModelProvider(this)
-            .get(SharedViewModelChara::class.java).also {
-                it.loadingFlag.observe(this, Observer {
-                    synchronized(isDatabaseBusy) {
-                        isDatabaseBusy = it || sharedViewModelClanBattle.loadingFlag.value?: false
-                    }
-                })
-            }
-
-        sharedViewModelClanBattle = ViewModelProvider(this)
-            .get(SharedViewModelClanBattle::class.java).also {
-                it.loadingFlag.observe(this, Observer {
-                    synchronized(isDatabaseBusy) {
-                        isDatabaseBusy = sharedViewModelChara.loadingFlag.value?: false || it
-                    }
-                })
-            }
+        initSingletonClass()
+        setObserve()
 
         sharedViewModelChara.loadData()
         sharedViewModelClanBattle.loadData()
         UpdateManager.get().checkAppVersion(true)
+    }
+
+    private fun initSingletonClass() {
+        DBHelper.with(application)
+        UserSettings.with(application)
+        UpdateManager.with(this).setIActivityCallBack(this)
+        //To be a good citizen, or prefer a simple solution despite the memory leak
+        //I18N.activity = this
+        I18N.application = application
+    }
+
+    private fun setObserve() {
+        sharedViewModelChara = ViewModelProvider(this)[SharedViewModelChara::class.java].apply {
+            loadingFlag.observe(this@MainActivity, Observer {
+                synchronized(isDatabaseBusy) {
+                    isDatabaseBusy = it || sharedViewModelClanBattle.loadingFlag.value ?: false
+                }
+            })
+        }
+
+        sharedViewModelClanBattle = ViewModelProvider(this)[SharedViewModelClanBattle::class.java].apply {
+            loadingFlag.observe(this@MainActivity, Observer {
+                synchronized(isDatabaseBusy) {
+                    isDatabaseBusy = sharedViewModelChara.loadingFlag.value ?: false || it
+                }
+            })
+        }
     }
 
     override fun dbDownloadFinished() {
@@ -94,60 +96,60 @@ class MainActivity : AppCompatActivity(),
         Snackbar.make(binding.activityFrame, messageRes, Snackbar.LENGTH_LONG).show()
     }
 
-    /*
-    companion object{
-        const val REQUEST_EXTERNAL_STORAGE = 1
-        val STORAGE_PERMISSION = arrayOf(
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-        )
-    }
 
-    private fun checkStoragePermission(): Boolean {
-        return if (
-            ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-            != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this,
-                STORAGE_PERMISSION,
-                REQUEST_EXTERNAL_STORAGE
-            )
-            false
-        } else {
-            true
-        }
-    }
+//    companion object{
+//        const val REQUEST_EXTERNAL_STORAGE = 1
+//        val STORAGE_PERMISSION = arrayOf(
+//            Manifest.permission.READ_EXTERNAL_STORAGE,
+//            Manifest.permission.WRITE_EXTERNAL_STORAGE
+//        )
+//    }
+//
+//    private fun checkStoragePermission(): Boolean {
+//        return if (
+//            ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//            != PackageManager.PERMISSION_GRANTED
+//        ) {
+//            ActivityCompat.requestPermissions(
+//                this,
+//                STORAGE_PERMISSION,
+//                REQUEST_EXTERNAL_STORAGE
+//            )
+//            false
+//        } else {
+//            true
+//        }
+//    }
+//
+//    override fun onRequestPermissionsResult(
+//        requestCode: Int,
+//        permissions: Array<String>,
+//        grantResults: IntArray
+//    ) {
+//        when (requestCode) {
+//            REQUEST_EXTERNAL_STORAGE -> {
+//                // If request is cancelled, the result arrays are empty.
+//                if (grantResults.isNotEmpty()
+//                    && grantResults[0] == PackageManager.PERMISSION_GRANTED
+//                ) {
+//                    updateManager.checkDatabaseVersion()
+//                } else {
+//                    MaterialDialog(this, MaterialDialog.DEFAULT_BEHAVIOR)
+//                        .title(R.string.permission_request_explanation_title, null)
+//                        .message(R.string.permission_request_explanation_text, null, null)
+//                        .cancelOnTouchOutside(false)
+//                        .positiveButton(R.string.text_ok, null) {
+//                            ActivityCompat.requestPermissions(
+//                                this,
+//                                STORAGE_PERMISSION,
+//                                REQUEST_EXTERNAL_STORAGE
+//                            )
+//                        }
+//                        .show()
+//                }
+//                return
+//            }
+//        }
+//    }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
-    ) {
-        when (requestCode) {
-            REQUEST_EXTERNAL_STORAGE -> {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.isNotEmpty()
-                    && grantResults[0] == PackageManager.PERMISSION_GRANTED
-                ) {
-                    updateManager.checkDatabaseVersion()
-                } else {
-                    MaterialDialog(this, MaterialDialog.DEFAULT_BEHAVIOR)
-                        .title(R.string.permission_request_explanation_title, null)
-                        .message(R.string.permission_request_explanation_text, null, null)
-                        .cancelOnTouchOutside(false)
-                        .positiveButton(R.string.text_ok, null) {
-                            ActivityCompat.requestPermissions(
-                                this,
-                                STORAGE_PERMISSION,
-                                REQUEST_EXTERNAL_STORAGE
-                            )
-                        }
-                        .show()
-                }
-                return
-            }
-        }
-    }
-    */
 }

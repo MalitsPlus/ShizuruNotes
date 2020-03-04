@@ -122,7 +122,7 @@ class UpdateManager private constructor(
             }
 
             /***
-             * 取消数据库更新（备用）
+             * 取消数据库更新
              */
             override fun dbDownloadCanceled() {}
 
@@ -169,7 +169,7 @@ class UpdateManager private constructor(
         val call = client.newCall(request)
         call.enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                iActivityCallBack?.showSnackBar(R.string.app_update_check_failed)
+                //iActivityCallBack?.showSnackBar(R.string.app_update_check_failed)
                 if (checkDb) checkDatabaseVersion()
             }
 

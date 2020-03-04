@@ -20,7 +20,6 @@ import com.github.malitsplus.shizurunotes.ui.ViewPagerFragmentDirections
 import java.util.*
 
 class CharaListAdapter(
-    private val mContext: Context,
     private val sharedViewModelChara: SharedViewModelChara
 ) :
     RecyclerView.Adapter<CharaListAdapter.CharaListViewHolder>() {

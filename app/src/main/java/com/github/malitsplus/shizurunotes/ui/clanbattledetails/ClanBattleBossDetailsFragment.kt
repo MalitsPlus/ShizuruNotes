@@ -8,14 +8,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.databinding.FragmentClanBattleBossDetailsBinding
 import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattle
-import com.github.malitsplus.shizurunotes.ui.basic.AttackPatternContainerAdapter
+import com.github.malitsplus.shizurunotes.ui.base.AttackPatternContainerAdapter
 import com.github.malitsplus.shizurunotes.ui.clanbattledetails.adapters.ClanBattleBossChildAdapter
-import com.github.malitsplus.shizurunotes.ui.clanbattledetails.adapters.ClanBattleBossResistAdapter
 import com.github.malitsplus.shizurunotes.ui.clanbattledetails.adapters.ClanBattleBossSkillAdapter
 
 /**

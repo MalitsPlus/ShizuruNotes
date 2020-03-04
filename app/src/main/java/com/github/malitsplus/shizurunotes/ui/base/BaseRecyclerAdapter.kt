@@ -1,13 +1,12 @@
-package com.github.malitsplus.shizurunotes.ui.basic
+package com.github.malitsplus.shizurunotes.ui.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.IntegerRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class BasicRecyclerAdapter<T, V: ViewDataBinding>(private val itemLayout: Int) : RecyclerView.Adapter<BasicRecyclerAdapter.VH<V>>() {
+abstract class BaseRecyclerAdapter<T, V: ViewDataBinding>(private val itemLayout: Int) : RecyclerView.Adapter<BaseRecyclerAdapter.VH<V>>() {
 
     var itemList = mutableListOf<T>()
 

@@ -7,8 +7,8 @@ import com.github.malitsplus.shizurunotes.data.PropertyKey;
 
 public class DamageAction extends ActionParameter {
 
-    ClassModifier damageClass;
-    CriticalModifier criticalModifier;
+    protected ClassModifier damageClass;
+    protected CriticalModifier criticalModifier;
 
     @Override
     protected void childInit(){

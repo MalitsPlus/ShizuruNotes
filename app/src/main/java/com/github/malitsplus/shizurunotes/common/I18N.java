@@ -9,6 +9,9 @@ public class I18N {
 
     public static Application application;
 
+    private I18N(){
+    }
+
     public static String getString(@StringRes int resId){
         if(application != null)
             return application.getString(resId);

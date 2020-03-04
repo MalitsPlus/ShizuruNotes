@@ -290,7 +290,7 @@
     <string name="Knock_s1_up_d2">%1$sをノックアップする、高度[%2$d]。</string>
     <string name="Knock_s1_away_d2">%1$sをノックバックする、距離[%2$d]。</string>
     <string name="Draw_s1_toward_self_d2">%1$sを引き寄せる、距離[%2$d]。</string>
-    <string name="Restore_s1_s2_s3_HP">%1$sのHPを[%2$s%3$s]回復させる。</string>   <!--恢复%1s [%2s]%3s HP。-->
+    <string name="Restore_s1_s2_s3_HP">%1$sのHPを[%2$s%3$s]回復させる。</string>
     <string name="Cast_an_unknown_barrier_d1_on_s2_for_s3_sec">%2$sにタイプ[%1$d]のバリアを展開する、効果時間[%3$s]秒。</string>
     <string name="Cast_a_barrier_on_s1_to_nullify_s2_physical_damage_for_s3_sec">%1$sに[%2$s]ダメージ分の物理無効バリアを展開する、効果時間[%3$s]秒。</string>
     <string name="Cast_a_barrier_on_s1_to_nullify_s2_magical_damage_for_s3_sec">%1$sに[%2$s]ダメージ分の魔法無効バリアを展開する、効果時間[%3$s]秒。</string>
@@ -349,7 +349,7 @@
     <string name="Raise">アップ</string>
     <string name="Reduce">ダウン</string>
     <string name="s1_s2_s3_s4_s5_during_break">Break期間中、%2$sの%5$sを[%3$s%4$s]%1$s。</string>
-    <string name="s1_s2_s3_s4_s5_for_s6_sec">%2$sの%5$sを[%3$s%4$s]%1$s、効果時間[%6$s]秒。</string> <!--2[自分]の5[物理攻撃]を[10[%]]アップ-->
+    <string name="s1_s2_s3_s4_s5_for_s6_sec">%2$sの%5$sを[%3$s%4$s]%1$s、効果時間[%6$s]秒。</string>
     <string name="Charm_s1_with_s2_chance_for_s3_sec">[%2$s%%]の確率で%1$sを魅了状態にする、効果時間[%3$s]秒。</string>
     <string name="Confuse_s1_with_s2_chance_for_s3_sec">[%2$s%%]の確率で%1$sを混乱状態にする、効果時間[%3$s]秒。</string>
     <string name="Change_attack_pattern_to_d1_for_s2_sec">行動パターンを%1$dに変化する、効果時間[%2$s]秒。</string>
