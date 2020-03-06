@@ -73,7 +73,7 @@ class UpdateManager private constructor(
                         else -> appVersionJsonInstance?.messageJa
                     }
                     MaterialDialog(mContext, MaterialDialog.DEFAULT_BEHAVIOR)
-                        .title(text = I18N.getString(R.string.app_name) + "v" + appVersionJsonInstance?.versionName)
+                        .title(text = I18N.getString(R.string.app_full_name) + "v" + appVersionJsonInstance?.versionName)
                         .message(text = log)
                         .cancelOnTouchOutside(false)
                         .show {
