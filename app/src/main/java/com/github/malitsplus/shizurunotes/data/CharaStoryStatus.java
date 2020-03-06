@@ -53,9 +53,14 @@ public class CharaStoryStatus {
             case 11:
                 property.waveEnergyRecovery = statusRate;
                 break;
+            case 14:
+                property.energyRecoveryRate = statusRate;
+                break;
             case 15:
                 property.hpRecoveryRate = statusRate;
                 break;
+            case 17:
+                property.accuracy = statusRate;
             default:
                 break;
         }
