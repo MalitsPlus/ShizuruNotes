@@ -1,6 +1,5 @@
 package com.github.malitsplus.shizurunotes.ui.charadetails
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.Skill
 import com.github.malitsplus.shizurunotes.databinding.ListItemSkillBinding
-import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
+import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
 import java.util.*
 
 class SkillAdapter(

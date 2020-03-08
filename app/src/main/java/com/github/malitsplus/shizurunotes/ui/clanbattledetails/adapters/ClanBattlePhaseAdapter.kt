@@ -7,13 +7,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.github.malitsplus.shizurunotes.R
-import com.github.malitsplus.shizurunotes.data.ClanBattleBoss
+import com.github.malitsplus.shizurunotes.data.Enemy
 import com.github.malitsplus.shizurunotes.databinding.ListItemClanBattlePhaseBinding
-import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattle
+import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattle
 import com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleViewPagerFragmentDirections
 
 class ClanBattlePhaseAdapter (
-    private var bossList: List<ClanBattleBoss>
+    private var bossList: List<Enemy>
 ) : RecyclerView.Adapter<ClanBattlePhaseAdapter.ClanBattleDetailsBossHolder>() {
 
     private lateinit var sharedClanBattleVM: SharedViewModelClanBattle
@@ -54,7 +54,7 @@ class ClanBattlePhaseAdapter (
         return bossList.size
     }
 
-    fun update(periodList: List<ClanBattleBoss>) {
+    fun update(periodList: List<Enemy>) {
         this.bossList = periodList
         notifyDataSetChanged()
     }

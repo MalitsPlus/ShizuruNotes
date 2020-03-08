@@ -1,13 +1,9 @@
 package com.github.malitsplus.shizurunotes.ui.charalist
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.navigation.NavDirections
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
@@ -15,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.Chara
 import com.github.malitsplus.shizurunotes.databinding.ListItemCharaBinding
-import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
+import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
 import com.github.malitsplus.shizurunotes.ui.ViewPagerFragmentDirections
 import java.util.*
 

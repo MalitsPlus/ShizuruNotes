@@ -1,4 +1,4 @@
-package com.github.malitsplus.shizurunotes.ui
+package com.github.malitsplus.shizurunotes.ui.shared
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

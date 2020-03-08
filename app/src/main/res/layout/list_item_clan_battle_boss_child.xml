@@ -7,7 +7,7 @@
     <data>
         <variable
             name="bossChild"
-            type="com.github.malitsplus.shizurunotes.data.ClanBattleBoss" />
+            type="com.github.malitsplus.shizurunotes.data.Enemy" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -7,7 +7,7 @@
     <data>
         <variable
             name="boss"
-            type="com.github.malitsplus.shizurunotes.data.ClanBattleBoss" />
+            type="com.github.malitsplus.shizurunotes.data.Enemy" />
         <variable
             name="clickListener"
             type="android.view.View.OnClickListener" />

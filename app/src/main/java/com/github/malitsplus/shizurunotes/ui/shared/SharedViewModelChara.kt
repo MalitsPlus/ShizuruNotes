@@ -1,4 +1,4 @@
-package com.github.malitsplus.shizurunotes.ui
+package com.github.malitsplus.shizurunotes.ui.shared
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,9 +26,8 @@ class SharedViewModelChara : ViewModel() {
      * 从数据库读取所有角色数据。
      * 此方法应该且仅应该在程序初始化时或数据库更新完成后使用。
      */
-    fun loadData() {
+    fun loadData(equipmentMap: Map<Int, Equipment>) {
         thread(start = true){
-
             charaList.postValue(mutableListOf())
             loadingFlag.postValue(true)
             val innerCharaList = mutableListOf<Chara>()
@@ -38,7 +37,7 @@ class SharedViewModelChara : ViewModel() {
                 setCharaRarity(it)
                 setCharaStoryStatus(it)
                 setCharaPromotionStatus(it)
-                setCharaEquipments(it)
+                setCharaEquipments(it, equipmentMap)
                 setUniqueEquipment(it)
                 setUnitSkillData(it)
                 setUnitAttackPattern(it)
@@ -86,12 +85,18 @@ class SharedViewModelChara : ViewModel() {
         chara.promotionStatus = promotionStatus
     }
 
-    private fun setCharaEquipments(chara: Chara) {
-        val equipmentMap = mutableMapOf<Int, List<Equipment>>()
-        get().getCharaPromotion(chara.unitId)?.forEach {
-            equipmentMap[it.promotion_level] = it.charaEquipments
+    private fun setCharaEquipments(chara: Chara, equipmentMap: Map<Int, Equipment>) {
+        val rankEquipments = mutableMapOf<Int, List<Equipment>>()
+        get().getCharaPromotion(chara.unitId)?.forEach { slots ->
+            val equipmentList = mutableListOf<Equipment>()
+            slots.charaSlots.forEach { id ->
+                equipmentMap[id]?.let {
+                    equipmentList.add(it)
+                }
+            }
+            rankEquipments[slots.promotion_level] = equipmentList
         }
-        chara.rankEquipments = equipmentMap
+        chara.rankEquipments = rankEquipments
     }
 
     private fun setUniqueEquipment(chara: Chara) {

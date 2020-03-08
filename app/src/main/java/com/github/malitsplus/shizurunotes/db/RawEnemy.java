@@ -1,16 +1,11 @@
 package com.github.malitsplus.shizurunotes.db;
 
 import com.github.malitsplus.shizurunotes.common.Utils;
-import com.github.malitsplus.shizurunotes.data.ClanBattleBoss;
+import com.github.malitsplus.shizurunotes.data.Enemy;
 import com.github.malitsplus.shizurunotes.data.Property;
 import com.github.malitsplus.shizurunotes.data.Skill;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import okhttp3.internal.Util;
-
-public class RawClanBattleBoss {
+public class RawEnemy {
     public int enemy_id;
     public int unit_id;
     public String name;
@@ -90,8 +85,8 @@ public class RawClanBattleBoss {
     public int main_skill_evolution_1;
     public int main_skill_evolution_2;
 
-    public ClanBattleBoss getClanBattleBoss(){
-        ClanBattleBoss boss = new ClanBattleBoss(enemy_id);
+    public Enemy getEnemy(){
+        Enemy boss = new Enemy(enemy_id);
 
         Property property = new Property(
                 hp, atk, magic_str, def,
@@ -106,7 +101,7 @@ public class RawClanBattleBoss {
         for (int i = 1; i <= 5; i++){
             int childId = (int)Utils.getValueFromObject(this, "child_enemy_parameter_" + i);
             if (childId != 0){
-                ClanBattleBoss child = DBHelper.get().getClanBattleBoss(childId).getClanBattleBoss();
+                Enemy child = DBHelper.get().getEnemy(childId).getEnemy();
                 boss.getChildren().add(child);
                 boss.setMultiTarget(true);
             }
