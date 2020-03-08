@@ -5,7 +5,7 @@ import androidx.navigation.findNavController
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.Dungeon
 import com.github.malitsplus.shizurunotes.databinding.ListItemDungeonBinding
-import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattle
+import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattle
 import com.github.malitsplus.shizurunotes.ui.base.BaseRecyclerAdapter
 
 class DungeonAdapter(

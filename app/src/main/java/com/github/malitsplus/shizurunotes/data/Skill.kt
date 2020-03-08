@@ -146,7 +146,7 @@ class Skill(
     lateinit var actionDescriptions: SpannableStringBuilder
 
     val friendlyMinionList = mutableListOf<Minion>()
-    val enemyMinionList = mutableListOf<ClanBattleBoss>()
+    val enemyMinionList = mutableListOf<Enemy>()
 
     /***
     * ！！！此类必须在协程中进行实例化！！！
@@ -203,7 +203,7 @@ class Skill(
                         }
                         if (!isDuplicate) {
                             val enemyMinion = DBHelper.get().getEnemyMinion(enemyId)
-                                ?.clanBattleBoss?.let { minion ->
+                                ?.enemy?.let { minion ->
                                 DBHelper.get().getUnitAttackPattern(minion.unitId)?.forEach {
                                     minion.attackPatternList.add(it.attackPattern)
                                 }

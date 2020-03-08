@@ -177,6 +177,11 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
+    <fragment
+        android:id="@+id/nav_drop"
+        android:name="com.github.malitsplus.shizurunotes.ui.drop.DropFragment"
+        android:label="fragment_drop"
+        tools:layout="@layout/fragment_drop" />
 
 
 </navigation>

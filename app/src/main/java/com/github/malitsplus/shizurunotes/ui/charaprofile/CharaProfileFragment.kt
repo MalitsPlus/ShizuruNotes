@@ -10,8 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.databinding.FragmentCharaProfileBinding
-import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
-import com.github.malitsplus.shizurunotes.ui.SharedViewModelCharaFactory
+import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
 
 class CharaProfileFragment : Fragment() {
     override fun onCreateView(

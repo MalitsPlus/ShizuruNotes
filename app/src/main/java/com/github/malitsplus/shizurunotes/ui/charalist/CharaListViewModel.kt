@@ -5,9 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.Chara
-import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
-import java.security.cert.TrustAnchor
-import java.time.format.DateTimeFormatter
+import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
 import java.util.*
 
 class CharaListViewModel(

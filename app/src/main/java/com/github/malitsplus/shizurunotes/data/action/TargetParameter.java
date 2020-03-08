@@ -42,7 +42,7 @@ public class TargetParameter {
         hasCountPhrase = targetType != TargetType.self
                 && !(targetType == TargetType.none && targetCount == TargetCount.zero);
 
-        hasRangePhrase = targetRange == TargetRange.finite;
+        hasRangePhrase = targetRange.rangeType == TargetRange.FINITE;
 
         hasNthModifier = targetNumber == TargetNumber.second
                 || targetNumber == TargetNumber.third
@@ -565,33 +565,39 @@ enum TargetCount{
 
 }
 
-enum TargetRange{
-    zero,
-    all,
-    finite,
-    infinite,
-    unknown;
+class TargetRange {
+    static final int ZERO = 0;
+    static final int ALL = 1;
+    static final int FINITE = 2;
+    static final int INFINITE = 3;
+    static final int UNKNOWN = 4;
 
-    public int rawRange;
-    public static TargetRange parse(int range){
-        TargetRange t;
-        if(range == -1)
-            t = infinite;
-        else if(range == 0)
-            t = zero;
-        else if(range > 0 && range < 2160)
-            t = finite;
-        else if(range >= 2160) {
-            t = all;
-            t.rawRange = 2160;
-            return t;
-        } else
-            t = unknown;
+    int rawRange;
+    int rangeType;
 
-        t.rawRange = range;
-        return t;
+    private TargetRange(int range){
+        if (range == -1) {
+            this.rangeType = INFINITE;
+        } else if (range == 0) {
+            this.rangeType = ZERO;
+        } else if (range > 0 && range < 2160) {
+            this.rangeType = FINITE;
+        } else if (range >= 2160) {
+            this.rangeType = ALL;
+            this.rawRange = 2160;
+            return;
+        } else {
+            this.rangeType = UNKNOWN;
+        }
+        this.rawRange = range;
+    }
+
+    static TargetRange parse(int range){
+        return new TargetRange(range);
     }
 }
+
+
 
 enum DirectionType{
     front(1),

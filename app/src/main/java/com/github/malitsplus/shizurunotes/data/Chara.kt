@@ -92,7 +92,7 @@ class Chara: Cloneable {
     fun getAllEquipmentProperty(rank: Int): Property {
         val property = Property()
         rankEquipments[rank]?.forEach {
-            property.plusEqual(it.ceiledProperty)
+            property.plusEqual(it.getCeiledProperty())
         }
         return property
     }
@@ -100,7 +100,7 @@ class Chara: Cloneable {
     val uniqueEquipmentProperty: Property
         get() {
             return Property()
-                    .plusEqual(uniqueEquipment?.equipmentData)
+                    .plusEqual(uniqueEquipment?.equipmentProperty)
                     .plusEqual(uniqueEquipment?.equipmentEnhanceRate?.multiply(maxUniqueEquipmentLevel - 1.toDouble()))
         }
 

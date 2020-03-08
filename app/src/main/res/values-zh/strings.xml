@@ -17,6 +17,8 @@
     <string name="setting_system">系统</string>
     <string name="setting_db_version">数据库版本</string>
     <string name="setting_app_version">应用版本</string>
+    <string name="setting_re_download_db">重新下载数据库</string>
+    <string name="setting_re_download_db_summary">正常情况下请勿使用此功能</string>
     <string name="setting_about">关于静流笔记</string>
     <string name="db_update_dialog_title">数据库更新</string>
     <string name="db_update_dialog_text">检测到数据库有新版本，需要现在更新吗？</string>
