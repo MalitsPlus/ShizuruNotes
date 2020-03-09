@@ -37,8 +37,6 @@ class DropFragment : Fragment() {
                 setHasFixedSize(true)
             }
         }
-
         return binding.root
     }
-
 }
