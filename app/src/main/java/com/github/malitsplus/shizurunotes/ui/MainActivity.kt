@@ -21,7 +21,8 @@ import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity(),
     UpdateManager.IActivityCallBack,
-    SharedViewModelEquipment.MasterEquipmentCallBack
+    SharedViewModelEquipment.MasterEquipmentCallBack,
+    SharedViewModelChara.MasterCharaCallBack
 {
     private lateinit var sharedEquipment: SharedViewModelEquipment
     private lateinit var sharedChara: SharedViewModelChara
@@ -39,8 +40,6 @@ class MainActivity : AppCompatActivity(),
         initSingletonClass()
         setSharedViewModels()
         loadData()
-
-        UpdateManager.get().checkAppVersion(true)
     }
 
     private fun initSingletonClass() {
@@ -54,7 +53,9 @@ class MainActivity : AppCompatActivity(),
         sharedEquipment = ViewModelProvider(this)[SharedViewModelEquipment::class.java].apply {
             callBack = this@MainActivity
         }
-        sharedChara = ViewModelProvider(this)[SharedViewModelChara::class.java]
+        sharedChara = ViewModelProvider(this)[SharedViewModelChara::class.java].apply {
+            callBack = this@MainActivity
+        }
         sharedClanBattle = ViewModelProvider(this)[SharedViewModelClanBattle::class.java]
     }
 
@@ -64,6 +65,10 @@ class MainActivity : AppCompatActivity(),
 
     override fun equipmentLoadFinished() {
         sharedChara.loadData(sharedEquipment.equipmentMap)
+    }
+
+    override fun charaLoadFinished() {
+        UpdateManager.get().checkAppVersion(true)
     }
 
     override fun dbDownloadFinished() {
@@ -84,6 +89,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun dbUpdateFinished() {
+        clearData()
         loadData()
     }
 
@@ -91,6 +97,12 @@ class MainActivity : AppCompatActivity(),
         Snackbar.make(binding.activityFrame, messageRes, Snackbar.LENGTH_LONG).show()
     }
 
+    private fun clearData() {
+        sharedEquipment.equipmentMap.clear()
+        sharedChara.charaList.value?.clear()
+        sharedClanBattle.periodList.value?.clear()
+        sharedClanBattle.dungeonList.clear()
+    }
 
 //    companion object{
 //        const val REQUEST_EXTERNAL_STORAGE = 1

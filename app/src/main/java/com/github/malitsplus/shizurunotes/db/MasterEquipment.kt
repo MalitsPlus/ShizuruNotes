@@ -4,7 +4,7 @@ import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.data.Property
 
 class MasterEquipment {
-    fun getEquipmentMap(): Map<Int, Equipment> {
+    fun getEquipmentMap(): MutableMap<Int, Equipment> {
         val equipmentMap = mutableMapOf<Int, Equipment>()
         val rawEquipmentList = DBHelper.get().getEquipmentAll()
         val rawEquipmentEnhanceList = DBHelper.get().getEquipmentEnhance()
