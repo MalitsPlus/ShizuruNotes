@@ -7,7 +7,7 @@ import com.github.malitsplus.shizurunotes.db.MasterEquipment
 import kotlin.concurrent.thread
 
 class SharedViewModelEquipment : ViewModel() {
-    var equipmentMap = mapOf<Int, Equipment>()
+    var equipmentMap = mutableMapOf<Int, Equipment>()
     val loadingFlag = MutableLiveData<Boolean>(false)
 
     /***
@@ -15,11 +15,13 @@ class SharedViewModelEquipment : ViewModel() {
      * 此方法应该且仅应该在程序初始化时或数据库更新完成后使用。
      */
     fun loadData() {
-        thread(start = true) {
-            loadingFlag.postValue(true)
-            equipmentMap = MasterEquipment().getEquipmentMap()
-            loadingFlag.postValue(false)
-            callBack?.equipmentLoadFinished()
+        if (equipmentMap.isNullOrEmpty()) {
+            thread(start = true) {
+                loadingFlag.postValue(true)
+                equipmentMap = MasterEquipment().getEquipmentMap()
+                loadingFlag.postValue(false)
+                callBack?.equipmentLoadFinished()
+            }
         }
     }
 

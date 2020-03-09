@@ -104,7 +104,7 @@ class CharaListFragment : Fragment() {
                 }
                 setAdapter(
                     MaterialSpinnerAdapter(
-                        context,
+                        this@CharaListFragment.context!!,
                         R.layout.dropdown_item_chara_list,
                         charaListViewModel.attackTypeMap.values.toTypedArray<String>()
                     )
@@ -117,7 +117,7 @@ class CharaListFragment : Fragment() {
                 }
                 setAdapter(
                     MaterialSpinnerAdapter(
-                        context,
+                        this@CharaListFragment.context!!,
                         R.layout.dropdown_item_chara_list,
                         charaListViewModel.positionMap.values.toTypedArray<String>()
                     )
@@ -137,7 +137,7 @@ class CharaListFragment : Fragment() {
                 }
                 setAdapter(
                     MaterialSpinnerAdapter(
-                        context!!,
+                        this@CharaListFragment.context!!,
                         R.layout.dropdown_item_chara_list,
                         charaListViewModel.sortMap.values.toTypedArray<String>()
                     )

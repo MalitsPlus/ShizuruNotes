@@ -27,24 +27,27 @@ class SharedViewModelChara : ViewModel() {
      * 此方法应该且仅应该在程序初始化时或数据库更新完成后使用。
      */
     fun loadData(equipmentMap: Map<Int, Equipment>) {
-        thread(start = true){
-            charaList.postValue(mutableListOf())
-            loadingFlag.postValue(true)
-            val innerCharaList = mutableListOf<Chara>()
-            loadBasic(innerCharaList)
-            innerCharaList.forEach {
-                setCharaMaxData(it)
-                setCharaRarity(it)
-                setCharaStoryStatus(it)
-                setCharaPromotionStatus(it)
-                setCharaEquipments(it, equipmentMap)
-                setUniqueEquipment(it)
-                setUnitSkillData(it)
-                setUnitAttackPattern(it)
-                it.setCharaProperty()
+        if (charaList.value.isNullOrEmpty()) {
+            thread(start = true) {
+                charaList.postValue(mutableListOf())
+                loadingFlag.postValue(true)
+                val innerCharaList = mutableListOf<Chara>()
+                loadBasic(innerCharaList)
+                innerCharaList.forEach {
+                    setCharaMaxData(it)
+                    setCharaRarity(it)
+                    setCharaStoryStatus(it)
+                    setCharaPromotionStatus(it)
+                    setCharaEquipments(it, equipmentMap)
+                    setUniqueEquipment(it)
+                    setUnitSkillData(it)
+                    setUnitAttackPattern(it)
+                    it.setCharaProperty()
+                }
+                charaList.postValue(innerCharaList)
+                loadingFlag.postValue(false)
+                callBack?.charaLoadFinished()
             }
-            charaList.postValue(innerCharaList)
-            loadingFlag.postValue(false)
         }
     }
 
@@ -125,5 +128,10 @@ class SharedViewModelChara : ViewModel() {
             }
         }
         this.selectedChara = chara
+    }
+
+    var callBack: MasterCharaCallBack? = null
+    interface MasterCharaCallBack {
+        fun charaLoadFinished()
     }
 }

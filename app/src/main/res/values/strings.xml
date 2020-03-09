@@ -29,7 +29,7 @@
     <string name="setting_db_version">データベースバージョン</string>
     <string name="setting_app_version">アプリバージョン</string>
     <string name="setting_re_download_db">データベースを再ダウンロード</string>
-    <string name="setting_re_download_db_summary">通常の状況下ではこの機能を使わないでください</string>
+    <string name="setting_re_download_db_summary">通常の状況下ではこの機能を使う必要がありません</string>
     <string name="setting_about">シズルノーツについて</string>
     <string name="about_version" translatable="false">Version: %s</string>
     <string name="about_disclaimer" translatable="false">This is an unofficial fan-made application, copyright of all resources associate with the game \"Princess Connect Re:Dive\" are belong to Cygames, Inc. </string>

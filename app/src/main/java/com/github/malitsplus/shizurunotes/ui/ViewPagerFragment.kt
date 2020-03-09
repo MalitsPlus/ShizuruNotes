@@ -30,7 +30,7 @@ class ViewPagerFragment : Fragment() {
     private fun getTabIcon(position: Int): Int {
         return when (position) {
             CHARA_INDEX -> R.drawable.mic_queen
-            DROP -> R.drawable.mic_sword
+//            DROP -> R.drawable.mic_sword
             CLAN_BATTLE_INDEX -> R.drawable.mic_defend
             MENU_INDEX -> R.drawable.mic_menu
             else -> throw IndexOutOfBoundsException()
@@ -40,7 +40,7 @@ class ViewPagerFragment : Fragment() {
     private fun getTabTitle(position: Int): String? {
         return when (position) {
             CHARA_INDEX -> getString(R.string.title_chara_list)
-            DROP -> getString(R.string.title_drop)
+//            DROP -> getString(R.string.title_drop)
             CLAN_BATTLE_INDEX -> getString(R.string.title_clan_battle)
             MENU_INDEX -> getString(R.string.title_menu)
             else -> null
