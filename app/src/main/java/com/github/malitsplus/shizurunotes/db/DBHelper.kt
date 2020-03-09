@@ -38,6 +38,7 @@ class DBHelper : SQLiteOpenHelper {
         null,
         DB_VERSION
     )
+
     private constructor(
         context: Context?,
         name: String?,
@@ -46,6 +47,7 @@ class DBHelper : SQLiteOpenHelper {
     ) : super(context, name, factory, version)
 
     override fun onCreate(db: SQLiteDatabase) {}
+
     override fun onUpgrade(
         db: SQLiteDatabase,
         oldVersion: Int,
