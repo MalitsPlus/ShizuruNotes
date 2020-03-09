@@ -9,9 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.Skill
 import com.github.malitsplus.shizurunotes.databinding.ListItemClanBattleBossSkillBinding
-import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattle
+import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattle
 import com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleBossDetailsFragmentDirections
-import com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleViewPagerFragmentDirections
 
 class ClanBattleBossSkillAdapter (
     private var skillList: List<Skill>,

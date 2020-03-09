@@ -3,9 +3,9 @@ package com.github.malitsplus.shizurunotes.ui.minion
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
-import com.github.malitsplus.shizurunotes.data.ClanBattleBoss
+import com.github.malitsplus.shizurunotes.data.Enemy
 import com.github.malitsplus.shizurunotes.databinding.ListItemMinionBinding
-import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattle
+import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattle
 import com.github.malitsplus.shizurunotes.ui.base.AttackPatternContainerAdapter
 import com.github.malitsplus.shizurunotes.ui.base.BaseRecyclerAdapter
 import com.github.malitsplus.shizurunotes.ui.clanbattledetails.adapters.ClanBattleBossSkillAdapter
@@ -13,7 +13,7 @@ import com.github.malitsplus.shizurunotes.ui.clanbattledetails.adapters.ClanBatt
 class EnemyMinionAdapter(
     layout: Int,
     private val sharedClanBattle: SharedViewModelClanBattle
-) : BaseRecyclerAdapter<ClanBattleBoss, ListItemMinionBinding>(layout)
+) : BaseRecyclerAdapter<Enemy, ListItemMinionBinding>(layout)
 {
     override fun onBindViewHolder(holder: VH<ListItemMinionBinding>, position: Int) {
         holder.binding.apply {
