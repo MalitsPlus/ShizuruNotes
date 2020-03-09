@@ -137,10 +137,10 @@ class UpdateManager private constructor(
              * 数据库更新整个流程结束
              */
             override fun dbUpdateCompleted() {
-                iActivityCallBack?.dbUpdateFinished()
                 UserSettings.get().preference.edit().putInt("dbVersion", serverVersion).apply()
                 progressDialog?.cancel()
                 iActivityCallBack?.showSnackBar(R.string.db_update_finished_text)
+                iActivityCallBack?.dbUpdateFinished()
             }
 
             /***
