@@ -61,6 +61,7 @@ public class CharaStoryStatus {
                 break;
             case 17:
                 property.accuracy = statusRate;
+                break;
             default:
                 break;
         }

@@ -38,6 +38,7 @@ class DBHelper : SQLiteOpenHelper {
         null,
         DB_VERSION
     )
+
     private constructor(
         context: Context?,
         name: String?,
@@ -46,6 +47,7 @@ class DBHelper : SQLiteOpenHelper {
     ) : super(context, name, factory, version)
 
     override fun onCreate(db: SQLiteDatabase) {}
+
     override fun onUpgrade(
         db: SQLiteDatabase,
         oldVersion: Int,
@@ -236,10 +238,15 @@ class DBHelper : SQLiteOpenHelper {
         theClass: Class<*>
     ): T? {
         if (!Utils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
-        val cursor =
-            readableDatabase.rawQuery(sql, null) ?: return null
-        val data: List<T>? = cursor2List(cursor, theClass)
-        return if (data?.isNotEmpty() == true) data[0] else null
+        try {
+            val cursor =
+                readableDatabase.rawQuery(sql, null) ?: return null
+            val data: List<T>? = cursor2List(cursor, theClass)
+            return if (data?.isNotEmpty() == true) data[0] else null
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return null
+        }
     }
 
 //    /***
@@ -273,9 +280,14 @@ class DBHelper : SQLiteOpenHelper {
         theClass: Class<*>
     ): List<T>? {
         if (!Utils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
-        val cursor =
-            readableDatabase.rawQuery(sql, null) ?: return null
-        return cursor2List(cursor, theClass)
+        try {
+            val cursor =
+                readableDatabase.rawQuery(sql, null) ?: return null
+            return cursor2List(cursor, theClass)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return null
+        }
     }
 
     /***
@@ -502,6 +514,25 @@ class DBHelper : SQLiteOpenHelper {
     }
 
     /***
+     * 获取所有装备数据
+     */
+    fun getEquipmentAll(): List<RawEquipmentData>? {
+        return getBeanListByRaw(
+            """
+                SELECT 
+                a.*
+                ,b.max_equipment_enhance_level 
+                FROM equipment_data a, 
+                ( SELECT promotion_level, max( equipment_enhance_level ) max_equipment_enhance_level FROM equipment_enhance_data GROUP BY promotion_level ) b 
+                WHERE a.promotion_level = b.promotion_level 
+                AND equipment_id < 113000 
+                ORDER BY equipment_id DESC 
+                """,
+            RawEquipmentData::class.java
+        )
+    }
+
+    /***
      * 获取装备强化数据
      * @param slots 装备ids
      * @return
@@ -512,6 +543,35 @@ class DBHelper : SQLiteOpenHelper {
                 SELECT * 
                 FROM equipment_enhance_rate 
                 WHERE equipment_id IN ( ${Utils.splitIntegerWithComma(slots)} ) 
+                """,
+            RawEquipmentEnhanceData::class.java
+        )
+    }
+
+    /***
+     * 获取装备强化数据
+     * @param id 装备ids
+     * @return
+     */
+    fun getEquipmentEnhance(equipmentId: Int): RawEquipmentEnhanceData? {
+        return getBeanByRaw(
+            """
+                SELECT * 
+                FROM equipment_enhance_rate 
+                WHERE equipment_id = $equipmentId 
+                """,
+            RawEquipmentEnhanceData::class.java
+        )
+    }
+
+    /***
+     * 获取所有装备强化数据
+     */
+    fun getEquipmentEnhance(): List<RawEquipmentEnhanceData>? {
+        return getBeanListByRaw(
+            """
+                SELECT * 
+                FROM equipment_enhance_rate 
                 """,
             RawEquipmentEnhanceData::class.java
         )
@@ -660,7 +720,7 @@ class DBHelper : SQLiteOpenHelper {
      * @param
      * @return
      */
-    fun getClanBattleWaveEnemy(waveGroupList: List<Int>): List<RawWaveGroup>? {
+    fun getWaveGroupData(waveGroupList: List<Int>): List<RawWaveGroup>? {
         return getBeanListByRaw(
                 """
                     SELECT * 
@@ -674,11 +734,11 @@ class DBHelper : SQLiteOpenHelper {
     }
 
     /***
-     * 获取会战bossList
+     * 获取enemyList
      * @param
      * @return
      */
-    fun getClanBattleBoss(enemyIdList: List<Int>): List<RawClanBattleBoss>? {
+    fun getEnemy(enemyIdList: List<Int>): List<RawEnemy>? {
         return getBeanListByRaw(
                 """
                     SELECT 
@@ -732,17 +792,17 @@ class DBHelper : SQLiteOpenHelper {
                     """.format(enemyIdList.toString()
                         .replace("[", "")
                         .replace("]", "")),
-                RawClanBattleBoss::class.java
+                RawEnemy::class.java
         )
     }
 
     /***
-     * 获取会战boss
+     * 获取第一个enemy
      * @param
      * @return
      */
-    fun getClanBattleBoss(enemyId: Int): RawClanBattleBoss? {
-        return getClanBattleBoss(listOf(enemyId))?.get(0)
+    fun getEnemy(enemyId: Int): RawEnemy? {
+        return getEnemy(listOf(enemyId))?.get(0)
     }
 
     /***
@@ -812,8 +872,8 @@ class DBHelper : SQLiteOpenHelper {
     /***
      * 获取敌方召唤物
      */
-    fun getEnemyMinion(enemyId: Int): RawClanBattleBoss? {
-        return getBeanByRaw<RawClanBattleBoss>(
+    fun getEnemyMinion(enemyId: Int): RawEnemy? {
+        return getBeanByRaw<RawEnemy>(
             """
                 SELECT
                 d.unit_name,
@@ -836,7 +896,7 @@ class DBHelper : SQLiteOpenHelper {
                 LEFT JOIN enemy_m_parts c ON a.enemy_id = c.enemy_id
                 WHERE a.enemy_id = $enemyId
                 """,
-            RawClanBattleBoss::class.java
+            RawEnemy::class.java
         )
     }
 
@@ -859,6 +919,28 @@ class DBHelper : SQLiteOpenHelper {
                 ORDER BY a.dungeon_area_id DESC 
                 """,
             RawDungeon::class.java
+        )
+    }
+
+    fun getQuests(): List<RawQuest>? {
+        return getBeanListByRaw(
+            """
+                SELECT * FROM quest_data 
+                """,
+            RawQuest::class.java
+        )
+    }
+
+    fun getEnemyRewardData(dropRewardIdList: List<Int>): List<RawEnemyRewardData>? {
+        return getBeanListByRaw(
+            """
+                SELECT * 
+                FROM enemy_reward_data 
+                WHERE drop_reward_id IN ( %s ) 
+                """.format(dropRewardIdList.toString()
+                .replace("[", "")
+                .replace("]", "")),
+            RawEnemyRewardData::class.java
         )
     }
 

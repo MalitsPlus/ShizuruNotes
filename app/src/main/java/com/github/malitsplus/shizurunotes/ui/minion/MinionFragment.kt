@@ -5,18 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.navigation.ui.navigateUp
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.databinding.FragmentMinionBinding
-import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
-import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattle
-import com.github.malitsplus.shizurunotes.ui.charadetails.CharaDetailsFragmentArgs
+import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
+import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattle
 
 class MinionFragment : Fragment() {
 

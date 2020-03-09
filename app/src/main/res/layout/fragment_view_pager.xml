@@ -38,6 +38,12 @@
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:icon="@drawable/mic_sword"
+                android:text="@string/title_drop" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:icon="@drawable/mic_defend"
                 android:text="@string/title_clan_battle" />
 

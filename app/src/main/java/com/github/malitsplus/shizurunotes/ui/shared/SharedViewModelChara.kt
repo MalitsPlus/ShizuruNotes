@@ -1,4 +1,4 @@
-package com.github.malitsplus.shizurunotes.ui
+package com.github.malitsplus.shizurunotes.ui.shared
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,26 +26,28 @@ class SharedViewModelChara : ViewModel() {
      * 从数据库读取所有角色数据。
      * 此方法应该且仅应该在程序初始化时或数据库更新完成后使用。
      */
-    fun loadData() {
-        thread(start = true){
-
-            charaList.postValue(mutableListOf())
-            loadingFlag.postValue(true)
-            val innerCharaList = mutableListOf<Chara>()
-            loadBasic(innerCharaList)
-            innerCharaList.forEach {
-                setCharaMaxData(it)
-                setCharaRarity(it)
-                setCharaStoryStatus(it)
-                setCharaPromotionStatus(it)
-                setCharaEquipments(it)
-                setUniqueEquipment(it)
-                setUnitSkillData(it)
-                setUnitAttackPattern(it)
-                it.setCharaProperty()
+    fun loadData(equipmentMap: Map<Int, Equipment>) {
+        if (charaList.value.isNullOrEmpty()) {
+            thread(start = true) {
+                charaList.postValue(mutableListOf())
+                loadingFlag.postValue(true)
+                val innerCharaList = mutableListOf<Chara>()
+                loadBasic(innerCharaList)
+                innerCharaList.forEach {
+                    setCharaMaxData(it)
+                    setCharaRarity(it)
+                    setCharaStoryStatus(it)
+                    setCharaPromotionStatus(it)
+                    setCharaEquipments(it, equipmentMap)
+                    setUniqueEquipment(it)
+                    setUnitSkillData(it)
+                    setUnitAttackPattern(it)
+                    it.setCharaProperty()
+                }
+                charaList.postValue(innerCharaList)
+                loadingFlag.postValue(false)
+                callBack?.charaLoadFinished()
             }
-            charaList.postValue(innerCharaList)
-            loadingFlag.postValue(false)
         }
     }
 
@@ -86,12 +88,18 @@ class SharedViewModelChara : ViewModel() {
         chara.promotionStatus = promotionStatus
     }
 
-    private fun setCharaEquipments(chara: Chara) {
-        val equipmentMap = mutableMapOf<Int, List<Equipment>>()
-        get().getCharaPromotion(chara.unitId)?.forEach {
-            equipmentMap[it.promotion_level] = it.charaEquipments
+    private fun setCharaEquipments(chara: Chara, equipmentMap: Map<Int, Equipment>) {
+        val rankEquipments = mutableMapOf<Int, List<Equipment>>()
+        get().getCharaPromotion(chara.unitId)?.forEach { slots ->
+            val equipmentList = mutableListOf<Equipment>()
+            slots.charaSlots.forEach { id ->
+                equipmentMap[id]?.let {
+                    equipmentList.add(it)
+                }
+            }
+            rankEquipments[slots.promotion_level] = equipmentList
         }
-        chara.rankEquipments = equipmentMap
+        chara.rankEquipments = rankEquipments
     }
 
     private fun setUniqueEquipment(chara: Chara) {
@@ -120,5 +128,10 @@ class SharedViewModelChara : ViewModel() {
             }
         }
         this.selectedChara = chara
+    }
+
+    var callBack: MasterCharaCallBack? = null
+    interface MasterCharaCallBack {
+        fun charaLoadFinished()
     }
 }

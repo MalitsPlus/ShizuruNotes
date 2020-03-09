@@ -1,22 +1,17 @@
 package com.github.malitsplus.shizurunotes.db;
 
+import com.github.malitsplus.shizurunotes.data.Equipment;
 import com.github.malitsplus.shizurunotes.data.Property;
 
 public class RawEquipmentData {
-    /*
-    public int promotion_level;
     public int equipment_id;
     public String equipment_name;
     public String description;
     public int promotion_level;
-    public int craft_flag;
+    public int craft_flg;
     public int equipment_enhance_point;
     public int sale_price;
     public int require_level;
-    */
-
-    public int equipment_id;
-    public String equipment_name;
     public int max_equipment_enhance_level;
     public double hp;
     public double atk;
@@ -57,5 +52,4 @@ public class RawEquipmentData {
                 accuracy
         );
     }
-
 }

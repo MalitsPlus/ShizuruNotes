@@ -10,10 +10,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.malitsplus.shizurunotes.R
-import com.github.malitsplus.shizurunotes.data.ClanBattlePeriod
 import com.github.malitsplus.shizurunotes.databinding.FragmentClanBattleBinding
-import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattle
-import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattleFactory
+import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattle
+import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattleFactory
 
 class ClanBattleFragment : Fragment() {
 
@@ -26,7 +25,9 @@ class ClanBattleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val sharedViewModel = ViewModelProvider(activity!!).get(SharedViewModelClanBattle::class.java)
+        val sharedViewModel = ViewModelProvider(activity!!)[SharedViewModelClanBattle::class.java].apply {
+            loadData()
+        }
 
         val binding =
             DataBindingUtil.inflate<FragmentClanBattleBinding>(
@@ -54,7 +55,9 @@ class ClanBattleFragment : Fragment() {
         }
 
         clanBattleViewModel = ViewModelProvider(this,
-            SharedViewModelClanBattleFactory(sharedViewModel)
+            SharedViewModelClanBattleFactory(
+                sharedViewModel
+            )
         ).get(ClanBattleViewModel::class.java)
 
         binding.viewModel = clanBattleViewModel

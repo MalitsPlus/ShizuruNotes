@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.ClanBattlePeriod
 import com.github.malitsplus.shizurunotes.databinding.ListItemClanBattlePeriodBinding
-import com.github.malitsplus.shizurunotes.ui.SharedViewModelClanBattle
+import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattle
 import com.github.malitsplus.shizurunotes.ui.ViewPagerFragmentDirections
 
 class ClanBattleAdapter (
