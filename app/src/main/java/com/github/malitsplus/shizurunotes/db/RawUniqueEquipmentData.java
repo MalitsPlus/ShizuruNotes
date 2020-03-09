@@ -5,11 +5,16 @@ import com.github.malitsplus.shizurunotes.data.Equipment;
 import com.github.malitsplus.shizurunotes.data.Property;
 
 public class RawUniqueEquipmentData {
-    //public String description;
-    //public int promotion_level;
+
 
     public int equipment_id;
     public String equipment_name;
+    public String description;
+    public int promotion_level;
+    public int craft_flg;
+    public int equipment_enhance_point;
+    public int sale_price;
+    public int require_level;
     public double hp;
     public double atk;
     public double magic_str;
@@ -32,6 +37,12 @@ public class RawUniqueEquipmentData {
         chara.setUniqueEquipment(new Equipment(
                 equipment_id,
                 equipment_name,
+                description,
+                promotion_level,
+                craft_flg,
+                equipment_enhance_point,
+                sale_price,
+                require_level,
                 chara.getMaxUniqueEquipmentLevel(),
                 this.getProperty(),
                 DBHelper.get().getUniqueEquipmentEnhance(chara.getUnitId()).getProperty()

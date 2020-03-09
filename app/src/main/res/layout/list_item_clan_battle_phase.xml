@@ -10,7 +10,7 @@
             type="android.view.View.OnClickListener"/>
         <variable
             name="boss"
-            type="com.github.malitsplus.shizurunotes.data.ClanBattleBoss" />
+            type="com.github.malitsplus.shizurunotes.data.Enemy" />
         <import type="com.github.malitsplus.shizurunotes.R"/>
     </data>
 

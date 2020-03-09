@@ -31,6 +31,11 @@
         app:title="@string/setting_system">
 
         <Preference
+            app:key="reDownloadDb"
+            app:title="@string/setting_re_download_db"
+            app:summary="@string/setting_re_download_db_summary"/>
+
+        <Preference
             app:key="dbVersion"
             app:icon="@drawable/mic_chart"
             app:title="@string/setting_db_version"

@@ -3,12 +3,10 @@ package com.github.malitsplus.shizurunotes.db;
 import com.github.malitsplus.shizurunotes.data.Property;
 
 public class RawEquipmentEnhanceData {
-    /*
-    public String equipment_name;
-    public String description;
-    public int promotion_level;
-    */
     public int equipment_id;
+//    public String equipment_name;
+//    public String description;
+//    public int promotion_level;
     public double hp;
     public double atk;
     public double magic_str;

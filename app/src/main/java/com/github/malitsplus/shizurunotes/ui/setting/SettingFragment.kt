@@ -46,12 +46,28 @@ class SettingFragment : PreferenceFragmentCompat() {
         //app版本提示
         findPreference<Preference>("appVersion")?.apply {
             summary = BuildConfig.VERSION_NAME
+            isSelectable = false
+//            onPreferenceClickListener = Preference.OnPreferenceClickListener {
+//                it.isEnabled = false
+//                UpdateManager.get().checkAppVersion(false)
+//                thread(start = true) {
+//                    Thread.sleep(5000)
+//                    activity?.runOnUiThread {
+//                        it.isEnabled = true
+//                    }
+//                }
+//                true
+//            }
+        }
+
+        //数据库版本
+        findPreference<Preference>("dbVersion")?.apply {
             onPreferenceClickListener = Preference.OnPreferenceClickListener {
                 it.isEnabled = false
-                UpdateManager.get().checkAppVersion(false)
-                thread(start = true) {
+                UpdateManager.get().checkDatabaseVersion(false)
+                thread(start = true){
                     Thread.sleep(5000)
-                    activity!!.runOnUiThread {
+                    activity?.runOnUiThread {
                         it.isEnabled = true
                     }
                 }
@@ -59,15 +75,14 @@ class SettingFragment : PreferenceFragmentCompat() {
             }
         }
 
-
         //数据库版本
-        findPreference<Preference>("dbVersion")?.apply {
+        findPreference<Preference>("reDownloadDb")?.apply {
             onPreferenceClickListener = Preference.OnPreferenceClickListener {
                 it.isEnabled = false
-                UpdateManager.get().checkDatabaseVersion()
+                UpdateManager.get().checkDatabaseVersion(true)
                 thread(start = true){
                     Thread.sleep(5000)
-                    activity!!.runOnUiThread {
+                    activity?.runOnUiThread {
                         it.isEnabled = true
                     }
                 }

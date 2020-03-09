@@ -1,7 +1,9 @@
-<resources xmlns:tools="http://schemas.android.com/tools" >
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">シズノツ</string>
     <string name="app_full_name">シズルノーツ</string>
     <string name="title_chara_list">キャラ</string>
+    <string name="title_drop">ドロップ</string>
+    <string name="title_equipment_drop">装備ドロップ</string>
     <string name="title_clan_battle">クラバト</string>
     <string name="title_menu">メニュー</string>
     <string name="title_setting">設定</string>
@@ -26,6 +28,8 @@
     <string name="setting_system">システム</string>
     <string name="setting_db_version">データベースバージョン</string>
     <string name="setting_app_version">アプリバージョン</string>
+    <string name="setting_re_download_db">データベースを再ダウンロード</string>
+    <string name="setting_re_download_db_summary">通常の状況下ではこの機能を使わないでください</string>
     <string name="setting_about">シズルノーツについて</string>
     <string name="about_version" translatable="false">Version: %s</string>
     <string name="about_disclaimer" translatable="false">This is an unofficial fan-made application, copyright of all resources associate with the game \"Princess Connect Re:Dive\" are belong to Cygames, Inc. </string>
@@ -482,4 +486,7 @@
     <string name="Cast_a_barrier_on_s1_to_reduce_damage_over_s2_with_coefficient_s3_the_greater_the_less_reduced_amount_for_s4_s">%1$sにバリアを展開する、一回の行動で受けたダメージが[%2$s]を超えた場合、ダメージが減衰される、減衰係数[%3$s]（この値が小さいほど減衰されやすい）、効果時間[%4$s]秒。</string>
     <string name="Trigger_d_on_all_targets_break">トリガー：すべての部位がBreakされた時発動。</string>
     <string name="Make_s1_to_be_invulnerable_to_break_for_s2_sec">%1$sにBreak免疫状態、効果時間[%2$s]秒。</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

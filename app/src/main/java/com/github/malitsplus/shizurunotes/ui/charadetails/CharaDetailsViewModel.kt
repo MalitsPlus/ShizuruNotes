@@ -3,7 +3,7 @@ package com.github.malitsplus.shizurunotes.ui.charadetails
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.malitsplus.shizurunotes.data.Chara
-import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
+import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
 
 class CharaDetailsViewModel(private val sharedViewModelChara: SharedViewModelChara) : ViewModel() {
 

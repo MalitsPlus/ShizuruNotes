@@ -4,9 +4,8 @@ import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.common.Statics
 import com.github.malitsplus.shizurunotes.db.DBHelper
-import kotlin.properties.Delegates
 
-class ClanBattleBoss(
+class Enemy(
     val enemyId: Int
 ) {
     var unitId = 0
@@ -26,7 +25,7 @@ class ClanBattleBoss(
     val attackPatternList = mutableListOf<AttackPattern>()
 
     val skills = mutableListOf<Skill>()
-    val children = mutableListOf<ClanBattleBoss>()
+    val children = mutableListOf<Enemy>()
 
     fun setBasic(unitId: Int, name: String, level: Int, prefabId: Int, atkType: Int, searchAreaWidth: Int, normalAtkCastTime: Double, resistStatusId: Int, property: Property){
         this.unitId = unitId
