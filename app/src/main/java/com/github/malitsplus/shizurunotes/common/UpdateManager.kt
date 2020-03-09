@@ -79,14 +79,14 @@ class UpdateManager private constructor(
                         .show {
                             positiveButton(res = R.string.db_update_dialog_confirm) {
                                 downloadApp()
-                                checkDatabaseVersion()
+                                //checkDatabaseVersion()
                             }
                             negativeButton(res = R.string.db_update_dialog_cancel) {
-                                checkDatabaseVersion()
+                                checkDatabaseVersion(false)
                             }
                         }
                 } else {
-                    checkDatabaseVersion()
+                    checkDatabaseVersion(false)
                 }
             }
 
@@ -170,7 +170,7 @@ class UpdateManager private constructor(
         call.enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 //iActivityCallBack?.showSnackBar(R.string.app_update_check_failed)
-                if (checkDb) checkDatabaseVersion()
+                if (checkDb) checkDatabaseVersion(false)
             }
 
             override fun onResponse(call: Call, response: Response) {
@@ -197,7 +197,7 @@ class UpdateManager private constructor(
         })
     }
 
-    fun checkDatabaseVersion() {
+    fun checkDatabaseVersion(forceDownload: Boolean) {
         val client = OkHttpClient()
         val request = Request.Builder()
             .url(Statics.LAST_VERSION_URL)
@@ -216,8 +216,11 @@ class UpdateManager private constructor(
                         throw Exception("No response from server.")
                     val obj = JSONObject(lastVersionJson)
                     serverVersion = obj.getInt("TruthVersion")
-                    hasNewVersion =
+                    hasNewVersion = if (forceDownload) {
+                        true
+                    } else {
                         serverVersion != UserSettings.get().preference.getInt("dbVersion", 0)
+                    }
                     updateHandler.sendEmptyMessage(UPDATE_CHECK_COMPLETED)
                 } catch (ex: Exception) {
                     ex.printStackTrace()

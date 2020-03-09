@@ -16,8 +16,8 @@ import androidx.transition.TransitionInflater
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.Chara
 import com.github.malitsplus.shizurunotes.databinding.FragmentCharaDetailsBinding
-import com.github.malitsplus.shizurunotes.ui.SharedViewModelChara
-import com.github.malitsplus.shizurunotes.ui.SharedViewModelCharaFactory
+import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
+import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelCharaFactory
 import com.github.malitsplus.shizurunotes.ui.base.AttackPatternContainerAdapter
 import org.angmarch.views.OnSpinnerItemSelectedListener
 
@@ -54,7 +54,10 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
         val sharedViewModel = ViewModelProvider(activity!!).get(SharedViewModelChara::class.java)
         detailsViewModel = ViewModelProvider(
             this,
-            SharedViewModelCharaFactory(sharedViewModel)).get(CharaDetailsViewModel::class.java
+            SharedViewModelCharaFactory(
+                sharedViewModel
+            )
+        ).get(CharaDetailsViewModel::class.java
         )
 
         binding.apply {

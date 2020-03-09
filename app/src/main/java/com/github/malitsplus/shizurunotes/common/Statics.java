@@ -16,6 +16,7 @@ public class Statics {
     public static final String ICON_URL = API_URL + "/icon/unit/%d.webp";
     public static final String SKILL_ICON_URL = API_URL + "/icon/skill/%d.webp";
     public static final String IMAGE_URL = API_URL + "/card/full/%d.webp";
+    public static final String EQUIPMENT_ICON_URL = API_URL + "/icon/equipment/%d.webp";
     public static final String DB_FILE_URL = API_URL + "/db/redive_jp.db.br";
 
     public static final String APP_RAW = "https://raw.githubusercontent.com/MalitsPlus/ShizuruNotes/master";
