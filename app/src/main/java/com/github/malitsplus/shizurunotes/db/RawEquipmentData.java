@@ -30,6 +30,8 @@ public class RawEquipmentData {
     public double energy_recovery_rate;
     public double energy_reduce_rate;
     public double accuracy;
+    public String catalog;
+    public int rarity;
 
     public Property getProperty(){
         return new Property(

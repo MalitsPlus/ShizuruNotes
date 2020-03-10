@@ -18,12 +18,17 @@ class ClanBattleDetailsFragment(
     val phase: ClanBattlePhase
 ) : Fragment() {
 
+    lateinit var sharedClanBattle: SharedViewModelClanBattle
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedClanBattle = ViewModelProvider(activity!!)[SharedViewModelClanBattle::class.java]
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val sharedClanBattleVM = ViewModelProvider(activity!!).get(SharedViewModelClanBattle::class.java)
-
         val binding = DataBindingUtil.inflate<FragmentClanBattleDetailsBinding>(
             inflater, R.layout.fragment_clan_battle_details, container, false
         ).apply {
@@ -33,7 +38,7 @@ class ClanBattleDetailsFragment(
             clanBattleBossRecycler.adapter = ClanBattlePhaseAdapter(
                 phase.bossList
             ).apply {
-                setSharedClanBattleVM(sharedClanBattleVM)
+                setSharedClanBattleVM(sharedClanBattle)
             }
         }
 

@@ -9,14 +9,14 @@ import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.databinding.ItemGridIconBinding
 import com.github.malitsplus.shizurunotes.databinding.ItemGridTextBinding
 
-class GridSelectAdapter(
-    val itemList: List<*>
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class GridSelectAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
         const val GRID_TEXT = 1
         const val GRID_EQUIPMENT = 2
     }
+
+    var itemList = listOf<Any>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when(viewType) {
@@ -40,7 +40,7 @@ class GridSelectAdapter(
 
     override fun getItemViewType(position: Int): Int {
         return when(itemList[position]) {
-            is String -> GRID_TEXT
+            is Int -> GRID_TEXT
             is Equipment -> GRID_EQUIPMENT
             else -> 0
         }
@@ -49,7 +49,7 @@ class GridSelectAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
             is GridTextViewHolder -> {
-                holder.binding.hintText = itemList[position] as String
+                holder.binding.hintText = itemList[position] as Int
             }
             is GridIconViewHolder -> {
                 with(holder.binding){
@@ -62,6 +62,11 @@ class GridSelectAdapter(
 
     override fun getItemCount(): Int {
         return itemList.size
+    }
+
+    fun update(list: List<Any>) {
+        itemList = list
+        notifyDataSetChanged()
     }
 
     class GridTextViewHolder internal constructor(
