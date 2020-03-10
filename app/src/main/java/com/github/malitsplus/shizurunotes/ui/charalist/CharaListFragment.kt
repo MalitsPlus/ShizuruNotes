@@ -26,15 +26,18 @@ class CharaListFragment : Fragment() {
     private lateinit var sharedEquipment: SharedViewModelEquipment
     private lateinit var adapter: CharaListAdapter
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedChara = ViewModelProvider(activity!!)[SharedViewModelChara::class.java]
+        sharedEquipment = ViewModelProvider(activity!!)[SharedViewModelEquipment::class.java]
+        charaListViewModel = ViewModelProvider(this, SharedViewModelCharaFactory(sharedChara))[CharaListViewModel::class.java]
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        sharedChara = ViewModelProvider(activity!!)[SharedViewModelChara::class.java]
-        sharedEquipment = ViewModelProvider(activity!!)[SharedViewModelEquipment::class.java]
-        charaListViewModel = ViewModelProvider(this, SharedViewModelCharaFactory(sharedChara))[CharaListViewModel::class.java]
 
         val binding = DataBindingUtil.inflate<FragmentCharaListBinding>(inflater, R.layout.fragment_chara_list, container, false).apply {
             viewModel = charaListViewModel
@@ -73,10 +76,10 @@ class CharaListFragment : Fragment() {
 
         sharedChara.loadingFlag.observe(viewLifecycleOwner,
             Observer {
-                if (it) {
-                    binding.charaListProgressBar.visibility = View.VISIBLE
+                binding.charaListProgressBar.visibility = if (it) {
+                    View.VISIBLE
                 } else {
-                    binding.charaListProgressBar.visibility = View.GONE
+                    View.GONE
                 }
             }
         )

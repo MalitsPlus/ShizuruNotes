@@ -178,6 +178,7 @@
     <string name="ex_skill_3_evo">&#160;EX 3+&#160;</string>
     <string name="ex_skill_4_evo">&#160;EX 4+&#160;</string>
     <string name="ex_skill_5_evo">&#160;EX 5+&#160;</string>
+    <string name="text_drop_rarity">レア度：%d</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>

@@ -8,8 +8,8 @@ import com.github.malitsplus.shizurunotes.ui.drop.DropFragment
 import com.github.malitsplus.shizurunotes.ui.menu.MenuFragment
 import com.github.malitsplus.shizurunotes.ui.setting.SettingContainerFragment
 
-const val CHARA_INDEX = 0
-const val DROP = 1
+const val CHARA_INDEX = 1
+const val DROP = 0
 const val CLAN_BATTLE_INDEX = 2
 const val MENU_INDEX = 3
 

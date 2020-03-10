@@ -18,14 +18,19 @@ import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattle
 class MinionFragment : Fragment() {
 
     private val args: MinionFragmentArgs by navArgs()
+    private lateinit var sharedChara: SharedViewModelChara
+    private lateinit var sharedClanBattle: SharedViewModelClanBattle
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedChara = ViewModelProvider(activity!!)[SharedViewModelChara::class.java]
+        sharedClanBattle = ViewModelProvider(activity!!)[SharedViewModelClanBattle::class.java]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        val sharedChara = ViewModelProvider(activity!!)[SharedViewModelChara::class.java]
-        val sharedClanBattle = ViewModelProvider(activity!!)[SharedViewModelClanBattle::class.java]
 
         val binding = DataBindingUtil.inflate<FragmentMinionBinding>(
             inflater, R.layout.fragment_minion, container, false

@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.App
@@ -21,7 +22,6 @@ import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity(),
     UpdateManager.IActivityCallBack,
-    SharedViewModelEquipment.MasterEquipmentCallBack,
     SharedViewModelChara.MasterCharaCallBack
 {
     private lateinit var sharedEquipment: SharedViewModelEquipment
@@ -51,7 +51,11 @@ class MainActivity : AppCompatActivity(),
 
     private fun setSharedViewModels() {
         sharedEquipment = ViewModelProvider(this)[SharedViewModelEquipment::class.java].apply {
-            callBack = this@MainActivity
+            equipmentMap.observe(this@MainActivity, Observer {
+                if (!it.isNullOrEmpty()) {
+                    sharedChara.loadData(it)
+                }
+            })
         }
         sharedChara = ViewModelProvider(this)[SharedViewModelChara::class.java].apply {
             callBack = this@MainActivity
@@ -63,17 +67,13 @@ class MainActivity : AppCompatActivity(),
         sharedEquipment.loadData()
     }
 
-    override fun equipmentLoadFinished() {
-        sharedChara.loadData(sharedEquipment.equipmentMap)
-    }
-
     override fun charaLoadFinished() {
         UpdateManager.get().checkAppVersion(true)
     }
 
     override fun dbDownloadFinished() {
-        thread(start = true){
-            for (i in 1..50){
+        thread(start = true) {
+            for (i in 1..50) {
                 if (sharedEquipment.loadingFlag.value == false
                     && sharedChara.loadingFlag.value == false
                     && sharedClanBattle.loadingFlag.value == false) {
@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun clearData() {
-        sharedEquipment.equipmentMap.clear()
+        sharedEquipment.equipmentMap.value?.clear()
         sharedChara.charaList.value?.clear()
         sharedClanBattle.periodList.value?.clear()
         sharedClanBattle.dungeonList.clear()
