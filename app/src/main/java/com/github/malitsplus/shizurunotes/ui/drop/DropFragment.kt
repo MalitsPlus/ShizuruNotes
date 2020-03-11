@@ -21,16 +21,21 @@ class DropFragment : Fragment() {
 
     private lateinit var sharedEquipment: SharedViewModelEquipment
     private lateinit var dropVM: DropViewModel
-    private lateinit var mAdapter: GridSelectAdapter
-    private lateinit var mLayoutManager: GridLayoutManager
     private val maxSpanNum = 6
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedEquipment = ViewModelProvider(activity!!)[SharedViewModelEquipment::class.java]
         dropVM = ViewModelProvider(this)[DropViewModel::class.java]
-        mAdapter = GridSelectAdapter()
-        mLayoutManager = GridLayoutManager(context, maxSpanNum).apply {
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        val mAdapter = GridSelectAdapter(activity!!.applicationContext)
+        val mLayoutManager = GridLayoutManager(context, maxSpanNum).apply {
             spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int {
                     return when(mAdapter.getItemViewType(position)) {
@@ -41,12 +46,7 @@ class DropFragment : Fragment() {
                 }
             }
         }
-    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
         val binding = FragmentDropBinding.inflate(
             inflater, container, false
         ).apply {
@@ -54,6 +54,11 @@ class DropFragment : Fragment() {
                 layoutManager = mLayoutManager
                 adapter = mAdapter
                 setHasFixedSize(true)
+            }
+            clickListener = View.OnClickListener {
+                if (it.id == R.id.drop_floating_button) {
+                    mAdapter
+                }
             }
         }
 

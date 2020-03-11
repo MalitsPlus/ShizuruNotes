@@ -12,12 +12,11 @@ class SharedViewModelEquipment : ViewModel() {
 
     /***
      * 从数据库读取所有装备数据。
-     * 此方法应该且仅应该在程序初始化时或数据库更新完成后使用。
      */
     fun loadData() {
         if (equipmentMap.value.isNullOrEmpty()) {
+            loadingFlag.value = true
             thread(start = true) {
-                loadingFlag.postValue(true)
                 equipmentMap.postValue(MasterEquipment().getEquipmentMap())
                 loadingFlag.postValue(false)
             }
