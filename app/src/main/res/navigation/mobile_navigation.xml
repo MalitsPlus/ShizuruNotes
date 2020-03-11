@@ -182,6 +182,11 @@
         android:name="com.github.malitsplus.shizurunotes.ui.drop.DropFragment"
         android:label="fragment_drop"
         tools:layout="@layout/fragment_drop" />
+    <fragment
+        android:id="@+id/nav_drop_quest"
+        android:name="com.github.malitsplus.shizurunotes.ui.drop.DropQuestFragment"
+        android:label="fragment_drop_quest"
+        tools:layout="@layout/fragment_drop_quest" />
 
 
 </navigation>

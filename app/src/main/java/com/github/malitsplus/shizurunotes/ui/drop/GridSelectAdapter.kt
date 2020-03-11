@@ -1,15 +1,20 @@
 package com.github.malitsplus.shizurunotes.ui.drop
 
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.databinding.ItemGridIconBinding
 import com.github.malitsplus.shizurunotes.databinding.ItemGridTextBinding
 
-class GridSelectAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class GridSelectAdapter(
+    private val mContext: Context
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
         const val GRID_TEXT = 1
@@ -17,6 +22,7 @@ class GridSelectAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     var itemList = listOf<Any>()
+    val selectedItems = MutableLiveData<MutableList<Equipment>>(mutableListOf())
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when(viewType) {
@@ -49,20 +55,46 @@ class GridSelectAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
             is GridTextViewHolder -> {
-                holder.binding.hintText = itemList[position] as Int
+                with(holder.binding) {
+                    holder.binding.hintText = itemList[position] as Int
+                    executePendingBindings()
+                }
             }
             is GridIconViewHolder -> {
                 with(holder.binding){
-                    iconUrl = (itemList[position] as Equipment).iconUrl
+                    val thisEquipment = itemList[position] as Equipment
+                    iconUrl = thisEquipment.iconUrl
+                    selectedItems.value?.let {
+                        if (it.contains(thisEquipment)) {
+                            setItemStatus(this, true)
+                        } else {
+                            setItemStatus(this, false)
+                        }
+                        clickListener = View.OnClickListener { _ ->
+                            if (it.contains(thisEquipment)) {
+                                it.remove(thisEquipment)
+                                setItemStatus(this, false)
+                            } else if (it.size < 5){
+                                it.add(thisEquipment)
+                                setItemStatus(this, true)
+                            }
+                        }
+                    }
                     executePendingBindings()
                 }
             }
         }
     }
 
-    override fun getItemCount(): Int {
-        return itemList.size
+    fun setItemStatus(binding: ItemGridIconBinding, selected: Boolean) {
+        binding.itemGridContainer.background = if (selected) {
+            mContext.getDrawable(R.drawable.color_selected_background)
+        } else {
+            mContext.getDrawable(R.drawable.color_unselected_background)
+        }
     }
+
+    override fun getItemCount(): Int = itemList.size
 
     fun update(list: List<Any>) {
         itemList = list

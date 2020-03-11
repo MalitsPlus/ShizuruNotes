@@ -19,7 +19,7 @@ class Quest(
     val dropList = mutableListOf<RewardData>().apply {
         waveGroupList.forEach { wave ->
             wave.dropRewardList?.forEach { drop ->
-                drop.rewardDataList.forEach { reward->
+                drop.rewardDataList.forEach { reward ->
                     this.add(reward)
                 }
             }

@@ -2,8 +2,6 @@ package com.github.malitsplus.shizurunotes.ui.drop
 
 import androidx.lifecycle.ViewModel
 import com.github.malitsplus.shizurunotes.data.Equipment
-import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
-import java.util.*
 
 class DropViewModel : ViewModel() {
 
