@@ -9,6 +9,7 @@ import kotlin.concurrent.thread
 class SharedViewModelEquipment : ViewModel() {
     val equipmentMap = MutableLiveData<MutableMap<Int, Equipment>>()
     val loadingFlag = MutableLiveData<Boolean>(false)
+    val selectedDrops = MutableLiveData<MutableList<Equipment>>(mutableListOf())
 
     /***
      * 从数据库读取所有装备数据。

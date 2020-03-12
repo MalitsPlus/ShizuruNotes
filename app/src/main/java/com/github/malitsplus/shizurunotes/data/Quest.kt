@@ -1,5 +1,8 @@
 package com.github.malitsplus.shizurunotes.data
 
+import com.github.malitsplus.shizurunotes.R
+import com.github.malitsplus.shizurunotes.common.I18N
+
 class Quest(
     val questId: Int,
     val areaId: Int,
@@ -20,10 +23,21 @@ class Quest(
         waveGroupList.forEach { wave ->
             wave.dropRewardList?.forEach { drop ->
                 drop.rewardDataList.forEach { reward ->
-                    this.add(reward)
+                    if (reward.rewardType == 4)
+                        this.add(reward)
                 }
             }
         }
+    }
+
+    val dropGold: Int by lazy {
+        var gold = 0
+        waveGroupList.forEach { wave ->
+            wave.dropGoldList?.forEach {
+                gold += it
+            }
+        }
+        gold
     }
 
     val questType: QuestType by lazy {
@@ -39,6 +53,14 @@ class Quest(
         Normal,
         Hard,
         VeryHard,
-        Others
+        Others;
+        fun description(): String {
+            return when(this) {
+                Normal -> I18N.getString(R.string.text_quest_normal)
+                Hard -> I18N.getString(R.string.text_quest_hard)
+                VeryHard -> I18N.getString(R.string.text_quest_very_hard)
+                else -> I18N.getString(R.string.unknown)
+            }
+        }
     }
 }

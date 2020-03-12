@@ -11,9 +11,11 @@ import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.databinding.ItemGridIconBinding
 import com.github.malitsplus.shizurunotes.databinding.ItemGridTextBinding
+import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
 
 class GridSelectAdapter(
-    private val mContext: Context
+    private val mContext: Context,
+    private val sharedEquipment: SharedViewModelEquipment
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -22,7 +24,7 @@ class GridSelectAdapter(
     }
 
     var itemList = listOf<Any>()
-    val selectedItems = MutableLiveData<MutableList<Equipment>>(mutableListOf())
+    private val maxSelectNum = 4
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when(viewType) {
@@ -64,7 +66,7 @@ class GridSelectAdapter(
                 with(holder.binding){
                     val thisEquipment = itemList[position] as Equipment
                     iconUrl = thisEquipment.iconUrl
-                    selectedItems.value?.let {
+                    sharedEquipment.selectedDrops.value?.let {
                         if (it.contains(thisEquipment)) {
                             setItemStatus(this, true)
                         } else {
@@ -74,7 +76,7 @@ class GridSelectAdapter(
                             if (it.contains(thisEquipment)) {
                                 it.remove(thisEquipment)
                                 setItemStatus(this, false)
-                            } else if (it.size < 5){
+                            } else if (it.size < maxSelectNum){
                                 it.add(thisEquipment)
                                 setItemStatus(this, true)
                             }
