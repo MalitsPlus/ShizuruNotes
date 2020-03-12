@@ -9,10 +9,12 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.databinding.FragmentDropBinding
+import com.github.malitsplus.shizurunotes.ui.ViewPagerFragmentDirections
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipmentFactory
 import kotlinx.android.synthetic.main.fragment_drop.*
@@ -34,7 +36,7 @@ class DropFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val mAdapter = GridSelectAdapter(activity!!.applicationContext)
+        val mAdapter = GridSelectAdapter(activity!!.applicationContext, sharedEquipment)
         val mLayoutManager = GridLayoutManager(context, maxSpanNum).apply {
             spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int {
@@ -57,7 +59,7 @@ class DropFragment : Fragment() {
             }
             clickListener = View.OnClickListener {
                 if (it.id == R.id.drop_floating_button) {
-                    mAdapter
+                    it.findNavController().navigate(ViewPagerFragmentDirections.actionNavViewPagerToNavDropQuest())
                 }
             }
         }

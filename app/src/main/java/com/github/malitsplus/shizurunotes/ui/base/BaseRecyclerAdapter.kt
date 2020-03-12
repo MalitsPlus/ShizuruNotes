@@ -6,6 +6,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
+/***
+ * T: listItem实例
+ * V: 布局Binding
+ */
 abstract class BaseRecyclerAdapter<T, V: ViewDataBinding>(private val itemLayout: Int) : RecyclerView.Adapter<BaseRecyclerAdapter.VH<V>>() {
 
     var itemList = mutableListOf<T>()

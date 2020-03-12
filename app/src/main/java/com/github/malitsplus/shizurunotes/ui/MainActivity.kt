@@ -64,6 +64,7 @@ class MainActivity : AppCompatActivity(),
             callBack = this@MainActivity
         }
         sharedClanBattle = ViewModelProvider(this)[SharedViewModelClanBattle::class.java]
+        sharedQuest = ViewModelProvider(this)[SharedViewModelQuest::class.java]
     }
 
     private fun loadData() {

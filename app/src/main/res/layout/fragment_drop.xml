@@ -57,6 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="32dp"
+            android:onClick="@{clickListener}"
             android:backgroundTint="@color/colorPrimary"
             android:clickable="true"
             android:src="@drawable/mic_search"
