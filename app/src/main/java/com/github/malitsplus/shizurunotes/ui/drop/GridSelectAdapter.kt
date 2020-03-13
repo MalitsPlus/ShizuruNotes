@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.github.malitsplus.shizurunotes.R
+import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.databinding.ItemGridIconBinding
-import com.github.malitsplus.shizurunotes.databinding.ItemGridTextBinding
+import com.github.malitsplus.shizurunotes.databinding.ItemHintTextBinding
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
 
 class GridSelectAdapter(
@@ -29,11 +29,11 @@ class GridSelectAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when(viewType) {
             GRID_TEXT -> {
-                val binding = DataBindingUtil.inflate<ItemGridTextBinding>(
+                val binding = DataBindingUtil.inflate<ItemHintTextBinding>(
                     LayoutInflater.from(parent.context),
-                    R.layout.item_grid_text, parent, false
+                    R.layout.item_hint_text, parent, false
                 )
-                GridTextViewHolder(binding)
+                HintTextViewHolder(binding)
             }
             GRID_EQUIPMENT -> {
                 val binding = DataBindingUtil.inflate<ItemGridIconBinding>(
@@ -56,9 +56,9 @@ class GridSelectAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
-            is GridTextViewHolder -> {
+            is HintTextViewHolder -> {
                 with(holder.binding) {
-                    holder.binding.hintText = itemList[position] as Int
+                    holder.binding.hintText = I18N.getString(R.string.text_drop_rarity).format(itemList[position] as Int)
                     executePendingBindings()
                 }
             }
@@ -88,7 +88,7 @@ class GridSelectAdapter(
         }
     }
 
-    fun setItemStatus(binding: ItemGridIconBinding, selected: Boolean) {
+    private fun setItemStatus(binding: ItemGridIconBinding, selected: Boolean) {
         binding.itemGridContainer.background = if (selected) {
             mContext.getDrawable(R.drawable.color_selected_background)
         } else {
@@ -103,8 +103,8 @@ class GridSelectAdapter(
         notifyDataSetChanged()
     }
 
-    class GridTextViewHolder internal constructor(
-        val binding: ItemGridTextBinding
+    class HintTextViewHolder internal constructor(
+        val binding: ItemHintTextBinding
     ) : RecyclerView.ViewHolder(binding.root)
 
     class GridIconViewHolder internal constructor(
