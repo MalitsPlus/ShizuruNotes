@@ -45,7 +45,7 @@
             <LinearLayout
                 android:id="@+id/drop_icon_container"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="54dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"

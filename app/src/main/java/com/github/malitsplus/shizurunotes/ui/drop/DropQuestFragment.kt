@@ -31,7 +31,7 @@ class DropQuestFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val mAdapter = DropQuestAdapter(context!!)
+        val mAdapter = DropQuestAdapter(context!!, sharedEquipment)
         val binding = FragmentDropQuestBinding.inflate(
             inflater, container, false
         ).apply {

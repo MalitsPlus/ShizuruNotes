@@ -184,6 +184,9 @@
     <string name="text_quest_normal">&#160;Normal&#160;</string>
     <string name="text_quest_hard">&#160;Hard&#160;</string>
     <string name="text_quest_very_hard">&#160;Very Hard&#160;</string>
+    <string name="text_condition_and">AND条件</string>
+    <string name="text_condition_andor">一部満足</string>
+    <string name="text_condition_or">OR条件</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>
