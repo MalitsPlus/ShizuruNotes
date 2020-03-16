@@ -1,4 +1,4 @@
-package com.github.malitsplus.shizurunotes.common
+package com.github.malitsplus.shizurunotes.ui.base
 
 
 import android.content.Context

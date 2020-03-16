@@ -71,4 +71,5 @@ public class JsonUtils {
         initOrCheck();
         return gson.toJson(list);
     }
+
 }

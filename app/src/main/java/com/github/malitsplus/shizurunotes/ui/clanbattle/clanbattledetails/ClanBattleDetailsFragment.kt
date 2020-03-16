@@ -1,4 +1,4 @@
-package com.github.malitsplus.shizurunotes.ui.clanbattledetails
+package com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,7 +13,7 @@ import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.ClanBattlePhase
 import com.github.malitsplus.shizurunotes.databinding.FragmentClanBattleDetailsBinding
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattle
-import com.github.malitsplus.shizurunotes.ui.clanbattledetails.adapters.ClanBattlePhaseAdapter
+import com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails.adapters.ClanBattlePhaseAdapter
 import kotlinx.android.synthetic.main.fragment_clan_battle.*
 
 class ClanBattleDetailsFragment(

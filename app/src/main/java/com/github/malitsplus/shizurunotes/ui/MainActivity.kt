@@ -8,10 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.github.malitsplus.shizurunotes.R
-import com.github.malitsplus.shizurunotes.common.App
-import com.github.malitsplus.shizurunotes.common.I18N
-import com.github.malitsplus.shizurunotes.common.UpdateManager
-import com.github.malitsplus.shizurunotes.common.UserSettings
+import com.github.malitsplus.shizurunotes.common.*
 import com.github.malitsplus.shizurunotes.databinding.ActivityMainBinding
 import com.github.malitsplus.shizurunotes.db.DBHelper
 import com.github.malitsplus.shizurunotes.db.MasterQuest
@@ -50,6 +47,7 @@ class MainActivity : AppCompatActivity(),
         UserSettings.with(application)
         UpdateManager.with(this).setIActivityCallBack(this)
         I18N.application = application
+        UserData.with(application)
     }
 
     private fun setSharedViewModels() {
@@ -108,5 +106,6 @@ class MainActivity : AppCompatActivity(),
         sharedClanBattle.periodList.value?.clear()
         sharedClanBattle.dungeonList.clear()
         sharedQuest.questList.value?.clear()
+        sharedEquipment.selectedDrops.value?.clear()
     }
 }

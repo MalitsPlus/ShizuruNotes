@@ -1,4 +1,4 @@
-package com.github.malitsplus.shizurunotes.ui.clanbattledetails.adapters
+package com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.Enemy
 import com.github.malitsplus.shizurunotes.databinding.ListItemClanBattlePhaseBinding
+import com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails.ClanBattleViewPagerFragmentDirections
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattle
-import com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleViewPagerFragmentDirections
 
 class ClanBattlePhaseAdapter (
     private var bossList: List<Enemy>

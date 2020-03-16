@@ -102,7 +102,7 @@
 
     <fragment
         android:id="@+id/nav_clan_battle_view_pager"
-        android:name="com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleViewPagerFragment"
+        android:name="com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails.ClanBattleViewPagerFragment"
         android:label="fragment_clan_battle_view_pager"
         tools:layout="@layout/fragment_clan_battle_view_pager" >
         <action
@@ -135,12 +135,12 @@
 
     <fragment
         android:id="@+id/nav_clan_battle_details"
-        android:name="com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleDetailsFragment"
+        android:name="com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails.ClanBattleDetailsFragment"
         android:label="fragment_clan_battle_details"
         tools:layout="@layout/fragment_clan_battle_details" />
     <fragment
         android:id="@+id/nav_clan_battle_boss_details"
-        android:name="com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleBossDetailsFragment"
+        android:name="com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails.ClanBattleBossDetailsFragment"
         android:label="fragment_clan_battle_boss_resist"
         tools:layout="@layout/fragment_clan_battle_boss_details" >
         <action

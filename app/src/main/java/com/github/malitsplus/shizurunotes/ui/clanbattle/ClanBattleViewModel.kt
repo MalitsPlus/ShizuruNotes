@@ -6,6 +6,4 @@ import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattle
 class ClanBattleViewModel(
     sharedViewModel: SharedViewModelClanBattle
 ) : ViewModel() {
-
-
 }

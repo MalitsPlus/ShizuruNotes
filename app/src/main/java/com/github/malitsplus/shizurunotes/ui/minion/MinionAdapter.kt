@@ -8,7 +8,7 @@ import com.github.malitsplus.shizurunotes.databinding.ListItemMinionBinding
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
 import com.github.malitsplus.shizurunotes.ui.base.AttackPatternContainerAdapter
 import com.github.malitsplus.shizurunotes.ui.base.BaseRecyclerAdapter
-import com.github.malitsplus.shizurunotes.ui.clanbattledetails.adapters.ClanBattleBossSkillAdapter
+import com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails.adapters.ClanBattleBossSkillAdapter
 
 class MinionAdapter(
     layout: Int,
