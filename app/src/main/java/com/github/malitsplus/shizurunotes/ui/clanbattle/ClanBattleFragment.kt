@@ -22,9 +22,7 @@ class ClanBattleFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedClanBattle = ViewModelProvider(activity!!)[SharedViewModelClanBattle::class.java].apply {
-            loadData()
-        }
+        sharedClanBattle = ViewModelProvider(activity!!)[SharedViewModelClanBattle::class.java]
         clanBattleViewModel = ViewModelProvider(this, SharedViewModelClanBattleFactory(sharedClanBattle))[ClanBattleViewModel::class.java]
     }
 
@@ -60,6 +58,7 @@ class ClanBattleFragment : Fragment() {
         }
 
         binding.viewModel = clanBattleViewModel
+        sharedClanBattle.loadData()
         return binding.root
     }
 }

@@ -13,7 +13,7 @@ class DropViewModel : ViewModel() {
         equipList.forEach {
             if (currentRarity != it.rarity) {
                 currentRarity = it.rarity
-                itemList.add(currentRarity)
+                itemList.add(currentRarity.toString())
             }
             itemList.add(it)
         }

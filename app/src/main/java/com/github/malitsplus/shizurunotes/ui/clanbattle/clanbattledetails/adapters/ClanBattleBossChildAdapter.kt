@@ -1,4 +1,4 @@
-package com.github.malitsplus.shizurunotes.ui.clanbattledetails.adapters
+package com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

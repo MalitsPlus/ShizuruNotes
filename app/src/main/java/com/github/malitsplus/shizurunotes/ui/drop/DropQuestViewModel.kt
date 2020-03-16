@@ -35,15 +35,15 @@ class DropQuestViewModel(
                         }
                     }
                 }
-                when(equipmentList.size) {
+                when(val num = equipmentList.size) {
                     1 -> searchedQuestList.postValue(rawList as MutableList<Any>)
-                    2 -> {
+                    else -> {
                         rawList.forEach {
-                            if (!andList.contains(it)) {
-                                if (Collections.frequency(rawList, it) == 2) {
-                                    andList.add(it)
-                                } else {
-                                    orList.add(it)
+                            if (!andList.contains(it) && !middleList.contains(it)) {
+                                when(Collections.frequency(rawList, it)) {
+                                    num -> andList.add(it)
+                                    1 -> orList.add(it)
+                                    else -> middleList.add(it)
                                 }
                             }
                         }
@@ -51,33 +51,18 @@ class DropQuestViewModel(
                             resultList.add(I18N.getString(R.string.text_condition_and))
                             resultList.addAll(andList)
                         }
+                        if (middleList.isNotEmpty()) {
+                            resultList.add(I18N.getString(R.string.text_condition_andor))
+                            resultList.addAll(middleList)
+                        }
                         if (orList.isNotEmpty()) {
                             resultList.add(I18N.getString(R.string.text_condition_or))
                             resultList.addAll(orList)
                         }
                         searchedQuestList.postValue(resultList)
                     }
-                    else -> {
-                        rawList.forEach {
-                            if (!andList.contains(it) && !middleList.contains(it)) {
-                                when(Collections.frequency(rawList, it)) {
-                                    equipmentList.size -> andList.add(it)
-                                    1 -> orList.add(it)
-                                    else -> middleList.add(it)
-                                }
-                            }
-                        }
-                        resultList.addAll(andList)
-                        resultList.addAll(middleList)
-                        resultList.addAll(orList)
-                        searchedQuestList.postValue(resultList)
-                    }
                 }
             }
         }
-    }
-
-    fun addItem2List(item: Quest) {
-
     }
 }

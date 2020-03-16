@@ -26,6 +26,7 @@
                 android:id="@+id/drop_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                app:menu="@menu/fragment_drop_toolbar"
                 app:title="@string/title_equipment_drop" />
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -56,10 +57,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
-            android:layout_marginBottom="32dp"
-            android:onClick="@{clickListener}"
+            android:layout_marginBottom="24dp"
             android:backgroundTint="@color/colorPrimary"
             android:clickable="true"
+            android:onClick="@{clickListener}"
             android:src="@drawable/mic_search"
             app:borderWidth="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
