@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_drop_before"
+            android:icon="@drawable/mic_history"
+            app:showAsAction="ifRoom"
+            android:title="@string/icon_before" />
+        <item
+            android:id="@+id/menu_drop_cancel"
+            android:icon="@drawable/mic_clear"
+            app:showAsAction="ifRoom"
+            android:title="@string/icon_cancel_all" />
+    </group>
+</menu>

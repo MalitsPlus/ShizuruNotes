@@ -13,6 +13,14 @@ import com.github.malitsplus.shizurunotes.databinding.FragmentCharaProfileBindin
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
 
 class CharaProfileFragment : Fragment() {
+
+    lateinit var sharedChara: SharedViewModelChara
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedChara = ViewModelProvider(activity!!).get(SharedViewModelChara::class.java)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,15 +33,14 @@ class CharaProfileFragment : Fragment() {
                 container,
                 false
             )
-        val sharedViewModel = ViewModelProvider(activity!!).get(SharedViewModelChara::class.java)
 
-        sharedViewModel.backFlag = false
+        sharedChara.backFlag = false
 
         binding.toolbarCharaProfile.setNavigationOnClickListener { view ->
             view.findNavController().navigateUp()
         }
 
-        binding.chara = sharedViewModel.selectedChara
+        binding.chara = sharedChara.selectedChara
         //(activity as AppCompatActivity).supportActionBar!!.title = sharedViewModel.getSelectedChara().actualName
         return binding.root
     }

@@ -24,11 +24,14 @@ import org.angmarch.views.OnSpinnerItemSelectedListener
 class CharaDetailsFragment : Fragment(), View.OnClickListener {
 
     private lateinit var detailsViewModel: CharaDetailsViewModel
+    private lateinit var sharedChara: SharedViewModelChara
     private lateinit var binding: FragmentCharaDetailsBinding
     private val args: CharaDetailsFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        sharedChara = ViewModelProvider(activity!!).get(SharedViewModelChara::class.java)
+
         sharedElementEnterTransition =
             TransitionInflater.from(context)
                 .inflateTransition(android.R.transition.move).setDuration(300)
@@ -51,11 +54,10 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
             false
         )
 
-        val sharedViewModel = ViewModelProvider(activity!!).get(SharedViewModelChara::class.java)
         detailsViewModel = ViewModelProvider(
             this,
             SharedViewModelCharaFactory(
-                sharedViewModel
+                sharedChara
             )
         ).get(CharaDetailsViewModel::class.java
         )
@@ -74,7 +76,7 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
                 }
             }
 
-            if (sharedViewModel.backFlag)
+            if (sharedChara.backFlag)
                 appbar.setExpanded(false, false)
 
 
@@ -90,7 +92,7 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
 
         //技能 Recycler
         val layoutManagerSkill = LinearLayoutManager(context)
-        val adapterSkill = SkillAdapter(sharedViewModel)
+        val adapterSkill = SkillAdapter(sharedChara)
         binding.skillRecycler.apply {
             layoutManager = layoutManagerSkill
             adapter = adapterSkill

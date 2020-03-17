@@ -1,4 +1,4 @@
-package com.github.malitsplus.shizurunotes.common;
+package com.github.malitsplus.shizurunotes.utils;
 
 import android.text.TextUtils;
 
@@ -71,4 +71,5 @@ public class JsonUtils {
         initOrCheck();
         return gson.toJson(list);
     }
+
 }

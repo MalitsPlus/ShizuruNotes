@@ -1,6 +1,5 @@
 package com.github.malitsplus.shizurunotes.db;
 
-import com.github.malitsplus.shizurunotes.common.Utils;
 import com.github.malitsplus.shizurunotes.data.Minion;
 import com.github.malitsplus.shizurunotes.data.Skill;
 

@@ -1,4 +1,4 @@
-package com.github.malitsplus.shizurunotes.ui.clanbattledetails
+package com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,8 +13,8 @@ import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.databinding.FragmentClanBattleBossDetailsBinding
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattle
 import com.github.malitsplus.shizurunotes.ui.base.AttackPatternContainerAdapter
-import com.github.malitsplus.shizurunotes.ui.clanbattledetails.adapters.ClanBattleBossChildAdapter
-import com.github.malitsplus.shizurunotes.ui.clanbattledetails.adapters.ClanBattleBossSkillAdapter
+import com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails.adapters.ClanBattleBossChildAdapter
+import com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails.adapters.ClanBattleBossSkillAdapter
 
 /**
  * A simple [Fragment] subclass.
@@ -44,13 +44,20 @@ class ClanBattleBossDetailsFragment : Fragment() {
 
                 childrenRecycler.apply {
                     layoutManager = LinearLayoutManager(context)
-                    adapter = ClanBattleBossChildAdapter(it.children)
+                    adapter =
+                        ClanBattleBossChildAdapter(
+                            it.children
+                        )
                     setHasFixedSize(true)
                 }
 
                 bossSkillRecycler.apply {
                     layoutManager = LinearLayoutManager(context)
-                    adapter = ClanBattleBossSkillAdapter(it.skills, sharedClanBattleVM)
+                    adapter =
+                        ClanBattleBossSkillAdapter(
+                            it.skills,
+                            sharedClanBattleVM
+                        )
                     setHasFixedSize(true)
                 }
 

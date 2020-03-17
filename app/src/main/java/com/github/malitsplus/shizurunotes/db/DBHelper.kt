@@ -8,8 +8,9 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteDatabase.CursorFactory
 import android.database.sqlite.SQLiteOpenHelper
 import android.text.TextUtils
+import com.github.malitsplus.shizurunotes.utils.FileUtils
 import com.github.malitsplus.shizurunotes.common.Statics
-import com.github.malitsplus.shizurunotes.common.Utils
+import com.github.malitsplus.shizurunotes.utils.Utils
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -126,7 +127,7 @@ class DBHelper : SQLiteOpenHelper {
         key: String?,
         keyValue: List<String>?
     ): Cursor? {
-        if (!Utils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
+        if (!FileUtils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
         val db = readableDatabase ?: return null
         return if (key == null || keyValue == null || keyValue.isEmpty()) {
             db.rawQuery("SELECT * FROM $tableName ", null)
@@ -237,7 +238,7 @@ class DBHelper : SQLiteOpenHelper {
         sql: String?,
         theClass: Class<*>
     ): T? {
-        if (!Utils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
+        if (!FileUtils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
         try {
             val cursor =
                 readableDatabase.rawQuery(sql, null) ?: return null
@@ -279,7 +280,7 @@ class DBHelper : SQLiteOpenHelper {
         sql: String?,
         theClass: Class<*>
     ): List<T>? {
-        if (!Utils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
+        if (!FileUtils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
         try {
             val cursor =
                 readableDatabase.rawQuery(sql, null) ?: return null
@@ -333,7 +334,7 @@ class DBHelper : SQLiteOpenHelper {
      * @return
      */
     private fun getOne(sql: String?): String? {
-        if (!Utils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
+        if (!FileUtils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
         val cursor = readableDatabase.rawQuery(sql, null)
         cursor.moveToNext()
         val result = cursor.getString(0)
@@ -351,7 +352,7 @@ class DBHelper : SQLiteOpenHelper {
         key: String?,
         value: String?
     ): Map<Int, String>? {
-        if (!Utils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
+        if (!FileUtils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
         val cursor = readableDatabase.rawQuery(sql, null)
         val result: MutableMap<Int, String> =
             HashMap()
@@ -520,13 +521,16 @@ class DBHelper : SQLiteOpenHelper {
         return getBeanListByRaw(
             """
                 SELECT 
-                a.*
+                a.* 
                 ,b.max_equipment_enhance_level 
+                ,e.description 'catalog' 
+                ,substr(a.equipment_id,3,1) * 10 + substr(a.equipment_id,6,1) 'rarity' 
                 FROM equipment_data a, 
                 ( SELECT promotion_level, max( equipment_enhance_level ) max_equipment_enhance_level FROM equipment_enhance_data GROUP BY promotion_level ) b 
+                JOIN equipment_enhance_rate AS e ON a.equipment_id=e.equipment_id
                 WHERE a.promotion_level = b.promotion_level 
-                AND equipment_id < 113000 
-                ORDER BY equipment_id DESC 
+                AND a.equipment_id < 113000 
+                ORDER BY substr(a.equipment_id,3,1) * 10 + substr(a.equipment_id,6,1) DESC, a.require_level DESC, a.equipment_id ASC 
                 """,
             RawEquipmentData::class.java
         )
@@ -922,15 +926,21 @@ class DBHelper : SQLiteOpenHelper {
         )
     }
 
+    /***
+     * 获取所有Quest
+     */
     fun getQuests(): List<RawQuest>? {
         return getBeanListByRaw(
             """
-                SELECT * FROM quest_data 
+                SELECT * FROM quest_data WHERE quest_id < 13000000 ORDER BY daily_limit ASC, quest_id DESC 
                 """,
             RawQuest::class.java
         )
     }
 
+    /***
+     * 获取掉落奖励
+     */
     fun getEnemyRewardData(dropRewardIdList: List<Int>): List<RawEnemyRewardData>? {
         return getBeanListByRaw(
             """
@@ -990,6 +1000,4 @@ class DBHelper : SQLiteOpenHelper {
             }
             return sb.toString()
         }
-
-
 }

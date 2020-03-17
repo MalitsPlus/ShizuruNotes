@@ -3,7 +3,7 @@ package com.github.malitsplus.shizurunotes.data
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import com.github.malitsplus.shizurunotes.R
-import com.github.malitsplus.shizurunotes.common.BackgroundSpan
+import com.github.malitsplus.shizurunotes.ui.base.BackgroundSpan
 import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.common.Statics
 import com.github.malitsplus.shizurunotes.data.action.ActionParameter
@@ -246,7 +246,9 @@ class Skill(
                 .append((i + 1).toString())
                 .append("  ")
             builder.setSpan(
-                BackgroundSpan(BackgroundSpan.BORDER_RECT),
+                BackgroundSpan(
+                    BackgroundSpan.BORDER_RECT
+                ),
                 builder.length - 4,
                 builder.length - 1,
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE

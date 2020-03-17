@@ -13,7 +13,9 @@ class Equipment(
     val requireLevel: Int,
     val maxEnhanceLevel: Int,
     val equipmentProperty: Property,
-    var equipmentEnhanceRate: Property
+    var equipmentEnhanceRate: Property,
+    val catalog: String,
+    val rarity: Int
 ) {
     val iconUrl = Statics.EQUIPMENT_ICON_URL.format(equipmentId)
 

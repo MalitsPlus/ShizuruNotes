@@ -8,11 +8,17 @@
         <variable
             name="iconUrl"
             type="String" />
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
         <import type="com.github.malitsplus.shizurunotes.R"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_grid_container"
+        android:onClick="@{clickListener}"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

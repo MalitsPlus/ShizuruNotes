@@ -29,7 +29,9 @@ class MasterEquipment {
                 it.require_level,
                 it.max_equipment_enhance_level,
                 it.property,
-                enhanceProperty
+                enhanceProperty,
+                it.catalog,
+                it.rarity
             )
         }
         return equipmentMap

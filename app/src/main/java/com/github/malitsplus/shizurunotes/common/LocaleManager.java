@@ -15,6 +15,8 @@ import java.util.Set;
 
 import androidx.annotation.RequiresApi;
 
+import com.github.malitsplus.shizurunotes.utils.Utils;
+
 import static android.os.Build.VERSION_CODES.N;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
 import static com.github.malitsplus.shizurunotes.ui.setting.SettingFragment.LANGUAGE_KEY;

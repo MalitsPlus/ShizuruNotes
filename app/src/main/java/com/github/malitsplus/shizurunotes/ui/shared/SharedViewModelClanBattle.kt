@@ -24,9 +24,8 @@ class SharedViewModelClanBattle : ViewModel() {
      */
     fun loadData(){
         if (periodList.value.isNullOrEmpty()) {
+            loadingFlag.value = true
             thread(start = true){
-                periodList.postValue(mutableListOf())
-                loadingFlag.postValue(true)
                 val innerPeriodList = mutableListOf<ClanBattlePeriod>()
                 DBHelper.get().getClanBattlePeriod()?.forEach {
                     innerPeriodList.add(it.transToClanBattlePeriod())

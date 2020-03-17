@@ -13,6 +13,10 @@ import androidx.core.content.FileProvider
 import com.afollestad.materialdialogs.MaterialDialog
 import com.github.malitsplus.shizurunotes.BuildConfig
 import com.github.malitsplus.shizurunotes.R
+import com.github.malitsplus.shizurunotes.user.UserSettings
+import com.github.malitsplus.shizurunotes.utils.BrotliUtils
+import com.github.malitsplus.shizurunotes.utils.FileUtils
+import com.github.malitsplus.shizurunotes.utils.JsonUtils
 import okhttp3.*
 import org.json.JSONObject
 import java.io.File
@@ -235,11 +239,11 @@ class UpdateManager private constructor(
         val downloadManager = mContext.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         val request = DownloadManager.Request(Uri.parse(Statics.APP_PACKAGE)).apply {
             setMimeType("application/vnd.android.package-archive")
-            setTitle(I18N.getString(R.string.app_name))
+            setTitle(I18N.getString(R.string.app_full_name))
             setDestinationInExternalFilesDir(mContext, null, Statics.APK_NAME)
             setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
         }
-        Utils.checkFileAndDeleteIfExists(File(mContext.getExternalFilesDir(null), Statics.APK_NAME))
+        FileUtils.checkFileAndDeleteIfExists(File(mContext.getExternalFilesDir(null), Statics.APK_NAME))
         downloadId = downloadManager.enqueue(request)
         val intentFilter = IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
         mContext.registerReceiver(broadcastReceiver, intentFilter)
@@ -287,7 +291,7 @@ class UpdateManager private constructor(
                     if (!File(Statics.DB_PATH).mkdirs()) throw Exception("Cannot create DB path.")
                 }
                 val compressedFile = File(Statics.DB_PATH, Statics.DB_FILE_COMPRESSED)
-                if (compressedFile.exists()) Utils.deleteFile(compressedFile)
+                if (compressedFile.exists()) FileUtils.deleteFile(compressedFile)
                 val fileOutputStream = FileOutputStream(compressedFile)
                 var totalDownload = 0
                 val buf = ByteArray(1024 * 1024)

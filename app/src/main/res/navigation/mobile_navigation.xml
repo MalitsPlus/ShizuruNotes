@@ -44,6 +44,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_nav_view_pager_to_nav_drop_quest"
+            app:destination="@id/nav_drop_quest"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
 
@@ -95,7 +102,7 @@
 
     <fragment
         android:id="@+id/nav_clan_battle_view_pager"
-        android:name="com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleViewPagerFragment"
+        android:name="com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails.ClanBattleViewPagerFragment"
         android:label="fragment_clan_battle_view_pager"
         tools:layout="@layout/fragment_clan_battle_view_pager" >
         <action
@@ -128,12 +135,12 @@
 
     <fragment
         android:id="@+id/nav_clan_battle_details"
-        android:name="com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleDetailsFragment"
+        android:name="com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails.ClanBattleDetailsFragment"
         android:label="fragment_clan_battle_details"
         tools:layout="@layout/fragment_clan_battle_details" />
     <fragment
         android:id="@+id/nav_clan_battle_boss_details"
-        android:name="com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleBossDetailsFragment"
+        android:name="com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails.ClanBattleBossDetailsFragment"
         android:label="fragment_clan_battle_boss_resist"
         tools:layout="@layout/fragment_clan_battle_boss_details" >
         <action
@@ -182,6 +189,11 @@
         android:name="com.github.malitsplus.shizurunotes.ui.drop.DropFragment"
         android:label="fragment_drop"
         tools:layout="@layout/fragment_drop" />
+    <fragment
+        android:id="@+id/nav_drop_quest"
+        android:name="com.github.malitsplus.shizurunotes.ui.drop.DropQuestFragment"
+        android:label="fragment_drop_quest"
+        tools:layout="@layout/fragment_drop_quest" />
 
 
 </navigation>
