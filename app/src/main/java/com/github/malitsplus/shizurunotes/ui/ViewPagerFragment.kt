@@ -28,7 +28,7 @@ class ViewPagerFragment : Fragment() {
 
     private fun getTabIcon(position: Int): Int {
         return when (position) {
-            CHARA_INDEX -> R.drawable.mic_queen
+            CHARA_INDEX -> R.drawable.mic_chara
             DROP -> R.drawable.mic_sword
             CLAN_BATTLE_INDEX -> R.drawable.mic_defend
             MENU_INDEX -> R.drawable.mic_menu
@@ -45,5 +45,4 @@ class ViewPagerFragment : Fragment() {
             else -> null
         }
     }
-
 }

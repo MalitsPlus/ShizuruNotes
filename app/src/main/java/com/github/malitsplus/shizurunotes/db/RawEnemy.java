@@ -1,6 +1,6 @@
 package com.github.malitsplus.shizurunotes.db;
 
-import com.github.malitsplus.shizurunotes.common.Utils;
+import com.github.malitsplus.shizurunotes.utils.Utils;
 import com.github.malitsplus.shizurunotes.data.Enemy;
 import com.github.malitsplus.shizurunotes.data.Property;
 import com.github.malitsplus.shizurunotes.data.Skill;

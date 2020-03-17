@@ -1,8 +1,6 @@
 package com.github.malitsplus.shizurunotes.db;
 
-import com.github.malitsplus.shizurunotes.common.Utils;
-import com.github.malitsplus.shizurunotes.data.Chara;
-import com.github.malitsplus.shizurunotes.data.Equipment;
+import com.github.malitsplus.shizurunotes.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;

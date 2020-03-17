@@ -11,11 +11,11 @@ import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.*
 import com.github.malitsplus.shizurunotes.databinding.ActivityMainBinding
 import com.github.malitsplus.shizurunotes.db.DBHelper
-import com.github.malitsplus.shizurunotes.db.MasterQuest
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattle
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelQuest
+import com.github.malitsplus.shizurunotes.user.UserSettings
 import com.google.android.material.snackbar.Snackbar
 import kotlin.concurrent.thread
 
@@ -47,7 +47,6 @@ class MainActivity : AppCompatActivity(),
         UserSettings.with(application)
         UpdateManager.with(this).setIActivityCallBack(this)
         I18N.application = application
-        UserData.with(application)
     }
 
     private fun setSharedViewModels() {

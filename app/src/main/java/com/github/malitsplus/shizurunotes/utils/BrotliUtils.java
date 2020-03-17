@@ -1,4 +1,4 @@
-package com.github.malitsplus.shizurunotes.common;
+package com.github.malitsplus.shizurunotes.utils;
 
 import org.apache.commons.compress.compressors.brotli.BrotliCompressorInputStream;
 

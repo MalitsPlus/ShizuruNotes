@@ -1,8 +1,7 @@
 package com.github.malitsplus.shizurunotes.db;
 
-import com.github.malitsplus.shizurunotes.common.Utils;
+import com.github.malitsplus.shizurunotes.utils.Utils;
 import com.github.malitsplus.shizurunotes.data.Skill;
-import com.github.malitsplus.shizurunotes.data.action.ActionRaw;
 
 public class RawSkillData {
     public int skill_id;

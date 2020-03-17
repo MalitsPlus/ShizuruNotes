@@ -4,12 +4,12 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/menu_drop_before"
-            android:icon="@drawable/mic_cake"
+            android:icon="@drawable/mic_history"
             app:showAsAction="ifRoom"
             android:title="@string/icon_before" />
         <item
             android:id="@+id/menu_drop_cancel"
-            android:icon="@drawable/mic_defend"
+            android:icon="@drawable/mic_clear"
             app:showAsAction="ifRoom"
             android:title="@string/icon_cancel_all" />
     </group>

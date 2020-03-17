@@ -32,7 +32,7 @@
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:icon="@drawable/mic_queen"
+                android:icon="@drawable/mic_chara"
                 android:text="@string/title_chara_list" />
 
             <com.google.android.material.tabs.TabItem
