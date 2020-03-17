@@ -16,13 +16,19 @@ import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattle
 
 class DungeonFragment : Fragment() {
 
+    private lateinit var sharedClanBattle: SharedViewModelClanBattle
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedClanBattle = ViewModelProvider(activity!!)[SharedViewModelClanBattle::class.java].apply {
+            loadDungeon()
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        val sharedClanBattle = ViewModelProvider(activity!!)[SharedViewModelClanBattle::class.java]
-        sharedClanBattle.loadDungeon()
 
         val dungeonAdapter = DungeonAdapter(sharedClanBattle)
 

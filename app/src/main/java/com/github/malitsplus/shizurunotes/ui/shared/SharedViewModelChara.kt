@@ -28,9 +28,8 @@ class SharedViewModelChara : ViewModel() {
      */
     fun loadData(equipmentMap: Map<Int, Equipment>) {
         if (charaList.value.isNullOrEmpty()) {
+            loadingFlag.value = true
             thread(start = true) {
-                charaList.postValue(mutableListOf())
-                loadingFlag.postValue(true)
                 val innerCharaList = mutableListOf<Chara>()
                 loadBasic(innerCharaList)
                 innerCharaList.forEach {

@@ -17,7 +17,14 @@ import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattleFac
 class ClanBattleFragment : Fragment() {
 
     private lateinit var clanBattleViewModel: ClanBattleViewModel
+    private lateinit var sharedClanBattle: SharedViewModelClanBattle
     private lateinit var adapter: ClanBattleAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedClanBattle = ViewModelProvider(activity!!)[SharedViewModelClanBattle::class.java]
+        clanBattleViewModel = ViewModelProvider(this, SharedViewModelClanBattleFactory(sharedClanBattle))[ClanBattleViewModel::class.java]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,22 +32,18 @@ class ClanBattleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val sharedViewModel = ViewModelProvider(activity!!)[SharedViewModelClanBattle::class.java].apply {
-            loadData()
-        }
-
         val binding =
             DataBindingUtil.inflate<FragmentClanBattleBinding>(
                 inflater, R.layout.fragment_clan_battle, container, false
             ).apply{
                 lifecycleOwner = viewLifecycleOwner
-                adapter = ClanBattleAdapter(context!!, sharedViewModel)
+                adapter = ClanBattleAdapter(context!!, sharedClanBattle)
                 clanBattleListRecycler.layoutManager = LinearLayoutManager(context)
                 clanBattleListRecycler.adapter = adapter
                 clanBattleListRecycler.setHasFixedSize(true)
             }
 
-        sharedViewModel.apply {
+        sharedClanBattle.apply {
             periodList.observe(
                 viewLifecycleOwner, Observer{
                     adapter.update(it)
@@ -54,14 +57,8 @@ class ClanBattleFragment : Fragment() {
             )
         }
 
-        clanBattleViewModel = ViewModelProvider(this,
-            SharedViewModelClanBattleFactory(
-                sharedViewModel
-            )
-        ).get(ClanBattleViewModel::class.java)
-
         binding.viewModel = clanBattleViewModel
-
+        sharedClanBattle.loadData()
         return binding.root
     }
 }

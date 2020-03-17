@@ -45,7 +45,9 @@ public class RawUniqueEquipmentData {
                 require_level,
                 chara.getMaxUniqueEquipmentLevel(),
                 this.getProperty(),
-                DBHelper.get().getUniqueEquipmentEnhance(chara.getUnitId()).getProperty()
+                DBHelper.get().getUniqueEquipmentEnhance(chara.getUnitId()).getProperty(),
+                "",
+                0
         ));
     }
 

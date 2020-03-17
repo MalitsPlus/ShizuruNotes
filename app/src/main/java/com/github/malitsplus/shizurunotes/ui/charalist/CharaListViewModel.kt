@@ -59,7 +59,7 @@ class CharaListViewModel(
             selectedSort = this
         }
 
-        asc?.apply { isAsc = this }
+        asc?.let { isAsc = it }
 
         val charaToShow: MutableList<Chara> = ArrayList()
         sharedViewModelChara.charaList.value?.forEach { chara ->

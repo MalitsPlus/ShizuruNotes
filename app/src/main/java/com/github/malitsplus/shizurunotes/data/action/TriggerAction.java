@@ -2,7 +2,6 @@ package com.github.malitsplus.shizurunotes.data.action;
 
 import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.I18N;
-import com.github.malitsplus.shizurunotes.common.Utils;
 import com.github.malitsplus.shizurunotes.data.Property;
 
 public class TriggerAction extends ActionParameter {

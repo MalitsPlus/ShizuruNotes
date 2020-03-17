@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="reward"
+            type="com.github.malitsplus.shizurunotes.data.RewardData" />
+        <import type="com.github.malitsplus.shizurunotes.R"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp">
+
+        <ImageView
+            android:id="@+id/reward_icon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:imageUrl="@{reward.rewardIcon}"
+            bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
+
+        <TextView
+            android:id="@+id/text_odd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:text="@{reward.oddsString}"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/reward_icon"
+            app:layout_constraintStart_toStartOf="@+id/reward_icon"
+            app:layout_constraintTop_toBottomOf="@+id/reward_icon" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

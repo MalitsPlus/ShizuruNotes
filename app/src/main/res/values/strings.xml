@@ -178,6 +178,17 @@
     <string name="ex_skill_3_evo">&#160;EX 3+&#160;</string>
     <string name="ex_skill_4_evo">&#160;EX 4+&#160;</string>
     <string name="ex_skill_5_evo">&#160;EX 5+&#160;</string>
+    <string name="text_drop_rarity">レア度：%s</string>
+    <string name="text_drop_mana">マナ：%d</string>
+    <string name="text_drop_odds">%d%%</string>
+    <string name="text_quest_normal">&#160;Normal&#160;</string>
+    <string name="text_quest_hard">&#160;Hard&#160;</string>
+    <string name="text_quest_very_hard">&#160;Very Hard&#160;</string>
+    <string name="text_condition_and">オールヒット</string>
+    <string name="text_condition_andor">複数ヒット</string>
+    <string name="text_condition_or">ワンヒット</string>
+    <string name="icon_before">前回の選択</string>
+    <string name="icon_cancel_all">クリア</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>

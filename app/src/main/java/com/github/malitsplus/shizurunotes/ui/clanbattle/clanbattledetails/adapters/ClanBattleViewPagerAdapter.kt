@@ -1,9 +1,9 @@
-package com.github.malitsplus.shizurunotes.ui.clanbattledetails.adapters
+package com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.github.malitsplus.shizurunotes.data.ClanBattlePhase
-import com.github.malitsplus.shizurunotes.ui.clanbattledetails.ClanBattleDetailsFragment
+import com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails.ClanBattleDetailsFragment
 
 class ClanBattleViewPagerAdapter(
     fragment: Fragment,
