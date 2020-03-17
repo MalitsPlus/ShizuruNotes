@@ -8,8 +8,9 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteDatabase.CursorFactory
 import android.database.sqlite.SQLiteOpenHelper
 import android.text.TextUtils
+import com.github.malitsplus.shizurunotes.utils.FileUtils
 import com.github.malitsplus.shizurunotes.common.Statics
-import com.github.malitsplus.shizurunotes.common.Utils
+import com.github.malitsplus.shizurunotes.utils.Utils
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -126,7 +127,7 @@ class DBHelper : SQLiteOpenHelper {
         key: String?,
         keyValue: List<String>?
     ): Cursor? {
-        if (!Utils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
+        if (!FileUtils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
         val db = readableDatabase ?: return null
         return if (key == null || keyValue == null || keyValue.isEmpty()) {
             db.rawQuery("SELECT * FROM $tableName ", null)
@@ -237,7 +238,7 @@ class DBHelper : SQLiteOpenHelper {
         sql: String?,
         theClass: Class<*>
     ): T? {
-        if (!Utils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
+        if (!FileUtils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
         try {
             val cursor =
                 readableDatabase.rawQuery(sql, null) ?: return null
@@ -279,7 +280,7 @@ class DBHelper : SQLiteOpenHelper {
         sql: String?,
         theClass: Class<*>
     ): List<T>? {
-        if (!Utils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
+        if (!FileUtils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
         try {
             val cursor =
                 readableDatabase.rawQuery(sql, null) ?: return null
@@ -333,7 +334,7 @@ class DBHelper : SQLiteOpenHelper {
      * @return
      */
     private fun getOne(sql: String?): String? {
-        if (!Utils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
+        if (!FileUtils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
         val cursor = readableDatabase.rawQuery(sql, null)
         cursor.moveToNext()
         val result = cursor.getString(0)
@@ -351,7 +352,7 @@ class DBHelper : SQLiteOpenHelper {
         key: String?,
         value: String?
     ): Map<Int, String>? {
-        if (!Utils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
+        if (!FileUtils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
         val cursor = readableDatabase.rawQuery(sql, null)
         val result: MutableMap<Int, String> =
             HashMap()

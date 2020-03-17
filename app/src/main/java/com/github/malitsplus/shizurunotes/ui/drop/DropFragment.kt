@@ -1,6 +1,5 @@
 package com.github.malitsplus.shizurunotes.ui.drop
 
-import android.content.Context
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.widget.Toolbar
@@ -8,19 +7,15 @@ import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.github.malitsplus.shizurunotes.R
-import com.github.malitsplus.shizurunotes.common.JsonUtils
-import com.github.malitsplus.shizurunotes.common.UserData
+import com.github.malitsplus.shizurunotes.user.UserSettings
 import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.databinding.FragmentDropBinding
 import com.github.malitsplus.shizurunotes.ui.ViewPagerFragmentDirections
 import com.github.malitsplus.shizurunotes.ui.base.BaseHintAdapter
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
-import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipmentFactory
-import kotlinx.android.synthetic.main.fragment_drop.*
 
 class DropFragment : Fragment() {
 
@@ -88,11 +83,13 @@ class DropFragment : Fragment() {
     private fun setFloatingBarClickListener() {
         binding.clickListener = View.OnClickListener { view ->
             if (view.id == R.id.drop_floating_button) {
-                val idList = mutableListOf<Int>()
-                sharedEquipment.selectedDrops.value?.forEach {
-                    idList.add(it.equipmentId)
+                if (sharedEquipment.selectedDrops.value?.isNotEmpty() == true) {
+                    val idList = mutableListOf<Int>()
+                    sharedEquipment.selectedDrops.value?.forEach {
+                        idList.add(it.equipmentId)
+                    }
+                    UserSettings.get().lastEquipmentIds = idList
                 }
-                UserData.setLastEquipmentIds(idList)
                 view.findNavController().navigate(ViewPagerFragmentDirections.actionNavViewPagerToNavDropQuest())
             }
         }
@@ -102,22 +99,35 @@ class DropFragment : Fragment() {
         toolbar.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.menu_drop_before -> {
-
-                    true
-                }
-                R.id.menu_drop_cancel -> {
-                    sharedEquipment.selectedDrops.value?.forEach { equipment ->
-                        mAdapter.itemList.forEach { item ->
-                            if (item == equipment) {
-                                binding.dropRecycler.getChildAt(mAdapter.itemList.indexOf(item)).background = context!!.getDrawable(R.drawable.color_unselected_background)
+                    val ids = UserSettings.get().lastEquipmentIds
+                    if (!ids.isNullOrEmpty()) {
+                        clearRecyclerView()
+                        ids.forEach { id ->
+                            for (item in mAdapter.itemList) {
+                                if (item is Equipment && item.equipmentId == id) {
+                                    sharedEquipment.selectedDrops.value?.add(item)
+                                    binding.dropRecycler.getChildAt(mAdapter.itemList.indexOf(item)).background = context!!.getDrawable(R.drawable.color_selected_background)
+                                    break
+                                }
                             }
                         }
                     }
-                    sharedEquipment.selectedDrops.value?.clear()
+                    true
+                }
+                R.id.menu_drop_cancel -> {
+                    clearRecyclerView()
                     true
                 }
                 else -> true
             }
         }
     }
+
+    private fun clearRecyclerView() {
+        binding.dropRecycler.children.forEach {
+            it.background = context!!.getDrawable(R.drawable.color_unselected_background)
+        }
+        sharedEquipment.selectedDrops.value?.clear()
+    }
+
 }
