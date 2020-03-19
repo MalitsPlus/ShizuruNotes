@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_menu_chara"
+        android:icon="@drawable/mic_chara"
+        android:title="@string/title_chara_list" />
+
+    <item
+        android:id="@+id/bottom_menu_drop"
+        android:icon="@drawable/mic_sword"
+        android:title="@string/title_drop" />
+
+    <item
+        android:id="@+id/bottom_menu_clan_battle"
+        android:icon="@drawable/mic_defend"
+        android:title="@string/title_clan_battle" />
+
+    <item
+        android:id="@+id/bottom_menu_menu"
+        android:icon="@drawable/mic_menu"
+        android:title="@string/title_menu" />
+
+</menu>
