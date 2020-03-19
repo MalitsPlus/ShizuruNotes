@@ -13,7 +13,7 @@ import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.user.UserSettings
 import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.databinding.FragmentDropBinding
-import com.github.malitsplus.shizurunotes.ui.ViewPagerFragmentDirections
+import com.github.malitsplus.shizurunotes.ui.BottomNaviFragmentDirections
 import com.github.malitsplus.shizurunotes.ui.base.BaseHintAdapter
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
 
@@ -90,7 +90,7 @@ class DropFragment : Fragment() {
                     }
                     UserSettings.get().lastEquipmentIds = idList
                 }
-                view.findNavController().navigate(ViewPagerFragmentDirections.actionNavViewPagerToNavDropQuest())
+                view.findNavController().navigate(BottomNaviFragmentDirections.actionNavViewPagerToNavDropQuest())
             }
         }
     }
@@ -106,7 +106,10 @@ class DropFragment : Fragment() {
                             for (item in mAdapter.itemList) {
                                 if (item is Equipment && item.equipmentId == id) {
                                     sharedEquipment.selectedDrops.value?.add(item)
-                                    binding.dropRecycler.getChildAt(mAdapter.itemList.indexOf(item)).background = context!!.getDrawable(R.drawable.color_selected_background)
+                                    val vh = binding.dropRecycler.findViewHolderForAdapterPosition(mAdapter.itemList.indexOf(item))
+                                    vh?.let {
+                                        (vh as BaseHintAdapter.InstanceViewHolder).binding.root.background = context!!.getDrawable(R.drawable.color_selected_background)
+                                    }
                                     break
                                 }
                             }
@@ -129,5 +132,4 @@ class DropFragment : Fragment() {
         }
         sharedEquipment.selectedDrops.value?.clear()
     }
-
 }

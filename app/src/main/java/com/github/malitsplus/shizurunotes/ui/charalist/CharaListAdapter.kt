@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.Chara
 import com.github.malitsplus.shizurunotes.databinding.ListItemCharaBinding
+import com.github.malitsplus.shizurunotes.ui.BottomNaviFragmentDirections
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
-import com.github.malitsplus.shizurunotes.ui.ViewPagerFragmentDirections
 import java.util.*
 
 class CharaListAdapter(
@@ -42,7 +42,7 @@ class CharaListAdapter(
                 }
             }
 
-            val action = ViewPagerFragmentDirections
+            val action = BottomNaviFragmentDirections
                 .actionNavViewPagerToNavCharaDetails()
                 .setCharaId(binding.chara!!.charaId)
 

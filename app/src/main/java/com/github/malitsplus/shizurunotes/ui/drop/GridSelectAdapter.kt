@@ -28,6 +28,7 @@ class GridSelectAdapter(
             is InstanceViewHolder -> {
                 with(holder.binding as ItemGridIconBinding){
                     val thisEquipment = itemList[position] as Equipment
+                    root.tag = "equipmentItem${thisEquipment.equipmentId}"
                     iconUrl = thisEquipment.iconUrl
                     sharedEquipment.selectedDrops.value?.let {
                         if (it.contains(thisEquipment)) {
