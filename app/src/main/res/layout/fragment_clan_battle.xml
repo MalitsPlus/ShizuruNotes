@@ -4,10 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="viewModel"
-            type="com.github.malitsplus.shizurunotes.ui.clanbattle.ClanBattleViewModel" />
-
         <import type="com.github.malitsplus.shizurunotes.R" />
     </data>
 

@@ -1,24 +1,41 @@
 package com.github.malitsplus.shizurunotes.ui.base
 
-import androidx.recyclerview.widget.GridLayoutManager
+import android.content.Context
+import androidx.recyclerview.widget.RecyclerView
 import com.github.malitsplus.shizurunotes.R
-import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.AttackPattern
-import com.github.malitsplus.shizurunotes.databinding.ListItemAttackPatternContainerBinding
-import com.github.malitsplus.shizurunotes.ui.charadetails.AttackPatternAdapter
+import com.github.malitsplus.shizurunotes.databinding.ItemHintAttackPatternBinding
+import com.github.malitsplus.shizurunotes.databinding.ListItemAttackPatternBinding
 
-class AttackPatternContainerAdapter : BaseRecyclerAdapter<AttackPattern, ListItemAttackPatternContainerBinding>(
-    R.layout.list_item_attack_pattern_container) {
+class AttackPatternContainerAdapter(
+    private val mContext: Context?
+) : BaseHintAdapter<ListItemAttackPatternBinding, ItemHintAttackPatternBinding>(mContext, R.layout.list_item_attack_pattern, R.layout.item_hint_attack_pattern) {
 
-    override fun onBindViewHolder(holder: VH<ListItemAttackPatternContainerBinding>, position: Int) {
-        with(holder.binding){
-            textAttackPatternNum.text = I18N.getString(R.string.text_attack_pattern).format(position + 1)
-            attackPatternContainerRecycler.apply {
-                layoutManager = GridLayoutManager(context, 6)
-                adapter = AttackPatternAdapter().apply { itemList = this@AttackPatternContainerAdapter.itemList[position].items }
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when(holder) {
+            is HintTextViewHolder -> {
+                with(holder.binding as ItemHintAttackPatternBinding) {
+                    num = itemList[position] as Int
+                    executePendingBindings()
+                }
             }
-            this
+            is InstanceViewHolder -> {
+                with(holder.binding as ListItemAttackPatternBinding) {
+                    patternItem = itemList[position] as AttackPattern.AttackPatternItem
+                    executePendingBindings()
+                }
+            }
         }
     }
 
+    fun initializeItems(attackPatternList: List<AttackPattern>?) {
+        if (attackPatternList != null) {
+            for (i in 1..attackPatternList.size) {
+                itemList.add(i)
+                attackPatternList[i - 1].items.forEach {
+                    itemList.add(it)
+                }
+            }
+        }
+    }
 }

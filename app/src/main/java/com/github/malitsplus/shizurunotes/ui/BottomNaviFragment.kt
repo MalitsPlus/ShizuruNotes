@@ -45,9 +45,8 @@ class BottomNaviFragment : Fragment() {
         val tag = index.toString()
         val transaction = childFragmentManager.beginTransaction()
 
-        val currentFragment = childFragmentManager.findFragmentById(R.id.frame_container)
-        if (currentFragment != null) {
-            transaction.detach(currentFragment)
+        childFragmentManager.findFragmentById(R.id.frame_container)?.let {
+            transaction.detach(it)
         }
 
         var fragment = childFragmentManager.findFragmentByTag(tag)
@@ -58,8 +57,9 @@ class BottomNaviFragment : Fragment() {
             transaction.attach(fragment)
         }
 
-        transaction.setPrimaryNavigationFragment(fragment)
-        transaction.setReorderingAllowed(true)
-        transaction.commit()
+        transaction
+            .setPrimaryNavigationFragment(fragment)
+            .setReorderingAllowed(true)
+            .commit()
     }
 }
