@@ -9,6 +9,7 @@ import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.data.Quest
 import com.github.malitsplus.shizurunotes.databinding.ItemDropEquipmentBinding
+import com.github.malitsplus.shizurunotes.databinding.ItemHintTextBinding
 import com.github.malitsplus.shizurunotes.databinding.ItemQuestDropBinding
 import com.github.malitsplus.shizurunotes.ui.base.BaseHintAdapter
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
@@ -16,11 +17,11 @@ import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
 class DropQuestAdapter(
     private val mContext: Context,
     private val sharedEquipment: SharedViewModelEquipment
-) : BaseHintAdapter<ItemQuestDropBinding>(mContext, R.layout.item_quest_drop) {
+) : BaseHintAdapter<ItemQuestDropBinding, ItemHintTextBinding>(mContext, R.layout.item_quest_drop, R.layout.item_hint_text) {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
             is HintTextViewHolder -> {
-                with(holder.binding) {
+                with(holder.binding as ItemHintTextBinding) {
                     hintText = itemList[position] as String
                     executePendingBindings()
                 }

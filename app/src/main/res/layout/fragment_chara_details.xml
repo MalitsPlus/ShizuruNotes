@@ -64,7 +64,6 @@
             android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#EFEFEF"
             android:clipToPadding="false"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -76,7 +75,6 @@
                     android:id="@+id/detailsItemCharaContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:onClick="@{clickListener}"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -531,9 +529,7 @@
                             app:layout_constraintEnd_toStartOf="@+id/rankSpinner"
                             app:layout_constraintTop_toTopOf="@+id/rankSpinner" />
 
-
                     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
                 </androidx.cardview.widget.CardView>
 
@@ -548,7 +544,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/detailsCharaStatus">
-
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/attackPatternConstraint"

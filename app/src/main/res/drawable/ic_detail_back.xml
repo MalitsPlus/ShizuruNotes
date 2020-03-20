@@ -23,11 +23,11 @@
 
     <path
         android:name="circle"
-        android:fillColor="@color/colorPrimaryTransparent"
+        android:fillColor="?attr/colorPrimary"
         android:pathData="M16,16m-16,0a16,16 0,1 1,32 0a16,16 0,1 1,-32 0"/>
 
     <path
         android:name="arrow"
-        android:fillColor="@color/white"
+        android:fillColor="?attr/colorOnPrimary"
         android:pathData="M20,14.66H10.44l7.45,-7.45L16,5.33l-10.66,10.66 10.66,10.66 1.88,-1.88L10.44,17.33H26.66v-2.66z"/>
 </vector>

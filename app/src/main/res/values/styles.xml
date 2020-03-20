@@ -1,17 +1,24 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+
+        <item name="materialButtonStyle">@style/AppButton</item>
+        <item name="bottomNavigationStyle">@style/AppBottomNavigation</item>
     </style>
 
-    <style name="MyChipChoice" parent="@style/Widget.MaterialComponents.Chip.Choice">
-        <item name="chipBackgroundColor">@color/chip_state_background_color_list</item>
-        <item name="android:textColor">@color/chip_state_text_color_list</item>
-        <item name="android:textSize">16sp</item>
+    <style name="AppButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">?attr/colorAccent</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="AppBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+
     </style>
 
     <style name="expandedToolbarText" parent="AppTheme">

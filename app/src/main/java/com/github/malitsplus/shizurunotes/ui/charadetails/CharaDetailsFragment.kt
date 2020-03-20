@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.TransitionInflater
 import com.github.malitsplus.shizurunotes.R
@@ -19,6 +20,7 @@ import com.github.malitsplus.shizurunotes.databinding.FragmentCharaDetailsBindin
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelCharaFactory
 import com.github.malitsplus.shizurunotes.ui.base.AttackPatternContainerAdapter
+import com.github.malitsplus.shizurunotes.ui.base.BaseHintAdapter
 import org.angmarch.views.OnSpinnerItemSelectedListener
 
 class CharaDetailsFragment : Fragment(), View.OnClickListener {
@@ -85,9 +87,21 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
         }
 
         //攻击顺序
+        val adapterAttackPattern = AttackPatternContainerAdapter(context).apply {
+            initializeItems(detailsViewModel.mutableChara.value?.attackPatternList)
+        }
         binding.attackPatternRecycler.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = AttackPatternContainerAdapter().apply { itemList = detailsViewModel.getChara()!!.attackPatternList }
+            layoutManager = GridLayoutManager(context, 6).apply {
+                spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                    override fun getSpanSize(position: Int): Int {
+                        return when(adapterAttackPattern.getItemViewType(position)) {
+                            BaseHintAdapter.HINT_TEXT -> 6
+                            else -> 1
+                        }
+                    }
+                }
+            }
+            adapter = adapterAttackPattern
         }
 
         //技能 Recycler

@@ -7,20 +7,21 @@ import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.databinding.ItemGridIconBinding
+import com.github.malitsplus.shizurunotes.databinding.ItemHintTextBinding
 import com.github.malitsplus.shizurunotes.ui.base.BaseHintAdapter
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
 
 class GridSelectAdapter(
     private val mContext: Context,
     private val sharedEquipment: SharedViewModelEquipment
-) : BaseHintAdapter<ItemGridIconBinding>(mContext, R.layout.item_grid_icon) {
+) : BaseHintAdapter<ItemGridIconBinding, ItemHintTextBinding>(mContext, R.layout.item_grid_icon, R.layout.item_hint_text) {
 
     private val maxSelectNum = 5
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
             is HintTextViewHolder -> {
-                with(holder.binding) {
+                with(holder.binding as ItemHintTextBinding) {
                     holder.binding.hintText = I18N.getString(R.string.text_drop_rarity).format(itemList[position])
                     executePendingBindings()
                 }

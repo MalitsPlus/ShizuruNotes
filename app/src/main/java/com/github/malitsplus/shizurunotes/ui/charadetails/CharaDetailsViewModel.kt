@@ -29,6 +29,19 @@ class CharaDetailsViewModel(private val sharedViewModelChara: SharedViewModelCha
         return mutableChara.value
     }
 
+    fun getAttackPatternList(): List<Any> {
+        val list = mutableListOf<Any>()
+        mutableChara.value?.let { chara ->
+            for (i in 1..chara.attackPatternList.size) {
+                list.add(i)
+                chara.attackPatternList[i - 1].items.forEach {
+                    list.add(it)
+                }
+            }
+        }
+        return list
+    }
+
     init {
         setChara(sharedViewModelChara.selectedChara)
     }
