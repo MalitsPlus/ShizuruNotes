@@ -14,7 +14,7 @@
         <import type="com.github.malitsplus.shizurunotes.R"/>
     </data>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/clan_battle_phase_boss"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -140,7 +140,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </layout>

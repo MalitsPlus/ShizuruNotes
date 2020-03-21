@@ -24,11 +24,11 @@ class MenuFragment : Fragment() {
                 when(it.id){
                     R.id.constraint_dungeon ->
                         it.findNavController().navigate(
-                            BottomNaviFragmentDirections.actionNavViewPagerToNavDungeon()
+                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavDungeon()
                         )
                     R.id.constraint_setting ->
                         it.findNavController().navigate(
-                            BottomNaviFragmentDirections.actionNavViewPagerToNavSettingContainer()
+                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavSettingContainer()
                         )
                 }
             }

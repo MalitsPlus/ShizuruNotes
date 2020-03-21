@@ -19,9 +19,9 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
+            android:elevation="1dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/toolbar_layout"
@@ -29,7 +29,7 @@
                 android:layout_height="match_parent"
                 android:minHeight="?attr/actionBarSize"
                 app:collapsedTitleGravity="left"
-                app:contentScrim="?attr/colorPrimary"
+                app:contentScrim="@color/toolbarPrimary"
                 app:expandedTitleTextAppearance="@style/expandedToolbarText"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:title="@{detailsVM.mutableChara.unitName, default=unitName}"
@@ -47,7 +47,7 @@
                     bind:errorHolder="@{R.drawable.place_holder_full_error}"
                     bind:placeHolder="@{R.drawable.place_holder_full}" />
 
-                <androidx.appcompat.widget.Toolbar
+                <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
@@ -172,7 +172,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.cardview.widget.CardView
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/detailsCharaStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -209,15 +209,21 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-                        <org.angmarch.views.NiceSpinner
-                            android:id="@+id/rankSpinner"
-                            android:layout_width="56dp"
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/myDropdown"
+                            android:layout_width="100dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
                             android:layout_marginEnd="8dp"
-                            app:hideArrow="true"
+                            android:hint="@string/text_rank"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/rankSpinner"
+                                style="@style/myDropdownAutoText"
+                                android:layout_width="match_parent" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/statusValues"
@@ -519,21 +525,11 @@
                             app:layout_constraintTop_toBottomOf="@+id/statusValues"
                             app:layout_constraintVertical_bias="0.0" />
 
-                        <TextView
-                            android:id="@+id/textRank"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            android:text="@string/text_rank"
-                            app:layout_constraintBottom_toBottomOf="@+id/rankSpinner"
-                            app:layout_constraintEnd_toStartOf="@+id/rankSpinner"
-                            app:layout_constraintTop_toTopOf="@+id/rankSpinner" />
-
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.cardview.widget.CardView
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/attackPattern"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -550,6 +546,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <View
+                            android:id="@+id/divider6"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="?android:attr/listDivider"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/attackPatternRecycler"
                             android:layout_width="match_parent"
@@ -565,7 +572,7 @@
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/skillRecycler"

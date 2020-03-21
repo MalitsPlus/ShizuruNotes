@@ -1,11 +1,32 @@
 package com.github.malitsplus.shizurunotes.utils;
 
+import com.github.malitsplus.shizurunotes.common.Statics;
+
+import org.jetbrains.annotations.NotNull;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class FileUtils {
+
+    public static String getDbDirectoryPath() {
+        return Utils.getApp().getDataDir().getAbsolutePath() + "/databases";
+    }
+
+    public static String getDbFilePath() {
+        return Utils.getApp().getDatabasePath(Statics.DB_FILE_NAME).getAbsolutePath();
+    }
+
+    public static String getCompressedDbFilePath() {
+        return Utils.getApp().getDatabasePath(Statics.DB_FILE_NAME_COMPRESSED).getAbsolutePath();
+    }
+
+    public static String getFileFilePath(String fileName) {
+        return Utils.getApp().getFilesDir().getAbsolutePath() + "/" + fileName;
+    }
+
     /***
      * 单纯的复制文件
      * @param srcPath 源文件路径
@@ -42,24 +63,44 @@ public class FileUtils {
         }
     }
 
-    public static void deleteFile(File file){
+    public static boolean deleteFile(File file) {
+        boolean flag = true;
         try {
-            file.delete();
-        } catch (Exception e){
-            e.printStackTrace();
+            if (!file.delete()) {
+                flag = false;
+                throw new IOException("Failed to delete file: " + file.getAbsolutePath());
+            }
+        } catch (Exception e) {
+            LogUtils.file(LogUtils.E, "FileDelete", e.getMessage());
         }
+        return flag;
+    }
+
+    public static boolean checkFile(@NotNull File file){
+        if (!file.exists()) {
+            LogUtils.file(LogUtils.I, "FileCheck", "FileNotExists: " + file.getAbsolutePath());
+            return false;
+        }
+        return true;
     }
 
     public static boolean checkFile(String filePath){
         File file = new File(filePath);
-        return file.exists();
+        return checkFile(file);
+    }
+
+    public static boolean checkFileAndSize(String filePath, long border) {
+        File file = new File(filePath);
+        if (!checkFile(file)) return false;
+        if (file.length() < border * 1024) {
+            LogUtils.file(LogUtils.I, "FileCheck", "AbnormalDbFileSize: " + file.length() / 1024 + "KB." + " At: " + file.getAbsolutePath());
+            return false;
+        }
+        return true;
     }
 
     public static void checkFileAndDeleteIfExists(File file){
         if (file.exists()) deleteFile(file);
     }
 
-    public static void saveToInternalFile(String path, String file) {
-
-    }
 }

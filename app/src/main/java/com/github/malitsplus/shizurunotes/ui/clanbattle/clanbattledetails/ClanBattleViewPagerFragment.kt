@@ -26,7 +26,7 @@ class ClanBattleViewPagerFragment : Fragment() {
     ): View? {
         val binding = FragmentClanBattleViewPagerBinding.inflate(inflater, container, false)
 
-        sharedViewModel = ViewModelProvider(activity!!).get(SharedViewModelClanBattle::class.java)
+        sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModelClanBattle::class.java)
         period = sharedViewModel.selectedPeriod!!
 
         val tabLayout = binding.clanBattleViewPagerTab

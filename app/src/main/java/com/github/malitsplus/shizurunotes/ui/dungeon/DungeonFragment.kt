@@ -20,7 +20,7 @@ class DungeonFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedClanBattle = ViewModelProvider(activity!!)[SharedViewModelClanBattle::class.java].apply {
+        sharedClanBattle = ViewModelProvider(requireActivity())[SharedViewModelClanBattle::class.java].apply {
             loadDungeon()
         }
     }

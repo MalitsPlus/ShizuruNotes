@@ -24,7 +24,7 @@ class ClanBattleDetailsFragment(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedClanBattle = ViewModelProvider(activity!!)[SharedViewModelClanBattle::class.java]
+        sharedClanBattle = ViewModelProvider(requireActivity())[SharedViewModelClanBattle::class.java]
     }
 
     override fun onCreateView(

@@ -16,6 +16,7 @@ import com.github.malitsplus.shizurunotes.databinding.FragmentDropBinding
 import com.github.malitsplus.shizurunotes.ui.BottomNaviFragmentDirections
 import com.github.malitsplus.shizurunotes.ui.base.BaseHintAdapter
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
+import com.github.malitsplus.shizurunotes.utils.LogUtils
 
 class DropFragment : Fragment() {
 
@@ -27,7 +28,7 @@ class DropFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedEquipment = ViewModelProvider(activity!!)[SharedViewModelEquipment::class.java]
+        sharedEquipment = ViewModelProvider(requireActivity())[SharedViewModelEquipment::class.java]
         dropVM = ViewModelProvider(this)[DropViewModel::class.java]
     }
 
@@ -36,7 +37,7 @@ class DropFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        mAdapter = GridSelectAdapter(activity!!.applicationContext, sharedEquipment)
+        mAdapter = GridSelectAdapter(requireContext(), sharedEquipment)
         val mLayoutManager = GridLayoutManager(context, maxSpanNum).apply {
             spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int {
@@ -90,7 +91,7 @@ class DropFragment : Fragment() {
                     }
                     UserSettings.get().lastEquipmentIds = idList
                 }
-                view.findNavController().navigate(BottomNaviFragmentDirections.actionNavViewPagerToNavDropQuest())
+                view.findNavController().navigate(BottomNaviFragmentDirections.actionNavBottomNavigationToNavDropQuest())
             }
         }
     }
@@ -108,7 +109,7 @@ class DropFragment : Fragment() {
                                     sharedEquipment.selectedDrops.value?.add(item)
                                     val vh = binding.dropRecycler.findViewHolderForAdapterPosition(mAdapter.itemList.indexOf(item))
                                     vh?.let {
-                                        (vh as BaseHintAdapter.InstanceViewHolder).binding.root.background = context!!.getDrawable(R.drawable.color_selected_background)
+                                        (vh as BaseHintAdapter.InstanceViewHolder).binding.root.background = requireContext().getDrawable(R.drawable.color_selected_background)
                                     }
                                     break
                                 }
@@ -128,7 +129,7 @@ class DropFragment : Fragment() {
 
     private fun clearRecyclerView() {
         binding.dropRecycler.children.forEach {
-            it.background = context!!.getDrawable(R.drawable.color_unselected_background)
+            it.background = requireContext().getDrawable(R.drawable.color_unselected_background)
         }
         sharedEquipment.selectedDrops.value?.clear()
     }

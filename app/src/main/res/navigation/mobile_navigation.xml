@@ -12,7 +12,7 @@
         android:label="fragment_bottom_navigation"
         tools:layout="@layout/fragment_bottom_navigation">
         <action
-            android:id="@+id/action_nav_view_pager_to_nav_chara_details"
+            android:id="@+id/action_nav_bottom_navigation_to_nav_chara_details"
             app:destination="@id/nav_chara_details"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out"
@@ -24,28 +24,28 @@
                 app:argType="integer" />
         </action>
         <action
-            android:id="@+id/action_nav_view_pager_to_nav_clan_battle_details"
+            android:id="@+id/action_nav_bottom_navigation_to_nav_clan_battle_details"
             app:destination="@id/nav_clan_battle_view_pager"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_nav_view_pager_to_nav_setting_container"
+            android:id="@+id/action_nav_bottom_navigation_to_nav_setting_container"
             app:destination="@id/nav_setting_container"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_nav_view_pager_to_nav_dungeon"
+            android:id="@+id/action_nav_bottom_navigation_to_nav_dungeon"
             app:destination="@id/nav_dungeon"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_nav_view_pager_to_nav_drop_quest"
+            android:id="@+id/action_nav_bottom_navigation_to_nav_drop_quest"
             app:destination="@id/nav_drop_quest"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"

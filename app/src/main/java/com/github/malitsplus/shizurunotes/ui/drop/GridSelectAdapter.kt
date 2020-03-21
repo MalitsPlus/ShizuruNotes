@@ -33,17 +33,17 @@ class GridSelectAdapter(
                     iconUrl = thisEquipment.iconUrl
                     sharedEquipment.selectedDrops.value?.let {
                         if (it.contains(thisEquipment)) {
-                            setItemStatus(this, true)
+                            setItemStatus(root, true)
                         } else {
-                            setItemStatus(this, false)
+                            setItemStatus(root, false)
                         }
-                        clickListener = View.OnClickListener { _ ->
+                        clickListener = View.OnClickListener { v ->
                             if (it.contains(thisEquipment)) {
                                 it.remove(thisEquipment)
-                                setItemStatus(this, false)
+                                setItemStatus(v, false)
                             } else if (it.size < maxSelectNum){
                                 it.add(thisEquipment)
-                                setItemStatus(this, true)
+                                setItemStatus(v, true)
                             }
                         }
                     }
@@ -53,8 +53,8 @@ class GridSelectAdapter(
         }
     }
 
-    private fun setItemStatus(binding: ItemGridIconBinding, selected: Boolean) {
-        binding.itemGridContainer.background = if (selected) {
+    private fun setItemStatus(view: View, selected: Boolean) {
+        view.background = if (selected) {
             mContext.getDrawable(R.drawable.color_selected_background)
         } else {
             mContext.getDrawable(R.drawable.color_unselected_background)

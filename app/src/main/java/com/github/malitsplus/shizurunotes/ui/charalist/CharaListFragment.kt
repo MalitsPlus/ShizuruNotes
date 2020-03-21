@@ -16,6 +16,7 @@ import com.github.malitsplus.shizurunotes.databinding.FragmentCharaListBinding
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelCharaFactory
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
+import com.github.malitsplus.shizurunotes.utils.LogUtils
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -28,8 +29,8 @@ class CharaListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedChara = ViewModelProvider(activity!!)[SharedViewModelChara::class.java]
-        sharedEquipment = ViewModelProvider(activity!!)[SharedViewModelEquipment::class.java]
+        sharedChara = ViewModelProvider(requireActivity())[SharedViewModelChara::class.java]
+        sharedEquipment = ViewModelProvider(requireActivity())[SharedViewModelEquipment::class.java]
         charaListViewModel = ViewModelProvider(this, SharedViewModelCharaFactory(sharedChara))[CharaListViewModel::class.java]
     }
 
@@ -58,7 +59,6 @@ class CharaListFragment : Fragment() {
         }
         setDropdownText(binding)
         setObserver(binding)
-
         return binding.root
     }
 
@@ -107,7 +107,7 @@ class CharaListFragment : Fragment() {
                 }
                 setAdapter(
                     MaterialSpinnerAdapter(
-                        this@CharaListFragment.context!!,
+                        this@CharaListFragment.requireContext(),
                         R.layout.dropdown_item_chara_list,
                         charaListViewModel.attackTypeMap.values.toTypedArray<String>()
                     )
@@ -120,7 +120,7 @@ class CharaListFragment : Fragment() {
                 }
                 setAdapter(
                     MaterialSpinnerAdapter(
-                        this@CharaListFragment.context!!,
+                        this@CharaListFragment.requireContext(),
                         R.layout.dropdown_item_chara_list,
                         charaListViewModel.positionMap.values.toTypedArray<String>()
                     )
@@ -140,7 +140,7 @@ class CharaListFragment : Fragment() {
                 }
                 setAdapter(
                     MaterialSpinnerAdapter(
-                        this@CharaListFragment.context!!,
+                        this@CharaListFragment.requireContext(),
                         R.layout.dropdown_item_chara_list,
                         charaListViewModel.sortMap.values.toTypedArray<String>()
                     )

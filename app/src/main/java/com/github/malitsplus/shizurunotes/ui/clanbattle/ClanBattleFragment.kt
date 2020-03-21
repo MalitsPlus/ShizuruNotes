@@ -21,7 +21,7 @@ class ClanBattleFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedClanBattle = ViewModelProvider(activity!!)[SharedViewModelClanBattle::class.java]
+        sharedClanBattle = ViewModelProvider(requireActivity())[SharedViewModelClanBattle::class.java]
     }
 
     override fun onCreateView(
@@ -35,7 +35,7 @@ class ClanBattleFragment : Fragment() {
                 inflater, R.layout.fragment_clan_battle, container, false
             ).apply{
                 lifecycleOwner = viewLifecycleOwner
-                adapter = ClanBattleAdapter(context!!, sharedClanBattle)
+                adapter = ClanBattleAdapter(requireContext(), sharedClanBattle)
                 clanBattleListRecycler.layoutManager = LinearLayoutManager(context)
                 clanBattleListRecycler.adapter = adapter
                 clanBattleListRecycler.setHasFixedSize(true)
