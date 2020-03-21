@@ -189,6 +189,7 @@
     <string name="text_condition_or">ワンヒット</string>
     <string name="icon_before">前回の選択</string>
     <string name="icon_cancel_all">クリア</string>
+    <string name="space_modifier">&#160;&#160;%s&#160;&#160;</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>

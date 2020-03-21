@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -21,7 +22,7 @@ import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelCharaFactory
 import com.github.malitsplus.shizurunotes.ui.base.AttackPatternContainerAdapter
 import com.github.malitsplus.shizurunotes.ui.base.BaseHintAdapter
-import org.angmarch.views.OnSpinnerItemSelectedListener
+import com.github.malitsplus.shizurunotes.ui.base.MaterialSpinnerAdapter
 
 class CharaDetailsFragment : Fragment(), View.OnClickListener {
 
@@ -32,7 +33,7 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedChara = ViewModelProvider(activity!!).get(SharedViewModelChara::class.java)
+        sharedChara = ViewModelProvider(requireActivity()).get(SharedViewModelChara::class.java)
 
         sharedElementEnterTransition =
             TransitionInflater.from(context)
@@ -70,12 +71,23 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
                 view.findNavController().navigateUp()
             }
 
-            val rankList: List<Int> = detailsViewModel.getChara()!!.promotionStatus.keys.toList()
+            var rankList: List<Int> = listOf()
+            detailsViewModel.getChara()?.let {
+                rankList = it.promotionStatus.keys.toList()
+            }
+
             rankSpinner.apply {
-                attachDataSource(rankList)
-                onSpinnerItemSelectedListener = OnSpinnerItemSelectedListener { parent, _, position, _ ->
-                    detailsViewModel.changeRank(parent.getItemAtPosition(position).toString())
+                onItemClickListener = AdapterView.OnItemClickListener { _, _, position: Int, _ ->
+                    detailsViewModel.changeRank(adapter.getItem(position).toString())
                 }
+                setAdapter(
+                    MaterialSpinnerAdapter(
+                        this@CharaDetailsFragment.requireContext(),
+                        R.layout.dropdown_item_chara_list,
+                        rankList.toTypedArray()
+                    )
+                )
+                setText(rankList[0].toString())
             }
 
             if (sharedChara.backFlag)

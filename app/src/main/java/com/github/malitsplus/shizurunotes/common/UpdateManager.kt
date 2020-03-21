@@ -1,5 +1,6 @@
 package com.github.malitsplus.shizurunotes.common
 
+import android.app.Application
 import android.app.DownloadManager
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -17,6 +18,7 @@ import com.github.malitsplus.shizurunotes.user.UserSettings
 import com.github.malitsplus.shizurunotes.utils.BrotliUtils
 import com.github.malitsplus.shizurunotes.utils.FileUtils
 import com.github.malitsplus.shizurunotes.utils.JsonUtils
+import com.github.malitsplus.shizurunotes.utils.LogUtils
 import okhttp3.*
 import org.json.JSONObject
 import java.io.File
@@ -37,9 +39,7 @@ class UpdateManager private constructor(
         private const val UPDATE_DOWNLOAD_COMPLETED = 4
         private const val UPDATE_COMPLETED = 5
         private const val UPDATE_DOWNLOAD_CANCELED = 6
-
         private const val APP_UPDATE_CHECK_COMPLETED = 11
-
         private lateinit var updateManager: UpdateManager
 
         fun with(context: Context): UpdateManager{
@@ -54,7 +54,6 @@ class UpdateManager private constructor(
 
     private var appHasNewVersion = false
     private var appVersionJsonInstance: AppVersionJson? = null
-
     private var serverVersion = 0
     private var progress = 0
     private var hasNewVersion = false
@@ -99,6 +98,7 @@ class UpdateManager private constructor(
              */
             override fun dbCheckUpdateCompleted(hasUpdate: Boolean, updateInfo: CharSequence?) {
                 if (hasUpdate) {
+                    LogUtils.file(LogUtils.I, "new db version$serverVersion determined.")
                     MaterialDialog(mContext, MaterialDialog.DEFAULT_BEHAVIOR)
                         .title(res = R.string.db_update_dialog_title)
                         .message(res = R.string.db_update_dialog_text)
@@ -134,6 +134,7 @@ class UpdateManager private constructor(
              * 数据库下载完成
              */
             override fun dbDownloadCompleted(success: Boolean, errorMsg: CharSequence?) {
+                LogUtils.file(LogUtils.I, "DB download finished.")
                 progressDialog?.message(R.string.db_update_download_finished_text, null, null)
             }
 
@@ -141,6 +142,7 @@ class UpdateManager private constructor(
              * 数据库更新整个流程结束
              */
             override fun dbUpdateCompleted() {
+                LogUtils.file(LogUtils.I, "DB update finished.")
                 UserSettings.get().preference.edit().putInt("dbVersion", serverVersion).apply()
                 progressDialog?.cancel()
                 iActivityCallBack?.showSnackBar(R.string.db_update_finished_text)
@@ -191,8 +193,8 @@ class UpdateManager private constructor(
                             appHasNewVersion = true
                         }
                     }
-                } catch (ex: Exception) {
-                    ex.printStackTrace()
+                } catch (e: Exception) {
+                    LogUtils.file(LogUtils.E, "checkAppVersion", e.message)
                     iActivityCallBack?.showSnackBar(R.string.app_update_check_failed)
                 } finally {
                     updateHandler.sendEmptyMessage(APP_UPDATE_CHECK_COMPLETED)
@@ -202,6 +204,7 @@ class UpdateManager private constructor(
     }
 
     fun checkDatabaseVersion(forceDownload: Boolean) {
+        LogUtils.file(LogUtils.I, "start check db version.")
         val client = OkHttpClient()
         val request = Request.Builder()
             .url(Statics.LAST_VERSION_URL)
@@ -226,8 +229,8 @@ class UpdateManager private constructor(
                         serverVersion != UserSettings.get().preference.getInt("dbVersion", 0)
                     }
                     updateHandler.sendEmptyMessage(UPDATE_CHECK_COMPLETED)
-                } catch (ex: Exception) {
-                    ex.printStackTrace()
+                } catch (e: Exception) {
+                    LogUtils.file(LogUtils.E, "checkDatabaseVersion", e.message)
                     updateHandler.sendEmptyMessage(UPDATE_DOWNLOAD_ERROR)
                 }
             }
@@ -276,6 +279,7 @@ class UpdateManager private constructor(
     }
 
     fun downloadDB() {
+        LogUtils.file(LogUtils.I, "start download DB ver$serverVersion.")
         progressDialog = MaterialDialog(mContext, MaterialDialog.DEFAULT_BEHAVIOR).apply {
             this.title(R.string.db_update_progress_title, null)
             .message(R.string.db_update_progress_text, null, null)
@@ -287,11 +291,13 @@ class UpdateManager private constructor(
                 val conn = URL(Statics.DB_FILE_URL).openConnection() as HttpURLConnection
                 maxLength = conn.contentLength
                 val inputStream = conn.inputStream
-                if (!File(Statics.DB_PATH).exists()) {
-                    if (!File(Statics.DB_PATH).mkdirs()) throw Exception("Cannot create DB path.")
+                if (!File(FileUtils.getDbDirectoryPath()).exists()) {
+                    if (!File(FileUtils.getDbDirectoryPath()).mkdirs()) throw Exception("Cannot create DB path.")
                 }
-                val compressedFile = File(Statics.DB_PATH, Statics.DB_FILE_COMPRESSED)
-                if (compressedFile.exists()) FileUtils.deleteFile(compressedFile)
+                val compressedFile = File(FileUtils.getCompressedDbFilePath())
+                if (compressedFile.exists()) {
+                    FileUtils.deleteFile(compressedFile)
+                }
                 val fileOutputStream = FileOutputStream(compressedFile)
                 var totalDownload = 0
                 val buf = ByteArray(1024 * 1024)
@@ -311,14 +317,15 @@ class UpdateManager private constructor(
                 fileOutputStream.close()
                 iActivityCallBack?.dbDownloadFinished()
             } catch (e: Exception) {
-                e.printStackTrace()
+                LogUtils.file(LogUtils.E, "downloadDB", e.message)
                 updateHandler.sendEmptyMessage(UPDATE_DOWNLOAD_ERROR)
             }
         }
     }
 
     fun doDecompress(){
-        BrotliUtils.deCompress(Statics.DB_PATH + Statics.DB_FILE_COMPRESSED, true)
+        LogUtils.file(LogUtils.I, "start decompress DB.")
+        BrotliUtils.deCompress(FileUtils.getCompressedDbFilePath(), true)
         updateHandler.sendEmptyMessage(UPDATE_COMPLETED)
     }
 

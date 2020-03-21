@@ -29,7 +29,7 @@ class ClanBattleBossDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val sharedClanBattle = ViewModelProvider(activity!!).get(SharedViewModelClanBattle::class.java)
+        val sharedClanBattle = ViewModelProvider(requireActivity()).get(SharedViewModelClanBattle::class.java)
 //        val detailsVM = ViewModelProvider(this, SharedViewModelClanBattleFactory(sharedClanBattle))[ClanBattleDetailsViewModel::class.java]
         val binding = DataBindingUtil.inflate<FragmentClanBattleBossDetailsBinding>(
             inflater,

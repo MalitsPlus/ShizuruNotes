@@ -43,7 +43,7 @@ class CharaListAdapter(
             }
 
             val action = BottomNaviFragmentDirections
-                .actionNavViewPagerToNavCharaDetails()
+                .actionNavBottomNavigationToNavCharaDetails()
                 .setCharaId(binding.chara!!.charaId)
 
             v.findNavController().navigate(action, extras)

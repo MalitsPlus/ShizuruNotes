@@ -1,11 +1,8 @@
 package com.github.malitsplus.shizurunotes.common;
 
-import com.github.malitsplus.shizurunotes.BuildConfig;
-
 public class Statics {
-    public static final String DB_PATH = "data/data/" + BuildConfig.APPLICATION_ID + "/databases/";
-    public static final String DB_FILE_COMPRESSED = "redive_jp.db.br";
-    public static final String DB_FILE = "redive_jp.db";
+    public static final String DB_FILE_NAME_COMPRESSED = "redive_jp.db.br";
+    public static final String DB_FILE_NAME = "redive_jp.db";
 
     public static final String API_URL = "https://redive.estertion.win";
     public static final String LAST_VERSION_URL = API_URL + "/last_version_jp.json";

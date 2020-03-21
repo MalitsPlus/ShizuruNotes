@@ -6,7 +6,9 @@ import android.content.SharedPreferences;
 
 import androidx.preference.PreferenceManager;
 
+import com.github.malitsplus.shizurunotes.utils.FileUtils;
 import com.github.malitsplus.shizurunotes.utils.JsonUtils;
+import com.github.malitsplus.shizurunotes.utils.LogUtils;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -74,23 +76,25 @@ public class UserSettings {
             try (FileOutputStream fos = application.openFileOutput(userDataFileName, Context.MODE_PRIVATE)) {
                 fos.write(json.getBytes());
             } catch (IOException e) {
-                e.printStackTrace();
+                LogUtils.file(LogUtils.E, "SaveUserJson", e.getMessage(), e.getStackTrace());
             }
         }).start();
     }
 
     private String getJson() {
         StringBuilder stringBuilder = new StringBuilder();
-        try (FileInputStream fis = application.openFileInput(userDataFileName)) {
-            InputStreamReader inputStreamReader = new InputStreamReader(fis, StandardCharsets.UTF_8);
-            BufferedReader reader = new BufferedReader(inputStreamReader);
-            String line = reader.readLine();
-            while (line != null) {
-                stringBuilder.append(line).append('\n');
-                line = reader.readLine();
+        if (FileUtils.checkFile(FileUtils.getFileFilePath(userDataFileName))) {
+            try (FileInputStream fis = application.openFileInput(userDataFileName)) {
+                InputStreamReader inputStreamReader = new InputStreamReader(fis, StandardCharsets.UTF_8);
+                BufferedReader reader = new BufferedReader(inputStreamReader);
+                String line = reader.readLine();
+                while (line != null) {
+                    stringBuilder.append(line).append('\n');
+                    line = reader.readLine();
+                }
+            } catch (IOException e) {
+                LogUtils.file(LogUtils.E, "GetUserJson", e.getMessage(), e.getStackTrace());
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         return stringBuilder.toString();
     }
