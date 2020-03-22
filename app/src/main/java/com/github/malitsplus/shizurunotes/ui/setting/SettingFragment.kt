@@ -78,6 +78,15 @@ class SettingFragment : PreferenceFragmentCompat() {
             }
         }
 
+        //日志
+        findPreference<Preference>("log")?.apply {
+            onPreferenceClickListener = Preference.OnPreferenceClickListener {
+                val action = SettingContainerFragmentDirections.actionNavSettingContainerToNavLog()
+                findNavController().navigate(action)
+                true
+            }
+        }
+
         //关于
         findPreference<Preference>("about")?.apply {
             onPreferenceClickListener = Preference.OnPreferenceClickListener {

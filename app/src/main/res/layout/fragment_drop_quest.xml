@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:navigationIcon="@drawable/ic_detail_back"
-                app:title="@string/title_equipment_drop" />
+                app:title="@string/title_quest" />
 
         </com.google.android.material.appbar.AppBarLayout>
 

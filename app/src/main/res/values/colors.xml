@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="purple_200">#bb86fc</color>
+    <color name="purple_200_alpha">#b4bb86fc</color>
     <color name="purple_300">#9c4dcc</color> <!--Color primary (dark)-->
     <color name="purple_300_alpha">#b49c4dcc</color>
     <color name="purple_500">#6200ee</color> <!--Color primary (light)-->
@@ -8,7 +10,8 @@
     <color name="green_200">#03dac6</color> <!--Color secondary-->
     <color name="green_500">#018786</color> <!--Color secondary variant-->
     <color name="red_200">#cf6679</color> <!--Color error (dark)-->
-    <color name="red_200_alpha">#b4cf6679</color> <!--Color error (light)-->
+    <color name="red_200_alpha">#a4cf6679</color> <!--Color error (light)-->
+    <color name="red_500">#cf6679</color>
     <!--Color surface (light), color on error (light), -->
     <!--color on surface (dark), color on surface (dark)-->
     <color name="white_50">#ffffff</color>
@@ -19,8 +22,8 @@
     <!--color on surface (light)-->
     <color name="black_900">#000000</color>
     <color name="textPrimary">#B8B8B8</color>
-    <color name="toolbarPrimary">#282828</color>
-    <color name="toolbarPrimaryAlpha">#B4282828</color>
+    <color name="toolbarPrimary">#313131</color>
+    <color name="toolbarPrimaryAlpha">#B4313131</color>
 
     <color name="colorCustom">#b4686868</color>
     <color name="colorOnCustom">#d4ffffff</color>

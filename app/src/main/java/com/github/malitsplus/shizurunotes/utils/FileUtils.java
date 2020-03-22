@@ -102,5 +102,4 @@ public class FileUtils {
     public static void checkFileAndDeleteIfExists(File file){
         if (file.exists()) deleteFile(file);
     }
-
 }
