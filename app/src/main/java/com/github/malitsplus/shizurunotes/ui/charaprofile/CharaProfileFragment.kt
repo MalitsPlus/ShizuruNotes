@@ -18,7 +18,7 @@ class CharaProfileFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedChara = ViewModelProvider(activity!!).get(SharedViewModelChara::class.java)
+        sharedChara = ViewModelProvider(requireActivity()).get(SharedViewModelChara::class.java)
     }
 
     override fun onCreateView(

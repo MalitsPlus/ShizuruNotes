@@ -211,31 +211,31 @@ enum PatternType{
     public String description(){
         switch (this){
             case hit:
-                return I18N.getString(R.string.hit);
+                return I18N.getStringWithSpace(R.string.hit);
             case main1:
-                return I18N.getString(R.string.main_skill_1);
+                return I18N.getStringWithSpace(R.string.main_skill_1);
             case main2:
-                return I18N.getString(R.string.main_skill_2);
+                return I18N.getStringWithSpace(R.string.main_skill_2);
             case main3:
-                return I18N.getString(R.string.main_skill_3);
+                return I18N.getStringWithSpace(R.string.main_skill_3);
             case main4:
-                return I18N.getString(R.string.main_skill_4);
+                return I18N.getStringWithSpace(R.string.main_skill_4);
             case main5:
-                return I18N.getString(R.string.main_skill_5);
+                return I18N.getStringWithSpace(R.string.main_skill_5);
             case main6:
-                return I18N.getString(R.string.main_skill_6);
+                return I18N.getStringWithSpace(R.string.main_skill_6);
             case main7:
-                return I18N.getString(R.string.main_skill_7);
+                return I18N.getStringWithSpace(R.string.main_skill_7);
             case sp1:
-                return I18N.getString(R.string.sp_skill_1);
+                return I18N.getStringWithSpace(R.string.sp_skill_1);
             case sp2:
-                return I18N.getString(R.string.sp_skill_2);
+                return I18N.getStringWithSpace(R.string.sp_skill_2);
             case sp3:
-                return I18N.getString(R.string.sp_skill_3);
+                return I18N.getStringWithSpace(R.string.sp_skill_3);
             case sp4:
-                return I18N.getString(R.string.sp_skill_4);
+                return I18N.getStringWithSpace(R.string.sp_skill_4);
             case sp5:
-                return I18N.getString(R.string.sp_skill_5);
+                return I18N.getStringWithSpace(R.string.sp_skill_5);
             default:
                 return "";
         }

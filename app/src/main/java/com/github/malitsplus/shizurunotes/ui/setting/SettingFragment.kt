@@ -63,7 +63,7 @@ class SettingFragment : PreferenceFragmentCompat() {
             }
         }
 
-        //数据库版本
+        //重下数据库
         findPreference<Preference>("reDownloadDb")?.apply {
             onPreferenceClickListener = Preference.OnPreferenceClickListener {
                 it.isEnabled = false
@@ -74,6 +74,15 @@ class SettingFragment : PreferenceFragmentCompat() {
                         it.isEnabled = true
                     }
                 }
+                true
+            }
+        }
+
+        //日志
+        findPreference<Preference>("log")?.apply {
+            onPreferenceClickListener = Preference.OnPreferenceClickListener {
+                val action = SettingContainerFragmentDirections.actionNavSettingContainerToNavLog()
+                findNavController().navigate(action)
                 true
             }
         }
@@ -93,7 +102,7 @@ class SettingFragment : PreferenceFragmentCompat() {
             languagePreference.onPreferenceChangeListener =
                 Preference.OnPreferenceChangeListener { _: Preference?, newValue: Any? ->
                     App.localeManager.setNewLocale(
-                        activity!!.application,
+                        requireActivity().application,
                         newValue as String?
                     )
                     thread(start = true){

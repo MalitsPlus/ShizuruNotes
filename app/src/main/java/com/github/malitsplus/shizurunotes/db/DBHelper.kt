@@ -2,19 +2,20 @@ package com.github.malitsplus.shizurunotes.db
 
 import android.annotation.SuppressLint
 import android.app.Application
-import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
-import android.database.sqlite.SQLiteDatabase.CursorFactory
 import android.database.sqlite.SQLiteOpenHelper
 import android.text.TextUtils
 import com.github.malitsplus.shizurunotes.utils.FileUtils
 import com.github.malitsplus.shizurunotes.common.Statics
+import com.github.malitsplus.shizurunotes.utils.LogUtils
 import com.github.malitsplus.shizurunotes.utils.Utils
 import java.util.*
 import kotlin.collections.ArrayList
 
-class DBHelper : SQLiteOpenHelper {
+class DBHelper private constructor(
+    val application: Application
+) : SQLiteOpenHelper(application, Statics.DB_FILE_NAME, null, DB_VERSION) {
 
     companion object {
         const val DB_VERSION = 1
@@ -32,20 +33,6 @@ class DBHelper : SQLiteOpenHelper {
         @JvmStatic
         fun get(): DBHelper = instance
     }
-
-    private constructor(application: Application?) : super(
-        application,
-        Statics.DB_FILE,
-        null,
-        DB_VERSION
-    )
-
-    private constructor(
-        context: Context?,
-        name: String?,
-        factory: CursorFactory?,
-        version: Int
-    ) : super(context, name, factory, version)
 
     override fun onCreate(db: SQLiteDatabase) {}
 
@@ -127,7 +114,7 @@ class DBHelper : SQLiteOpenHelper {
         key: String?,
         keyValue: List<String>?
     ): Cursor? {
-        if (!FileUtils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
+        if (!FileUtils.checkFile(FileUtils.getDbFilePath())) return null
         val db = readableDatabase ?: return null
         return if (key == null || keyValue == null || keyValue.isEmpty()) {
             db.rawQuery("SELECT * FROM $tableName ", null)
@@ -238,14 +225,14 @@ class DBHelper : SQLiteOpenHelper {
         sql: String?,
         theClass: Class<*>
     ): T? {
-        if (!FileUtils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
+        if (!FileUtils.checkFile(FileUtils.getDbFilePath())) return null
         try {
             val cursor =
                 readableDatabase.rawQuery(sql, null) ?: return null
             val data: List<T>? = cursor2List(cursor, theClass)
             return if (data?.isNotEmpty() == true) data[0] else null
         } catch (e: Exception) {
-            e.printStackTrace()
+            LogUtils.file(LogUtils.E, "getBeanByRaw", e.message, e.stackTrace)
             return null
         }
     }
@@ -280,13 +267,13 @@ class DBHelper : SQLiteOpenHelper {
         sql: String?,
         theClass: Class<*>
     ): List<T>? {
-        if (!FileUtils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
+        if (!FileUtils.checkFile(FileUtils.getDbFilePath())) return null
         try {
             val cursor =
                 readableDatabase.rawQuery(sql, null) ?: return null
             return cursor2List(cursor, theClass)
         } catch (e: Exception) {
-            e.printStackTrace()
+            LogUtils.file(LogUtils.E, "getBeanListByRaw", e.message, e.stackTrace)
             return null
         }
     }
@@ -334,7 +321,7 @@ class DBHelper : SQLiteOpenHelper {
      * @return
      */
     private fun getOne(sql: String?): String? {
-        if (!FileUtils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
+        if (!FileUtils.checkFile(FileUtils.getDbFilePath())) return null
         val cursor = readableDatabase.rawQuery(sql, null)
         cursor.moveToNext()
         val result = cursor.getString(0)
@@ -352,7 +339,7 @@ class DBHelper : SQLiteOpenHelper {
         key: String?,
         value: String?
     ): Map<Int, String>? {
-        if (!FileUtils.checkFile(Statics.DB_PATH + Statics.DB_FILE)) return null
+        if (!FileUtils.checkFile(FileUtils.getDbFilePath())) return null
         val cursor = readableDatabase.rawQuery(sql, null)
         val result: MutableMap<Int, String> =
             HashMap()

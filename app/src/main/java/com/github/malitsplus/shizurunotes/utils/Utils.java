@@ -1,9 +1,11 @@
 package com.github.malitsplus.shizurunotes.utils;
 
+import android.app.Application;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
 
+import com.github.malitsplus.shizurunotes.common.Statics;
 import com.github.malitsplus.shizurunotes.data.Chara;
 
 import java.io.File;
@@ -16,6 +18,15 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Utils {
+
+    private static Application app;
+    public static void setApp(Application application) {
+        Utils.app = application;
+    }
+    public static Application getApp() {
+        return app;
+    }
+
     /***
      * 以逗号分隔字符串
      * @param list
@@ -60,5 +71,9 @@ public class Utils {
     }
     public static String roundDouble(double value){
         return format.format(Math.round(value));
+    }
+
+    public static String getCurrentProcessName() {
+        return Thread.currentThread().getName();
     }
 }

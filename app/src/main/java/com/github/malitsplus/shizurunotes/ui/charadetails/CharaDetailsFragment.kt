@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.TransitionInflater
 import com.github.malitsplus.shizurunotes.R
@@ -19,7 +21,8 @@ import com.github.malitsplus.shizurunotes.databinding.FragmentCharaDetailsBindin
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelCharaFactory
 import com.github.malitsplus.shizurunotes.ui.base.AttackPatternContainerAdapter
-import org.angmarch.views.OnSpinnerItemSelectedListener
+import com.github.malitsplus.shizurunotes.ui.base.BaseHintAdapter
+import com.github.malitsplus.shizurunotes.ui.base.MaterialSpinnerAdapter
 
 class CharaDetailsFragment : Fragment(), View.OnClickListener {
 
@@ -30,7 +33,7 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedChara = ViewModelProvider(activity!!).get(SharedViewModelChara::class.java)
+        sharedChara = ViewModelProvider(requireActivity()).get(SharedViewModelChara::class.java)
 
         sharedElementEnterTransition =
             TransitionInflater.from(context)
@@ -68,12 +71,23 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
                 view.findNavController().navigateUp()
             }
 
-            val rankList: List<Int> = detailsViewModel.getChara()!!.promotionStatus.keys.toList()
+            var rankList: List<Int> = listOf()
+            detailsViewModel.getChara()?.let {
+                rankList = it.promotionStatus.keys.toList()
+            }
+
             rankSpinner.apply {
-                attachDataSource(rankList)
-                onSpinnerItemSelectedListener = OnSpinnerItemSelectedListener { parent, _, position, _ ->
-                    detailsViewModel.changeRank(parent.getItemAtPosition(position).toString())
+                onItemClickListener = AdapterView.OnItemClickListener { _, _, position: Int, _ ->
+                    detailsViewModel.changeRank(adapter.getItem(position).toString())
                 }
+                setAdapter(
+                    MaterialSpinnerAdapter(
+                        this@CharaDetailsFragment.requireContext(),
+                        R.layout.dropdown_item_chara_list,
+                        rankList.toTypedArray()
+                    )
+                )
+                setText(rankList[0].toString())
             }
 
             if (sharedChara.backFlag)
@@ -85,9 +99,21 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
         }
 
         //攻击顺序
+        val adapterAttackPattern = AttackPatternContainerAdapter(context).apply {
+            initializeItems(detailsViewModel.mutableChara.value?.attackPatternList)
+        }
         binding.attackPatternRecycler.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = AttackPatternContainerAdapter().apply { itemList = detailsViewModel.getChara()!!.attackPatternList }
+            layoutManager = GridLayoutManager(context, 6).apply {
+                spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                    override fun getSpanSize(position: Int): Int {
+                        return when(adapterAttackPattern.getItemViewType(position)) {
+                            BaseHintAdapter.HINT_TEXT -> 6
+                            else -> 1
+                        }
+                    }
+                }
+            }
+            adapter = adapterAttackPattern
         }
 
         //技能 Recycler

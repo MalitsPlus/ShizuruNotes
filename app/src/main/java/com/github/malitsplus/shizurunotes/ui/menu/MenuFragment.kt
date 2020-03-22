@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.databinding.FragmentMenuBinding
-import com.github.malitsplus.shizurunotes.ui.ViewPagerFragmentDirections
+import com.github.malitsplus.shizurunotes.ui.BottomNaviFragmentDirections
 
 class MenuFragment : Fragment() {
 
@@ -24,11 +24,11 @@ class MenuFragment : Fragment() {
                 when(it.id){
                     R.id.constraint_dungeon ->
                         it.findNavController().navigate(
-                            ViewPagerFragmentDirections.actionNavViewPagerToNavDungeon()
+                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavDungeon()
                         )
                     R.id.constraint_setting ->
                         it.findNavController().navigate(
-                            ViewPagerFragmentDirections.actionNavViewPagerToNavSettingContainer()
+                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavSettingContainer()
                         )
                 }
             }

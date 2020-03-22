@@ -1,14 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">シズノツ</string>
-    <string name="app_full_name">シズルノーツ</string>
+    <string name="app_name">シズノト</string>
+    <string name="app_full_name">シズルノート</string>
     <string name="title_chara_list">キャラ</string>
-    <string name="title_drop">ドロップ</string>
-    <string name="title_equipment_drop">装備ドロップ</string>
+    <string name="title_equipment">装備</string>
+    <string name="title_quest">クエスト</string>
     <string name="title_clan_battle">クラバト</string>
     <string name="title_menu">メニュー</string>
     <string name="title_setting">設定</string>
     <string name="title_minion">召喚物</string>
     <string name="title_dungeon">ダンジョン</string>
+    <string name="title_log">ログ</string>
     <string name="title_enemy">モンスター</string>
     <string name="setting_language" translatable="false">Language</string>
     <string name="setting_language_dialog_title">Language</string>
@@ -30,7 +31,7 @@
     <string name="setting_app_version">アプリバージョン</string>
     <string name="setting_re_download_db">データベースを再ダウンロード</string>
     <string name="setting_re_download_db_summary">通常の状況下ではこの機能を使う必要がありません</string>
-    <string name="setting_about">シズルノーツについて</string>
+    <string name="setting_about">シズルノートについて</string>
     <string name="about_version" translatable="false">Version: %s</string>
     <string name="about_disclaimer" translatable="false">This is an unofficial fan-made application, copyright of all resources associate with the game \"Princess Connect Re:Dive\" are belong to Cygames, Inc. </string>
     <string name="about_hp" translatable="false">Open source home page \nhttps://github.com/MalitsPlus/ShizuruNotes</string>
@@ -148,47 +149,53 @@
     <string name="SLv">スキルLv</string>
     <string name="loop_start">ループ開始</string>
     <string name="loop_end">ループ終了</string>
-    <string name="hit">&#160;通常攻撃&#160;</string>
-    <string name="union_burst">&#160;UB&#160;</string>
-    <string name="union_burst_evo">&#160;UB+&#160;</string>
-    <string name="main_skill_1">&#160;Main 1&#160;</string>
-    <string name="main_skill_2">&#160;Main 2&#160;</string>
-    <string name="main_skill_3">&#160;Main 3&#160;</string>
-    <string name="main_skill_4">&#160;Main 4&#160;</string>
-    <string name="main_skill_5">&#160;Main 5&#160;</string>
-    <string name="main_skill_6">&#160;Main 6&#160;</string>
-    <string name="main_skill_7">&#160;Main 7&#160;</string>
-    <string name="main_skill_8">&#160;Main 8&#160;</string>
-    <string name="main_skill_9">&#160;Main 9&#160;</string>
-    <string name="main_skill_10">&#160;Main 10&#160;</string>
-    <string name="main_skill_1_evo">&#160;Main 1+&#160;</string>
-    <string name="main_skill_2_evo">&#160;Main 2+&#160;</string>
-    <string name="sp_skill_1">&#160;SP 1&#160;</string>
-    <string name="sp_skill_2">&#160;SP 2&#160;</string>
-    <string name="sp_skill_3">&#160;SP 3&#160;</string>
-    <string name="sp_skill_4">&#160;SP 4&#160;</string>
-    <string name="sp_skill_5">&#160;SP 5&#160;</string>
-    <string name="ex_skill_1">&#160;EX 1&#160;</string>
-    <string name="ex_skill_2">&#160;EX 2&#160;</string>
-    <string name="ex_skill_3">&#160;EX 3&#160;</string>
-    <string name="ex_skill_4">&#160;EX 4&#160;</string>
-    <string name="ex_skill_5">&#160;EX 5&#160;</string>
-    <string name="ex_skill_1_evo">&#160;EX 1+&#160;</string>
-    <string name="ex_skill_2_evo">&#160;EX 2+&#160;</string>
-    <string name="ex_skill_3_evo">&#160;EX 3+&#160;</string>
-    <string name="ex_skill_4_evo">&#160;EX 4+&#160;</string>
-    <string name="ex_skill_5_evo">&#160;EX 5+&#160;</string>
+    <string name="hit">通常攻撃</string>
+    <string name="union_burst">UB</string>
+    <string name="union_burst_evo">UB+</string>
+    <string name="main_skill_1">Main 1</string>
+    <string name="main_skill_2">Main 2</string>
+    <string name="main_skill_3">Main 3</string>
+    <string name="main_skill_4">Main 4</string>
+    <string name="main_skill_5">Main 5</string>
+    <string name="main_skill_6">Main 6</string>
+    <string name="main_skill_7">Main 7</string>
+    <string name="main_skill_8">Main 8</string>
+    <string name="main_skill_9">Main 9</string>
+    <string name="main_skill_10">Main 10</string>
+    <string name="main_skill_1_evo">Main 1+</string>
+    <string name="main_skill_2_evo">Main 2+</string>
+    <string name="sp_skill_1">SP 1</string>
+    <string name="sp_skill_2">SP 2</string>
+    <string name="sp_skill_3">SP 3</string>
+    <string name="sp_skill_4">SP 4</string>
+    <string name="sp_skill_5">SP 5</string>
+    <string name="ex_skill_1">EX 1</string>
+    <string name="ex_skill_2">EX 2</string>
+    <string name="ex_skill_3">EX 3</string>
+    <string name="ex_skill_4">EX 4</string>
+    <string name="ex_skill_5">EX 5</string>
+    <string name="ex_skill_1_evo">EX 1+</string>
+    <string name="ex_skill_2_evo">EX 2+</string>
+    <string name="ex_skill_3_evo">EX 3+</string>
+    <string name="ex_skill_4_evo">EX 4+</string>
+    <string name="ex_skill_5_evo">EX 5+</string>
     <string name="text_drop_rarity">レア度：%s</string>
     <string name="text_drop_mana">マナ：%d</string>
-    <string name="text_drop_odds">%d%%</string>
-    <string name="text_quest_normal">&#160;Normal&#160;</string>
-    <string name="text_quest_hard">&#160;Hard&#160;</string>
-    <string name="text_quest_very_hard">&#160;Very Hard&#160;</string>
+    <string name="text_drop_odds" translatable="false">%d%%</string>
+    <string name="text_quest_normal" translatable="false">Normal</string>
+    <string name="text_quest_hard" translatable="false">Hard</string>
+    <string name="text_quest_very_hard" translatable="false">Very Hard</string>
     <string name="text_condition_and">オールヒット</string>
     <string name="text_condition_andor">複数ヒット</string>
     <string name="text_condition_or">ワンヒット</string>
     <string name="icon_before">前回の選択</string>
     <string name="icon_cancel_all">クリア</string>
+    <string name="space_modifier" translatable="false">&#160;&#160;%s&#160;&#160;</string>
+    <string name="text_log_clean">ログファイルをすべて削除します、よろしいですか？</string>
+    <string name="text_delete">削除</string>
+    <string name="text_deney">いいえ</string>
+    <string name="text_copy">コピー</string>
+    <string name="text_copy_finished">テキストをクリップボードにコピーしました</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>
@@ -497,7 +504,4 @@
     <string name="Cast_a_barrier_on_s1_to_reduce_damage_over_s2_with_coefficient_s3_the_greater_the_less_reduced_amount_for_s4_s">%1$sにバリアを展開する、一回の行動で受けたダメージが[%2$s]を超えた場合、ダメージが減衰される、減衰係数[%3$s]（この値が小さいほど減衰されやすい）、効果時間[%4$s]秒。</string>
     <string name="Trigger_d_on_all_targets_break">トリガー：すべての部位がBreakされた時発動。</string>
     <string name="Make_s1_to_be_invulnerable_to_break_for_s2_sec">%1$sにBreak免疫状態、効果時間[%2$s]秒。</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -20,8 +20,13 @@ class SharedViewModelEquipment : ViewModel() {
             thread(start = true) {
                 equipmentMap.postValue(MasterEquipment().getEquipmentMap())
                 loadingFlag.postValue(false)
+                callBack?.equipmentLoadFinished()
             }
         }
     }
 
+    var callBack: MasterEquipmentCallBack? = null
+    interface MasterEquipmentCallBack {
+        fun equipmentLoadFinished()
+    }
 }
