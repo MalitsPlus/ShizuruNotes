@@ -9,7 +9,6 @@
     <string name="title_minion">소환수</string>
     <string name="title_dungeon">던전</string>
     <string name="title_enemy">몬스터</string>
-    <string name="setting_language" translatable="false">Language</string>
     <string name="setting_language_dialog_title">Language</string>
     <string name="setting_kill_expression_title">스킬 계산식</string>
     <string name="setting_kill_expression_summary">스킬 액션의 계산식을 표시</string>
@@ -58,9 +57,6 @@
     <string name="snack_bar_cant_sort">데이터가 불충분하여 이 분류는 아직 사용할 수 없습니다</string>
     <string name="button_minion_info">소환수 정보</string>
     <string name="text_normal_attack_only">통상공격</string>
-    <string name="text_level" translatable="false">Lv.</string>
-    <string name="text_loop_start" translatable="false">（</string>
-    <string name="text_loop_end" translatable="false">）</string>
     <string name="tab_phase">페이즈&#160;</string>
     <string name="text_year">년</string>
     <string name="text_month">월</string>
@@ -464,4 +460,22 @@
     <string name="Cast_a_barrier_on_s1_to_reduce_damage_over_s2_with_coefficient_s3_the_greater_the_less_reduced_amount_for_s4_s">%1$s의 배리어를 전개한다. 한번의 행동으로 받은 데미지가 [%2$s]을 넘은 경우, 데미지를 경감하여 받는다. 경감계수 [%3$s]（이 값은 낮을수록 감쇠하기 쉽다.）, 효과시간 [%4$s]초.</string>
     <string name="Trigger_d_on_all_targets_break">트리거：모든 부위가 Break 된 경우 발동</string>
     <string name="Make_s1_to_be_invulnerable_to_break_for_s2_sec">%1$s에 Break 면역상태 부여. 지속시간 [%2$s]초.</string>
+
+    <string name="title_equipment">장비</string>
+    <string name="title_quest">퀘스트</string>
+    <string name="title_log">로그</string>
+    <string name="setting_re_download_db">데이터베이스를 재다운로드</string>
+    <string name="setting_re_download_db_summary">일반적인 상황에서는 이 기능을 사용하실 필요가 없습니다</string>
+    <string name="text_drop_rarity">레어도：%s</string>
+    <string name="text_drop_mana">마나：%d</string>
+    <string name="text_condition_and">전부 드랍</string>
+    <string name="text_condition_andor">일부 드랍</string>
+    <string name="text_condition_or">단일 드랍</string>
+    <string name="icon_before">이전 선택</string>
+    <string name="icon_cancel_all">클리어</string>
+    <string name="text_log_clean">로그파일을 전부 삭제합니다. 괜찮으십니까?</string>
+    <string name="text_delete">삭제</string>
+    <string name="text_deney">아니요</string>
+    <string name="text_copy">복사</string>
+    <string name="text_copy_finished">텍스트를 클립보드에 복사했습니다</string>
 </resources>

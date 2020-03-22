@@ -5,10 +5,17 @@ import android.content.Context;
 import android.content.res.Configuration;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 
 public class App extends Application {
 
     public static LocaleManager localeManager;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+    }
 
     @Override
     protected void attachBaseContext(Context base) {

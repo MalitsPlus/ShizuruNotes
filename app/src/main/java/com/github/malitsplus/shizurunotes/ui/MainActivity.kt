@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         initSingletonClass()
@@ -46,6 +48,7 @@ class MainActivity : AppCompatActivity(),
             loadData()
         } else {
             checkUpdate()
+            sharedChara.charaList.value = mutableListOf()
         }
     }
 
@@ -99,7 +102,9 @@ class MainActivity : AppCompatActivity(),
 
     override fun dbUpdateFinished() {
         clearData()
+        callBack?.changeTextHintVisibility(false)
         loadData()
+
     }
 
     override fun showSnackBar(@StringRes messageRes: Int) {
@@ -125,5 +130,10 @@ class MainActivity : AppCompatActivity(),
 
     private fun loadData() {
         sharedEquipment.loadData()
+    }
+
+    var callBack: IMainActivityCallBack? = null
+    interface IMainActivityCallBack {
+        fun changeTextHintVisibility(visible: Boolean)
     }
 }

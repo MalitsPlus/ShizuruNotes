@@ -55,9 +55,9 @@ class GridSelectAdapter(
 
     private fun setItemStatus(view: View, selected: Boolean) {
         view.background = if (selected) {
-            mContext.getDrawable(R.drawable.color_selected_background)
+            mContext.getDrawable(R.drawable.shape_selected_background)
         } else {
-            mContext.getDrawable(R.drawable.color_unselected_background)
+            mContext.getDrawable(R.drawable.shape_unselected_background)
         }
     }
 }

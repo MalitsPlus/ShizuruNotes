@@ -126,6 +126,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_nav_setting_container_to_nav_log"
+            app:destination="@id/nav_log"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/nav_setting_about"
@@ -194,6 +201,33 @@
         android:name="com.github.malitsplus.shizurunotes.ui.drop.DropQuestFragment"
         android:label="fragment_drop_quest"
         tools:layout="@layout/fragment_drop_quest" />
-
+    <fragment
+        android:id="@+id/nav_log"
+        android:name="com.github.malitsplus.shizurunotes.ui.setting.log.LogFragment"
+        android:label="fragment_log"
+        tools:layout="@layout/fragment_log" >
+        <action
+            android:id="@+id/action_nav_log_to_nav_log_text"
+            app:destination="@id/nav_log_text"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="logText"
+                android:defaultValue="logText"
+                app:argType="string" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_log_text"
+        android:name="com.github.malitsplus.shizurunotes.ui.setting.log.LogTextFragment"
+        android:label="fragment_log_text"
+        tools:layout="@layout/fragment_log_text">
+        <argument
+            android:name="logText"
+            app:argType="string"
+            android:defaultValue="logText"/>
+    </fragment>
 
 </navigation>

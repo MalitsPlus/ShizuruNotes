@@ -82,7 +82,6 @@ class UpdateManager private constructor(
                         .show {
                             positiveButton(res = R.string.db_update_dialog_confirm) {
                                 downloadApp()
-                                //checkDatabaseVersion()
                             }
                             negativeButton(res = R.string.db_update_dialog_cancel) {
                                 checkDatabaseVersion(false)
@@ -98,7 +97,7 @@ class UpdateManager private constructor(
              */
             override fun dbCheckUpdateCompleted(hasUpdate: Boolean, updateInfo: CharSequence?) {
                 if (hasUpdate) {
-                    LogUtils.file(LogUtils.I, "new db version$serverVersion determined.")
+                    LogUtils.file(LogUtils.I, "New db version$serverVersion determined.")
                     MaterialDialog(mContext, MaterialDialog.DEFAULT_BEHAVIOR)
                         .title(res = R.string.db_update_dialog_title)
                         .message(res = R.string.db_update_dialog_text)
@@ -107,7 +106,9 @@ class UpdateManager private constructor(
                             positiveButton(res = R.string.db_update_dialog_confirm) {
                                 downloadDB()
                             }
-                            negativeButton(res = R.string.db_update_dialog_cancel)
+                            negativeButton(res = R.string.db_update_dialog_cancel) {
+                                LogUtils.file(LogUtils.I, "Canceled download db version$serverVersion.")
+                            }
                         }
                 }
             }
@@ -175,7 +176,6 @@ class UpdateManager private constructor(
         val call = client.newCall(request)
         call.enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                //iActivityCallBack?.showSnackBar(R.string.app_update_check_failed)
                 if (checkDb) checkDatabaseVersion(false)
             }
 
@@ -204,7 +204,6 @@ class UpdateManager private constructor(
     }
 
     fun checkDatabaseVersion(forceDownload: Boolean) {
-        LogUtils.file(LogUtils.I, "start check db version.")
         val client = OkHttpClient()
         val request = Request.Builder()
             .url(Statics.LAST_VERSION_URL)
@@ -224,6 +223,7 @@ class UpdateManager private constructor(
                     val obj = JSONObject(lastVersionJson)
                     serverVersion = obj.getInt("TruthVersion")
                     hasNewVersion = if (forceDownload) {
+                        LogUtils.file(LogUtils.I, "Force download db version$serverVersion.")
                         true
                     } else {
                         serverVersion != UserSettings.get().preference.getInt("dbVersion", 0)
@@ -279,7 +279,7 @@ class UpdateManager private constructor(
     }
 
     fun downloadDB() {
-        LogUtils.file(LogUtils.I, "start download DB ver$serverVersion.")
+        LogUtils.file(LogUtils.I, "Start download DB ver$serverVersion.")
         progressDialog = MaterialDialog(mContext, MaterialDialog.DEFAULT_BEHAVIOR).apply {
             this.title(R.string.db_update_progress_title, null)
             .message(R.string.db_update_progress_text, null, null)

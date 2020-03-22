@@ -1,14 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/purple_300</item>
+        <item name="colorPrimary">@color/purple_200_alpha</item>
         <item name="colorPrimaryVariant">@color/purple_300_alpha</item>
         <item name="colorSecondary">@color/red_200</item>
         <item name="colorSecondaryVariant">@color/red_200_alpha</item>
-        <item name="android:colorBackground">@color/black_800</item>
-        <item name="colorSurface">@color/black_800</item>
+        <item name="android:colorBackground">@color/black_750</item>
+        <item name="colorSurface">@color/black_750</item>
         <item name="colorError">@color/red_200</item>
         <item name="colorOnPrimary">@color/white_50</item>
         <item name="colorOnSecondary">@color/black_900</item>
@@ -32,6 +31,14 @@
         <item name="textAppearanceCaption">@style/TextAppearance.MyTheme.Caption</item>
         <item name="textAppearanceOverline">@style/TextAppearance.MyTheme.Overline</item>
 
+        <!--Component styles-->
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.MaterialComponents.Dialog.Alert</item>
+        <item name="navigationViewStyle">@style/Widget.MyTheme.NavigationView</item>
+
+        <item name="android:statusBarColor" tools:ignore="NewApi">?attr/colorSurface</item>
+        <item name="android:navigationBarColor" tools:ignore="NewApi">?android:attr/colorBackground</item>
+        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">?attr/colorControlHighlight</item>
+
         <item name="toolbarStyle">@style/AppToolbarStyle</item>
         <item name="android:progressBarStyle">@style/AppProgressBar</item>
         <item name="progressBarStyle">@style/AppProgressBar</item>
@@ -40,7 +47,16 @@
         <item name="floatingActionButtonStyle">@style/AppFloatingActionButton</item>
     </style>
 
-    <style name="AppToolbarStyle" parent="Widget.MaterialComponents.Toolbar">
+    <style name="Widget.MyTheme.NavigationView" parent="Widget.MaterialComponents.NavigationView">
+    </style>
+
+    <style name="AppToolbarStyle" parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
+        <item name="android:background">@color/toolbarPrimary</item>
+        <item name="titleTextColor">@color/white_50</item>
+    </style>
+
+    <style name="AppBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@color/toolbarPrimary</item>
     </style>
 
     <style name="AppButton" parent="Widget.MaterialComponents.Button">
@@ -49,11 +65,8 @@
     </style>
 
     <style name="AppFloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
-        <item name="backgroundTint">?attr/colorPrimary</item>
+        <item name="backgroundTint">@color/purple_300</item>
         <item name="tint">?attr/colorOnPrimary</item>
-    </style>
-
-    <style name="AppBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
     </style>
 
     <style name="AppProgressBar" parent="Widget.AppCompat.ProgressBar">
@@ -77,7 +90,7 @@
 
     <style name="StatusSuperTextView">
         <item name="sDividerLineColor">@color/colorCustom</item>
-        <item name="sLeftTextBackground">@drawable/color_text_background</item>
+        <item name="sLeftTextBackground">@drawable/shape_text_background</item>
         <item name="sLeftTextColor">@color/colorOnCustom</item>
         <item name="sRightTextColor">@color/textPrimary</item>
         <item name="android:layout_width">match_parent</item>
@@ -107,7 +120,7 @@
 
     <style name="textTag">
         <item name="android:textColor">?attr/colorOnPrimary</item>
-        <item name="android:background">@drawable/text_tag_background</item>
+        <item name="android:background">@drawable/shape_text_tag_background</item>
     </style>
 
     <style name="hintText" parent="@style/TextAppearance.MaterialComponents.Caption">

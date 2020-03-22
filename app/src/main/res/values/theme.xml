@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/purple_300</item>
+        <item name="colorPrimaryVariant">@color/purple_300_alpha</item>
+        <item name="colorSecondary">@color/red_200</item>
+        <item name="colorSecondaryVariant">@color/red_200_alpha</item>
+        <item name="android:colorBackground">@color/black_750</item>
+        <item name="colorSurface">@color/black_750</item>
+        <item name="colorError">@color/red_200</item>
+        <item name="colorOnPrimary">@color/white_50</item>
+        <item name="colorOnSecondary">@color/black_900</item>
+        <item name="colorOnBackground">@color/colorOnCustom</item>
+        <item name="colorOnSurface">@color/colorOnCustom</item>
+        <item name="colorOnError">@color/black_900</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">false</item>
+
+        <item name="textAppearanceHeadline1">@style/TextAppearance.MyTheme.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.MyTheme.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.MyTheme.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.MyTheme.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.MyTheme.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.MyTheme.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.MyTheme.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.MyTheme.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.MyTheme.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.MyTheme.Body2</item>
+        <item name="textAppearanceButton">@style/TextAppearance.MyTheme.Button</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.MyTheme.Caption</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.MyTheme.Overline</item>
+
+        <!--Component styles-->
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.MaterialComponents.Dialog.Alert</item>
+        <item name="navigationViewStyle">@style/Widget.MyTheme.NavigationView</item>
+
+        <item name="android:statusBarColor" tools:ignore="NewApi">?attr/colorSurface</item>
+        <item name="android:navigationBarColor" tools:ignore="NewApi">?android:attr/colorBackground</item>
+        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">?attr/colorControlHighlight</item>
+
+        <item name="toolbarStyle">@style/AppToolbarStyle</item>
+        <item name="android:progressBarStyle">@style/AppProgressBar</item>
+        <item name="progressBarStyle">@style/AppProgressBar</item>
+        <item name="materialButtonStyle">@style/AppButton</item>
+        <item name="bottomNavigationStyle">@style/AppBottomNavigation</item>
+        <item name="floatingActionButtonStyle">@style/AppFloatingActionButton</item>
+    </style>
+
+    <style name="Widget.MyTheme.NavigationView" parent="Widget.MaterialComponents.NavigationView">
+    </style>
+
+    <style name="AppToolbarStyle" parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
+        <item name="android:background">@color/toolbarPrimary</item>
+        <item name="titleTextColor">@color/white_50</item>
+    </style>
+
+    <style name="AppBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@color/toolbarPrimary</item>
+    </style>
+
+    <style name="AppButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">?attr/colorPrimaryVariant</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="AppFloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">?attr/colorPrimary</item>
+        <item name="tint">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="AppProgressBar" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateTint">?attr/colorPrimary</item>
+    </style>
+
+
+    <style name="expandedToolbarText" parent="AppTheme">
+        <item name="android:textColor">#00FFFFFF</item>
+        <item name="android:textSize">1sp</item>
+    </style>
+
+    <style name="unitIcon">
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_width">50dp</item>
+    </style>
+
+    <style name="longMultipleLineText">
+        <item name="android:lineSpacingMultiplier">1.1</item>
+    </style>
+
+    <style name="StatusSuperTextView">
+        <item name="sDividerLineColor">@color/colorCustom</item>
+        <item name="sLeftTextBackground">@drawable/shape_text_background</item>
+        <item name="sLeftTextColor">@color/colorOnCustom</item>
+        <item name="sRightTextColor">@color/textPrimary</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="sDividerLineHeight">1dp</item>
+        <item name="sLeftViewMarginLeft">0dp</item>
+        <item name="sLeftViewMarginRight">0dp</item>
+        <item name="sRightViewMarginLeft">0dp</item>
+        <item name="sRightViewMarginRight">0dp</item>
+        <item name="sLeftTextSize">14sp</item>
+        <item name="sUseRipple">false</item>
+    </style>
+
+    <style name="StatusSuperTextViewPlaceHolder">
+        <item name="sDividerLineColor">#005C95EF</item>
+        <item name="sLeftTextColor">#00FFFFFF</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="sDividerLineHeight">0dp</item>
+        <item name="sLeftViewMarginLeft">0dp</item>
+        <item name="sLeftViewMarginRight">0dp</item>
+        <item name="sRightViewMarginLeft">0dp</item>
+        <item name="sRightViewMarginRight">0dp</item>
+        <item name="sLeftTextSize">14sp</item>
+        <item name="sUseRipple">false</item>
+    </style>
+
+    <style name="textTag">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:background">@drawable/shape_text_tag_background</item>
+    </style>
+
+    <style name="hintText" parent="@style/TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">8sp</item>
+    </style>
+
+    <style name="myDropdown" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxBackgroundColor">#00FFFFFF</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="myDropdownAutoText" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:editable">false</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="iconFilter">
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_width">50dp</item>
+        <item name="android:alpha">0.8</item>
+    </style>
+</resources>
