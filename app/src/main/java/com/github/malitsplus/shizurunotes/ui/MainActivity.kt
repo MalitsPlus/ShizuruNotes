@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -16,6 +17,9 @@ import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattle
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelQuest
 import com.github.malitsplus.shizurunotes.user.UserSettings
+import com.github.malitsplus.shizurunotes.utils.FileUtils
+import com.github.malitsplus.shizurunotes.utils.LogUtils
+import com.github.malitsplus.shizurunotes.utils.Utils
 import com.google.android.material.snackbar.Snackbar
 import kotlin.concurrent.thread
 
@@ -35,14 +39,21 @@ class MainActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         initSingletonClass()
         setSharedViewModels()
-        loadData()
+        if (checkDbFile()) {
+            loadData()
+        } else {
+            checkUpdate()
+            sharedChara.charaList.value = mutableListOf()
+        }
     }
 
     private fun initSingletonClass() {
+        Utils.setApp(application)
         DBHelper.with(application)
         UserSettings.with(application)
         UpdateManager.with(this).setIActivityCallBack(this)
@@ -52,7 +63,7 @@ class MainActivity : AppCompatActivity(),
     private fun setSharedViewModels() {
         sharedEquipment = ViewModelProvider(this)[SharedViewModelEquipment::class.java].apply {
             equipmentMap.observe(this@MainActivity, Observer {
-                if (!it.isNullOrEmpty()) {
+                if (it.isNotEmpty()) {
                     sharedChara.loadData(it)
                 }
             })
@@ -64,12 +75,8 @@ class MainActivity : AppCompatActivity(),
         sharedQuest = ViewModelProvider(this)[SharedViewModelQuest::class.java]
     }
 
-    private fun loadData() {
-        sharedEquipment.loadData()
-    }
-
     override fun charaLoadFinished() {
-        UpdateManager.get().checkAppVersion(true)
+        checkUpdate()
     }
 
     override fun dbDownloadFinished() {
@@ -85,14 +92,19 @@ class MainActivity : AppCompatActivity(),
                     break
                 }
                 Thread.sleep(100)
-                if (i == 50) UpdateManager.get().updateFailed()
+                if (i == 50) {
+                    LogUtils.file(LogUtils.I, "DbDecompress", "Time out: 5s.")
+                    UpdateManager.get().updateFailed()
+                }
             }
         }
     }
 
     override fun dbUpdateFinished() {
         clearData()
+        callBack?.changeTextHintVisibility(false)
         loadData()
+
     }
 
     override fun showSnackBar(@StringRes messageRes: Int) {
@@ -106,5 +118,22 @@ class MainActivity : AppCompatActivity(),
         sharedClanBattle.dungeonList.clear()
         sharedQuest.questList.value?.clear()
         sharedEquipment.selectedDrops.value?.clear()
+    }
+
+    private fun checkDbFile(): Boolean {
+        return FileUtils.checkFileAndSize(FileUtils.getDbFilePath(), 50)
+    }
+
+    private fun checkUpdate() {
+        UpdateManager.get().checkAppVersion(true)
+    }
+
+    private fun loadData() {
+        sharedEquipment.loadData()
+    }
+
+    var callBack: IMainActivityCallBack? = null
+    interface IMainActivityCallBack {
+        fun changeTextHintVisibility(visible: Boolean)
     }
 }

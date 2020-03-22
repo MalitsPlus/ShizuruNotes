@@ -19,6 +19,7 @@
             android:id="@+id/reward_icon"
             android:layout_width="35dp"
             android:layout_height="35dp"
+            android:alpha="0.8"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"

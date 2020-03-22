@@ -9,8 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#EFEFEF" >
+        android:layout_height="match_parent" >
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/quest_appbar"
@@ -21,12 +20,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.Toolbar
+            <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/quest_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:navigationIcon="@drawable/ic_detail_back"
-                app:title="@string/title_equipment_drop" />
+                app:title="@string/title_quest" />
 
         </com.google.android.material.appbar.AppBarLayout>
 

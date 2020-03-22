@@ -23,8 +23,8 @@ class MinionFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedChara = ViewModelProvider(activity!!)[SharedViewModelChara::class.java]
-        sharedClanBattle = ViewModelProvider(activity!!)[SharedViewModelClanBattle::class.java]
+        sharedChara = ViewModelProvider(requireActivity())[SharedViewModelChara::class.java]
+        sharedClanBattle = ViewModelProvider(requireActivity())[SharedViewModelClanBattle::class.java]
     }
 
     override fun onCreateView(

@@ -14,7 +14,7 @@
         <import type="com.github.malitsplus.shizurunotes.R"/>
     </data>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="120dp"
         app:cardCornerRadius="24dp"
@@ -30,12 +30,12 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="145dp"
+                android:layout_height="145dp"
                 android:layout_marginEnd="8dp"
                 android:adjustViewBounds="true"
-                android:scaleType="center"
-                android:alpha="0.1"
+                android:scaleType="fitCenter"
+                android:alpha="0.5"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -48,7 +48,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/colorPrimaryDark"
                 android:text="@{period.periodText, default=periodText}"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -112,5 +111,5 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </layout>

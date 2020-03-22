@@ -9,7 +9,6 @@
     <string name="title_minion">召唤物</string>
     <string name="title_dungeon">迷宫</string>
     <string name="title_enemy">怪物</string>
-    <string name="setting_language" translatable="false">Language</string>
     <string name="setting_language_dialog_title">Language</string>
     <string name="setting_kill_expression_title">技能公式</string>
     <string name="setting_kill_expression_summary">在技能动作详情中显示计算公式</string>
@@ -60,9 +59,6 @@
     <string name="snack_bar_cant_sort">由于数据不足本项排序暂时无法使用</string>
     <string name="button_minion_info">召唤物情报</string>
     <string name="text_normal_attack_only">仅普通攻击</string>
-    <string name="text_level" translatable="false">Lv.</string>
-    <string name="text_loop_start" translatable="false">（</string>
-    <string name="text_loop_end" translatable="false">）</string>
     <string name="tab_phase">阶段&#160;</string>
     <string name="text_year">年</string>
     <string name="text_month">月</string>
@@ -467,4 +463,20 @@
     <string name="Cast_a_barrier_on_s1_to_reduce_damage_over_s2_with_coefficient_s3_the_greater_the_less_reduced_amount_for_s4_s">为%1$s展开护盾，在一次行动中受到的伤害超过[%2$s]时，伤害值将会被衰减，衰减系数[%3$s]（值越小衰减量越大），持续时间[%4$s]秒。</string>
     <string name="Trigger_d_on_all_targets_break">触发条件：所有部位被Break时触发。</string>
     <string name="Make_s1_to_be_invulnerable_to_break_for_s2_sec">对%1$s附加Break免疫效果，持续时间[%2$s]秒。</string>
+
+    <string name="title_equipment">装备</string>
+    <string name="title_quest">任务</string>
+    <string name="title_log">日志</string>
+    <string name="text_drop_rarity">稀有度：%s</string>
+    <string name="text_drop_mana">魔力：%d</string>
+    <string name="icon_before">上一次的选择</string>
+    <string name="icon_cancel_all">清空</string>
+    <string name="text_log_clean">确定删除所有日志？</string>
+    <string name="text_delete">删除</string>
+    <string name="text_deney">否</string>
+    <string name="text_copy">复制</string>
+    <string name="text_copy_finished">已将文字复制至剪贴板</string>
+    <string name="text_condition_and">全命中</string>
+    <string name="text_condition_andor">多项命中</string>
+    <string name="text_condition_or">单项命中</string>
 </resources>

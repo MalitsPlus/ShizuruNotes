@@ -13,7 +13,7 @@ import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.user.UserSettings
 import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.databinding.FragmentDropBinding
-import com.github.malitsplus.shizurunotes.ui.ViewPagerFragmentDirections
+import com.github.malitsplus.shizurunotes.ui.BottomNaviFragmentDirections
 import com.github.malitsplus.shizurunotes.ui.base.BaseHintAdapter
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
 
@@ -27,7 +27,7 @@ class DropFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedEquipment = ViewModelProvider(activity!!)[SharedViewModelEquipment::class.java]
+        sharedEquipment = ViewModelProvider(requireActivity())[SharedViewModelEquipment::class.java]
         dropVM = ViewModelProvider(this)[DropViewModel::class.java]
     }
 
@@ -35,8 +35,13 @@ class DropFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = FragmentDropBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        mAdapter = GridSelectAdapter(activity!!.applicationContext, sharedEquipment)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mAdapter = GridSelectAdapter(requireContext(), sharedEquipment)
         val mLayoutManager = GridLayoutManager(context, maxSpanNum).apply {
             spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int {
@@ -47,10 +52,7 @@ class DropFragment : Fragment() {
                 }
             }
         }
-
-        binding = FragmentDropBinding.inflate(
-            inflater, container, false
-        ).apply {
+        binding.apply {
             setOptionItemClickListener(dropToolbar)
             dropRecycler.apply {
                 layoutManager = mLayoutManager
@@ -58,10 +60,23 @@ class DropFragment : Fragment() {
                 setHasFixedSize(true)
             }
         }
-
         setFloatingBarClickListener()
         setObservers()
-        return binding.root
+    }
+
+    private fun setFloatingBarClickListener() {
+        binding.clickListener = View.OnClickListener { view ->
+            if (view.id == R.id.drop_floating_button) {
+                if (sharedEquipment.selectedDrops.value?.isNotEmpty() == true) {
+                    val idList = mutableListOf<Int>()
+                    sharedEquipment.selectedDrops.value?.forEach {
+                        idList.add(it.equipmentId)
+                    }
+                    UserSettings.get().lastEquipmentIds = idList
+                }
+                view.findNavController().navigate(BottomNaviFragmentDirections.actionNavBottomNavigationToNavDropQuest())
+            }
+        }
     }
 
     private fun setObservers() {
@@ -80,21 +95,6 @@ class DropFragment : Fragment() {
         })
     }
 
-    private fun setFloatingBarClickListener() {
-        binding.clickListener = View.OnClickListener { view ->
-            if (view.id == R.id.drop_floating_button) {
-                if (sharedEquipment.selectedDrops.value?.isNotEmpty() == true) {
-                    val idList = mutableListOf<Int>()
-                    sharedEquipment.selectedDrops.value?.forEach {
-                        idList.add(it.equipmentId)
-                    }
-                    UserSettings.get().lastEquipmentIds = idList
-                }
-                view.findNavController().navigate(ViewPagerFragmentDirections.actionNavViewPagerToNavDropQuest())
-            }
-        }
-    }
-
     private fun setOptionItemClickListener(toolbar: Toolbar) {
         toolbar.setOnMenuItemClickListener {
             when(it.itemId) {
@@ -106,7 +106,10 @@ class DropFragment : Fragment() {
                             for (item in mAdapter.itemList) {
                                 if (item is Equipment && item.equipmentId == id) {
                                     sharedEquipment.selectedDrops.value?.add(item)
-                                    binding.dropRecycler.getChildAt(mAdapter.itemList.indexOf(item)).background = context!!.getDrawable(R.drawable.color_selected_background)
+                                    val vh = binding.dropRecycler.findViewHolderForAdapterPosition(mAdapter.itemList.indexOf(item))
+                                    vh?.let {
+                                        (vh as BaseHintAdapter.InstanceViewHolder).binding.root.background = requireContext().getDrawable(R.drawable.shape_selected_background)
+                                    }
                                     break
                                 }
                             }
@@ -125,9 +128,8 @@ class DropFragment : Fragment() {
 
     private fun clearRecyclerView() {
         binding.dropRecycler.children.forEach {
-            it.background = context!!.getDrawable(R.drawable.color_unselected_background)
+            it.background = requireContext().getDrawable(R.drawable.shape_unselected_background)
         }
         sharedEquipment.selectedDrops.value?.clear()
     }
-
 }

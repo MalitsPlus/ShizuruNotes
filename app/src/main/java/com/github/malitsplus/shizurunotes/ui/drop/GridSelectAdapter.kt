@@ -7,20 +7,21 @@ import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.databinding.ItemGridIconBinding
+import com.github.malitsplus.shizurunotes.databinding.ItemHintTextBinding
 import com.github.malitsplus.shizurunotes.ui.base.BaseHintAdapter
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
 
 class GridSelectAdapter(
     private val mContext: Context,
     private val sharedEquipment: SharedViewModelEquipment
-) : BaseHintAdapter<ItemGridIconBinding>(mContext, R.layout.item_grid_icon) {
+) : BaseHintAdapter<ItemGridIconBinding, ItemHintTextBinding>(mContext, R.layout.item_grid_icon, R.layout.item_hint_text) {
 
     private val maxSelectNum = 5
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
             is HintTextViewHolder -> {
-                with(holder.binding) {
+                with(holder.binding as ItemHintTextBinding) {
                     holder.binding.hintText = I18N.getString(R.string.text_drop_rarity).format(itemList[position])
                     executePendingBindings()
                 }
@@ -28,20 +29,21 @@ class GridSelectAdapter(
             is InstanceViewHolder -> {
                 with(holder.binding as ItemGridIconBinding){
                     val thisEquipment = itemList[position] as Equipment
+                    root.tag = "equipmentItem${thisEquipment.equipmentId}"
                     iconUrl = thisEquipment.iconUrl
                     sharedEquipment.selectedDrops.value?.let {
                         if (it.contains(thisEquipment)) {
-                            setItemStatus(this, true)
+                            setItemStatus(root, true)
                         } else {
-                            setItemStatus(this, false)
+                            setItemStatus(root, false)
                         }
-                        clickListener = View.OnClickListener { _ ->
+                        clickListener = View.OnClickListener { v ->
                             if (it.contains(thisEquipment)) {
                                 it.remove(thisEquipment)
-                                setItemStatus(this, false)
+                                setItemStatus(v, false)
                             } else if (it.size < maxSelectNum){
                                 it.add(thisEquipment)
-                                setItemStatus(this, true)
+                                setItemStatus(v, true)
                             }
                         }
                     }
@@ -51,11 +53,11 @@ class GridSelectAdapter(
         }
     }
 
-    private fun setItemStatus(binding: ItemGridIconBinding, selected: Boolean) {
-        binding.itemGridContainer.background = if (selected) {
-            mContext.getDrawable(R.drawable.color_selected_background)
+    private fun setItemStatus(view: View, selected: Boolean) {
+        view.background = if (selected) {
+            mContext.getDrawable(R.drawable.shape_selected_background)
         } else {
-            mContext.getDrawable(R.drawable.color_unselected_background)
+            mContext.getDrawable(R.drawable.shape_unselected_background)
         }
     }
 }

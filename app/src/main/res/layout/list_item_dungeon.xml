@@ -13,53 +13,55 @@
         <import type="com.github.malitsplus.shizurunotes.R"/>
     </data>
 
-    <androidx.cardview.widget.CardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginVertical="8dp"
+        android:layout_height="96dp"
         android:foreground="?android:attr/selectableItemBackground"
         android:onClick="@{clickListener}"
         app:cardCornerRadius="24dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <TextView
+            android:id="@+id/period_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@{dungeon.dungeonName, default=dungeonName}"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/text_dungeon_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/clan_b1_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:imageUrl="@{dungeon.dungeonBoss.iconUrl}"
+            bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
+
+        <TextView
+            android:id="@+id/text_dungeon_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="description"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/period_date" />
+
+        <View
+            android:id="@+id/divider7"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/period_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@{dungeon.dungeonName, default=dungeonName}"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/text_dungeon_description"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageView
-                android:id="@+id/clan_b1_icon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="24dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                bind:imageUrl="@{dungeon.dungeonBoss.iconUrl}"
-                bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
 
-            <TextView
-                android:id="@+id/text_dungeon_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="description"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/period_date" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
 </layout>

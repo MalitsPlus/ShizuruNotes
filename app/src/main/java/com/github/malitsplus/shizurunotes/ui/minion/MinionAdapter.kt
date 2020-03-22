@@ -1,5 +1,6 @@
 package com.github.malitsplus.shizurunotes.ui.minion
 
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
@@ -7,6 +8,7 @@ import com.github.malitsplus.shizurunotes.data.Minion
 import com.github.malitsplus.shizurunotes.databinding.ListItemMinionBinding
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
 import com.github.malitsplus.shizurunotes.ui.base.AttackPatternContainerAdapter
+import com.github.malitsplus.shizurunotes.ui.base.BaseHintAdapter
 import com.github.malitsplus.shizurunotes.ui.base.BaseRecyclerAdapter
 import com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails.adapters.ClanBattleBossSkillAdapter
 
@@ -42,9 +44,22 @@ class MinionAdapter(
             item.attackPattern.forEach {
                 it.setItems(item.skills, item.atkType)
             }
+
             minionAttackPattern.apply {
-                layoutManager = LinearLayoutManager(context)
-                adapter = AttackPatternContainerAdapter().apply { itemList = item.attackPattern }
+                val attackPatternAdapter = AttackPatternContainerAdapter(context).apply {
+                    initializeItems(item.attackPattern)
+                }
+                layoutManager = GridLayoutManager(context, 6).apply {
+                    spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                        override fun getSpanSize(position: Int): Int {
+                            return when(attackPatternAdapter.getItemViewType(position)) {
+                                BaseHintAdapter.HINT_TEXT -> 6
+                                else -> 1
+                            }
+                        }
+                    }
+                }
+                adapter = attackPatternAdapter
             }
 
             //技能部分

@@ -16,14 +16,12 @@ import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattleFac
 
 class ClanBattleFragment : Fragment() {
 
-    private lateinit var clanBattleViewModel: ClanBattleViewModel
     private lateinit var sharedClanBattle: SharedViewModelClanBattle
     private lateinit var adapter: ClanBattleAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedClanBattle = ViewModelProvider(activity!!)[SharedViewModelClanBattle::class.java]
-        clanBattleViewModel = ViewModelProvider(this, SharedViewModelClanBattleFactory(sharedClanBattle))[ClanBattleViewModel::class.java]
+        sharedClanBattle = ViewModelProvider(requireActivity())[SharedViewModelClanBattle::class.java]
     }
 
     override fun onCreateView(
@@ -37,7 +35,7 @@ class ClanBattleFragment : Fragment() {
                 inflater, R.layout.fragment_clan_battle, container, false
             ).apply{
                 lifecycleOwner = viewLifecycleOwner
-                adapter = ClanBattleAdapter(context!!, sharedClanBattle)
+                adapter = ClanBattleAdapter(requireContext(), sharedClanBattle)
                 clanBattleListRecycler.layoutManager = LinearLayoutManager(context)
                 clanBattleListRecycler.adapter = adapter
                 clanBattleListRecycler.setHasFixedSize(true)
@@ -56,8 +54,6 @@ class ClanBattleFragment : Fragment() {
                 }
             )
         }
-
-        binding.viewModel = clanBattleViewModel
         sharedClanBattle.loadData()
         return binding.root
     }

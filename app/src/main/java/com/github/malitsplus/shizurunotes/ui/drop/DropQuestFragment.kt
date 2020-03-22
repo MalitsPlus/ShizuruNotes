@@ -22,8 +22,8 @@ class DropQuestFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedEquipment = ViewModelProvider(activity!!)[SharedViewModelEquipment::class.java]
-        sharedQuest = ViewModelProvider(activity!!)[SharedViewModelQuest::class.java]
+        sharedEquipment = ViewModelProvider(requireActivity())[SharedViewModelEquipment::class.java]
+        sharedQuest = ViewModelProvider(requireActivity())[SharedViewModelQuest::class.java]
         dropQuestVM = ViewModelProvider(this, DropQuestViewModelFactory(sharedQuest, sharedEquipment.selectedDrops.value))[DropQuestViewModel::class.java]
     }
 
@@ -31,7 +31,7 @@ class DropQuestFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val mAdapter = DropQuestAdapter(context!!, sharedEquipment)
+        val mAdapter = DropQuestAdapter(requireContext(), sharedEquipment)
         val binding = FragmentDropQuestBinding.inflate(
             inflater, container, false
         ).apply {

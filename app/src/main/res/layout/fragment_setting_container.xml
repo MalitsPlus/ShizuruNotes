@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-            <androidx.appcompat.widget.Toolbar
+            <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbarSettingFragment"
                 android:layout_width="match_parent"
                 app:navigationIcon="@drawable/ic_detail_back"
