@@ -5,7 +5,6 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_bottom_navigation">
 
-
     <fragment
         android:id="@+id/nav_bottom_navigation"
         android:name="com.github.malitsplus.shizurunotes.ui.BottomNaviFragment"
@@ -23,13 +22,6 @@
                 android:defaultValue="0"
                 app:argType="integer" />
         </action>
-        <action
-            android:id="@+id/action_nav_bottom_navigation_to_nav_clan_battle_details"
-            app:destination="@id/nav_clan_battle_view_pager"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_nav_bottom_navigation_to_nav_setting_container"
             app:destination="@id/nav_setting_container"
@@ -51,6 +43,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_nav_bottom_navigation_to_nav_clan_battle"
+            app:destination="@id/nav_clan_battle"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
 
@@ -98,7 +97,15 @@
         android:id="@+id/nav_clan_battle"
         android:name="com.github.malitsplus.shizurunotes.ui.clanbattle.ClanBattleFragment"
         android:label="@string/title_clan_battle"
-        tools:layout="@layout/fragment_clan_battle" />
+        tools:layout="@layout/fragment_clan_battle" >
+        <action
+            android:id="@+id/action_nav_clan_battle_to_nav_clan_battle_view_pager"
+            app:destination="@id/nav_clan_battle_view_pager"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
 
     <fragment
         android:id="@+id/nav_clan_battle_view_pager"
@@ -229,5 +236,9 @@
             app:argType="string"
             android:defaultValue="logText"/>
     </fragment>
-
+    <fragment
+        android:id="@+id/nav_calendar"
+        android:name="com.github.malitsplus.shizurunotes.ui.calendar.CalendarFragment"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" />
 </navigation>

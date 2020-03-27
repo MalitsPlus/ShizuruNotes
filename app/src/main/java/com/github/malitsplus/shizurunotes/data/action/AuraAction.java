@@ -130,7 +130,7 @@ public class AuraAction extends ActionParameter {
                 return I18N.getString(R.string.s1_s2_s3_s4_s5_for_s6_sec,
                         auraActionType.description(),
                         targetParameter.buildTargetClause(),
-                        buildExpression(level, RoundingMode.UP, property),
+                        buildExpression(level, RoundingMode.UNNECESSARY, property),
                         percentModifier.description(),
                         auraType.description(),
                         buildExpression(level, durationValues, null, property));

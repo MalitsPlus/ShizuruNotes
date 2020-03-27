@@ -12,9 +12,9 @@
         android:title="@string/title_equipment" />
 
     <item
-        android:id="@+id/bottom_menu_clan_battle"
-        android:icon="@drawable/mic_defend"
-        android:title="@string/title_clan_battle" />
+        android:id="@+id/bottom_menu_calendar"
+        android:icon="@drawable/mic_calendar"
+        android:title="@string/title_calendar" />
 
     <item
         android:id="@+id/bottom_menu_menu"
