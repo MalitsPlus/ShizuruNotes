@@ -58,7 +58,7 @@ class UpdateManager private constructor(
     private var progress = 0
     private var hasNewVersion = false
     private val canceled = false
-    private val callBack: UpdateCallBack
+    val callBack: UpdateCallBack
     private val versionInfo: String? = null
     private var progressDialog: MaterialDialog? = null
     private var maxLength = 0
@@ -84,11 +84,11 @@ class UpdateManager private constructor(
                                 downloadApp()
                             }
                             negativeButton(res = R.string.db_update_dialog_cancel) {
-                                checkDatabaseVersion(false)
+                                checkDatabaseVersion()
                             }
                         }
                 } else {
-                    checkDatabaseVersion(false)
+                    checkDatabaseVersion()
                 }
             }
 
@@ -104,7 +104,7 @@ class UpdateManager private constructor(
                         .cancelOnTouchOutside(false)
                         .show {
                             positiveButton(res = R.string.db_update_dialog_confirm) {
-                                downloadDB()
+                                downloadDB(false)
                             }
                             negativeButton(res = R.string.db_update_dialog_cancel) {
                                 LogUtils.file(LogUtils.I, "Canceled download db version$serverVersion.")
@@ -176,7 +176,7 @@ class UpdateManager private constructor(
         val call = client.newCall(request)
         call.enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                if (checkDb) checkDatabaseVersion(false)
+                if (checkDb) checkDatabaseVersion()
             }
 
             override fun onResponse(call: Call, response: Response) {
@@ -185,7 +185,7 @@ class UpdateManager private constructor(
                     if (lastVersionJson.isNullOrEmpty())
                         throw Exception("No response from server.")
                     if (response.code != 200)
-                        throw Exception("Abnormal connection state code: %d.".format(response.code))
+                        throw Exception("Abnormal connection state code: ${response.code}")
 
                     appVersionJsonInstance = JsonUtils.getBeanFromJson<AppVersionJson>(lastVersionJson, AppVersionJson::class.java)
                     appVersionJsonInstance?.versionCode?.let {
@@ -203,7 +203,7 @@ class UpdateManager private constructor(
         })
     }
 
-    fun checkDatabaseVersion(forceDownload: Boolean) {
+    fun checkDatabaseVersion() {
         val client = OkHttpClient()
         val request = Request.Builder()
             .url(Statics.LAST_VERSION_URL)
@@ -222,12 +222,7 @@ class UpdateManager private constructor(
                         throw Exception("No response from server.")
                     val obj = JSONObject(lastVersionJson)
                     serverVersion = obj.getInt("TruthVersion")
-                    hasNewVersion = if (forceDownload) {
-                        LogUtils.file(LogUtils.I, "Force download db version$serverVersion.")
-                        true
-                    } else {
-                        serverVersion != UserSettings.get().preference.getInt("dbVersion", 0)
-                    }
+                    hasNewVersion = serverVersion != UserSettings.get().preference.getInt("dbVersion", 0)
                     updateHandler.sendEmptyMessage(UPDATE_CHECK_COMPLETED)
                 } catch (e: Exception) {
                     LogUtils.file(LogUtils.E, "checkDatabaseVersion", e.message)
@@ -278,7 +273,7 @@ class UpdateManager private constructor(
         mContext.startActivity(install)
     }
 
-    fun downloadDB() {
+    fun downloadDB(forceDownload: Boolean) {
         LogUtils.file(LogUtils.I, "Start download DB ver$serverVersion.")
         progressDialog = MaterialDialog(mContext, MaterialDialog.DEFAULT_BEHAVIOR).apply {
             this.title(R.string.db_update_progress_title, null)
@@ -288,6 +283,9 @@ class UpdateManager private constructor(
         }
         thread(start = true){
             try {
+                if (forceDownload) {
+                    FileUtils.deleteDirectory(File(FileUtils.getDbDirectoryPath()))
+                }
                 val conn = URL(Statics.DB_FILE_URL).openConnection() as HttpURLConnection
                 maxLength = conn.contentLength
                 val inputStream = conn.inputStream
@@ -324,9 +322,25 @@ class UpdateManager private constructor(
     }
 
     fun doDecompress(){
-        LogUtils.file(LogUtils.I, "start decompress DB.")
+        FileUtils.deleteFile(FileUtils.getDbFilePath())
+        LogUtils.file(LogUtils.I, "Start decompress DB.")
         BrotliUtils.deCompress(FileUtils.getCompressedDbFilePath(), true)
         updateHandler.sendEmptyMessage(UPDATE_COMPLETED)
+    }
+
+    fun forceDownloadDb() {
+        MaterialDialog(mContext, MaterialDialog.DEFAULT_BEHAVIOR)
+            .title(res = R.string.db_update_dialog_title)
+            .message(res = R.string.db_update_dialog_text)
+            .cancelOnTouchOutside(false)
+            .show {
+                positiveButton(res = R.string.db_update_dialog_confirm) {
+                    downloadDB(true)
+                }
+                negativeButton(res = R.string.db_update_dialog_cancel) {
+                    LogUtils.file(LogUtils.I, "Canceled download db version$serverVersion.")
+                }
+            }
     }
 
     fun updateFailed(){

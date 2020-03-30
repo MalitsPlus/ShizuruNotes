@@ -39,11 +39,10 @@ class MainActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         initSingletonClass()
-        setSharedViewModels()
+        initSharedViewModels()
         if (checkDbFile()) {
             loadData()
         } else {
@@ -52,15 +51,19 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-    private fun initSingletonClass() {
-        Utils.setApp(application)
-        DBHelper.with(application)
-        UserSettings.with(application)
-        UpdateManager.with(this).setIActivityCallBack(this)
-        I18N.application = application
+    private fun checkDbFile(): Boolean {
+        return FileUtils.checkFileAndSize(FileUtils.getDbFilePath(), 50)
     }
 
-    private fun setSharedViewModels() {
+    private fun loadData() {
+        sharedEquipment.loadData()
+    }
+
+    private fun checkUpdate() {
+        UpdateManager.get().checkAppVersion(true)
+    }
+
+    private fun initSharedViewModels() {
         sharedEquipment = ViewModelProvider(this)[SharedViewModelEquipment::class.java].apply {
             equipmentMap.observe(this@MainActivity, Observer {
                 if (it.isNotEmpty()) {
@@ -102,9 +105,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun dbUpdateFinished() {
         clearData()
-        callBack?.changeTextHintVisibility(false)
         loadData()
-
     }
 
     override fun showSnackBar(@StringRes messageRes: Int) {
@@ -112,28 +113,20 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun clearData() {
-        sharedEquipment.equipmentMap.value?.clear()
-        sharedChara.charaList.value?.clear()
-        sharedClanBattle.periodList.value?.clear()
-        sharedClanBattle.dungeonList.clear()
-        sharedQuest.questList.value?.clear()
-        sharedEquipment.selectedDrops.value?.clear()
+        //不使用clear，直接赋空值以触发订阅者接收事件
+        sharedEquipment.equipmentMap.value = mutableMapOf()
+        sharedChara.charaList.value = mutableListOf()
+        sharedClanBattle.periodList.value = mutableListOf()
+        sharedClanBattle.dungeonList = mutableListOf()
+        sharedQuest.questList.value = mutableListOf()
+        sharedEquipment.selectedDrops.value = mutableListOf()
     }
 
-    private fun checkDbFile(): Boolean {
-        return FileUtils.checkFileAndSize(FileUtils.getDbFilePath(), 50)
-    }
-
-    private fun checkUpdate() {
-        UpdateManager.get().checkAppVersion(true)
-    }
-
-    private fun loadData() {
-        sharedEquipment.loadData()
-    }
-
-    var callBack: IMainActivityCallBack? = null
-    interface IMainActivityCallBack {
-        fun changeTextHintVisibility(visible: Boolean)
+    private fun initSingletonClass() {
+        Utils.setApp(application)
+        DBHelper.with(application)
+        UserSettings.with(application)
+        UpdateManager.with(this).setIActivityCallBack(this)
+        I18N.application = application
     }
 }

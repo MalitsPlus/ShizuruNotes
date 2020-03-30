@@ -9,14 +9,14 @@ import com.github.malitsplus.shizurunotes.ui.menu.MenuFragment
 
 const val CHARA_INDEX = 0
 const val DROP_INDEX = 1
-const val CALENDAR_INDEX = 2
+const val CLAN_BATTLE_INDEX = 2
 const val MENU_INDEX = 3
 
 class BottomNaviAdapter(val mFragment: Fragment) {
     private val tabFragmentCreator: Map<Int, () -> Fragment> = mapOf(
         CHARA_INDEX to { CharaListFragment() },
         DROP_INDEX to { DropFragment() },
-        CALENDAR_INDEX to { CalendarFragment() },
+        CLAN_BATTLE_INDEX to { ClanBattleFragment() },
         MENU_INDEX to { MenuFragment() }
     )
 

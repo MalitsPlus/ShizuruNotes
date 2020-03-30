@@ -44,14 +44,20 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_nav_bottom_navigation_to_nav_clan_battle"
-            app:destination="@id/nav_clan_battle"
+            android:id="@+id/action_nav_bottom_navigation_to_nav_calendar"
+            app:destination="@id/nav_calendar"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_nav_bottom_navigation_to_nav_clan_battle_view_pager"
+            app:destination="@id/nav_clan_battle_view_pager"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
-
 
     <fragment
         android:id="@+id/nav_chara_list"
@@ -97,15 +103,7 @@
         android:id="@+id/nav_clan_battle"
         android:name="com.github.malitsplus.shizurunotes.ui.clanbattle.ClanBattleFragment"
         android:label="@string/title_clan_battle"
-        tools:layout="@layout/fragment_clan_battle" >
-        <action
-            android:id="@+id/action_nav_clan_battle_to_nav_clan_battle_view_pager"
-            app:destination="@id/nav_clan_battle_view_pager"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
-    </fragment>
+        tools:layout="@layout/fragment_clan_battle" />
 
     <fragment
         android:id="@+id/nav_clan_battle_view_pager"

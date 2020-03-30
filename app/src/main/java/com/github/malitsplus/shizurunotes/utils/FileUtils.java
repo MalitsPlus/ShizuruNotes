@@ -63,12 +63,30 @@ public class FileUtils {
         }
     }
 
+    public static boolean deleteDirectory(File directoryFile) {
+        if (directoryFile.isDirectory()) {
+            File[] files = directoryFile.listFiles();
+            if (files != null) {
+                for (File child : files) {
+                    deleteDirectory(child);
+                }
+            }
+        }
+        return deleteFile(directoryFile);
+    }
+
+    public static boolean deleteFile(String filePath) {
+        return deleteFile(new File(filePath));
+    }
+
     public static boolean deleteFile(File file) {
         boolean flag = true;
         try {
             if (!file.delete()) {
                 flag = false;
-                throw new IOException("Failed to delete file: " + file.getAbsolutePath());
+                throw new IOException("Failed to delete file: " + file.getAbsolutePath() + ". Size: " + file.length() / 1024 + "KB.");
+            } else {
+                LogUtils.file("FileDelete", "Delete file " + file.getAbsolutePath());
             }
         } catch (Exception e) {
             LogUtils.file(LogUtils.E, "FileDelete", e.getMessage());
@@ -91,11 +109,14 @@ public class FileUtils {
 
     public static boolean checkFileAndSize(String filePath, long border) {
         File file = new File(filePath);
-        if (!checkFile(file)) return false;
+        if (!checkFile(file)) {
+            return false;
+        }
         if (file.length() < border * 1024) {
             LogUtils.file(LogUtils.I, "FileCheck", "AbnormalDbFileSize: " + file.length() / 1024 + "KB." + " At: " + file.getAbsolutePath());
             return false;
         }
+        LogUtils.file(LogUtils.I, "FileCheck", file.getAbsolutePath() + ". Size: " + file.length() / 1024 + "KB.");
         return true;
     }
 

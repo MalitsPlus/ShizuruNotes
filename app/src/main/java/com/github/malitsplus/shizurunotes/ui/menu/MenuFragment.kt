@@ -26,9 +26,9 @@ class MenuFragment : Fragment() {
                         it.findNavController().navigate(
                             BottomNaviFragmentDirections.actionNavBottomNavigationToNavDungeon()
                         )
-                    R.id.constraint_clan_battle ->
+                    R.id.constraint_calendar ->
                         it.findNavController().navigate(
-                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavClanBattle()
+                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavCalendar()
                         )
                     R.id.constraint_setting ->
                         it.findNavController().navigate(

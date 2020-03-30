@@ -52,7 +52,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         findPreference<Preference>("dbVersion")?.apply {
             onPreferenceClickListener = Preference.OnPreferenceClickListener {
                 it.isEnabled = false
-                UpdateManager.get().checkDatabaseVersion(false)
+                UpdateManager.get().checkDatabaseVersion()
                 thread(start = true){
                     Thread.sleep(5000)
                     activity?.runOnUiThread {
@@ -66,14 +66,15 @@ class SettingFragment : PreferenceFragmentCompat() {
         //重下数据库
         findPreference<Preference>("reDownloadDb")?.apply {
             onPreferenceClickListener = Preference.OnPreferenceClickListener {
-                it.isEnabled = false
-                UpdateManager.get().checkDatabaseVersion(true)
-                thread(start = true){
-                    Thread.sleep(5000)
-                    activity?.runOnUiThread {
-                        it.isEnabled = true
-                    }
-                }
+//                it.isEnabled = false
+                UpdateManager.get().forceDownloadDb()
+//                UpdateManager.get().checkDatabaseVersion(true)
+//                thread(start = true){
+//                    Thread.sleep(5000)
+//                    activity?.runOnUiThread {
+//                        it.isEnabled = true
+//                    }
+//                }
                 true
             }
         }

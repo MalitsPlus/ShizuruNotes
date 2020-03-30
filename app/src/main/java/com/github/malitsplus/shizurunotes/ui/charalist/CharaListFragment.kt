@@ -23,8 +23,7 @@ import com.github.malitsplus.shizurunotes.utils.LogUtils
 import com.google.android.material.snackbar.Snackbar
 
 
-class CharaListFragment : Fragment(),
-    MainActivity.IMainActivityCallBack
+class CharaListFragment : Fragment()
 {
     private lateinit var binding: FragmentCharaListBinding
     private lateinit var charaListViewModel: CharaListViewModel
@@ -34,7 +33,7 @@ class CharaListFragment : Fragment(),
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (requireActivity() as MainActivity).callBack = this
+//        (requireActivity() as MainActivity).callBack = this
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -153,13 +152,5 @@ class CharaListFragment : Fragment(),
 
     private fun updateList() {
         charaListViewModel.filterDefault()
-    }
-
-    override fun changeTextHintVisibility(visible: Boolean) {
-        binding.downloadDbHint.visibility = if (visible) {
-            View.VISIBLE
-        } else {
-            View.GONE
-        }
     }
 }

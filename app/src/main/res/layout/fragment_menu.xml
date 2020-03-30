@@ -45,7 +45,7 @@
                     android:foreground="?android:attr/selectableItemBackground"
                     android:onClick="@{clickListener}"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/constraint_clan_battle"
+                    app:layout_constraintEnd_toStartOf="@+id/constraint_calendar"
                     app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -75,7 +75,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraint_clan_battle"
+                    android:id="@+id/constraint_calendar"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -88,10 +88,10 @@
                     app:layout_constraintVertical_bias="0.0">
 
                     <ImageView
-                        android:id="@+id/imageClanBattle"
+                        android:id="@+id/imageCalendar"
                         android:layout_width="75dp"
                         android:layout_height="75dp"
-                        android:src="@drawable/mic_defend"
+                        android:src="@drawable/mic_calendar"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -103,11 +103,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="@string/title_clan_battle"
+                        android:text="@string/title_calendar"
                         android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="@+id/imageClanBattle"
-                        app:layout_constraintStart_toStartOf="@+id/imageClanBattle"
-                        app:layout_constraintTop_toBottomOf="@+id/imageClanBattle" />
+                        app:layout_constraintEnd_toEndOf="@+id/imageCalendar"
+                        app:layout_constraintStart_toStartOf="@+id/imageCalendar"
+                        app:layout_constraintTop_toBottomOf="@+id/imageCalendar" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -120,7 +120,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_weight="1"
-                    app:layout_constraintStart_toEndOf="@+id/constraint_clan_battle"
+                    app:layout_constraintStart_toEndOf="@+id/constraint_calendar"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0">
 
