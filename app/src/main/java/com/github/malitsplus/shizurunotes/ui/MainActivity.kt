@@ -12,6 +12,7 @@ import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.*
 import com.github.malitsplus.shizurunotes.databinding.ActivityMainBinding
 import com.github.malitsplus.shizurunotes.db.DBHelper
+import com.github.malitsplus.shizurunotes.db.MasterSchedule
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattle
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
