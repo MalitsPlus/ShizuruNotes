@@ -238,5 +238,18 @@
         android:id="@+id/nav_calendar"
         android:name="com.github.malitsplus.shizurunotes.ui.calendar.CalendarFragment"
         android:label="fragment_calendar"
-        tools:layout="@layout/fragment_calendar" />
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_nav_calendar_to_nav_day"
+            app:destination="@id/nav_day"
+            app:exitAnim="@anim/zoom_in"
+            app:popExitAnim="@anim/zoom_in"
+            app:enterAnim="@anim/fade_in"
+            app:popEnterAnim="@anim/fade_in"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_day"
+        android:name="com.github.malitsplus.shizurunotes.ui.calendar.DayFragment"
+        android:label="fragment_day"
+        tools:layout="@layout/fragment_day" />
 </navigation>

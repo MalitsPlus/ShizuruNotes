@@ -64,16 +64,19 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    implementation files('libs/commons-compress-1.19.jar')
+    implementation project(':calendarview')
+
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
-    implementation files('libs/commons-compress-1.19.jar')
     implementation 'com.squareup.okhttp3:okhttp:4.2.2'
-    implementation 'com.afollestad.material-dialogs:core:3.3.0'
     implementation 'com.google.code.gson:gson:2.8.6'
-    implementation 'com.github.lygttpod:SuperTextView:2.4.2'
     implementation 'androidx.preference:preference:1.1.0'
     implementation 'com.google.guava:guava:28.2-android'
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+
     implementation 'com.jakewharton:process-phoenix:2.0.0'
+    implementation 'com.github.lygttpod:SuperTextView:2.4.2'
+    implementation 'com.afollestad.material-dialogs:core:3.3.0'
 }

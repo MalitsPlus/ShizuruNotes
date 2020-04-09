@@ -7,9 +7,9 @@ import java.time.format.DateTimeFormatter;
 
 public class RawClanBattlePeriod {
     public int clan_battle_id;
+    public int release_month;
     public String start_time;
     public String end_time;
-
 
     public ClanBattlePeriod transToClanBattlePeriod(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd H:mm:ss");

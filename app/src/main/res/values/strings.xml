@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="app_name">シズノト</string>
     <string name="app_full_name">シズルノート</string>
     <string name="title_chara_list">キャラ</string>
@@ -197,6 +197,34 @@
     <string name="text_deney">いいえ</string>
     <string name="text_copy">コピー</string>
     <string name="text_copy_finished">テキストをクリップボードにコピーしました</string>
+    <string name="campaign">キャンペーン</string>
+    <string name="hatsune">イベント</string>
+    <string name="clanBattle">クランバトル</string>
+    <string name="tower">ルナの塔</string>
+    <string name="gacha">無料ガチャ</string>
+    <string name="dungeon">ダンジョン</string>
+    <string name="normal">ノーマル</string>
+    <string name="event_normal">イベントノーマル</string>
+    <string name="revival_event_normal">復刻イベントノーマル</string>
+    <string name="hard">ハード</string>
+    <string name="event_hard">イベントハード</string>
+    <string name="revival_event_hard">復刻イベントハード</string>
+    <string name="shrine">聖跡調査</string>
+    <string name="temple">神殿調査</string>
+    <string name="exploration">探索</string>
+    <string name="very_hard">ベリーハード</string>
+    <string name="short_dungeon_s">ダン%s倍</string>
+    <string name="short_normal_drop_s">ノーマル%s倍</string>
+    <string name="short_hard_s">ハード%s倍</string>
+    <string name="short_shrine_s">聖跡%s倍</string>
+    <string name="short_temple_s">神殿%s倍</string>
+    <string name="short_exploration_s">探索%s倍</string>
+    <string name="short_very_hard_s">ベリハ%s倍</string>
+    <string name="short_master_coin_s">マスコ%s倍</string>
+    <string name="drop_s">ドロップ%s倍</string>
+    <string name="mana_s">マナ%s倍</string>
+    <string name="exp_s">EXP%s倍</string>
+    <string name="master_coin_s">マスターコイン%s倍</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>

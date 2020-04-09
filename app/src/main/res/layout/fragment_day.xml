@@ -8,7 +8,7 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/calendar_appbar"
+            android:id="@+id/day_appbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -17,7 +17,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/calendar_toolbar"
+                android:id="@+id/day_toolbar"
                 app:navigationIcon="@drawable/ic_detail_back"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
@@ -26,35 +26,14 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <com.haibin.calendarview.CalendarLayout
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:calendar_show_mode="both_month_week_view"
+            android:id="@+id/day_recycler"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/calendar_appbar">
-
-            <com.haibin.calendarview.CalendarView
-                android:id="@+id/calendarView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:calendar_match_parent="true"
-                app:month_view_show_mode="mode_all"
-                app:select_mode="single_mode"
-
-                app:other_month_lunar_text_color="#e1e1e1"
-                app:other_month_text_color="#e1e1e1"
-                app:scheme_text="假"
-                app:scheme_text_color="#333"
-                app:scheme_theme_color="#128c4b"
-                android:background="#fff"
-                app:current_month_lunar_text_color="#CFCFCF"
-                app:current_month_text_color="#333333"
-                app:day_text_size="18sp"
-
-                app:month_view="com.github.malitsplus.shizurunotes.ui.calendar.CustomMonthView" />
-        </com.haibin.calendarview.CalendarLayout>
+            app:layout_constraintTop_toBottomOf="@+id/day_appbar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
