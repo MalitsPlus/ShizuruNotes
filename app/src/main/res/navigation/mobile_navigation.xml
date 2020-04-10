@@ -242,14 +242,26 @@
         <action
             android:id="@+id/action_nav_calendar_to_nav_day"
             app:destination="@id/nav_day"
-            app:exitAnim="@anim/zoom_in"
-            app:popExitAnim="@anim/zoom_in"
-            app:enterAnim="@anim/fade_in"
-            app:popEnterAnim="@anim/fade_in"/>
+            app:exitAnim="@anim/zoom_out_enter"
+            app:enterAnim="@anim/zoom_in_enter"
+            app:popExitAnim="@anim/zoom_out_pop"
+            app:popEnterAnim="@anim/zoom_in_pop" />
+        <action
+            android:id="@+id/action_nav_calendar_to_nav_event_notification"
+            app:destination="@id/nav_event_notification"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/nav_day"
         android:name="com.github.malitsplus.shizurunotes.ui.calendar.DayFragment"
         android:label="fragment_day"
         tools:layout="@layout/fragment_day" />
+    <fragment
+        android:id="@+id/nav_event_notification"
+        android:name="com.github.malitsplus.shizurunotes.ui.calendar.notification.EventNotificationContainerFragment"
+        android:label="fragment_event_notification"
+        tools:layout="@layout/fragment_event_notification" />
 </navigation>

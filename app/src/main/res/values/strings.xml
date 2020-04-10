@@ -225,6 +225,19 @@
     <string name="mana_s">マナ%s倍</string>
     <string name="exp_s">EXP%s倍</string>
     <string name="master_coin_s">マスターコイン%s倍</string>
+    <string name="icon_notification">通知</string>
+    <string name="title_notification_setting">通知設定</string>
+    <string name="setting_enable">通知の表示</string>
+    <string name="today_summary">当日朝5時</string>
+    <string name="before_summary">前日朝5時</string>
+    <string name="before_2_summary">二日前朝5時</string>
+    <string name="last_hour_summary">終了1時間前&amp;バイブ</string>
+    <string name="normal_before_title">ノーマルドロップ前日通知</string>
+    <string name="dungeon_before_2_title">ダンジョンキャンプ通知</string>
+    <string name="dungeon_before_title">ダンジョン前日通知</string>
+    <string name="hatsune_before_title">イベント終了前日通知</string>
+    <string name="hatsune_last_title">イベント終了当日通知</string>
+    <string name="hatsune_last_hour_title">イベント終了直前</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>

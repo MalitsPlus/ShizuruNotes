@@ -12,9 +12,6 @@ import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.databinding.FragmentSettingContainerBinding
 
-/**
- * A simple [Fragment] subclass.
- */
 class SettingContainerFragment : Fragment() {
 
     override fun onCreateView(

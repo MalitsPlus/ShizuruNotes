@@ -21,7 +21,7 @@ open class EventSchedule(
     val durationString: String
         get() {
             val pattern = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
-            return startTime.format(pattern) + "  -  " + endTime.format(pattern)
+            return startTime.format(pattern) + "  ~  " + endTime.format(pattern)
         }
 }
 

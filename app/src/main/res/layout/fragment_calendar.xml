@@ -3,6 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -21,7 +27,7 @@
                 app:navigationIcon="@drawable/ic_detail_back"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:menu="@menu/fragment_drop_toolbar"
+                app:menu="@menu/fragment_calendar_toolbar"
                 app:title="@string/title_calendar" />
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -43,15 +49,13 @@
                 app:month_view_show_mode="mode_all"
                 app:select_mode="single_mode"
 
-                app:other_month_lunar_text_color="#e1e1e1"
-                app:other_month_text_color="#e1e1e1"
-                app:scheme_text="假"
-                app:scheme_text_color="#333"
-                app:scheme_theme_color="#128c4b"
-                android:background="#fff"
-                app:current_month_lunar_text_color="#CFCFCF"
-                app:current_month_text_color="#333333"
-                app:day_text_size="18sp"
+                app:week_background="?attr/colorSurface"
+                app:week_text_color="@color/textPrimary"
+                app:scheme_text_color="?attr/colorSurface"
+                app:current_month_text_color="@color/textPrimary"
+                app:other_month_text_color="@color/textSecondary"
+                android:background="?attr/colorSurface"
+                app:day_text_size="12sp"
 
                 app:month_view="com.github.malitsplus.shizurunotes.ui.calendar.CustomMonthView" />
         </com.haibin.calendarview.CalendarLayout>

@@ -5,8 +5,9 @@ import android.graphics.BlurMaskFilter
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.view.View
-import com.haibin.calendarview.MonthView
+import com.github.malitsplus.shizurunotes.R
 import com.haibin.calendarview.Calendar
+import com.haibin.calendarview.MonthView
 
 class CustomMonthView(context: Context) : MonthView(context) {
 
@@ -19,13 +20,18 @@ class CustomMonthView(context: Context) : MonthView(context) {
     private val mSchemeBasicPaint = Paint()
 
     init {
+        //日期边框
         mRectPaint.style = Paint.Style.STROKE
         mRectPaint.strokeWidth = dipToPx(context, 0.5f).toFloat()
-        mRectPaint.color = -0x77101011
+        mRectPaint.color = context.getColor(R.color.black_500)
+
+
+
+
         mSchemeBasicPaint.isAntiAlias = true
         mSchemeBasicPaint.style = Paint.Style.FILL
         mSchemeBasicPaint.textAlign = Paint.Align.CENTER
-        mSchemeBasicPaint.isFakeBoldText = true
+        mSchemeBasicPaint.isFakeBoldText = false
 
         //兼容硬件加速无效的代码
         setLayerType(View.LAYER_TYPE_SOFTWARE, mSchemeBasicPaint)
@@ -128,24 +134,32 @@ class CustomMonthView(context: Context) : MonthView(context) {
             y + mItemHeight.toFloat(),
             mRectPaint
         )
-        val centerX = x + mItemWidth / 2
+        val centerX = (x + mItemWidth / 2).toFloat()
         val top = y - mItemHeight / 2 + dayTextSize
-//        val isInRange = isInRange(calendar)
+        val textCenterY = y - mItemHeight / 2 + dayTextSize / 2 + 5f
 
-        mSelectTextPaint.textSize = dayTextSize
+        mCurDayTextPaint.textSize = dayTextSize
+        mCurDayTextPaint.color = context.getColor(R.color.black_800)
         mCurMonthTextPaint.textSize = dayTextSize
         mOtherMonthTextPaint.textSize = dayTextSize
-
-        if (isSelected) {
-            canvas.drawText(
-                calendar.day.toString(), centerX.toFloat(), mTextBaseLine + top, mSelectTextPaint
-            )
-        } else {
-            canvas.drawText(
-                calendar.day.toString(), centerX.toFloat(), mTextBaseLine + top,
-                if (calendar.isCurrentMonth) mCurMonthTextPaint else mOtherMonthTextPaint
-            )
+        val mCurrentDayBackgroundPaint = Paint().apply {
+            isAntiAlias = true
+            style = Paint.Style.FILL
+            color = context.getColor(R.color.blue_100)
         }
+
+        if (calendar.isCurrentDay) {
+            canvas.drawCircle(centerX, mTextBaseLine + textCenterY, dayTextSize * 3 / 4, mCurrentDayBackgroundPaint)
+            canvas.drawText(
+                calendar.day.toString(), centerX, mTextBaseLine + top, mCurDayTextPaint
+            )
+            return
+        }
+
+        canvas.drawText(
+            calendar.day.toString(), centerX, mTextBaseLine + top,
+            if (calendar.isCurrentMonth) mCurMonthTextPaint else mOtherMonthTextPaint
+        )
     }
 
     /**
