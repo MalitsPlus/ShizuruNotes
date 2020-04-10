@@ -6,9 +6,8 @@
         android:fromYScale="1.0"
         android:pivotX="50%"
         android:pivotY="50%"
-        android:toXScale="3.0"
-        android:toYScale="3.0" >
-    </scale>
+        android:toXScale="0.3"
+        android:toYScale="0.3" />
     <alpha android:fromAlpha="1.0" android:toAlpha="0.0"
         android:duration="@integer/anim_duration_trans" />
 </set>

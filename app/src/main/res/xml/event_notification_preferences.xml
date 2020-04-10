@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:key="category_notification_setting"
+        app:title="@string/title_notification_setting">
+
+        <SwitchPreferenceCompat
+            app:key="notification_enable"
+            app:defaultValue="false"
+            app:icon="@drawable/mic_notifications"
+            app:title="@string/setting_enable" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="category_normal"
+        app:title="@string/normal">
+
+        <SwitchPreferenceCompat
+            app:key="normal_before"
+            app:defaultValue="false"
+            app:title="@string/normal_before_title"
+            app:summary="@string/before_summary" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="category_dungeon"
+        app:title="@string/dungeon">
+
+        <SwitchPreferenceCompat
+            app:key="dungeon_before_2"
+            app:defaultValue="false"
+            app:title="@string/dungeon_before_2_title"
+            app:summary="@string/before_2_summary" />
+
+        <SwitchPreferenceCompat
+            app:key="dungeon_before"
+            app:defaultValue="false"
+            app:title="@string/dungeon_before_title"
+            app:summary="@string/before_summary" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="category_hatsune"
+        app:title="@string/hatsune">
+
+        <SwitchPreferenceCompat
+            app:key="hatsune_before"
+            app:defaultValue="false"
+            app:title="@string/hatsune_before_title"
+            app:summary="@string/before_summary" />
+
+        <SwitchPreferenceCompat
+            app:key="hatsune_last"
+            app:defaultValue="false"
+            app:title="@string/hatsune_last_title"
+            app:summary="@string/today_summary" />
+
+        <SwitchPreferenceCompat
+            app:key="hatsune_last_hour"
+            app:defaultValue="false"
+            app:title="@string/hatsune_last_hour_title"
+            app:summary="@string/last_hour_summary" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

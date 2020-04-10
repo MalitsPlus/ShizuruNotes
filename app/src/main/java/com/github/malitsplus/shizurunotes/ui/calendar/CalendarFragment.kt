@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -34,6 +35,8 @@ class CalendarFragment : Fragment(),
             view.findNavController().navigateUp()
         }
 
+        setOptionItemClickListener(binding.calendarToolbar)
+
         binding.calendarView.apply {
             setSchemeDate(calendarVM.calendarMap)
             setOnMonthChangeListener(this@CalendarFragment)
@@ -42,6 +45,19 @@ class CalendarFragment : Fragment(),
         }
 
         return binding.root
+    }
+
+    private fun setOptionItemClickListener(toolbar: Toolbar) {
+        toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.menu_notification -> {
+                    Navigation.findNavController(binding.root).navigate(CalendarFragmentDirections.actionNavCalendarToNavEventNotification())
+                }
+                else -> {
+                }
+            }
+            true
+        }
     }
 
     override fun onMonthChange(year: Int, month: Int) {

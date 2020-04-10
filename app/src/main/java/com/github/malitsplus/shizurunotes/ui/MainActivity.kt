@@ -13,6 +13,7 @@ import com.github.malitsplus.shizurunotes.common.*
 import com.github.malitsplus.shizurunotes.databinding.ActivityMainBinding
 import com.github.malitsplus.shizurunotes.db.DBHelper
 import com.github.malitsplus.shizurunotes.db.MasterSchedule
+import com.github.malitsplus.shizurunotes.ui.calendar.CalendarViewModel
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattle
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
@@ -85,21 +86,10 @@ class MainActivity : AppCompatActivity(),
 
     override fun dbDownloadFinished() {
         thread(start = true) {
-            for (i in 1..50) {
-                if (sharedEquipment.loadingFlag.value == false
-                    && sharedChara.loadingFlag.value == false
-                    && sharedClanBattle.loadingFlag.value == false
-                    && sharedQuest.loadingFlag.value == false) {
-                    synchronized(DBHelper::class.java){
-                        UpdateManager.get().doDecompress()
-                    }
-                    break
-                }
-                Thread.sleep(100)
-                if (i == 50) {
-                    LogUtils.file(LogUtils.I, "DbDecompress", "Time out: 5s.")
-                    UpdateManager.get().updateFailed()
-                }
+            //先关闭所有连接，释放sqliteHelper类中的所有旧版本数据库缓存
+            DBHelper.get().close()
+            synchronized(DBHelper::class.java){
+                UpdateManager.get().doDecompress()
             }
         }
     }
@@ -121,6 +111,10 @@ class MainActivity : AppCompatActivity(),
         sharedClanBattle.dungeonList = mutableListOf()
         sharedQuest.questList.value = mutableListOf()
         sharedEquipment.selectedDrops.value = mutableListOf()
+        with(ViewModelProvider(this)[CalendarViewModel::class.java]) {
+            scheduleMap.clear()
+            calendarMap.clear()
+        }
     }
 
     private fun initSingletonClass() {
