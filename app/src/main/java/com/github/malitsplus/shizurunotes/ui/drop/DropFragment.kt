@@ -16,6 +16,7 @@ import com.github.malitsplus.shizurunotes.databinding.FragmentDropBinding
 import com.github.malitsplus.shizurunotes.ui.BottomNaviFragmentDirections
 import com.github.malitsplus.shizurunotes.ui.base.BaseHintAdapter
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
+import com.github.malitsplus.shizurunotes.utils.Utils
 
 class DropFragment : Fragment() {
 
@@ -44,8 +45,7 @@ class DropFragment : Fragment() {
         mAdapter = GridSelectAdapter(requireContext(), sharedEquipment)
 
         //根据屏幕大小调整每行显示图标数
-        val dpi = resources.displayMetrics.density
-        if (dpi < 3.0f) {
+        if (Utils.getScreenRatio() < 2.0) {
             maxSpanNum = 5
         }
 
