@@ -27,7 +27,7 @@ class EventNotificationContainerFragment : Fragment() {
             .replace(R.id.notification_container, EventNotificationSetting())
             .commit()
 
-        return inflater.inflate(R.layout.fragment_event_notification, container, false)
+        return binding.root
     }
 
 }

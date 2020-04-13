@@ -37,9 +37,9 @@ class CampaignSchedule(
     val systemId: Int
 ) : EventSchedule(id, name, type, startTime, endTime) {
     override val title: String by lazy {
-        campaignType.description().format(Utils.roundIf(value / 1000.0))
+        campaignType.description().format(Utils.roundIfNeed(value / 1000.0))
     }
-    val shortTitle: String = campaignType.shortDescription().format(Utils.roundIf(value / 1000.0))
+    val shortTitle: String = campaignType.shortDescription().format(Utils.roundIfNeed(value / 1000.0))
 }
 
 enum class EventType {
@@ -66,7 +66,7 @@ enum class EventType {
             clanBattle -> Peacock.toInt()
             tower -> Grape.toInt()
             gacha -> Flamingo.toInt()
-            else -> Graphite.toInt()
+//            else -> Graphite.toInt()
         }
 }
 

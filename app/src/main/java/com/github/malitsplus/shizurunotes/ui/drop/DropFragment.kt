@@ -23,7 +23,7 @@ class DropFragment : Fragment() {
     private lateinit var dropVM: DropViewModel
     private lateinit var binding: FragmentDropBinding
     private lateinit var mAdapter: GridSelectAdapter
-    private val maxSpanNum = 6
+    private var maxSpanNum = 6
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +42,13 @@ class DropFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mAdapter = GridSelectAdapter(requireContext(), sharedEquipment)
+
+        //根据屏幕大小调整每行显示图标数
+        val dpi = resources.displayMetrics.density
+        if (dpi < 3.0f) {
+            maxSpanNum = 5
+        }
+
         val mLayoutManager = GridLayoutManager(context, maxSpanNum).apply {
             spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int {

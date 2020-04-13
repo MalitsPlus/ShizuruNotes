@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.malitsplus.shizurunotes.R
+import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.databinding.FragmentDayBinding
 
 class DayFragment : Fragment() {
@@ -28,9 +30,16 @@ class DayFragment : Fragment() {
             dayToolbar.setNavigationOnClickListener { view ->
                 view.findNavController().navigateUp()
             }
+            val calendar = calendarVM.calendarMap[calendarVM.selectedDay]
+            dayToolbar.title = calendar?.month.toString() + I18N.getString(R.string.text_month) + calendar?.day + I18N.getString(R.string.text_day)
             dayRecycler.apply {
                 layoutManager = LinearLayoutManager(this@DayFragment.context)
-                adapter = DayScheduleAdapter().apply { itemList = calendarVM.scheduleMap[calendarVM.selectedDay]!! }
+                val map = calendarVM.scheduleMap[calendarVM.selectedDay]
+                if (map != null) {
+                    adapter = DayScheduleAdapter().apply {
+                        itemList = map
+                    }
+                }
             }
         }
         return binding.root

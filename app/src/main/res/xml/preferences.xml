@@ -36,11 +36,13 @@
             app:title="@string/title_log" >
         </Preference>
 
+        <!--
         <Preference
             app:key="reDownloadDb"
             app:icon="@drawable/mic_restore"
             app:title="@string/setting_re_download_db"
             app:summary="@string/setting_re_download_db_summary"/>
+        -->
 
         <Preference
             app:key="dbVersion"

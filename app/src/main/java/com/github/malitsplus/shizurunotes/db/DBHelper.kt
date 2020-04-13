@@ -979,6 +979,18 @@ class DBHelper private constructor(
     }
 
     /***
+     * 获取露娜塔日程
+     */
+    fun getTowerSchedule(): List<RawTowerSchedule>? {
+        return getBeanListByRaw(
+            """
+                SELECT * FROM tower_schedule 
+                """,
+            RawTowerSchedule::class.java
+        )
+    }
+
+    /***
      * 获取异常状态map
      * @param
      * @return

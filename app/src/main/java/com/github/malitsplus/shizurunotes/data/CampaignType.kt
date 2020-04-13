@@ -45,6 +45,8 @@ enum class CampaignType {
     masterCoinEventHard,
     masterCoinRevivalEventNormal,
     masterCoinRevivalEventHard,
+    masterCoinDropShioriNormal(100),
+    masterCoinDropShioriHard,
     halfStaminaEventNormal(111),
     halfStaminaEventHard,
     halfStaminaEventBoth,
@@ -103,9 +105,9 @@ enum class CampaignType {
         masterCoinNormal -> (0xFFEF9A9A).toInt()
         dropAmountNormal -> (0xFF81D4FA).toInt()
         dropAmountHard -> (0xFF4FC3F7).toInt()
-        dropAmountShrine -> (0xFFF06292).toInt()
-        dropAmountTemple -> (0xFFF06292).toInt()
-        manaExploration -> (0xFF689F38).toInt()
+        dropAmountShrine -> (0xFFF8BBD0).toInt()
+        dropAmountTemple -> (0xFFF8BBD0).toInt()
+        manaExploration -> (0xFFC5E1A5).toInt()
         dropAmountVeryHard -> (0xFF29B6F6).toInt()
         else -> 0
     }
@@ -125,7 +127,8 @@ enum class CampaignType {
         manaEventNormal,
         dropRareEventNormal,
         dropAmountEventNormal,
-        masterCoinEventNormal -> I18N.getString(R.string.event_normal)
+        masterCoinDropShioriNormal,
+        masterCoinEventNormal -> I18N.getString(R.string.hatsune_normal)
         expRevivalEventNormal,
         manaRevivalEventNormal,
         dropRareRevivalEventNormal,
@@ -140,7 +143,8 @@ enum class CampaignType {
         manaEventHard,
         dropRareEventHard,
         dropAmountEventHard,
-        masterCoinEventHard -> I18N.getString(R.string.event_hard)
+        masterCoinDropShioriHard,
+        masterCoinEventHard -> I18N.getString(R.string.hatsune_hard)
         expRevivalEventHard,
         manaRevivalEventHard,
         dropRareRevivalEventHard,
@@ -160,7 +164,7 @@ enum class CampaignType {
         dropAmountVeryHard,
         masterCoinVeryHard,
         halfStaminaVeryHard -> I18N.getString(R.string.very_hard)
-        else -> I18N.getString(R.string.unknown)
+        else -> I18N.getString(R.string.others)
     }
 
     private fun bonus(): String = when (value /10 % 10) {
@@ -168,7 +172,7 @@ enum class CampaignType {
         4 -> I18N.getString(R.string.mana_s)
         5 -> I18N.getString(R.string.exp_s)
         9 -> I18N.getString(R.string.master_coin_s)
-        else -> I18N.getString(R.string.unknown)
+        else -> I18N.getString(R.string.others)
     }
 
     //完整的活动日程字符串
