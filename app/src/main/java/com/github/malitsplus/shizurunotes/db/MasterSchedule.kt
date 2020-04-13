@@ -35,6 +35,16 @@ class MasterSchedule {
                 LocalDateTime.parse(it.end_time, formatter)
             ))
         }
+        DBHelper.get().getClanBattlePeriod()?.forEach {
+            scheduleList.add(EventSchedule(it.clan_battle_id, "", EventType.clanBattle,
+                LocalDateTime.parse(it.start_time, formatter), LocalDateTime.parse(it.end_time, formatter)
+            ))
+        }
+        DBHelper.get().getTowerSchedule()?.forEach {
+            scheduleList.add(EventSchedule(it.tower_schedule_id, "", EventType.tower,
+                LocalDateTime.parse(it.start_time, formatter), LocalDateTime.parse(it.end_time, formatter)
+            ))
+        }
         return scheduleList
     }
 }

@@ -6,6 +6,7 @@ import com.github.malitsplus.shizurunotes.user.UserSettings;
 import com.github.malitsplus.shizurunotes.data.Property;
 import com.github.malitsplus.shizurunotes.data.PropertyKey;
 import com.github.malitsplus.shizurunotes.data.Skill;
+import com.github.malitsplus.shizurunotes.utils.Utils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -332,7 +333,8 @@ public class ActionParameter {
                 fixedValue *= (property.energyRecoveryRate / 100 + 1);
             */
             if(roundingMode == RoundingMode.UNNECESSARY)
-                return String.valueOf(fixedValue);
+                return Utils.roundIfNeed(fixedValue);
+//                return String.valueOf(fixedValue);
 
             BigDecimal bigDecimal = new BigDecimal(fixedValue);
             return String.valueOf(bigDecimal.setScale(0, roundingMode).intValue());

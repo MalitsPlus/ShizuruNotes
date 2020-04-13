@@ -25,7 +25,7 @@ class EventNotificationSetting : PreferenceFragmentCompat(){
         setPreferencesFromResource(R.xml.event_notification_preferences, rootKey)
 
         findPreference<SwitchPreferenceCompat>(NOTIFICATION_ENABLE)?.apply {
-            onPreferenceChangeListener = OnPreferenceChangeListener { preference, newValue ->
+            onPreferenceChangeListener = OnPreferenceChangeListener { _ , newValue ->
                 newValue as Boolean
                 findPreference<PreferenceCategory>(CATEGORY_NORMAL)?.isEnabled = newValue
                 findPreference<PreferenceCategory>(CATEGORY_DUNGEON)?.isEnabled = newValue
@@ -42,7 +42,7 @@ class EventNotificationSetting : PreferenceFragmentCompat(){
     }
 
     private fun switchNotification(): (p: Preference, b: Any) -> Boolean {
-        return { preference: Preference, any: Any ->
+        return { _ , _ ->
 
             true
         }
