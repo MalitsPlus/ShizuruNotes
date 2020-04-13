@@ -14,7 +14,8 @@ Gradle building configuration could be found in `./app/build.gradle` and it migh
 * Clan Battle Boss 
 * Dungeon 
 * Equipment 
-* Event Calendar 
+* Event Calendar  
+  
 And more functions has been planned. 
 
 ## Localization 
