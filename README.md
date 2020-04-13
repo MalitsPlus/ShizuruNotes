@@ -11,24 +11,10 @@ Gradle building configuration could be found in `./app/build.gradle` and it migh
 
 ## Features
 * Chara 
-	* Status
-	* Skill details
-	* Attack pattern
-	* Image view
-	* Profile
-	* Minion
-
 * Clan Battle Boss 
-	* status
-	* Skill details
-	* Attack pattern
-	* Ailment resistant data
-	* Minion
-
 * Dungeon 
 * Equipment 
-* Quest
-
+* Event Calendar 
 And more functions has been planned. 
 
 ## Localization 
