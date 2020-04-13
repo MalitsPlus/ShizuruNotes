@@ -2,6 +2,7 @@ package com.github.malitsplus.shizurunotes.utils;
 
 import android.app.Application;
 import android.os.Build;
+import android.util.DisplayMetrics;
 
 import androidx.annotation.NonNull;
 
@@ -82,5 +83,10 @@ public class Utils {
 
     public static String getCurrentProcessName() {
         return Thread.currentThread().getName();
+    }
+
+    public static double getScreenRatio() {
+        DisplayMetrics metrics = app.getResources().getDisplayMetrics();
+        return Double.parseDouble(String.valueOf(metrics.heightPixels)) / metrics.widthPixels;
     }
 }
