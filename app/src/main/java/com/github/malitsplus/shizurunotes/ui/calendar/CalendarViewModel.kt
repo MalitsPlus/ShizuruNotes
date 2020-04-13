@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.github.malitsplus.shizurunotes.data.CampaignSchedule
 import com.github.malitsplus.shizurunotes.data.EventSchedule
 import com.github.malitsplus.shizurunotes.db.MasterSchedule
+import com.github.malitsplus.shizurunotes.utils.Utils
 import com.haibin.calendarview.Calendar
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -15,6 +16,13 @@ class CalendarViewModel : ViewModel() {
     val scheduleMap = mutableMapOf<String, MutableList<EventSchedule>>()
     val calendarMap = mutableMapOf<String, Calendar>()
     var selectedDay: String? = null
+    private val maxDisplayNum: Int = when (Utils.getScreenRatio()) {
+        in 0.0..1.7776 -> 4
+        in 1.7776..1.9072 -> 5
+        in 1.9072..2.0368 -> 6
+        in 2.0368..2.1666 -> 7
+        else -> 99
+    }
 
     fun initData() {
         if (calendarMap.isNotEmpty()) return
@@ -72,9 +80,11 @@ class CalendarViewModel : ViewModel() {
                 addScheme(color, text, startTime, endTime)
             }
         } else {
-            calendarMap[datePattern]?.addScheme(
-                color, text, startTime, endTime
-            )
+            calendarMap[datePattern]?.let {
+                if (it.schemes.size < maxDisplayNum) {
+                    it.addScheme(color, text, startTime, endTime)
+                }
+            }
         }
     }
 }
