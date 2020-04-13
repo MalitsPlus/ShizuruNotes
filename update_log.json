@@ -1,7 +1,7 @@
 {
-	"versionCode": "7",
-	"versionName": "0.5.6",
+	"versionCode": "8",
+	"versionName": "0.5.7",
 	"recommend": "false",
-	"messageJa": "・装備ドロップ検索機能を実装。\n・ダークテーマを実装。\n・ログ機能を実装。\n・DBダウンロードの不具合を修正。\n・一部UIの調整。",
-	"messageZh": "・装备掉落检索机能实装。\n・暗色主题实装。\n・日志机能实装。\n・修正数据库下载bug。\n・调整部分UI。"
+	"messageJa": "・イベントカレンダー実装。\n・データベースに関する不具合を修正（３敗目）。",
+	"messageZh": "・活动日历功能实装。\n・修正数据库相关bug（如果还有问题请复制日志向我反馈）。"
 }
