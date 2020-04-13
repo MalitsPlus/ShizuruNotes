@@ -52,7 +52,7 @@ class LogFragment : Fragment() {
         }
         val files = LogUtils.getLogFiles().filter {
             it.isFile
-        }
+        }.sortedDescending()
         binding.logProgressBar.visibility = View.GONE
         mAdapter.update(files.toMutableList())
     }

@@ -72,6 +72,13 @@ public class Utils {
     public static String roundDouble(double value){
         return format.format(Math.round(value));
     }
+    public static String roundIfNeed(double value) {
+        if (value % 1 == 0) {
+            return roundDouble(value);
+        } else {
+            return String.valueOf(value);
+        }
+    }
 
     public static String getCurrentProcessName() {
         return Thread.currentThread().getName();

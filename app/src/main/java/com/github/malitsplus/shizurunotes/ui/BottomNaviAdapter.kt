@@ -1,6 +1,7 @@
 package com.github.malitsplus.shizurunotes.ui
 
 import androidx.fragment.app.Fragment
+import com.github.malitsplus.shizurunotes.ui.calendar.CalendarFragment
 import com.github.malitsplus.shizurunotes.ui.charalist.CharaListFragment
 import com.github.malitsplus.shizurunotes.ui.clanbattle.ClanBattleFragment
 import com.github.malitsplus.shizurunotes.ui.drop.DropFragment

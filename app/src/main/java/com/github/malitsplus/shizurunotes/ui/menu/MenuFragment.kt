@@ -26,6 +26,10 @@ class MenuFragment : Fragment() {
                         it.findNavController().navigate(
                             BottomNaviFragmentDirections.actionNavBottomNavigationToNavDungeon()
                         )
+                    R.id.constraint_calendar ->
+                        it.findNavController().navigate(
+                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavCalendar()
+                        )
                     R.id.constraint_setting ->
                         it.findNavController().navigate(
                             BottomNaviFragmentDirections.actionNavBottomNavigationToNavSettingContainer()
