@@ -12,6 +12,8 @@ import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.*
 import com.github.malitsplus.shizurunotes.databinding.ActivityMainBinding
 import com.github.malitsplus.shizurunotes.db.DBHelper
+import com.github.malitsplus.shizurunotes.db.MasterSchedule
+import com.github.malitsplus.shizurunotes.ui.calendar.CalendarViewModel
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattle
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
@@ -39,11 +41,10 @@ class MainActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         initSingletonClass()
-        setSharedViewModels()
+        initSharedViewModels()
         if (checkDbFile()) {
             loadData()
         } else {
@@ -52,15 +53,19 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-    private fun initSingletonClass() {
-        Utils.setApp(application)
-        DBHelper.with(application)
-        UserSettings.with(application)
-        UpdateManager.with(this).setIActivityCallBack(this)
-        I18N.application = application
+    private fun checkDbFile(): Boolean {
+        return FileUtils.checkFileAndSize(FileUtils.getDbFilePath(), 50)
     }
 
-    private fun setSharedViewModels() {
+    private fun loadData() {
+        sharedEquipment.loadData()
+    }
+
+    private fun checkUpdate() {
+        UpdateManager.get().checkAppVersion(true)
+    }
+
+    private fun initSharedViewModels() {
         sharedEquipment = ViewModelProvider(this)[SharedViewModelEquipment::class.java].apply {
             equipmentMap.observe(this@MainActivity, Observer {
                 if (it.isNotEmpty()) {
@@ -81,30 +86,17 @@ class MainActivity : AppCompatActivity(),
 
     override fun dbDownloadFinished() {
         thread(start = true) {
-            for (i in 1..50) {
-                if (sharedEquipment.loadingFlag.value == false
-                    && sharedChara.loadingFlag.value == false
-                    && sharedClanBattle.loadingFlag.value == false
-                    && sharedQuest.loadingFlag.value == false) {
-                    synchronized(DBHelper::class.java){
-                        UpdateManager.get().doDecompress()
-                    }
-                    break
-                }
-                Thread.sleep(100)
-                if (i == 50) {
-                    LogUtils.file(LogUtils.I, "DbDecompress", "Time out: 5s.")
-                    UpdateManager.get().updateFailed()
-                }
+            //先关闭所有连接，释放sqliteHelper类中的所有旧版本数据库缓存
+            DBHelper.get().close()
+            synchronized(DBHelper::class.java){
+                UpdateManager.get().doDecompress()
             }
         }
     }
 
     override fun dbUpdateFinished() {
         clearData()
-        callBack?.changeTextHintVisibility(false)
         loadData()
-
     }
 
     override fun showSnackBar(@StringRes messageRes: Int) {
@@ -112,28 +104,24 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun clearData() {
-        sharedEquipment.equipmentMap.value?.clear()
-        sharedChara.charaList.value?.clear()
-        sharedClanBattle.periodList.value?.clear()
-        sharedClanBattle.dungeonList.clear()
-        sharedQuest.questList.value?.clear()
-        sharedEquipment.selectedDrops.value?.clear()
+        //不使用clear，直接赋空值以触发订阅者接收事件
+        sharedEquipment.equipmentMap.value = mutableMapOf()
+        sharedChara.charaList.value = mutableListOf()
+        sharedClanBattle.periodList.value = mutableListOf()
+        sharedClanBattle.dungeonList = mutableListOf()
+        sharedQuest.questList.value = mutableListOf()
+        sharedEquipment.selectedDrops.value = mutableListOf()
+        with(ViewModelProvider(this)[CalendarViewModel::class.java]) {
+            scheduleMap.clear()
+            calendarMap.clear()
+        }
     }
 
-    private fun checkDbFile(): Boolean {
-        return FileUtils.checkFileAndSize(FileUtils.getDbFilePath(), 50)
-    }
-
-    private fun checkUpdate() {
-        UpdateManager.get().checkAppVersion(true)
-    }
-
-    private fun loadData() {
-        sharedEquipment.loadData()
-    }
-
-    var callBack: IMainActivityCallBack? = null
-    interface IMainActivityCallBack {
-        fun changeTextHintVisibility(visible: Boolean)
+    private fun initSingletonClass() {
+        Utils.setApp(application)
+        DBHelper.with(application)
+        UserSettings.with(application)
+        UpdateManager.with(this).setIActivityCallBack(this)
+        I18N.application = application
     }
 }

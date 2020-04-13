@@ -942,6 +942,55 @@ class DBHelper private constructor(
     }
 
     /***
+     * 获取campaign日程
+     */
+    fun getCampaignSchedule(): List<RawScheduleCampaign>? {
+        return getBeanListByRaw(
+            """
+                SELECT * FROM campaign_schedule 
+                """,
+            RawScheduleCampaign::class.java
+        )
+    }
+
+    /***
+     * 获取free gacha日程
+     */
+    fun getFreeGachaSchedule(): List<RawScheduleFreeGacha>? {
+        return getBeanListByRaw(
+            """
+                SELECT * FROM campaign_freegacha
+                """,
+            RawScheduleFreeGacha::class.java
+        )
+    }
+
+    /***
+     * 获取hatsune日程
+     */
+    fun getHatsuneSchedule(): List<RawScheduleHatsune>? {
+        return getBeanListByRaw(
+            """
+                SELECT a.event_id, a.start_time, a.end_time, b.title 
+                FROM hatsune_schedule AS a JOIN event_story_data AS b ON a.event_id = b.value
+                """,
+            RawScheduleHatsune::class.java
+        )
+    }
+
+    /***
+     * 获取露娜塔日程
+     */
+    fun getTowerSchedule(): List<RawTowerSchedule>? {
+        return getBeanListByRaw(
+            """
+                SELECT * FROM tower_schedule 
+                """,
+            RawTowerSchedule::class.java
+        )
+    }
+
+    /***
      * 获取异常状态map
      * @param
      * @return

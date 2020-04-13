@@ -5,7 +5,6 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_bottom_navigation">
 
-
     <fragment
         android:id="@+id/nav_bottom_navigation"
         android:name="com.github.malitsplus.shizurunotes.ui.BottomNaviFragment"
@@ -23,13 +22,6 @@
                 android:defaultValue="0"
                 app:argType="integer" />
         </action>
-        <action
-            android:id="@+id/action_nav_bottom_navigation_to_nav_clan_battle_details"
-            app:destination="@id/nav_clan_battle_view_pager"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_nav_bottom_navigation_to_nav_setting_container"
             app:destination="@id/nav_setting_container"
@@ -51,8 +43,21 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_nav_bottom_navigation_to_nav_calendar"
+            app:destination="@id/nav_calendar"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_nav_bottom_navigation_to_nav_clan_battle_view_pager"
+            app:destination="@id/nav_clan_battle_view_pager"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
-
 
     <fragment
         android:id="@+id/nav_chara_list"
@@ -229,5 +234,34 @@
             app:argType="string"
             android:defaultValue="logText"/>
     </fragment>
-
+    <fragment
+        android:id="@+id/nav_calendar"
+        android:name="com.github.malitsplus.shizurunotes.ui.calendar.CalendarFragment"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_nav_calendar_to_nav_day"
+            app:destination="@id/nav_day"
+            app:exitAnim="@anim/zoom_out_enter"
+            app:enterAnim="@anim/zoom_in_enter"
+            app:popExitAnim="@anim/zoom_out_pop"
+            app:popEnterAnim="@anim/zoom_in_pop" />
+        <action
+            android:id="@+id/action_nav_calendar_to_nav_event_notification"
+            app:destination="@id/nav_event_notification"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_day"
+        android:name="com.github.malitsplus.shizurunotes.ui.calendar.DayFragment"
+        android:label="fragment_day"
+        tools:layout="@layout/fragment_day" />
+    <fragment
+        android:id="@+id/nav_event_notification"
+        android:name="com.github.malitsplus.shizurunotes.ui.calendar.notification.EventNotificationContainerFragment"
+        android:label="fragment_event_notification"
+        tools:layout="@layout/fragment_event_notification" />
 </navigation>

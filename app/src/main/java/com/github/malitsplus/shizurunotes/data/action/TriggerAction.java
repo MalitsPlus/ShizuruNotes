@@ -3,6 +3,7 @@ package com.github.malitsplus.shizurunotes.data.action;
 import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.I18N;
 import com.github.malitsplus.shizurunotes.data.Property;
+import com.github.malitsplus.shizurunotes.utils.Utils;
 
 public class TriggerAction extends ActionParameter {
 
@@ -50,7 +51,7 @@ public class TriggerAction extends ActionParameter {
             case hp:
                 return I18N.getString(R.string.Trigger_HP_is_below_d, Math.round(actionValue3));
             case limitTime:
-                return I18N.getString(R.string.Trigger_Left_time_is_below_s_sec, actionValue3);
+                return I18N.getString(R.string.Trigger_Left_time_is_below_s_sec, Math.round(actionValue3));
             case damage:
                 return I18N.getString(R.string.Trigger_d_on_damaged, Math.round(actionValue1));
             case dead:

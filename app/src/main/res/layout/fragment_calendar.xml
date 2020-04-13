@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/calendar_appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/calendar_toolbar"
+                app:navigationIcon="@drawable/ic_detail_back"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="@string/title_calendar" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.haibin.calendarview.CalendarLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:calendar_show_mode="both_month_week_view"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calendar_appbar">
+
+            <com.haibin.calendarview.CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:calendar_match_parent="true"
+                app:month_view_show_mode="mode_all"
+                app:select_mode="single_mode"
+
+                app:week_background="?attr/colorSurface"
+                app:week_text_color="@color/textPrimary"
+                app:scheme_text_color="?attr/colorSurface"
+                app:current_month_text_color="@color/textPrimary"
+                app:other_month_text_color="@color/textSecondary"
+                android:background="?attr/colorSurface"
+                app:day_text_size="12sp"
+
+                app:month_view="com.github.malitsplus.shizurunotes.ui.calendar.CustomMonthView" />
+        </com.haibin.calendarview.CalendarLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
