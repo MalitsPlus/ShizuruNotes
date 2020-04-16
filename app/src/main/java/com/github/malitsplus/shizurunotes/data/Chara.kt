@@ -74,6 +74,7 @@ class Chara: Cloneable {
             .append(I18N.getString(R.string.text_day))
             .toString()
 
+    @Suppress("UNUSED_PARAMETER")
     fun setCharaProperty(rarity: Int = 0, rank: Int = maxCharaRank, hasUnique: Boolean = true) {
         charaProperty = Property()
             .plusEqual(rarityProperty)
