@@ -334,7 +334,6 @@ public class ActionParameter {
             */
             if(roundingMode == RoundingMode.UNNECESSARY)
                 return Utils.roundIfNeed(fixedValue);
-//                return String.valueOf(fixedValue);
 
             BigDecimal bigDecimal = new BigDecimal(fixedValue);
             return String.valueOf(bigDecimal.setScale(0, roundingMode).intValue());

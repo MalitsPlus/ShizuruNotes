@@ -1,10 +1,15 @@
 package com.github.malitsplus.shizurunotes.ui.calendar.notification
 
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.preference.*
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.user.UserSettings
 import androidx.preference.Preference.OnPreferenceChangeListener
+import java.util.*
 
 class EventNotificationSetting : PreferenceFragmentCompat(){
 
@@ -42,10 +47,25 @@ class EventNotificationSetting : PreferenceFragmentCompat(){
     }
 
     private fun switchNotification(): (p: Preference, b: Any) -> Boolean {
-        return { _ , _ ->
-
+        return { _ , b ->
+            b as Boolean
+            if (b) {
+                prepareAlarm()
+            }
             true
         }
+    }
+
+    private fun prepareAlarm() {
+        val alarmMgr = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val calendar = Calendar.getInstance().apply {
+            timeInMillis = System.currentTimeMillis()
+            set(Calendar.HOUR_OF_DAY, 11)
+            set(Calendar.MINUTE, 30)
+        }
+        val intent = Intent()
+        val pendingIntent = PendingIntent.getBroadcast(requireContext(), 0, intent, 0)
+        alarmMgr.set(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
     }
 
     private fun initializePreferences() {
@@ -54,5 +74,4 @@ class EventNotificationSetting : PreferenceFragmentCompat(){
         findPreference<PreferenceCategory>(CATEGORY_DUNGEON)?.isEnabled = flag
         findPreference<PreferenceCategory>(CATEGORY_HATSUNE)?.isEnabled = flag
     }
-
 }
