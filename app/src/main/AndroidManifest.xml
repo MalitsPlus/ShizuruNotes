@@ -32,6 +32,8 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-    </application>
+        <receiver android:name=".ui.calendar.notification.AlarmReceiver" android:exported="true" android:enabled="true" >
 
+        </receiver>
+    </application>
 </manifest>
