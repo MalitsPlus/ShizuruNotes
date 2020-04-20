@@ -2,6 +2,7 @@ package com.github.malitsplus.shizurunotes.ui.calendar.notification
 
 import android.app.AlarmManager
 import android.app.PendingIntent
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -13,7 +14,7 @@ import java.util.*
 
 class EventNotificationSetting : PreferenceFragmentCompat(){
 
-    companion object{
+    companion object {
         const val NOTIFICATION_ENABLE = "notification_enable"
         const val CATEGORY_NORMAL = "category_normal"
         const val CATEGORY_DUNGEON = "category_dungeon"
@@ -59,11 +60,17 @@ class EventNotificationSetting : PreferenceFragmentCompat(){
     private fun prepareAlarm() {
         val alarmMgr = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val calendar = Calendar.getInstance().apply {
-            timeInMillis = System.currentTimeMillis()
-            set(Calendar.HOUR_OF_DAY, 11)
-            set(Calendar.MINUTE, 30)
+//            timeInMillis = System.currentTimeMillis()
+//            set(Calendar.HOUR_OF_DAY, 15)
+//            set(Calendar.MINUTE, 49)
+//            set(2020, 3, 20, 17, 56, 0)
+            set(Calendar.SECOND, get(Calendar.SECOND) + 10)
         }
         val intent = Intent()
+        intent.apply {
+            setClass(requireContext(), AlarmReceiver::class.java)
+            action = "com.github.malitsplus.shizurunotes.NOTIFICATION"
+        }
         val pendingIntent = PendingIntent.getBroadcast(requireContext(), 0, intent, 0)
         alarmMgr.set(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
     }

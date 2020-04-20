@@ -247,7 +247,7 @@ class UpdateManager private constructor(
         mContext.registerReceiver(broadcastReceiver, intentFilter)
     }
 
-    private val broadcastReceiver = object: BroadcastReceiver(){
+    private val broadcastReceiver = object: BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             if (intent.action == DownloadManager.ACTION_DOWNLOAD_COMPLETE){
                 if (intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1) == downloadId){
