@@ -1,6 +1,5 @@
 package com.github.malitsplus.shizurunotes.common
 
-import android.app.Application
 import android.app.DownloadManager
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -54,7 +53,7 @@ class UpdateManager private constructor(
 
     private var appHasNewVersion = false
     private var appVersionJsonInstance: AppVersionJson? = null
-    private var serverVersion = 0
+    private var serverVersion: Long = 0
     private var progress = 0
     private var hasNewVersion = false
     private val canceled = false
@@ -144,7 +143,7 @@ class UpdateManager private constructor(
              */
             override fun dbUpdateCompleted() {
                 LogUtils.file(LogUtils.I, "DB update finished.")
-                UserSettings.get().preference.edit().putInt("dbVersion", serverVersion).apply()
+                UserSettings.get().preference.edit().putLong("dbVersion", serverVersion).apply()
                 progressDialog?.cancel()
                 iActivityCallBack?.showSnackBar(R.string.db_update_finished_text)
                 iActivityCallBack?.dbUpdateFinished()
@@ -206,7 +205,7 @@ class UpdateManager private constructor(
     fun checkDatabaseVersion() {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url(Statics.LAST_VERSION_URL)
+            .url(Statics.LATEST_VERSION_URL)
             .build()
         val call = client.newCall(request)
         call.enqueue(object : Callback {
@@ -221,8 +220,8 @@ class UpdateManager private constructor(
                     if (lastVersionJson.isNullOrEmpty())
                         throw Exception("No response from server.")
                     val obj = JSONObject(lastVersionJson)
-                    serverVersion = obj.getInt("TruthVersion")
-                    hasNewVersion = serverVersion != UserSettings.get().preference.getInt("dbVersion", 0)
+                    serverVersion = obj.getLong("TruthVersion")
+                    hasNewVersion = serverVersion != UserSettings.get().preference.getLong("dbVersion", 0)
                     updateHandler.sendEmptyMessage(UPDATE_CHECK_COMPLETED)
                 } catch (e: Exception) {
                     LogUtils.file(LogUtils.E, "checkDatabaseVersion", e.message)
@@ -247,7 +246,7 @@ class UpdateManager private constructor(
         mContext.registerReceiver(broadcastReceiver, intentFilter)
     }
 
-    private val broadcastReceiver = object: BroadcastReceiver(){
+    private val broadcastReceiver = object: BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             if (intent.action == DownloadManager.ACTION_DOWNLOAD_COMPLETE){
                 if (intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1) == downloadId){

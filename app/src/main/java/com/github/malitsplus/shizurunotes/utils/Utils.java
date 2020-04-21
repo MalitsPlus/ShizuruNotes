@@ -6,15 +6,7 @@ import android.util.DisplayMetrics;
 
 import androidx.annotation.NonNull;
 
-import com.github.malitsplus.shizurunotes.common.Statics;
-import com.github.malitsplus.shizurunotes.data.Chara;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.lang.reflect.Field;
-import java.lang.reflect.Type;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
