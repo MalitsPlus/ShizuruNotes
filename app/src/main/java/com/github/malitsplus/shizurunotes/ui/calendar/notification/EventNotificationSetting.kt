@@ -14,19 +14,6 @@ import java.util.*
 
 class EventNotificationSetting : PreferenceFragmentCompat(){
 
-    companion object {
-        const val NOTIFICATION_ENABLE = "notification_enable"
-        const val CATEGORY_NORMAL = "category_normal"
-        const val CATEGORY_DUNGEON = "category_dungeon"
-        const val CATEGORY_HATSUNE = "category_hatsune"
-        const val NORMAL_BEFORE = "normal_before"
-        const val DUNGEON_BEFORE_2 = "dungeon_before_2"
-        const val DUNGEON_BEFORE = "dungeon_before"
-        const val HATSUNE_BEFORE = "hatsune_before"
-        const val HATSUNE_LAST = "hatsune_last"
-        const val HATSUNE_LAST_HOUR = "hatsune_last_hour"
-    }
-
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.event_notification_preferences, rootKey)
 
@@ -69,7 +56,8 @@ class EventNotificationSetting : PreferenceFragmentCompat(){
         val intent = Intent()
         intent.apply {
             setClass(requireContext(), AlarmReceiver::class.java)
-            action = "com.github.malitsplus.shizurunotes.NOTIFICATION"
+            action = NOTIFICATION_ACTION
+            putExtra(NOTIFICATION_EXTRA_TYPE, NORMAL_BEFORE)
         }
         val pendingIntent = PendingIntent.getBroadcast(requireContext(), 0, intent, 0)
         alarmMgr.set(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)

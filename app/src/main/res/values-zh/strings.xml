@@ -471,7 +471,7 @@
     <string name="title_log">日志</string>
     <string name="text_drop_rarity">稀有度：%s</string>
     <string name="text_drop_mana">魔力：%d</string>
-    <string name="icon_before">上一次的选择</string>
+    <string name="icon_previous">上一次的选择</string>
     <string name="icon_cancel_all">清空</string>
     <string name="text_log_clean">确定删除所有日志？</string>
     <string name="text_delete">删除</string>

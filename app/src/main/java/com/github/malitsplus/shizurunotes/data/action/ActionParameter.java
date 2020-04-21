@@ -2,6 +2,7 @@ package com.github.malitsplus.shizurunotes.data.action;
 
 import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.I18N;
+import com.github.malitsplus.shizurunotes.ui.setting.SettingFragment;
 import com.github.malitsplus.shizurunotes.user.UserSettings;
 import com.github.malitsplus.shizurunotes.data.Property;
 import com.github.malitsplus.shizurunotes.data.PropertyKey;
@@ -268,7 +269,7 @@ public class ActionParameter {
         if(property == null)
             property = new Property();
 
-        if(UserSettings.get().getPreference().getBoolean("expressionStyle", false) && !isEnemySkill){
+        if(UserSettings.get().getPreference().getBoolean(SettingFragment.EXPRESSION_STYLE, false) && !isEnemySkill){
             StringBuilder expression = new StringBuilder();
             for(ActionValue value : actionValues){
                 StringBuilder part = new StringBuilder();

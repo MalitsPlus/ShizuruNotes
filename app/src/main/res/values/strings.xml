@@ -189,7 +189,7 @@
     <string name="text_condition_and">オールヒット</string>
     <string name="text_condition_andor">複数ヒット</string>
     <string name="text_condition_or">ワンヒット</string>
-    <string name="icon_before">前回の選択</string>
+    <string name="icon_previous">前回の選択</string>
     <string name="icon_cancel_all">クリア</string>
     <string name="space_modifier" translatable="false">&#160;&#160;%s&#160;&#160;</string>
     <string name="text_log_clean">ログファイルをすべて削除します、よろしいですか？</string>
@@ -239,9 +239,20 @@
     <string name="normal_before_title">ノーマルドロップ前日通知</string>
     <string name="dungeon_before_2_title">ダンジョンキャンプ通知</string>
     <string name="dungeon_before_title">ダンジョン前日通知</string>
-    <string name="hatsune_before_title">イベント終了前日通知</string>
     <string name="hatsune_last_title">イベント終了当日通知</string>
     <string name="hatsune_last_hour_title">イベント終了直前</string>
+    <string name="notification_normal_before_title">ノーマルドロップ</string>
+    <string name="notification_normal_before_text">明日からはノーマルドロップキャンペーンです、スタミナを温存しましょう</string>
+    <string name="notification_dungeon_before_2_title">ダンジョンキャンプ</string>
+    <string name="notification_dungeon_before_2_text">明後日からはダンジョンキャンペーンです、今日はボスの前で待機しましょう</string>
+    <string name="notification_dungeon_before_title">ダンジョンキャンペーン</string>
+    <string name="notification_dungeon_before_text">明日からはダンジョンキャンペーンです、今日は入るだけにして休みましょう</string>
+    <string name="notification_hatsune_last_title">イベント最終日</string>
+    <string name="notification_hatsune_last_text">今日はイベント最終日です、チケットを残さず全部消化しましょう</string>
+    <string name="notification_hatsune_last_hour_title">イベント終了直前</string>
+    <string name="notification_hatsune_last_hour_text">イベントはあと１時間で終了！チケットはちゃんと全部消化しましたか？</string>
+    <string name="notification_tower_last_hour_title">ルナの塔終了直前</string>
+    <string name="notification_tower_last_hour_text">ルナの塔はあと１時間で終了！今日の分はちゃんと消化しましたか？</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>
