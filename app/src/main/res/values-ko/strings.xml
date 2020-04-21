@@ -471,7 +471,7 @@
     <string name="text_condition_and">전부 드랍</string>
     <string name="text_condition_andor">일부 드랍</string>
     <string name="text_condition_or">단일 드랍</string>
-    <string name="icon_before">이전 선택</string>
+    <string name="icon_previous">이전 선택</string>
     <string name="icon_cancel_all">클리어</string>
     <string name="text_log_clean">로그파일을 전부 삭제합니다. 괜찮으십니까?</string>
     <string name="text_delete">삭제</string>

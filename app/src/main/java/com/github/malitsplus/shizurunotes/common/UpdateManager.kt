@@ -13,6 +13,7 @@ import androidx.core.content.FileProvider
 import com.afollestad.materialdialogs.MaterialDialog
 import com.github.malitsplus.shizurunotes.BuildConfig
 import com.github.malitsplus.shizurunotes.R
+import com.github.malitsplus.shizurunotes.ui.setting.SettingFragment
 import com.github.malitsplus.shizurunotes.user.UserSettings
 import com.github.malitsplus.shizurunotes.utils.BrotliUtils
 import com.github.malitsplus.shizurunotes.utils.FileUtils
@@ -70,7 +71,7 @@ class UpdateManager private constructor(
              */
             override fun appCheckUpdateCompleted() {
                 if (appHasNewVersion) {
-                    val log = when (UserSettings.get().preference.getString("language", "ja")){
+                    val log = when (UserSettings.get().preference.getString(SettingFragment.LANGUAGE_KEY, "ja")){
                         "zh" -> appVersionJsonInstance?.messageZh
                         else -> appVersionJsonInstance?.messageJa
                     }
@@ -143,7 +144,7 @@ class UpdateManager private constructor(
              */
             override fun dbUpdateCompleted() {
                 LogUtils.file(LogUtils.I, "DB update finished.")
-                UserSettings.get().preference.edit().putLong("dbVersion", serverVersion).apply()
+                UserSettings.get().preference.edit().putLong(SettingFragment.DB_VERSION, serverVersion).apply()
                 progressDialog?.cancel()
                 iActivityCallBack?.showSnackBar(R.string.db_update_finished_text)
                 iActivityCallBack?.dbUpdateFinished()
@@ -221,7 +222,7 @@ class UpdateManager private constructor(
                         throw Exception("No response from server.")
                     val obj = JSONObject(lastVersionJson)
                     serverVersion = obj.getLong("TruthVersion")
-                    hasNewVersion = serverVersion != UserSettings.get().preference.getLong("dbVersion", 0)
+                    hasNewVersion = serverVersion != UserSettings.get().preference.getLong(SettingFragment.DB_VERSION, 0)
                     updateHandler.sendEmptyMessage(UPDATE_CHECK_COMPLETED)
                 } catch (e: Exception) {
                     LogUtils.file(LogUtils.E, "checkDatabaseVersion", e.message)

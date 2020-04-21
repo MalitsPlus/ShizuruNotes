@@ -17,11 +17,16 @@ class SettingFragment : PreferenceFragmentCompat() {
 
     companion object{
         const val LANGUAGE_KEY = "language"
+        const val EXPRESSION_STYLE = "expressionStyle"
+        const val LOG = "log"
+        const val DB_VERSION = "dbVersion"
+        const val APP_VERSION = "appVersion"
+        const val ABOUT = "about"
     }
 
     override fun onResume() {
         super.onResume()
-        findPreference<Preference>("dbVersion")
+        findPreference<Preference>(DB_VERSION)
             ?.summary = UserSettings.get().preference.getLong("dbVersion", 0).toString()
     }
 
@@ -32,24 +37,13 @@ class SettingFragment : PreferenceFragmentCompat() {
         setPreferencesFromResource(R.xml.preferences, rootKey)
 
         //app版本提示
-        findPreference<Preference>("appVersion")?.apply {
+        findPreference<Preference>(APP_VERSION)?.apply {
             summary = BuildConfig.VERSION_NAME
             isSelectable = false
-//            onPreferenceClickListener = Preference.OnPreferenceClickListener {
-//                it.isEnabled = false
-//                UpdateManager.get().checkAppVersion(false)
-//                thread(start = true) {
-//                    Thread.sleep(5000)
-//                    activity?.runOnUiThread {
-//                        it.isEnabled = true
-//                    }
-//                }
-//                true
-//            }
         }
 
         //数据库版本
-        findPreference<Preference>("dbVersion")?.apply {
+        findPreference<Preference>(DB_VERSION)?.apply {
             onPreferenceClickListener = Preference.OnPreferenceClickListener {
                 it.isEnabled = false
                 UpdateManager.get().checkDatabaseVersion()
@@ -63,24 +57,16 @@ class SettingFragment : PreferenceFragmentCompat() {
             }
         }
 
-        //重下数据库
-        findPreference<Preference>("reDownloadDb")?.apply {
-            onPreferenceClickListener = Preference.OnPreferenceClickListener {
-//                it.isEnabled = false
-                UpdateManager.get().forceDownloadDb()
-//                UpdateManager.get().checkDatabaseVersion(true)
-//                thread(start = true){
-//                    Thread.sleep(5000)
-//                    activity?.runOnUiThread {
-//                        it.isEnabled = true
-//                    }
-//                }
-                true
-            }
-        }
+        //重下数据库，暂时停用
+//        findPreference<Preference>("reDownloadDb")?.apply {
+//            onPreferenceClickListener = Preference.OnPreferenceClickListener {
+//                UpdateManager.get().forceDownloadDb()
+//                true
+//            }
+//        }
 
         //日志
-        findPreference<Preference>("log")?.apply {
+        findPreference<Preference>(LOG)?.apply {
             onPreferenceClickListener = Preference.OnPreferenceClickListener {
                 val action = SettingContainerFragmentDirections.actionNavSettingContainerToNavLog()
                 findNavController().navigate(action)
@@ -89,7 +75,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         }
 
         //关于
-        findPreference<Preference>("about")?.apply {
+        findPreference<Preference>(ABOUT)?.apply {
             onPreferenceClickListener = Preference.OnPreferenceClickListener {
                 val action = SettingContainerFragmentDirections.actionNavSettingContainerToNavSettingAbout()
                 findNavController().navigate(action)
@@ -110,12 +96,8 @@ class SettingFragment : PreferenceFragmentCompat() {
                         Thread.sleep(100)
                         ProcessPhoenix.triggerRebirth(activity)
                     }
-//                    val i = Intent(activity, MainActivity::class.java)
-//                    startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
                     true
                 }
         }
-
-
     }
 }
