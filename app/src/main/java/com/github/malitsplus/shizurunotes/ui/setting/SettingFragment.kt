@@ -22,7 +22,7 @@ class SettingFragment : PreferenceFragmentCompat() {
     override fun onResume() {
         super.onResume()
         findPreference<Preference>("dbVersion")
-            ?.summary = UserSettings.get().preference.getInt("dbVersion", 0).toString()
+            ?.summary = UserSettings.get().preference.getLong("dbVersion", 0).toString()
     }
 
     override fun onCreatePreferences(
