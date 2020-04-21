@@ -1,7 +1,7 @@
 {
-	"versionCode": "8",
-	"versionName": "0.5.7",
+	"versionCode": "9",
+	"versionName": "0.5.8",
 	"recommend": "false",
-	"messageJa": "・イベントカレンダー実装。\n・データベースに関する不具合を修正（３敗目）。",
-	"messageZh": "・活动日历功能实装。\n・修正数据库相关bug（如果还有问题请复制日志向我反馈）。"
+	"messageJa": "・新キャラ「チエル」のスキル説明文を追加。",
+	"messageZh": "・追加新角色「チエル」的技能说明。"
 }
