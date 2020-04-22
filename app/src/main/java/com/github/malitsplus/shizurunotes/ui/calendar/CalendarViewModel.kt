@@ -27,7 +27,7 @@ class CalendarViewModel : ViewModel() {
     fun initData() {
         if (calendarMap.isNotEmpty()) return
 
-        MasterSchedule().getSchedule().forEach {
+        MasterSchedule().getSchedule(null).forEach {
             val thisStartDate = LocalDate.of(it.startTime.year, it.startTime.month, it.startTime.dayOfMonth)
             var thisEndDate = LocalDate.of(it.endTime.year, it.endTime.month, it.endTime.dayOfMonth)
             if (it.endTime.hour < 5) {

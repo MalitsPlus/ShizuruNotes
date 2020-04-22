@@ -944,50 +944,48 @@ class DBHelper private constructor(
     /***
      * 获取campaign日程
      */
-    fun getCampaignSchedule(): List<RawScheduleCampaign>? {
-        return getBeanListByRaw(
-            """
-                SELECT * FROM campaign_schedule 
-                """,
-            RawScheduleCampaign::class.java
-        )
+    fun getCampaignSchedule(nowTimeString: String?): List<RawScheduleCampaign>? {
+        var sqlString = " SELECT * FROM campaign_schedule "
+        nowTimeString?.let {
+            sqlString += " WHERE end_time > '$it' "
+        }
+        return getBeanListByRaw(sqlString, RawScheduleCampaign::class.java)
     }
 
     /***
      * 获取free gacha日程
      */
-    fun getFreeGachaSchedule(): List<RawScheduleFreeGacha>? {
-        return getBeanListByRaw(
-            """
-                SELECT * FROM campaign_freegacha
-                """,
-            RawScheduleFreeGacha::class.java
-        )
+    fun getFreeGachaSchedule(nowTimeString: String?): List<RawScheduleFreeGacha>? {
+        var sqlString = " SELECT * FROM campaign_freegacha "
+        nowTimeString?.let {
+            sqlString += " WHERE end_time > '$it' "
+        }
+        return getBeanListByRaw(sqlString, RawScheduleFreeGacha::class.java)
     }
 
     /***
      * 获取hatsune日程
      */
-    fun getHatsuneSchedule(): List<RawScheduleHatsune>? {
-        return getBeanListByRaw(
+    fun getHatsuneSchedule(nowTimeString: String?): List<RawScheduleHatsune>? {
+        var sqlString = """
+            SELECT a.event_id, a.start_time, a.end_time, b.title 
+            FROM hatsune_schedule AS a JOIN event_story_data AS b ON a.event_id = b.value
             """
-                SELECT a.event_id, a.start_time, a.end_time, b.title 
-                FROM hatsune_schedule AS a JOIN event_story_data AS b ON a.event_id = b.value
-                """,
-            RawScheduleHatsune::class.java
-        )
+        nowTimeString?.let {
+            sqlString += " WHERE a.end_time > '$it' "
+        }
+        return getBeanListByRaw(sqlString, RawScheduleHatsune::class.java)
     }
 
     /***
      * 获取露娜塔日程
      */
-    fun getTowerSchedule(): List<RawTowerSchedule>? {
-        return getBeanListByRaw(
-            """
-                SELECT * FROM tower_schedule 
-                """,
-            RawTowerSchedule::class.java
-        )
+    fun getTowerSchedule(nowTimeString: String?): List<RawTowerSchedule>? {
+        var sqlString = " SELECT * FROM tower_schedule "
+        nowTimeString?.let {
+            sqlString += " WHERE end_time > '$it' "
+        }
+        return getBeanListByRaw(sqlString, RawTowerSchedule::class.java)
     }
 
     /***

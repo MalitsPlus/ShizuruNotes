@@ -13,8 +13,6 @@ import com.github.malitsplus.shizurunotes.ui.MainActivity
 const val NOTIFICATION_ACTION = "com.github.malitsplus.shizurunotes.NOTIFICATION"
 const val NOTIFICATION_EXTRA_TYPE = "com.github.malitsplus.shizurunotes.NOTIFICATION_EXTRA"
 
-const val NOTIFICATION_ENABLE = "notification_enable"
-
 const val CATEGORY_NORMAL = "category_normal"
 const val CATEGORY_DUNGEON = "category_dungeon"
 const val CATEGORY_HATSUNE = "category_hatsune"

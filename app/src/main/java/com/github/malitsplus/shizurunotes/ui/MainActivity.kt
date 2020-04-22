@@ -1,5 +1,6 @@
 package com.github.malitsplus.shizurunotes.ui
 
+import android.app.AlarmManager
 import android.content.Context
 import android.os.Bundle
 import androidx.annotation.StringRes
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        initSingletonClass()
+        UpdateManager.get().setIActivityCallBack(this)
         initSharedViewModels()
         if (checkDbFile()) {
             loadData()
@@ -59,6 +60,7 @@ class MainActivity : AppCompatActivity(),
 
     private fun loadData() {
         sharedEquipment.loadData()
+        NotificationManager.with(application).loadData()
     }
 
     private fun checkUpdate() {
@@ -115,13 +117,5 @@ class MainActivity : AppCompatActivity(),
             scheduleMap.clear()
             calendarMap.clear()
         }
-    }
-
-    private fun initSingletonClass() {
-        Utils.setApp(application)
-        DBHelper.with(application)
-        UserSettings.with(application)
-        UpdateManager.with(this).setIActivityCallBack(this)
-        I18N.application = application
     }
 }

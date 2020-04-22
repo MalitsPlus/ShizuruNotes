@@ -69,7 +69,6 @@ public class LocaleManager {
         prefs.edit().putString(LANGUAGE_KEY, language).commit();
     }
 
-
     private Context updateResources(Context context, String language) {
         Locale locale = new Locale(language);
         Locale.setDefault(locale);
