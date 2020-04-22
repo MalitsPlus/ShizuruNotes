@@ -14,7 +14,7 @@ open class EventSchedule(
     val endTime: LocalDateTime
 ) {
     open val title: String = when (type) {
-        EventType.hatsune -> type.description + "：" + name
+        EventType.Hatsune -> type.description + "：" + name
         else -> type.description
     }
 
@@ -43,29 +43,29 @@ class CampaignSchedule(
 }
 
 enum class EventType {
-    campaign,
-    hatsune,
-    clanBattle,
-    tower,
-    gacha;
+    Campaign,
+    Hatsune,
+    ClanBattle,
+    Tower,
+    Gacha;
 
     val description: String
         get() = when (this) {
-            campaign -> I18N.getString(R.string.campaign)
-            hatsune -> I18N.getString(R.string.hatsune)
-            clanBattle -> I18N.getString(R.string.clanBattle)
-            tower -> I18N.getString(R.string.tower)
-            gacha -> I18N.getString(R.string.gacha)
+            Campaign -> I18N.getString(R.string.campaign)
+            Hatsune -> I18N.getString(R.string.hatsune)
+            ClanBattle -> I18N.getString(R.string.clanBattle)
+            Tower -> I18N.getString(R.string.tower)
+            Gacha -> I18N.getString(R.string.gacha)
 //            else -> I18N.getString(R.string.unknown)
         }
 
     val color: Int
         get() = when (this) {
-            campaign -> Sage.toInt()
-            hatsune -> Tangerine.toInt()
-            clanBattle -> Peacock.toInt()
-            tower -> Grape.toInt()
-            gacha -> Flamingo.toInt()
+            Campaign -> Sage.toInt()
+            Hatsune -> Tangerine.toInt()
+            ClanBattle -> Peacock.toInt()
+            Tower -> Grape.toInt()
+            Gacha -> Flamingo.toInt()
 //            else -> Graphite.toInt()
         }
 }

@@ -6,6 +6,9 @@ import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
+import com.github.malitsplus.shizurunotes.db.DBHelper
+import com.github.malitsplus.shizurunotes.user.UserSettings
+import com.github.malitsplus.shizurunotes.utils.Utils
 
 class App : Application() {
     companion object {
@@ -16,6 +19,7 @@ class App : Application() {
         super.onCreate()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         createNotificationChannel()
+        initSingleton()
     }
 
     override fun attachBaseContext(base: Context) {
@@ -30,7 +34,7 @@ class App : Application() {
             val name = "name of channel"
             val descriptionText = "description of channel"
             val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel("pushN", name, importance).apply {
+            val channel = NotificationChannel("push", name, importance).apply {
                 description = descriptionText
             }
             // Register the channel with the system
@@ -38,5 +42,13 @@ class App : Application() {
                 getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
+    }
+
+    private fun initSingleton() {
+        Utils.setApp(this)
+        DBHelper.with(this)
+        UserSettings.with(this)
+        UpdateManager.with(this)
+        I18N.application = this
     }
 }

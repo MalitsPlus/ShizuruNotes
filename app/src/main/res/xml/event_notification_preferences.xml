@@ -4,18 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
-        app:key="category_notification_setting"
-        app:title="@string/title_notification_setting">
-
-        <SwitchPreferenceCompat
-            app:key="notification_enable"
-            app:defaultValue="false"
-            app:icon="@drawable/mic_notifications"
-            app:title="@string/setting_enable" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
         app:key="category_normal"
         app:title="@string/normal">
 
@@ -48,12 +36,6 @@
     <PreferenceCategory
         app:key="category_hatsune"
         app:title="@string/hatsune">
-
-        <SwitchPreferenceCompat
-            app:key="hatsune_before"
-            app:defaultValue="false"
-            app:title="@string/hatsune_before_title"
-            app:summary="@string/before_summary" />
 
         <SwitchPreferenceCompat
             app:key="hatsune_last"
