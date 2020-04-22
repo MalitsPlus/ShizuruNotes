@@ -1,6 +1,5 @@
 # ShizuruNotes
 An unofficial Android tool application of the game "Princess Connect Re:Dive".  
-[写给想推出国服版本分支的开发者](https://github.com/MalitsPlus/ShizuruNotes/blob/master/app/src/main/java/com/github/malitsplus/shizurunotes/common/Statics.java)
 
 ## Requirement
 * Android 8+  
