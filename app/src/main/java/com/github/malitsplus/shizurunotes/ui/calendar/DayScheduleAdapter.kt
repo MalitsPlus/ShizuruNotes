@@ -1,6 +1,5 @@
 package com.github.malitsplus.shizurunotes.ui.calendar
 
-import android.graphics.ColorFilter
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.CampaignSchedule
 import com.github.malitsplus.shizurunotes.data.EventSchedule
