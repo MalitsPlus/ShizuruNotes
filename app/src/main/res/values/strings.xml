@@ -232,15 +232,18 @@
     <string name="icon_notification">通知</string>
     <string name="title_notification_setting">通知設定</string>
     <string name="setting_enable">通知の表示</string>
-    <string name="today_summary">当日朝5時</string>
-    <string name="before_summary">前日朝5時</string>
-    <string name="before_2_summary">二日前朝5時</string>
-    <string name="last_hour_summary">終了1時間前&amp;バイブ</string>
+    <string name="before_summary">前日朝5時、通知のみ</string>
+    <string name="before_2_summary">二日前朝5時、通知のみ</string>
+    <string name="today_summary">当日朝5時、通知のみ</string>
+    <string name="last_hour_summary">終了1時間前、通知&amp;バイブ</string>
+    <string name="quest_campaign">キャンペーン</string>
     <string name="normal_before_title">ノーマルドロップ前日通知</string>
     <string name="dungeon_before_2_title">ダンジョンキャンプ通知</string>
     <string name="dungeon_before_title">ダンジョン前日通知</string>
     <string name="hatsune_last_title">イベント終了当日通知</string>
-    <string name="hatsune_last_hour_title">イベント終了直前</string>
+    <string name="hatsune_last_hour_title">イベント終了直前通知</string>
+    <string name="tower_last_title">終了当日通知</string>
+    <string name="tower_last_hour_title">終了直前通知</string>
     <string name="notification_normal_before_title">ノーマルドロップ</string>
     <string name="notification_normal_before_text">明日からはノーマルドロップキャンペーンです、スタミナを温存しましょう</string>
     <string name="notification_dungeon_before_2_title">ダンジョンキャンプ</string>
@@ -250,9 +253,9 @@
     <string name="notification_hatsune_last_title">イベント最終日</string>
     <string name="notification_hatsune_last_text">今日はイベント最終日です、チケットを残さず全部消化しましょう</string>
     <string name="notification_hatsune_last_hour_title">イベント終了直前</string>
-    <string name="notification_hatsune_last_hour_text">イベントはあと１時間で終了！チケットはちゃんと全部消化しましたか？</string>
+    <string name="notification_hatsune_last_hour_text">イベント終了まであと１時間！チケットはちゃんと全部消化しましたか？</string>
     <string name="notification_tower_last_hour_title">ルナの塔終了直前</string>
-    <string name="notification_tower_last_hour_text">ルナの塔はあと１時間で終了！今日の分はちゃんと消化しましたか？</string>
+    <string name="notification_tower_last_hour_text">ルナの塔終了まであと１時間！今日の分はちゃんと消化しましたか？</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>

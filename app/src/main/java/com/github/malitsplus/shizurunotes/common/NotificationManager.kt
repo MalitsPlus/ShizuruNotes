@@ -7,12 +7,12 @@ import android.content.Intent
 import com.github.malitsplus.shizurunotes.data.CampaignSchedule
 import com.github.malitsplus.shizurunotes.data.CampaignType
 import com.github.malitsplus.shizurunotes.data.EventSchedule
+import com.github.malitsplus.shizurunotes.data.EventType
 import com.github.malitsplus.shizurunotes.db.MasterSchedule
 import com.github.malitsplus.shizurunotes.ui.calendar.notification.*
 import com.github.malitsplus.shizurunotes.user.UserSettings
 import java.time.LocalDateTime
 import java.time.ZoneOffset
-import java.util.*
 import kotlin.concurrent.thread
 
 class NotificationManager private constructor(
@@ -33,6 +33,15 @@ class NotificationManager private constructor(
 
     var futureSchedule: MutableList<EventSchedule> = mutableListOf()
 
+    private val notifiTypeMap = mapOf(
+        NORMAL_BEFORE to CampaignType.dropAmountNormal,
+        DUNGEON_BEFORE_2 to CampaignType.manaDungeon,
+        DUNGEON_BEFORE to CampaignType.manaDungeon,
+        HATSUNE_LAST to EventType.Hatsune,
+        HATSUNE_LAST_HOUR to EventType.Hatsune,
+        TOWER_LAST_HOUR to EventType.Tower
+    )
+
     fun loadData() {
         thread(start = true) {
             futureSchedule = MasterSchedule().getSchedule(LocalDateTime.now())
@@ -46,9 +55,19 @@ class NotificationManager private constructor(
         }
     }
 
-    fun refreshSpecificNotification(type: String, newValue: Boolean) {
+    fun refreshSpecificNotification(typeString: String, newValue: Boolean) {
         futureSchedule.forEach {
-            //if ()
+            var t: Enum<*> = it.type
+            if (it is CampaignSchedule) {
+                t = it.campaignType
+            }
+            if (t == notifiTypeMap[typeString]) {
+                if (newValue) {
+                    setAlarm(it, typeString)
+                } else {
+                    cancelAlarm(getIntent(typeString), it.id)
+                }
+            }
         }
     }
 
@@ -56,37 +75,45 @@ class NotificationManager private constructor(
         if (eventSchedule is CampaignSchedule) {
             when (eventSchedule.campaignType) {
                 CampaignType.dropAmountNormal -> {
-                    if (UserSettings.get().preference.getBoolean(NORMAL_BEFORE, false)) {
-                        val triggerTime = getTriggerTime(eventSchedule, NORMAL_BEFORE)
-                        if (triggerTime.isAfter(LocalDateTime.now())) {
-                            setAlarm(getIntent(NORMAL_BEFORE), triggerTime, eventSchedule.id)
-                        }
-                    } else {
-                        cancelAlarm(getIntent(NORMAL_BEFORE), eventSchedule.id)
-                    }
+                    setOrCancelAlarm(eventSchedule, NORMAL_BEFORE)
                 }
                 CampaignType.manaDungeon -> {
-                    if (UserSettings.get().preference.getBoolean(DUNGEON_BEFORE_2, false)) {
-                        val triggerTime = getTriggerTime(eventSchedule, DUNGEON_BEFORE_2)
-                        if (triggerTime.isAfter(LocalDateTime.now())) {
-                            setAlarm(getIntent(DUNGEON_BEFORE_2), triggerTime, eventSchedule.id)
-                        }
-                    } else {
-                        cancelAlarm(getIntent(DUNGEON_BEFORE_2), eventSchedule.id)
-                    }
+                    setOrCancelAlarm(eventSchedule, DUNGEON_BEFORE_2)
+                    setOrCancelAlarm(eventSchedule, DUNGEON_BEFORE)
                 }
                 else -> {  }
             }
         } else {
-
+            when (eventSchedule.type) {
+                EventType.Hatsune -> {
+                    setOrCancelAlarm(eventSchedule, HATSUNE_LAST)
+                    setOrCancelAlarm(eventSchedule, HATSUNE_LAST_HOUR)
+                }
+                EventType.Tower -> {
+                    setOrCancelAlarm(eventSchedule, TOWER_LAST_HOUR)
+                }
+                else -> {  }
+            }
         }
     }
 
-    private fun setAlarm(intent: Intent, triggerTime: LocalDateTime, id: Int) {
-        val alarmMgr = mContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val pendingIntent = PendingIntent.getBroadcast(mContext, id, intent, 0)
-        //alarmMgr.set(AlarmManager.RTC_WAKEUP, triggerTime.toInstant(ZoneOffset.of("+9")).toEpochMilli(), pendingIntent)
-        alarmMgr.set(AlarmManager.RTC_WAKEUP, LocalDateTime.now().plusSeconds(1800).toInstant(ZoneOffset.of("+9")).toEpochMilli(), pendingIntent)
+    private fun setOrCancelAlarm(eventSchedule: EventSchedule, typeString: String) {
+        if (UserSettings.get().preference.getBoolean(typeString, false)) {
+            setAlarm(eventSchedule, typeString)
+        } else {
+            cancelAlarm(getIntent(typeString), eventSchedule.id)
+        }
+    }
+
+    private fun setAlarm(eventSchedule: EventSchedule, typeString: String) {
+        val triggerTime = getTriggerTime(eventSchedule, typeString)
+        if (triggerTime.isAfter(LocalDateTime.now())) {
+            val alarmMgr = mContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val intent = getIntent(typeString)
+            val pendingIntent = PendingIntent.getBroadcast(mContext, eventSchedule.id, intent, 0)
+            alarmMgr.set(AlarmManager.RTC_WAKEUP, triggerTime.toInstant(ZoneOffset.of("+9")).toEpochMilli(), pendingIntent)
+//            alarmMgr.set(AlarmManager.RTC_WAKEUP, LocalDateTime.now().plusSeconds(30).toInstant(ZoneOffset.of("+9")).toEpochMilli(), pendingIntent)
+        }
     }
 
     private fun cancelAlarm(intent: Intent, id: Int) {
@@ -101,7 +128,8 @@ class NotificationManager private constructor(
             NORMAL_BEFORE,
             DUNGEON_BEFORE -> eventSchedule.startTime.plusDays(-1).withHour(5).withMinute(0).withSecond(0)
             HATSUNE_LAST -> eventSchedule.endTime.withHour(5).withMinute(0).withSecond(0)
-            HATSUNE_LAST_HOUR, TOWER_LAST_HOUR -> eventSchedule.endTime.plusHours(-1)
+            HATSUNE_LAST_HOUR,
+            TOWER_LAST_HOUR -> eventSchedule.endTime.plusHours(-1)
             else -> LocalDateTime.MIN
         }
     }

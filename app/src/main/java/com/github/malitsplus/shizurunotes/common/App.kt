@@ -7,6 +7,8 @@ import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
 import com.github.malitsplus.shizurunotes.db.DBHelper
+import com.github.malitsplus.shizurunotes.ui.calendar.notification.NOTIFICATION_CHANNEL_DEFAULT
+import com.github.malitsplus.shizurunotes.ui.calendar.notification.NOTIFICATION_CHANNEL_LOW
 import com.github.malitsplus.shizurunotes.user.UserSettings
 import com.github.malitsplus.shizurunotes.utils.Utils
 
@@ -31,16 +33,16 @@ class App : Application() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "name of channel"
-            val descriptionText = "description of channel"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel("push", name, importance).apply {
-                description = descriptionText
+            val channelDefault = NotificationChannel(NOTIFICATION_CHANNEL_DEFAULT, "default", NotificationManager.IMPORTANCE_DEFAULT).apply {
+                description = "default priority notification"
+            }
+            val channelLow = NotificationChannel(NOTIFICATION_CHANNEL_LOW, "low", NotificationManager.IMPORTANCE_LOW).apply {
+                description = "low priority notification"
             }
             // Register the channel with the system
-            val notificationManager: NotificationManager =
-                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(channel)
+            val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channelDefault)
+            notificationManager.createNotificationChannel(channelLow)
         }
     }
 
@@ -48,7 +50,6 @@ class App : Application() {
         Utils.setApp(this)
         DBHelper.with(this)
         UserSettings.with(this)
-        UpdateManager.with(this)
         I18N.application = this
     }
 }

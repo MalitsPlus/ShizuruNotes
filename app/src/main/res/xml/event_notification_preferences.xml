@@ -5,7 +5,7 @@
 
     <PreferenceCategory
         app:key="category_normal"
-        app:title="@string/normal">
+        app:title="@string/quest_campaign">
 
         <SwitchPreferenceCompat
             app:key="normal_before"
@@ -47,6 +47,24 @@
             app:key="hatsune_last_hour"
             app:defaultValue="false"
             app:title="@string/hatsune_last_hour_title"
+            app:summary="@string/last_hour_summary" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="category_tower"
+        app:title="@string/tower">
+
+        <SwitchPreferenceCompat
+            app:key="tower_last"
+            app:defaultValue="false"
+            app:title="@string/tower_last_title"
+            app:summary="@string/today_summary" />
+
+        <SwitchPreferenceCompat
+            app:key="hatsune_last_hour"
+            app:defaultValue="false"
+            app:title="@string/tower_last_hour_title"
             app:summary="@string/last_hour_summary" />
 
     </PreferenceCategory>

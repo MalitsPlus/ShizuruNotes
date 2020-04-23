@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        UpdateManager.get().setIActivityCallBack(this)
+        UpdateManager.with(this).setIActivityCallBack(this)
         initSharedViewModels()
         if (checkDbFile()) {
             loadData()
