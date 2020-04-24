@@ -33,11 +33,11 @@ class App : Application() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channelDefault = NotificationChannel(NOTIFICATION_CHANNEL_DEFAULT, "default", NotificationManager.IMPORTANCE_DEFAULT).apply {
-                description = "default priority notification"
+            val channelDefault = NotificationChannel(NOTIFICATION_CHANNEL_DEFAULT, "important", NotificationManager.IMPORTANCE_DEFAULT).apply {
+                description = "important notification"
             }
-            val channelLow = NotificationChannel(NOTIFICATION_CHANNEL_LOW, "low", NotificationManager.IMPORTANCE_LOW).apply {
-                description = "low priority notification"
+            val channelLow = NotificationChannel(NOTIFICATION_CHANNEL_LOW, "regular", NotificationManager.IMPORTANCE_LOW).apply {
+                description = "regular notification"
             }
             // Register the channel with the system
             val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
