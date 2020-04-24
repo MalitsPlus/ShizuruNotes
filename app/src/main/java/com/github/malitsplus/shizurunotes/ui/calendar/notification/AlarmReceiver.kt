@@ -71,7 +71,7 @@ class AlarmReceiver : BroadcastReceiver() {
                 val newIntent = Intent(context, MainActivity::class.java)
                 val pendingIntent = PendingIntent.getActivity(context, 0, newIntent, 0)
                 val builder = NotificationCompat.Builder(context, channelId)
-                    .setSmallIcon(R.drawable.mic_notifications)
+                    .setSmallIcon(R.drawable.mic_crepe_filled)
                     .setContentTitle(title)
                     .setStyle(NotificationCompat.BigTextStyle()
                         .bigText(text))
