@@ -13,6 +13,7 @@ import com.github.malitsplus.shizurunotes.ui.calendar.notification.*
 import com.github.malitsplus.shizurunotes.user.UserSettings
 import java.time.LocalDateTime
 import java.time.ZoneOffset
+import java.util.*
 import kotlin.concurrent.thread
 
 class NotificationManager private constructor(
@@ -111,9 +112,10 @@ class NotificationManager private constructor(
             val alarmMgr = mContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val intent = getIntent(typeString)
             val pendingIntent = PendingIntent.getBroadcast(mContext, getSpecificId(eventSchedule, typeString), intent, 0)
+            val zoneOffset = TimeZone.getDefault().toZoneId().rules.getOffset(LocalDateTime.now())
 
-//            alarmMgr.set(AlarmManager.RTC_WAKEUP, triggerTime.toInstant(ZoneOffset.of("+9")).toEpochMilli(), pendingIntent)
-            alarmMgr.set(AlarmManager.RTC_WAKEUP, LocalDateTime.now().plusSeconds(10).toInstant(ZoneOffset.of("+9")).toEpochMilli(), pendingIntent)
+            alarmMgr.set(AlarmManager.RTC_WAKEUP, triggerTime.toInstant(zoneOffset).toEpochMilli(), pendingIntent)
+//            alarmMgr.set(AlarmManager.RTC_WAKEUP, LocalDateTime.now().plusSeconds(8).toInstant(zoneOffset).toEpochMilli(), pendingIntent)
         }
     }
 
