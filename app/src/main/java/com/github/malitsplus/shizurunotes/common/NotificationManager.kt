@@ -110,9 +110,10 @@ class NotificationManager private constructor(
         if (triggerTime.isAfter(LocalDateTime.now())) {
             val alarmMgr = mContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val intent = getIntent(typeString)
-            val pendingIntent = PendingIntent.getBroadcast(mContext, eventSchedule.id, intent, 0)
-            alarmMgr.set(AlarmManager.RTC_WAKEUP, triggerTime.toInstant(ZoneOffset.of("+9")).toEpochMilli(), pendingIntent)
-//            alarmMgr.set(AlarmManager.RTC_WAKEUP, LocalDateTime.now().plusSeconds(30).toInstant(ZoneOffset.of("+9")).toEpochMilli(), pendingIntent)
+            val pendingIntent = PendingIntent.getBroadcast(mContext, getSpecificId(eventSchedule, typeString), intent, 0)
+
+//            alarmMgr.set(AlarmManager.RTC_WAKEUP, triggerTime.toInstant(ZoneOffset.of("+9")).toEpochMilli(), pendingIntent)
+            alarmMgr.set(AlarmManager.RTC_WAKEUP, LocalDateTime.now().plusSeconds(10).toInstant(ZoneOffset.of("+9")).toEpochMilli(), pendingIntent)
         }
     }
 
@@ -142,4 +143,15 @@ class NotificationManager private constructor(
         }
     }
 
+    private fun getSpecificId(eventSchedule: EventSchedule, typeString: String): Int {
+        return when (typeString) {
+            NORMAL_BEFORE -> eventSchedule.id + 100000
+            DUNGEON_BEFORE_2 -> eventSchedule.id + 100000
+            DUNGEON_BEFORE -> eventSchedule.id + 200000
+            HATSUNE_LAST -> eventSchedule.id + 100000
+            HATSUNE_LAST_HOUR -> eventSchedule.id + 200000
+            TOWER_LAST_HOUR -> eventSchedule.id + 100000
+            else -> 0
+        }
+    }
 }
