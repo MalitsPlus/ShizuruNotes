@@ -1,4 +1,4 @@
-package com.github.malitsplus.shizurunotes.ui.calendar.notification
+package com.github.malitsplus.shizurunotes.common
 
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
@@ -7,7 +7,6 @@ import android.content.Intent
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.github.malitsplus.shizurunotes.R
-import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.ui.MainActivity
 import kotlin.random.Random
 
@@ -39,7 +38,8 @@ class AlarmReceiver : BroadcastReceiver() {
             NOTIFICATION_ACTION -> {
                 var title = ""
                 var text = ""
-                var channelId = NOTIFICATION_CHANNEL_LOW
+                var channelId =
+                    NOTIFICATION_CHANNEL_LOW
                 when (intent.extras?.getString(NOTIFICATION_EXTRA_TYPE)) {
                     NORMAL_BEFORE -> {
                         title = I18N.getString(R.string.notification_normal_before_title)
@@ -60,12 +60,14 @@ class AlarmReceiver : BroadcastReceiver() {
                     HATSUNE_LAST_HOUR -> {
                         title = I18N.getString(R.string.notification_hatsune_last_hour_title)
                         text = I18N.getString(R.string.notification_hatsune_last_hour_text)
-                        channelId = NOTIFICATION_CHANNEL_DEFAULT
+                        channelId =
+                            NOTIFICATION_CHANNEL_DEFAULT
                     }
                     TOWER_LAST_HOUR -> {
                         title = I18N.getString(R.string.notification_tower_last_hour_title)
                         text = I18N.getString(R.string.notification_tower_last_hour_text)
-                        channelId = NOTIFICATION_CHANNEL_DEFAULT
+                        channelId =
+                            NOTIFICATION_CHANNEL_DEFAULT
                     }
                 }
                 val newIntent = Intent(context, MainActivity::class.java)

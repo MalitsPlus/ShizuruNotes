@@ -7,6 +7,7 @@ import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.NotificationManager
+import com.github.malitsplus.shizurunotes.common.TYPE_STRING_LIST
 
 class EventNotificationSetting : PreferenceFragmentCompat(){
 

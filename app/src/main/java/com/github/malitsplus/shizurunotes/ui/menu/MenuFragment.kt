@@ -34,6 +34,10 @@ class MenuFragment : Fragment() {
                         it.findNavController().navigate(
                             BottomNaviFragmentDirections.actionNavBottomNavigationToNavSettingContainer()
                         )
+                    R.id.constraint_rank_comparison ->
+                        it.findNavController().navigate(
+                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavRankCompare()
+                        )
                 }
             }
         }

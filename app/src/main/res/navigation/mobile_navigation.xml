@@ -57,6 +57,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_nav_bottom_navigation_to_nav_rank_compare"
+            app:destination="@id/nav_rank_comparison"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -264,4 +271,35 @@
         android:name="com.github.malitsplus.shizurunotes.ui.calendar.notification.EventNotificationContainerFragment"
         android:label="fragment_event_notification"
         tools:layout="@layout/fragment_event_notification" />
+    <fragment
+        android:id="@+id/nav_rank_comparison"
+        android:name="com.github.malitsplus.shizurunotes.ui.comparison.RankComparisonFragment"
+        android:label="fragment_rank_comparison"
+        tools:layout="@layout/fragment_rank_comparison" >
+        <action
+            android:id="@+id/action_nav_rank_compare_to_nav_compare_list"
+            app:destination="@id/nav_comparison_list"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_comparison_list"
+        android:name="com.github.malitsplus.shizurunotes.ui.comparison.ComparisonListFragment"
+        android:label="fragment_comparison_list"
+        tools:layout="@layout/fragment_comparison_list" >
+        <action
+            android:id="@+id/action_nav_compare_list_to_nav_compare_details"
+            app:destination="@id/nav_comparison_details"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_comparison_details"
+        android:name="com.github.malitsplus.shizurunotes.ui.comparison.ComparisonDetailsFragment"
+        android:label="fragment_comparison_details"
+        tools:layout="@layout/fragment_comparison_details" />
 </navigation>

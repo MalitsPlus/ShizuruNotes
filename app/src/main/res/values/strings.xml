@@ -12,6 +12,7 @@
     <string name="title_dungeon">ダンジョン</string>
     <string name="title_log">ログ</string>
     <string name="title_enemy">モンスター</string>
+    <string name="title_rank_comparison">ランク比較</string>
     <string name="setting_language" translatable="false">Language</string>
     <string name="setting_language_dialog_title">Language</string>
     <string-array name="setting_language_options">
@@ -84,7 +85,7 @@
     <string name="text_level" translatable="false">Lv.</string>
     <string name="text_loop_start" translatable="false">（</string>
     <string name="text_loop_end" translatable="false">）</string>
-    <string name="tab_phase">Phase&#160;</string>
+    <string name="tab_phase">フェーズ&#160;</string>
     <string name="text_year">年</string>
     <string name="text_month">月</string>
     <string name="text_day">日</string>
@@ -256,6 +257,10 @@
     <string name="notification_hatsune_last_hour_text">イベント終了まであと１時間！チケットはちゃんと全部消化しましたか？</string>
     <string name="notification_tower_last_hour_title">ルナの塔終了直前</string>
     <string name="notification_tower_last_hour_text">ルナの塔終了まであと１時間！今日の分はちゃんと消化しましたか？</string>
+    <string name="hint_rank_from">ランク1</string>
+    <string name="hint_rank_to">ランク2</string>
+    <string name="rank_comparison_description">計算方法説明：\nx → 上のランク\ny → 下のランク\n{[∑(yの装備フル強化値) + ∑(yより低いランクの装備ステータス) + (最大レベル + y)の基礎ステータス]端数四捨五入} - {[∑(xの装備フル強化値) + ∑(xより低いランクの装備ステータス) + (最大レベル + x)の基礎ステータス]端数四捨五入}\n*上記の計算式はキャラの最大☆数の基礎ステータスを基に計算してます</string>
+    <string name="text_calculate">計算</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>
