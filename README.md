@@ -20,7 +20,8 @@ And more functions has been planned.
 
 ## Localization 
 Japanese, Chinese, Korean supported.  
-Korean strings are provided by [@applemintia](https://twitter.com/_applemintia) 
+Korean strings are provided by [@applemintia](https://twitter.com/_applemintia).  
+Thanks [ugrolol](https://github.com/ugrolol), you can get EN and RU version of this application from [here](https://github.com/ugrolol/ShizuruNotes). 
 
 ## References 
 * [PrincessGuide](https://github.com/superk589/PrincessGuide) 
