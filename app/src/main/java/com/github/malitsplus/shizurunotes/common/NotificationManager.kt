@@ -9,10 +9,8 @@ import com.github.malitsplus.shizurunotes.data.CampaignType
 import com.github.malitsplus.shizurunotes.data.EventSchedule
 import com.github.malitsplus.shizurunotes.data.EventType
 import com.github.malitsplus.shizurunotes.db.MasterSchedule
-import com.github.malitsplus.shizurunotes.ui.calendar.notification.*
 import com.github.malitsplus.shizurunotes.user.UserSettings
 import java.time.LocalDateTime
-import java.time.ZoneOffset
 import java.util.*
 import kotlin.concurrent.thread
 
@@ -76,22 +74,34 @@ class NotificationManager private constructor(
         if (eventSchedule is CampaignSchedule) {
             when (eventSchedule.campaignType) {
                 CampaignType.dropAmountNormal -> {
-                    setOrCancelAlarm(eventSchedule, NORMAL_BEFORE)
+                    setOrCancelAlarm(eventSchedule,
+                        NORMAL_BEFORE
+                    )
                 }
                 CampaignType.manaDungeon -> {
-                    setOrCancelAlarm(eventSchedule, DUNGEON_BEFORE_2)
-                    setOrCancelAlarm(eventSchedule, DUNGEON_BEFORE)
+                    setOrCancelAlarm(eventSchedule,
+                        DUNGEON_BEFORE_2
+                    )
+                    setOrCancelAlarm(eventSchedule,
+                        DUNGEON_BEFORE
+                    )
                 }
                 else -> {  }
             }
         } else {
             when (eventSchedule.type) {
                 EventType.Hatsune -> {
-                    setOrCancelAlarm(eventSchedule, HATSUNE_LAST)
-                    setOrCancelAlarm(eventSchedule, HATSUNE_LAST_HOUR)
+                    setOrCancelAlarm(eventSchedule,
+                        HATSUNE_LAST
+                    )
+                    setOrCancelAlarm(eventSchedule,
+                        HATSUNE_LAST_HOUR
+                    )
                 }
                 EventType.Tower -> {
-                    setOrCancelAlarm(eventSchedule, TOWER_LAST_HOUR)
+                    setOrCancelAlarm(eventSchedule,
+                        TOWER_LAST_HOUR
+                    )
                 }
                 else -> {  }
             }
@@ -107,15 +117,27 @@ class NotificationManager private constructor(
     }
 
     private fun setAlarm(eventSchedule: EventSchedule, typeString: String) {
-        val triggerTime = getTriggerTime(eventSchedule, typeString)
-        if (triggerTime.isAfter(LocalDateTime.now())) {
-            val alarmMgr = mContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            val intent = getIntent(typeString)
-            val pendingIntent = PendingIntent.getBroadcast(mContext, getSpecificId(eventSchedule, typeString), intent, 0)
-            val zoneOffset = TimeZone.getDefault().toZoneId().rules.getOffset(LocalDateTime.now())
+        if (!eventSchedule.startTime.isEqual(eventSchedule.endTime)) {
+            val triggerTime = getTriggerTime(eventSchedule, typeString)
+            if (triggerTime.isAfter(LocalDateTime.now())) {
+                val alarmMgr = mContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                val intent = getIntent(typeString)
+                val pendingIntent = PendingIntent.getBroadcast(
+                    mContext,
+                    getSpecificId(eventSchedule, typeString),
+                    intent,
+                    0
+                )
+                val zoneOffset =
+                    TimeZone.getDefault().toZoneId().rules.getOffset(LocalDateTime.now())
 
-            alarmMgr.set(AlarmManager.RTC_WAKEUP, triggerTime.toInstant(zoneOffset).toEpochMilli(), pendingIntent)
+                alarmMgr.set(
+                    AlarmManager.RTC_WAKEUP,
+                    triggerTime.toInstant(zoneOffset).toEpochMilli(),
+                    pendingIntent
+                )
 //            alarmMgr.set(AlarmManager.RTC_WAKEUP, LocalDateTime.now().plusSeconds(8).toInstant(zoneOffset).toEpochMilli(), pendingIntent)
+            }
         }
     }
 
@@ -140,7 +162,8 @@ class NotificationManager private constructor(
     private fun getIntent(type: String): Intent {
         return Intent().apply {
             setClass(mContext, AlarmReceiver::class.java)
-            action = NOTIFICATION_ACTION
+            action =
+                NOTIFICATION_ACTION
             putExtra(NOTIFICATION_EXTRA_TYPE, type)
         }
     }

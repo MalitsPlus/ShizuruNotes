@@ -7,8 +7,6 @@ import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
 import com.github.malitsplus.shizurunotes.db.DBHelper
-import com.github.malitsplus.shizurunotes.ui.calendar.notification.NOTIFICATION_CHANNEL_DEFAULT
-import com.github.malitsplus.shizurunotes.ui.calendar.notification.NOTIFICATION_CHANNEL_LOW
 import com.github.malitsplus.shizurunotes.user.UserSettings
 import com.github.malitsplus.shizurunotes.utils.Utils
 
