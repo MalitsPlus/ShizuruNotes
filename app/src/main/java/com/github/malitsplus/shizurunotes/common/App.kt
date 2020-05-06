@@ -48,6 +48,7 @@ class App : Application() {
         Utils.setApp(this)
         DBHelper.with(this)
         UserSettings.with(this)
+        ResourceManager.with(this)
         I18N.application = this
     }
 }

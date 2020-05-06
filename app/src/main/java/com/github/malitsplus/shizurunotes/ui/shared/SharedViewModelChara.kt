@@ -22,6 +22,9 @@ class SharedViewModelChara : ViewModel() {
     var selectedMinion: MutableList<Minion>? = null
     var backFlag = false
 
+    var rankComparisonFrom: Int = 0
+    var rankComparisonTo: Int = 0
+
     /***
      * 从数据库读取所有角色数据。
      * 此方法应该且仅应该在程序初始化时或数据库更新完成后使用。

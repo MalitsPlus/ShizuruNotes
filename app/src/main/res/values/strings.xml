@@ -72,6 +72,11 @@
     <string name="ui_chip_sort_magical_atk">魔法攻撃力</string>
     <string name="ui_chip_sort_physical_def">物理防御力</string>
     <string name="ui_chip_sort_magical_def">魔法防御力</string>
+    <string name="ui_chip_sort_physical_critical">物理クリ</string>
+    <string name="ui_chip_sort_magical_critical">魔法クリ</string>
+    <string name="ui_chip_sort_hp">HP</string>
+    <string name="ui_chip_sort_tp_up">TP上昇</string>
+    <string name="ui_chip_sort_tp_reduce">TP減軽</string>
     <string name="ui_chip_sort_age">年齢</string>
     <string name="ui_chip_sort_height">身長</string>
     <string name="ui_chip_sort_weight">体重</string>
@@ -261,6 +266,21 @@
     <string name="hint_rank_to">ランク2</string>
     <string name="rank_comparison_description">計算方法説明：\nx → 上のランク\ny → 下のランク\n{[∑(yの装備フル強化値) + ∑(yより低いランクの装備ステータス) + (最大レベル + y)の基礎ステータス]端数四捨五入} - {[∑(xの装備フル強化値) + ∑(xより低いランクの装備ステータス) + (最大レベル + x)の基礎ステータス]端数四捨五入}\n*上記の計算式はキャラの最大☆数の基礎ステータスを基に計算してます</string>
     <string name="text_calculate">計算</string>
+    <string name="short_energy_recovery">TP上\n%s</string>
+    <string name="short_energy_reduce">TP軽\n%s</string>
+    <string name="short_physical_atk">物攻\n%s</string>
+    <string name="short_physical_crt">物ク\n%s</string>
+    <string name="short_physical_def">物防\n%s</string>
+    <string name="short_magical_atk">魔攻\n%s</string>
+    <string name="short_magical_crt">魔ク\n%s</string>
+    <string name="short_magical_def">魔防\n%s</string>
+    <string name="short_hp">HP\n%s</string>
+    <string name="short_life_steal">HP吸\n%s</string>
+    <string name="short_accuracy">命中\n%s</string>
+    <string name="short_dodge">回避\n%s</string>
+    <string name="short_wave_hp_recovery">HP自\n%s</string>
+    <string name="short_wave_energy_recovery">TP自\n%s</string>
+    <string name="short_hp_recovery">回上\n%s</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>
