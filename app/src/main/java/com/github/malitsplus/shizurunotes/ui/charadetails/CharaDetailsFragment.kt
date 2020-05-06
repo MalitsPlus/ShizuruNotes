@@ -59,11 +59,8 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
 
         detailsViewModel = ViewModelProvider(
             this,
-            SharedViewModelCharaFactory(
-                sharedChara
-            )
-        ).get(CharaDetailsViewModel::class.java
-        )
+            SharedViewModelCharaFactory(sharedChara)
+        ).get(CharaDetailsViewModel::class.java)
 
         binding.apply {
             detailsItemChara.transitionName = "transItem_${args.charaId}"

@@ -45,6 +45,28 @@ public class Property {
         this.accuracy = accuracy;
     }
 
+    public Property reverse() {
+        return new Property(
+                -this.hp,
+                -this.atk,
+                -this.magicStr,
+                -this.def,
+                -this.magicDef,
+                -this.physicalCritical,
+                -this.magicCritical,
+                -this.waveHpRecovery,
+                -this.waveEnergyRecovery,
+                -this.dodge,
+                -this.physicalPenetrate,
+                -this.magicPenetrate,
+                -this.lifeSteal,
+                -this.hpRecoveryRate,
+                -this.energyRecoveryRate,
+                -this.energyReduceRate,
+                -this.accuracy
+        );
+    }
+
     public Property plus(@Nullable Property rProperty){
         if (rProperty == null)
             return this;
@@ -133,6 +155,28 @@ public class Property {
         this.energyReduceRate *= multiplier;
         this.accuracy *= multiplier;
         return this;
+    }
+
+    public Property roundThenPlus(Property rProperty) {
+        return new Property(
+                this.getHp() + rProperty.getHp(),
+                this.getAtk() + rProperty.getAtk(),
+                this.getMagicStr() + rProperty.getMagicStr(),
+                this.getDef() + rProperty.getDef(),
+                this.getMagicDef() + rProperty.getMagicDef(),
+                this.getPhysicalCritical() + rProperty.getPhysicalCritical(),
+                this.getMagicCritical() + rProperty.getMagicCritical(),
+                this.getWaveHpRecovery() + rProperty.getWaveHpRecovery(),
+                this.getWaveEnergyRecovery() + rProperty.getWaveEnergyRecovery(),
+                this.getDodge() + rProperty.getDodge(),
+                this.getPhysicalPenetrate() + rProperty.getPhysicalPenetrate(),
+                this.getMagicPenetrate() + rProperty.getMagicPenetrate(),
+                this.getLifeSteal() + rProperty.getLifeSteal(),
+                this.getHpRecoveryRate() + rProperty.getHpRecoveryRate(),
+                this.getEnergyRecoveryRate() + rProperty.getEnergyRecoveryRate(),
+                this.getEnergyReduceRate() + rProperty.getEnergyReduceRate(),
+                this.getAccuracy() + rProperty.getAccuracy()
+        );
     }
 
     public static Property getPropertyWithKeyAndValue(Property property, PropertyKey key, double value){

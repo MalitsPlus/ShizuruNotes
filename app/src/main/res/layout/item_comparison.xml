@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="comparison"
+            type="com.github.malitsplus.shizurunotes.data.RankComparison" />
+        <import type="com.github.malitsplus.shizurunotes.R"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/charaIcon"
+            style="@style/unitIcon"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:errorHolder="@{R.drawable.mic_chara_icon_error}"
+            bind:imageUrl="@{comparison.iconUrl}"
+            bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutTop"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/charaIcon"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                style="@style/myComparisonText"
+                android:id="@+id/cmpEnergyRecoveryRate"
+                android:text="@{@string/short_energy_recovery(comparison.energyRecoveryRate)}"
+                android:textAlignment="center" />
+
+            <TextView
+                style="@style/myComparisonText"
+                android:id="@+id/cmpAtk"
+                android:text="@{@string/short_physical_atk(comparison.atk)}"
+                android:textAlignment="center" />
+
+            <TextView
+                style="@style/myComparisonText"
+                android:id="@+id/cmpPhysicalCritical"
+                android:text="@{@string/short_physical_crt(comparison.physicalCritical)}"
+                android:textAlignment="center" />
+
+            <TextView
+                style="@style/myComparisonText"
+                android:id="@+id/cmpDef"
+                android:text="@{@string/short_physical_def(comparison.def)}"
+                android:textAlignment="center" />
+
+            <TextView
+                style="@style/myComparisonText"
+                android:id="@+id/cmpLifeSteal"
+                android:text="@{@string/short_life_steal(comparison.lifeSteal)}"
+                android:textAlignment="center" />
+
+            <TextView
+                style="@style/myComparisonText"
+                android:id="@+id/cmpAccuracy"
+                android:text="@{@string/short_accuracy(comparison.accuracy)}"
+                android:textAlignment="center" />
+
+            <TextView
+                style="@style/myComparisonText"
+                android:id="@+id/cmpWaveEnergyRecovery"
+                android:text="@{@string/short_wave_energy_recovery(comparison.waveEnergyRecovery)}"
+                android:textAlignment="center" />
+
+            <TextView
+                style="@style/myComparisonText"
+                android:id="@+id/cmpHp"
+                android:text="@{@string/short_hp(comparison.hp)}"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutBottom"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/charaIcon"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutTop">
+
+            <TextView
+                style="@style/myComparisonText"
+                android:id="@+id/cmpEnergyReduceRate"
+                android:text="@{@string/short_energy_reduce(comparison.energyReduceRate)}"
+                android:textAlignment="center" />
+
+            <TextView
+                style="@style/myComparisonText"
+                android:id="@+id/cmpMagicStr"
+                android:text="@{@string/short_magical_atk(comparison.magicStr)}"
+                android:textAlignment="center" />
+
+            <TextView
+                style="@style/myComparisonText"
+                android:id="@+id/cmpMagicCritical"
+                android:text="@{@string/short_magical_crt(comparison.magicCritical)}"
+                android:textAlignment="center" />
+
+            <TextView
+                style="@style/myComparisonText"
+                android:id="@+id/cmpMagicDef"
+                android:text="@{@string/short_magical_def(comparison.magicDef)}"
+                android:textAlignment="center" />
+
+            <TextView
+                style="@style/myComparisonText"
+                android:id="@+id/cmpHpRecoveryRate"
+                android:text="@{@string/short_hp_recovery(comparison.hpRecoveryRate)}"
+                android:textAlignment="center" />
+
+            <TextView
+                style="@style/myComparisonText"
+                android:id="@+id/cmpDodge"
+                android:text="@{@string/short_dodge(comparison.dodge)}"
+                android:textAlignment="center" />
+
+            <TextView
+                style="@style/myComparisonText"
+                android:id="@+id/cmpWaveHpRecovery"
+                android:text="@{@string/short_wave_hp_recovery(comparison.waveHpRecovery)}"
+                android:textAlignment="center" />
+
+            <TextView
+                style="@style/myComparisonText"
+                android:text="" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider9"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutBottom" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

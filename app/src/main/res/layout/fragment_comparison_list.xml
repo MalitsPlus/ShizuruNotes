@@ -1,11 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:id="@+id/comparison_list_coordinator">
 
-</FrameLayout>
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/comparison_list_appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/comparison_list_toolbar"
+                app:navigationIcon="@drawable/ic_detail_back"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="@string/title_rank_comparison"
+                app:layout_scrollFlags="scroll|enterAlways" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                tools:ignore="LabelFor"
+                android:background="?attr/colorSurface">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myDropdown"
+                    android:layout_width="match_parent"
+                    android:layout_weight="6"
+                    android:hint="@string/ui_text_atk_type">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/dropdownText1"
+                        style="@style/myDropdownAutoText"
+                        android:layout_width="match_parent" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myDropdown"
+                    android:layout_width="match_parent"
+                    android:layout_weight="6"
+                    android:hint="@string/ui_text_position">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/dropdownText2"
+                        style="@style/myDropdownAutoText"
+                        android:layout_width="match_parent"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/myDropdown"
+                    android:layout_width="match_parent"
+                    android:layout_weight="5"
+                    android:hint="@string/ui_text_sort">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/dropdownText3"
+                        style="@style/myDropdownAutoText"
+                        android:layout_width="match_parent"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/comparison_list_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:listitem="@layout/list_item_chara" />
+
+        <ProgressBar
+            android:id="@+id/comparison_list_progressbar"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
