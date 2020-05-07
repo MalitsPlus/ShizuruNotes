@@ -1,7 +1,7 @@
 {
-	"versionCode": "9",
-	"versionName": "0.5.8",
+	"versionCode": "10",
+	"versionName": "0.5.9",
 	"recommend": "false",
-	"messageJa": "・新キャラ「チエル」のスキル説明文を追加。",
-	"messageZh": "・追加新角色「チエル」的技能说明。"
+	"messageJa": "・イベント通知機能を実装（カレンダーの右上のアイコン）。\n・ランク比較機能を実装。\n・「タマキ」☆6のUB説明文を修正。",
+	"messageZh": "・追加活动提醒通知功能（可进入日历右上角设定）。\n・追加Rank对比功能。\n・修正「タマキ」☆6的UB解说。"
 }
