@@ -14,14 +14,16 @@ Gradle building configuration could be found in `./app/build.gradle` and it migh
 * Clan Battle Boss 
 * Dungeon 
 * Equipment 
-* Event Calendar  
+* Event Calendar 
+* Event Notification 
+* Rank Comparison  
   
-And more functions has been planned. 
+CN server version has been planned. 
 
 ## Localization 
 Japanese, Chinese, Korean supported.  
 Korean strings are provided by [@applemintia](https://twitter.com/_applemintia).  
-Thanks [ugrolol](https://github.com/ugrolol), you can get EN and RU version of this application from [here](https://github.com/ugrolol/ShizuruNotes). 
+Thanks [ugrolol](https://github.com/ugrolol), you can get EN and RU version of this application from [here](https://github.com/ugrolol/ShizuruNotes).  
 
 ## References 
 * [PrincessGuide](https://github.com/superk589/PrincessGuide) 
