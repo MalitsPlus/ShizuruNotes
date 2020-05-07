@@ -30,6 +30,16 @@
         app:key="system_category"
         app:title="@string/setting_system">
 
+        <ListPreference
+            app:key="server"
+            app:title="@string/setting_server"
+            app:useSimpleSummaryProvider="true"
+            app:icon="@drawable/mic_cloud"
+            app:entries="@array/setting_server_options"
+            app:entryValues="@array/setting_server_values"
+            app:dialogTitle="@string/setting_server_dialog_title"
+            app:defaultValue="jp"/>
+
         <Preference
             app:key="log"
             app:icon="@drawable/mic_file"
