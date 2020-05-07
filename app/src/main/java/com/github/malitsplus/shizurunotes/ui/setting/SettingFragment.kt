@@ -17,6 +17,7 @@ class SettingFragment : PreferenceFragmentCompat() {
 
     companion object{
         const val LANGUAGE_KEY = "language"
+        const val SERVER_KEY = "server"
         const val EXPRESSION_STYLE = "expressionStyle"
         const val LOG = "log"
         const val DB_VERSION = "dbVersion"
@@ -92,6 +93,19 @@ class SettingFragment : PreferenceFragmentCompat() {
                         requireActivity().application,
                         newValue as String?
                     )
+                    thread(start = true){
+                        Thread.sleep(100)
+                        ProcessPhoenix.triggerRebirth(activity)
+                    }
+                    true
+                }
+        }
+
+        //服务器选择
+        val serverPreference = findPreference<ListPreference>(SERVER_KEY)
+        if (serverPreference != null) {
+            serverPreference.onPreferenceChangeListener =
+                Preference.OnPreferenceChangeListener { _, _ ->
                     thread(start = true){
                         Thread.sleep(100)
                         ProcessPhoenix.triggerRebirth(activity)

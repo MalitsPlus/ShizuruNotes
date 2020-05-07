@@ -25,10 +25,20 @@
         <item>zh</item>
         <item>ko</item>
     </string-array>
+    <string-array name="setting_server_options">
+        <item>日本サーバー</item>
+        <item>中華サーバー</item>
+    </string-array>
+    <string-array name="setting_server_values">
+        <item>jp</item>
+        <item>cn</item>
+    </string-array>
     <string name="setting_kill_expression_title">スキル計算式</string>
     <string name="setting_kill_expression_summary">スキルアクションの計算式を表示</string>
     <string name="setting_appearance">表示</string>
     <string name="setting_system">システム</string>
+    <string name="setting_server">サーバー</string>
+    <string name="setting_server_dialog_title">サーバー切り替え</string>
     <string name="setting_db_version">データベースバージョン</string>
     <string name="setting_app_version">アプリバージョン</string>
     <string name="setting_re_download_db">データベースを再ダウンロード</string>
