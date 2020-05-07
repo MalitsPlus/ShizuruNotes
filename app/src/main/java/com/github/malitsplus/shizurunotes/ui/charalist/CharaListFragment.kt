@@ -71,6 +71,15 @@ class CharaListFragment : Fragment()
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.apply {
+            dropdownText1.dismissDropDown()
+            dropdownText2.dismissDropDown()
+            dropdownText3.dismissDropDown()
+        }
+    }
+
     private fun setObserver() {
         charaListViewModel.liveCharaList.observe(viewLifecycleOwner, Observer {
             binding.downloadDbHint.visibility = if (it.isEmpty() && sharedChara.loadingFlag.value == false && sharedEquipment.loadingFlag.value == false){

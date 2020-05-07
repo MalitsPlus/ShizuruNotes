@@ -63,4 +63,12 @@ class RankComparisonFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.apply {
+            dropdownRankFrom.dismissDropDown()
+            dropdownRankTo.dismissDropDown()
+        }
+    }
+
 }

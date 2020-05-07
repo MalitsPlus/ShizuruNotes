@@ -29,7 +29,7 @@
         <LinearLayout
             android:id="@+id/linearLayoutTop"
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="30dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
@@ -39,50 +39,50 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                style="@style/myComparisonText"
                 android:id="@+id/cmpEnergyRecoveryRate"
+                style="@style/myComparisonText"
                 android:text="@{@string/short_energy_recovery(comparison.energyRecoveryRate)}"
                 android:textAlignment="center" />
 
             <TextView
-                style="@style/myComparisonText"
                 android:id="@+id/cmpAtk"
+                style="@style/myComparisonText"
                 android:text="@{@string/short_physical_atk(comparison.atk)}"
                 android:textAlignment="center" />
 
             <TextView
-                style="@style/myComparisonText"
                 android:id="@+id/cmpPhysicalCritical"
+                style="@style/myComparisonText"
                 android:text="@{@string/short_physical_crt(comparison.physicalCritical)}"
                 android:textAlignment="center" />
 
             <TextView
-                style="@style/myComparisonText"
                 android:id="@+id/cmpDef"
+                style="@style/myComparisonText"
                 android:text="@{@string/short_physical_def(comparison.def)}"
                 android:textAlignment="center" />
 
             <TextView
-                style="@style/myComparisonText"
                 android:id="@+id/cmpLifeSteal"
+                style="@style/myComparisonText"
                 android:text="@{@string/short_life_steal(comparison.lifeSteal)}"
                 android:textAlignment="center" />
 
             <TextView
-                style="@style/myComparisonText"
                 android:id="@+id/cmpAccuracy"
+                style="@style/myComparisonText"
                 android:text="@{@string/short_accuracy(comparison.accuracy)}"
                 android:textAlignment="center" />
 
             <TextView
-                style="@style/myComparisonText"
                 android:id="@+id/cmpWaveEnergyRecovery"
+                style="@style/myComparisonText"
                 android:text="@{@string/short_wave_energy_recovery(comparison.waveEnergyRecovery)}"
                 android:textAlignment="center" />
 
             <TextView
-                style="@style/myComparisonText"
                 android:id="@+id/cmpHp"
+                style="@style/myComparisonText"
                 android:text="@{@string/short_hp(comparison.hp)}"
                 android:textAlignment="center" />
 
@@ -91,7 +91,7 @@
         <LinearLayout
             android:id="@+id/linearLayoutBottom"
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="30dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
@@ -101,44 +101,44 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutTop">
 
             <TextView
-                style="@style/myComparisonText"
                 android:id="@+id/cmpEnergyReduceRate"
+                style="@style/myComparisonText"
                 android:text="@{@string/short_energy_reduce(comparison.energyReduceRate)}"
                 android:textAlignment="center" />
 
             <TextView
-                style="@style/myComparisonText"
                 android:id="@+id/cmpMagicStr"
+                style="@style/myComparisonText"
                 android:text="@{@string/short_magical_atk(comparison.magicStr)}"
                 android:textAlignment="center" />
 
             <TextView
-                style="@style/myComparisonText"
                 android:id="@+id/cmpMagicCritical"
+                style="@style/myComparisonText"
                 android:text="@{@string/short_magical_crt(comparison.magicCritical)}"
                 android:textAlignment="center" />
 
             <TextView
-                style="@style/myComparisonText"
                 android:id="@+id/cmpMagicDef"
+                style="@style/myComparisonText"
                 android:text="@{@string/short_magical_def(comparison.magicDef)}"
                 android:textAlignment="center" />
 
             <TextView
-                style="@style/myComparisonText"
                 android:id="@+id/cmpHpRecoveryRate"
+                style="@style/myComparisonText"
                 android:text="@{@string/short_hp_recovery(comparison.hpRecoveryRate)}"
                 android:textAlignment="center" />
 
             <TextView
-                style="@style/myComparisonText"
                 android:id="@+id/cmpDodge"
+                style="@style/myComparisonText"
                 android:text="@{@string/short_dodge(comparison.dodge)}"
                 android:textAlignment="center" />
 
             <TextView
-                style="@style/myComparisonText"
                 android:id="@+id/cmpWaveHpRecovery"
+                style="@style/myComparisonText"
                 android:text="@{@string/short_wave_hp_recovery(comparison.waveHpRecovery)}"
                 android:textAlignment="center" />
 

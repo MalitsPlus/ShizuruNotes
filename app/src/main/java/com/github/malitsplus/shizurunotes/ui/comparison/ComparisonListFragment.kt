@@ -53,12 +53,22 @@ class ComparisonListFragment : Fragment() {
             comparisonListToolbar.setNavigationOnClickListener {
                 it.findNavController().navigateUp()
             }
+            comparisonListToolbar.title = "R" + sharedChara.rankComparisonFrom + " → " + "R" + sharedChara.rankComparisonTo
             comparisonListRecycler.apply {
                 layoutManager = LinearLayoutManager(this@ComparisonListFragment.context)
                 adapter = this@ComparisonListFragment.adapter
             }
         }
         comparisonListVM.filterDefault()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.apply {
+            dropdownText1.dismissDropDown()
+            dropdownText2.dismissDropDown()
+            dropdownText3.dismissDropDown()
+        }
     }
 
     private fun setDropdownText(){
