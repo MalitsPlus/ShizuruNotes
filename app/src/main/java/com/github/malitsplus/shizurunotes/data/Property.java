@@ -157,25 +157,25 @@ public class Property {
         return this;
     }
 
-    public Property roundThenPlus(Property rProperty) {
+    public Property roundThenSubtract(Property rProperty) {
         return new Property(
-                this.getHp() + rProperty.getHp(),
-                this.getAtk() + rProperty.getAtk(),
-                this.getMagicStr() + rProperty.getMagicStr(),
-                this.getDef() + rProperty.getDef(),
-                this.getMagicDef() + rProperty.getMagicDef(),
-                this.getPhysicalCritical() + rProperty.getPhysicalCritical(),
-                this.getMagicCritical() + rProperty.getMagicCritical(),
-                this.getWaveHpRecovery() + rProperty.getWaveHpRecovery(),
-                this.getWaveEnergyRecovery() + rProperty.getWaveEnergyRecovery(),
-                this.getDodge() + rProperty.getDodge(),
-                this.getPhysicalPenetrate() + rProperty.getPhysicalPenetrate(),
-                this.getMagicPenetrate() + rProperty.getMagicPenetrate(),
-                this.getLifeSteal() + rProperty.getLifeSteal(),
-                this.getHpRecoveryRate() + rProperty.getHpRecoveryRate(),
-                this.getEnergyRecoveryRate() + rProperty.getEnergyRecoveryRate(),
-                this.getEnergyReduceRate() + rProperty.getEnergyReduceRate(),
-                this.getAccuracy() + rProperty.getAccuracy()
+                this.getHp() - rProperty.getHp(),
+                this.getAtk() - rProperty.getAtk(),
+                this.getMagicStr() - rProperty.getMagicStr(),
+                this.getDef() - rProperty.getDef(),
+                this.getMagicDef() - rProperty.getMagicDef(),
+                this.getPhysicalCritical() - rProperty.getPhysicalCritical(),
+                this.getMagicCritical() - rProperty.getMagicCritical(),
+                this.getWaveHpRecovery() - rProperty.getWaveHpRecovery(),
+                this.getWaveEnergyRecovery() - rProperty.getWaveEnergyRecovery(),
+                this.getDodge() - rProperty.getDodge(),
+                this.getPhysicalPenetrate() - rProperty.getPhysicalPenetrate(),
+                this.getMagicPenetrate() - rProperty.getMagicPenetrate(),
+                this.getLifeSteal() - rProperty.getLifeSteal(),
+                this.getHpRecoveryRate() - rProperty.getHpRecoveryRate(),
+                this.getEnergyRecoveryRate() - rProperty.getEnergyRecoveryRate(),
+                this.getEnergyReduceRate() - rProperty.getEnergyReduceRate(),
+                this.getAccuracy() - rProperty.getAccuracy()
         );
     }
 

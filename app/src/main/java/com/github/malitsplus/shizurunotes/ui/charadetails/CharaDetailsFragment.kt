@@ -44,6 +44,11 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
                 .inflateTransition(android.R.transition.move).setDuration(300)
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.rankSpinner.dismissDropDown()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

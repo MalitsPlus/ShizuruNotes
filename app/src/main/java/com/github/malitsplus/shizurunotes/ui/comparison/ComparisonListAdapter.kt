@@ -37,6 +37,8 @@ class ComparisonListAdapter : BaseRecyclerAdapter<RankComparison, ItemComparison
             textView.setTextColor(ResourceManager.get().getColor(R.color.green_350))
         } else if (num < 0) {
             textView.setTextColor(ResourceManager.get().getColor(R.color.red_500))
+        } else {
+            textView.setTextColor(ResourceManager.get().getColor(R.color.textPrimary))
         }
     }
 }

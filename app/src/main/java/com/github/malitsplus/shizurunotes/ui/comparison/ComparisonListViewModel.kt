@@ -138,6 +138,14 @@ class ComparisonListViewModel(
         comparisonList.clear()
         val rankFrom = sharedViewModelChara.rankComparisonFrom
         val rankTo = sharedViewModelChara.rankComparisonTo
+        //考虑用户手快，charaList可能还在loading的情况
+        for (i in 1..25) {
+            if (sharedViewModelChara.loadingFlag.value == false) {
+                break
+            } else {
+                Thread.sleep(200)
+            }
+        }
         sharedViewModelChara.charaList.value?.forEach {
             val propertyTo = it.shallowCopy().apply {
                 setCharaProperty(rank = rankTo)
@@ -145,7 +153,7 @@ class ComparisonListViewModel(
             val propertyFrom = it.shallowCopy().apply {
                 setCharaProperty(rank = rankFrom)
             }.charaProperty
-            comparisonList.add(RankComparison(it, it.iconUrl, rankFrom, rankTo, propertyTo.roundThenPlus(propertyFrom.reverse())))
+            comparisonList.add(RankComparison(it, it.iconUrl, rankFrom, rankTo, propertyTo.roundThenSubtract(propertyFrom)))
         }
     }
 }

@@ -264,7 +264,7 @@
     <string name="notification_tower_last_hour_text">ルナの塔終了まであと１時間！今日の分はちゃんと消化しましたか？</string>
     <string name="hint_rank_from">ランク1</string>
     <string name="hint_rank_to">ランク2</string>
-    <string name="rank_comparison_description">計算方法説明：\nx → 上のランク\ny → 下のランク\n{[∑(yの装備フル強化値) + ∑(yより低いランクの装備ステータス) + (最大レベル + y)の基礎ステータス]端数四捨五入} - {[∑(xの装備フル強化値) + ∑(xより低いランクの装備ステータス) + (最大レベル + x)の基礎ステータス]端数四捨五入}\n*上記の計算式はキャラの最大☆数の基礎ステータスを基に計算してます</string>
+    <string name="rank_comparison_description">計算方法説明：\nx → 左のランク\ny → 右のランク\n{[∑(yの装備フル強化値) + ∑(yより低いランクの装備ステータス) + (最大レベル + y)の基礎ステータス]端数四捨五入} - {[∑(xの装備フル強化値) + ∑(xより低いランクの装備ステータス) + (最大レベル + x)の基礎ステータス]端数四捨五入}\n*上記の計算式はキャラの最大☆数の基礎ステータスを基に計算してます</string>
     <string name="text_calculate">計算</string>
     <string name="short_energy_recovery">TP上\n%s</string>
     <string name="short_energy_reduce">TP軽\n%s</string>
@@ -590,4 +590,6 @@
     <string name="Trigger_d_on_all_targets_break">トリガー：すべての部位がBreakされた時発動。</string>
     <string name="Make_s1_to_be_invulnerable_to_break_for_s2_sec">%1$sにBreak免疫状態、効果時間 [%2$s] 秒。</string>
     <string name="Make_s1_when_deal_critical_damage_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">%1$sがクリティカルダメージを与えるたび、マーク[ID：%3$s]を1スタック増やせる、効果時間 [%4$s] 秒。この効果は最大 [%2$s] までスタックする。</string>
+    <string name="use_d1_to_s2_if_target_is_magical_type">%2$sが魔法攻撃を行う対象の場合、[アクション%1$d]を使う。</string>
+    <string name="use_d1_to_s2_if_target_is_not_magical_type">%2$sが魔法攻撃を行う対象でない場合、[アクション%1$d]を使う。</string>
 </resources>

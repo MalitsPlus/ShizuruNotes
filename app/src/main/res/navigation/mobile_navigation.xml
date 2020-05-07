@@ -289,17 +289,5 @@
         android:name="com.github.malitsplus.shizurunotes.ui.comparison.ComparisonListFragment"
         android:label="fragment_comparison_list"
         tools:layout="@layout/fragment_comparison_list" >
-        <action
-            android:id="@+id/action_nav_compare_list_to_nav_compare_details"
-            app:destination="@id/nav_comparison_details"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
-    <fragment
-        android:id="@+id/nav_comparison_details"
-        android:name="com.github.malitsplus.shizurunotes.ui.comparison.ComparisonDetailsFragment"
-        android:label="fragment_comparison_details"
-        tools:layout="@layout/fragment_comparison_details" />
 </navigation>
