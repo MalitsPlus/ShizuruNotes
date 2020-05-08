@@ -26,8 +26,8 @@
         <item>ko</item>
     </string-array>
     <string-array name="setting_server_options">
-        <item>日本サーバー</item>
-        <item>中華サーバー</item>
+        <item>日本錆</item>
+        <item>中華錆</item>
     </string-array>
     <string-array name="setting_server_values">
         <item>jp</item>

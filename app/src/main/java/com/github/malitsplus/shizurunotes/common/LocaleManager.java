@@ -15,11 +15,11 @@ import java.util.Set;
 
 import androidx.annotation.RequiresApi;
 
+import com.github.malitsplus.shizurunotes.user.UserSettings;
 import com.github.malitsplus.shizurunotes.utils.Utils;
 
 import static android.os.Build.VERSION_CODES.N;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
-import static com.github.malitsplus.shizurunotes.ui.setting.SettingFragment.LANGUAGE_KEY;
 
 @SuppressWarnings("deprecation")
 public class LocaleManager {
@@ -47,7 +47,7 @@ public class LocaleManager {
 
     public String getLanguage() {
 
-        String currentLanguage = prefs.getString(LANGUAGE_KEY, null);
+        String currentLanguage = prefs.getString(UserSettings.LANGUAGE_KEY, null);
         if(currentLanguage != null)
             return currentLanguage;
 
@@ -66,7 +66,7 @@ public class LocaleManager {
     private void persistLanguage(String language) {
         // use commit() instead of apply(), because sometimes we kill the application process
         // immediately that prevents apply() from finishing
-        prefs.edit().putString(LANGUAGE_KEY, language).commit();
+        prefs.edit().putString(UserSettings.LANGUAGE_KEY, language).commit();
     }
 
     private Context updateResources(Context context, String language) {

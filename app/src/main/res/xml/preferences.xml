@@ -55,7 +55,7 @@
         -->
 
         <Preference
-            app:key="dbVersion"
+            app:key="dbVersion_new"
             app:icon="@drawable/mic_chart"
             app:title="@string/setting_db_version"
             app:summary="0"/>

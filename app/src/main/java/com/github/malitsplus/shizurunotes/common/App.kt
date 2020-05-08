@@ -46,9 +46,27 @@ class App : Application() {
 
     private fun initSingleton() {
         Utils.setApp(this)
-        DBHelper.with(this)
         UserSettings.with(this)
+        initUserServer()
+        DBHelper.with(this)
         ResourceManager.with(this)
         I18N.application = this
+    }
+
+    private fun initUserServer() {
+        when (UserSettings.get().preference.getString(UserSettings.SERVER_KEY, "jp")) {
+            "jp" -> {
+                Statics.DB_FILE_NAME = Statics.DB_FILE_NAME_JP
+                Statics.DB_FILE_NAME_COMPRESSED = Statics.DB_FILE_NAME_COMPRESSED_JP
+                Statics.LATEST_VERSION_URL = Statics.LATEST_VERSION_URL_JP
+                Statics.DB_FILE_URL = Statics.DB_FILE_URL_JP
+            }
+            "cn" -> {
+                Statics.DB_FILE_NAME = Statics.DB_FILE_NAME_CN
+                Statics.DB_FILE_NAME_COMPRESSED = Statics.DB_FILE_NAME_COMPRESSED_CN
+                Statics.LATEST_VERSION_URL = Statics.LATEST_VERSION_URL_CN
+                Statics.DB_FILE_URL = Statics.DB_FILE_URL_CN
+            }
+        }
     }
 }
