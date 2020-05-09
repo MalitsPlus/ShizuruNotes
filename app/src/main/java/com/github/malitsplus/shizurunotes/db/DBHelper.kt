@@ -428,7 +428,27 @@ class DBHelper private constructor(
      * 获取角色剧情数据
      */
     fun getCharaStoryStatus(charaId: Int): List<RawCharaStoryStatus>? {
-
+        // 国服-> 排除还没有实装的角色剧情
+        if (UserSettings.get().getUserServer() == "cn") {
+            return getBeanListByRaw(
+                """
+                SELECT a.* 
+                FROM chara_story_status AS a
+                INNER JOIN unit_data AS b ON substr(a.story_id,1,4) = substr(b.unit_id,1,4)
+                WHERE a.chara_id_1 = $charaId 
+                OR a.chara_id_2 = $charaId 
+                OR a.chara_id_3 = $charaId 
+                OR a.chara_id_4 = $charaId 
+                OR a.chara_id_5 = $charaId 
+                OR a.chara_id_6 = $charaId 
+                OR a.chara_id_7 = $charaId 
+                OR a.chara_id_8 = $charaId 
+                OR a.chara_id_9 = $charaId 
+                OR a.chara_id_10 = $charaId 
+                """,
+                RawCharaStoryStatus::class.java
+            )
+        }
         return getBeanListByRaw(
             """
                 SELECT * 
@@ -702,7 +722,7 @@ class DBHelper private constructor(
      * @return
      */
     fun getClanBattlePhase(clanBattleId: Int): List<RawClanBattlePhase>? {
-        // 国服-> 暂时先用着
+        // 国服-> 迎合日服结构
         if (UserSettings.get().getUserServer() == "cn") {
             return getBeanListByRaw(
                 """
