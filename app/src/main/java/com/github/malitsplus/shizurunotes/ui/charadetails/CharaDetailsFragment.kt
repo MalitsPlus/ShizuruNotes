@@ -73,11 +73,12 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
                 view.findNavController().navigateUp()
             }
 
-            var rankList: List<Int> = listOf()
+            val rankList = mutableListOf<Int>()
             detailsViewModel.getChara()?.let {
-                rankList = it.promotionStatus.keys.toList()
+                for (i in it.maxCharaRank downTo 2) {
+                    rankList.add(i)
+                }
             }
-
             rankSpinner.apply {
                 onItemClickListener = AdapterView.OnItemClickListener { _, _, position: Int, _ ->
                     detailsViewModel.changeRank(adapter.getItem(position).toString())

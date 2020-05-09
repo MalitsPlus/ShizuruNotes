@@ -5,9 +5,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.afollestad.materialdialogs.MaterialDialog
 import com.github.malitsplus.shizurunotes.BuildConfig
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.App
+import com.github.malitsplus.shizurunotes.common.NotificationManager
 import com.github.malitsplus.shizurunotes.common.UpdateManager
 import com.github.malitsplus.shizurunotes.user.UserSettings
 import com.github.malitsplus.shizurunotes.user.UserSettings.Companion.DB_VERSION
@@ -94,8 +96,24 @@ class SettingFragment : PreferenceFragmentCompat() {
         //服务器选择
         val serverPreference = findPreference<ListPreference>(UserSettings.SERVER_KEY)
         if (serverPreference != null) {
+            serverPreference.onPreferenceClickListener =
+                Preference.OnPreferenceClickListener {
+                    thread(start = true) {
+                        Thread.sleep(100)
+                        activity?.runOnUiThread {
+                            MaterialDialog(requireContext(), MaterialDialog.DEFAULT_BEHAVIOR)
+                                .title(R.string.dialog_server_switch_title)
+                                .message(R.string.dialog_server_switch_text)
+                                .show {
+                                    positiveButton(res = R.string.text_ok)
+                                }
+                        }
+                    }
+                    true
+                }
             serverPreference.onPreferenceChangeListener =
                 Preference.OnPreferenceChangeListener { _, _ ->
+                    NotificationManager.get().cancelAllAlarm()
                     thread(start = true){
                         Thread.sleep(100)
                         ProcessPhoenix.triggerRebirth(activity)

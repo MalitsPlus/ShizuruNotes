@@ -6,8 +6,8 @@ import com.github.malitsplus.shizurunotes.data.CharaStoryStatus;
 import com.github.malitsplus.shizurunotes.data.Property;
 
 public class RawCharaStoryStatus {
-    //public int story_id;
-    //public String unlock_story_name;
+    public int story_id;
+    public String unlock_story_name;
     public int status_type_1;
     public int status_rate_1;
     public int status_type_2;
