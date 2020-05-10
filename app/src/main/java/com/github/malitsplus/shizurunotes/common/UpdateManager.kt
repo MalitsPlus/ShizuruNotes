@@ -54,7 +54,7 @@ class UpdateManager private constructor(
 
     private var appHasNewVersion = false
     private var appVersionJsonInstance: AppVersionJson? = null
-    private var serverVersion: Int = 0
+    private var serverVersion: Long = 0
     private var progress = 0
     private var hasNewVersion = false
     private val canceled = false
@@ -71,7 +71,7 @@ class UpdateManager private constructor(
              */
             override fun appCheckUpdateCompleted() {
                 if (appHasNewVersion) {
-                    val log = when (UserSettings.get().preference.getString(SettingFragment.LANGUAGE_KEY, "ja")){
+                    val log = when (UserSettings.get().preference.getString(UserSettings.LANGUAGE_KEY, "ja")){
                         "zh" -> appVersionJsonInstance?.messageZh
                         else -> appVersionJsonInstance?.messageJa
                     }
@@ -144,7 +144,7 @@ class UpdateManager private constructor(
              */
             override fun dbUpdateCompleted() {
                 LogUtils.file(LogUtils.I, "DB update finished.")
-                UserSettings.get().preference.edit().putInt(SettingFragment.DB_VERSION, serverVersion).apply()
+                UserSettings.get().setDbVersion(serverVersion)
                 progressDialog?.cancel()
                 iActivityCallBack?.showSnackBar(R.string.db_update_finished_text)
                 iActivityCallBack?.dbUpdateFinished()
@@ -221,8 +221,9 @@ class UpdateManager private constructor(
                     if (lastVersionJson.isNullOrEmpty())
                         throw Exception("No response from server.")
                     val obj = JSONObject(lastVersionJson)
-                    serverVersion = obj.getInt("TruthVersion")
-                    hasNewVersion = serverVersion != UserSettings.get().preference.getInt(SettingFragment.DB_VERSION, 0)
+                    serverVersion = obj.getLong("TruthVersion")
+//                    hasNewVersion = true
+                    hasNewVersion = serverVersion != UserSettings.get().getDbVersion()
                     updateHandler.sendEmptyMessage(UPDATE_CHECK_COMPLETED)
                 } catch (e: Exception) {
                     LogUtils.file(LogUtils.E, "checkDatabaseVersion", e.message)

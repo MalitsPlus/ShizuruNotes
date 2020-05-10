@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.text.TextUtils
 import com.github.malitsplus.shizurunotes.utils.FileUtils
 import com.github.malitsplus.shizurunotes.common.Statics
+import com.github.malitsplus.shizurunotes.user.UserSettings
 import com.github.malitsplus.shizurunotes.utils.LogUtils
 import com.github.malitsplus.shizurunotes.utils.Utils
 import java.util.*
@@ -427,7 +428,27 @@ class DBHelper private constructor(
      * 获取角色剧情数据
      */
     fun getCharaStoryStatus(charaId: Int): List<RawCharaStoryStatus>? {
-
+        // 国服-> 排除还没有实装的角色剧情
+        if (UserSettings.get().getUserServer() == "cn") {
+            return getBeanListByRaw(
+                """
+                SELECT a.* 
+                FROM chara_story_status AS a
+                INNER JOIN unit_data AS b ON substr(a.story_id,1,4) = substr(b.unit_id,1,4)
+                WHERE a.chara_id_1 = $charaId 
+                OR a.chara_id_2 = $charaId 
+                OR a.chara_id_3 = $charaId 
+                OR a.chara_id_4 = $charaId 
+                OR a.chara_id_5 = $charaId 
+                OR a.chara_id_6 = $charaId 
+                OR a.chara_id_7 = $charaId 
+                OR a.chara_id_8 = $charaId 
+                OR a.chara_id_9 = $charaId 
+                OR a.chara_id_10 = $charaId 
+                """,
+                RawCharaStoryStatus::class.java
+            )
+        }
         return getBeanListByRaw(
             """
                 SELECT * 
@@ -673,6 +694,17 @@ class DBHelper private constructor(
      * @return
      */
     fun getClanBattlePeriod(): List<RawClanBattlePeriod>? {
+        // 国服-> 读取所有记录
+        if (UserSettings.get().getUserServer() == "cn") {
+            return getBeanListByRaw(
+                """
+                SELECT * 
+                FROM clan_battle_period 
+                ORDER BY clan_battle_id DESC 
+                """,
+                RawClanBattlePeriod::class.java
+            )
+        }
         return getBeanListByRaw(
             """
                 SELECT * 
@@ -690,6 +722,30 @@ class DBHelper private constructor(
      * @return
      */
     fun getClanBattlePhase(clanBattleId: Int): List<RawClanBattlePhase>? {
+        // 国服-> 迎合日服结构
+        if (UserSettings.get().getUserServer() == "cn") {
+            return getBeanListByRaw(
+                """
+                SELECT 
+                a.difficulty 'phase'
+                ,b1.wave_group_id 'wave_group_id_1'
+                ,b2.wave_group_id 'wave_group_id_2'
+                ,b3.wave_group_id 'wave_group_id_3'
+                ,b4.wave_group_id 'wave_group_id_4'
+                ,b5.wave_group_id 'wave_group_id_5'
+                FROM clan_battle_map_data AS a 
+                JOIN clan_battle_boss_group AS b1 ON a.clan_battle_boss_group_id = b1.clan_battle_boss_group_id AND b1.order_num = 1
+                JOIN clan_battle_boss_group AS b2 ON a.clan_battle_boss_group_id = b2.clan_battle_boss_group_id AND b2.order_num = 2
+                JOIN clan_battle_boss_group AS b3 ON a.clan_battle_boss_group_id = b3.clan_battle_boss_group_id AND b3.order_num = 3
+                JOIN clan_battle_boss_group AS b4 ON a.clan_battle_boss_group_id = b4.clan_battle_boss_group_id AND b4.order_num = 4
+                JOIN clan_battle_boss_group AS b5 ON a.clan_battle_boss_group_id = b5.clan_battle_boss_group_id AND b5.order_num = 5
+                WHERE a.clan_battle_id=$clanBattleId 
+                AND a.lap_num_from <> a.lap_num_to
+                ORDER BY a.difficulty DESC 
+                """,
+                RawClanBattlePhase::class.java
+            )
+        }
         return getBeanListByRaw(
             """
                 SELECT DISTINCT 
@@ -730,6 +786,58 @@ class DBHelper private constructor(
      * @return
      */
     fun getEnemy(enemyIdList: List<Int>): List<RawEnemy>? {
+        // 国服->去掉 [enemy_m_parts] 表
+        if (UserSettings.get().getUserServer() == "cn") {
+            return getBeanListByRaw(
+                """
+                    SELECT 
+                    a.* 
+                    ,b.union_burst 
+                    ,b.union_burst_evolution 
+                    ,b.main_skill_1 
+                    ,b.main_skill_evolution_1 
+                    ,b.main_skill_2 
+                    ,b.main_skill_evolution_2 
+                    ,b.ex_skill_1 
+                    ,b.ex_skill_evolution_1 
+                    ,b.main_skill_3 
+                    ,b.main_skill_4 
+                    ,b.main_skill_5 
+                    ,b.main_skill_6 
+                    ,b.main_skill_7 
+                    ,b.main_skill_8 
+                    ,b.main_skill_9 
+                    ,b.main_skill_10 
+                    ,b.ex_skill_2 
+                    ,b.ex_skill_evolution_2 
+                    ,b.ex_skill_3 
+                    ,b.ex_skill_evolution_3 
+                    ,b.ex_skill_4 
+                    ,b.ex_skill_evolution_4 
+                    ,b.ex_skill_5 
+                    ,b.sp_skill_1 
+                    ,b.ex_skill_evolution_5 
+                    ,b.sp_skill_2 
+                    ,b.sp_skill_3 
+                    ,b.sp_skill_4 
+                    ,b.sp_skill_5 
+                    ,u.prefab_id 
+                    ,u.atk_type 
+                    ,u.normal_atk_cast_time
+					,u.search_area_width
+                    FROM 
+                    unit_skill_data b 
+                    ,enemy_parameter a 
+                    LEFT JOIN unit_enemy_data u ON a.unit_id = u.unit_id 
+                    WHERE 
+                    a.unit_id = b.unit_id 
+                    AND a.enemy_id in ( %s )  
+                    """.format(enemyIdList.toString()
+                    .replace("[", "")
+                    .replace("]", "")),
+                RawEnemy::class.java
+            )
+        }
         return getBeanListByRaw(
                 """
                     SELECT 

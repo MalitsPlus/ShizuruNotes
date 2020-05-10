@@ -50,7 +50,13 @@ class NotificationManager private constructor(
 
     fun refreshNotification() {
         futureSchedule.forEach {
-            prepareAlarm(it)
+            prepareAlarm(it, false)
+        }
+    }
+
+    fun cancelAllAlarm() {
+        futureSchedule.forEach {
+            prepareAlarm(it, true)
         }
     }
 
@@ -70,20 +76,23 @@ class NotificationManager private constructor(
         }
     }
 
-    private fun prepareAlarm(eventSchedule: EventSchedule) {
+    private fun prepareAlarm(eventSchedule: EventSchedule, cancel: Boolean) {
         if (eventSchedule is CampaignSchedule) {
             when (eventSchedule.campaignType) {
                 CampaignType.dropAmountNormal -> {
                     setOrCancelAlarm(eventSchedule,
-                        NORMAL_BEFORE
+                        NORMAL_BEFORE,
+                        cancel
                     )
                 }
                 CampaignType.manaDungeon -> {
                     setOrCancelAlarm(eventSchedule,
-                        DUNGEON_BEFORE_2
+                        DUNGEON_BEFORE_2,
+                        cancel
                     )
                     setOrCancelAlarm(eventSchedule,
-                        DUNGEON_BEFORE
+                        DUNGEON_BEFORE,
+                        cancel
                     )
                 }
                 else -> {  }
@@ -92,15 +101,18 @@ class NotificationManager private constructor(
             when (eventSchedule.type) {
                 EventType.Hatsune -> {
                     setOrCancelAlarm(eventSchedule,
-                        HATSUNE_LAST
+                        HATSUNE_LAST,
+                        cancel
                     )
                     setOrCancelAlarm(eventSchedule,
-                        HATSUNE_LAST_HOUR
+                        HATSUNE_LAST_HOUR,
+                        cancel
                     )
                 }
                 EventType.Tower -> {
                     setOrCancelAlarm(eventSchedule,
-                        TOWER_LAST_HOUR
+                        TOWER_LAST_HOUR,
+                        cancel
                     )
                 }
                 else -> {  }
@@ -108,8 +120,8 @@ class NotificationManager private constructor(
         }
     }
 
-    private fun setOrCancelAlarm(eventSchedule: EventSchedule, typeString: String) {
-        if (UserSettings.get().preference.getBoolean(typeString, false)) {
+    private fun setOrCancelAlarm(eventSchedule: EventSchedule, typeString: String, cancel: Boolean) {
+        if (UserSettings.get().preference.getBoolean(typeString, false) && !cancel) {
             setAlarm(eventSchedule, typeString)
         } else {
             cancelAlarm(getIntent(typeString), eventSchedule.id)
