@@ -38,10 +38,6 @@ class AboutFragment: Fragment() {
                 text = aboutViewModel.license
                 movementMethod = LinkMovementMethod.getInstance()
             }
-            textSponsor.apply {
-                text = aboutViewModel.sponsor
-                movementMethod = LinkMovementMethod.getInstance()
-            }
             toolbarAboutFragment.setNavigationOnClickListener { view ->
                 view.findNavController().navigateUp()
             }
