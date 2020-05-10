@@ -109,7 +109,7 @@ class UserSettings private constructor(
 
     @SuppressLint("ApplySharedPref")
     fun setDbVersion(newVersion: Long, async: Boolean = true) {
-        when (preference.getString(SERVER_KEY, null)) {
+        when (preference.getString(SERVER_KEY, "jp")) {
             "jp" -> {
                 if (async) {
                     preference.edit().putLong(DB_VERSION_JP, newVersion).apply()
