@@ -530,14 +530,13 @@ class DBHelper private constructor(
             """
                 SELECT 
                 a.* 
-                ,b.max_equipment_enhance_level 
+                ,ifnull(b.max_equipment_enhance_level, 0) 'max_equipment_enhance_level'
                 ,e.description 'catalog' 
                 ,substr(a.equipment_id,3,1) * 10 + substr(a.equipment_id,6,1) 'rarity' 
-                FROM equipment_data a, 
-                ( SELECT promotion_level, max( equipment_enhance_level ) max_equipment_enhance_level FROM equipment_enhance_data GROUP BY promotion_level ) b 
-                JOIN equipment_enhance_rate AS e ON a.equipment_id=e.equipment_id
-                WHERE a.promotion_level = b.promotion_level 
-                AND a.equipment_id < 113000 
+                FROM equipment_data a  
+                LEFT JOIN ( SELECT promotion_level, max( equipment_enhance_level ) max_equipment_enhance_level FROM equipment_enhance_data GROUP BY promotion_level ) b ON a.promotion_level = b.promotion_level 
+                LEFT JOIN equipment_enhance_rate AS e ON a.equipment_id=e.equipment_id
+                WHERE a.equipment_id < 113000 
                 ORDER BY substr(a.equipment_id,3,1) * 10 + substr(a.equipment_id,6,1) DESC, a.require_level DESC, a.equipment_id ASC 
                 """,
             RawEquipmentData::class.java
