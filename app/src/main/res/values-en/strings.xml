@@ -179,14 +179,14 @@
     <string name="s1_s2_s3_s4_s5_for_s6_sec">%1$ss the %5$s of %2$s by [%3$s%4$s] for [%6$s]s.</string>
     <string name="self">Self</string>
     <string name="the_most_backward">rearmost</string>
-    <string name="the_most_forward">frontmost</string>
+    <string name="the_most_forward">foremost</string>
     <string name="all_s_targets">all %s targets</string>
     <string name="target">target</string>
     <string name="targets">targets</string>
     <string name="s_nearest">the nearest %s</string>
     <string name="s_farthest">the farthest %s</string>
     <string name="s_most_backward">rearmost %s</string>
-    <string name="s_most_forward">frontmost %s</string>
+    <string name="s_most_forward">foremost %s</string>
     <string name="s_highest_TP">%s with the highest TP</string>
     <string name="s_lowest_TP">%s with the lowest TP</string>
     <string name="the_s_nearest">the %s nearest</string>
@@ -339,7 +339,7 @@
     <string name="Raise_s1_d2_attack_speed_for_s3_sec">Raises the Attack Speed of %1$s by [%2$d%%] for [%3$s]s.</string>
     <string name="minion">minion</string>
     <string name="the_s_most_backward">the %s rearmost</string>
-    <string name="the_s_most_forward">the %s frontmost</string>
+    <string name="the_s_most_forward">the %s foremost</string>
     <string name="front_s1_s2_targets_in_range_d3">front %2$s %1$s targets within range [%3$d]</string>
     <string name="s1_front_s2_target_in_range_d3">%1$s front %2$s targets within range [%3$d]</string>
     <string name="s1_front_s2_s3_in_range_d4">%3$s %1$s front %2$s within range [%4$d]</string>
@@ -460,7 +460,7 @@
     <string name="the_s_unknown_type">%s Unknown</string>
     <string name="blinded">Blinded</string>
     <string name="Revive_s1_with_d2_HP">Revives %1$s and restores [%2$d%%] HP. (Adjusted by Character\'s HP Recovery Rate)</string>
-    <string name="d1_chance_use_d2">[%1d%%] chance of performing [Action %2$d].</string>
+    <string name="d1_chance_use_d2">"[%1$d%%] chance of performing [Action %2$d]. "</string>
     <string name="Restore_s1_s2_TP">Restores [%2$s] TP to %1$s. (Adjusted by Character\'s TP Recovery Rate)</string>
     <string name="setting_enable">Show notifications</string>
     <string name="normal_before_title">One Day Before Normal Drop</string>
@@ -494,4 +494,10 @@
     <string name="Add_additional_s1_s2_to_s3_for_next_s4_attacks">Applies [%1$s] %2$s effect to the next [%4$s] attack(s) of %3$s.</string>
     <string name="Restore_s1_s2_s3_per_second_for_s4_sec">Restores [%2$s] %3$s per second to %1$s for [%4$s]s.</string>
     <string name="Add_additional_s1_damage_per_attack_with_max_s2_stacks_to_current_target">Adds an additional [%1$s] damage each time the current target is attacked, up to a max. of [%2$s] times.</string>
+    <string name="if_target_is_defeated_by_the_last_effect_then_use_d">"If the target was defeated by previous action, perform [Action %d]. "</string>
+    <string name="if_target_is_not_defeated_by_the_last_effect_then_use_d">If the target was not defeated by previous action, perform [Action %d].</string>
+    <string name="use_d1_if_s2_is_not_alone">If %2$s is not alone, perform [Action %1$d].</string>
+    <string name="Condition_s1_chance_use_d2_when_takes_damage_within_s3_sec">Condition: [%1$s%%] chance of performing [Action %2$d] if damage is taken in the next [%3$s] seconds.</string>
+    <string name="Summon_a_healing_field_of_radius_d1_at_position_of_s2_to_heal_s3_s4_HP_per_second_for_s5_sec">Deploys a field of radius [%1$d] at position of %2$s, healing [%3$s%4$s] HP per second for [%5$s] seconds.</string>
+    <string name="Appear_after_s_sec_since_wave_start">Appears [%s] seconds after the wave begins.</string>
 </resources>
