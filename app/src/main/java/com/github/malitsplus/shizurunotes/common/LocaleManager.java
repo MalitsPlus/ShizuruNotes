@@ -29,6 +29,7 @@ public class LocaleManager {
         SUPPORTED_LANGUAGE.add(Locale.JAPANESE.getLanguage());
         SUPPORTED_LANGUAGE.add(Locale.CHINESE.getLanguage());
         SUPPORTED_LANGUAGE.add(Locale.KOREAN.getLanguage());
+        SUPPORTED_LANGUAGE.add(Locale.ENGLISH.getLanguage());
     }
 
     private final SharedPreferences prefs;
