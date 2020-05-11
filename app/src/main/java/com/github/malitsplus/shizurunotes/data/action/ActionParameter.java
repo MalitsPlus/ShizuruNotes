@@ -269,7 +269,7 @@ public class ActionParameter {
         if(property == null)
             property = new Property();
 
-        if(UserSettings.get().getPreference().getBoolean(SettingFragment.EXPRESSION_STYLE, false) && !isEnemySkill){
+        if(UserSettings.get().getPreference().getBoolean(UserSettings.EXPRESSION_STYLE, false) && !isEnemySkill){
             StringBuilder expression = new StringBuilder();
             for(ActionValue value : actionValues){
                 StringBuilder part = new StringBuilder();

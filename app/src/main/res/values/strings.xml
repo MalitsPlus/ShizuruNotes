@@ -27,10 +27,20 @@
         <item>ko</item>
         <item>en</item>
     </string-array>
+    <string-array name="setting_server_options">
+        <item>日本錆</item>
+        <item>中華錆</item>
+    </string-array>
+    <string-array name="setting_server_values">
+        <item>jp</item>
+        <item>cn</item>
+    </string-array>
     <string name="setting_kill_expression_title">スキル計算式</string>
     <string name="setting_kill_expression_summary">スキルアクションの計算式を表示</string>
     <string name="setting_appearance">表示</string>
     <string name="setting_system">システム</string>
+    <string name="setting_server">サーバー</string>
+    <string name="setting_server_dialog_title">サーバー切り替え</string>
     <string name="setting_db_version">データベースバージョン</string>
     <string name="setting_app_version">アプリバージョン</string>
     <string name="setting_re_download_db">データベースを再ダウンロード</string>
@@ -43,6 +53,7 @@
     <string name="about_translator" translatable="false">Translator &lt;br/>(Korean)applemintia&lt;a href=\"https://twitter.com/_applemintia\">@_applemintia&lt;/a></string>
     <string name="about_api" translatable="false">API by https://redive.estertion.win</string>
     <string name="about_license" translatable="false">This application is licensed under the &lt;a href=\"http://www.apache.org/licenses/LICENSE-2.0.txt\">Apache License 2.0&lt;/a></string>
+    <string name="about_sponsor">Sponsor &lt;br/>SS&lt;a href=\"https://twitter.com/L8102259\">@L8102259&lt;/a></string>
     <string name="text_ok" translatable="false">OK</string>
     <string name="db_update_dialog_title">データベース更新</string>
     <string name="db_update_dialog_text">データベースの新しいバージョンがあります、今すぐ更新しますか？</string>
@@ -283,6 +294,8 @@
     <string name="short_wave_hp_recovery">HP自\n%s</string>
     <string name="short_wave_energy_recovery">TP自\n%s</string>
     <string name="short_hp_recovery">回上\n%s</string>
+    <string name="dialog_server_switch_title">サーバー切り替え</string>
+    <string name="dialog_server_switch_text">注意事項：カレンダーにてイベント通知機能をONにした場合、サーバーを切り替えると元のサーバーのスケジュール通知が全て解除され、アプリが再起動した後新しいサーバーのスケジュール通知に切り替えされます</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>

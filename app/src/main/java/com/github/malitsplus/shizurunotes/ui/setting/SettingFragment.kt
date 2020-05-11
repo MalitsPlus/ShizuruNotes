@@ -5,29 +5,22 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.afollestad.materialdialogs.MaterialDialog
 import com.github.malitsplus.shizurunotes.BuildConfig
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.App
+import com.github.malitsplus.shizurunotes.common.NotificationManager
 import com.github.malitsplus.shizurunotes.common.UpdateManager
 import com.github.malitsplus.shizurunotes.user.UserSettings
+import com.github.malitsplus.shizurunotes.user.UserSettings.Companion.DB_VERSION
 import com.jakewharton.processphoenix.ProcessPhoenix
 import kotlin.concurrent.thread
 
 class SettingFragment : PreferenceFragmentCompat() {
 
-    companion object{
-        const val LANGUAGE_KEY = "language"
-        const val EXPRESSION_STYLE = "expressionStyle"
-        const val LOG = "log"
-        const val DB_VERSION = "dbVersion"
-        const val APP_VERSION = "appVersion"
-        const val ABOUT = "about"
-    }
-
     override fun onResume() {
         super.onResume()
-        findPreference<Preference>(DB_VERSION)
-            ?.summary = UserSettings.get().preference.getInt("dbVersion", 0).toString()
+        findPreference<Preference>(DB_VERSION)?.summary = UserSettings.get().getDbVersion().toString()
     }
 
     override fun onCreatePreferences(
@@ -37,7 +30,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         setPreferencesFromResource(R.xml.preferences, rootKey)
 
         //app版本提示
-        findPreference<Preference>(APP_VERSION)?.apply {
+        findPreference<Preference>(UserSettings.APP_VERSION)?.apply {
             summary = BuildConfig.VERSION_NAME
             isSelectable = false
         }
@@ -66,7 +59,7 @@ class SettingFragment : PreferenceFragmentCompat() {
 //        }
 
         //日志
-        findPreference<Preference>(LOG)?.apply {
+        findPreference<Preference>(UserSettings.LOG)?.apply {
             onPreferenceClickListener = Preference.OnPreferenceClickListener {
                 val action = SettingContainerFragmentDirections.actionNavSettingContainerToNavLog()
                 findNavController().navigate(action)
@@ -75,7 +68,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         }
 
         //关于
-        findPreference<Preference>(ABOUT)?.apply {
+        findPreference<Preference>(UserSettings.ABOUT)?.apply {
             onPreferenceClickListener = Preference.OnPreferenceClickListener {
                 val action = SettingContainerFragmentDirections.actionNavSettingContainerToNavSettingAbout()
                 findNavController().navigate(action)
@@ -84,7 +77,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         }
 
         //语言选择框
-        val languagePreference = findPreference<ListPreference>(LANGUAGE_KEY)
+        val languagePreference = findPreference<ListPreference>(UserSettings.LANGUAGE_KEY)
         if (languagePreference != null) {
             languagePreference.onPreferenceChangeListener =
                 Preference.OnPreferenceChangeListener { _: Preference?, newValue: Any? ->
@@ -92,6 +85,35 @@ class SettingFragment : PreferenceFragmentCompat() {
                         requireActivity().application,
                         newValue as String?
                     )
+                    thread(start = true){
+                        Thread.sleep(100)
+                        ProcessPhoenix.triggerRebirth(activity)
+                    }
+                    true
+                }
+        }
+
+        //服务器选择
+        val serverPreference = findPreference<ListPreference>(UserSettings.SERVER_KEY)
+        if (serverPreference != null) {
+            serverPreference.onPreferenceClickListener =
+                Preference.OnPreferenceClickListener {
+                    thread(start = true) {
+                        Thread.sleep(100)
+                        activity?.runOnUiThread {
+                            MaterialDialog(requireContext(), MaterialDialog.DEFAULT_BEHAVIOR)
+                                .title(R.string.dialog_server_switch_title)
+                                .message(R.string.dialog_server_switch_text)
+                                .show {
+                                    positiveButton(res = R.string.text_ok)
+                                }
+                        }
+                    }
+                    true
+                }
+            serverPreference.onPreferenceChangeListener =
+                Preference.OnPreferenceChangeListener { _, _ ->
+                    NotificationManager.get().cancelAllAlarm()
                     thread(start = true){
                         Thread.sleep(100)
                         ProcessPhoenix.triggerRebirth(activity)

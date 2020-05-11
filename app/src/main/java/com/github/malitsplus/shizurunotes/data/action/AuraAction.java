@@ -133,7 +133,7 @@ public class AuraAction extends ActionParameter {
                         buildExpression(level, RoundingMode.UP, property),
                         percentModifier.description(),
                         auraType.description(),
-                        buildExpression(level, durationValues, null, property));
+                        buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property));
         }
     }
 }

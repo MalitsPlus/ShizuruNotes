@@ -26,10 +26,7 @@ Korean strings are provided by [@applemintia](https://twitter.com/_applemintia).
 
 ## References 
 * [PrincessGuide](https://github.com/superk589/PrincessGuide) 
-* [redive_master_db_diff](https://github.com/esterTion/redive_master_db_diff) 
-
-### API
-* https://redive.estertion.win/
+* [redive_master_db_diff](https://github.com/esterTion/redive_master_db_diff)  
 
 ## Related projects
 * https://github.com/ugrolol/ShizuruNotes The EN and RU version of this application, developed by [ugrolol](https://github.com/ugrolol). 
