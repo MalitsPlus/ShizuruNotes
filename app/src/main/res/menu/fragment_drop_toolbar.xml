@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <group android:checkableBehavior="single">
+    <group>
         <item
             android:id="@+id/menu_drop_before"
             android:icon="@drawable/mic_history"
@@ -12,5 +12,15 @@
             android:icon="@drawable/mic_clear"
             app:showAsAction="ifRoom"
             android:title="@string/icon_cancel_all" />
+    </group>
+    <group android:checkableBehavior="all">
+        <item
+            android:id="@+id/menu_drop_normal"
+            android:title="@string/menu_drop_normal"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/menu_drop_hard"
+            app:showAsAction="never"
+            android:title="@string/menu_drop_hard" />
     </group>
 </menu>

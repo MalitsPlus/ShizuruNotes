@@ -23,7 +23,7 @@ public class Statics {
     public static final String DB_FILE_URL_CN = API_URL + "/db/" + DB_FILE_NAME_COMPRESSED_CN;
 
     //  Resource URL
-    public static final String IMAGE_URL = API_URL + "/card/full/%d.webp@w400";
+    public static final String IMAGE_URL = API_URL + "/card/full/%d.webp@h300";
     public static final String ICON_URL = API_URL + "/icon/unit/%d.webp";
     public static final String SKILL_ICON_URL = API_URL + "/icon/skill/%d.webp";
     public static final String EQUIPMENT_ICON_URL = API_URL + "/icon/equipment/%d.webp";

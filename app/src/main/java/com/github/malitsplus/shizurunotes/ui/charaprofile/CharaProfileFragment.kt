@@ -19,6 +19,7 @@ class CharaProfileFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedChara = ViewModelProvider(requireActivity()).get(SharedViewModelChara::class.java)
+        sharedChara.backFlag = false
     }
 
     override fun onCreateView(
@@ -26,22 +27,13 @@ class CharaProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding =
-            DataBindingUtil.inflate<FragmentCharaProfileBinding>(
-                inflater,
-                R.layout.fragment_chara_profile,
-                container,
-                false
-            )
-
-        sharedChara.backFlag = false
-
-        binding.toolbarCharaProfile.setNavigationOnClickListener { view ->
-            view.findNavController().navigateUp()
+        val binding = FragmentCharaProfileBinding.inflate(inflater, container, false).apply {
+            toolbarCharaProfile.setNavigationOnClickListener { view ->
+                view.findNavController().navigateUp()
+            }
+            chara = sharedChara.selectedChara
         }
 
-        binding.chara = sharedChara.selectedChara
-        //(activity as AppCompatActivity).supportActionBar!!.title = sharedViewModel.getSelectedChara().actualName
         return binding.root
     }
 }

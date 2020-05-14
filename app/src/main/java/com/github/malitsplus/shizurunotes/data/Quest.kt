@@ -7,7 +7,8 @@ class Quest(
     val questId: Int,
     val areaId: Int,
     val questName: String,
-    val waveGroupList: List<WaveGroup>
+    val waveGroupList: List<WaveGroup>,
+    val rewardImages: List<Int>
 ) {
 
     fun contains(itemId: Int): Boolean {
@@ -19,12 +20,37 @@ class Quest(
         return false
     }
 
-    val dropList = mutableListOf<RewardData>().apply {
-        waveGroupList.forEach { wave ->
-            wave.dropRewardList?.forEach { drop ->
-                drop.rewardDataList.forEach { reward ->
-                    if (reward.rewardType == 4)
-                        this.add(reward)
+    fun getOdds(equipmentList: List<Equipment>): Int {
+        var odds: Int = 0
+        equipmentList.forEach { equipment ->
+            dropList.forEach {
+                if (it.rewardId % 10000 == equipment.equipmentId % 10000) {
+                    odds += it.odds
+                }
+            }
+        }
+        return odds
+    }
+
+    val dropList : MutableList<RewardData> by lazy {
+        mutableListOf<RewardData>().apply {
+            rewardImages.forEach { rewardImage ->
+                waveGroupList.forEach { wave ->
+                    wave.dropRewardList?.forEach { drop ->
+                        drop.rewardDataList.forEach { reward ->
+                            if (reward.rewardId == rewardImage) {
+                                this.add(reward)
+                            }
+                        }
+                    }
+                }
+            }
+            waveGroupList.forEach { wave ->
+                wave.dropRewardList?.forEach { drop ->
+                    drop.rewardDataList.forEach { reward ->
+                        if (reward.rewardType == 4 && !rewardImages.contains(reward.rewardId))
+                            this.add(reward)
+                    }
                 }
             }
         }
