@@ -16,11 +16,13 @@ import com.github.malitsplus.shizurunotes.databinding.FragmentDropBinding
 import com.github.malitsplus.shizurunotes.ui.BottomNaviFragmentDirections
 import com.github.malitsplus.shizurunotes.ui.base.BaseHintAdapter
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
+import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelQuest
 import com.github.malitsplus.shizurunotes.utils.Utils
 
 class DropFragment : Fragment() {
 
     private lateinit var sharedEquipment: SharedViewModelEquipment
+    private lateinit var sharedQuest: SharedViewModelQuest
     private lateinit var dropVM: DropViewModel
     private lateinit var binding: FragmentDropBinding
     private lateinit var mAdapter: GridSelectAdapter
@@ -29,6 +31,7 @@ class DropFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedEquipment = ViewModelProvider(requireActivity())[SharedViewModelEquipment::class.java]
+        sharedQuest = ViewModelProvider(requireActivity())[SharedViewModelQuest::class.java]
         dropVM = ViewModelProvider(this)[DropViewModel::class.java]
     }
 
@@ -69,6 +72,12 @@ class DropFragment : Fragment() {
         }
         setFloatingBarClickListener()
         setObservers()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.dropToolbar.menu.findItem(R.id.menu_drop_normal).isChecked = sharedQuest.includeNormal
+        binding.dropToolbar.menu.findItem(R.id.menu_drop_hard).isChecked = sharedQuest.includeHard
     }
 
     private fun setFloatingBarClickListener() {
@@ -126,6 +135,16 @@ class DropFragment : Fragment() {
                 }
                 R.id.menu_drop_cancel -> {
                     clearRecyclerView()
+                    true
+                }
+                R.id.menu_drop_normal -> {
+                    it.isChecked = !it.isChecked
+                    sharedQuest.includeNormal = it.isChecked
+                    true
+                }
+                R.id.menu_drop_hard -> {
+                    it.isChecked = !it.isChecked
+                    sharedQuest.includeHard = it.isChecked
                     true
                 }
                 else -> true

@@ -33,7 +33,6 @@
                 app:navigationIcon="@drawable/ic_detail_back"
                 app:layout_scrollFlags="scroll|enterAlways" />
 
-
         </com.google.android.material.appbar.AppBarLayout>
 
 
