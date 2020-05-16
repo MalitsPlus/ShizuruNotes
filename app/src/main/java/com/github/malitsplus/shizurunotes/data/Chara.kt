@@ -1,11 +1,15 @@
 package com.github.malitsplus.shizurunotes.data
 
+import android.text.format.DateFormat
 import androidx.annotation.DrawableRes
 import com.github.malitsplus.shizurunotes.R
+import com.github.malitsplus.shizurunotes.common.App
 import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.action.PassiveAction
 import java.lang.StringBuilder
+import java.text.SimpleDateFormat
 import java.time.LocalDateTime
+import java.util.*
 
 class Chara: Cloneable {
 
@@ -67,12 +71,13 @@ class Chara: Cloneable {
     var skills = mutableListOf<Skill>()
 
     val birthDate: String
-        get() = StringBuilder()
-            .append(birthMonth)
-            .append(I18N.getString(R.string.text_month))
-            .append(birthDay)
-            .append(I18N.getString(R.string.text_day))
-            .toString()
+        get() {
+            val cal = Calendar.getInstance()
+            cal.set(cal.get(Calendar.YEAR), Integer.parseInt(birthMonth), Integer.parseInt(birthDay))
+            val locale = Locale(App.localeManager.language)
+            val format = DateFormat.getBestDateTimePattern(locale, "dd MMM")
+            return SimpleDateFormat(format, locale).format(cal.time)
+        }
 
     @Suppress("UNUSED_PARAMETER")
     fun setCharaProperty(rarity: Int = 0, rank: Int = maxCharaRank, hasUnique: Boolean = true) {
