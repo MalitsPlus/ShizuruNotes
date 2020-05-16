@@ -515,11 +515,16 @@
     <string name="Make_s1_when_get_one_hit_by_the_caster_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">Inflicts 1 mark [ID: %3$s] upon hitting any of %1$s for [%4$s]s (caps at [%2$s]).</string>
     <string name="Summon_a_field_of_radius_d1_at_position_of_s2_to_deal_s3_s4_damage_per_second_for_s5_sec">Deploys a field of radius [%1$d] at the position of %2$s, dealing [%3$s] %4$s damage per second for [%5$s]s.</string>
     <string name="controlled">Incapacitated</string>
-    <string name="In_next_s1_attacks_s2_physical_attacks_will_miss">Forces next [%1$s] attack(s) of %2$ to miss.</string>
+    <string name="In_next_s1_attacks_s2_physical_attacks_will_miss">Forces next [%1$s] attack(s) of %2$s to miss.</string>
     <string name="use_d1_to_s2_if_target_is_magical_type">If %2$s is a Magic attacker, performs [Action %1$d].</string>
     <string name="use_d1_to_s2_if_target_is_not_magical_type">If %2$s is not a Magic attacker, performs [Action %1$d].</string>
     <string name="Summon_a_field_of_radius_d1_to_s2_s3_s4_s5_for_s6_sec">Deploys a field of radius [%1$d] that %2$ss the %5$s of %3$s by [%4$s] for [%6$s]s.</string>
     <string name="Change_the_perspective_to_s1_d2">Shifts focus to %1$s at [1000] distance.</string>
     <string name="Scout_and_change_the_perspective_on_s">Scouts, then shifts focus to %s.</string>
     <string name="Fear_s1_with_s2_chance_for_s3_sec">[%2$s%%] chance of inflicting Fear on %1$s for [%3$s]s.</string>
+    <string name="Channeling_for_s1_sec_disrupted_by_taking_damage_d2_times_s3_s4_s5_s6_s7">%3$ss the %7$s of %4$s by [%5$s%6$s] for [%1$s]s, but is interrupted upon receiving damage [%2$d] time(s).</string>
+    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_damage">Extends a Shield over %1$s that reflects [%2$s] of received damage.</string>
+    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_damage">Extends a Shield over %1$s that reflects [%2$s] of received damage and restores the same amount of HP.</string>
+    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_magical_damage">Extends a Shield over %1$s that reflects [%2$s] of received Magical damage and restores the same amount of HP.</string>
+    <string name="Set_a_countdown_timer_on_s1_trigger_effect_d2_after_s3_sec">Sets a timer on %1$s, activating [Action %2$d] after [%3$s]s.</string>
 </resources>
