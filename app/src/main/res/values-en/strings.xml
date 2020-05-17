@@ -451,7 +451,7 @@
     <string name="physics">Physical</string>
     <string name="magic">Magical</string>
     <string name="s1_front_s2_s3">%1$s front %2$s %3$s</string>
-    <string name="rank_comparison_description">Calculation Formula:\nx = Left Rank\ny = Right Rank\n{[∑(Maxed Equipment Values of y) + ∑(yより低いランクの装備ステータス) + (Max Level + y)の基礎ステータス]端数四捨五入} - {[∑(xの装備フル強化値) + ∑(xより低いランクの装備ステータス) + (Max Level + x)の基礎ステータス]端数四捨五入}\n* The above formula uses the stats of the Max ☆ of each character.</string>
+    <string name="rank_comparison_description">Calculation Formula:\nx = Left Rank\ny = Right Rank\n{[∑(Maxed Equipment Stats of y) + ∑(Equipment Stats of all ranks below y) + Base Stats of (Max Level + y)] rounded} - {[∑(Maxed Equipment Stats of x) + ∑(Equipment Stats of all ranks below x) + Base Stats of (Max Level + x)] rounded}\n* The above formula uses the stats of the Max ☆ of each character.</string>
     <string name="Unknown_effect_d1_to_s2_with_details_s3_values_s4">Applies unknown effect [%1$d] to %2$s, doing %3$s, Parameter %4$s.</string>
     <string name="s_random">%s random</string>
     <string name="s_physics">%s Physical</string>
