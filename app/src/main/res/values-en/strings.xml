@@ -534,7 +534,7 @@
     <string name="text_condition_and">Matches All</string>
     <string name="dialog_server_switch_title">Switch Server</string>
     <string name="dialog_server_switch_text">Warning: if you have event notifications enabled, scheduled notifications for the current server will be removed and notifications for the new server will be added.</string>
-    <string name="Cast_a_barrier_on_s1_to_reduce_damage_over_s2_with_coefficient_s3_the_greater_the_less_reduced_amount_for_s4_s">Deploys a Barrier over %1$s that reduces the damage of any attack that exceeds [%2$s] damage with coefficient of [%3$s] for [%4$s]s.</string>
+    <string name="Cast_a_barrier_on_s1_to_reduce_damage_over_s2_with_coefficient_s3_the_greater_the_less_reduced_amount_for_s4_s">Deploys a Barrier over %1$s that reduces the damage of any attack that exceeds [%2$s] damage by coefficient of [%3$s] for [%4$s]s.</string>
     <string name="s1_s2_s3_s4_s5_during_break">%1$ss the %5$s of %2$s by [%3$s%4$s] during Break.</string>
     <string name="both_sides">both sides</string>
     <string name="s_unknown_type">an unknown type %s</string>
