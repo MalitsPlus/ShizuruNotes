@@ -102,7 +102,7 @@ class Chara: Cloneable {
         get() {
             return Property()
                     .plusEqual(uniqueEquipment?.equipmentProperty)
-                    .plusEqual(uniqueEquipment?.equipmentEnhanceRate?.multiply(maxUniqueEquipmentLevel - 1.toDouble()))
+                    .plusEqual(uniqueEquipment?.equipmentEnhanceRate?.multiply(maxUniqueEquipmentLevel - 1.toDouble())).ceiled
         }
 
     val passiveSkillProperty: Property
