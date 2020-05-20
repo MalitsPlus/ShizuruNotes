@@ -1,6 +1,7 @@
 package com.github.malitsplus.shizurunotes.ui.calendar
 
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,12 +11,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.github.malitsplus.shizurunotes.R
-import com.github.malitsplus.shizurunotes.common.I18N
+import com.github.malitsplus.shizurunotes.common.App
 import com.github.malitsplus.shizurunotes.databinding.FragmentCalendarBinding
 import com.haibin.calendarview.Calendar
 import com.haibin.calendarview.CalendarView
+import java.text.SimpleDateFormat
 import java.time.LocalDate
-
+import java.util.Locale
 
 class CalendarFragment : Fragment(),
     CalendarView.OnCalendarSelectListener,
@@ -61,7 +63,11 @@ class CalendarFragment : Fragment(),
     }
 
     override fun onMonthChange(year: Int, month: Int) {
-        binding.calendarToolbar.title = year.toString() + I18N.getString(R.string.text_year) + month + I18N.getString(R.string.text_month)
+        val cal = java.util.Calendar.getInstance()
+        cal.set(year, month - 1, 1)
+        val locale = Locale(App.localeManager.language)
+        val format = DateFormat.getBestDateTimePattern(locale, "MMM yyyy")
+        binding.calendarToolbar.title = SimpleDateFormat(format, locale).format(cal.time)
     }
 
     override fun onCalendarSelect(calendar: Calendar, isClick: Boolean) {
