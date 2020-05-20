@@ -39,7 +39,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/myDropdown"
                     android:layout_width="match_parent"
-                    android:layout_weight="6"
+                    android:layout_weight="5.8"
                     android:hint="@string/ui_text_atk_type">
 
                     <AutoCompleteTextView
@@ -58,20 +58,20 @@
                     <AutoCompleteTextView
                         android:id="@+id/dropdownText2"
                         style="@style/myDropdownAutoText"
-                        android:layout_width="match_parent"/>
+                        android:layout_width="match_parent" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/myDropdown"
                     android:layout_width="match_parent"
-                    android:layout_weight="5"
+                    android:layout_weight="5.2"
                     android:hint="@string/ui_text_sort">
 
                     <AutoCompleteTextView
                         android:id="@+id/dropdownText3"
                         style="@style/myDropdownAutoText"
-                        android:layout_width="match_parent"/>
+                        android:layout_width="match_parent" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
