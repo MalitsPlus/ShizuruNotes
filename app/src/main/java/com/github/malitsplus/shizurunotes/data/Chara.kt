@@ -2,11 +2,8 @@ package com.github.malitsplus.shizurunotes.data
 
 import android.text.format.DateFormat
 import androidx.annotation.DrawableRes
-import com.github.malitsplus.shizurunotes.R
-import com.github.malitsplus.shizurunotes.common.App
-import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.action.PassiveAction
-import java.lang.StringBuilder
+import com.github.malitsplus.shizurunotes.user.UserSettings
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.util.*
@@ -70,14 +67,13 @@ class Chara: Cloneable {
     var attackPatternList = mutableListOf<AttackPattern>()
     var skills = mutableListOf<Skill>()
 
-    val birthDate: String
-        get() {
-            val cal = Calendar.getInstance()
-            cal.set(cal.get(Calendar.YEAR), Integer.parseInt(birthMonth), Integer.parseInt(birthDay))
-            val locale = Locale(App.localeManager.language)
-            val format = DateFormat.getBestDateTimePattern(locale, "dd MMM")
-            return SimpleDateFormat(format, locale).format(cal.time)
-        }
+    val birthDate: String by lazy {
+        val calendar = Calendar.getInstance()
+        calendar.set(calendar.get(Calendar.YEAR), birthMonth.toInt(), birthDay.toInt())
+        val locale =  Locale(UserSettings.get().getLanguage())
+        val format = DateFormat.getBestDateTimePattern(locale, "d MMM")
+        SimpleDateFormat(format, locale).format(calendar.time)
+    }
 
     @Suppress("UNUSED_PARAMETER")
     fun setCharaProperty(rarity: Int = 0, rank: Int = maxCharaRank, hasUnique: Boolean = true) {
