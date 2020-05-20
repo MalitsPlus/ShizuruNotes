@@ -17,6 +17,7 @@ package com.haibin.calendarview;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.Display;
 import android.view.MotionEvent;
@@ -184,7 +185,9 @@ public final class YearViewPager extends ViewPager {
         WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         assert manager != null;
         Display display = manager.getDefaultDisplay();
-        int h = display.getHeight();
+        Point p = new Point();
+        display.getSize(p);
+        int h = p.y;
         int[] location = new int[2];
         view.getLocationInWindow(location);
         view.getLocationOnScreen(location);
