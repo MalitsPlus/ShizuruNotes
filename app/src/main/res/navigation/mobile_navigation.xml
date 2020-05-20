@@ -64,6 +64,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_nav_bottom_navigation_to_nav_equipment"
+            app:destination="@id/nav_equipment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -104,7 +111,15 @@
     <fragment
         android:id="@+id/nav_chara_profile"
         android:name="com.github.malitsplus.shizurunotes.ui.charaprofile.CharaProfileFragment"
-        tools:layout="@layout/fragment_chara_profile" />
+        tools:layout="@layout/fragment_chara_profile" >
+        <action
+            android:id="@+id/action_nav_chara_profile_to_nav_equipment"
+            app:destination="@id/nav_equipment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
 
     <fragment
         android:id="@+id/nav_clan_battle"
@@ -290,4 +305,9 @@
         android:label="fragment_comparison_list"
         tools:layout="@layout/fragment_comparison_list" >
     </fragment>
+    <fragment
+        android:id="@+id/nav_equipment"
+        android:name="com.github.malitsplus.shizurunotes.ui.equipment.EquipmentFragment"
+        android:label="fragment_equipment"
+        tools:layout="@layout/fragment_equipment" />
 </navigation>

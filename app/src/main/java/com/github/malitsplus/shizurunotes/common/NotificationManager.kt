@@ -4,6 +4,7 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.hardware.TriggerEvent
 import com.github.malitsplus.shizurunotes.data.CampaignSchedule
 import com.github.malitsplus.shizurunotes.data.CampaignType
 import com.github.malitsplus.shizurunotes.data.EventSchedule
@@ -11,6 +12,7 @@ import com.github.malitsplus.shizurunotes.data.EventType
 import com.github.malitsplus.shizurunotes.db.MasterSchedule
 import com.github.malitsplus.shizurunotes.user.UserSettings
 import java.time.LocalDateTime
+import java.time.ZoneOffset
 import java.util.*
 import kotlin.concurrent.thread
 
@@ -32,7 +34,7 @@ class NotificationManager private constructor(
 
     var futureSchedule: MutableList<EventSchedule> = mutableListOf()
 
-    private val notifiTypeMap = mapOf(
+    private val notificationTypeMap = mapOf(
         NORMAL_BEFORE to CampaignType.dropAmountNormal,
         DUNGEON_BEFORE_2 to CampaignType.manaDungeon,
         DUNGEON_BEFORE to CampaignType.manaDungeon,
@@ -66,7 +68,7 @@ class NotificationManager private constructor(
             if (it is CampaignSchedule) {
                 t = it.campaignType
             }
-            if (t == notifiTypeMap[typeString]) {
+            if (t == notificationTypeMap[typeString]) {
                 if (newValue) {
                     setAlarm(it, typeString)
                 } else {
@@ -140,12 +142,11 @@ class NotificationManager private constructor(
                     intent,
                     0
                 )
-                val zoneOffset =
-                    TimeZone.getDefault().toZoneId().rules.getOffset(LocalDateTime.now())
+//                val zoneOffset = TimeZone.getDefault().toZoneId().rules.getOffset(LocalDateTime.now())
 
                 alarmMgr.set(
                     AlarmManager.RTC_WAKEUP,
-                    triggerTime.toInstant(zoneOffset).toEpochMilli(),
+                    triggerTime.toInstant(ZoneOffset.of("+9")).toEpochMilli(),
                     pendingIntent
                 )
 //            alarmMgr.set(AlarmManager.RTC_WAKEUP, LocalDateTime.now().plusSeconds(8).toInstant(zoneOffset).toEpochMilli(), pendingIntent)
