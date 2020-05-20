@@ -541,7 +541,7 @@
     <string name="Random_event_d1_chance_use_d2_otherwise_d3">Random Event: [%1$d%%] chance of performing [Action %2$d], otherwise [Action %3$d].</string>
     <string name="Random_event_d1_chance_use_d2">Random Event: [%1$d%%] chance of performing [Action %2$d].</string>
     <string name="Summon_a_field_of_radius_d1_to_deal_s2_s3_damage_per_second_for_s4_sec_to_s5">Deploys a field of radius [%1$d] that deals [%2$s] %3$s damage per second to %5$s for [%4$s]s.</string>
-    <string name="Summon_a_healing_field_of_radius_d1_to_heal_s2_s3_s4_HP_per_second_for_5s_sec">Deploys a field of radius [%1$d] that restores [%3$s%4%s] HP per second to %2$s for [%4$s]s.</string>
+    <string name="Summon_a_healing_field_of_radius_d1_to_heal_s2_s3_s4_HP_per_second_for_5s_sec">Deploys a field of radius [%1$d] that restores [%3$s%4$s] HP per second to %2$s for [%5$s]s.</string>
     <string name="use_d1_if_the_count_of_s2_except_stealth_units_is_not_d3">If the number of %2$s is fewer than [%3$d] (excluding Stealth units), performs [Action %1$d].</string>
     <string name="Detain_Damage">Detain (Damage)</string>
     <string name="Inhibit_Heal">Inhibit Heal</string>
@@ -552,7 +552,6 @@
     <string name="Stealth_for_s_sec">Enters Stealth for [%s]s.</string>
     <string name="In_nex_s1_sec_s2_physical_attacks_will_miss">Forces the Physical attacks of %2$s to miss for [%1$s]s.</string>
     <string name="Clear_all_s1_on_s2_with_chance_s3">[%3$s%%] chance of clearing all %1$s on %2$s.</string>
-    <string name="about_sponsor">Sponsor <br />SS<a href="https://twitter.com/L8102259">@L8102259</a></string>
     <string name="use_d1_if_s2_has_no_dot_debuff">If %2$s does not have a Damage over Time debuff, performs [Action %1$d].</string>
     <string name="use_d1_if_s2_has_any_dot_debuff">"If %2$s has a Damage over Time debuff, performs [Action %1$d]. "</string>
     <string name="Move_Part_d1_d2_forward_then_return">Moves Part %1$d forward by [%2$d], returns to original position afterwards.</string>
