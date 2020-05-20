@@ -107,6 +107,10 @@ class UserSettings private constructor(
         }
     }
 
+    fun getLanguage(): String {
+        return preference.getString(LANGUAGE_KEY, null) ?: "ja"
+    }
+
     @SuppressLint("ApplySharedPref")
     fun setDbVersion(newVersion: Long, async: Boolean = true) {
         when (preference.getString(SERVER_KEY, "jp")) {

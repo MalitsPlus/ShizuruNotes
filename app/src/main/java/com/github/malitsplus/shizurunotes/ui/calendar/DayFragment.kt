@@ -11,6 +11,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.malitsplus.shizurunotes.common.App
 import com.github.malitsplus.shizurunotes.databinding.FragmentDayBinding
+import com.github.malitsplus.shizurunotes.user.UserSettings
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -33,15 +34,14 @@ class DayFragment : Fragment() {
             dayToolbar.setNavigationOnClickListener { view ->
                 view.findNavController().navigateUp()
             }
-            val calendar = calendarVM.calendarMap[calendarVM.selectedDay]
-
-            val day = calendar!!.day
-            val month = calendar.month
-            val cal = Calendar.getInstance()
-            cal.set(cal.get(Calendar.YEAR), month - 1, day)
-            val locale = Locale(App.localeManager.language)
-            val format = DateFormat.getBestDateTimePattern(locale, "dd MMM")
-            dayToolbar.title = SimpleDateFormat(format, locale).format(cal.time)
+            calendarVM.calendarMap[calendarVM.selectedDay]?.let {
+                with(Calendar.getInstance()) {
+                    set(it.year, it.month - 1, it.day)
+                    val locale = Locale(UserSettings.get().getLanguage())
+                    val format = DateFormat.getBestDateTimePattern(locale, "d MMM")
+                    dayToolbar.title = SimpleDateFormat(format, locale).format(time)
+                }
+            }
 
             dayRecycler.apply {
                 layoutManager = LinearLayoutManager(this@DayFragment.context)
