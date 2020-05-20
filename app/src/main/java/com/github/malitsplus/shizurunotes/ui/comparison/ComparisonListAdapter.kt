@@ -1,6 +1,5 @@
 package com.github.malitsplus.shizurunotes.ui.comparison
 
-import android.graphics.Color
 import android.widget.TextView
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.ResourceManager

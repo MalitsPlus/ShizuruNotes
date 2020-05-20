@@ -49,7 +49,7 @@
 
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar"
-                    android:background="@drawable/md_transparent"
+                    android:background="@drawable/shape_transparent"
                     style="?attr/toolbarStyle"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"

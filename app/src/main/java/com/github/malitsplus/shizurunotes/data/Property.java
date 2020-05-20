@@ -157,6 +157,28 @@ public class Property {
         return this;
     }
 
+    public Property getCeiled() {
+        return new Property(
+                Math.ceil(hp),
+                Math.ceil(atk),
+                Math.ceil(magicStr),
+                Math.ceil(def),
+                Math.ceil(magicDef),
+                Math.ceil(physicalCritical),
+                Math.ceil(magicCritical),
+                Math.ceil(waveHpRecovery),
+                Math.ceil(waveEnergyRecovery),
+                Math.ceil(dodge),
+                Math.ceil(physicalPenetrate),
+                Math.ceil(magicPenetrate),
+                Math.ceil(lifeSteal),
+                Math.ceil(hpRecoveryRate),
+                Math.ceil(energyRecoveryRate),
+                Math.ceil(energyReduceRate),
+                Math.ceil(accuracy)
+        );
+    }
+
     public Property roundThenSubtract(Property rProperty) {
         return new Property(
                 this.getHp() - rProperty.getHp(),

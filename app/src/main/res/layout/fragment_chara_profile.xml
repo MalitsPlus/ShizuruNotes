@@ -5,303 +5,38 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="chara"
-            type="com.github.malitsplus.shizurunotes.data.Chara" />
-        <import type="com.github.malitsplus.shizurunotes.R"/>
+
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbarCharaProfile"
                 android:layout_width="match_parent"
-                app:title="@{chara.actualName}"
-                app:navigationIcon="@drawable/ic_detail_back"
-                android:layout_height="?attr/actionBarSize" />
+                android:layout_height="?attr/actionBarSize"
+                app:navigationIcon="@drawable/ic_detail_back" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.core.widget.NestedScrollView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chara_profile_recycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/profileItemChara"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:id="@+id/profileCharaIcon"
-                        style="@style/unitIcon"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        bind:imageUrl="@{chara.iconUrl}"
-                        bind:errorHolder="@{R.drawable.mic_chara_icon_error}"
-                        bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
-
-                    <TextView
-                        android:id="@+id/profileCharaName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="@{chara.actualName, default=unitName}"
-                        android:textSize="16sp"
-                        app:layout_constraintStart_toEndOf="@+id/profileCharaIcon"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/profileCharaKana"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="@{chara.kana, default=actualName}"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toEndOf="@+id/profileCharaIcon"
-                        app:layout_constraintTop_toBottomOf="@+id/profileCharaName" />
-
-                    <View
-                        android:id="@+id/divider2"
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginEnd="0dp"
-                        android:background="?android:attr/listDivider"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/profileItemChara">
-
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/textView7"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="8dp"
-                            style="@style/longMultipleLineText"
-                            android:text="@{chara.catchCopy}"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/textView5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/text_profile"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/constraintLayout4"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="8dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView5">
-
-                            <LinearLayout
-                                android:id="@+id/linearLayout2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
-                                android:layout_marginEnd="8dp"
-                                android:orientation="horizontal"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent">
-
-                                <com.allen.library.SuperTextView
-                                    android:id="@+id/txtHeight"
-                                    style="@style/StatusSuperTextView"
-                                    android:layout_marginEnd="4dp"
-                                    android:layout_weight="1"
-                                    app:sLeftTextString="@string/text_height"
-                                    bind:sRightText="@{chara.height}" />
-
-                                <com.allen.library.SuperTextView
-                                    android:id="@+id/txtWeight"
-                                    style="@style/StatusSuperTextView"
-                                    android:layout_marginStart="4dp"
-                                    android:layout_weight="1"
-                                    app:sLeftTextString="@string/text_weight"
-                                    bind:sRightText="@{chara.weight}" />
-
-                            </LinearLayout>
-
-
-                            <LinearLayout
-                                android:id="@+id/linearLayout3"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
-                                android:layout_marginEnd="8dp"
-                                android:orientation="horizontal"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-
-                                <com.allen.library.SuperTextView
-                                    android:id="@+id/txtAge"
-                                    style="@style/StatusSuperTextView"
-                                    android:layout_marginEnd="4dp"
-                                    android:layout_weight="1"
-                                    app:sLeftTextString="@string/text_age"
-                                    bind:sRightText="@{chara.age}" />
-
-                                <com.allen.library.SuperTextView
-                                    android:id="@+id/txtBirthDate"
-                                    style="@style/StatusSuperTextView"
-                                    android:layout_marginStart="4dp"
-                                    android:layout_weight="1"
-                                    app:sLeftTextString="@string/text_birth_date"
-                                    bind:sRightText="@{chara.birthDate}" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/linearLayout4"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
-                                android:layout_marginEnd="8dp"
-                                android:orientation="horizontal"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
-
-                                <com.allen.library.SuperTextView
-                                    android:id="@+id/txtBloodType"
-                                    style="@style/StatusSuperTextView"
-                                    android:layout_marginEnd="4dp"
-                                    android:layout_weight="1"
-                                    app:sLeftTextString="@string/text_blood_type"
-                                    bind:sRightText="@{chara.bloodType}" />
-
-                                <com.allen.library.SuperTextView
-                                    android:id="@+id/txtRace"
-                                    style="@style/StatusSuperTextView"
-                                    android:layout_marginStart="4dp"
-                                    android:layout_weight="1"
-                                    app:sLeftTextString="@string/text_race"
-                                    bind:sRightText="@{chara.race}" />
-
-                            </LinearLayout>
-
-
-                            <com.allen.library.SuperTextView
-                                android:id="@+id/txtGuild"
-                                style="@style/StatusSuperTextView"
-                                android:layout_width="match_parent"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
-                                android:layout_marginEnd="8dp"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-                                app:sLeftTextString="@string/text_guild"
-                                bind:sRightText="@{chara.guild}" />
-
-                            <com.allen.library.SuperTextView
-                                android:id="@+id/txtCV"
-                                style="@style/StatusSuperTextView"
-                                android:layout_width="match_parent"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
-                                android:layout_marginEnd="8dp"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/txtGuild"
-                                app:sLeftTextString="@string/text_cv"
-                                bind:sRightText="@{chara.voice}" />
-
-                            <com.allen.library.SuperTextView
-                                android:id="@+id/txtFavorite"
-                                style="@style/StatusSuperTextView"
-                                android:layout_width="match_parent"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
-                                android:layout_marginEnd="8dp"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/txtCV"
-                                app:sLeftTextString="@string/text_favorite"
-                                bind:sRightText="@{chara.favorite}" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <TextView
-                            android:id="@+id/textView9"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginBottom="8dp"
-                            android:text="@{chara.selfText}"
-                            style="@style/longMultipleLineText"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"
-                            app:layout_constraintVertical_bias="0.0" />
-
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.core.widget.NestedScrollView>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

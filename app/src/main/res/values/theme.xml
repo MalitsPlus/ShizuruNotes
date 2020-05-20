@@ -151,7 +151,6 @@
     </style>
 
     <style name="myComparisonText">
-        <item name="android:textAlignment">center</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_height">match_parent</item>

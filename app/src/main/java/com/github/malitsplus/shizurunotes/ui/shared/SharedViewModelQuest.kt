@@ -7,8 +7,10 @@ import com.github.malitsplus.shizurunotes.db.MasterQuest
 import kotlin.concurrent.thread
 
 class SharedViewModelQuest : ViewModel() {
-    val questList = MutableLiveData<MutableList<Quest>>()
+    val questList = MutableLiveData<List<Quest>>()
     val loadingFlag = MutableLiveData<Boolean>(false)
+    var includeNormal = true
+    var includeHard = true
 
     /***
      * 从数据库读取所有任务数据。

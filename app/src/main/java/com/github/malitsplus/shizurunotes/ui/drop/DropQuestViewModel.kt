@@ -6,8 +6,10 @@ import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.data.Quest
+import com.github.malitsplus.shizurunotes.db.RawQuest
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelQuest
 import java.util.*
+import kotlin.Comparator
 import kotlin.concurrent.thread
 
 class DropQuestViewModel(
@@ -19,11 +21,12 @@ class DropQuestViewModel(
     @Suppress("UNCHECKED_CAST")
     fun search() {
         if (equipmentList.isNullOrEmpty()) {
-            searchedQuestList.value = sharedQuest.questList.value as MutableList<Any>?
+            questTypeFilter(sharedQuest.questList.value)
+            searchedQuestList.value = questTypeFilter(sharedQuest.questList.value) as MutableList<Any>?
         } else {
             thread(start = true) {
                 val resultList = mutableListOf<Any>()
-                val rawList = mutableListOf<Quest>()
+                var rawList = mutableListOf<Quest>()
                 val andList = mutableListOf<Quest>()
                 val orList = mutableListOf<Quest>()
                 val middleList = mutableListOf<Quest>()
@@ -36,8 +39,13 @@ class DropQuestViewModel(
                     }
                 }
                 when(val num = equipmentList.size) {
-                    1 -> searchedQuestList.postValue(rawList as MutableList<Any>)
+                    1 -> {
+                        rawList.sortByDescending { it.getOdds(equipmentList) }
+                        questTypeFilter(rawList)
+                        searchedQuestList.postValue(questTypeFilter(rawList) as MutableList<Any>)
+                    }
                     else -> {
+                        rawList = questTypeFilter(rawList).toMutableList()
                         rawList.forEach {
                             if (!andList.contains(it) && !middleList.contains(it)) {
                                 when(Collections.frequency(rawList, it)) {
@@ -49,19 +57,36 @@ class DropQuestViewModel(
                         }
                         if (andList.isNotEmpty()) {
                             resultList.add(I18N.getString(R.string.text_condition_and))
-                            resultList.addAll(andList)
+                            resultList.addAll(andList.sortedByDescending { it.getOdds(equipmentList) })
                         }
                         if (middleList.isNotEmpty()) {
                             resultList.add(I18N.getString(R.string.text_condition_andor))
-                            resultList.addAll(middleList)
+                            resultList.addAll(middleList.sortedByDescending { it.getOdds(equipmentList) })
                         }
                         if (orList.isNotEmpty()) {
                             resultList.add(I18N.getString(R.string.text_condition_or))
-                            resultList.addAll(orList)
+                            resultList.addAll(orList.sortedByDescending { it.getOdds(equipmentList) })
                         }
                         searchedQuestList.postValue(resultList)
                     }
                 }
+            }
+        }
+    }
+
+    private fun questTypeFilter(list: List<Quest>?): List<Quest> {
+        if (list == null) {
+            return listOf()
+        }
+        return when {
+            sharedQuest.includeNormal && !sharedQuest.includeHard -> {
+                list.filter { it.questType == Quest.QuestType.Normal }
+            }
+            !sharedQuest.includeNormal && sharedQuest.includeHard -> {
+                list.filter { it.questType == Quest.QuestType.Hard }
+            }
+            else -> {
+                list
             }
         }
     }
