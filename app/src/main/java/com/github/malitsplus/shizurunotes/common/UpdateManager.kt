@@ -13,7 +13,6 @@ import androidx.core.content.FileProvider
 import com.afollestad.materialdialogs.MaterialDialog
 import com.github.malitsplus.shizurunotes.BuildConfig
 import com.github.malitsplus.shizurunotes.R
-import com.github.malitsplus.shizurunotes.ui.setting.SettingFragment
 import com.github.malitsplus.shizurunotes.user.UserSettings
 import com.github.malitsplus.shizurunotes.utils.BrotliUtils
 import com.github.malitsplus.shizurunotes.utils.FileUtils
