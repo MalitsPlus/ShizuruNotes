@@ -17,12 +17,12 @@ Gradle building configuration could be found in `./app/build.gradle` and it migh
 * Event Calendar 
 * Event Notification 
 * Rank Comparison  
-  
-CN server version has been planned. 
+
 
 ## Localization 
-Japanese, Chinese, Korean supported.  
-Korean strings are provided by [@applemintia](https://twitter.com/_applemintia).  
+Japanese, Chinese, Korean, English supported.  
+Korean strings are provided by [applemintia](https://twitter.com/_applemintia).  
+English strings are provided by [southrop](https://github.com/southrop).  
 
 ## References 
 * [PrincessGuide](https://github.com/superk589/PrincessGuide) 
