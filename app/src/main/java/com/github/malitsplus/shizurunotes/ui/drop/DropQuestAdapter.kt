@@ -6,6 +6,7 @@ import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.github.malitsplus.shizurunotes.R
+import com.github.malitsplus.shizurunotes.common.ResourceManager
 import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.data.Quest
 import com.github.malitsplus.shizurunotes.databinding.ItemDropEquipmentBinding
@@ -30,6 +31,10 @@ class DropQuestAdapter(
                 val thisQuest = itemList[position] as Quest
                 with(holder.binding as ItemQuestDropBinding) {
                     quest = thisQuest
+                    when(thisQuest.questType) {
+                        Quest.QuestType.Hard -> this.textQuestType.setBackgroundResource(R.drawable.shape_text_tag_background_variant)
+                        else -> this.textQuestType.setBackgroundResource(R.drawable.shape_text_tag_background)
+                    }
                     dropIconContainer.removeAllViews()
                     thisQuest.dropList.forEach {
                         val rewardItem = DataBindingUtil.inflate<ItemDropEquipmentBinding>(

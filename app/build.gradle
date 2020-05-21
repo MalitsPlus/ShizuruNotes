@@ -15,8 +15,8 @@ android {
         applicationId "com.github.malitsplus.shizurunotes"
         minSdkVersion 26
         targetSdkVersion 29
-        versionCode 12
-        versionName "0.6.1"
+        versionCode 13
+        versionName "0.6.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -25,9 +25,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        debug {
-            applicationIdSuffix ".debug"
-        }
+//        debug {
+//            applicationIdSuffix ".debug"
+//        }
     }
     compileOptions {
         sourceCompatibility = 1.8
