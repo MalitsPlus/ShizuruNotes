@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity(),
 
     private fun loadData() {
         sharedEquipment.loadData()
-        NotificationManager.with(application).loadData()
+        NotificationManager.get().loadData()
     }
 
     private fun checkUpdate() {
