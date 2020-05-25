@@ -1,7 +1,7 @@
 {
-	"versionCode": "13",
-	"versionName": "0.6.2",
+	"versionCode": "14",
+	"versionName": "0.6.3",
 	"recommend": "false",
-	"messageJa": "・低画質の形でキャラの画像表示機能を復旧\n・英語に対応\n・システムのタイムゾーンに応じて通知の時間を自動的に調整できるようになりました\n・専用装備ステータスのラウンディング方式の調整\n・ドロップ検索機能をより使いやすいように諸々アップデートしました",
-	"messageZh": "・以低画质形式恢复角色大图展示功能\n・增加英文支持\n・日历提醒时间已能够根据系统时区自动调整\n・调整专武属性的小数位四舍五入方式\n・掉落检索已能分别检索N图和H图\n・掉落检索结果首要排序方式调整为最高概率优先\n・掉落检索结果前三件装备严格按照游戏内顺序显示"
+	"messageJa": "・新スキルChangeEnergyRecoveryRatioByDamageに対応\n・新スキルIgnoreDecoyに対応\n・新スキルGiveValueAsDivideに対応",
+	"messageZh": "・适配新技能ChangeEnergyRecoveryRatioByDamage\n・适配新技能IgnoreDecoy\n・适配新技能GiveValueAsDivide"
 }
