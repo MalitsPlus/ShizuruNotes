@@ -84,7 +84,7 @@ class Chara: Cloneable {
             .plusEqual(promotionStatus[rank])
             .plusEqual(getAllEquipmentProperty(rank))
             .plusEqual(passiveSkillProperty)
-            .plusEqual(if (hasUnique) uniqueEquipmentProperty else null)
+            .plusEqual(uniqueEquipmentProperty)
     }
 
     private fun getRarityGrowthProperty(rank: Int): Property{
@@ -101,9 +101,7 @@ class Chara: Cloneable {
 
     val uniqueEquipmentProperty: Property
         get() {
-            return Property()
-                    .plusEqual(uniqueEquipment?.equipmentProperty)
-                    .plusEqual(uniqueEquipment?.equipmentEnhanceRate?.multiply(maxUniqueEquipmentLevel - 1.toDouble())).ceiled
+            return uniqueEquipment?.getCeiledProperty() ?: Property()
         }
 
     val passiveSkillProperty: Property

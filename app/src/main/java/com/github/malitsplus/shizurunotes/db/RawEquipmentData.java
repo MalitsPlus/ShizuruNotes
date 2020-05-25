@@ -32,6 +32,26 @@ public class RawEquipmentData {
     public double accuracy;
     public String catalog;
     public int rarity;
+    public int condition_equipment_id_1;
+    public int consume_num_1;
+    public int condition_equipment_id_2;
+    public int consume_num_2;
+    public int condition_equipment_id_3;
+    public int consume_num_3;
+    public int condition_equipment_id_4;
+    public int consume_num_4;
+    public int condition_equipment_id_5;
+    public int consume_num_5;
+    public int condition_equipment_id_6;
+    public int consume_num_6;
+    public int condition_equipment_id_7;
+    public int consume_num_7;
+    public int condition_equipment_id_8;
+    public int consume_num_8;
+    public int condition_equipment_id_9;
+    public int consume_num_9;
+    public int condition_equipment_id_10;
+    public int consume_num_10;
 
     public Property getProperty(){
         return new Property(

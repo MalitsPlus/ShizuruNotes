@@ -50,7 +50,7 @@
     <string name="about_disclaimer" translatable="false">This is an unofficial fan-made application, copyright of all resources associate with the game \"Princess Connect Re:Dive\" are belong to Cygames, Inc. </string>
     <string name="about_hp" translatable="false">Open source home page \nhttps://github.com/MalitsPlus/ShizuruNotes</string>
     <string name="about_developer" translatable="false">Developer &lt;br/>Vibbit&lt;a href=\"https://twitter.com/L8102259\">@L8102259&lt;/a></string>
-    <string name="about_translator" translatable="false">Translator &lt;br/>(Korean)applemintia&lt;a href=\"https://twitter.com/_applemintia\">@_applemintia&lt;/a>&lt;br/>(English)southrop</string>
+    <string name="about_translator" translatable="false">Translator &lt;br/>(Korean)applemintia&lt;a href=\"https://twitter.com/_applemintia\">@_applemintia&lt;/a>&lt;br/>(English)&lt;a href=\"https://github.com/southrop\">southrop&lt;/a></string>
     <string name="about_api" translatable="false">API by https://redive.estertion.win</string>
     <string name="about_license" translatable="false">This application is licensed under the &lt;a href=\"http://www.apache.org/licenses/LICENSE-2.0.txt\">Apache License 2.0&lt;/a></string>
     <string name="text_ok" translatable="false">OK</string>
@@ -297,6 +297,9 @@
     <string name="dialog_server_switch_text">注意事項：カレンダーにてイベント通知機能をONにした場合、サーバーを切り替えると元のサーバーのスケジュール通知が全て解除され、アプリが再起動した後新しいサーバーのスケジュール通知に切り替えされます</string>
     <string name="menu_drop_normal">ノーマル</string>
     <string name="menu_drop_hard">ハード</string>
+    <string name="text_unique_equipment">専用装備</string>
+    <string name="unimplemented">未実装</string>
+    <string name="rank_d">R%d</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>
@@ -608,4 +611,6 @@
     <string name="Make_s1_when_deal_critical_damage_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">%1$sがクリティカルダメージを与えるたび、マーク[ID：%3$s]を1スタック増やせる、効果時間 [%4$s] 秒。この効果は最大 [%2$s] までスタックする。</string>
     <string name="use_d1_to_s2_if_target_is_magical_type">%2$sが魔法攻撃を行う対象の場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_to_s2_if_target_is_not_magical_type">%2$sが魔法攻撃を行う対象でない場合、[アクション%1$d]を使う。</string>
+    <string name="change_energy_recovery_ratio_by_damage_to_s1_when_s2_get_damage_next_time">%2$sが次のアクションによるダメージを受けた時、そのダメージによるTP回復の値を [本来の値 * %1$s] に変更させる。</string>
+    <string name="make_this_skill_ignore_decoy">このスキルを挑発に影響されないようにさせる。</string>
 </resources>

@@ -533,9 +533,30 @@ class DBHelper private constructor(
                 ,ifnull(b.max_equipment_enhance_level, 0) 'max_equipment_enhance_level'
                 ,e.description 'catalog' 
                 ,substr(a.equipment_id,3,1) * 10 + substr(a.equipment_id,6,1) 'rarity' 
+                ,f.condition_equipment_id_1
+                ,f.consume_num_1
+                ,f.condition_equipment_id_2
+                ,f.consume_num_2
+                ,f.condition_equipment_id_3
+                ,f.consume_num_3
+                ,f.condition_equipment_id_4
+                ,f.consume_num_4
+                ,f.condition_equipment_id_5
+                ,f.consume_num_5
+                ,f.condition_equipment_id_6
+                ,f.consume_num_6
+                ,f.condition_equipment_id_7
+                ,f.consume_num_7
+                ,f.condition_equipment_id_8
+                ,f.consume_num_8
+                ,f.condition_equipment_id_9
+                ,f.consume_num_9
+                ,f.condition_equipment_id_10
+                ,f.consume_num_10
                 FROM equipment_data a  
                 LEFT JOIN ( SELECT promotion_level, max( equipment_enhance_level ) max_equipment_enhance_level FROM equipment_enhance_data GROUP BY promotion_level ) b ON a.promotion_level = b.promotion_level 
                 LEFT JOIN equipment_enhance_rate AS e ON a.equipment_id=e.equipment_id
+                LEFT JOIN equipment_craft AS f ON a.equipment_id = f.equipment_id
                 WHERE a.equipment_id < 113000 
                 ORDER BY substr(a.equipment_id,3,1) * 10 + substr(a.equipment_id,6,1) DESC, a.require_level DESC, a.equipment_id ASC 
                 """,
@@ -1093,6 +1114,15 @@ class DBHelper private constructor(
             sqlString += " WHERE end_time > '$it' "
         }
         return getBeanListByRaw(sqlString, RawTowerSchedule::class.java)
+    }
+
+    /***
+     * 获取装备碎片
+     */
+    fun getEquipmentPiece(): List<RawEquipmentPiece>? {
+        return getBeanListByRaw(" SELECT * FROM equipment_data WHERE equipment_id >= 113000 ",
+            RawEquipmentPiece::class.java
+        )
     }
 
     /***

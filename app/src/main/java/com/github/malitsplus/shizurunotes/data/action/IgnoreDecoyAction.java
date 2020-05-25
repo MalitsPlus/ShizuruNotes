@@ -4,16 +4,14 @@ import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.I18N;
 import com.github.malitsplus.shizurunotes.data.Property;
 
-import java.math.RoundingMode;
-
-public class MultipleAction extends ActionParameter {
+public class IgnoreDecoyAction extends ActionParameter {
     @Override
     protected void childInit() {
-        actionValues.add(new ActionValue(actionValue2, actionValue3, null));
+        super.childInit();
     }
 
     @Override
     public String localizedDetail(int level, Property property) {
-        return super.localizedDetail(level, property);
+        return I18N.getString(R.string.make_this_skill_ignore_decoy);
     }
 }
