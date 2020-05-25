@@ -7,31 +7,37 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.github.malitsplus.shizurunotes.R
+import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.databinding.FragmentCharaProfileBinding
+import com.github.malitsplus.shizurunotes.ui.base.OnItemActionListener
 import com.github.malitsplus.shizurunotes.ui.base.ViewType
 import com.github.malitsplus.shizurunotes.ui.base.ViewTypeAdapter
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelCharaFactory
+import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
 
-class CharaProfileFragment : Fragment() {
+class CharaProfileFragment : Fragment(), OnEquipmentClickListener<Equipment> {
 
     private lateinit var binding: FragmentCharaProfileBinding
 
-    private val maxSpan = 2
+    private val maxSpan = 6
 
-    private val sharedChara: SharedViewModelChara by lazy {
-        ViewModelProvider(requireActivity())[SharedViewModelChara::class.java].apply {
+    private lateinit var sharedChara: SharedViewModelChara
+    private lateinit var sharedEquipment: SharedViewModelEquipment
+    private lateinit var charaProfileVM: CharaProfileViewModel
+    private val charaProfileAdapter by lazy { ViewTypeAdapter<ViewType<*>>(onItemActionListener = this) }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedChara = ViewModelProvider(requireActivity())[SharedViewModelChara::class.java].apply {
             backFlag = false
         }
+        sharedEquipment = ViewModelProvider(requireActivity())[SharedViewModelEquipment::class.java]
+        charaProfileVM = ViewModelProvider(this, SharedViewModelCharaFactory(sharedChara))[CharaProfileViewModel::class.java]
     }
-
-    private val charaProfileVM: CharaProfileViewModel by lazy {
-        ViewModelProvider(this, SharedViewModelCharaFactory(sharedChara))[CharaProfileViewModel::class.java]
-    }
-
-    private val charaProfileAdapter by lazy { ViewTypeAdapter<ViewType<*>>() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,5 +72,15 @@ class CharaProfileFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onEquipmentClicked(item: Equipment) {
+        if (item.equipmentId != 999999) {
+            sharedEquipment.selectedEquipment = item
+            findNavController().navigate(CharaProfileFragmentDirections.actionNavCharaProfileToNavEquipment())
+        }
+    }
+
+    override fun onItemClicked(position: Int) {
     }
 }

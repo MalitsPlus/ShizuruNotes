@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="itemModel"
+            type="com.github.malitsplus.shizurunotes.data.Equipment" />
+        <variable
+            name="itemPosition"
+            type="Integer" />
+        <variable
+            name="itemActionListener"
+            type="com.github.malitsplus.shizurunotes.ui.charaprofile.OnEquipmentClickListener" />
+        <import type="com.github.malitsplus.shizurunotes.R" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        android:layout_margin="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/unique_hint_text"
+                style="@style/textTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@{@string/space_modifier(@string/text_unique_equipment), default=uniqueEquipment}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/unique_equipment_icon"
+                style="@style/iconFilter"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="@{() -> itemActionListener.onEquipmentClicked(itemModel)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/unique_hint_text"
+                bind:errorHolder="@{R.drawable.mic_chara_icon_error}"
+                bind:imageUrl="@{itemModel.iconUrl}"
+                bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
+
+            <TextView
+                android:id="@+id/unique_equipment_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@{itemModel.equipmentName, default=uniqueEquipmentName}"
+                app:layout_constraintBottom_toBottomOf="@+id/unique_equipment_icon"
+                app:layout_constraintStart_toEndOf="@+id/unique_equipment_icon"
+                app:layout_constraintTop_toTopOf="@+id/unique_equipment_icon" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

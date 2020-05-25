@@ -144,10 +144,16 @@ public class ActionParameter {
                 return new KnightGuardAction();
             case 73:
                 return new LogBarrierAction();
+            case 74:
+                return new DivideAction();
             case 90:
                 return new PassiveAction();
             case 91:
                 return new PassiveInermittentAction();
+            case 92:
+                return new ChangeEnergyRecoveryRatioByDamageAction();
+            case 93:
+                return new IgnoreDecoyAction();
             default:
                 return new ActionParameter();
         }

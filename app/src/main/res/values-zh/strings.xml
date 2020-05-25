@@ -465,6 +465,8 @@
     <string name="Trigger_d_on_all_targets_break">触发条件：所有部位被Break时触发。</string>
     <string name="Make_s1_to_be_invulnerable_to_break_for_s2_sec">对%1$s附加Break免疫效果，持续时间 [%2$s] 秒。</string>
     <string name="Make_s1_when_deal_critical_damage_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">%1$s每次造成暴击时，增加1层标记[ID：%3$s]，持续时间 [%4$s] 秒，本效果最多叠加 [%2$s] 层。</string>
+    <string name="change_energy_recovery_ratio_by_damage_to_s1_when_s2_get_damage_next_time">%2$s受到下个动作伤害时，使其通过受伤获得的TP奖励值变为 [原本的值 * %1$s]。</string>
+    <string name="make_this_skill_ignore_decoy">使本技能无视挑衅。</string>
 
     <string name="title_equipment">装备</string>
     <string name="title_quest">任务</string>
