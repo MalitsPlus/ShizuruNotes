@@ -162,13 +162,19 @@ class Skill(
             if (action.dependActionId != 0) {
                 for (searched in actions) {
                     if (searched.actionId == action.dependActionId) {
-                        //需要先为其建立params
-                        searched.buildParameter()
                         action.dependAction = searched
+                        //添加childrenActions
+                        if (searched.childrenAction == null) {
+                            searched.childrenAction = mutableListOf()
+                        }
+                        searched.childrenAction?.add(action)
                         break
                     }
                 }
             }
+        }
+
+        actions.forEach { action ->
             action.buildParameter()
 
             //如果是召唤技能还需要再读库
@@ -202,8 +208,7 @@ class Skill(
                             }
                         }
                         if (!isDuplicate) {
-                            val enemyMinion = DBHelper.get().getEnemyMinion(enemyId)
-                                ?.enemy?.let { minion ->
+                            val enemyMinion = DBHelper.get().getEnemyMinion(enemyId)?.enemy?.let { minion ->
                                 DBHelper.get().getUnitAttackPattern(minion.unitId)?.forEach {
                                     minion.attackPatternList.add(it.attackPattern)
                                 }
@@ -325,6 +330,7 @@ class Skill(
         }
 
         var dependAction: Action? = null
+        var childrenAction: MutableList<Action>? = null
         lateinit var parameter: ActionParameter
         fun buildParameter() {
             val isEnemySkill = enemySkillLevel != 0
@@ -352,7 +358,8 @@ class Skill(
                     targetType,
                     targetNumber,
                     targetCount,
-                    dependAction
+                    dependAction,
+                    childrenAction
                 )
         }
     }

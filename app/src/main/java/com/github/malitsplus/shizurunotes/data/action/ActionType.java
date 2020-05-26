@@ -59,7 +59,8 @@ public enum ActionType {
     moveParts(55),
     countBlind(56),
     countDown(57),
-
+    stopFieldAction(58),
+    inhibitHealAction(59),
     attackSeal(60),
     fear(61),
     awe(62),
@@ -67,8 +68,11 @@ public enum ActionType {
     toad(69),
     knightGuard(71),
     logBarrier(73),
+    divide(74),
     ex(90),
-    exPlus(91);
+    exPlus(91),
+    changeEnergyRecoveryRatioByDamage(92),
+    ignoreDecoyAction(93);
 
     private int value;
     private ActionType(int value){

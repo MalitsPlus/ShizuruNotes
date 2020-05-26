@@ -2,7 +2,6 @@ package com.github.malitsplus.shizurunotes.data.action;
 
 import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.I18N;
-import com.github.malitsplus.shizurunotes.ui.setting.SettingFragment;
 import com.github.malitsplus.shizurunotes.user.UserSettings;
 import com.github.malitsplus.shizurunotes.data.Property;
 import com.github.malitsplus.shizurunotes.data.PropertyKey;
@@ -13,6 +12,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.Nullable;
 
 public class ActionParameter {
     public static ActionParameter type(int rawType){
@@ -161,6 +162,7 @@ public class ActionParameter {
 
     public boolean isEnemySkill;
     public int dependActionId;
+    @Nullable public List<Skill.Action> childrenAction;
 
     public int actionId;
     public int classId;
@@ -184,7 +186,7 @@ public class ActionParameter {
 
     public TargetParameter targetParameter;
 
-    public ActionParameter init(boolean isEnemySkill, int actionId, int dependActionId, int classId, int actionType, int actionDetail1, int actionDetail2, int actionDetail3, double actionValue1, double actionValue2, double actionValue3, double actionValue4, double actionValue5, double actionValue6, double actionValue7, int targetAssignment, int targetArea, int targetRange, int targetType, int targetNumber, int targetCount, Skill.Action dependAction){
+    public ActionParameter init(boolean isEnemySkill, int actionId, int dependActionId, int classId, int actionType, int actionDetail1, int actionDetail2, int actionDetail3, double actionValue1, double actionValue2, double actionValue3, double actionValue4, double actionValue5, double actionValue6, double actionValue7, int targetAssignment, int targetArea, int targetRange, int targetType, int targetNumber, int targetCount, Skill.Action dependAction, @Nullable List<Skill.Action> childrenAction){
         this.isEnemySkill = isEnemySkill;
         this.actionId = actionId;
         this.dependActionId = dependActionId;
@@ -223,6 +225,10 @@ public class ActionParameter {
             rawActionValues.add(actionValue6);
         if(actionValue7 != 0)
             rawActionValues.add(actionValue7);
+
+        if (childrenAction != null) {
+            this.childrenAction = childrenAction;
+        }
 
         targetParameter = new TargetParameter(targetAssignment, targetNumber, targetType, targetRange, targetArea, targetCount, dependAction);
 

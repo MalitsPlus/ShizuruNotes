@@ -33,8 +33,15 @@ public class TargetParameter {
     private boolean hasRangePhrase;
     private boolean hasNthModifier;
     private boolean hasDirectionPhrase;
-    private boolean hasDependAction;
     private boolean hasTargetType;
+    private boolean hasDependAction(){
+        return dependAction != null && (dependAction.getActionId() != 0
+                && targetType != TargetType.absolute
+                && (ActionType.ifForChildren == dependAction.parameter.actionType
+                || ActionType.ifForAll == dependAction.parameter.actionType
+                || ActionType.damage == dependAction.parameter.actionType
+                || ActionType.knock == dependAction.parameter.actionType));
+    }
 
     private void setBooleans(){
         hasRelationPhrase = targetType != TargetType.self
@@ -50,12 +57,6 @@ public class TargetParameter {
                 || targetNumber == TargetNumber.fifth;
         hasDirectionPhrase = direction == DirectionType.front
                 &&(hasRangePhrase || targetCount == TargetCount.all);
-        hasDependAction = dependAction != null && (dependAction.getActionId() != 0
-                && targetType != TargetType.absolute
-                && (ActionType.ifForChildren == dependAction.parameter.actionType
-                || ActionType.ifForAll == dependAction.parameter.actionType
-                || ActionType.damage == dependAction.parameter.actionType
-                || ActionType.knock == dependAction.parameter.actionType));
         hasTargetType = !(targetType.isExclusiveWithAll() && targetCount == TargetCount.all);
     }
 
@@ -68,7 +69,7 @@ public class TargetParameter {
     }
 
     public String buildTargetClause(){
-        if(hasDependAction){
+        if(hasDependAction()){
             if(dependAction.parameter.actionType == ActionType.damage)
                 return I18N.getString(R.string.targets_those_damaged_by_effect_d, dependAction.getActionId() % 100);
             else
