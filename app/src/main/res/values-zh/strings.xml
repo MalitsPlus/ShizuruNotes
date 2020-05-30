@@ -551,7 +551,7 @@
     <string name="hint_rank_from">Rank1</string>
     <string name="hint_rank_to">Rank2</string>
     <string name="text_calculate">计算</string>
-    <string name="rank_comparison_description">计算方法说明：\nx → 左边的Rank\ny → 右边的Rank\n{[∑(y的装备满强值) + ∑(比y低的Rank装备值) + (当前最大Lv + y)的角色基础值]小数点后四舍五入} - {[∑(x的装备满强值) + ∑(比x低的Rank装备值) + (当前最大Lv + x)的角色基础值]小数点后四舍五入}\n*上记的角色基础值是基于☆MAX的角色成长值来进行计算</string>
+    <string name="rank_comparison_description">计算方法说明：\nx → 左边的Rank\ny → 右边的Rank\n{[∑(y的装备满强值) + ∑(比y低的Rank装备值) + (当前最大Lv + y)的角色基础值]小数点后四舍五入} - {[∑(x的装备满强值) + ∑(比x低的Rank装备值) + (当前最大Lv + x)的角色基础值]小数点后四舍五入}\n*上记的角色基础值是基于☆MAX的角色成长值来进行计算\n\n一句话来说就是本计算结果包含了Rank上升对角色基础状态值产生的影响。</string>
     <string name="dialog_server_switch_title">切换服务器</string>
     <string name="dialog_server_switch_text">请注意，如果已在日历中开启活动通知功能，一旦切换服务器，已注册的原本服务器的活动日程通知将全部解除，重启应用后将注册新服务器的活动日程通知</string>
 </resources>
