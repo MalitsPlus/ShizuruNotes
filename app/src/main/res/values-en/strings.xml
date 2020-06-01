@@ -484,7 +484,7 @@
     <string name="Add_d_to_the_counter">Increments the counter by [%d].</string>
     <string name="Make_s1_to_be_invulnerable_to_break_for_s2_sec">Applies Break Invulnerability to %1$s for [%2$s]s.</string>
     <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_magical_damage">Deploys a Shield over %1$s that reflects [%2$s] of received Magical damage.</string>
-    <string name="Make_s1_lose_s2_TP">Drain [%2$s] TP from %1$s.</string>
+    <string name="Make_s1_lose_s2_TP">Drains [%2$s] TP from %1$s.</string>
     <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_physical_damage">Deploys a Shield over %1$s that reflects [%2$s] of received Physical damage and restores the same amount of HP.</string>
     <string name="Add_s1_mark_stacks_max_s2_ID_s3_on_s4_for_s5_sec">Adds [%1$s] mark [ID: %3$s] to %4$s for [%5$s]s (caps at [%2$s]).</string>
     <string name="Exclusive_condition_s">Branch: %s</string>
@@ -566,4 +566,11 @@
     <string name="When_s1_receive_healing_deal_s2_healing_amount_damage_instead_last_for_s3_sec_or_unlimited_time_if_triggered_by_field">When %1$s would be healed, instead deal [%2$s] damage. Lasts for [%3$s]s unless triggered by a field.</string>
     <string name="Reduce_s1_damage_or_instant_healing_effect_of_union_burst_and_main_skills_cast_by_s2_for_s3_sec">Reduces the damage dealt and/or HP restored by Union Burst or Skills of %2$s to a specific target by [%1$s%%] for [%3$s]s.</string>
     <string name="Reduce_s1_damage_or_instant_healing_effect_of_union_burst_cast_by_s2_for_s3_sec">Reduces the damage dealt and/or HP restored by Union Burst of %2$s to a specific target by [%1$s%%] for [%3$s]s.</string>
+    <string name="menu_drop_normal">Normal</string>
+    <string name="menu_drop_hard">Hard</string>
+    <string name="text_unique_equipment">Unique Equipment</string>
+    <string name="unimplemented">Unimplemented</string>
+    <string name="rank_d">Rank %d</string>
+    <string name="change_energy_recovery_ratio_of_action_s1_to_s2_when_s3_get_damage">Changes the TP Recovery Rate (including from damage) of %3$s to [Original Value × %2$s] upon receiving [Action %1$s].</string>
+    <string name="make_this_skill_ignore_decoy">Makes this skill unaffected by Taunt.</string>
 </resources>
