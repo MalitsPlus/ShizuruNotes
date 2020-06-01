@@ -5,10 +5,7 @@
     xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable
-            name="equipment"
-            type="com.github.malitsplus.shizurunotes.data.Equipment" />
-        <import type="com.github.malitsplus.shizurunotes.R"/>
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

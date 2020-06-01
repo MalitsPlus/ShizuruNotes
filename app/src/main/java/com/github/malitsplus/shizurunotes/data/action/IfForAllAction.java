@@ -12,7 +12,7 @@ public class IfForAllAction extends ActionParameter {
     @Override
     protected void childInit() {
         if (actionDetail2 != 0){
-            if(actionDetail1 == 710){
+            if(actionDetail1 == 710 || actionDetail1 == 100){
                 IfType ifType = IfType.parse(actionDetail1);
                 if (ifType != null)
                     trueClause = I18N.getString(R.string.use_d1_to_s2_if_s3,
