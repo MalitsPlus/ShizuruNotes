@@ -69,7 +69,7 @@ class Chara: Cloneable {
 
     val birthDate: String by lazy {
         val calendar = Calendar.getInstance()
-        calendar.set(calendar.get(Calendar.YEAR), birthMonth.toInt(), birthDay.toInt())
+        calendar.set(calendar.get(Calendar.YEAR), birthMonth.toInt() - 1, birthDay.toInt())
         val locale =  Locale(UserSettings.get().getLanguage())
         val format = DateFormat.getBestDateTimePattern(locale, "d MMM")
         SimpleDateFormat(format, locale).format(calendar.time)

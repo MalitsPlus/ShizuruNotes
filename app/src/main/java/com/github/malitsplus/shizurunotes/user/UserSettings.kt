@@ -76,7 +76,13 @@ class UserSettings private constructor(
         get() = PreferenceManager.getDefaultSharedPreferences(application)
 
     var lastEquipmentIds: List<Int>
-        get() = userData.lastEquipmentIds
+        get() {
+            return if (userData.lastEquipmentIds != null) {
+                userData.lastEquipmentIds
+            } else {
+                emptyList()
+            }
+        }
         set(ids) {
             userData.lastEquipmentIds = ids
             saveJson()
