@@ -613,4 +613,6 @@
     <string name="use_d1_to_s2_if_target_is_not_magical_type">%2$sが魔法攻撃を行う対象でない場合、[アクション%1$d] を使う。</string>
     <string name="change_energy_recovery_ratio_of_action_s1_to_s2_when_s3_get_damage">ダメージによるTP回復を含めて、%3$sが [アクション%1$s] を受けた時全てのTP回復効果を [本来の値 * %2$s] に変更させる。</string>
     <string name="make_this_skill_ignore_decoy">このスキルを挑発の影響を受けないようにさせる。</string>
+    <string name="time_stop">時間停止</string>
+    <string name="Stop_s1_for_s2_sec">%1$sを時間停止状態にする、効果時間 [%2$s] 秒。</string>
 </resources>

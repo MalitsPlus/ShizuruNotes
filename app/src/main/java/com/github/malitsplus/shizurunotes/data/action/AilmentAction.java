@@ -40,6 +40,9 @@ public class AilmentAction extends ActionParameter {
                     case faint:
                         return I18N.getString(R.string.Make_s1_fall_into_faint_for_s2_sec,
                                 targetParameter.buildTargetClause(), buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property));
+                    case timeStop:
+                        return I18N.getString(R.string.Stop_s1_for_s2_sec,
+                                targetParameter.buildTargetClause(), buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property));
                     default:
                         return I18N.getString(R.string.s1_s2_for_s3_sec,
                                 ailment.description(), targetParameter.buildTargetClause(), buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property));
