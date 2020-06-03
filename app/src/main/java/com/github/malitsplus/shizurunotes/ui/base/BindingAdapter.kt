@@ -45,3 +45,8 @@ fun loadSrc(view: ImageView, src: Int) {
 fun setRightString(view: SuperTextView, src: String) {
     view.setRightString(src)
 }
+
+@BindingAdapter("sLeftText")
+fun setLeftString(view: SuperTextView, src: String) {
+    view.setLeftString(src)
+}

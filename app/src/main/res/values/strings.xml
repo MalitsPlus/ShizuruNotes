@@ -209,7 +209,8 @@
     <string name="text_condition_or">ワンヒット</string>
     <string name="icon_previous">前回の選択</string>
     <string name="icon_cancel_all">クリア</string>
-    <string name="space_modifier" translatable="false">&#160;&#160;%s&#160;&#160;</string>
+    <string name="space_modifier" translatable="false">&#160;%s&#160;</string>
+    <string name="space_modifier_2" translatable="false">&#160;&#160;%s&#160;&#160;</string>
     <string name="text_log_clean">ログファイルをすべて削除します、よろしいですか？</string>
     <string name="text_delete">削除</string>
     <string name="text_deney">いいえ</string>
@@ -299,7 +300,12 @@
     <string name="menu_drop_hard">ハード</string>
     <string name="text_unique_equipment">専用装備</string>
     <string name="unimplemented">未実装</string>
-    <string name="rank_d">R%d</string>
+    <string name="rank_d" translatable="false">R%d</string>
+    <string name="text_equipment_level">強化レベル</string>
+    <string name="text_equipment_craft_requirement">必要素材</string>
+    <string name="x_d" translatable="false">× %d</string>
+    <string name="princess_heart">プリンセスハート</string>
+    <string name="memory_piece">メモリーピース</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>

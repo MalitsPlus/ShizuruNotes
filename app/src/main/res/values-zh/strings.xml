@@ -257,7 +257,7 @@
     <string name="physical">物理</string>
     <string name="inevitable_physical">必中的物理</string>
     <string name="Deal_s1_s2_damage_to_s3">对%3$s造成 [%1$s] %2$s伤害。</string>
-    <string name="Deal_s1_s2_damage_to_s3_and_this_attack_is_ensured_critical">对%3$s造成 [%1$s] 2$s伤害，且此动作必定暴击。</string>
+    <string name="Deal_s1_s2_damage_to_s3_and_this_attack_is_ensured_critical">对%3$s造成 [%1$s] %2$s伤害，且此动作必定暴击。</string>
     <string name="Critical_damage_is_s_times_as_normal_damage">触发暴击的场合，爆伤将变为 [%s] 倍。</string>
     <string name="Change_self_position_to_s_then_return">移动至%s的位置，技能施放完成后回到原来的位置。</string>
     <string name="Change_self_position_s_forward_then_return">向前移动 [%s]，技能施放完成后回到原来的位置。</string>
@@ -469,6 +469,8 @@
     <string name="make_this_skill_ignore_decoy">使本技能无视挑衅。</string>
     <string name="time_stop">时间停止</string>
     <string name="Stop_s1_for_s2_sec">使%1$s进入时间停止状态，持续时间 [%2$s] 秒。</string>
+    <string name="use_d1_to_s2_if_target_is_magical_type">%2$s是使用魔法攻击对象的场合，使用 [动作%1$d]。</string>
+    <string name="use_d1_to_s2_if_target_is_not_magical_type">%2$s不是使用魔法攻击对象的场合，使用 [动作%1$d]。</string>
 
     <string name="title_equipment">装备</string>
     <string name="title_quest">任务</string>
@@ -529,7 +531,6 @@
     <string name="before_summary">前日朝5时（GMT+9），仅通知</string>
     <string name="before_2_summary">两日前朝5时（GMT+9），仅通知</string>
     <string name="today_summary">当日朝5时（GMT+9），仅通知</string>
-    <string name="last_hour_summary">结束前1小时，通知&amp;震动</string>
     <string name="quest_campaign">活动</string>
     <string name="normal_before_title">Normal掉落前日</string>
     <string name="dungeon_before_2_title">迷宫扎营</string>
@@ -553,7 +554,16 @@
     <string name="hint_rank_from">Rank1</string>
     <string name="hint_rank_to">Rank2</string>
     <string name="text_calculate">计算</string>
-    <string name="rank_comparison_description">计算方法说明：\nx → 左边的Rank\ny → 右边的Rank\n{[∑(y的装备满强值) + ∑(比y低的Rank装备值) + (当前最大Lv + y)的角色基础值]小数点后四舍五入} - {[∑(x的装备满强值) + ∑(比x低的Rank装备值) + (当前最大Lv + x)的角色基础值]小数点后四舍五入}\n*上记的角色基础值是基于☆MAX的角色成长值来进行计算\n\n一句话来说就是本计算结果包含了Rank上升对角色基础状态值产生的影响。</string>
+    <string name="rank_comparison_description">计算方法说明：\nx → Rank1\ny → Rank2\n{[∑(y的装备满强值) + ∑(比y低的Rank装备值) + (当前最大Lv + y)的角色基础值]小数点后四舍五入} - {[∑(x的装备满强值) + ∑(比x低的Rank装备值) + (当前最大Lv + x)的角色基础值]小数点后四舍五入}\n*上记的角色基础值是基于☆MAX的角色成长值来进行计算\n\n一句话来说就是本计算结果包含了Rank上升对角色基础状态值产生的影响。</string>
     <string name="dialog_server_switch_title">切换服务器</string>
     <string name="dialog_server_switch_text">请注意，如果已在日历中开启活动通知功能，一旦切换服务器，已注册的原本服务器的活动日程通知将全部解除，重启应用后将注册新服务器的活动日程通知</string>
+    <string name="text_equipment_level">强化等级</string>
+    <string name="text_equipment_craft_requirement">所需素材</string>
+    <string name="princess_heart">公主之心</string>
+    <string name="memory_piece">记忆碎片</string>
+    <string name="menu_drop_normal">Normal</string>
+    <string name="menu_drop_hard">Hard</string>
+    <string name="text_unique_equipment">专用装备</string>
+    <string name="unimplemented">未实装</string>
+    <string name="last_hour_summary">结束前1小时，通知&amp;震动</string>
 </resources>

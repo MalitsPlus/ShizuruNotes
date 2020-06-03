@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.github.malitsplus.shizurunotes.BR
+import com.github.malitsplus.shizurunotes.R
 
 class ViewTypeAdapter<E : ViewType<*>>(
     private var list: MutableList<E> = mutableListOf(),
@@ -13,9 +14,7 @@ class ViewTypeAdapter<E : ViewType<*>>(
 ) : RecyclerView.Adapter<ViewTypeHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewTypeHolder {
-        val binding: ViewDataBinding =
-            DataBindingUtil.inflate(LayoutInflater.from(parent.context), viewType, parent, false)
-        return ViewTypeHolder(binding, onItemActionListener)
+        return ViewTypeHolder.create(parent, viewType, onItemActionListener)
     }
 
     override fun onBindViewHolder(holder: ViewTypeHolder, position: Int) {
@@ -102,27 +101,4 @@ class ViewTypeAdapter<E : ViewType<*>>(
         this.list[this.list.size - 1] = data
         notifyItemChanged(this.list.size - 1)
     }
-}
-
-class ViewTypeHolder(
-    private val binding: ViewDataBinding,
-    private val onItemActionListener: OnItemActionListener?
-) : RecyclerView.ViewHolder(binding.root) {
-
-    fun bindItem(item: ViewType<*>) {
-        binding.setVariable(BR.itemModel, item.data)
-        if (item.isUserInteractionEnabled) {
-            binding.setVariable(BR.itemPosition, adapterPosition)
-            binding.setVariable(BR.itemActionListener, onItemActionListener)
-        }
-        binding.executePendingBindings()
-    }
-}
-
-interface OnItemActionListener {
-    fun onItemClicked(position: Int)
-}
-
-interface OnItemClickListener<T> : OnItemActionListener {
-    fun onItemClicked(position: Int, item: T)
 }

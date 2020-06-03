@@ -617,9 +617,30 @@ class DBHelper private constructor(
     fun getUniqueEquipment(unitId: Int): RawUniqueEquipmentData? {
         return getBeanByRaw<RawUniqueEquipmentData>(
             """
-                SELECT e.* 
+                SELECT e.*
+                ,c.item_id_1
+                ,c.consume_num_1
+                ,c.item_id_2
+                ,c.consume_num_2
+                ,c.item_id_3
+                ,c.consume_num_3
+                ,c.item_id_4
+                ,c.consume_num_4
+                ,c.item_id_5
+                ,c.consume_num_5
+                ,c.item_id_6
+                ,c.consume_num_6
+                ,c.item_id_7
+                ,c.consume_num_7
+                ,c.item_id_8
+                ,c.consume_num_8
+                ,c.item_id_9
+                ,c.consume_num_9
+                ,c.item_id_10
+                ,c.consume_num_10
                 FROM unique_equipment_data AS e 
                 JOIN unit_unique_equip AS u ON e.equipment_id=u.equip_id 
+                LEFT JOIN unique_equipment_craft AS c ON e.equipment_id=c.equip_id
                 WHERE u.unit_id=$unitId 
                 """,
             RawUniqueEquipmentData::class.java

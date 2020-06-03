@@ -309,5 +309,13 @@
         android:id="@+id/nav_equipment"
         android:name="com.github.malitsplus.shizurunotes.ui.equipment.EquipmentFragment"
         android:label="fragment_equipment"
-        tools:layout="@layout/fragment_equipment" />
+        tools:layout="@layout/fragment_equipment" >
+        <action
+            android:id="@+id/action_nav_equipment_to_nav_drop_quest"
+            app:destination="@id/nav_drop_quest"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
 </navigation>

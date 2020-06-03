@@ -3,12 +3,13 @@ package com.github.malitsplus.shizurunotes.ui.drop
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.github.malitsplus.shizurunotes.data.Equipment
+import com.github.malitsplus.shizurunotes.data.Item
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelQuest
 import java.lang.reflect.InvocationTargetException
 
 class DropQuestViewModelFactory(
     private val sharedQuest: SharedViewModelQuest,
-    private val equipmentList: List<Equipment>?
+    private val equipmentList: List<Item>?
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return try {
