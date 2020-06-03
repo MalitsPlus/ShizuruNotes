@@ -5,8 +5,6 @@ import com.github.malitsplus.shizurunotes.data.Equipment;
 import com.github.malitsplus.shizurunotes.data.Property;
 
 public class RawUniqueEquipmentData {
-
-
     public int equipment_id;
     public String equipment_name;
     public String description;
@@ -32,12 +30,32 @@ public class RawUniqueEquipmentData {
     public double energy_recovery_rate;
     public double energy_reduce_rate;
     public double accuracy;
+    public int item_id_1;
+    public int consume_num_1;
+    public int item_id_2;
+    public int consume_num_2;
+    public int item_id_3;
+    public int consume_num_3;
+    public int item_id_4;
+    public int consume_num_4;
+    public int item_id_5;
+    public int consume_num_5;
+    public int item_id_6;
+    public int consume_num_6;
+    public int item_id_7;
+    public int consume_num_7;
+    public int item_id_8;
+    public int consume_num_8;
+    public int item_id_9;
+    public int consume_num_9;
+    public int item_id_10;
+    public int consume_num_10;
 
-    public void setCharaUniqueEquipment(Chara chara){
-        chara.setUniqueEquipment(new Equipment(
+    public Equipment getCharaUniqueEquipment(Chara chara){
+        return new Equipment(
                 equipment_id,
                 equipment_name,
-                description,
+                description.replace("\\n", ""),
                 promotion_level,
                 craft_flg,
                 equipment_enhance_point,
@@ -48,7 +66,7 @@ public class RawUniqueEquipmentData {
                 DBHelper.get().getUniqueEquipmentEnhance(chara.getUnitId()).getProperty(),
                 "",
                 0
-        ));
+        );
     }
 
     public Property getProperty(){

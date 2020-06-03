@@ -11,11 +11,13 @@ class DropViewModel : ViewModel() {
         itemList.clear()
         var currentRarity = 0
         equipList.forEach {
-            if (currentRarity != it.rarity) {
-                currentRarity = it.rarity
-                itemList.add(currentRarity.toString())
+            if (it.itemId != 999999) {
+                if (currentRarity != it.rarity) {
+                    currentRarity = it.rarity
+                    itemList.add(currentRarity.toString())
+                }
+                itemList.add(it)
             }
-            itemList.add(it)
         }
     }
 }

@@ -7,6 +7,7 @@ import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.data.Minion
 import com.github.malitsplus.shizurunotes.data.Property
 import com.github.malitsplus.shizurunotes.db.DBHelper.Companion.get
+import com.github.malitsplus.shizurunotes.db.MasterUniqueEquipment
 import kotlin.concurrent.thread
 
 class SharedViewModelChara : ViewModel() {
@@ -105,7 +106,7 @@ class SharedViewModelChara : ViewModel() {
     }
 
     private fun setUniqueEquipment(chara: Chara) {
-        get().getUniqueEquipment(chara.unitId)?.setCharaUniqueEquipment(chara)
+        chara.uniqueEquipment = MasterUniqueEquipment().getCharaUniqueEquipment(chara)
     }
 
     private fun setUnitSkillData(chara: Chara) {

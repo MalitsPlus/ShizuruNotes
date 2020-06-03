@@ -27,6 +27,7 @@ public class Statics {
     public static final String ICON_URL = API_URL + "/icon/unit/%d.webp";
     public static final String SKILL_ICON_URL = API_URL + "/icon/skill/%d.webp";
     public static final String EQUIPMENT_ICON_URL = API_URL + "/icon/equipment/%d.webp";
+    public static final String ITEM_ICON_URL = API_URL + "/icon/item/%d.webp";
     public static final String UNKNOWN_ICON = API_URL + "/icon/equipment/999999.webp";
 
     //  App URL

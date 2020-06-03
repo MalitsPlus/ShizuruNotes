@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="itemModel"
+            type="com.github.malitsplus.shizurunotes.data.Equipment" />
+        <variable
+            name="itemPosition"
+            type="Integer" />
+        <import type="com.github.malitsplus.shizurunotes.R" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <SeekBar
+            android:id="@+id/equipment_enhance_level_seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/selected_level_text" />
+
+        <TextView
+            android:id="@+id/selected_level_text"
+            style="@style/textTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="@{@string/space_modifier_2(@string/text_equipment_level), default=equipmentLevel}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/selected_level_integer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="@+id/selected_level_text"
+            app:layout_constraintStart_toEndOf="@+id/selected_level_text"
+            app:layout_constraintTop_toTopOf="@+id/selected_level_text" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
