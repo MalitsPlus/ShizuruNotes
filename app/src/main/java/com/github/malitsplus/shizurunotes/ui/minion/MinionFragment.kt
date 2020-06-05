@@ -8,55 +8,88 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.malitsplus.shizurunotes.R
+import com.github.malitsplus.shizurunotes.data.Skill
 import com.github.malitsplus.shizurunotes.databinding.FragmentMinionBinding
+import com.github.malitsplus.shizurunotes.ui.base.ViewType
+import com.github.malitsplus.shizurunotes.ui.base.ViewTypeAdapter
+import com.github.malitsplus.shizurunotes.ui.enemy.EnemyFragmentDirections
+import com.github.malitsplus.shizurunotes.ui.enemy.OnEnemyActionListener
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
+import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelCharaFactory
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattle
 
-class MinionFragment : Fragment() {
+class MinionFragment : Fragment(), OnEnemyActionListener {
 
     private val args: MinionFragmentArgs by navArgs()
+    private lateinit var binding: FragmentMinionBinding
     private lateinit var sharedChara: SharedViewModelChara
     private lateinit var sharedClanBattle: SharedViewModelClanBattle
+    private lateinit var minionVM: MinionViewModel
+    private val maxSpan = 6
+    private val minionAdapter by lazy { ViewTypeAdapter<ViewType<*>>(onItemActionListener = this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedChara = ViewModelProvider(requireActivity())[SharedViewModelChara::class.java]
         sharedClanBattle = ViewModelProvider(requireActivity())[SharedViewModelClanBattle::class.java]
+        minionVM = ViewModelProvider(this, SharedViewModelCharaFactory(sharedChara))[MinionViewModel::class.java]
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = FragmentMinionBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        val binding = DataBindingUtil.inflate<FragmentMinionBinding>(
-            inflater, R.layout.fragment_minion, container, false
-        ).apply {
-            lifecycleOwner = viewLifecycleOwner
-            toolbarMinion.setNavigationOnClickListener {
-                it.findNavController().navigateUp()
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.toolbarMinion.setNavigationOnClickListener {
+            it.findNavController().navigateUp()
         }
 
-        when(args.minionType){
-            1 -> with(binding.minionRecycler) {
-                adapter = MinionAdapter(R.layout.list_item_minion, sharedChara).apply {
-                    sharedChara.selectedMinion?.let { itemList = it }
-                }
-                layoutManager = LinearLayoutManager(this@MinionFragment.context)
+        when(args.minionType) {
+            1 -> {
+                minionVM.minionList = sharedChara.selectedMinion
                 sharedChara.backFlag = true
             }
-            2 -> with(binding.minionRecycler) {
-                adapter = EnemyMinionAdapter(R.layout.list_item_minion, sharedClanBattle).apply {
-                    sharedClanBattle.selectedMinion?.let { itemList = it }
-                }
-                layoutManager = LinearLayoutManager(this@MinionFragment.context)
+            2 -> {
+                minionVM.minionList = sharedClanBattle.selectedMinion
             }
         }
 
-        return binding.root
+        minionAdapter.setList(minionVM.viewList)
+        with(binding.minionRecycler) {
+            adapter = minionAdapter
+            layoutManager = GridLayoutManager(requireContext(), maxSpan).apply {
+                spanSizeLookup = spanSize
+            }
+        }
+    }
+
+    private val spanSize = object: GridLayoutManager.SpanSizeLookup() {
+        override fun getSpanSize(position: Int): Int {
+            return when (minionAdapter.getItemViewType(position)) {
+                R.layout.item_attack_pattern -> 1
+                R.layout.item_string_int -> maxSpan / 2
+                else -> maxSpan
+            }
+        }
+    }
+
+    override fun onMinionClicked(skill: Skill) {
+        if (skill.enemyMinionList.isNotEmpty()) {
+            sharedClanBattle.selectedMinion = skill.enemyMinionList
+            findNavController().navigate(EnemyFragmentDirections.actionNavEnemyToNavMinion())
+        }
+    }
+
+    override fun onItemClicked(position: Int) {
     }
 }

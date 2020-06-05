@@ -6,8 +6,12 @@
 
     <data>
         <variable
-            name="bossChild"
+            name="itemModel"
             type="com.github.malitsplus.shizurunotes.data.Enemy" />
+        <variable
+            name="itemPosition"
+            type="Integer" />
+        <import type="com.github.malitsplus.shizurunotes.R" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,9 +22,9 @@
             android:id="@+id/boss_child_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="@{bossChild.name, default=bossChildName}"
+            android:text="@{itemModel.name, default=childName}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,9 +32,9 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,10 +43,10 @@
             <com.allen.library.SuperTextView
                 android:id="@+id/txt_hp"
                 style="@style/StatusSuperTextView"
-                android:layout_weight="1"
                 android:layout_marginEnd="4dp"
+                android:layout_weight="1"
                 app:sLeftTextString="@string/text_hp"
-                bind:sRightText="@{String.valueOf(bossChild.property.hp)}" />
+                bind:sRightText="@{String.valueOf(itemModel.property.hp)}" />
 
             <com.allen.library.SuperTextView
                 android:id="@+id/txtPlaceHolder"
@@ -57,9 +61,9 @@
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +76,7 @@
                 android:layout_marginEnd="4dp"
                 android:layout_weight="1"
                 app:sLeftTextString="@string/text_physical_atk"
-                bind:sRightText="@{String.valueOf(bossChild.property.atk)}" />
+                bind:sRightText="@{String.valueOf(itemModel.property.atk)}" />
 
             <com.allen.library.SuperTextView
                 android:id="@+id/txt_magic_str"
@@ -80,16 +84,16 @@
                 android:layout_marginStart="4dp"
                 android:layout_weight="1"
                 app:sLeftTextString="@string/text_magical_atk"
-                bind:sRightText="@{String.valueOf(bossChild.property.magicStr)}" />
+                bind:sRightText="@{String.valueOf(itemModel.property.magicStr)}" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -103,7 +107,7 @@
                 android:layout_marginEnd="4dp"
                 android:layout_weight="1"
                 app:sLeftTextString="@string/text_physical_def"
-                bind:sRightText="@{String.valueOf(bossChild.property.def)}" />
+                bind:sRightText="@{String.valueOf(itemModel.property.def)}" />
 
             <com.allen.library.SuperTextView
                 android:id="@+id/txt_magic_def"
@@ -111,7 +115,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_weight="1"
                 app:sLeftTextString="@string/text_magical_def"
-                bind:sRightText="@{String.valueOf(bossChild.property.magicDef)}" />
+                bind:sRightText="@{String.valueOf(itemModel.property.magicDef)}" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

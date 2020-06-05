@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="itemModel"
+            type="com.github.malitsplus.shizurunotes.data.Minion" />
+        <variable
+            name="itemPosition"
+            type="Integer" />
+        <import type="com.github.malitsplus.shizurunotes.R" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/minion_title_constraint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/minion_icon"
+                style="@style/unitIcon"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                bind:errorHolder="@{R.drawable.mic_chara_icon_error}"
+                bind:imageUrl="@{itemModel.iconUrl}"
+                bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
+
+            <TextView
+                android:id="@+id/minion_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@{itemModel.unitName, default=minionName}"
+                app:layout_constraintStart_toEndOf="@+id/minion_icon"
+                app:layout_constraintTop_toTopOf="@+id/minion_icon" />
+
+            <TextView
+                android:id="@+id/minion_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@{String.valueOf(itemModel.unitId), default=unitId}"
+                app:layout_constraintStart_toEndOf="@+id/minion_icon"
+                app:layout_constraintTop_toBottomOf="@+id/minion_name" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/status_constraint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/minion_title_constraint">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.allen.library.SuperTextView
+                    android:id="@+id/txt_hp"
+                    style="@style/StatusSuperTextView"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    app:sLeftTextString="@string/text_hp"
+                    bind:sRightText="@{String.valueOf(itemModel.minionProperty.hp)}" />
+
+                <com.allen.library.SuperTextView
+                    android:id="@+id/txt_search_area_width"
+                    style="@style/StatusSuperTextView"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    app:sLeftTextString="@string/text_search_area_width"
+                    bind:sRightText="@{String.valueOf(itemModel.searchAreaWidth)}" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                <com.allen.library.SuperTextView
+                    android:id="@+id/txt_atk"
+                    style="@style/StatusSuperTextView"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    app:sLeftTextString="@string/text_physical_atk"
+                    bind:sRightText="@{String.valueOf(itemModel.minionProperty.atk)}" />
+
+                <com.allen.library.SuperTextView
+                    android:id="@+id/txt_magic_str"
+                    style="@style/StatusSuperTextView"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    app:sLeftTextString="@string/text_magical_atk"
+                    bind:sRightText="@{String.valueOf(itemModel.minionProperty.magicStr)}" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+                <com.allen.library.SuperTextView
+                    android:id="@+id/txt_def"
+                    style="@style/StatusSuperTextView"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    app:sLeftTextString="@string/text_physical_def"
+                    bind:sRightText="@{String.valueOf(itemModel.minionProperty.def)}" />
+
+                <com.allen.library.SuperTextView
+                    android:id="@+id/txt_magic_def"
+                    style="@style/StatusSuperTextView"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    app:sLeftTextString="@string/text_magical_def"
+                    bind:sRightText="@{String.valueOf(itemModel.minionProperty.magicDef)}" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear3">
+
+                <com.allen.library.SuperTextView
+                    android:id="@+id/txt_accuracy"
+                    style="@style/StatusSuperTextView"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    app:sLeftTextString="@string/text_accuracy"
+                    bind:sRightText="@{String.valueOf(itemModel.minionProperty.accuracy)}" />
+
+                <com.allen.library.SuperTextView
+                    android:id="@+id/txt_dodge"
+                    style="@style/StatusSuperTextView"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    app:sLeftTextString="@string/text_dodge"
+                    bind:sRightText="@{String.valueOf(itemModel.minionProperty.dodge)}" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -7,6 +7,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.github.malitsplus.shizurunotes.BR
 import com.github.malitsplus.shizurunotes.R
+import com.github.malitsplus.shizurunotes.databinding.ItemEnemySkillBinding
 import com.github.malitsplus.shizurunotes.databinding.ItemEquipmentBasicBinding
 import com.github.malitsplus.shizurunotes.databinding.ItemEquipmentLevelBinding
 import com.github.malitsplus.shizurunotes.ui.equipment.OnEquipmentActionListener
@@ -46,6 +47,15 @@ sealed class ViewTypeHolder(
         }
     }
 
+    open fun bindItem(item: ViewType<*>) {
+        binding.setVariable(BR.itemModel, item.data)
+        if (item.isUserInteractionEnabled) {
+            binding.setVariable(BR.itemPosition, adapterPosition)
+            binding.setVariable(BR.itemActionListener, onItemActionListener)
+        }
+        binding.executePendingBindings()
+    }
+
     companion object {
         fun create(
             parent: ViewGroup,
@@ -58,15 +68,6 @@ sealed class ViewTypeHolder(
                 else -> { GeneralViewHolder(binding, listener) }
             }
         }
-    }
-
-    open fun bindItem(item: ViewType<*>) {
-        binding.setVariable(BR.itemModel, item.data)
-        if (item.isUserInteractionEnabled) {
-            binding.setVariable(BR.itemPosition, adapterPosition)
-            binding.setVariable(BR.itemActionListener, onItemActionListener)
-        }
-        binding.executePendingBindings()
     }
 }
 

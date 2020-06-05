@@ -43,7 +43,7 @@ class ClanBattlePhaseAdapter (
                 if (it?.id == R.id.clan_battle_phase_boss){
                     sharedClanBattleVM.mSetSelectedBoss(thisBoss)
                     val action =
-                        ClanBattleViewPagerFragmentDirections.actionNavClanBattleViewPagerToNavClanBattleBossDetails()
+                        ClanBattleViewPagerFragmentDirections.actionNavClanBattleViewPagerToNavEnemy()
                     it.findNavController().navigate(action)
                 }
             }

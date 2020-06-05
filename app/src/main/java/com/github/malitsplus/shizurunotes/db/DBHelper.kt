@@ -342,11 +342,9 @@ class DBHelper private constructor(
     ): Map<Int, String>? {
         if (!FileUtils.checkFile(FileUtils.getDbFilePath())) return null
         val cursor = readableDatabase.rawQuery(sql, null)
-        val result: MutableMap<Int, String> =
-            HashMap()
+        val result: MutableMap<Int, String> = HashMap()
         while (cursor.moveToNext()) {
-            result[cursor.getInt(cursor.getColumnIndex(key))] =
-                cursor.getString(cursor.getColumnIndex(value))
+            result[cursor.getInt(cursor.getColumnIndex(key))] = cursor.getString(cursor.getColumnIndex(value))
         }
         cursor.close()
         return result
@@ -866,6 +864,7 @@ class DBHelper private constructor(
                     ,u.atk_type 
                     ,u.normal_atk_cast_time
 					,u.search_area_width
+                    ,u.comment
                     FROM 
                     unit_skill_data b 
                     ,enemy_parameter a 
@@ -921,6 +920,7 @@ class DBHelper private constructor(
                     ,u.atk_type 
                     ,u.normal_atk_cast_time
 					,u.search_area_width
+                    ,u.comment
                     FROM 
                     unit_skill_data b 
                     ,enemy_parameter a 
@@ -1041,7 +1041,7 @@ class DBHelper private constructor(
     }
 
     /***
-     * 获取会战bossList
+     * 获取迷宫bossList
      * @param
      * @return
      */

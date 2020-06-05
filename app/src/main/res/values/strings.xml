@@ -124,7 +124,7 @@
     <string name="text_physical_penetrate">&#160;物理貫通&#160;</string>
     <string name="text_magical_penetrate">&#160;魔法貫通&#160;</string>
     <string name="text_hp_recovery">&#160;回復量上昇&#160;</string>
-    <string name="text_search_area_width">&#160;攻撃範囲&#160;</string>
+    <string name="text_search_area_width">&#160;攻撃距離&#160;</string>
     <string name="text_status_tips">*上記のステータスは☆MAX、LvMAX、装備&amp;専用装備フル強化、ストーリーステータス&amp;Exスキルを含めての値になります。</string>
     <string name="text_attack_pattern">&#160;行動パターン%d&#160;</string>
     <string name="text_normal_mode">通常モード</string>
@@ -306,6 +306,8 @@
     <string name="x_d" translatable="false">× %d</string>
     <string name="princess_heart">プリンセスハート</string>
     <string name="memory_piece">メモリーピース</string>
+    <string name="aged_s">享年%s</string>
+    <string name="hint_text_search">キャラを検索…</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>
