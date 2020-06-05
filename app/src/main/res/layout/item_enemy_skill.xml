@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
         <variable
-            name="skill"
+            name="itemModel"
             type="com.github.malitsplus.shizurunotes.data.Skill" />
-        <import type="com.github.malitsplus.shizurunotes.R"/>
+        <variable
+            name="itemPosition"
+            type="Integer" />
+        <variable
+            name="itemActionListener"
+            type="com.github.malitsplus.shizurunotes.ui.enemy.OnEnemyActionListener" />
+        <import type="com.github.malitsplus.shizurunotes.R" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,12 +35,12 @@
 
         <TextView
             android:id="@+id/boss_skill_type"
+            style="@style/textTag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            style="@style/textTag"
-            android:layout_marginTop="8dp"
-            android:text="@{skill.skillClass.description(), default=skillType}"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@{itemModel.skillClass.description(), default=skillType}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider" />
 
@@ -41,22 +48,22 @@
             android:id="@+id/boss_skill_cast_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="@{skill.castTimeText, default=castTime}"
+            android:text="@{itemModel.castTimeText, default=castTime}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/boss_skill_type" />
 
         <TextView
             android:id="@+id/boss_skill_actions"
+            style="@style/longMultipleLineText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
-            style="@style/longMultipleLineText"
-            android:text="@{skill.actionDescriptions, default=actionDescriptions}"
+            android:text="@{itemModel.actionDescriptions, default=actionDescriptions}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -68,17 +75,18 @@
             android:id="@+id/enemyMinionButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
-            android:visibility="gone"
+            android:onClick="@{() -> itemActionListener.onMinionClicked(itemModel)}"
             android:text="@string/button_minion_info"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/boss_skill_actions"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            bind:checkSummonSkill="@{itemModel}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

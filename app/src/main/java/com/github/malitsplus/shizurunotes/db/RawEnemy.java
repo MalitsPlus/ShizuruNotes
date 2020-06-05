@@ -15,6 +15,7 @@ public class RawEnemy {
     public int atk_type;
     public int search_area_width;
     public double normal_atk_cast_time;
+    public String comment;
 
     public int hp;
     public int atk;
@@ -94,8 +95,12 @@ public class RawEnemy {
                 dodge, physical_penetrate, magic_penetrate, life_steal, hp_recovery_rate,
                 energy_recovery_rate, energy_reduce_rate, accuracy
         );
-
-        boss.setBasic(unit_id, name, level, prefab_id, atk_type, search_area_width, normal_atk_cast_time, resist_status_id, property);
+        if (comment != null) {
+            comment = comment.replace("\\n　", "").replace("\\n", "").replace("・", "\n・");
+        } else {
+            comment = "";
+        }
+        boss.setBasic(unit_id, name, comment, level, prefab_id, atk_type, search_area_width, normal_atk_cast_time, resist_status_id, property);
 
         //children part
         for (int i = 1; i <= 5; i++){

@@ -27,7 +27,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:title="@string/title_chara_list"
-                app:layout_scrollFlags="scroll|enterAlways" />
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <com.mancj.materialsearchbar.MaterialSearchBar
+                    android:id="@+id/chara_search_bar"
+                    style="@style/mSearchBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:mt_hint="@string/hint_text_search"
+                    app:mt_maxSuggestionsCount="0"
+                    app:mt_placeholder="@string/title_chara_list" />
+
+            </com.google.android.material.appbar.MaterialToolbar>
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -79,4 +79,5 @@ dependencies {
     implementation 'com.jakewharton:process-phoenix:2.0.0'
     implementation 'com.github.lygttpod:SuperTextView:2.4.2'
     implementation 'com.afollestad.material-dialogs:core:3.3.0'
+    implementation 'com.github.mancj:MaterialSearchBar:0.8.5'
 }

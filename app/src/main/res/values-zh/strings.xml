@@ -82,7 +82,7 @@
     <string name="text_physical_penetrate">&#160;物理贯通&#160;</string>
     <string name="text_magical_penetrate">&#160;魔法贯通&#160;</string>
     <string name="text_hp_recovery">&#160;回复量上升&#160;</string>
-    <string name="text_search_area_width">&#160;攻击范围&#160;</string>
+    <string name="text_search_area_width">&#160;攻击距离&#160;</string>
     <string name="text_status_tips">*上记的状态参数为☆MAX、LvMAX，装备&amp;专用装备最大强化，且包含羁绊剧情&amp;Ex技能的最终值。</string>
     <string name="text_attack_pattern">&#160;技能循环%d&#160;</string>
     <string name="text_normal_mode">通常模式</string>
@@ -566,4 +566,5 @@
     <string name="text_unique_equipment">专用装备</string>
     <string name="unimplemented">未实装</string>
     <string name="last_hour_summary">结束前1小时，通知&amp;震动</string>
+    <string name="aged_s">享年%s</string>
 </resources>
