@@ -2,6 +2,8 @@ package com.github.malitsplus.shizurunotes.data
 
 import android.text.format.DateFormat
 import androidx.annotation.DrawableRes
+import com.github.malitsplus.shizurunotes.R
+import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.action.PassiveAction
 import com.github.malitsplus.shizurunotes.user.UserSettings
 import java.text.SimpleDateFormat
@@ -68,11 +70,15 @@ class Chara: Cloneable {
     var skills = mutableListOf<Skill>()
 
     val birthDate: String by lazy {
-        val calendar = Calendar.getInstance()
-        calendar.set(calendar.get(Calendar.YEAR), birthMonth.toInt() - 1, birthDay.toInt())
-        val locale =  Locale(UserSettings.get().getLanguage())
-        val format = DateFormat.getBestDateTimePattern(locale, "d MMM")
-        SimpleDateFormat(format, locale).format(calendar.time)
+        if (birthMonth.contains("?") || birthDay.contains("?")) {
+            birthMonth + I18N.getString(R.string.text_month) + birthDay + I18N.getString(R.string.text_day)
+        } else {
+            val calendar = Calendar.getInstance()
+            calendar.set(calendar.get(Calendar.YEAR), birthMonth.toInt() - 1, birthDay.toInt())
+            val locale =  Locale(UserSettings.get().getLanguage())
+            val format = DateFormat.getBestDateTimePattern(locale, "d MMM")
+            SimpleDateFormat(format, locale).format(calendar.time)
+        }
     }
 
     @Suppress("UNUSED_PARAMETER")
