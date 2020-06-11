@@ -308,6 +308,8 @@
     <string name="memory_piece">メモリーピース</string>
     <string name="aged_s">享年%s</string>
     <string name="hint_text_search">キャラを検索…</string>
+    <string name="hint_text_search_no_result">該当キャラは見つかりませんでした</string>
+    <string name="transition_name" translatable="false">transItem_%d</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>

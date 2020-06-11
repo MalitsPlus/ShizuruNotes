@@ -79,8 +79,7 @@
             android:id="@+id/comparison_list_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:listitem="@layout/list_item_chara" />
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         <ProgressBar
             android:id="@+id/comparison_list_progressbar"

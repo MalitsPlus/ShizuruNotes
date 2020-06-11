@@ -98,3 +98,9 @@ data class MinionBasicVT(
     override val layoutId: Int = R.layout.item_minion_basic,
     override val isUserInteractionEnabled: Boolean = false
 ) : ViewType<Minion>
+
+data class CharaListVT(
+    override val data: Chara,
+    override val layoutId: Int = R.layout.item_chara,
+    override val isUserInteractionEnabled: Boolean = true
+) : ViewType<Chara>

@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
-            name="clickListener"
-            type="android.view.View.OnClickListener"/>
-        <variable
-            name="chara"
+            name="itemModel"
             type="com.github.malitsplus.shizurunotes.data.Chara" />
-        <import type="com.github.malitsplus.shizurunotes.R"/>
+        <variable
+            name="itemPosition"
+            type="Integer" />
+        <variable
+            name="itemActionListener"
+            type="com.github.malitsplus.shizurunotes.ui.charalist.OnCharaActionListener" />
+        <import type="com.github.malitsplus.shizurunotes.R" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/itemChara"
         android:layout_width="match_parent"
-        android:onClick="@{clickListener}"
+        android:transitionName="@{@string/transition_name(itemModel.charaId)}"
+        android:onClick="@{() -> itemActionListener.onCharaClickedListener(itemModel, itemPosition)}"
         android:foreground="?android:attr/selectableItemBackground"
         android:layout_height="66dp">
 
@@ -28,7 +32,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/positionIcon"
             app:layout_constraintTop_toTopOf="parent"
-            bind:imageUrl="@{chara.iconUrl}"
+            bind:imageUrl="@{itemModel.iconUrl}"
             bind:errorHolder="@{R.drawable.mic_chara_icon_error}"
             bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
 
@@ -38,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="@{chara.unitName, default=unitName}"
+            android:text="@{itemModel.unitName, default=unitName}"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/charaIcon"
             app:layout_constraintTop_toTopOf="parent" />
@@ -49,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="@{chara.actualName, default=actualName}"
+            android:text="@{itemModel.actualName, default=actualName}"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/charaIcon"
             app:layout_constraintTop_toBottomOf="@+id/charaNameKataText" />
@@ -62,14 +66,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            bind:src="@{chara.positionIcon}" />
+            bind:src="@{itemModel.positionIcon}" />
 
         <TextView
             android:id="@+id/sortValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:text="@{chara.sortValue, default=sortValue}"
+            android:text="@{itemModel.sortValue, default=sortValue}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
