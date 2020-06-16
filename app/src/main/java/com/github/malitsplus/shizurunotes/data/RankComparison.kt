@@ -1,6 +1,5 @@
 package com.github.malitsplus.shizurunotes.data
 
-import com.github.malitsplus.shizurunotes.common.Statics
 
 class RankComparison(
     val chara: Chara,

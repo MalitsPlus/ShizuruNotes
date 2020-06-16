@@ -41,7 +41,11 @@ class Enemy (
             attackPatternList.add(it.attackPattern.setItems(skills, atkType))
         }
 
-        iconUrl = Statics.ICON_URL.format(prefabId)
+        iconUrl = if (prefabId in 100000..199999) {
+            Statics.SHADOW_ICON_URL.format(prefabId + 30)
+        } else {
+            Statics.ICON_URL.format(prefabId)
+        }
 
         if (resistStatusId != 0){
             resistMap = DBHelper.get().getResistData(resistStatusId)?.resistData

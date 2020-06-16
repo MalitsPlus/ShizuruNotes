@@ -38,6 +38,10 @@ class MenuFragment : Fragment() {
                         it.findNavController().navigate(
                             BottomNaviFragmentDirections.actionNavBottomNavigationToNavRankCompare()
                         )
+                    R.id.constraint_hatsune ->
+                        it.findNavController().navigate(
+                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavHatsuneStage()
+                        )
                 }
             }
         }

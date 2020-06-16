@@ -104,3 +104,15 @@ data class CharaListVT(
     override val layoutId: Int = R.layout.item_chara,
     override val isUserInteractionEnabled: Boolean = true
 ) : ViewType<Chara>
+
+data class HatsuneStageVT(
+    override val data: HatsuneStage,
+    override val layoutId: Int = R.layout.item_hatsune_stage,
+    override val isUserInteractionEnabled: Boolean = true
+) : ViewType<HatsuneStage>
+
+data class HatsuneWaveVT(
+    override val data: Map.Entry<String, WaveGroup>,
+    override val layoutId: Int = R.layout.item_hatsune_wave,
+    override val isUserInteractionEnabled: Boolean = true
+) : ViewType<Map.Entry<String, WaveGroup>>

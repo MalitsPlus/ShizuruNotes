@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.github.malitsplus.shizurunotes.R
+import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.Skill
 import com.github.malitsplus.shizurunotes.databinding.FragmentEnemyBinding
 import com.github.malitsplus.shizurunotes.ui.base.ViewType
@@ -44,7 +45,13 @@ class EnemyFragment : Fragment(), OnEnemyActionListener {
         super.onViewCreated(view, savedInstanceState)
         with (binding) {
             enemyToolbar.apply {
-                title = sharedClanBattle.selectedBoss?.name
+                sharedClanBattle.selectedEnemyList.let {
+                    title = if (it?.size == 1) {
+                        it[0].name
+                    } else {
+                        I18N.getString(R.string.title_enemy)
+                    }
+                }
                 setNavigationOnClickListener {
                     it.findNavController().navigateUp()
                 }
