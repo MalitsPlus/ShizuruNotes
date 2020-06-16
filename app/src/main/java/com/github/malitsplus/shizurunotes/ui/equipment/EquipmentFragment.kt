@@ -24,6 +24,7 @@ import com.github.malitsplus.shizurunotes.ui.base.ViewTypeHolder
 import com.github.malitsplus.shizurunotes.ui.charaprofile.OnEquipmentClickListener
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipmentFactory
+import com.google.android.material.slider.Slider
 
 class EquipmentFragment : Fragment(), OnEquipmentActionListener<Equipment> {
 
@@ -101,8 +102,8 @@ class EquipmentFragment : Fragment(), OnEquipmentActionListener<Equipment> {
         }
     }
 
-    override val onSeekBarActionListener: SeekBar.OnSeekBarChangeListener
-        get() = equipmentVM.onSeekBarChangeListener
+    override val onSliderActionListener: Slider.OnChangeListener
+        get() = equipmentVM.onSliderChangeListener
 
     override fun onItemClickedListener(item: Item) {
         if (item.itemId in 101000..139999) {
