@@ -17,8 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <SeekBar
-            android:id="@+id/equipment_enhance_level_seek_bar"
+        <com.google.android.material.slider.Slider
+            android:id="@+id/equipment_enhance_level_slider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -28,7 +28,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/selected_level_text" />
+            app:layout_constraintTop_toBottomOf="@+id/selected_level_text"
+            android:stepSize="1" />
 
         <TextView
             android:id="@+id/selected_level_text"

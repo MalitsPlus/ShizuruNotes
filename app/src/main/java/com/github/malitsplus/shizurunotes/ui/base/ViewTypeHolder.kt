@@ -35,13 +35,13 @@ sealed class ViewTypeHolder(
         override fun bindItem(item: ViewType<*>) {
             super.bindItem(item)
             item as EquipmentLevelVT
-            (binding as ItemEquipmentLevelBinding).equipmentEnhanceLevelSeekBar.apply {
+            (binding as ItemEquipmentLevelBinding).equipmentEnhanceLevelSlider.apply {
                 if (item.data.maxEnhanceLevel == 0) {
                     isEnabled = false
                 } else {
-                    min = 0
-                    max = item.data.maxEnhanceLevel
-                    setOnSeekBarChangeListener((onItemActionListener as OnEquipmentActionListener<*>).onSeekBarActionListener)
+                    valueFrom = 0f
+                    valueTo = item.data.maxEnhanceLevel.toFloat()
+                    addOnChangeListener((onItemActionListener as OnEquipmentActionListener<*>).onSliderActionListener)
                 }
             }
         }

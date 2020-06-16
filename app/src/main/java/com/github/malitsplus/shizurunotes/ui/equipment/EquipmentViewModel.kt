@@ -9,6 +9,7 @@ import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.data.Item
 import com.github.malitsplus.shizurunotes.ui.base.*
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
+import com.google.android.material.slider.Slider
 
 class EquipmentViewModel(
     val sharedEquipment: SharedViewModelEquipment
@@ -30,16 +31,8 @@ class EquipmentViewModel(
 
     val selectedLevel = MutableLiveData(0)
 
-    val onSeekBarChangeListener = object: SeekBar.OnSeekBarChangeListener {
-        override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-            selectedLevel.value = progress
-        }
-
-        override fun onStartTrackingTouch(seekBar: SeekBar) {
-        }
-
-        override fun onStopTrackingTouch(seekBar: SeekBar) {
-        }
+    val onSliderChangeListener = Slider.OnChangeListener { _, value, _ ->
+            selectedLevel.value = value.toInt()
     }
 
     fun getPropertyViewType(level: Int = 0): List<ViewType<*>> {
@@ -53,5 +46,5 @@ class EquipmentViewModel(
 
 interface OnEquipmentActionListener<T>: OnItemActionListener {
     fun onItemClickedListener(item: Item)
-    val onSeekBarActionListener: SeekBar.OnSeekBarChangeListener
+    val onSliderActionListener: Slider.OnChangeListener
 }
