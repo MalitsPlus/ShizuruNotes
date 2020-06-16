@@ -13,6 +13,8 @@
     <string name="title_log">ログ</string>
     <string name="title_enemy">モンスター</string>
     <string name="title_rank_comparison">ランク比較</string>
+    <string name="title_hatsune_stage">イベント</string>
+    <string name="title_hatsune_wave">イベント</string>
     <string name="setting_language" translatable="false">Language</string>
     <string name="setting_language_dialog_title">Language</string>
     <string-array name="setting_language_options">
@@ -310,6 +312,7 @@
     <string name="hint_text_search">キャラを検索…</string>
     <string name="hint_text_search_no_result">該当キャラは見つかりませんでした</string>
     <string name="transition_name" translatable="false">transItem_%d</string>
+    <string name="sp_mode_d">SP MODE %d</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>

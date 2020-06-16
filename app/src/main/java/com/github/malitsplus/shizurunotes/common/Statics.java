@@ -25,6 +25,7 @@ public class Statics {
     //  Resource URL
     public static final String IMAGE_URL = API_URL + "/card/full/%d.webp@h300";
     public static final String ICON_URL = API_URL + "/icon/unit/%d.webp";
+    public static final String SHADOW_ICON_URL = API_URL + "/icon/unit_shadow/%d.webp";
     public static final String SKILL_ICON_URL = API_URL + "/icon/skill/%d.webp";
     public static final String EQUIPMENT_ICON_URL = API_URL + "/icon/equipment/%d.webp";
     public static final String ITEM_ICON_URL = API_URL + "/icon/item/%d.webp";

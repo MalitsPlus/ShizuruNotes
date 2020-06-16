@@ -802,7 +802,7 @@ class DBHelper private constructor(
     }
 
     /***
-     * 获取会战phase-wave
+     * 获取wave
      * @param
      * @return
      */
@@ -815,6 +815,22 @@ class DBHelper private constructor(
                     """.format(waveGroupList.toString()
                         .replace("[", "")
                         .replace("]", "")),
+            RawWaveGroup::class.java
+        )
+    }
+
+    /***
+     * 获取wave
+     * @param
+     * @return
+     */
+    fun getWaveGroupData(waveGroupId: Int): RawWaveGroup? {
+        return getBeanByRaw(
+            """
+            SELECT * 
+            FROM wave_group_data 
+            WHERE wave_group_id = $waveGroupId 
+            """,
             RawWaveGroup::class.java
         )
     }
@@ -1123,7 +1139,41 @@ class DBHelper private constructor(
         nowTimeString?.let {
             sqlString += " WHERE a.end_time > '$it' "
         }
+        sqlString += " ORDER BY a.event_id DESC "
         return getBeanListByRaw(sqlString, RawScheduleHatsune::class.java)
+    }
+
+    /***
+     * 获取hatsune一般boss数据
+     */
+    fun getHatsuneBattle(eventId: Int): List<RawHatsuneBoss>? {
+        return getBeanListByRaw(
+            """
+            SELECT
+            a.*
+            FROM
+            hatsune_boss a
+            WHERE
+            event_id = $eventId 
+            AND area_id <> 0 
+            """,
+            RawHatsuneBoss::class.java
+        )
+    }
+
+    /***
+     * 获取hatsune SP boss数据
+     */
+    fun getHatsuneSP(eventId: Int): List<RawHatsuneSpecialBattle>? {
+        return getBeanListByRaw(
+            """
+            SELECT
+            a.*
+            FROM hatsune_special_battle a
+            WHERE event_id = $eventId
+            """,
+            RawHatsuneSpecialBattle::class.java
+        )
     }
 
     /***

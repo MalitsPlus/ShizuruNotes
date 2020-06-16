@@ -71,6 +71,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_nav_bottom_navigation_to_nav_hatsune_stage"
+            app:destination="@id/nav_hatsune_stage"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -317,5 +324,31 @@
                 app:argType="integer"
                 android:defaultValue="2" />
         </action>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_hatsune_stage"
+        android:name="com.github.malitsplus.shizurunotes.ui.hatsune.HatsuneStageFragment"
+        android:label="fragment_hatsune_stage"
+        tools:layout="@layout/fragment_hatsune_stage" >
+        <action
+            android:id="@+id/action_nav_hatsune_stage_to_nav_hatsune_wave"
+            app:destination="@id/nav_hatsune_wave"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_hatsune_wave"
+        android:name="com.github.malitsplus.shizurunotes.ui.hatsune.HatsuneWaveFragment"
+        android:label="fragment_hatsune_wave"
+        tools:layout="@layout/fragment_hatsune_wave" >
+        <action
+            android:id="@+id/action_nav_hatsune_wave_to_nav_enemy"
+            app:destination="@id/nav_enemy"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 </navigation>

@@ -1,12 +1,7 @@
 package com.github.malitsplus.shizurunotes.ui.base
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
-import com.github.malitsplus.shizurunotes.BR
-import com.github.malitsplus.shizurunotes.R
 
 class ViewTypeAdapter<E : ViewType<*>>(
     private var list: MutableList<E> = mutableListOf(),
