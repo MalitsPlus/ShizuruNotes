@@ -2,6 +2,7 @@ package com.github.malitsplus.shizurunotes.ui.base
 
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.*
+import com.github.malitsplus.shizurunotes.ui.analyze.AnalyzeViewModel
 
 data class SpaceVT(
     override val data: Int = 25,
@@ -89,7 +90,7 @@ data class EnemySkillVT(
 
 data class StringIntVT(
     override val data: Map.Entry<String, Int>,
-    override val layoutId: Int = R.layout.item_string_int,
+    override val layoutId: Int = R.layout.item_resist_property,
     override val isUserInteractionEnabled: Boolean = false
 ) : ViewType<Map.Entry<String, Int>>
 
@@ -116,3 +117,15 @@ data class HatsuneWaveVT(
     override val layoutId: Int = R.layout.item_hatsune_wave,
     override val isUserInteractionEnabled: Boolean = true
 ) : ViewType<Map.Entry<String, WaveGroup>>
+
+data class PropertyGroupVT(
+    override val data: Property,
+    override val layoutId: Int = R.layout.item_property_group,
+    override val isUserInteractionEnabled: Boolean = false
+) : ViewType<Property>
+
+data class AnalyzePanelVT(
+    override val data: AnalyzeViewModel,
+    override val layoutId: Int = R.layout.item_analyze_adjust,
+    override val isUserInteractionEnabled: Boolean = true
+) : ViewType<AnalyzeViewModel>

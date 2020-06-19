@@ -28,7 +28,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             bind:sLeftText="@{@string/space_modifier(itemModel.key)}"
-            bind:sRightText="@{itemModel.value.toString()}" />
+            bind:sRightText="@{@string/percent_modifier(itemModel.value)}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

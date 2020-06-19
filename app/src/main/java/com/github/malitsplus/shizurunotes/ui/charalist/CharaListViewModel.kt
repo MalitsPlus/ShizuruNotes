@@ -66,11 +66,14 @@ class CharaListViewModel(
         5 to I18N.getString(R.string.ui_chip_sort_magical_critical),
         6 to I18N.getString(R.string.ui_chip_sort_physical_def),
         7 to I18N.getString(R.string.ui_chip_sort_magical_def),
-        8 to I18N.getString(R.string.ui_chip_sort_tp_up),
-        9 to I18N.getString(R.string.ui_chip_sort_tp_reduce),
-        10 to I18N.getString(R.string.ui_chip_sort_age),
-        11 to I18N.getString(R.string.ui_chip_sort_height),
-        12 to I18N.getString(R.string.ui_chip_sort_weight)
+        8 to I18N.getString(R.string.ui_chip_sort_hp),
+        9 to I18N.getString(R.string.ui_chip_sort_effective_physical_hp),
+        10 to I18N.getString(R.string.ui_chip_sort_effective_magical_hp),
+        11 to I18N.getString(R.string.ui_chip_sort_tp_up),
+        12 to I18N.getString(R.string.ui_chip_sort_tp_reduce),
+        13 to I18N.getString(R.string.ui_chip_sort_age),
+        14 to I18N.getString(R.string.ui_chip_sort_height),
+        15 to I18N.getString(R.string.ui_chip_sort_weight)
     )
 
     val dropDownValuesMap = mapOf<Int, Array<String>>(
@@ -146,22 +149,34 @@ class CharaListViewModel(
                     valueB = b.charaProperty.getMagicDef()
                 }
                 "8" -> {
+                    valueA = a.charaProperty.getHp()
+                    valueB = b.charaProperty.getHp()
+                }
+                "9" -> {
+                    valueA = a.charaProperty.effectivePhysicalHP
+                    valueB = b.charaProperty.effectivePhysicalHP
+                }
+                "10" -> {
+                    valueA = a.charaProperty.effectiveMagicalHP
+                    valueB = b.charaProperty.effectiveMagicalHP
+                }
+                "11" -> {
                     valueA = a.charaProperty.getEnergyRecoveryRate()
                     valueB = b.charaProperty.getEnergyRecoveryRate()
                 }
-                "9" -> {
+                "12" -> {
                     valueA = a.charaProperty.getEnergyReduceRate()
                     valueB = b.charaProperty.getEnergyReduceRate()
                 }
-                "10" -> {
+                "13" -> {
                     valueA = if (a.age.contains("?")) 9999 else a.age.toInt()
                     valueB = if (b.age.contains("?")) 9999 else b.age.toInt()
                 }
-                "11" -> {
+                "14" -> {
                     valueA = if (a.height.contains("?")) 9999 else a.height.toInt()
                     valueB = if (b.height.contains("?")) 9999 else b.height.toInt()
                 }
-                "12" -> {
+                "15" -> {
                     valueA = if (a.weight.contains("?")) 9999 else a.weight.toInt()
                     valueB = if (b.weight.contains("?")) 9999 else b.weight.toInt()
                 }
@@ -196,17 +211,20 @@ class CharaListViewModel(
             "5" -> chara.sortValue = chara.charaProperty.getMagicCritical().toString()
             "6" -> chara.sortValue = chara.charaProperty.getDef().toString()
             "7" -> chara.sortValue = chara.charaProperty.getMagicDef().toString()
-            "8" -> chara.sortValue = chara.charaProperty.getEnergyRecoveryRate().toString()
-            "9" -> chara.sortValue = chara.charaProperty.getEnergyReduceRate().toString()
-            "10" -> {
+            "8" -> chara.sortValue = chara.charaProperty.getHp().toString()
+            "9" -> chara.sortValue = chara.charaProperty.effectivePhysicalHP.toString()
+            "10" -> chara.sortValue = chara.charaProperty.effectiveMagicalHP.toString()
+            "11" -> chara.sortValue = chara.charaProperty.getEnergyRecoveryRate().toString()
+            "12" -> chara.sortValue = chara.charaProperty.getEnergyReduceRate().toString()
+            "13" -> {
                 if (chara.actualName == "出雲 宮子") {
                     chara.sortValue = I18N.getString(R.string.aged_s, chara.age)
                 } else {
                     chara.sortValue = chara.age
                 }
             }
-            "11" -> chara.sortValue = chara.height
-            "12" -> chara.sortValue = chara.weight
+            "14" -> chara.sortValue = chara.height
+            "15" -> chara.sortValue = chara.weight
             else -> chara.sortValue = ""
         }
     }

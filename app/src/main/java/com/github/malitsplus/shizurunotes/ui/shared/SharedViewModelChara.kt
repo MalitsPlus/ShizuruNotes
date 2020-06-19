@@ -2,12 +2,14 @@ package com.github.malitsplus.shizurunotes.ui.shared
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.github.malitsplus.shizurunotes.common.Statics
 import com.github.malitsplus.shizurunotes.data.Chara
 import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.data.Minion
 import com.github.malitsplus.shizurunotes.data.Property
 import com.github.malitsplus.shizurunotes.db.DBHelper.Companion.get
 import com.github.malitsplus.shizurunotes.db.MasterUniqueEquipment
+import java.util.*
 import kotlin.concurrent.thread
 
 class SharedViewModelChara : ViewModel() {
@@ -72,7 +74,16 @@ class SharedViewModelChara : ViewModel() {
     }
 
     private fun setCharaRarity(chara: Chara) {
-        get().getUnitRarity(chara.unitId)?.setCharaRarity(chara)
+        get().getUnitRarityList(chara.unitId)?.forEach {
+            if (it.rarity == 6) {
+                chara.maxRarity = 6
+                chara.rarity = 6
+                chara.iconUrl = Statics.ICON_URL.format(chara.prefabId + 60)
+                chara.imageUrl = Statics.IMAGE_URL.format(chara.prefabId + 60)
+            }
+            chara.rarityProperty[it.rarity] = it.property
+            chara.rarityPropertyGrowth[it.rarity] = it.propertyGrowth
+        }
     }
 
     private fun setCharaStoryStatus(chara: Chara) {

@@ -15,6 +15,7 @@
     <string name="title_rank_comparison">ランク比較</string>
     <string name="title_hatsune_stage">イベント</string>
     <string name="title_hatsune_wave">イベント</string>
+    <string name="title_analyze">データ分析</string>
     <string name="setting_language" translatable="false">Language</string>
     <string name="setting_language_dialog_title">Language</string>
     <string-array name="setting_language_options">
@@ -89,6 +90,8 @@
     <string name="ui_chip_sort_physical_critical">物理クリ</string>
     <string name="ui_chip_sort_magical_critical">魔法クリ</string>
     <string name="ui_chip_sort_hp">HP</string>
+    <string name="ui_chip_sort_effective_physical_hp">物理有効HP</string>
+    <string name="ui_chip_sort_effective_magical_hp">魔法有効HP</string>
     <string name="ui_chip_sort_tp_up">TP上昇</string>
     <string name="ui_chip_sort_tp_reduce">TP減軽</string>
     <string name="ui_chip_sort_age">年齢</string>
@@ -116,6 +119,8 @@
     <string name="text_physical_def">&#160;物理防御力&#160;</string>
     <string name="text_magical_def">&#160;魔法防御力&#160;</string>
     <string name="text_hp">&#160;HP&#160;</string>
+    <string name="text_physical_effective_hp">&#160;物理有効HP&#160;</string>
+    <string name="text_magical_effective_hp">&#160;魔法有効HP&#160;</string>
     <string name="text_life_steal">&#160;HP吸収&#160;</string>
     <string name="text_energy_recovery">&#160;TP上昇&#160;</string>
     <string name="text_energy_reduce">&#160;TP消費軽減&#160;</string>
@@ -202,7 +207,8 @@
     <string name="ex_skill_5_evo">EX 5+</string>
     <string name="text_drop_rarity">レア度：%s</string>
     <string name="text_drop_mana">マナ：%d</string>
-    <string name="text_drop_odds" translatable="false">%d%%</string>
+    <string name="percent_modifier" translatable="false">%d%%</string>
+    <string name="percent_modifier_s" translatable="false">%s%%</string>
     <string name="text_quest_normal" translatable="false">Normal</string>
     <string name="text_quest_hard" translatable="false">Hard</string>
     <string name="text_quest_very_hard" translatable="false">Very Hard</string>
@@ -313,6 +319,9 @@
     <string name="hint_text_search_no_result">該当キャラは見つかりませんでした</string>
     <string name="transition_name" translatable="false">transItem_%d</string>
     <string name="sp_mode_d">SP MODE %d</string>
+    <string name="icon_analyze">アナライズ</string>
+    <string name="status_adjust_panel">ステータス調整パネル</string>
+    <string name="specific_critical_rate">特定レベルの敵に対するクリティカル率</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>
@@ -603,7 +612,7 @@
     <string name="In_next_s1_attacks_s2_physical_attacks_will_miss">%2$sの次の [%1$s] 回物理攻撃を必ずミスさせる。</string>
     <string name="Set_a_countdown_timer_on_s1_trigger_effect_d2_after_s3_sec">%1$sにカウントダウンを設置する、[%3$s] 秒後[アクション%2$d]を発動させる。</string>
     <string name="Remove_field_of_skill_d1_1_represents_the_first_skill_in_this_list_effect_d2">[スキル%1$d] の [アクション%2$d] が展開したフィールドを解除する。</string>
-    <string name="When_s1_receive_healing_deal_s2_healing_amount_damage_instead_last_for_s3_sec_or_unlimited_time_if_triggered_by_field">%1$sが回復を受けた時、それを無効にし、[%2$s] 分のダメージを与える、効果時間 [%3$s] 秒。この効果はフィールド効果の場合、効果時間は無限大。</string>
+    <string name="When_s1_receive_healing_deal_s2_healing_amount_damage_instead_last_for_s3_sec_or_unlimited_time_if_triggered_by_field">%1$sが回復を受けた時、それを無効にし、[%2$s * 回復量] 分のダメージを与える、効果時間 [%3$s] 秒。この効果はフィールド効果の場合、効果時間は無限大。</string>
     <string name="Make_s1_when_get_one_hit_by_the_caster_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">自分が%1$sをHitするたび、それにマーク[ID：%3$s]を1スタック増やせる、効果時間 [%4$s] 秒。この効果は最大 [%2$s] までスタックする。</string>
     <string name="Make_s1_when_deal_damage_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">%1$sがダメージを与えるたび、マーク[ID：%3$s]を1スタック増やせる、効果時間 [%4$s] 秒、この効果は最大 [%2$s] までスタックする。</string>
     <string name="Fear_s1_with_s2_chance_for_s3_sec">[%2$s%%] の確率で%1$sを恐慌状態にする、効果時間 [%3$s] 秒。</string>
