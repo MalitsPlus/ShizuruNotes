@@ -45,55 +45,6 @@ public class RawUnitRarity {
     public double energy_reduce_rate_growth;
     public double accuracy_growth;
 
-    public void setCharaRarity(Chara chara){
-        Property rarityProperty = new Property(
-                hp,
-                atk,
-                magic_str,
-                def,
-                magic_def,
-                physical_critical,
-                magic_critical,
-                wave_hp_recovery,
-                wave_energy_recovery,
-                dodge,
-                physical_penetrate,
-                magic_penetrate,
-                life_steal,
-                hp_recovery_rate,
-                energy_recovery_rate,
-                energy_reduce_rate,
-                accuracy
-        );
-        Property rarityPropertyGrowth = new Property(
-                hp_growth,
-                atk_growth,
-                magic_str_growth,
-                def_growth,
-                magic_def_growth,
-                physical_critical_growth,
-                magic_critical_growth,
-                wave_hp_recovery_growth,
-                wave_energy_recovery_growth,
-                dodge_growth,
-                physical_penetrate_growth,
-                magic_penetrate_growth,
-                life_steal_growth,
-                hp_recovery_rate_growth,
-                energy_recovery_rate_growth,
-                energy_reduce_rate_growth,
-                accuracy_growth
-        );
-
-        chara.setRarity(rarity);
-        if (rarity == 6){
-            chara.iconUrl = String.format(Locale.US, Statics.ICON_URL, chara.getPrefabId() + 60);
-            chara.imageUrl = String.format(Locale.US, Statics.IMAGE_URL, chara.getPrefabId() + 60);
-        }
-        chara.rarityProperty = rarityProperty;
-        chara.rarityPropertyGrowth = rarityPropertyGrowth;
-    }
-
     public Property getProperty(){
         return new Property(
                 hp,

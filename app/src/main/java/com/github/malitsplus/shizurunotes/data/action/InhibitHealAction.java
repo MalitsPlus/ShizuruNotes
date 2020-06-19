@@ -5,11 +5,12 @@ import com.github.malitsplus.shizurunotes.common.I18N;
 import com.github.malitsplus.shizurunotes.data.Property;
 
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.List;
 
 public class InhibitHealAction extends ActionParameter {
 
-    protected List<ActionValue> durationValues;
+    protected List<ActionValue> durationValues = new ArrayList<>();
 
     @Override
     protected void childInit() {

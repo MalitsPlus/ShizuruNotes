@@ -26,6 +26,17 @@ public class Property {
     public double energyReduceRate;
     public double accuracy;
 
+    public int getEffectivePhysicalHP() {
+        return (int)Math.round(hp * (1 + def / 100));
+    }
+    public int getEffectiveMagicalHP() {
+        return (int)Math.round(hp * (1 + magicDef / 100));
+    }
+
+    public int getEffectiveHP(int physical, int magical) {
+        return (int)Math.round(hp * (1 + (def * physical + magicDef * magical) / 10000));
+    }
+
     public Property(){
     }
 

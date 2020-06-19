@@ -5,13 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.data.Skill
 import com.github.malitsplus.shizurunotes.databinding.FragmentMinionBinding
@@ -77,7 +75,7 @@ class MinionFragment : Fragment(), OnEnemyActionListener {
         override fun getSpanSize(position: Int): Int {
             return when (minionAdapter.getItemViewType(position)) {
                 R.layout.item_attack_pattern -> 1
-                R.layout.item_string_int -> maxSpan / 2
+                R.layout.item_resist_property -> maxSpan / 2
                 else -> maxSpan
             }
         }

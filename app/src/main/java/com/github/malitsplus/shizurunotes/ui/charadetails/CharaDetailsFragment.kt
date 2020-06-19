@@ -23,6 +23,7 @@ import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelCharaFactory
 import com.github.malitsplus.shizurunotes.ui.base.AttackPatternContainerAdapter
 import com.github.malitsplus.shizurunotes.ui.base.BaseHintAdapter
 import com.github.malitsplus.shizurunotes.ui.base.MaterialSpinnerAdapter
+import com.github.malitsplus.shizurunotes.ui.calendar.CalendarFragmentDirections
 
 class CharaDetailsFragment : Fragment(), View.OnClickListener {
 
@@ -71,6 +72,19 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
             detailsItemChara.transitionName = "transItem_${args.charaId}"
             toolbar.setNavigationOnClickListener { view ->
                 view.findNavController().navigateUp()
+            }
+
+            toolbar.setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.menu_chara_customize -> {
+                        Navigation.findNavController(binding.root).navigate(
+                            CharaDetailsFragmentDirections.actionNavCharaDetailsToNavAnalyze()
+                        )
+                    }
+                    else -> {
+                    }
+                }
+                true
             }
 
             val rankList = mutableListOf<Int>()

@@ -21,7 +21,7 @@ class ClanBattlePhase(
         }
 
         waveGroupList.forEach{ w ->
-            w.enemyList?.forEach { bossList.add(it) }
+            w.enemyList.forEach { bossList.add(it) }
         }
     }
 

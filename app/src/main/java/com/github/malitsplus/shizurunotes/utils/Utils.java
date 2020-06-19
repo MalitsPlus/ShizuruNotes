@@ -73,6 +73,11 @@ public class Utils {
         }
     }
 
+    private static DecimalFormat format2 = new DecimalFormat("#.00");
+    public static String getTwoDecimalPlaces(Double value) {
+        return format2.format(value);
+    }
+
     public static String getCurrentProcessName() {
         return Thread.currentThread().getName();
     }

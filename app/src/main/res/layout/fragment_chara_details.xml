@@ -55,6 +55,7 @@
                     android:layout_height="?attr/actionBarSize"
                     app:contentInsetStartWithNavigation="0dp"
                     app:layout_collapseMode="pin"
+                    app:menu="@menu/fragment_chara_details_toolbar"
                     app:navigationIcon="@drawable/ic_detail_back" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>

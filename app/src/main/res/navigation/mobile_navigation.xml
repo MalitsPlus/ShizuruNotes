@@ -113,6 +113,13 @@
                 app:argType="integer"
                 android:defaultValue="1" />
         </action>
+        <action
+            android:id="@+id/action_nav_chara_details_to_nav_analyze"
+            app:destination="@id/nav_analyze"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -351,4 +358,9 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
+    <fragment
+        android:id="@+id/nav_analyze"
+        android:name="com.github.malitsplus.shizurunotes.ui.analyze.AnalyzeFragment"
+        android:label="analyze_fragment"
+        tools:layout="@layout/fragment_analyze" />
 </navigation>
