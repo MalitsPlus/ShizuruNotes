@@ -102,32 +102,6 @@
             bind:sRightText="@{String.valueOf(itemModel.magicDef)}" />
 
         <com.allen.library.SuperTextView
-            android:id="@+id/phy_eff_hp"
-            style="@style/StatusSuperTextView"
-            android:layout_width="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phy_def"
-            bind:sLeftTextString="@string/text_physical_effective_hp"
-            bind:sRightText="@{String.valueOf(itemModel.effectivePhysicalHP)}" />
-
-        <com.allen.library.SuperTextView
-            android:id="@+id/mgc_eff_hp"
-            style="@style/StatusSuperTextView"
-            android:layout_width="0dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/mgc_def"
-            bind:sLeftTextString="@string/text_magical_effective_hp"
-            bind:sRightText="@{String.valueOf(itemModel.effectiveMagicalHP)}" />
-
-        <com.allen.library.SuperTextView
             android:id="@+id/hp"
             style="@style/StatusSuperTextView"
             android:layout_width="0dp"
@@ -136,7 +110,7 @@
             android:layout_marginEnd="4dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phy_eff_hp"
+            app:layout_constraintTop_toBottomOf="@+id/phy_def"
             bind:sLeftTextString="@string/text_hp"
             bind:sRightText="@{String.valueOf(itemModel.hp)}" />
 
@@ -149,7 +123,7 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/mgc_eff_hp"
+            app:layout_constraintTop_toBottomOf="@+id/mgc_def"
             bind:sLeftTextString="@string/text_life_steal"
             bind:sRightText="@{String.valueOf(itemModel.lifeSteal)}" />
 

@@ -16,8 +16,13 @@ public class IfForChildrenAction extends ActionParameter {
         if(actionDetail2 != 0){
             ifType = IfType.parse(actionDetail1);
             if(ifType != null) {
-                trueClause = I18N.getString(R.string.use_d1_to_s2_if_s3,
-                        actionDetail2 % 100, targetParameter.buildTargetClause(true), ifType.description());
+                if (actionDetail1 == 502) {
+                    trueClause = I18N.getString(R.string.use_d1_to_s2_if_s3,
+                            actionDetail3 % 100, targetParameter.buildTargetClause(true), ifType.description());
+                } else {
+                    trueClause = I18N.getString(R.string.use_d1_to_s2_if_s3,
+                            actionDetail2 % 100, targetParameter.buildTargetClause(true), ifType.description());
+                }
             }
             else {
                 if((actionDetail1 >= 600 && actionDetail1 < 700) || actionDetail1 == 710){
@@ -39,8 +44,13 @@ public class IfForChildrenAction extends ActionParameter {
         if(actionDetail3 != 0){
             ifType = IfType.parse(actionDetail1);
             if(ifType != null) {
-                falseClause = I18N.getString(R.string.use_d1_to_s2_if_not_s3,
-                        actionDetail3 % 100, targetParameter.buildTargetClause(true), ifType.description());
+                if (actionDetail1 == 502) {
+                    falseClause = I18N.getString(R.string.use_d1_to_s2_if_s3,
+                            actionDetail2 % 100, targetParameter.buildTargetClause(true), ifType.description());
+                } else {
+                    falseClause = I18N.getString(R.string.use_d1_to_s2_if_not_s3,
+                            actionDetail3 % 100, targetParameter.buildTargetClause(true), ifType.description());
+                }
             }
             else {
                 if((actionDetail1 >= 600 && actionDetail1 < 700) || actionDetail1 == 710){
