@@ -47,6 +47,7 @@ class AnalyzeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedChara.backFlag = true
         with (binding) {
 
             // 星星的6个ImageView
@@ -97,8 +98,20 @@ class AnalyzeFragment : Fragment() {
             }
 
             // 敌人等级slider
-            enemyLevelSlider.addOnChangeListener { slider, value, fromUser ->
+            enemyLevelSlider.addOnChangeListener { _, value, _ ->
                 analyzeVM.enemyLevel = value.toInt()
+                updateViewModel()
+            }
+
+            // 敌人命中slider
+            enemyAccuracySlider.addOnChangeListener { _, value, _ ->
+                analyzeVM.enemyAccuracy = value.toInt()
+                updateViewModel()
+            }
+
+            // 敌人回避slider
+            enemyDodgeSlider.addOnChangeListener { _, value, _ ->
+                analyzeVM.enemyDodge = value.toInt()
                 updateViewModel()
             }
         }

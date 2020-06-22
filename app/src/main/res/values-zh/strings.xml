@@ -29,8 +29,8 @@
     <string name="db_update_finished_title">数据库更新</string>
     <string name="db_update_download_finished_text">下载完成，解压中…</string>
     <string name="db_update_finished_text">更新完成</string>
-    <string name="db_update_check_failed">数据库更新检测失败</string>
-    <string name="db_update_failed">数据库更新失败</string>
+    <string name="db_update_check_failed">数据库更新检测失败，详情请参照日志</string>
+    <string name="db_update_failed">数据库更新失败，详情请参照日志</string>
     <string name="app_update_check_failed">应用更新检测失败</string>
     <string name="ui_text_filter">筛选</string>
     <string name="ui_text_position">位置</string>
@@ -465,13 +465,12 @@
     <string name="Trigger_d_on_all_targets_break">触发条件：所有部位被Break时触发。</string>
     <string name="Make_s1_to_be_invulnerable_to_break_for_s2_sec">对%1$s附加Break免疫效果，持续时间 [%2$s] 秒。</string>
     <string name="Make_s1_when_deal_critical_damage_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">%1$s每次造成暴击时，增加1层标记[ID：%3$s]，持续时间 [%4$s] 秒，本效果最多叠加 [%2$s] 层。</string>
-    <string name="change_energy_recovery_ratio_of_action_s1_to_s2_when_s3_get_damage">包括通过受伤获得的TP奖励值在内，使%3$s通过[动作%1$s]获得的所有TP恢复效果值变为 [原本的值 * %2$s]。</string>
+    <string name="change_energy_recovery_ratio_of_action_s1_to_s2_when_s3_get_damage">包括通过受伤获得的TP奖励值在内，使%3$s通过 [动作%1$s] 获得的所有TP恢复效果值变为 [原本的值 * %2$s]。</string>
     <string name="make_this_skill_ignore_decoy">使本技能无视挑衅。</string>
     <string name="time_stop">时间停止</string>
     <string name="Stop_s1_for_s2_sec">使%1$s进入时间停止状态，持续时间 [%2$s] 秒。</string>
     <string name="use_d1_to_s2_if_target_is_magical_type">%2$s是使用魔法攻击对象的场合，使用 [动作%1$d]。</string>
     <string name="use_d1_to_s2_if_target_is_not_magical_type">%2$s不是使用魔法攻击对象的场合，使用 [动作%1$d]。</string>
-
     <string name="title_equipment">装备</string>
     <string name="title_quest">任务</string>
     <string name="title_log">日志</string>
@@ -567,4 +566,26 @@
     <string name="unimplemented">未实装</string>
     <string name="last_hour_summary">结束前1小时，通知&amp;震动</string>
     <string name="aged_s">享年%s</string>
+    <string name="title_hatsune_stage">剧情活动</string>
+    <string name="title_hatsune_wave">剧情活动</string>
+    <string name="title_analyze">数据分析</string>
+    <string name="ui_chip_sort_effective_physical_hp">物理有效HP</string>
+    <string name="ui_chip_sort_effective_magical_hp">魔法有效HP</string>
+    <string name="text_physical_effective_hp">&#160;物理有效HP&#160;</string>
+    <string name="text_magical_effective_hp">&#160;魔法有效HP&#160;</string>
+    <string name="text_physical_damage_cut">&#160;物理减伤率&#160;</string>
+    <string name="text_magical_damage_cut">&#160;魔法减伤率&#160;</string>
+    <string name="text_critical_rate">&#160;暴击率&#160;</string>
+    <string name="text_hp_absorb_rate">&#160;HP吸收率&#160;</string>
+    <string name="text_recovery_up_rate">&#160;回复上升率&#160;</string>
+    <string name="text_tp_up_rate">&#160;TP上升率&#160;</string>
+    <string name="text_accuracy_rate">&#160;命中率&#160;</string>
+    <string name="text_dodge_rate">&#160;回避率&#160;</string>
+    <string name="text_tp_per_action">&#160;TP / 行动&#160;</string>
+    <string name="text_tp_remain">&#160;TP保留量&#160;</string>
+    <string name="enemy_level_d">敌方Lv.%d</string>
+    <string name="enemy_accuracy_d">敌方命中 %d</string>
+    <string name="enemy_dodge_d">敌方回避 %d</string>
+    <string name="base_status">基础参数</string>
+    <string name="derivative_status">派生参数</string>
 </resources>

@@ -66,8 +66,8 @@
     <string name="db_update_finished_title">データベース更新</string>
     <string name="db_update_download_finished_text">ダウンロード完了、解凍中…</string>
     <string name="db_update_finished_text">アップデート完了しました</string>
-    <string name="db_update_check_failed">データベースのアップデートチェックが失敗しました</string>
-    <string name="db_update_failed">データベースのアップデートが失敗しました</string>
+    <string name="db_update_check_failed">データベースのアップデートチェックが失敗しました、詳細はログを参照してください</string>
+    <string name="db_update_failed">データベースのアップデートが失敗しました、詳細はログを参照してください</string>
     <string name="app_update_check_failed">アプリのアップデートチェックが失敗しました</string>
     <string name="ui_text_filter">絞り込み</string>
     <string name="ui_text_position">位置</string>
@@ -111,6 +111,19 @@
     <string name="text_year">年</string>
     <string name="text_month">月</string>
     <string name="text_day">日</string>
+    <string name="text_physical_effective_hp">&#160;物理有効HP&#160;</string>
+    <string name="text_magical_effective_hp">&#160;魔法有効HP&#160;</string>
+    <string name="text_physical_damage_cut">&#160;物理ダメカット&#160;</string>
+    <string name="text_magical_damage_cut">&#160;魔法ダメカット&#160;</string>
+    <string name="text_critical_rate">&#160;クリティカル率&#160;</string>
+    <string name="text_hp_absorb_rate">&#160;HP吸収率&#160;</string>
+    <string name="text_recovery_up_rate">&#160;回復上昇率&#160;</string>
+    <string name="text_tp_up_rate">&#160;TP上昇率&#160;</string>
+    <string name="text_accuracy_rate">&#160;命中率&#160;</string>
+    <string name="text_dodge_rate">&#160;回避率&#160;</string>
+    <string name="text_tp_per_action">&#160;TP / 行動&#160;</string>
+    <string name="text_tp_remain">&#160;TP保留値&#160;</string>
+
     <string name="text_status">&#160;ステータス&#160;</string>
     <string name="text_physical_atk">&#160;物理攻撃力&#160;</string>
     <string name="text_magical_atk">&#160;魔法攻撃力&#160;</string>
@@ -119,8 +132,6 @@
     <string name="text_physical_def">&#160;物理防御力&#160;</string>
     <string name="text_magical_def">&#160;魔法防御力&#160;</string>
     <string name="text_hp">&#160;HP&#160;</string>
-    <string name="text_physical_effective_hp">&#160;物理有効HP&#160;</string>
-    <string name="text_magical_effective_hp">&#160;魔法有効HP&#160;</string>
     <string name="text_life_steal">&#160;HP吸収&#160;</string>
     <string name="text_energy_recovery">&#160;TP上昇&#160;</string>
     <string name="text_energy_reduce">&#160;TP消費軽減&#160;</string>
@@ -321,7 +332,11 @@
     <string name="sp_mode_d">SP MODE %d</string>
     <string name="icon_analyze">アナライズ</string>
     <string name="status_adjust_panel">ステータス調整パネル</string>
-    <string name="specific_critical_rate">特定レベルの敵に対するクリティカル率</string>
+    <string name="enemy_level_d">敵Lv.%d</string>
+    <string name="enemy_accuracy_d">敵命中 %d</string>
+    <string name="enemy_dodge_d">敵回避 %d</string>
+    <string name="base_status">基礎ステータス</string>
+    <string name="derivative_status">派生ステータス</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>

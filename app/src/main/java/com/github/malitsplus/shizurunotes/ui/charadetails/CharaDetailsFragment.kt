@@ -23,7 +23,6 @@ import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelCharaFactory
 import com.github.malitsplus.shizurunotes.ui.base.AttackPatternContainerAdapter
 import com.github.malitsplus.shizurunotes.ui.base.BaseHintAdapter
 import com.github.malitsplus.shizurunotes.ui.base.MaterialSpinnerAdapter
-import com.github.malitsplus.shizurunotes.ui.calendar.CalendarFragmentDirections
 
 class CharaDetailsFragment : Fragment(), View.OnClickListener {
 

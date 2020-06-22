@@ -73,8 +73,8 @@ public class Utils {
         }
     }
 
-    private static DecimalFormat format2 = new DecimalFormat("#.00");
-    public static String getTwoDecimalPlaces(Double value) {
+    private static DecimalFormat format2 = new DecimalFormat("0.0");
+    public static String getOneDecimalPlaces(Double value) {
         return format2.format(value);
     }
 
