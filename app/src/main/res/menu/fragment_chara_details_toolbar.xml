@@ -7,5 +7,11 @@
             android:icon="@drawable/mic_analyze"
             app:showAsAction="ifRoom"
             android:title="@string/icon_analyze" />
+
+        <item
+            android:id="@+id/menu_chara_show_expression"
+            app:showAsAction="never"
+            android:checkable="true"
+            android:title="@string/show_or_hide_expression" />
     </group>
 </menu>

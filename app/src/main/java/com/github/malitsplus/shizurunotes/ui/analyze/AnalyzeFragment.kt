@@ -98,6 +98,7 @@ class AnalyzeFragment : Fragment() {
             }
 
             // 敌人等级slider
+            enemyLevelSlider.valueTo = sharedChara.maxEnemyLevel.toFloat()
             enemyLevelSlider.addOnChangeListener { _, value, _ ->
                 analyzeVM.enemyLevel = value.toInt()
                 updateViewModel()

@@ -123,7 +123,6 @@
     <string name="text_dodge_rate">&#160;回避率&#160;</string>
     <string name="text_tp_per_action">&#160;TP / 行動&#160;</string>
     <string name="text_tp_remain">&#160;TP保留値&#160;</string>
-
     <string name="text_status">&#160;ステータス&#160;</string>
     <string name="text_physical_atk">&#160;物理攻撃力&#160;</string>
     <string name="text_magical_atk">&#160;魔法攻撃力&#160;</string>
@@ -143,7 +142,7 @@
     <string name="text_magical_penetrate">&#160;魔法貫通&#160;</string>
     <string name="text_hp_recovery">&#160;回復量上昇&#160;</string>
     <string name="text_search_area_width">&#160;攻撃距離&#160;</string>
-    <string name="text_status_tips">*上記のステータスは☆MAX、LvMAX、装備&amp;専用装備フル強化、ストーリーステータス&amp;Exスキルを含めての値になります。</string>
+    <string name="text_status_tips">*上記のステータスは☆MAX、装備&amp;専用装備フル強化、ストーリーステータス&amp;Exスキルを含めての値になります。</string>
     <string name="text_attack_pattern">&#160;行動パターン%d&#160;</string>
     <string name="text_normal_mode">通常モード</string>
     <string name="text_cast_time">キャストタイム：</string>
@@ -337,6 +336,8 @@
     <string name="enemy_dodge_d">敵回避 %d</string>
     <string name="base_status">基礎ステータス</string>
     <string name="derivative_status">派生ステータス</string>
+    <string name="show_or_hide_expression">スキル倍率を表示</string>
+    <string name="level_d1_rank_d2">"Lv.%1$d        Rank.%2$d"</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>

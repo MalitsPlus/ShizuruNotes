@@ -20,6 +20,7 @@ class SharedViewModelChara : ViewModel() {
     var maxCharaLevel: Int = 0
     var maxCharaRank: Int = 0
     var maxUniqueEquipmentLevel: Int = 0
+    var maxEnemyLevel: Int = 0
 
     var selectedChara: Chara? = null
     var selectedMinion: MutableList<Minion>? = null
@@ -71,6 +72,8 @@ class SharedViewModelChara : ViewModel() {
         chara.maxCharaRank = this.maxCharaRank
         this.maxUniqueEquipmentLevel = get().maxUniqueEquipmentLevel
         chara.maxUniqueEquipmentLevel = this.maxUniqueEquipmentLevel
+
+        maxEnemyLevel = get().maxEnemyLevel
     }
 
     private fun setCharaRarity(chara: Chara) {

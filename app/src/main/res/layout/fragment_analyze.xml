@@ -111,9 +111,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="16dp"
-                            android:layout_marginBottom="16dp"
                             android:hint="@string/text_rank"
-                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
@@ -364,7 +362,7 @@
                         android:layout_marginEnd="8dp"
                         android:stepSize="1"
                         android:value="@{viewModel.enemyLevel}"
-                        android:valueFrom="1"
+                        android:valueFrom="60"
                         android:valueTo="250"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
