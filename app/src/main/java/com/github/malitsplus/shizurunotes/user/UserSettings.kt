@@ -136,4 +136,12 @@ class UserSettings private constructor(
             }
         }
     }
+
+    fun getExpression(): Boolean {
+        return preference.getBoolean(EXPRESSION_STYLE, false)
+    }
+
+    fun setExpression(newValue: Boolean) {
+        preference.edit().putBoolean(EXPRESSION_STYLE, newValue).apply()
+    }
 }

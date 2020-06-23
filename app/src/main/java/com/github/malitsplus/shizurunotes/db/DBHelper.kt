@@ -1227,6 +1227,12 @@ class DBHelper private constructor(
             return result?.toInt() ?: 0
         }
 
+    val maxEnemyLevel: Int
+        get() {
+            val result = getOne("SELECT MAX(level) FROM enemy_parameter ")
+            return result?.toInt() ?: 0
+        }
+
     /***
      * 随机生成16位随机英数字符串
      * @return
