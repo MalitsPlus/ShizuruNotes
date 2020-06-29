@@ -90,14 +90,14 @@ class AnalyzeViewModel(
     val hpRecoveryRateText: String
         get() {
             return property4Analyze.value?.let {
-                I18N.getString(R.string.percent_modifier_s, Utils.getOneDecimalPlaces(it.hpRecovery))
+                I18N.getString(R.string.percent_modifier_s, Utils.getOneDecimalPlaces(it.hpRecovery * 100.0))
             } ?: "100%"
         }
 
     val tpUpRateText: String
         get() {
             return property4Analyze.value?.let {
-                I18N.getString(R.string.percent_modifier_s, Utils.getOneDecimalPlaces(it.tpUpRate))
+                I18N.getString(R.string.percent_modifier_s, Utils.getOneDecimalPlaces(it.tpUpRate * 100.0))
             } ?: "100%"
         }
 

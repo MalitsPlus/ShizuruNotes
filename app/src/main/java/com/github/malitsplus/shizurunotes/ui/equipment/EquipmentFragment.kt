@@ -77,6 +77,7 @@ class EquipmentFragment : Fragment(), OnEquipmentActionListener<Equipment> {
             this
         }
         equipmentVM.selectedLevel.observe(viewLifecycleOwner, selectedLevelObserver)
+
     }
 
     private val selectedLevelObserver = Observer<Int> { level ->

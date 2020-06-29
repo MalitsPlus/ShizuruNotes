@@ -577,8 +577,8 @@
     <string name="text_magical_damage_cut">&#160;魔法减伤率&#160;</string>
     <string name="text_critical_rate">&#160;暴击率&#160;</string>
     <string name="text_hp_absorb_rate">&#160;HP吸收率&#160;</string>
-    <string name="text_recovery_up_rate">&#160;回复上升率&#160;</string>
-    <string name="text_tp_up_rate">&#160;TP上升率&#160;</string>
+    <string name="text_recovery_up_rate">&#160;回复上升倍率&#160;</string>
+    <string name="text_tp_up_rate">&#160;TP上升倍率&#160;</string>
     <string name="text_accuracy_rate">&#160;命中率&#160;</string>
     <string name="text_dodge_rate">&#160;回避率&#160;</string>
     <string name="text_tp_per_action">&#160;TP / 行动&#160;</string>
@@ -588,4 +588,8 @@
     <string name="enemy_dodge_d">敌方回避 %d</string>
     <string name="base_status">基础参数</string>
     <string name="derivative_status">派生参数</string>
+    <string name="icon_analyze">分析</string>
+    <string name="status_adjust_panel">参数调整面板</string>
+    <string name="show_or_hide_expression">显示技能公式</string>
+    <string name="message">消息</string>
 </resources>

@@ -121,13 +121,11 @@ class AnalyzeFragment : Fragment() {
 
     // 改变星星的填充
     private fun changeStarImage(rarity: Int) {
-        with (binding) {
-            for (i in 1..6) {
-                if (i <= rarity) {
-                    starViewList[i - 1].setImageResource(R.drawable.mic_star_filled)
-                } else {
-                    starViewList[i - 1].setImageResource(R.drawable.mic_star_blank)
-                }
+        for (i in 1..6) {
+            if (i <= rarity) {
+                starViewList[i - 1].setImageResource(R.drawable.mic_star_filled)
+            } else {
+                starViewList[i - 1].setImageResource(R.drawable.mic_star_blank)
             }
         }
     }

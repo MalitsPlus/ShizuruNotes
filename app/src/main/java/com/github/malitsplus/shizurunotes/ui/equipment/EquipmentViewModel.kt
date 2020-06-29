@@ -29,7 +29,11 @@ class EquipmentViewModel(
             return field
         }
 
-    val selectedLevel = MutableLiveData(0)
+    val selectedLevel = if (equipment.equipmentId in 130000..139999) {
+        MutableLiveData(1)
+    } else {
+        MutableLiveData(0)
+    }
 
     val onSliderChangeListener = Slider.OnChangeListener { _, value, _ ->
             selectedLevel.value = value.toInt()
@@ -37,7 +41,13 @@ class EquipmentViewModel(
 
     fun getPropertyViewType(level: Int = 0): List<ViewType<*>> {
         val list = mutableListOf<ViewType<*>>()
-        equipment.getEnhancedProperty(level).nonZeroPropertiesMap.forEach {
+        // 如果是专属装备，需要减去初始等级1
+        val enhanceLevel = if (equipment.equipmentId in 130000..139999) {
+            level - 1
+        } else {
+            level
+        }
+        equipment.getEnhancedProperty(enhanceLevel).nonZeroPropertiesMap.forEach {
             list.add(PropertyVT(it))
         }
         return list

@@ -65,7 +65,6 @@ class UpdateManager private constructor(
 
     init {
         callBack = object: UpdateCallBack {
-
             /***
              * APP更新检查完成，弹出更新确认对话框
              */
@@ -89,6 +88,19 @@ class UpdateManager private constructor(
                         }
                 } else {
                     checkDatabaseVersion()
+                }
+
+                val info = when (UserSettings.get().preference.getString(UserSettings.LANGUAGE_KEY, "ja")){
+                    "zh" -> appVersionJsonInstance?.infoZh
+                    else -> appVersionJsonInstance?.infoJa
+                }
+                if (!info.isNullOrEmpty()) {
+                    MaterialDialog(mContext, MaterialDialog.DEFAULT_BEHAVIOR)
+                        .title(text = I18N.getString(R.string.message))
+                        .message(text = info)
+                        .show {
+                            positiveButton(res = R.string.text_ok)
+                        }
                 }
             }
 
@@ -165,7 +177,9 @@ class UpdateManager private constructor(
         var versionName: String? = null
         var recommend: Boolean? = null
         var messageJa: String? = null
-        var messageZh: String? =null
+        var messageZh: String? = null
+        var infoJa: String? = null
+        var infoZh: String? = null
     }
 
     fun checkAppVersion(checkDb: Boolean) {
