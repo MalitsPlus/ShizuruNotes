@@ -39,4 +39,6 @@
 
     <color name="colorCustom">#b4686868</color>
     <color name="colorOnCustom">#d4ffffff</color>
+
+    <color name="ic_launcher_background">#E6E5E7</color>
 </resources>

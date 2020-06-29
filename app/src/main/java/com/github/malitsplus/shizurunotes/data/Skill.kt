@@ -39,7 +39,9 @@ class Skill(
         MAIN9("M9"),
         MAIN10("M10"),
         SP1("S1"),
+        SP1_EVO("S1+"),
         SP2("S2"),
+        SP2_EVO("S2+"),
         SP3("S3"),
         SP4("S4"),
         SP5("S5"),
@@ -87,8 +89,12 @@ class Skill(
                     I18N.getStringWithSpace(R.string.main_skill_2_evo)
                 SP1 ->
                     I18N.getStringWithSpace(R.string.sp_skill_1)
+                SP1_EVO ->
+                    I18N.getStringWithSpace(R.string.sp_skill_1_evo)
                 SP2 ->
                     I18N.getStringWithSpace(R.string.sp_skill_2)
+                SP2_EVO ->
+                    I18N.getStringWithSpace(R.string.sp_skill_2_evo)
                 SP3 ->
                     I18N.getStringWithSpace(R.string.sp_skill_3)
                 SP4 ->
