@@ -14,6 +14,14 @@
     <color name="red_200_alpha">#a4cf6679</color> <!--Color error (light)-->
     <color name="red_500">#cf6679</color>
     <color name="blue_100">#90caf9</color>
+    <color name="yellow_100">#FFF9C4</color>
+    <color name="yellow_200">#FFF59D</color>
+    <color name="yellow_300">#FFF176</color>
+    <color name="yellow_400">#FFEE58</color>
+    <color name="yellow_500">#FFEB3B</color>
+    <color name="yellow_700">#FBC02D</color>
+    <color name="yellow_800">#F9A825</color>
+    <color name="yellow_900">#F57F17</color>
     <!--Color surface (light), color on error (light), -->
     <!--color on surface (dark), color on surface (dark)-->
     <color name="white_50">#ffffff</color>
@@ -31,4 +39,6 @@
 
     <color name="colorCustom">#b4686868</color>
     <color name="colorOnCustom">#d4ffffff</color>
+
+    <color name="ic_launcher_background">#FFFFFF</color>
 </resources>

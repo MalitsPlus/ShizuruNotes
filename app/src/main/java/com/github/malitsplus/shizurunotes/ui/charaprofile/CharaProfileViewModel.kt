@@ -16,10 +16,10 @@ class CharaProfileViewModel(
             field.clear()
             sharedChara.selectedChara?.let { chara ->
                 field.add(CharaProfileVT(chara))
-//                field.add(CharaUniqueEquipmentVT(chara.uniqueEquipment ?: Equipment.getNull))
-//                chara.rankEquipments.entries.forEach {
-//                    field.add(CharaRankEquipmentVT(it))
-//                }
+                field.add(CharaUniqueEquipmentVT(chara.uniqueEquipment ?: Equipment.getNull))
+                chara.rankEquipments.entries.forEach {
+                    field.add(CharaRankEquipmentVT(it))
+                }
                 chara
             }
             return field

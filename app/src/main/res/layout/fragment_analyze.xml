@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.github.malitsplus.shizurunotes.ui.analyze.AnalyzeViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/analyze_appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/analyze_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:navigationIcon="@drawable/ic_detail_back"
+                app:title="@string/title_analyze" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/status_control_panel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/chara_star1"
+                            style="@style/iconStars"
+                            android:layout_marginStart="16dp"
+                            android:src="@drawable/mic_star_filled"
+                            app:layout_constraintBottom_toBottomOf="@+id/rank_dropdown_container"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/rank_dropdown_container" />
+
+                        <ImageView
+                            android:id="@+id/chara_star2"
+                            style="@style/iconStars"
+                            android:src="@drawable/mic_star_filled"
+                            app:layout_constraintBottom_toBottomOf="@+id/rank_dropdown_container"
+                            app:layout_constraintStart_toEndOf="@+id/chara_star1"
+                            app:layout_constraintTop_toTopOf="@+id/rank_dropdown_container" />
+
+                        <ImageView
+                            android:id="@+id/chara_star3"
+                            style="@style/iconStars"
+                            android:src="@drawable/mic_star_filled"
+                            app:layout_constraintBottom_toBottomOf="@+id/rank_dropdown_container"
+                            app:layout_constraintStart_toEndOf="@+id/chara_star2"
+                            app:layout_constraintTop_toTopOf="@+id/rank_dropdown_container" />
+
+                        <ImageView
+                            android:id="@+id/chara_star4"
+                            style="@style/iconStars"
+                            android:src="@drawable/mic_star_filled"
+                            app:layout_constraintBottom_toBottomOf="@+id/rank_dropdown_container"
+                            app:layout_constraintStart_toEndOf="@+id/chara_star3"
+                            app:layout_constraintTop_toTopOf="@+id/rank_dropdown_container" />
+
+                        <ImageView
+                            android:id="@+id/chara_star5"
+                            style="@style/iconStars"
+                            android:src="@drawable/mic_star_filled"
+                            app:layout_constraintBottom_toBottomOf="@+id/rank_dropdown_container"
+                            app:layout_constraintStart_toEndOf="@+id/chara_star4"
+                            app:layout_constraintTop_toTopOf="@+id/rank_dropdown_container" />
+
+                        <ImageView
+                            android:id="@+id/chara_star6"
+                            style="@style/iconStars6"
+                            android:src="@drawable/mic_star_filled"
+                            app:layout_constraintBottom_toBottomOf="@+id/rank_dropdown_container"
+                            app:layout_constraintStart_toEndOf="@+id/chara_star5"
+                            app:layout_constraintTop_toTopOf="@+id/rank_dropdown_container" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/rank_dropdown_container"
+                            style="@style/myDropdown"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:hint="@string/text_rank"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/rank_dropdown"
+                                style="@style/myDropdownAutoText"
+                                android:layout_width="match_parent" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tag_base_status"
+                    style="@style/textTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{@string/space_modifier(@string/base_status), default=baseStatus}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+                <include
+                    android:id="@+id/analyze_property_group"
+                    layout="@layout/item_property_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:itemModel="@{viewModel.property4Analyze}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tag_base_status" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/derivative_status_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/analyze_property_group">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.5" />
+
+                    <View
+                        android:id="@+id/divider11"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tag_derivative_status"
+                        style="@style/textTag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@{@string/space_modifier(@string/derivative_status), default=derivativeStatus}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/divider11" />
+
+                    <com.allen.library.SuperTextView
+                        android:id="@+id/phy_eff_hp"
+                        style="@style/StatusSuperTextView"
+                        android:layout_width="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tag_derivative_status"
+                        bind:sLeftTextString="@string/text_physical_effective_hp"
+                        bind:sRightText="@{String.valueOf(viewModel.property4Analyze.effectivePhysicalHP)}" />
+
+                    <com.allen.library.SuperTextView
+                        android:id="@+id/mgc_eff_hp"
+                        style="@style/StatusSuperTextView"
+                        android:layout_width="0dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/guideline2"
+                        app:layout_constraintTop_toBottomOf="@+id/tag_derivative_status"
+                        bind:sLeftTextString="@string/text_magical_effective_hp"
+                        bind:sRightText="@{String.valueOf(viewModel.property4Analyze.effectiveMagicalHP)}" />
+
+                    <com.allen.library.SuperTextView
+                        android:id="@+id/phy_dmg_cut"
+                        style="@style/StatusSuperTextView"
+                        android:layout_width="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/phy_eff_hp"
+                        bind:sLeftTextString="@string/text_physical_damage_cut"
+                        bind:sRightText="@{viewModel.physicalDamageCutText}" />
+
+                    <com.allen.library.SuperTextView
+                        android:id="@+id/mgc_dmg_cut"
+                        style="@style/StatusSuperTextView"
+                        android:layout_width="0dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/guideline2"
+                        app:layout_constraintTop_toBottomOf="@+id/mgc_eff_hp"
+                        bind:sLeftTextString="@string/text_magical_damage_cut"
+                        bind:sRightText="@{viewModel.magicalDamageCutText}" />
+
+                    <com.allen.library.SuperTextView
+                        android:id="@+id/critical_rate"
+                        style="@style/StatusSuperTextView"
+                        android:layout_width="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/phy_dmg_cut"
+                        bind:sLeftTextString="@string/text_critical_rate"
+                        bind:sRightText="@{viewModel.criticalRateText}" />
+
+                    <com.allen.library.SuperTextView
+                        android:id="@+id/hp_absorb_rate"
+                        style="@style/StatusSuperTextView"
+                        android:layout_width="0dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/guideline2"
+                        app:layout_constraintTop_toBottomOf="@+id/mgc_dmg_cut"
+                        bind:sLeftTextString="@string/text_hp_absorb_rate"
+                        bind:sRightText="@{viewModel.hpAbsorbRateText}" />
+
+                    <com.allen.library.SuperTextView
+                        android:id="@+id/recovery_up_rate"
+                        style="@style/StatusSuperTextView"
+                        android:layout_width="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/critical_rate"
+                        bind:sLeftTextString="@string/text_recovery_up_rate"
+                        bind:sRightText="@{viewModel.hpRecoveryRateText}" />
+
+                    <com.allen.library.SuperTextView
+                        android:id="@+id/tp_up_rate"
+                        style="@style/StatusSuperTextView"
+                        android:layout_width="0dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/guideline2"
+                        app:layout_constraintTop_toBottomOf="@+id/hp_absorb_rate"
+                        bind:sLeftTextString="@string/text_tp_up_rate"
+                        bind:sRightText="@{viewModel.tpUpRateText}" />
+
+                    <com.allen.library.SuperTextView
+                        android:id="@+id/accuracy_rate"
+                        style="@style/StatusSuperTextView"
+                        android:layout_width="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/recovery_up_rate"
+                        bind:sLeftTextString="@string/text_accuracy_rate"
+                        bind:sRightText="@{viewModel.accuracyRateText}" />
+
+                    <com.allen.library.SuperTextView
+                        android:id="@+id/dodge_rate"
+                        style="@style/StatusSuperTextView"
+                        android:layout_width="0dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/guideline2"
+                        app:layout_constraintTop_toBottomOf="@+id/tp_up_rate"
+                        bind:sLeftTextString="@string/text_dodge_rate"
+                        bind:sRightText="@{viewModel.dodgeRateText}" />
+
+                    <com.allen.library.SuperTextView
+                        android:id="@+id/tp_per_action"
+                        style="@style/StatusSuperTextView"
+                        android:layout_width="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/accuracy_rate"
+                        bind:sLeftTextString="@string/text_tp_per_action"
+                        bind:sRightText="@{viewModel.tpPerActionText}" />
+
+                    <com.allen.library.SuperTextView
+                        android:id="@+id/tp_remain"
+                        style="@style/StatusSuperTextView"
+                        android:layout_width="0dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/guideline2"
+                        app:layout_constraintTop_toBottomOf="@+id/dodge_rate"
+                        bind:sLeftTextString="@string/text_tp_remain"
+                        bind:sRightText="@{viewModel.tpRemainText}" />
+
+                    <TextView
+                        android:id="@+id/text_enemy_level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@{viewModel.enemyLevelText, default=enemyLv}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tp_per_action" />
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/enemy_level_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:stepSize="1"
+                        android:value="@{viewModel.enemyLevel}"
+                        android:valueFrom="60"
+                        android:valueTo="250"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_enemy_level" />
+
+                    <TextView
+                        android:id="@+id/text_enemy_accuracy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@{viewModel.enemyAccuracyText, default=enemyAcc}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/enemy_level_slider" />
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/enemy_accuracy_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:stepSize="1"
+                        android:value="@{viewModel.enemyAccuracy}"
+                        android:valueFrom="0"
+                        android:valueTo="100"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_enemy_accuracy" />
+
+                    <TextView
+                        android:id="@+id/text_enemy_dodge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@{viewModel.enemyDodgeText, default=enemyDod}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/enemy_accuracy_slider" />
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/enemy_dodge_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="32dp"
+                        android:stepSize="1"
+                        android:value="@{viewModel.enemyDodge}"
+                        android:valueFrom="0"
+                        android:valueTo="100"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_enemy_dodge"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

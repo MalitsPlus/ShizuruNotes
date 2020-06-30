@@ -13,6 +13,9 @@
     <string name="title_log">ログ</string>
     <string name="title_enemy">モンスター</string>
     <string name="title_rank_comparison">ランク比較</string>
+    <string name="title_hatsune_stage">イベント</string>
+    <string name="title_hatsune_wave">イベント</string>
+    <string name="title_analyze">データ分析</string>
     <string name="setting_language" translatable="false">Language</string>
     <string name="setting_language_dialog_title">Language</string>
     <string-array name="setting_language_options">
@@ -49,8 +52,8 @@
     <string name="about_version" translatable="false">Version: %s</string>
     <string name="about_disclaimer" translatable="false">This is an unofficial fan-made application, copyright of all resources associate with the game \"Princess Connect Re:Dive\" are belong to Cygames, Inc. </string>
     <string name="about_hp" translatable="false">Open source home page \nhttps://github.com/MalitsPlus/ShizuruNotes</string>
-    <string name="about_developer" translatable="false">Developer &lt;br/>Vibbit&lt;a href=\"https://twitter.com/L8102259\">@L8102259&lt;/a></string>
-    <string name="about_translator" translatable="false">Translator &lt;br/>(Korean)applemintia&lt;a href=\"https://twitter.com/_applemintia\">@_applemintia&lt;/a>&lt;br/>(English)&lt;a href=\"https://twitter.com/southro_p\">southrop&lt;/a></string>
+    <string name="about_developer" translatable="false">Development &lt;br/>Vibbit&lt;a href=\"https://twitter.com/L8102259\">@L8102259&lt;/a></string>
+    <string name="about_translator" translatable="false">Localization &lt;br/>(Korean)applemintia&lt;a href=\"https://twitter.com/_applemintia\">@_applemintia&lt;/a>&lt;br/>(English)&lt;a href=\"https://twitter.com/southro_p\">southrop&lt;/a></string>
     <string name="about_api" translatable="false">API by https://redive.estertion.win</string>
     <string name="about_license" translatable="false">This application is licensed under the &lt;a href=\"http://www.apache.org/licenses/LICENSE-2.0.txt\">Apache License 2.0&lt;/a></string>
     <string name="text_ok" translatable="false">OK</string>
@@ -63,8 +66,8 @@
     <string name="db_update_finished_title">データベース更新</string>
     <string name="db_update_download_finished_text">ダウンロード完了、解凍中…</string>
     <string name="db_update_finished_text">アップデート完了しました</string>
-    <string name="db_update_check_failed">データベースのアップデートチェックが失敗しました</string>
-    <string name="db_update_failed">データベースのアップデートが失敗しました</string>
+    <string name="db_update_check_failed">データベースのアップデートチェックが失敗しました、詳細はログを参照してください</string>
+    <string name="db_update_failed">データベースのアップデートが失敗しました、詳細はログを参照してください</string>
     <string name="app_update_check_failed">アプリのアップデートチェックが失敗しました</string>
     <string name="ui_text_filter">絞り込み</string>
     <string name="ui_text_position">位置</string>
@@ -87,6 +90,8 @@
     <string name="ui_chip_sort_physical_critical">物理クリ</string>
     <string name="ui_chip_sort_magical_critical">魔法クリ</string>
     <string name="ui_chip_sort_hp">HP</string>
+    <string name="ui_chip_sort_effective_physical_hp">物理有効HP</string>
+    <string name="ui_chip_sort_effective_magical_hp">魔法有効HP</string>
     <string name="ui_chip_sort_tp_up">TP上昇</string>
     <string name="ui_chip_sort_tp_reduce">TP減軽</string>
     <string name="ui_chip_sort_age">年齢</string>
@@ -106,6 +111,18 @@
     <string name="text_year">年</string>
     <string name="text_month">月</string>
     <string name="text_day">日</string>
+    <string name="text_physical_effective_hp">&#160;物理有効HP&#160;</string>
+    <string name="text_magical_effective_hp">&#160;魔法有効HP&#160;</string>
+    <string name="text_physical_damage_cut">&#160;物理ダメカット&#160;</string>
+    <string name="text_magical_damage_cut">&#160;魔法ダメカット&#160;</string>
+    <string name="text_critical_rate">&#160;クリティカル率&#160;</string>
+    <string name="text_hp_absorb_rate">&#160;HP吸収率&#160;</string>
+    <string name="text_recovery_up_rate">&#160;回復上昇倍率&#160;</string>
+    <string name="text_tp_up_rate">&#160;TP上昇倍率&#160;</string>
+    <string name="text_accuracy_rate">&#160;命中率&#160;</string>
+    <string name="text_dodge_rate">&#160;回避率&#160;</string>
+    <string name="text_tp_per_action">&#160;TP / 行動&#160;</string>
+    <string name="text_tp_remain">&#160;TP保留値&#160;</string>
     <string name="text_status">&#160;ステータス&#160;</string>
     <string name="text_physical_atk">&#160;物理攻撃力&#160;</string>
     <string name="text_magical_atk">&#160;魔法攻撃力&#160;</string>
@@ -124,8 +141,8 @@
     <string name="text_physical_penetrate">&#160;物理貫通&#160;</string>
     <string name="text_magical_penetrate">&#160;魔法貫通&#160;</string>
     <string name="text_hp_recovery">&#160;回復量上昇&#160;</string>
-    <string name="text_search_area_width">&#160;攻撃範囲&#160;</string>
-    <string name="text_status_tips">*上記のステータスは☆MAX、LvMAX、装備&amp;専用装備フル強化、ストーリーステータス&amp;Exスキルを含めての値になります。</string>
+    <string name="text_search_area_width">&#160;攻撃距離&#160;</string>
+    <string name="text_status_tips">*上記のステータスは☆MAX、装備&amp;専用装備フル強化、ストーリーステータス&amp;Exスキルを含めての値になります。</string>
     <string name="text_attack_pattern">&#160;行動パターン%d&#160;</string>
     <string name="text_normal_mode">通常モード</string>
     <string name="text_cast_time">キャストタイム：</string>
@@ -198,9 +215,12 @@
     <string name="ex_skill_3_evo">EX 3+</string>
     <string name="ex_skill_4_evo">EX 4+</string>
     <string name="ex_skill_5_evo">EX 5+</string>
+    <string name="sp_skill_1_evo">SP 1+</string>
+    <string name="sp_skill_2_evo">SP 2+</string>
     <string name="text_drop_rarity">レア度：%s</string>
     <string name="text_drop_mana">マナ：%d</string>
-    <string name="text_drop_odds" translatable="false">%d%%</string>
+    <string name="percent_modifier" translatable="false">%d%%</string>
+    <string name="percent_modifier_s" translatable="false">%s%%</string>
     <string name="text_quest_normal" translatable="false">Normal</string>
     <string name="text_quest_hard" translatable="false">Hard</string>
     <string name="text_quest_very_hard" translatable="false">Very Hard</string>
@@ -209,7 +229,8 @@
     <string name="text_condition_or">ワンヒット</string>
     <string name="icon_previous">前回の選択</string>
     <string name="icon_cancel_all">クリア</string>
-    <string name="space_modifier" translatable="false">&#160;&#160;%s&#160;&#160;</string>
+    <string name="space_modifier" translatable="false">&#160;%s&#160;</string>
+    <string name="space_modifier_2" translatable="false">&#160;&#160;%s&#160;&#160;</string>
     <string name="text_log_clean">ログファイルをすべて削除します、よろしいですか？</string>
     <string name="text_delete">削除</string>
     <string name="text_deney">いいえ</string>
@@ -299,7 +320,27 @@
     <string name="menu_drop_hard">ハード</string>
     <string name="text_unique_equipment">専用装備</string>
     <string name="unimplemented">未実装</string>
-    <string name="rank_d">R%d</string>
+    <string name="rank_d" translatable="false">R%d</string>
+    <string name="text_equipment_level">強化レベル</string>
+    <string name="text_equipment_craft_requirement">必要素材</string>
+    <string name="x_d" translatable="false">× %d</string>
+    <string name="princess_heart">プリンセスハート</string>
+    <string name="memory_piece">メモリーピース</string>
+    <string name="aged_s">享年%s</string>
+    <string name="hint_text_search">キャラを検索…</string>
+    <string name="hint_text_search_no_result">該当キャラが見つかりませんでした</string>
+    <string name="transition_name" translatable="false">transItem_%d</string>
+    <string name="sp_mode_d">SP MODE %d</string>
+    <string name="icon_analyze">アナライズ</string>
+    <string name="status_adjust_panel">ステータス調整パネル</string>
+    <string name="enemy_level_d">敵Lv.%d</string>
+    <string name="enemy_accuracy_d">敵命中 %d</string>
+    <string name="enemy_dodge_d">敵回避 %d</string>
+    <string name="base_status">基礎ステータス</string>
+    <string name="derivative_status">派生ステータス</string>
+    <string name="show_or_hide_expression">スキル倍率を表示</string>
+    <string name="level_d1_rank_d2">"Lv%1$d        Rank%2$d"</string>
+    <string name="message">メッセージ</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>
@@ -403,7 +444,7 @@
     <string name="Deal_s1_s2_damage_to_s3">%3$sに [%1$s] の%2$sダメージを与える。</string>
     <string name="Deal_s1_s2_damage_to_s3_and_this_attack_is_ensured_critical">%3$sに [%1$s] の%2$sダメージを与える。このアクションは必ずクリティカルする。</string>
     <string name="Critical_damage_is_s_times_as_normal_damage">クリティカルした場合、ダメージが [%s] 倍になる。</string>
-    <string name="Change_self_position_to_s_then_return">%sの位置まで移動する、スキル終了後元の位置に戻る。</string>
+    <string name="Change_self_position_to_s_then_return">%sの位置まで移動し、スキル終了後元の位置に戻る。</string>
     <string name="Change_self_position_s_forward_then_return">前へ [%s] 移動し、スキル終了後元の位置に戻る。</string>
     <string name="Change_self_position_s_backward_then_return">後ろへ [%s] 移動し、スキル終了後元の位置に戻る。</string>
     <string name="Change_self_position_to_s">%sの位置まで移動する。</string>
@@ -478,9 +519,9 @@
     <string name="s1_s2_s3_s4_s5_for_s6_sec">%2$sの%5$sを [%3$s%4$s] %1$s、効果時間 [%6$s] 秒。</string>
     <string name="Charm_s1_with_s2_chance_for_s3_sec">[%2$s%%] の確率で%1$sを魅了状態にする、効果時間 [%3$s] 秒。</string>
     <string name="Confuse_s1_with_s2_chance_for_s3_sec">[%2$s%%] の確率で%1$sを混乱状態にする、効果時間 [%3$s] 秒。</string>
-    <string name="Change_attack_pattern_to_d1_for_s2_sec">行動パターンを%1$dに変化する、効果時間 [%2$s] 秒。</string>
-    <string name="Cost_s1_TP_sec_change_attack_pattern_to_d2_until_TP_is_zero">TPが使い切るまで行動パターンを%2$dに変化し、TPを毎秒 [%1$s] 消耗する。</string>
-    <string name="Change_attack_pattern_back_to_d_after_effect_over">効果終了後、行動パターンを%dに戻る。</string>
+    <string name="Change_attack_pattern_to_d1_for_s2_sec">行動パターンを%1$dに変化させる、効果時間 [%2$s] 秒。</string>
+    <string name="Cost_s1_TP_sec_change_attack_pattern_to_d2_until_TP_is_zero">TPが使い切るまで行動パターンを%2$dに変化させ、TPを毎秒 [%1$s] 消耗する。</string>
+    <string name="Change_attack_pattern_back_to_d_after_effect_over">効果終了後、行動パターンを%dに戻させる。</string>
     <string name="own_side">味方側</string>
     <string name="opposite">敵側</string>
     <string name="normal_type">ノーマルタイプ</string>
@@ -557,12 +598,12 @@
     <string name="Exclusive_condition_s">全体的条件分岐：%s</string>
     <string name="Kill_s_instantly">%sを即死させる。</string>
     <string name="Add_additional_s1_s2_to_s3_for_next_s4_attacks">%3$sの次の [%4$s] 回攻撃に [%1$s] %2$s効果を付与する。</string>
-    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_physical_damage">%1$sにシールドを展開する、物理ダメージを受けた時 [%2$s] 分のダメージを反射する。</string>
-    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_magical_damage">%1$sにシールドを展開する、魔法ダメージを受けた時 [%2$s] 分のダメージを反射する。</string>
+    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_physical_damage">%1$sにシールドを展開し、物理ダメージを受けた時 [%2$s] 分のダメージを反射する。</string>
+    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_magical_damage">%1$sにシールドを展開し、魔法ダメージを受けた時 [%2$s] 分のダメージを反射する。</string>
     <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_physical_damage">%1$sにシールドを展開する、物理ダメージを受けた時 [%2$s] 分のダメージを反射し、自分のHPを同等の値回復させる。</string>
     <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_magical_damage">%1$sにシールドを展開する、魔法ダメージを受けた時 [%2$s] 分のダメージを反射し、自分のHPを同等の値回復させる。</string>
     <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_damage">%1$sにシールドを展開する、ダメージを受けた時 [%2$s] 分のダメージを反射し、自分のHPを同等の値回復させる。</string>
-    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_damage">%1$sにシールドを展開する、ダメージを受けた時 [%2$s] 分のダメージを反射する。</string>
+    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_damage">%1$sにシールドを展開し、ダメージを受けた時 [%2$s] 分のダメージを反射する。</string>
     <string name="Add_additional_s1_damage_per_attack_with_max_s2_stacks_to_current_target">現在のターゲットに攻撃するたび、ダメージ量が [%1$s] 追加する、この効果は [%2$s] 回まで累計する。</string>
     <string name="Add_s1_mark_stacks_max_s2_ID_s3_on_s4_for_s5_sec">%4$sにマーク[ID：%3$s]を [%1$s] スタック追加する、効果時間 [%5$s] 秒、この効果は最大 [%2$s] までスタックする。</string>
     <string name="Remove_s1_mark_stacks_ID_s2_on_s3">%3$sのマーク[ID：%2$s]を [%1$s] スタック減らせる。</string>
@@ -590,7 +631,7 @@
     <string name="In_next_s1_attacks_s2_physical_attacks_will_miss">%2$sの次の [%1$s] 回物理攻撃を必ずミスさせる。</string>
     <string name="Set_a_countdown_timer_on_s1_trigger_effect_d2_after_s3_sec">%1$sにカウントダウンを設置する、[%3$s] 秒後[アクション%2$d]を発動させる。</string>
     <string name="Remove_field_of_skill_d1_1_represents_the_first_skill_in_this_list_effect_d2">[スキル%1$d] の [アクション%2$d] が展開したフィールドを解除する。</string>
-    <string name="When_s1_receive_healing_deal_s2_healing_amount_damage_instead_last_for_s3_sec_or_unlimited_time_if_triggered_by_field">%1$sが回復を受けた時、それを無効にし、[%2$s] 分のダメージを与える、効果時間 [%3$s] 秒。この効果はフィールド効果の場合、効果時間は無限大。</string>
+    <string name="When_s1_receive_healing_deal_s2_healing_amount_damage_instead_last_for_s3_sec_or_unlimited_time_if_triggered_by_field">%1$sが回復を受けた時、それを無効にし、[%2$s * 回復量] 分のダメージを与える、効果時間 [%3$s] 秒。この効果はフィールド効果の場合、効果時間は無限大。</string>
     <string name="Make_s1_when_get_one_hit_by_the_caster_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">自分が%1$sをHitするたび、それにマーク[ID：%3$s]を1スタック増やせる、効果時間 [%4$s] 秒。この効果は最大 [%2$s] までスタックする。</string>
     <string name="Make_s1_when_deal_damage_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">%1$sがダメージを与えるたび、マーク[ID：%3$s]を1スタック増やせる、効果時間 [%4$s] 秒、この効果は最大 [%2$s] までスタックする。</string>
     <string name="Fear_s1_with_s2_chance_for_s3_sec">[%2$s%%] の確率で%1$sを恐慌状態にする、効果時間 [%3$s] 秒。</string>
@@ -612,5 +653,7 @@
     <string name="use_d1_to_s2_if_target_is_magical_type">%2$sが魔法攻撃を行う対象の場合、[アクション%1$d] を使う。</string>
     <string name="use_d1_to_s2_if_target_is_not_magical_type">%2$sが魔法攻撃を行う対象でない場合、[アクション%1$d] を使う。</string>
     <string name="change_energy_recovery_ratio_of_action_s1_to_s2_when_s3_get_damage">ダメージによるTP回復を含めて、%3$sが [アクション%1$s] を受けた時全てのTP回復効果を [本来の値 * %2$s] に変更させる。</string>
-    <string name="make_this_skill_ignore_decoy">このスキルを挑発に影響されないようにさせる。</string>
+    <string name="make_this_skill_ignore_decoy">このスキルを挑発の影響を受けないようにさせる。</string>
+    <string name="time_stop">時間停止</string>
+    <string name="Stop_s1_for_s2_sec">%1$sを時間停止状態にする、効果時間 [%2$s] 秒。</string>
 </resources>

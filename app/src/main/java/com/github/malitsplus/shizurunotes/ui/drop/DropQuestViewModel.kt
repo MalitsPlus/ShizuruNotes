@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.Equipment
+import com.github.malitsplus.shizurunotes.data.Item
 import com.github.malitsplus.shizurunotes.data.Quest
 import com.github.malitsplus.shizurunotes.db.RawQuest
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelQuest
@@ -14,13 +15,13 @@ import kotlin.concurrent.thread
 
 class DropQuestViewModel(
     private val sharedQuest: SharedViewModelQuest,
-    private val equipmentList: List<Equipment>?
+    private val itemList: List<Item>?
 ) : ViewModel() {
     val searchedQuestList = MutableLiveData<MutableList<Any>>(mutableListOf())
 
     @Suppress("UNCHECKED_CAST")
     fun search() {
-        if (equipmentList.isNullOrEmpty()) {
+        if (itemList.isNullOrEmpty()) {
             questTypeFilter(sharedQuest.questList.value)
             searchedQuestList.value = questTypeFilter(sharedQuest.questList.value) as MutableList<Any>?
         } else {
@@ -32,15 +33,15 @@ class DropQuestViewModel(
                 val middleList = mutableListOf<Quest>()
 
                 sharedQuest.questList.value?.forEach { quest ->
-                    equipmentList.forEach { equipment ->
-                        if (quest.contains(equipment.equipmentId)) {
+                    itemList.forEach { item ->
+                        if (quest.contains(item.itemId)) {
                             rawList.add(quest)
                         }
                     }
                 }
-                when(val num = equipmentList.size) {
+                when(val num = itemList.size) {
                     1 -> {
-                        rawList.sortByDescending { it.getOdds(equipmentList) }
+                        rawList.sortByDescending { it.getOdds(itemList) }
                         questTypeFilter(rawList)
                         searchedQuestList.postValue(questTypeFilter(rawList) as MutableList<Any>)
                     }
@@ -57,15 +58,15 @@ class DropQuestViewModel(
                         }
                         if (andList.isNotEmpty()) {
                             resultList.add(I18N.getString(R.string.text_condition_and))
-                            resultList.addAll(andList.sortedByDescending { it.getOdds(equipmentList) })
+                            resultList.addAll(andList.sortedByDescending { it.getOdds(itemList) })
                         }
                         if (middleList.isNotEmpty()) {
                             resultList.add(I18N.getString(R.string.text_condition_andor))
-                            resultList.addAll(middleList.sortedByDescending { it.getOdds(equipmentList) })
+                            resultList.addAll(middleList.sortedByDescending { it.getOdds(itemList) })
                         }
                         if (orList.isNotEmpty()) {
                             resultList.add(I18N.getString(R.string.text_condition_or))
-                            resultList.addAll(orList.sortedByDescending { it.getOdds(equipmentList) })
+                            resultList.addAll(orList.sortedByDescending { it.getOdds(itemList) })
                         }
                         searchedQuestList.postValue(resultList)
                     }

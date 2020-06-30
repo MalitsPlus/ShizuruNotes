@@ -34,7 +34,8 @@ public class RawUnitSkillData {
     public int union_burst_evolution;
     public int main_skill_evolution_1;
     public int main_skill_evolution_2;
-
+    public int sp_skill_evolution_1;
+    public int sp_skill_evolution_2;
 
     public void setCharaSkillList(Chara chara){
         if(union_burst != 0)
@@ -67,8 +68,12 @@ public class RawUnitSkillData {
             chara.getSkills().add(new Skill(main_skill_10, Skill.SkillClass.MAIN10));
         if(sp_skill_1 != 0)
             chara.getSkills().add(new Skill(sp_skill_1, Skill.SkillClass.SP1));
+        if(sp_skill_evolution_1 != 0)
+            chara.getSkills().add(new Skill(sp_skill_evolution_1, Skill.SkillClass.SP1_EVO));
         if(sp_skill_2 != 0)
             chara.getSkills().add(new Skill(sp_skill_2, Skill.SkillClass.SP2));
+        if(sp_skill_evolution_2 != 0)
+            chara.getSkills().add(new Skill(sp_skill_evolution_2, Skill.SkillClass.SP2_EVO));
         if(sp_skill_3 != 0)
             chara.getSkills().add(new Skill(sp_skill_3, Skill.SkillClass.SP3));
         if(sp_skill_4 != 0)

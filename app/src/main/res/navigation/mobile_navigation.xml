@@ -71,6 +71,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_nav_bottom_navigation_to_nav_hatsune_stage"
+            app:destination="@id/nav_hatsune_stage"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -106,6 +113,13 @@
                 app:argType="integer"
                 android:defaultValue="1" />
         </action>
+        <action
+            android:id="@+id/action_nav_chara_details_to_nav_analyze"
+            app:destination="@id/nav_analyze"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -133,12 +147,12 @@
         android:label="fragment_clan_battle_view_pager"
         tools:layout="@layout/fragment_clan_battle_view_pager" >
         <action
-            android:id="@+id/action_nav_clan_battle_view_pager_to_nav_clan_battle_boss_details"
-            app:destination="@+id/nav_clan_battle_boss_details"
+            android:id="@+id/action_nav_clan_battle_view_pager_to_nav_enemy"
+            app:destination="@id/nav_enemy"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -173,24 +187,6 @@
         android:label="fragment_clan_battle_details"
         tools:layout="@layout/fragment_clan_battle_details" />
     <fragment
-        android:id="@+id/nav_clan_battle_boss_details"
-        android:name="com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails.ClanBattleBossDetailsFragment"
-        android:label="fragment_clan_battle_boss_resist"
-        tools:layout="@layout/fragment_clan_battle_boss_details" >
-        <action
-            android:id="@+id/action_nav_clan_battle_boss_details_to_nav_minion"
-            app:destination="@id/nav_minion"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right">
-            <argument
-                android:name="minionType"
-                app:argType="integer"
-                android:defaultValue="2" />
-        </action>
-    </fragment>
-    <fragment
         android:id="@+id/nav_minion"
         android:name="com.github.malitsplus.shizurunotes.ui.minion.MinionFragment"
         android:label="fragment_minion"
@@ -211,8 +207,8 @@
         android:label="fragment_dungeon"
         tools:layout="@layout/fragment_dungeon" >
         <action
-            android:id="@+id/action_nav_dungeon_to_nav_clan_battle_boss_details"
-            app:destination="@id/nav_clan_battle_boss_details"
+            android:id="@+id/action_nav_dungeon_to_nav_enemy"
+            app:destination="@id/nav_enemy"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -309,5 +305,62 @@
         android:id="@+id/nav_equipment"
         android:name="com.github.malitsplus.shizurunotes.ui.equipment.EquipmentFragment"
         android:label="fragment_equipment"
-        tools:layout="@layout/fragment_equipment" />
+        tools:layout="@layout/fragment_equipment" >
+        <action
+            android:id="@+id/action_nav_equipment_to_nav_drop_quest"
+            app:destination="@id/nav_drop_quest"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_enemy"
+        android:name="com.github.malitsplus.shizurunotes.ui.enemy.EnemyFragment"
+        android:label="fragment_enemy"
+        tools:layout="@layout/fragment_enemy" >
+        <action
+            android:id="@+id/action_nav_enemy_to_nav_minion"
+            app:destination="@id/nav_minion"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="minionType"
+                app:argType="integer"
+                android:defaultValue="2" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_hatsune_stage"
+        android:name="com.github.malitsplus.shizurunotes.ui.hatsune.HatsuneStageFragment"
+        android:label="fragment_hatsune_stage"
+        tools:layout="@layout/fragment_hatsune_stage" >
+        <action
+            android:id="@+id/action_nav_hatsune_stage_to_nav_hatsune_wave"
+            app:destination="@id/nav_hatsune_wave"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_hatsune_wave"
+        android:name="com.github.malitsplus.shizurunotes.ui.hatsune.HatsuneWaveFragment"
+        android:label="fragment_hatsune_wave"
+        tools:layout="@layout/fragment_hatsune_wave" >
+        <action
+            android:id="@+id/action_nav_hatsune_wave_to_nav_enemy"
+            app:destination="@id/nav_enemy"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_analyze"
+        android:name="com.github.malitsplus.shizurunotes.ui.analyze.AnalyzeFragment"
+        android:label="analyze_fragment"
+        tools:layout="@layout/fragment_analyze" />
 </navigation>

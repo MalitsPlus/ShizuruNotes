@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@{@string/space_modifier(@string/rank_d(itemModel.key)), default=R17}"
+                android:text="@{@string/space_modifier_2(@string/rank_d(itemModel.key)), default=R17}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

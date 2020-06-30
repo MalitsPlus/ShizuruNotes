@@ -5,7 +5,7 @@ import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.common.Statics
 import com.github.malitsplus.shizurunotes.db.DBHelper
 
-class Enemy(
+class Enemy (
     val enemyId: Int
 ) {
     var unitId = 0
@@ -17,19 +17,18 @@ class Enemy(
     var resistStatusId: Int? = null
     var isMultiTarget: Boolean = false
     lateinit var name: String
+    lateinit var comment: String
     lateinit var property: Property
     lateinit var  iconUrl: String
-    val resistName = mutableListOf<String>()
-    val resistRate = mutableListOf<Int>()
-
+    var resistMap: Map<String, Int>? = null
     val attackPatternList = mutableListOf<AttackPattern>()
-
     val skills = mutableListOf<Skill>()
     val children = mutableListOf<Enemy>()
 
-    fun setBasic(unitId: Int, name: String, level: Int, prefabId: Int, atkType: Int, searchAreaWidth: Int, normalAtkCastTime: Double, resistStatusId: Int, property: Property){
+    fun setBasic(unitId: Int, name: String, comment: String, level: Int, prefabId: Int, atkType: Int, searchAreaWidth: Int, normalAtkCastTime: Double, resistStatusId: Int, property: Property){
         this.unitId = unitId
         this.name = name
+        this.comment = comment
         this.level = level
         this.prefabId = prefabId
         this.atkType = atkType
@@ -42,14 +41,14 @@ class Enemy(
             attackPatternList.add(it.attackPattern.setItems(skills, atkType))
         }
 
-        iconUrl = Statics.ICON_URL.format(prefabId)
+        iconUrl = if (prefabId in 100000..199999) {
+            Statics.SHADOW_ICON_URL.format(prefabId + 30)
+        } else {
+            Statics.ICON_URL.format(prefabId)
+        }
 
         if (resistStatusId != 0){
-            val resistMap = DBHelper.get().getResistData(resistStatusId)?.resistData
-            resistMap?.forEach {
-                resistName.add(it.key)
-                resistRate.add(it.value)
-            }
+            resistMap = DBHelper.get().getResistData(resistStatusId)?.resistData
         }
     }
 

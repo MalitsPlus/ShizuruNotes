@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.ResourceManager
 import com.github.malitsplus.shizurunotes.data.Equipment
+import com.github.malitsplus.shizurunotes.data.Item
 import com.github.malitsplus.shizurunotes.data.Quest
 import com.github.malitsplus.shizurunotes.databinding.ItemDropEquipmentBinding
 import com.github.malitsplus.shizurunotes.databinding.ItemHintTextBinding
@@ -42,9 +43,9 @@ class DropQuestAdapter(
                         ).apply {
                             reward = it
                         }
-                        sharedEquipment.selectedDrops.value?.let { equipmentList ->
-                            for (equipment: Equipment in equipmentList) {
-                                if (it.rewardId % 10000 == equipment.equipmentId % 10000) {
+                        sharedEquipment.selectedDrops.value?.let { itemList ->
+                            for (item: Item in itemList) {
+                                if (it.rewardId % 10000 == item.itemId % 10000) {
                                     rewardItem.root.background = mContext.getDrawable(R.drawable.shape_text_border)
                                     break
                                 }

@@ -112,7 +112,8 @@ public class Ailment {
         petrify(8),
         detain(9),
         faint(10),
-        unknown(11);
+        timeStop(11),
+        unknown(12);
 
         private int value;
         ActionDetail(int value){
@@ -152,6 +153,8 @@ public class Ailment {
                     return I18N.getString(R.string.Detain);
                 case faint:
                     return I18N.getString(R.string.Faint);
+                case timeStop:
+                    return I18N.getString(R.string.time_stop);
                 default:
                     return I18N.getString(R.string.Unknown);
             }

@@ -15,10 +15,7 @@ import com.github.malitsplus.shizurunotes.databinding.ActivityMainBinding
 import com.github.malitsplus.shizurunotes.db.DBHelper
 import com.github.malitsplus.shizurunotes.db.MasterSchedule
 import com.github.malitsplus.shizurunotes.ui.calendar.CalendarViewModel
-import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
-import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelClanBattle
-import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
-import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelQuest
+import com.github.malitsplus.shizurunotes.ui.shared.*
 import com.github.malitsplus.shizurunotes.user.UserSettings
 import com.github.malitsplus.shizurunotes.utils.FileUtils
 import com.github.malitsplus.shizurunotes.utils.LogUtils
@@ -113,6 +110,7 @@ class MainActivity : AppCompatActivity(),
         sharedClanBattle.dungeonList = mutableListOf()
         sharedQuest.questList.value = mutableListOf()
         sharedEquipment.selectedDrops.value = mutableListOf()
+        ViewModelProvider(this)[SharedViewModelHatsune::class.java].hatsuneStageList.value = listOf()
         with(ViewModelProvider(this)[CalendarViewModel::class.java]) {
             scheduleMap.clear()
             calendarMap.clear()

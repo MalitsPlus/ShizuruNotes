@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="itemModel"
+            type="com.github.malitsplus.shizurunotes.data.Enemy" />
+        <variable
+            name="itemPosition"
+            type="Integer" />
+        <import type="com.github.malitsplus.shizurunotes.R" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/boss_child_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@{itemModel.name, default=childName}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/boss_child_name">
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/txt_hp"
+                style="@style/StatusSuperTextView"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                app:sLeftTextString="@string/text_hp"
+                bind:sRightText="@{String.valueOf(itemModel.property.hp)}" />
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/txtPlaceHolder"
+                style="@style/StatusSuperTextViewPlaceHolder"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                app:sLeftTextString="" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/txt_atk"
+                style="@style/StatusSuperTextView"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                app:sLeftTextString="@string/text_physical_atk"
+                bind:sRightText="@{String.valueOf(itemModel.property.atk)}" />
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/txt_magic_str"
+                style="@style/StatusSuperTextView"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                app:sLeftTextString="@string/text_magical_atk"
+                bind:sRightText="@{String.valueOf(itemModel.property.magicStr)}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/txt_def"
+                style="@style/StatusSuperTextView"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                app:sLeftTextString="@string/text_physical_def"
+                bind:sRightText="@{String.valueOf(itemModel.property.def)}" />
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/txt_magic_def"
+                style="@style/StatusSuperTextView"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                app:sLeftTextString="@string/text_magical_def"
+                bind:sRightText="@{String.valueOf(itemModel.property.magicDef)}" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

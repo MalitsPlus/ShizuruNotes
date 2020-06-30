@@ -156,4 +156,36 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:textSize">12sp</item>
     </style>
+
+    <style name="mSearchBar" parent="MaterialSearchBarDark">
+        <item name="mt_searchBarColor">@color/toolbarPrimary</item>
+        <item name="mt_dividerColor">@color/searchBarDividerColorDark</item>
+        <item name="mt_navIconTint">?attr/colorPrimary</item>
+        <item name="mt_searchIconTint">?attr/colorPrimary</item>
+        <item name="mt_clearIconTint">?attr/colorPrimary</item>
+        <item name="mt_menuIconTint">?attr/colorPrimary</item>
+        <item name="mt_backIconTint">?attr/colorPrimary</item>
+        <item name="mt_textCursorTint">@color/colorAccent</item>
+        <item name="mt_textColor">@color/searchBarTextColorDark</item>
+        <item name="mt_hintColor">@color/searchBarHintColorDark</item>
+        <item name="mt_placeholderColor">@color/white_50</item>
+        <item name="mt_highlightedTextColor">@color/searchBarTextHighlightColorDark</item>
+    </style>
+
+    <style name="iconStars">
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_width">30dp</item>
+        <item name="android:tint">@color/yellow_700</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="iconStars6">
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_width">30dp</item>
+        <item name="android:tint">@color/red_200</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
 </resources>

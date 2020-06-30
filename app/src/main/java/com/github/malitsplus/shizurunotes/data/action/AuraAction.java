@@ -24,7 +24,7 @@ public class AuraAction extends ActionParameter {
         moveSpeed(10),
         physicalCriticalDamage(11),
         magicalCriticalDamage(12),
-        num(13),
+        accuracy(13),
         none(14);
 
         private int value;
@@ -57,6 +57,7 @@ public class AuraAction extends ActionParameter {
                 case moveSpeed: return I18N.getString(R.string.Move_Speed);
                 case physicalCriticalDamage: return I18N.getString(R.string.Physical_Critical_Damage);
                 case magicalCriticalDamage: return I18N.getString(R.string.Magical_Critical_Damage);
+                case accuracy: return PropertyKey.accuracy.description();
                 default: return "";
             }
         }
