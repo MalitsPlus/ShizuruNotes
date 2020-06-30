@@ -21,14 +21,16 @@ Dependents could be found in `./app/build.gradle` and it might be changed time t
 * Event Notification 
 * Rank Comparison  
 
-## Localization 
+## Localization  
 Japanese, Chinese, Korean, English supported.  
 Korean strings are provided by [applemintia](https://twitter.com/_applemintia).  
 English strings are provided by [southrop](https://github.com/southrop).  
 
-## References 
-* [PrincessGuide](https://github.com/superk589/PrincessGuide) 
+## References  
+ShizuruNotes is highly inspired by the following repos:  
+* [PrincessGuide](https://github.com/superk589/PrincessGuide)  
 * [redive_master_db_diff](https://github.com/esterTion/redive_master_db_diff)  
+* [DereHelper](https://github.com/Lazyeraser/DereHelper)  
 
 ## Related projects
 * https://github.com/ugrolol/ShizuruNotes The EN and RU version of this application, developed by [ugrolol](https://github.com/ugrolol). 
