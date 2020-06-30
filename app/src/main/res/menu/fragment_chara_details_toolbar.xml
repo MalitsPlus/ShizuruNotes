@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group>
+        <item
+            android:id="@+id/menu_chara_customize"
+            android:icon="@drawable/mic_analyze"
+            app:showAsAction="ifRoom"
+            android:title="@string/icon_analyze" />
+
+        <item
+            android:id="@+id/menu_chara_show_expression"
+            app:showAsAction="never"
+            android:checkable="true"
+            android:title="@string/show_or_hide_expression" />
+    </group>
+</menu>

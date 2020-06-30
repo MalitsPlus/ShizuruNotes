@@ -20,11 +20,11 @@ class Quest(
         return false
     }
 
-    fun getOdds(equipmentList: List<Equipment>): Int {
+    fun getOdds(itemList: List<Item>): Int {
         var odds: Int = 0
-        equipmentList.forEach { equipment ->
+        itemList.forEach { item ->
             dropList.forEach {
-                if (it.rewardId % 10000 == equipment.equipmentId % 10000) {
+                if (it.rewardId % 10000 == item.itemId % 10000) {
                     odds += it.odds
                 }
             }

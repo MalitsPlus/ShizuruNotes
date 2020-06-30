@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="itemModel"
+            type="java.util.Map.Entry&lt;com.github.malitsplus.shizurunotes.data.Item, Integer>" />
+        <variable
+            name="itemPosition"
+            type="Integer" />
+        <variable
+            name="itemActionListener"
+            type="com.github.malitsplus.shizurunotes.ui.equipment.OnEquipmentActionListener" />
+        <import type="com.github.malitsplus.shizurunotes.R" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/item_icon"
+            style="@style/iconFilter"
+            android:onClick="@{() -> itemActionListener.onItemClickedListener(itemModel.key)}"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:errorHolder="@{R.drawable.mic_chara_icon_error}"
+            bind:imageUrl="@{itemModel.key.iconUrl}"
+            bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
+
+        <TextView
+            android:id="@+id/num_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{@string/x_d(itemModel.value), default=x1}"
+            app:layout_constraintBottom_toBottomOf="@+id/item_icon"
+            app:layout_constraintStart_toEndOf="@+id/item_icon"
+            app:layout_constraintTop_toTopOf="@+id/item_icon" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

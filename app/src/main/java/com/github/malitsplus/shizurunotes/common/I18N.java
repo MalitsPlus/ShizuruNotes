@@ -1,6 +1,5 @@
 package com.github.malitsplus.shizurunotes.common;
 
-import android.app.Activity;
 import android.app.Application;
 
 import androidx.annotation.StringRes;
@@ -23,7 +22,7 @@ public class I18N {
 
     public static String getStringWithSpace(@StringRes int resId){
         if (application != null)
-            return application.getString(R.string.space_modifier, application.getString(resId));
+            return application.getString(R.string.space_modifier_2, application.getString(resId));
         else
             return "";
     }

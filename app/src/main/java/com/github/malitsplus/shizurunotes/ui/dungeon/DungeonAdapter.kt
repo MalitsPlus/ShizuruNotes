@@ -20,7 +20,7 @@ class DungeonAdapter(
             clickListener = View.OnClickListener {
                 sharedClanBattle.mSetSelectedBoss(thisDungeon.dungeonBoss)
                 it.findNavController().navigate(
-                    DungeonFragmentDirections.actionNavDungeonToNavClanBattleBossDetails()
+                    DungeonFragmentDirections.actionNavDungeonToNavEnemy()
                 )
             }
             executePendingBindings()

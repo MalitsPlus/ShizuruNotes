@@ -2,12 +2,14 @@ package com.github.malitsplus.shizurunotes.ui.drop
 
 import android.content.Context
 import android.view.View
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.databinding.ItemGridIconBinding
 import com.github.malitsplus.shizurunotes.databinding.ItemHintTextBinding
+import com.github.malitsplus.shizurunotes.ui.BottomNaviFragmentDirections
 import com.github.malitsplus.shizurunotes.ui.base.BaseHintAdapter
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelEquipment
 
@@ -46,6 +48,11 @@ class GridSelectAdapter(
                                 setItemStatus(v, true)
                             }
                         }
+                    }
+                    this.itemGridContainer.setOnLongClickListener { v ->
+                        sharedEquipment.selectedEquipment = thisEquipment
+                        v.findNavController().navigate(BottomNaviFragmentDirections.actionNavBottomNavigationToNavEquipment())
+                        true
                     }
                     executePendingBindings()
                 }

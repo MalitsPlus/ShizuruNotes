@@ -1,16 +1,40 @@
 package com.github.malitsplus.shizurunotes.ui.charalist
 
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.AdapterView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.Chara
+import com.github.malitsplus.shizurunotes.ui.base.CharaListVT
+import com.github.malitsplus.shizurunotes.ui.base.MaterialSpinnerAdapter
+import com.github.malitsplus.shizurunotes.ui.base.OnItemActionListener
+import com.github.malitsplus.shizurunotes.ui.base.ViewType
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
+import com.mancj.materialsearchbar.MaterialSearchBar
 import java.util.*
 
 class CharaListViewModel(
     private val sharedViewModelChara: SharedViewModelChara
 ) : ViewModel() {
+
+    fun getViewList(charaList: List<Chara>? = null): MutableList<ViewType<*>> {
+        return if (charaList.isNullOrEmpty()) {
+            mutableListOf<ViewType<*>>().apply {
+                liveCharaList.value?.forEach {
+                    add(CharaListVT(it))
+                }
+            }
+        } else {
+            mutableListOf<ViewType<*>>().apply {
+                charaList.forEach {
+                    add(CharaListVT(it))
+                }
+            }
+        }
+    }
 
     val liveCharaList = MutableLiveData<List<Chara>>()
 
@@ -18,39 +42,52 @@ class CharaListViewModel(
     var selectedPosition: String = "0"
     var selectedSort: String = "0"
     var isAsc: Boolean = false
+    var searchText: CharSequence = ""
 
-    val attackTypeMap = mapOf(
+    private val attackTypeMap = mapOf(
         0 to I18N.getString(R.string.ui_chip_any),
         1 to I18N.getString(R.string.ui_chip_atk_type_physical),
         2 to I18N.getString(R.string.ui_chip_atk_type_magical)
     )
 
-    val positionMap = mapOf(
+    private val positionMap = mapOf(
         0 to I18N.getString(R.string.ui_chip_any),
         1 to I18N.getString(R.string.ui_chip_position_forward),
         2 to I18N.getString(R.string.ui_chip_position_middle),
         3 to I18N.getString(R.string.ui_chip_position_rear)
     )
 
-    val sortMap = mapOf(
+    private val sortMap = mapOf(
         0 to I18N.getString(R.string.ui_chip_sort_new),
         1 to I18N.getString(R.string.ui_chip_sort_position),
         2 to I18N.getString(R.string.ui_chip_sort_physical_atk),
         3 to I18N.getString(R.string.ui_chip_sort_magical_atk),
-        4 to I18N.getString(R.string.ui_chip_sort_physical_def),
-        5 to I18N.getString(R.string.ui_chip_sort_magical_def),
-        6 to I18N.getString(R.string.ui_chip_sort_age),
-        7 to I18N.getString(R.string.ui_chip_sort_height),
-        8 to I18N.getString(R.string.ui_chip_sort_weight),
-        9 to I18N.getString(R.string.ui_chip_sort_burst_size)
+        4 to I18N.getString(R.string.ui_chip_sort_physical_critical),
+        5 to I18N.getString(R.string.ui_chip_sort_magical_critical),
+        6 to I18N.getString(R.string.ui_chip_sort_physical_def),
+        7 to I18N.getString(R.string.ui_chip_sort_magical_def),
+        8 to I18N.getString(R.string.ui_chip_sort_hp),
+        9 to I18N.getString(R.string.ui_chip_sort_effective_physical_hp),
+        10 to I18N.getString(R.string.ui_chip_sort_effective_magical_hp),
+        11 to I18N.getString(R.string.ui_chip_sort_tp_up),
+        12 to I18N.getString(R.string.ui_chip_sort_tp_reduce),
+        13 to I18N.getString(R.string.ui_chip_sort_age),
+        14 to I18N.getString(R.string.ui_chip_sort_height),
+        15 to I18N.getString(R.string.ui_chip_sort_weight)
     )
 
+    val dropDownValuesMap = mapOf<Int, Array<String>>(
+        1 to attackTypeMap.values.toTypedArray(),
+        2 to positionMap.values.toTypedArray(),
+        3 to sortMap.values.toTypedArray()
+    )
 
-    fun filter(
+    private fun filter(
         attackType: String?,
         position: String?,
         sortValue: String?,
-        asc: Boolean?
+        asc: Boolean?,
+        searchText: CharSequence?
     ) {
         selectedAttackType = attackType?: selectedAttackType
         selectedPosition = position?: selectedPosition
@@ -63,13 +100,20 @@ class CharaListViewModel(
 
         val charaToShow: MutableList<Chara> = ArrayList()
         sharedViewModelChara.charaList.value?.forEach { chara ->
-            if (checkAttackType(chara, selectedAttackType) && checkPosition(chara, selectedPosition)) {
+            if (searchText?.isNotEmpty() == true) {
+                if (chara.unitName.startsWith(searchText)
+                    || chara.kana.startsWith(searchText)
+                ) {
+                    setSortValue(chara, selectedSort)
+                    charaToShow.add(chara)
+                }
+            } else if (checkAttackType(chara, selectedAttackType) && checkPosition(chara, selectedPosition)) {
                 setSortValue(chara, selectedSort)
                 charaToShow.add(chara)
             }
         }
 
-        charaToShow.sortWith(kotlin.Comparator{ a: Chara, b: Chara ->
+        charaToShow.sortWith(kotlin.Comparator { a: Chara, b: Chara ->
             val valueA : Int
             val valueB : Int
             when (selectedSort) {
@@ -89,22 +133,50 @@ class CharaListViewModel(
                     valueB = b.charaProperty.getMagicStr()
                 }
                 "4" -> {
+                    valueA = a.charaProperty.getPhysicalCritical()
+                    valueB = b.charaProperty.getPhysicalCritical()
+                }
+                "5" -> {
+                    valueA = a.charaProperty.getMagicCritical()
+                    valueB = b.charaProperty.getMagicCritical()
+                }
+                "6" -> {
                     valueA = a.charaProperty.getDef()
                     valueB = b.charaProperty.getDef()
                 }
-                "5" -> {
+                "7" -> {
                     valueA = a.charaProperty.getMagicDef()
                     valueB = b.charaProperty.getMagicDef()
                 }
-                "6" -> {
+                "8" -> {
+                    valueA = a.charaProperty.getHp()
+                    valueB = b.charaProperty.getHp()
+                }
+                "9" -> {
+                    valueA = a.charaProperty.effectivePhysicalHP
+                    valueB = b.charaProperty.effectivePhysicalHP
+                }
+                "10" -> {
+                    valueA = a.charaProperty.effectiveMagicalHP
+                    valueB = b.charaProperty.effectiveMagicalHP
+                }
+                "11" -> {
+                    valueA = a.charaProperty.getEnergyRecoveryRate()
+                    valueB = b.charaProperty.getEnergyRecoveryRate()
+                }
+                "12" -> {
+                    valueA = a.charaProperty.getEnergyReduceRate()
+                    valueB = b.charaProperty.getEnergyReduceRate()
+                }
+                "13" -> {
                     valueA = if (a.age.contains("?")) 9999 else a.age.toInt()
                     valueB = if (b.age.contains("?")) 9999 else b.age.toInt()
                 }
-                "7" -> {
+                "14" -> {
                     valueA = if (a.height.contains("?")) 9999 else a.height.toInt()
                     valueB = if (b.height.contains("?")) 9999 else b.height.toInt()
                 }
-                "8" -> {
+                "15" -> {
                     valueA = if (a.weight.contains("?")) 9999 else a.weight.toInt()
                     valueB = if (b.weight.contains("?")) 9999 else b.weight.toInt()
                 }
@@ -119,7 +191,7 @@ class CharaListViewModel(
     }
 
     fun filterDefault() {
-        filter(selectedAttackType, selectedPosition, selectedSort, isAsc)
+        filter(selectedAttackType, selectedPosition, selectedSort, isAsc, searchText)
     }
 
     private fun checkPosition(chara: Chara, position: String): Boolean {
@@ -135,16 +207,57 @@ class CharaListViewModel(
             "1" -> chara.sortValue = chara.searchAreaWidth.toString()
             "2" -> chara.sortValue = chara.charaProperty.getAtk().toString()
             "3" -> chara.sortValue = chara.charaProperty.getMagicStr().toString()
-            "4" -> chara.sortValue = chara.charaProperty.getDef().toString()
-            "5" -> chara.sortValue = chara.charaProperty.getMagicDef().toString()
-            "6" -> chara.sortValue = chara.age
-            "7" -> chara.sortValue = chara.height
-            "8" -> chara.sortValue = chara.weight
+            "4" -> chara.sortValue = chara.charaProperty.getPhysicalCritical().toString()
+            "5" -> chara.sortValue = chara.charaProperty.getMagicCritical().toString()
+            "6" -> chara.sortValue = chara.charaProperty.getDef().toString()
+            "7" -> chara.sortValue = chara.charaProperty.getMagicDef().toString()
+            "8" -> chara.sortValue = chara.charaProperty.getHp().toString()
+            "9" -> chara.sortValue = chara.charaProperty.effectivePhysicalHP.toString()
+            "10" -> chara.sortValue = chara.charaProperty.effectiveMagicalHP.toString()
+            "11" -> chara.sortValue = chara.charaProperty.getEnergyRecoveryRate().toString()
+            "12" -> chara.sortValue = chara.charaProperty.getEnergyReduceRate().toString()
+            "13" -> {
+                if (chara.actualName == "出雲 宮子") {
+                    chara.sortValue = I18N.getString(R.string.aged_s, chara.age)
+                } else {
+                    chara.sortValue = chara.age
+                }
+            }
+            "14" -> chara.sortValue = chara.height
+            "15" -> chara.sortValue = chara.weight
             else -> chara.sortValue = ""
         }
     }
 
-//    override fun doCharaListLoadFinished() {
-//        //filterDefault()
-//    }
+    val textWatcher = object: TextWatcher {
+        override fun afterTextChanged(s: Editable) {
+        }
+
+        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+        }
+
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+            searchText = s
+            filterDefault()
+        }
+    }
+
+    fun getSpinnerClickListener(type: Int): AdapterView.OnItemClickListener {
+        return when (type) {
+            1 -> AdapterView.OnItemClickListener { _, _, position, _ ->
+                filter(position.toString(), null, null, null, searchText)
+            }
+            2 -> AdapterView.OnItemClickListener { _, _, position, _ ->
+                filter(null, position.toString(), null, null, searchText)
+            }
+            3 -> AdapterView.OnItemClickListener { _, _, position, _ ->
+                filter(null, null, position.toString(), null, searchText)
+            }
+            else -> throw IllegalStateException("Illegal spinner adapter type $type.")
+        }
+    }
+}
+
+interface OnCharaActionListener : OnItemActionListener {
+    fun onCharaClickedListener(chara: Chara, position: Int)
 }

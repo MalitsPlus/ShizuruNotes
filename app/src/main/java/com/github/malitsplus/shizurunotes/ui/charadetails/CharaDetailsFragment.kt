@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -22,8 +20,9 @@ import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelCharaFactory
 import com.github.malitsplus.shizurunotes.ui.base.AttackPatternContainerAdapter
 import com.github.malitsplus.shizurunotes.ui.base.BaseHintAdapter
-import com.github.malitsplus.shizurunotes.ui.base.MaterialSpinnerAdapter
+import com.github.malitsplus.shizurunotes.user.UserSettings
 
+// TODO: 改成使用ViewType接口和适配器，避免NestedScrollView一次性渲染全部视图造成丢帧
 class CharaDetailsFragment : Fragment(), View.OnClickListener {
 
     private lateinit var detailsViewModel: CharaDetailsViewModel
@@ -31,9 +30,12 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
     private lateinit var binding: FragmentCharaDetailsBinding
     private val args: CharaDetailsFragmentArgs by navArgs()
 
+    private val adapterSkill by lazy { SkillAdapter(sharedChara) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedChara = ViewModelProvider(requireActivity()).get(SharedViewModelChara::class.java)
+        detailsViewModel = ViewModelProvider(this, SharedViewModelCharaFactory(sharedChara))[CharaDetailsViewModel::class.java]
 
         sharedElementEnterTransition =
             TransitionInflater.from(context)
@@ -46,7 +48,7 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
-        binding.rankSpinner.dismissDropDown()
+        binding.toolbar.menu.findItem(R.id.menu_chara_show_expression).isChecked = UserSettings.get().getExpression()
     }
 
     override fun onCreateView(
@@ -55,53 +57,50 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(
+        binding = FragmentCharaDetailsBinding.inflate(
             inflater,
-            R.layout.fragment_chara_details,
             container,
             false
-        )
+        ).apply {
 
-        detailsViewModel = ViewModelProvider(
-            this,
-            SharedViewModelCharaFactory(sharedChara)
-        ).get(CharaDetailsViewModel::class.java)
-
-        binding.apply {
             detailsItemChara.transitionName = "transItem_${args.charaId}"
-            toolbar.setNavigationOnClickListener { view ->
-                view.findNavController().navigateUp()
-            }
-
-            val rankList = mutableListOf<Int>()
-            detailsViewModel.getChara()?.let {
-                for (i in it.maxCharaRank downTo 2) {
-                    rankList.add(i)
-                }
-            }
-            rankSpinner.apply {
-                onItemClickListener = AdapterView.OnItemClickListener { _, _, position: Int, _ ->
-                    detailsViewModel.changeRank(adapter.getItem(position).toString())
-                }
-                setAdapter(
-                    MaterialSpinnerAdapter(
-                        this@CharaDetailsFragment.requireContext(),
-                        R.layout.dropdown_item_chara_list,
-                        rankList.toTypedArray()
-                    )
-                )
-                setText(rankList[0].toString())
-            }
 
             if (sharedChara.backFlag)
                 appbar.setExpanded(false, false)
 
-
-        }.also {
-            it.clickListener = this
+            detailsVM = detailsViewModel
+            clickListener = this@CharaDetailsFragment
         }
 
-        //攻击顺序
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            toolbar.setNavigationOnClickListener { view ->
+                view.findNavController().navigateUp()
+            }
+
+            toolbar.setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.menu_chara_customize -> {
+                        Navigation.findNavController(binding.root).navigate(
+                            CharaDetailsFragmentDirections.actionNavCharaDetailsToNavAnalyze()
+                        )
+                    }
+                    R.id.menu_chara_show_expression -> {
+                        it.isChecked = !it.isChecked
+                        UserSettings.get().setExpression(it.isChecked)
+                        sharedChara.mSetSelectedChara(sharedChara.selectedChara)
+                        adapterSkill.notifyDataSetChanged()
+                    }
+                }
+                true
+            }
+        }
+
+        // 技能循环
         val adapterAttackPattern = AttackPatternContainerAdapter(context).apply {
             initializeItems(detailsViewModel.mutableChara.value?.attackPatternList)
         }
@@ -119,15 +118,14 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
             adapter = adapterAttackPattern
         }
 
-        //技能 Recycler
+        // 技能 Recycler
         val layoutManagerSkill = LinearLayoutManager(context)
-        val adapterSkill = SkillAdapter(sharedChara)
         binding.skillRecycler.apply {
             layoutManager = layoutManagerSkill
             adapter = adapterSkill
         }
 
-        //观察chara变化
+        // 观察chara变化（1.0.0去掉rank下拉框后已经可以删掉了，留着备用）
         detailsViewModel.mutableChara.observe(
             viewLifecycleOwner,
             Observer<Chara> { chara: Chara ->
@@ -135,11 +133,6 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
                 adapterSkill.update(chara.skills)
             }
         )
-
-        return binding.run {
-            detailsVM = detailsViewModel
-            root
-        }
     }
 
     override fun onClick(v: View?) {
@@ -149,5 +142,4 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
             Navigation.findNavController(v).navigate(action)
         }
     }
-
 }

@@ -86,7 +86,7 @@ class DropFragment : Fragment() {
                 if (sharedEquipment.selectedDrops.value?.isNotEmpty() == true) {
                     val idList = mutableListOf<Int>()
                     sharedEquipment.selectedDrops.value?.forEach {
-                        idList.add(it.equipmentId)
+                        idList.add(it.itemId)
                     }
                     UserSettings.get().lastEquipmentIds = idList
                 }

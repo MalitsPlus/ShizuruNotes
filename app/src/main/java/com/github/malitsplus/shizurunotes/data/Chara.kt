@@ -2,6 +2,8 @@ package com.github.malitsplus.shizurunotes.data
 
 import android.text.format.DateFormat
 import androidx.annotation.DrawableRes
+import com.github.malitsplus.shizurunotes.R
+import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.action.PassiveAction
 import com.github.malitsplus.shizurunotes.user.UserSettings
 import java.text.SimpleDateFormat
@@ -31,7 +33,8 @@ class Chara: Cloneable {
     var maxCharaLevel: Int = 0
     var maxCharaRank: Int = 0
     var maxUniqueEquipmentLevel: Int = 0
-    var rarity: Int = 0
+    var maxRarity: Int = 5
+    var rarity: Int = 5
 
     lateinit var actualName: String
     lateinit var age: String
@@ -57,8 +60,8 @@ class Chara: Cloneable {
     lateinit var startTime: LocalDateTime
 
     lateinit var charaProperty: Property
-    lateinit var rarityProperty: Property
-    lateinit var rarityPropertyGrowth: Property
+    val rarityProperty = mutableMapOf<Int, Property>()
+    val rarityPropertyGrowth = mutableMapOf<Int, Property>()
     lateinit var storyProperty: Property
     lateinit var promotionStatus: Map<Int, Property>
     lateinit var rankEquipments: Map<Int, List<Equipment>>
@@ -68,27 +71,55 @@ class Chara: Cloneable {
     var skills = mutableListOf<Skill>()
 
     val birthDate: String by lazy {
-        val calendar = Calendar.getInstance()
-        calendar.set(calendar.get(Calendar.YEAR), birthMonth.toInt() - 1, birthDay.toInt())
-        val locale =  Locale(UserSettings.get().getLanguage())
-        val format = DateFormat.getBestDateTimePattern(locale, "d MMM")
-        SimpleDateFormat(format, locale).format(calendar.time)
+        if (birthMonth.contains("?") || birthDay.contains("?")) {
+            birthMonth + I18N.getString(R.string.text_month) + birthDay + I18N.getString(R.string.text_day)
+        } else {
+            val calendar = Calendar.getInstance()
+            calendar.set(calendar.get(Calendar.YEAR), birthMonth.toInt() - 1, birthDay.toInt())
+            val locale =  Locale(UserSettings.get().getLanguage())
+            val format = DateFormat.getBestDateTimePattern(locale, "d MMM")
+            SimpleDateFormat(format, locale).format(calendar.time)
+        }
     }
 
-    @Suppress("UNUSED_PARAMETER")
-    fun setCharaProperty(rarity: Int = 0, rank: Int = maxCharaRank, hasUnique: Boolean = true) {
-        charaProperty = Property()
-            .plusEqual(rarityProperty)
-            .plusEqual(getRarityGrowthProperty(rank))
-            .plusEqual(storyProperty)
-            .plusEqual(promotionStatus[rank])
-            .plusEqual(getAllEquipmentProperty(rank))
-            .plusEqual(passiveSkillProperty)
-            .plusEqual(uniqueEquipmentProperty)
+    fun setCharaProperty(
+        rarity: Int = maxRarity,
+        rank: Int = maxCharaRank,
+        hasUnique: Boolean = true
+    ) {
+        charaProperty = Property().apply {
+            plusEqual(rarityProperty[rarity])
+            plusEqual(getRarityGrowthProperty(rarity, rank))
+            plusEqual(storyProperty)
+            plusEqual(promotionStatus[rank])
+            plusEqual(getAllEquipmentProperty(rank))
+            plusEqual(getPassiveSkillProperty(rarity))
+            if (hasUnique) {
+                plusEqual(uniqueEquipmentProperty)
+            }
+        }
     }
 
-    private fun getRarityGrowthProperty(rank: Int): Property{
-        return rarityPropertyGrowth.multiply(maxCharaLevel.toDouble() + rank)
+    fun getSpecificCharaProperty(
+        rarity: Int = maxRarity,
+        rank: Int = maxCharaRank,
+        hasUnique: Boolean = true
+    ): Property {
+        return Property().apply {
+            plusEqual(rarityProperty[rarity])
+            plusEqual(getRarityGrowthProperty(rarity, rank))
+            plusEqual(storyProperty)
+            plusEqual(promotionStatus[rank])
+            plusEqual(getAllEquipmentProperty(rank))
+            plusEqual(getPassiveSkillProperty(rarity))
+            if (hasUnique) {
+                plusEqual(uniqueEquipmentProperty)
+            }
+        }
+    }
+
+    private fun getRarityGrowthProperty(rarity: Int, rank: Int): Property{
+        return rarityPropertyGrowth[rarity]?.multiply(maxCharaLevel.toDouble() + rank) ?: Property()
     }
 
     fun getAllEquipmentProperty(rank: Int): Property {
@@ -104,17 +135,21 @@ class Chara: Cloneable {
             return uniqueEquipment?.getCeiledProperty() ?: Property()
         }
 
-    val passiveSkillProperty: Property
-        get() {
-            val property = Property()
-            skills.forEach { skill ->
-                if (skill.skillClass == Skill.SkillClass.EX1_EVO) {
-                    skill.actions.forEach {
-                        if (it.parameter is PassiveAction)
-                            property.plusEqual((it.parameter as PassiveAction).propertyItem(maxCharaLevel))
-                    }
+    fun getPassiveSkillProperty(rarity: Int): Property {
+        val property = Property()
+        skills.forEach { skill ->
+            if (rarity >= 5 && skill.skillClass == Skill.SkillClass.EX1_EVO) {
+                skill.actions.forEach {
+                    if (it.parameter is PassiveAction)
+                        property.plusEqual((it.parameter as PassiveAction).propertyItem(maxCharaLevel))
+                }
+            } else if (rarity < 5 && skill.skillClass == Skill.SkillClass.EX1) {
+                skill.actions.forEach {
+                    if (it.parameter is PassiveAction)
+                        property.plusEqual((it.parameter as PassiveAction).propertyItem(maxCharaLevel))
                 }
             }
-            return property
         }
+        return property
+    }
 }

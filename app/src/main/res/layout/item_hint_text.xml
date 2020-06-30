@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
-            android:text="@{@string/space_modifier(hintText), default=hintText}"
+            android:text="@{@string/space_modifier_2(hintText), default=hintText}"
             android:textSize="16sp"
             android:background="@drawable/shape_item_hint_text_background"
             app:layout_constraintBottom_toBottomOf="parent"

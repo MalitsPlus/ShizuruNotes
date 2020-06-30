@@ -226,6 +226,12 @@ enum PatternType{
                 return I18N.getStringWithSpace(R.string.main_skill_6);
             case main7:
                 return I18N.getStringWithSpace(R.string.main_skill_7);
+            case main8:
+                return I18N.getStringWithSpace(R.string.main_skill_8);
+            case main9:
+                return I18N.getStringWithSpace(R.string.main_skill_9);
+            case main10:
+                return I18N.getStringWithSpace(R.string.main_skill_10);
             case sp1:
                 return I18N.getStringWithSpace(R.string.sp_skill_1);
             case sp2:

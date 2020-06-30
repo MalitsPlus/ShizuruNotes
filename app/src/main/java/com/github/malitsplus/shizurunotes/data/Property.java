@@ -2,6 +2,11 @@ package com.github.malitsplus.shizurunotes.data;
 
 import androidx.annotation.Nullable;
 
+import com.github.malitsplus.shizurunotes.utils.Utils;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Property {
     public double hp;
     public double atk;
@@ -21,8 +26,38 @@ public class Property {
     public double energyReduceRate;
     public double accuracy;
 
-    public Property(){
+    public int getEffectivePhysicalHP() {
+        return (int)Math.round(hp * (1 + def / 100));
+    }
+    public int getEffectiveMagicalHP() {
+        return (int)Math.round(hp * (1 + magicDef / 100));
+    }
 
+    public int getEffectiveHP(int physical, int magical) {
+        return (int)Math.round(hp * (1 + (def * physical + magicDef * magical) / 10000));
+    }
+
+    public double getPhysicalDamageCut() {
+        return def / (100.0 + def);
+    }
+
+    public double getMagicalDamageCut() {
+        return magicDef / (100.0 + magicDef);
+    }
+
+    public double getHpRecovery() {
+        return 1.0 + hpRecoveryRate / 100;
+    }
+
+    public double getTpUpRate() {
+        return 1.0 + energyRecoveryRate / 100;
+    }
+
+    public int getTpRemain() {
+        return (int)Math.round(energyReduceRate * 10.0);
+    }
+
+    public Property(){
     }
 
     public Property(double hp, double atk, double magicStr, double def, double magicDef, double physicalCritical, double magicCritical, double waveHpRecovery, double waveEnergyRecovery, double dodge, double physicalPenetrate, double magicPenetrate, double lifeSteal, double hpRecoveryRate, double energyRecoveryRate, double energyReduceRate, double accuracy) {
@@ -301,6 +336,17 @@ public class Property {
             default:
                 return 0;
         }
+    }
+
+    public Map<PropertyKey, Integer> getNonZeroPropertiesMap() {
+        HashMap<PropertyKey, Integer> map = new HashMap<>();
+        for (PropertyKey key : PropertyKey.values()) {
+            int value = (int) Math.ceil(getItem(key));
+            if (value != 0.0) {
+                map.put(key, value);
+            }
+        }
+        return map;
     }
 
     //region setters and getters

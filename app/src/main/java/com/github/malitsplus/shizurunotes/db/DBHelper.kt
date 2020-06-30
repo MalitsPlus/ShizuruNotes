@@ -342,11 +342,9 @@ class DBHelper private constructor(
     ): Map<Int, String>? {
         if (!FileUtils.checkFile(FileUtils.getDbFilePath())) return null
         val cursor = readableDatabase.rawQuery(sql, null)
-        val result: MutableMap<Int, String> =
-            HashMap()
+        val result: MutableMap<Int, String> = HashMap()
         while (cursor.moveToNext()) {
-            result[cursor.getInt(cursor.getColumnIndex(key))] =
-                cursor.getString(cursor.getColumnIndex(value))
+            result[cursor.getInt(cursor.getColumnIndex(key))] = cursor.getString(cursor.getColumnIndex(value))
         }
         cursor.close()
         return result
@@ -617,9 +615,30 @@ class DBHelper private constructor(
     fun getUniqueEquipment(unitId: Int): RawUniqueEquipmentData? {
         return getBeanByRaw<RawUniqueEquipmentData>(
             """
-                SELECT e.* 
+                SELECT e.*
+                ,c.item_id_1
+                ,c.consume_num_1
+                ,c.item_id_2
+                ,c.consume_num_2
+                ,c.item_id_3
+                ,c.consume_num_3
+                ,c.item_id_4
+                ,c.consume_num_4
+                ,c.item_id_5
+                ,c.consume_num_5
+                ,c.item_id_6
+                ,c.consume_num_6
+                ,c.item_id_7
+                ,c.consume_num_7
+                ,c.item_id_8
+                ,c.consume_num_8
+                ,c.item_id_9
+                ,c.consume_num_9
+                ,c.item_id_10
+                ,c.consume_num_10
                 FROM unique_equipment_data AS e 
                 JOIN unit_unique_equip AS u ON e.equipment_id=u.equip_id 
+                LEFT JOIN unique_equipment_craft AS c ON e.equipment_id=c.equip_id
                 WHERE u.unit_id=$unitId 
                 """,
             RawUniqueEquipmentData::class.java
@@ -783,7 +802,7 @@ class DBHelper private constructor(
     }
 
     /***
-     * 获取会战phase-wave
+     * 获取wave
      * @param
      * @return
      */
@@ -796,6 +815,22 @@ class DBHelper private constructor(
                     """.format(waveGroupList.toString()
                         .replace("[", "")
                         .replace("]", "")),
+            RawWaveGroup::class.java
+        )
+    }
+
+    /***
+     * 获取wave
+     * @param
+     * @return
+     */
+    fun getWaveGroupData(waveGroupId: Int): RawWaveGroup? {
+        return getBeanByRaw(
+            """
+            SELECT * 
+            FROM wave_group_data 
+            WHERE wave_group_id = $waveGroupId 
+            """,
             RawWaveGroup::class.java
         )
     }
@@ -845,6 +880,7 @@ class DBHelper private constructor(
                     ,u.atk_type 
                     ,u.normal_atk_cast_time
 					,u.search_area_width
+                    ,u.comment
                     FROM 
                     unit_skill_data b 
                     ,enemy_parameter a 
@@ -900,6 +936,7 @@ class DBHelper private constructor(
                     ,u.atk_type 
                     ,u.normal_atk_cast_time
 					,u.search_area_width
+                    ,u.comment
                     FROM 
                     unit_skill_data b 
                     ,enemy_parameter a 
@@ -1020,7 +1057,7 @@ class DBHelper private constructor(
     }
 
     /***
-     * 获取会战bossList
+     * 获取迷宫bossList
      * @param
      * @return
      */
@@ -1102,7 +1139,41 @@ class DBHelper private constructor(
         nowTimeString?.let {
             sqlString += " WHERE a.end_time > '$it' "
         }
+        sqlString += " ORDER BY a.event_id DESC "
         return getBeanListByRaw(sqlString, RawScheduleHatsune::class.java)
+    }
+
+    /***
+     * 获取hatsune一般boss数据
+     */
+    fun getHatsuneBattle(eventId: Int): List<RawHatsuneBoss>? {
+        return getBeanListByRaw(
+            """
+            SELECT
+            a.*
+            FROM
+            hatsune_boss a
+            WHERE
+            event_id = $eventId 
+            AND area_id <> 0 
+            """,
+            RawHatsuneBoss::class.java
+        )
+    }
+
+    /***
+     * 获取hatsune SP boss数据
+     */
+    fun getHatsuneSP(eventId: Int): List<RawHatsuneSpecialBattle>? {
+        return getBeanListByRaw(
+            """
+            SELECT
+            a.*
+            FROM hatsune_special_battle a
+            WHERE event_id = $eventId
+            """,
+            RawHatsuneSpecialBattle::class.java
+        )
     }
 
     /***
@@ -1153,6 +1224,12 @@ class DBHelper private constructor(
         get() {
             val result =
                 getOne("SELECT max(enhance_level) FROM unique_equipment_enhance_data ")
+            return result?.toInt() ?: 0
+        }
+
+    val maxEnemyLevel: Int
+        get() {
+            val result = getOne("SELECT MAX(level) FROM enemy_parameter ")
             return result?.toInt() ?: 0
         }
 

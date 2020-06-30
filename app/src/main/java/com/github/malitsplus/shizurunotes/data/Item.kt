@@ -8,6 +8,7 @@ interface Item {
 }
 
 enum class ItemType {
+    GENERAL_ITEM,
     EQUIPMENT,
     EQUIPMENT_PIECE
 }

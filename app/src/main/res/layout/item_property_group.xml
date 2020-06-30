@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="itemModel"
+            type="com.github.malitsplus.shizurunotes.data.Property" />
+        <variable
+            name="itemPosition"
+            type="Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/phy_atk"
+            style="@style/StatusSuperTextView"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:sLeftTextString="@string/text_physical_atk"
+            bind:sRightText="@{String.valueOf(itemModel.atk)}" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/mgc_atk"
+            style="@style/StatusSuperTextView"
+            android:layout_width="0dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:sLeftTextString="@string/text_magical_atk"
+            bind:sRightText="@{String.valueOf(itemModel.magicStr)}" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/phy_crt"
+            style="@style/StatusSuperTextView"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phy_atk"
+            bind:sLeftTextString="@string/text_physical_crt"
+            bind:sRightText="@{String.valueOf(itemModel.physicalCritical)}" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/mgc_crt"
+            style="@style/StatusSuperTextView"
+            android:layout_width="0dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/mgc_atk"
+            bind:sLeftTextString="@string/text_magical_crt"
+            bind:sRightText="@{String.valueOf(itemModel.magicCritical)}" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/phy_def"
+            style="@style/StatusSuperTextView"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phy_crt"
+            bind:sLeftTextString="@string/text_physical_def"
+            bind:sRightText="@{String.valueOf(itemModel.def)}" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/mgc_def"
+            style="@style/StatusSuperTextView"
+            android:layout_width="0dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/mgc_crt"
+            bind:sLeftTextString="@string/text_magical_def"
+            bind:sRightText="@{String.valueOf(itemModel.magicDef)}" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/hp"
+            style="@style/StatusSuperTextView"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phy_def"
+            bind:sLeftTextString="@string/text_hp"
+            bind:sRightText="@{String.valueOf(itemModel.hp)}" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/life_steal"
+            style="@style/StatusSuperTextView"
+            android:layout_width="0dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/mgc_def"
+            bind:sLeftTextString="@string/text_life_steal"
+            bind:sRightText="@{String.valueOf(itemModel.lifeSteal)}" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/energy_recovery"
+            style="@style/StatusSuperTextView"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hp"
+            bind:sLeftTextString="@string/text_energy_recovery"
+            bind:sRightText="@{String.valueOf(itemModel.energyRecoveryRate)}" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/energy_reduce"
+            style="@style/StatusSuperTextView"
+            android:layout_width="0dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/life_steal"
+            bind:sLeftTextString="@string/text_energy_reduce"
+            bind:sRightText="@{String.valueOf(itemModel.energyReduceRate)}" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/acc"
+            style="@style/StatusSuperTextView"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/energy_recovery"
+            bind:sLeftTextString="@string/text_accuracy"
+            bind:sRightText="@{String.valueOf(itemModel.accuracy)}" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/ddg"
+            style="@style/StatusSuperTextView"
+            android:layout_width="0dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/energy_reduce"
+            bind:sLeftTextString="@string/text_dodge"
+            bind:sRightText="@{String.valueOf(itemModel.dodge)}" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/wav_hp_rec"
+            style="@style/StatusSuperTextView"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/acc"
+            bind:sLeftTextString="@string/text_wave_hp_recovery"
+            bind:sRightText="@{String.valueOf(itemModel.waveHpRecovery)}" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/wav_energy_rec"
+            style="@style/StatusSuperTextView"
+            android:layout_width="0dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/ddg"
+            bind:sLeftTextString="@string/text_wave_energy_recovery"
+            bind:sRightText="@{String.valueOf(itemModel.waveEnergyRecovery)}" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/phy_penetrate"
+            style="@style/StatusSuperTextView"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wav_hp_rec"
+            bind:sLeftTextString="@string/text_physical_penetrate"
+            bind:sRightText="@{String.valueOf(itemModel.physicalPenetrate)}" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/mgc_penetrate"
+            style="@style/StatusSuperTextView"
+            android:layout_width="0dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/wav_energy_rec"
+            bind:sLeftTextString="@string/text_magical_penetrate"
+            bind:sRightText="@{String.valueOf(itemModel.magicPenetrate)}" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/hp_rec"
+            style="@style/StatusSuperTextView"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phy_penetrate"
+            bind:sLeftTextString="@string/text_hp_recovery"
+            bind:sRightText="@{String.valueOf(itemModel.hpRecoveryRate)}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
