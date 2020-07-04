@@ -13,7 +13,7 @@ public class SealAction extends ActionParameter {
 
     @Override
     public String localizedDetail(int level, Property property) {
-        if(actionValue4 > 0)
+        if(actionValue4 >= 0)
             return I18N.getString(R.string.Add_s1_mark_stacks_max_s2_ID_s3_on_s4_for_s5_sec,
                     Utils.roundDownDouble(actionValue4),
                     Utils.roundDownDouble(actionValue1),

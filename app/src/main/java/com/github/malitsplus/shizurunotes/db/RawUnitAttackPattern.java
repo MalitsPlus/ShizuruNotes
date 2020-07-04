@@ -35,6 +35,8 @@ public class RawUnitAttackPattern {
     public AttackPattern getAttackPattern(){
         List<Integer> attackPatternList = new ArrayList<>();
         for(int i = 1; i <= 20; i++){
+            // mistake? deliberately? only cy knows
+            if (i == 14) continue;
             int atkPattern =  (int)Utils.getValueFromObject(this, "atk_pattern_" + i);
             if(atkPattern != 0)
                 attackPatternList.add(atkPattern);

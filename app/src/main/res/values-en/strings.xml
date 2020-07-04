@@ -572,5 +572,4 @@
     <string name="unimplemented">Unimplemented</string>
     <string name="rank_d">Rank %d</string>
     <string name="change_energy_recovery_ratio_of_action_s1_to_s2_when_s3_get_damage">Changes the TP Recovery Rate (including from damage) of %3$s to [Original Value × %2$s] upon receiving [Action %1$s].</string>
-    <string name="make_this_skill_ignore_decoy">Makes this skill unaffected by Taunt.</string>
 </resources>
