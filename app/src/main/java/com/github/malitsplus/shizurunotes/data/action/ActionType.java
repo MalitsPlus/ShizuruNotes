@@ -69,6 +69,7 @@ public enum ActionType {
     knightGuard(71),
     logBarrier(73),
     divide(74),
+    actionByHitCount(75),
     ex(90),
     exPlus(91),
     changeEnergyRecoveryRatioByDamage(92),
