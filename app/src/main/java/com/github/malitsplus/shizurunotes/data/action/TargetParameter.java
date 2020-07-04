@@ -57,7 +57,7 @@ public class TargetParameter {
                 || targetNumber == TargetNumber.fifth;
         hasDirectionPhrase = direction == DirectionType.front
                 &&(hasRangePhrase || targetCount == TargetCount.all);
-        hasTargetType = !(targetType.isExclusiveWithAll() && targetCount == TargetCount.all);
+        hasTargetType = !(targetType.exclusiveWithAll() == TargetType.ExclusiveAllType.exclusive && targetCount == TargetCount.all);
     }
 
 
@@ -80,16 +80,19 @@ public class TargetParameter {
             return I18N.getString(R.string.targets_of_last_effect);
         } else if (hasCountPhrase && !hasNthModifier && !hasRangePhrase && hasRelationPhrase && !hasDirectionPhrase){
             if(targetCount == TargetCount.all){
-                if(targetType.isExclusiveWithAll())
+                if(targetType.exclusiveWithAll() == TargetType.ExclusiveAllType.exclusive)
                     return I18N.getString(R.string.all_s_targets, targetAssignment.description());
-                else
+                else if (targetType.exclusiveWithAll() == TargetType.ExclusiveAllType.not)
                     return I18N.getString(R.string.all_s_s_targets, targetAssignment.description(), targetType.description());
+                else if (targetType.exclusiveWithAll() == TargetType.ExclusiveAllType.halfExclusive) {
+                    return I18N.getString(R.string.all_s_targets, targetAssignment.description()) + I18N.getString(R.string.except_self);
+                }
             } else if (targetCount == TargetCount.one && targetType.ignoresOne()){
                 return I18N.getString(R.string.s_s_target, targetType.description(), targetAssignment.description());
             } else {
                 return I18N.getString(R.string.s_s_s, targetType.description(), targetAssignment.description(), targetCount.description());
             }
-        } else if (hasCountPhrase && !hasNthModifier && !hasRangePhrase && hasRelationPhrase && hasDirectionPhrase && targetType.isExclusiveWithAll()){
+        } else if (hasCountPhrase && !hasNthModifier && !hasRangePhrase && hasRelationPhrase && hasDirectionPhrase && targetType.exclusiveWithAll() == TargetType.ExclusiveAllType.exclusive){
             switch (targetAssignment){
                 case enemy:
                     return I18N.getString(R.string.all_front_enemy_targets);
@@ -98,7 +101,7 @@ public class TargetParameter {
                 default:
                     return I18N.getString(R.string.all_front_targets);
             }
-        } else if (hasCountPhrase && !hasNthModifier && !hasRangePhrase && hasRelationPhrase && hasDirectionPhrase && !targetType.isExclusiveWithAll()){
+        } else if (hasCountPhrase && !hasNthModifier && !hasRangePhrase && hasRelationPhrase && hasDirectionPhrase && targetType.exclusiveWithAll() == TargetType.ExclusiveAllType.not){
             switch (targetAssignment){
                 case enemy:
                     return I18N.getString(R.string.all_front_s_enemy_targets, targetType.description());
@@ -107,7 +110,17 @@ public class TargetParameter {
                 default:
                     return I18N.getString(R.string.all_front_s_targets, targetType.description());
             }
-        } else if (!hasCountPhrase && !hasNthModifier && hasRangePhrase && hasRelationPhrase && !hasDirectionPhrase){
+        } else if (hasCountPhrase && !hasNthModifier && !hasRangePhrase && hasRelationPhrase && hasDirectionPhrase && targetType.exclusiveWithAll() == TargetType.ExclusiveAllType.halfExclusive){
+            switch (targetAssignment){
+                case enemy:
+                    return I18N.getString(R.string.all_front_enemy_targets) + I18N.getString(R.string.except_self);
+                case friendly:
+                    return I18N.getString(R.string.all_front_including_self_friendly_targets);
+                default:
+                    return I18N.getString(R.string.all_front_targets) + I18N.getString(R.string.except_self);
+            }
+        }
+        else if (!hasCountPhrase && !hasNthModifier && hasRangePhrase && hasRelationPhrase && !hasDirectionPhrase){
             return I18N.getString(R.string.s1_targets_in_range_d2, targetAssignment.description(), targetRange.rawRange);
         } else if (!hasCountPhrase && !hasNthModifier && hasRangePhrase && hasRelationPhrase && hasDirectionPhrase){
             return I18N.getString(R.string.front_s1_targets_in_range_d2, targetAssignment.description(), targetRange.rawRange);
@@ -115,10 +128,12 @@ public class TargetParameter {
             return I18N.getString(R.string.targets_of_last_effect);
         } else if (hasCountPhrase && !hasNthModifier && hasRangePhrase && hasRelationPhrase && !hasDirectionPhrase){
             if(targetCount == TargetCount.all){
-                if(targetType.isExclusiveWithAll())
+                if(targetType.exclusiveWithAll() == TargetType.ExclusiveAllType.exclusive)
                     return I18N.getString(R.string.s1_targets_in_range_d2, targetAssignment.description(), targetRange.rawRange);
-                else
+                else if (targetType.exclusiveWithAll() == TargetType.ExclusiveAllType.not)
                     return I18N.getString(R.string.s1_s2_target_in_range_d3, targetAssignment.description(), targetType.description(), targetRange.rawRange);
+                else if (targetType.exclusiveWithAll() == TargetType.ExclusiveAllType.halfExclusive)
+                    return I18N.getString(R.string.s1_targets_in_range_d2, targetAssignment.description() + I18N.getString(R.string.except_self), targetRange.rawRange);
             } else if (targetCount == TargetCount.one && targetType.ignoresOne()){
                 return I18N.getString(R.string.s1_s2_target_in_range_d3, targetType.description(), targetAssignment.description(), targetRange.rawRange);
             } else {
@@ -126,10 +141,12 @@ public class TargetParameter {
             }
         } else if (hasCountPhrase && !hasNthModifier && hasRangePhrase && hasRelationPhrase && hasDirectionPhrase){
             if(targetCount == TargetCount.all){
-                if(targetType.isExclusiveWithAll())
+                if(targetType.exclusiveWithAll() == TargetType.ExclusiveAllType.exclusive)
                     return I18N.getString(R.string.front_s1_targets_in_range_d2, targetAssignment.description(), targetRange.rawRange);
-                else
+                else if (targetType.exclusiveWithAll() == TargetType.ExclusiveAllType.not)
                     return I18N.getString(R.string.front_s1_s2_targets_in_range_d3, targetAssignment.description(), targetType.description(), targetRange.rawRange);
+                else if (targetType.exclusiveWithAll() == TargetType.ExclusiveAllType.halfExclusive)
+                    return I18N.getString(R.string.front_s1_targets_in_range_d2, targetAssignment.description() + I18N.getString(R.string.except_self), targetRange.rawRange);
             } else if(targetCount == TargetCount.one && targetType.ignoresOne()){
                 return I18N.getString(R.string.s1_front_s2_target_in_range_d3, targetType.description(), targetAssignment.description(), targetRange.rawRange);
             } else {
@@ -159,9 +176,8 @@ public class TargetParameter {
                 String modifier = I18N.getString(R.string.s1_to_s2, targetNumber.description(), getUntilNumber().description());
                 return I18N.getString(R.string.s1_front_s2_s3_in_range_d4, targetType.description(targetNumber, modifier), targetAssignment.description(), targetCount.pluralModifier.description(), targetRange.rawRange);
             }
-        } else {
-            return "";
         }
+        return "";
     }
 
     private TargetNumber getUntilNumber(){
@@ -286,7 +302,9 @@ enum TargetType{
     atkDescendingOrNear(29),
     atkAscendingOrNear(30),
     magicSTRDescendingOrNear(31),
-    magicSTRAscendingOrNear(32);
+    magicSTRAscendingOrNear(32),
+    shadow(33),
+    nearWithoutSelf(34);
 
     private int value;
     TargetType(int value){
@@ -304,16 +322,22 @@ enum TargetType{
         return unknown;
     }
 
-    public boolean isExclusiveWithAll(){
+    enum ExclusiveAllType {
+        not, exclusive, halfExclusive
+    }
+
+    public ExclusiveAllType exclusiveWithAll(){
         switch (this){
             case unknown:
             case magic:
             case physics:
             case summon:
             case boss:
-                return false;
+                return ExclusiveAllType.not;
+            case nearWithoutSelf:
+                return ExclusiveAllType.halfExclusive;
             default:
-                return true;
+                return ExclusiveAllType.exclusive;
         }
     }
     public boolean ignoresOne(){
@@ -391,6 +415,10 @@ enum TargetType{
                 return I18N.getString(R.string.random_self_minion);
             case boss:
                 return I18N.getString(R.string.boss);
+            case shadow:
+                return I18N.getString(R.string.shadow);
+            case nearWithoutSelf:
+                return I18N.getString(R.string.nearest_without_self);
             default:
                 return "";
         }
@@ -445,19 +473,23 @@ enum TargetType{
                 return I18N.getString(R.string.s_magic, localizedModifier);
             case boss:
                 return I18N.getString(R.string.s_boss, localizedModifier);
+            case shadow:
+                return I18N.getString(R.string.s_shadow, localizedModifier);
+            case nearWithoutSelf:
+                return I18N.getString(R.string.s_nearest_without_self, localizedModifier);
             default:
                 return description();
         }
     }
 
-    public String description(TargetNumber targetNumber, String localizedNumer){
+    public String description(TargetNumber targetNumber, String localizedNumber){
 
         if(targetNumber == TargetNumber.second
             ||targetNumber == TargetNumber.third
             ||targetNumber == TargetNumber.fourth
             ||targetNumber == TargetNumber.fifth){
 
-            String localizedModifier = localizedNumer == null ? targetNumber.description() : localizedNumer;
+            String localizedModifier = localizedNumber == null ? targetNumber.description() : localizedNumber;
             switch (this){
                 case unknown:
                     return I18N.getString(R.string.the_s_unknown_type, localizedModifier);
@@ -496,6 +528,8 @@ enum TargetType{
                 case magicSTRAscending:
                 case magicSTRAscendingOrNear:
                     return I18N.getString(R.string.the_s_lowest_Magic_STR, localizedModifier);
+                case nearWithoutSelf:
+                    return I18N.getString(R.string.the_s_nearest_without_self);
                 default:
                     return description();
             }

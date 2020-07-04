@@ -546,11 +546,11 @@
     <string name="Change_skill_visual_effect_for_s_sec">スキルのビジュアルを変化させる、効果時間 [%s] 秒。</string>
     <string name="use_d1_to_s2_if_s3">%2$sが%3$sの場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_to_s2_in_state_of_ID_d3">%2$sがマーク[ID：%3$d]を持っている場合、[アクション%1$d]を使う。</string>
-    <string name="use_d1_to_s2_if_it_is_alone">%2$sが独りの場合、[アクション%1$d]を使う。</string>
+    <string name="use_d1_to_s2_if_it_is_alone">%2$sが単独の場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_to_s2_if_HP_is_below_d">%2$sのHPが [%3$d%%] 以下の場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_to_s2_if_not_s3">%2$sが%3$sでない場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_to_s2_if_not_in_state_of_ID_d3">%2$sがマーク[ID：%3$d]を持っていない場合、[アクション%1$d]を使う。</string>
-    <string name="use_d1_to_s2_if_it_is_not_alone">%2$sが独りでない場合、[アクション%1$d]を使う。</string>
+    <string name="use_d1_to_s2_if_it_is_not_alone">%2$sが単独でない場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_to_s2_if_HP_is_not_below_d">%2$sのHPが [%3$d%%] 以下でない場合、[アクション%1$d]を使う。</string>
     <string name="Random_event_d1_chance_use_d2_otherwise_d3">ランダム事件：[%1$d%%] の確率で[アクション%2$d]を使う、それ以外の場合は[アクション%3$d]を使う。</string>
     <string name="Random_event_d1_chance_use_d2">ランダム事件：[%1$d%%] の確率で[アクション%2$d]を使う。</string>
@@ -583,14 +583,14 @@
     <string name="d1_chance_use_d2">[%1$d%%] の確率で[アクション%2$d]を使う。</string>
     <string name="use_d1_if_s2_has_any_dot_debuff">%2$sが継続ダメージデバフを掛けられている場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_if_s2_is_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4">%2$sが持っているマーク[ID：%3$d]のスタック数が%4$d以上の場合、[アクション%1$d]を使う。</string>
-    <string name="use_d1_if_s2_is_alone">%2$sが独りの場合、[アクション%1$d]を使う。</string>
+    <string name="use_d1_if_s2_is_alone">%2$sが単独の場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_if_the_count_of_s2_except_stealth_units_is_d3">潜伏状態のユニットを除いて、%2$sの数が%3$dの場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_if_among_s2_exists_unit_ID_d3">潜伏状態のユニットを除いて、%2$sの中ユニット[ID：%3$d]が存在する場合、[アクション%1$d]を使う。</string>
     <string name="if_target_is_defeated_by_the_last_effect_then_use_d">前のアクションがターゲットを倒した場合、[アクション%d]を使う。</string>
     <string name="counter_is_greater_than_or_equal_to_d1_then_use_d2">カウンターの数が [%1$d] 以上の場合、[アクション%2$d]を使う。</string>
     <string name="use_d1_if_s2_has_no_dot_debuff">%2$sが継続ダメージデバフを掛けられていない場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_if_s2_is_not_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4">%2$sが持っているマーク[ID：%3$d]のスタック数が [%4$d] 未満の場合、[アクション%1$d]を使う。</string>
-    <string name="use_d1_if_s2_is_not_alone">%2$sが独りでない場合、[アクション%1$d]を使う。</string>
+    <string name="use_d1_if_s2_is_not_alone">%2$sが単独でない場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_if_the_count_of_s2_except_stealth_units_is_not_d3">潜伏状態のユニットを除いて、%2$sの数が [%3$d] でない場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_if_among_s2_does_not_exists_unit_ID_d3">潜伏状態のユニットを除いて、%2$sの中ユニット[ID：%3$d]が存在しない場合、[アクション%1$d]を使う。</string>
     <string name="if_target_is_not_defeated_by_the_last_effect_then_use_d">前のアクションがターゲットを倒してない場合、[アクション%d]を使う。</string>
@@ -653,7 +653,19 @@
     <string name="use_d1_to_s2_if_target_is_magical_type">%2$sが魔法攻撃を行う対象の場合、[アクション%1$d] を使う。</string>
     <string name="use_d1_to_s2_if_target_is_not_magical_type">%2$sが魔法攻撃を行う対象でない場合、[アクション%1$d] を使う。</string>
     <string name="change_energy_recovery_ratio_of_action_s1_to_s2_when_s3_get_damage">ダメージによるTP回復を含めて、%3$sが [アクション%1$s] を受けた時全てのTP回復効果を [本来の値 * %2$s] に変更させる。</string>
-    <string name="make_this_skill_ignore_decoy">このスキルを挑発の影響を受けないようにさせる。</string>
+    <string name="Ignore_the_other_units_taunt_when_attacking_s">%sを攻撃する時、他のターゲットの挑発効果を無視する。</string>
     <string name="time_stop">時間停止</string>
     <string name="Stop_s1_for_s2_sec">%1$sを時間停止状態にする、効果時間 [%2$s] 秒。</string>
+
+    <string name="Modifier_add_s1_count_of_damaged_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dを [%1$s * ダメージを与えられたターゲットの数] アップさせる。</string>
+    <string name="nearest_without_self">自分以外最も近い</string>
+    <string name="s_nearest_without_self">%s自分以外最も近い</string>
+    <string name="the_s_nearest_without_self">自分以外%s近い</string>
+    <string name="shadow">シャドー</string>
+    <string name="s_shadow">%sシャドー</string>
+    <string name="except_self">（自分以外）</string>
+    <string name="use_d1_if_s2_HP_is_below_d3">%2$sのHPが [%3$d%%] 以下の場合、[アクション%1$d]を使う。</string>
+    <string name="use_d1_if_s2_HP_is_not_below_d3">%2$sのHPが [%3$d%%] 以下でない場合、[アクション%1$d]を使う。</string>
+    <string name="Use_d1_s2_every_s3_hits_in_next_s4_sec">[%4$s] 秒内、[%3$s] Hitするたびに[アクション%1$d]%2$sを使う。</string>
+    <string name="max_s_times">（上限は %s 回）</string>
 </resources>

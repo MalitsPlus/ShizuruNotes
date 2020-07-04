@@ -48,6 +48,10 @@ public class AdditiveAction extends ActionParameter {
                 return I18N.getString(R.string.Modifier_add_s1_count_of_targets_to_value_d2_of_effect_d3,
                         buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
                         actionDetail2, actionDetail1 % 10);
+            case 5:
+                return I18N.getString(R.string.Modifier_add_s1_count_of_damaged_to_value_d2_of_effect_d3,
+                        buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
+                        actionDetail2, actionDetail1 % 10);
             case 6:
                 return I18N.getString(R.string.Modifier_add_s1_total_damage_to_value_d2_of_effect_d3,
                         buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),

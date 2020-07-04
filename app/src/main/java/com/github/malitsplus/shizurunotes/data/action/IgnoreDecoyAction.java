@@ -12,6 +12,6 @@ public class IgnoreDecoyAction extends ActionParameter {
 
     @Override
     public String localizedDetail(int level, Property property) {
-        return I18N.getString(R.string.make_this_skill_ignore_decoy);
+        return I18N.getString(R.string.Ignore_the_other_units_taunt_when_attacking_s, targetParameter.buildTargetClause());
     }
 }
