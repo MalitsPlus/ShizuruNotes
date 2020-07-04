@@ -147,6 +147,8 @@ public class ActionParameter {
                 return new LogBarrierAction();
             case 74:
                 return new DivideAction();
+            case 75:
+                return new ActionByHitCountAction();
             case 90:
                 return new PassiveAction();
             case 91:

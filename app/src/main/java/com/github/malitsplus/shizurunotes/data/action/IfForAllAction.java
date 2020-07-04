@@ -32,9 +32,12 @@ public class IfForAllAction extends ActionParameter {
             } else if(actionDetail1 >= 701 && actionDetail1 < 710){
                 trueClause = I18N.getString(R.string.use_d1_if_the_count_of_s2_except_stealth_units_is_d3,
                         actionDetail2 % 10, targetParameter.buildTargetClause(), actionDetail1 - 700);
-            } else if(actionDetail1 == 720){
+            } else if(actionDetail1 == 720) {
                 trueClause = I18N.getString(R.string.use_d1_if_among_s2_exists_unit_ID_d3,
-                        actionDetail2 % 10, targetParameter.buildTargetClause(), (int)actionValue3);
+                        actionDetail2 % 10, targetParameter.buildTargetClause(), (int) actionValue3);
+            } else if (actionDetail1 >=901 && actionDetail1 < 1000) {
+                trueClause = I18N.getString(R.string.use_d1_if_s2_HP_is_below_d3,
+                        actionDetail2 % 10, targetParameter.buildTargetClause(true), actionDetail1 - 900);
             } else if(actionDetail1 == 1000){
                 trueClause = I18N.getString(R.string.if_target_is_defeated_by_the_last_effect_then_use_d,
                         actionDetail2 % 10);
@@ -65,9 +68,12 @@ public class IfForAllAction extends ActionParameter {
             } else if(actionDetail1 >= 701 && actionDetail1 < 710){
                 falseClause = I18N.getString(R.string.use_d1_if_the_count_of_s2_except_stealth_units_is_not_d3,
                         actionDetail3 % 10, targetParameter.buildTargetClause(), actionDetail1 - 700);
-            } else if(actionDetail1 == 720){
+            } else if(actionDetail1 == 720) {
                 falseClause = I18N.getString(R.string.use_d1_if_among_s2_does_not_exists_unit_ID_d3,
-                        actionDetail3 % 10, targetParameter.buildTargetClause(), (int)actionValue3);
+                        actionDetail3 % 10, targetParameter.buildTargetClause(), (int) actionValue3);
+            } else if (actionDetail1 >=901 && actionDetail1 < 1000) {
+                falseClause = I18N.getString(R.string.use_d1_if_s2_HP_is_not_below_d3,
+                        actionDetail2 % 10, targetParameter.buildTargetClause(true), actionDetail1 - 900);
             } else if(actionDetail1 == 1000){
                 falseClause = I18N.getString(R.string.if_target_is_not_defeated_by_the_last_effect_then_use_d,
                         actionDetail3 % 10);
