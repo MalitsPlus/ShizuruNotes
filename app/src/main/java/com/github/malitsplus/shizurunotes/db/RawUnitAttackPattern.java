@@ -43,12 +43,17 @@ public class RawUnitAttackPattern {
             else
                 break;
         }
-
+        int real_end = 0;
+        if (loop_end >= 14) {
+            real_end = loop_end - 1;
+        } else {
+            real_end = loop_end;
+        }
         return new AttackPattern(
                 pattern_id,
                 unit_id,
                 loop_start,
-                loop_end,
+                real_end,
                 attackPatternList
         );
     }
