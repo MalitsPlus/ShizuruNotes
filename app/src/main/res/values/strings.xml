@@ -668,4 +668,6 @@
     <string name="use_d1_if_s2_HP_is_not_below_d3">%2$sのHPが [%3$d%%] 以下でない場合、[アクション%1$d]を使う。</string>
     <string name="Use_d1_s2_every_s3_hits_in_next_s4_sec">[%4$s] 秒内、[%3$s] Hitするたびに[アクション%1$d]%2$sを使う。</string>
     <string name="max_s_times">（上限は %s 回）</string>
+    <string name="Use_s_if_this_skill_get_critical">このスキルがクリティカルした場合、[アクション%s]を使う。</string>
+    <string name="Use_s_if_this_skill_not_get_critical">このスキルがクリティカルしなかった場合、[アクション%s]を使う。</string>
 </resources>
