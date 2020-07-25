@@ -15,8 +15,13 @@ public class ChangePatternAction extends ActionParameter {
     public String localizedDetail(int level, Property property) {
         switch (actionDetail1){
             case 1:
-                return I18N.getString(R.string.Change_attack_pattern_to_d1_for_s2_sec,
-                        actionDetail2 % 10, Utils.roundDouble(actionValue1));
+                if (actionValue1 > 0) {
+                    return I18N.getString(R.string.Change_attack_pattern_to_d1_for_s2_sec,
+                            actionDetail2 % 10, Utils.roundDouble(actionValue1));
+                } else {
+                    return I18N.getString(R.string.Change_attack_pattern_to_d,
+                            actionDetail2 % 10);
+                }
             case 2:
                 return I18N.getString(R.string.Change_skill_visual_effect_for_s_sec,
                         Utils.roundDouble(actionValue1));
