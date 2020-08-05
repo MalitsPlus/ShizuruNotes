@@ -2,6 +2,7 @@ package com.github.malitsplus.shizurunotes.db
 
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
+import com.github.malitsplus.shizurunotes.common.Statics
 import com.github.malitsplus.shizurunotes.data.HatsuneStage
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -19,7 +20,11 @@ class MasterHatsune {
             )
             DBHelper.get().getHatsuneBattle(schedule.event_id)?.forEach { battle ->
                 DBHelper.get().getWaveGroupData(battle.wave_group_id_1)?.let {
-                    hatsuneStage.battleWaveGroupMap[battle.quest_name] = it.getWaveGroup(true)
+                    hatsuneStage.battleWaveGroupMap[battle.quest_name] = it.getWaveGroup(true).also { w ->
+                        if (hatsuneStage.enemyIcon == Statics.UNKNOWN_ICON) {
+                            hatsuneStage.enemyIcon = w.enemyList[0].iconUrl
+                        }
+                    }
                 }
             }
             DBHelper.get().getHatsuneSP(schedule.event_id)?.forEach { sp ->
