@@ -1,5 +1,6 @@
 package com.github.malitsplus.shizurunotes.data
 
+import com.github.malitsplus.shizurunotes.common.Statics
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -10,6 +11,8 @@ class HatsuneStage(
     val title: String
 ) {
     val battleWaveGroupMap = mutableMapOf<String, WaveGroup>()
+    var enemyIcon = Statics.UNKNOWN_ICON
+
 //    val spBattleWaveGroupMap = mutableMapOf<String, WaveGroup>()
     val durationString: String
         get() {
