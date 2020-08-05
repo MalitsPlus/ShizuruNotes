@@ -656,7 +656,6 @@
     <string name="Ignore_the_other_units_taunt_when_attacking_s">%sを攻撃する時、他のターゲットの挑発効果を無視する。</string>
     <string name="time_stop">時間停止</string>
     <string name="Stop_s1_for_s2_sec">%1$sを時間停止状態にする、効果時間 [%2$s] 秒。</string>
-
     <string name="Modifier_add_s1_count_of_damaged_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dを [%1$s * ダメージを与えられたターゲットの数] アップさせる。</string>
     <string name="nearest_without_self">自分以外最も近い</string>
     <string name="s_nearest_without_self">%s自分以外最も近い</string>
@@ -671,4 +670,5 @@
     <string name="Use_s_if_this_skill_get_critical">このスキルがクリティカルした場合、[アクション%s]を使う。</string>
     <string name="Use_s_if_this_skill_not_get_critical">このスキルがクリティカルしなかった場合、[アクション%s]を使う。</string>
     <string name="Change_attack_pattern_to_d">行動パターンを%dに変化させる。</string>
+    <string name="This_effect_will_be_released_when_taking_damaged">この効果はダメージを受けた時に解除される。</string>
 </resources>
