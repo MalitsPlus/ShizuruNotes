@@ -86,7 +86,7 @@
     <string name="text_status_tips">*上记的状态参数为☆MAX，装备&amp;专用装备最大强化，且包含羁绊剧情&amp;Ex技能的值。</string>
     <string name="text_attack_pattern">&#160;技能循环%d&#160;</string>
     <string name="text_normal_mode">通常模式</string>
-    <string name="text_cast_time">施放时间：</string>
+    <string name="text_cast_time">待机时间：</string>
     <string name="text_skill_action">技能动作</string>
     <string name="text_profile">个人情报</string>
     <string name="text_age">&#160;年龄&#160;</string>
@@ -100,7 +100,7 @@
     <string name="text_cv">&#160;CV&#160;</string>
     <string name="text_catch_copy">catch copy</string>
     <string name="text_self_text">自我介绍</string>
-    <string name="text_normal_attack_cast_time">通常攻击施放时间：%ss</string>
+    <string name="text_normal_attack_cast_time">通常攻击待机时间：%ss</string>
     <string name="text_rank">Rank</string>
     <string name="text_please_download_db">请下载数据库</string>
     <string name="text_resist_data">&#160;异常状态耐性&#160;</string>

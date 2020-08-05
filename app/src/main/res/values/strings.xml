@@ -145,7 +145,7 @@
     <string name="text_status_tips">*上記のステータスは☆MAX、装備&amp;専用装備フル強化、ストーリーステータス&amp;Exスキルを含めての値になります。</string>
     <string name="text_attack_pattern">&#160;行動パターン%d&#160;</string>
     <string name="text_normal_mode">通常モード</string>
-    <string name="text_cast_time">キャストタイム：</string>
+    <string name="text_cast_time">待機時間：</string>
     <string name="text_skill_action">スキルアクション</string>
     <string name="text_profile">プロフィール</string>
     <string name="text_age">&#160;年齢&#160;</string>
@@ -159,7 +159,7 @@
     <string name="text_cv">&#160;CV&#160;</string>
     <string name="text_catch_copy">キャッチコピー</string>
     <string name="text_self_text">自己紹介</string>
-    <string name="text_normal_attack_cast_time">通常攻撃キャストタイム：%ss</string>
+    <string name="text_normal_attack_cast_time">通常攻撃待機時間：%ss</string>
     <string name="text_rank">Rank</string>
     <string name="text_please_download_db">データベースをダウンロードしてください</string>
     <string name="text_resist_data">&#160;異常状態耐性&#160;</string>
