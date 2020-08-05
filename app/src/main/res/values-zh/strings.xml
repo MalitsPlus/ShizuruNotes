@@ -606,4 +606,5 @@
     <string name="Use_s_if_this_skill_get_critical">本技能触发暴击的场合，使用[动作%s]。</string>
     <string name="Use_s_if_this_skill_not_get_critical">本技能未暴击的场合，使用[动作%s]。</string>
     <string name="Change_attack_pattern_to_d">切换至技能循环%d。</string>
+    <string name="This_effect_will_be_released_when_taking_damaged">本效果将会在收到伤害时解除。</string>
 </resources>
