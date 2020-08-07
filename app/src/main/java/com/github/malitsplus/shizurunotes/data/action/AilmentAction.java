@@ -31,11 +31,11 @@ public class AilmentAction extends ActionParameter {
                 switch ((Ailment.ActionDetail)ailment.ailmentDetail.detail){
                     case haste:
                         str = I18N.getString(R.string.Raise_s1_d2_attack_speed_for_s3_sec,
-                                targetParameter.buildTargetClause(), Math.round((actionValue1 - 1) * 100), buildExpression(level, durationValues, RoundingMode.HALF_UP, property));
+                                targetParameter.buildTargetClause(), Math.round((actionValue1 - 1) * 100), buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property));
                         break;
                     case slow:
                         str = I18N.getString(R.string.Reduce_s1_d2_attack_speed_for_s3_sec,
-                                targetParameter.buildTargetClause(), Math.round((1 - actionValue1) * 100), buildExpression(level, durationValues, RoundingMode.HALF_UP, property));
+                                targetParameter.buildTargetClause(), Math.round((1 - actionValue1) * 100), buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property));
                         break;
                     case sleep:
                         str = I18N.getString(R.string.Make_s1_fall_asleep_for_s2_sec,
