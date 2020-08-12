@@ -72,6 +72,15 @@ public class RawUnitBasic {
         chara.iconUrl = String.format(Locale.US, Statics.ICON_URL, prefab_id + 30);
         chara.imageUrl = String.format(Locale.US, Statics.IMAGE_URL, prefab_id + 30);
 
+        // The correct age of Kasumi should be 15
+        if (unit_name.startsWith("カスミ") && voice.equals("水瀬いのり")) {
+            chara.age = "15";
+        }
+        // 109301: ルゥ
+        if (unit_id == 109301) {
+            chara.age = "16";
+        }
+
         if(search_area_width < 300) {
             chara.position = "1";
             chara.setPositionIcon(R.drawable.position_forward);
