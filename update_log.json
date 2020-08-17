@@ -1,9 +1,9 @@
 {
-	"versionCode": "18",
-	"versionName": "1.0.2",
+	"versionCode": "19",
+	"versionName": "1.0.3",
 	"recommend": "false",
-	"messageJa": "・ティタノタートルのスキルを修正。",
-	"messageZh": "・修正会战Bossティタノタートル的技能说明。",
+	"messageJa": "・一部のテキストとスキル説明文を修正\n・イベント画面を調整\n・ヘイスト、スロウ効果の効果時間のラウンディング方法を修正\n・カスミ、ルゥの年齢を修正",
+	"messageZh": "・修正部分描述及技能描述\n・修改活动Boss界面\n・修正加&减速技能持续时间的四舍五入方式\n・修正“カスミ”、“ルゥ”的年龄",
 	"infoJa": "",
 	"infoZh": ""
 }
