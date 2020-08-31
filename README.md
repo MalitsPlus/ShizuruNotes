@@ -3,10 +3,9 @@ An unofficial Android tool application of the game "Princess Connect Re:Dive".
 
 ## Requirement
 * Android 8+  
-> If you are locating in Chinese mainland, it is highly recommend you to set ShizuruNotes and system download manager to go through your proxy software since there are some **INTERESTING** reasons that you may get holy terrible connection speed to Github while ShizuruNotes try to connect Github to fetch update information every time it is launched. 
 
 ## Build
-Require Android Studio 4.0 or later.  
+Requires Android Studio 4.0 or later.  
 Dependents could be found in `./app/build.gradle` and it might be changed time to time.  
 
 ## Features
