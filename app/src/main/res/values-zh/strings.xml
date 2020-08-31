@@ -426,8 +426,8 @@
     <string name="Summon_a_field_of_radius_d1_at_position_of_s2_to_deal_s3_s4_damage_per_second_for_s5_sec">在%2$s的位置展开半径为 [%1$d] 的领域，每秒造成 [%3$s] %4$s伤害，持续时间 [%5$s] 秒。</string>
     <string name="Summon_a_healing_field_of_radius_d1_to_heal_s2_s3_s4_HP_per_second_for_5s_sec">展开半径为 [%1$d] 的领域，每秒恢复%2$s [%3$s%4$s] HP，持续时间 [%5$s] 秒。</string>
     <string name="Summon_a_healing_field_of_radius_d1_at_position_of_s2_to_heal_s3_s4_HP_per_second_for_s5_sec">在%2$s的位置展开半径为 [%1$d] 的领域，每秒恢复 [%3$s%4$s] HP，持续时间 [%5$s] 秒。</string>
-    <string name="Summon_a_field_of_radius_d1_to_s2_s3_s4_s5_for_s6_sec">展开半径为 [%1$d] 的领域，%2$s%3$s [%4$s] %5$s，持续时间 [%6$s] 秒。</string>
-    <string name="Summon_a_field_of_radius_d1_at_position_of_s2_to_s3_s4_s5_for_s6_sec">在%2$s的位置展开半径为 [%1$d] 的领域，%3$s [%4$s] %5$s，持续时间 [%6$s] 秒。</string>
+    <string name="Summon_a_field_of_radius_d1_to_s2_s3_s4_s5_for_s6_sec">展开半径为 [%1$d] 的领域，%2$s%3$s [%4$s%7$s] %5$s，持续时间 [%6$s] 秒。</string>
+    <string name="Summon_a_field_of_radius_d1_at_position_of_s2_to_s3_s4_s5_for_s6_sec">在%2$s的位置展开半径为 [%1$d] 的领域，%3$s [%4$s%7$s] %5$s，持续时间 [%6$s] 秒。</string>
     <string name="Summon_a_field_of_radius_d1_on_s2_to_cast_effect_d3_for_s4_sec">在%2$s的位置展开半径为 [%1$d] 的领域，持续施放[动作%3$d]，持续时间 [%4$s] 秒。</string>
     <string name="Condition_s1_chance_use_d2_when_takes_damage_within_s3_sec">条件分歧：[%3$s] 秒内受到伤害的场合，以 [%1$s%%] 的概率使用[动作%2$d]。</string>
     <string name="Appear_after_s_sec_since_wave_start">战斗开始 [%s] 秒后入场。</string>
@@ -445,7 +445,7 @@
     <string name="In_nex_s1_sec_s2_physical_attacks_will_miss">使%2$s的物理攻击必定miss，持续时间 [%1$s] 秒。</string>
     <string name="In_next_s1_attacks_s2_physical_attacks_will_miss">使%2$s的下 [%1$s] 次物理攻击必定miss。</string>
     <string name="Set_a_countdown_timer_on_s1_trigger_effect_d2_after_s3_sec">对%1$s设置倒计时，[%3$s] 秒后触发[动作%2$d]。</string>
-    <string name="Remove_field_of_skill_d1_1_represents_the_first_skill_in_this_list_effect_d2">解除[技能%1$d]的[动作%2$d]展开的领域。</string>
+    <string name="Remove_field_of_skill_d1_1_represents_the_first_skill_in_this_list_effect_d2">解除本页面中第%1$d个技能的[动作%2$d]展开的领域。</string>
     <string name="When_s1_receive_healing_deal_s2_healing_amount_damage_instead_last_for_s3_sec_or_unlimited_time_if_triggered_by_field">%1$s受到恢复效果时，使恢复无效并给予其 [%2$s * 回复量] 伤害，持续时间 [%3$s] 秒。本效果是领域效果的场合，持续时间无限大。</string>
     <string name="Make_s1_when_get_one_hit_by_the_caster_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">自身每hit%1$s时，对其增加1层标记[ID：%3$s]，持续时间 [%4$s] 秒，本效果最多叠加 [%2$s] 层。</string>
     <string name="Make_s1_when_deal_damage_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">%1$s每次造成伤害时，增加1层标记[ID：%3$s]，持续时间 [%4$s] 秒，本效果最多叠加 [%2$s] 层。</string>
