@@ -34,9 +34,6 @@ ShizuruNotes is highly inspired by the following repos:
 ## Related projects
 * https://github.com/ugrolol/ShizuruNotes The EN and RU version of this application, developed by [ugrolol](https://github.com/ugrolol). 
 * [KasumiNotes](https://github.com/HerDataSam/KasumiNotes) The KR server version of ShizuruNotes, developed by [HerDataSam](https://github.com/HerDataSam).  
-
-## Contact
-If you have any suggestions or find some bugs, feel it easy to contact me on Twitter Vibbit[@L8102259](https://twitter.com/L8102259). 
-
+ 
 ## License 
 ShizuruNotes is licensed under the Apache License 2.0. 
