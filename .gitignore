@@ -86,3 +86,6 @@ lint/tmp/
 
 # release files
 app/release/
+
+#vscode files
+.vscode/
