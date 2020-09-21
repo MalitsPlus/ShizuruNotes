@@ -24,7 +24,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:text="@{@string/space_modifier(itemModel), default=tagText}"
+            android:text="@{@string/space_modifier_2(itemModel), default=tagText}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

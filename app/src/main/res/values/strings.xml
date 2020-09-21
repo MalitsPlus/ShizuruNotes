@@ -443,7 +443,7 @@
     <string name="inevitable_physical">必中の物理</string>
     <string name="Deal_s1_s2_damage_to_s3">%3$sに [%1$s] の%2$sダメージを与える。</string>
     <string name="Deal_s1_s2_damage_to_s3_and_this_attack_is_ensured_critical">%3$sに [%1$s] の%2$sダメージを与える。このアクションは必ずクリティカルする。</string>
-    <string name="Critical_damage_is_s_times_as_normal_damage">クリティカルした場合、ダメージが [%s] 倍になる。</string>
+    <string name="Critical_damage_is_s_times_as_normal_damage">クリティカルした場合、ダメージ倍率が [%s] 倍になる。</string>
     <string name="Change_self_position_to_s_then_return">%sの位置まで移動し、スキル終了後元の位置に戻る。</string>
     <string name="Change_self_position_s_forward_then_return">前へ [%s] 移動し、スキル終了後元の位置に戻る。</string>
     <string name="Change_self_position_s_backward_then_return">後ろへ [%s] 移動し、スキル終了後元の位置に戻る。</string>
@@ -660,7 +660,7 @@
     <string name="nearest_without_self">自分以外最も近い</string>
     <string name="s_nearest_without_self">%s自分以外最も近い</string>
     <string name="the_s_nearest_without_self">自分以外%s近い</string>
-    <string name="shadow">シャドー</string>
+    <string name="shadow">シャドウ</string>
     <string name="s_shadow">%sシャドー</string>
     <string name="except_self">（自分以外）</string>
     <string name="use_d1_if_s2_HP_is_below_d3">%2$sのHPが [%3$d%%] 以下の場合、[アクション%1$d]を使う。</string>
@@ -671,4 +671,10 @@
     <string name="Use_s_if_this_skill_not_get_critical">このスキルがクリティカルしなかった場合、[アクション%s]を使う。</string>
     <string name="Change_attack_pattern_to_d">行動パターンを%dに変化させる。</string>
     <string name="This_effect_will_be_released_when_taking_damaged">この効果はダメージを受けた時に解除される。</string>
+    <string name="s_highest_HP">HPが一番高い%s</string>
+    <string name="s_lowest_HP">HPが一番低い</string>
+    <string name="the_s_highest_HP">HPが%s高い</string>
+    <string name="the_s_lowest_HP">HPが%s低い</string>
+    <string name="the_highest_HP">HPが一番高い</string>
+    <string name="the_lowest_HP">HPが一番低い</string>
 </resources>
