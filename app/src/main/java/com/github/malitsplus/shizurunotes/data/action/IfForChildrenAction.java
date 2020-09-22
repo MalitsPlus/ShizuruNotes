@@ -76,7 +76,7 @@ public class IfForChildrenAction extends ActionParameter {
         if(actionDetail1 == 100 || actionDetail1 == 200 || actionDetail1 == 300 || actionDetail1 == 500 || actionDetail1 == 501
                 || actionDetail1 == 502 || actionDetail1 == 503 || actionDetail1 == 512
                 || (actionDetail1 >=600 && actionDetail1 < 900) || (actionDetail1 >= 901 && actionDetail1 < 1000)
-                || actionDetail1 == 1300){
+                || actionDetail1 == 1300 || actionDetail1 == 1400) {
             if(trueClause != null && falseClause != null)
                 return I18N.getString(R.string.Condition_s, trueClause + falseClause);
             else if(trueClause != null)
@@ -106,7 +106,8 @@ enum IfType{
     poison(502),
     venom(503),
     poisonOrVenom(512),
-    Break(710);
+    Break(710),
+    polymorph(1400);
 
     private int value;
     IfType(int value){
@@ -136,6 +137,7 @@ enum IfType{
             case venom: return I18N.getString(R.string.venomed);
             case poisonOrVenom: return I18N.getString(R.string.poisoned_or_venomed);
             case Break: return I18N.getString(R.string.breaking);
+            case polymorph: return I18N.getString(R.string.polymorphed);
             default: return "";
         }
     }

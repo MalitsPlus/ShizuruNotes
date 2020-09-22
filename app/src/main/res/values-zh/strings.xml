@@ -313,7 +313,7 @@
     <string name="Fear">恐慌</string>
     <string name="Seal">刻印赋予</string>
     <string name="Awe">畏怖</string>
-    <string name="Polymorph">驯鹿化</string>
+    <string name="Polymorph">变身</string>
     <string name="Changing_Max_HP">HP变化</string>
     <string name="Raise_s1_d2_attack_speed_for_s3_sec">提高%1$s [%2$d%%] 的行动速度，持续时间 [%3$s] 秒。</string>
     <string name="Reduce_s1_d2_attack_speed_for_s3_sec">降低%1$s [%2$d%%] 的行动速度，持续时间 [%3$s] 秒。</string>
@@ -455,7 +455,7 @@
     <string name="Repeat_effect_d1_every_s2_sec_up_to_s3_sec_break_if_taken_more_than_s4_damage">每%2$s秒使用1次[动作%1$d]，最长持续 [%3$s] 秒。受到的伤害量超过 [%4$s] 时中断此效果。</string>
     <string name="use_d_after_time_up">持续时间结束后，使用[动作%d]。</string>
     <string name="use_d_after_break">效果被中断后，使用[动作%d]。</string>
-    <string name="Polymorph_s1_for_s2_sec">使%1$s变貌%2$s秒。</string>
+    <string name="Polymorph_s1_for_s2_sec">使%1$s变身 [%2$s] 秒。</string>
     <string name="Clear_all_s1_on_s2_with_chance_s3">[%3$s%%] 的概率使%2$s的%1$s全部解除。</string>
     <string name="buffs">增益状态</string>
     <string name="debuffs">减益状态</string>
@@ -613,4 +613,5 @@
     <string name="the_s_lowest_HP">HP%s低的</string>
     <string name="the_highest_HP">HP最高的</string>
     <string name="the_lowest_HP">HP最低的</string>
+    <string name="polymorphed">变身状态中</string>
 </resources>
