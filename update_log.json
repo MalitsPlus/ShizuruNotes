@@ -1,9 +1,9 @@
 {
-	"versionCode": "20",
-	"versionName": "1.0.4",
+	"versionCode": "21",
+	"versionName": "1.0.5",
 	"recommend": "false",
-	"messageJa": "・ラビリスタのスキル説明文を修正\n・一部文字のサイズを調整",
-	"messageZh": "・修正ラビリスタ的技能说明\n・调整一部分文字的大小",
+	"messageJa": "・ヨリ（エンジェル）のスキル説明文を修正\n・暴走のイノセントボウのスキル説明文を修正",
+	"messageZh": "・修正ヨリ（エンジェル）的技能说明\n・修正暴走のイノセントボウ的技能说明",
 	"infoJa": "",
 	"infoZh": ""
 }
