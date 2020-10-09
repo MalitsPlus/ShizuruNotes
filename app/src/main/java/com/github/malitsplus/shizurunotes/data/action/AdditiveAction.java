@@ -15,7 +15,7 @@ public class AdditiveAction extends ActionParameter {
     protected void childInit() {
         actionValues.add(new ActionValue(actionValue2, actionValue3, null));
 
-        switch ((int) actionValue1){
+        switch ((int) actionValue1) {
             case 7:
                 keyType = PropertyKey.atk; break;
             case 8:
@@ -31,7 +31,7 @@ public class AdditiveAction extends ActionParameter {
 
     @Override
     public String localizedDetail(int level, Property property) {
-        switch ((int) actionValue1){
+        switch ((int) actionValue1) {
             case 0:
                 return I18N.getString(R.string.Modifier_add_s1_HP_to_value_d2_of_effect_d3,
                         buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),

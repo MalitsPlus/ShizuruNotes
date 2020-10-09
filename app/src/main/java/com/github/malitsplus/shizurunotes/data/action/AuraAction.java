@@ -12,6 +12,7 @@ import java.util.List;
 public class AuraAction extends ActionParameter {
 
     enum AuraType{
+        none(-1),
         atk(1),
         def(2),
         magicStr(3),
@@ -25,7 +26,7 @@ public class AuraAction extends ActionParameter {
         physicalCriticalDamage(11),
         magicalCriticalDamage(12),
         accuracy(13),
-        none(14);
+        maxHP(100);
 
         private int value;
         AuraType(int value){
@@ -58,6 +59,7 @@ public class AuraAction extends ActionParameter {
                 case physicalCriticalDamage: return I18N.getString(R.string.Physical_Critical_Damage);
                 case magicalCriticalDamage: return I18N.getString(R.string.Magical_Critical_Damage);
                 case accuracy: return PropertyKey.accuracy.description();
+                case maxHP: return I18N.getString(R.string.max_HP);
                 default: return "";
             }
         }
@@ -117,7 +119,11 @@ public class AuraAction extends ActionParameter {
         actionValues.add(new ActionValue(actionValue2, actionValue3, null));
         durationValues.add(new ActionValue(actionValue4, actionValue5, null));
         auraActionType = AuraActionType.parse(actionDetail1);
-        auraType = AuraType.parse(actionDetail1 / 10);
+        if (actionDetail1 == 1) {
+            auraType = AuraType.maxHP;
+        } else {
+            auraType = AuraType.parse(actionDetail1 / 10);
+        }
         breakType = BreakType.parse(actionDetail2);
     }
 
