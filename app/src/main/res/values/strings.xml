@@ -678,4 +678,7 @@
     <string name="the_s_lowest_HP">HPが%s低い</string>
     <string name="the_highest_HP">HPが一番高い</string>
     <string name="the_lowest_HP">HPが一番低い</string>
+    <string name="max_HP">最大HP</string>
+    <string name="Deal_damage_equal_to_s1_of_targets_original_max_HP_to_s2">%2$sに本来の最大HP [%1$s%%] 分のダメージを与える。</string>
+    <string name="Multiple_attack_speed_of_s1_with_s2_for_s3_sec">%1$sの行動速度を本来の [%2$s%%] にする、効果時間 [%3$s] 秒。</string>
 </resources>
