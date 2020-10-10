@@ -43,7 +43,7 @@ public class AdditiveAction extends ActionParameter {
                         actionDetail2, actionDetail1 % 10);
             case 2:
                 /*
-                 * TODO: 从表象出发，迎合游戏内数值手动乘个2，欢迎大佬提出有依据的解决方案。有关此bug详情请查看 issue#29 
+                 * TODO: 从表象出发，迎合游戏内数值手动乘个2，欢迎大佬提出有依据的解决方案。有关此bug详情请查看 issue#29
                  */
                 String s1 = buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true);
                 try {
