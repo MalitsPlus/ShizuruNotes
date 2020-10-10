@@ -1,9 +1,9 @@
 {
-	"versionCode": "21",
-	"versionName": "1.0.5",
+	"versionCode": "22",
+	"versionName": "1.0.6",
 	"recommend": "false",
-	"messageJa": "・ヨリ（エンジェル）のスキル説明文を修正\n・暴走のイノセントボウのスキル説明文を修正",
-	"messageZh": "・修正ヨリ（エンジェル）的技能说明\n・修正暴走のイノセントボウ的技能说明",
+	"messageJa": "・叫怖のゴーストファーザーのスキル説明文を修正\n・ニノン（☆６）のUB説明文を修正",
+	"messageZh": "・修正叫怖のゴーストファーザー的技能说明\n・修正ニノン（☆６）的UB技能说明",
 	"infoJa": "",
 	"infoZh": ""
 }
