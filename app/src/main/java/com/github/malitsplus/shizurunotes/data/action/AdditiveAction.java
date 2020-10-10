@@ -4,6 +4,7 @@ import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.I18N;
 import com.github.malitsplus.shizurunotes.data.Property;
 import com.github.malitsplus.shizurunotes.data.PropertyKey;
+import com.github.malitsplus.shizurunotes.utils.Utils;
 
 import java.math.RoundingMode;
 
@@ -41,9 +42,19 @@ public class AdditiveAction extends ActionParameter {
                         buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
                         actionDetail2, actionDetail1 % 10);
             case 2:
+                /*
+                 * TODO: 从表象出发，迎合游戏内数值手动乘个2，欢迎大佬提出有依据的解决方案。有关此bug详情请查看 issue#29 
+                 */
+                String s1 = buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true);
+                try {
+                    s1 = Utils.roundIfNeed(2.0 * Double.parseDouble(s1));
+                } catch (Exception e) {
+                    s1 = "2 * " + s1;
+                }
                 return I18N.getString(R.string.Modifier_add_s1_count_of_defeated_enemies_to_value_d2_of_effect_d3,
-                        buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
-                        actionDetail2, actionDetail1 % 10);
+                        s1,
+                        actionDetail2,
+                        actionDetail1 % 10);
             case 4:
                 return I18N.getString(R.string.Modifier_add_s1_count_of_targets_to_value_d2_of_effect_d3,
                         buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),

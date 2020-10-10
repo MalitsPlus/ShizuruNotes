@@ -31,7 +31,7 @@ class ClanBattlePeriod(
     val iconBoss2 = phaseList[0].bossList[1].iconUrl
     val iconBoss3 = phaseList[0].bossList[2].iconUrl
     val iconBoss4 = phaseList[0].bossList[3].iconUrl
-    val iconBoss5 = phaseList[0].bossList[4].iconUrl
+    val iconBoss5 = phaseList[phaseList.size - 1].bossList[4].iconUrl
 
     val zodiacImage: Int? = when(startTime.monthValue){
         1 -> R.drawable.zodiac_aquarious
