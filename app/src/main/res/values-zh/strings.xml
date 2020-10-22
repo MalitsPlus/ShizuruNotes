@@ -304,7 +304,7 @@
     <string name="Knock_Back">击退</string>
     <string name="Action">动作</string>
     <string name="Dot">持续伤害</string>
-    <string name="Blind">失明</string>
+    <string name="Blind">物理致盲</string>
     <string name="Silence">沉默</string>
     <string name="Instant_Death">即死</string>
     <string name="Unknown_Effect">不明的效果</string>
@@ -324,7 +324,7 @@
     <string name="Poison_s1_violently_and_deal_s2_damage_per_second_for_s3_sec">使%1$s进入猛毒状态，每秒造成 [%2$s] 伤害，持续时间 [%3$s] 秒。</string>
     <string name="s1_s2_and_deal_s3_damage_per_second_for_s4_sec">使%2$s%1$s，每秒造成 [%3$s] 伤害，持续时间 [%4$s] 秒。</string>
     <string name="Silence_s1_with_s2_chance_for_s3_sec">以 [%2$s%%] 的概率使%1$s进入沉默状态，持续时间 [%3$s] 秒。</string>
-    <string name="Blind_s1_with_s2_chance_for_s3_sec_physical_attack_has_d4_chance_to_miss">以 [%2$s%%] 的概率使%1$s进入失明状态，持续时间 [%3$s] 秒。对象进行物理攻击时有 [%4$s%%] 的概率miss。</string>
+    <string name="Blind_s1_with_s2_chance_for_s3_sec_physical_attack_has_d4_chance_to_miss">以 [%2$s%%] 的概率使%1$s进入物理致盲状态，持续时间 [%3$s] 秒。对象进行物理攻击时有 [%4$s%%] 的概率miss。</string>
     <string name="Move_Speed">移动速度</string>
     <string name="Physical_Critical_Damage">物理爆伤</string>
     <string name="Magical_Critical_Damage">魔法爆伤</string>
@@ -370,7 +370,7 @@
     <string name="Random_event_d1_chance_use_d2_otherwise_d3">随机事件：[%1$d%%] 的概率使用[动作%2$d]，否则使用[动作%3$d]。</string>
     <string name="Random_event_d1_chance_use_d2">随机事件：[%1$d%%] 的概率使用[动作%2$d]。</string>
     <string name="controlled">无法行动状态中</string>
-    <string name="blinded">失明状态中</string>
+    <string name="blinded">物理致盲状态中</string>
     <string name="charmed_or_confused">魅惑或混乱状态中</string>
     <string name="decoying">挑衅状态中</string>
     <string name="burned">火伤状态中</string>
