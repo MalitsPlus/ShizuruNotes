@@ -25,7 +25,6 @@ class MinionViewModel(
                         minion.attackPattern.forEach {
                             it.setItems(minion.skills, minion.atkType)
                         }
-
                         add(MinionBasicVT(minion))
 
                         for (i in 1..minion.attackPattern.size) {
@@ -49,6 +48,7 @@ class MinionViewModel(
                             it.setItems(minion.skills, minion.atkType)
                         }
 
+                        minion.comment = "UnitID: [" + minion.unitId + "]\nEnemyID: [" + minion.enemyId + "]"
                         add(EnemyBasicVT(minion))
                         for (i in 1..minion.attackPatternList.size) {
                             add(TextTagVT(I18N.getString(R.string.text_attack_pattern, i)))

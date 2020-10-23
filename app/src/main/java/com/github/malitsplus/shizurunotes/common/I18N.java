@@ -22,7 +22,7 @@ public class I18N {
 
     public static String getStringWithSpace(@StringRes int resId){
         if (application != null)
-            return application.getString(R.string.space_modifier_2, application.getString(resId));
+            return application.getString(R.string.space_modifier, application.getString(resId));
         else
             return "";
     }
