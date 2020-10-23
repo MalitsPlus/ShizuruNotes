@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@{@string/space_modifier_2(@string/text_unique_equipment), default=uniqueEquipment}"
+                android:text="@{@string/space_modifier(@string/text_unique_equipment), default=uniqueEquipment}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

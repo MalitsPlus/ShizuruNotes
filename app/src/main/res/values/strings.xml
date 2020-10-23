@@ -230,7 +230,6 @@
     <string name="icon_previous">前回の選択</string>
     <string name="icon_cancel_all">クリア</string>
     <string name="space_modifier" translatable="false">&#160;%s&#160;</string>
-    <string name="space_modifier_2" translatable="false">&#160;&#160;%s&#160;&#160;</string>
     <string name="text_log_clean">ログファイルをすべて削除します、よろしいですか？</string>
     <string name="text_delete">削除</string>
     <string name="text_deney">いいえ</string>
@@ -489,7 +488,7 @@
     <string name="Knock_Back">ノックバック</string>
     <string name="Action">アクション</string>
     <string name="Dot">継続ダメージ</string>
-    <string name="Blind">暗闇</string>
+    <string name="Blind">物理暗闇</string>
     <string name="Silence">沈黙</string>
     <string name="Instant_Death">即死</string>
     <string name="Unknown_Effect">不明な効果</string>
@@ -509,7 +508,7 @@
     <string name="Poison_s1_violently_and_deal_s2_damage_per_second_for_s3_sec">%1$sを猛毒状態にし、毎秒 [%2$s] のダメージを与える、効果時間 [%3$s] 秒。</string>
     <string name="s1_s2_and_deal_s3_damage_per_second_for_s4_sec">%2$sに%1$s、毎秒 [%3$s] のダメージを与える、効果時間 [%4$s] 秒。</string>
     <string name="Silence_s1_with_s2_chance_for_s3_sec">[%2$s%%] の確率で%1$sを沈黙状態にする、効果時間 [%3$s] 秒。</string>
-    <string name="Blind_s1_with_s2_chance_for_s3_sec_physical_attack_has_d4_chance_to_miss">[%2$s%%] の確率で%1$sを暗闇状態にする、効果時間 [%3$s] 秒。物理攻撃は [%4$s%%] の確率でミスする。</string>
+    <string name="Blind_s1_with_s2_chance_for_s3_sec_physical_attack_has_d4_chance_to_miss">[%2$s%%] の確率で%1$sを物理暗闇状態にする、効果時間 [%3$s] 秒。物理攻撃は [%4$s%%] の確率でミスする。</string>
     <string name="Move_Speed">移動速度</string>
     <string name="Physical_Critical_Damage">物理クリティカルダメージ</string>
     <string name="Magical_Critical_Damage">魔法クリティカルダメージ</string>
@@ -555,7 +554,7 @@
     <string name="Random_event_d1_chance_use_d2_otherwise_d3">ランダム事件：[%1$d%%] の確率で[アクション%2$d]を使う、それ以外の場合は[アクション%3$d]を使う。</string>
     <string name="Random_event_d1_chance_use_d2">ランダム事件：[%1$d%%] の確率で[アクション%2$d]を使う。</string>
     <string name="controlled">行動不能状態中</string>
-    <string name="blinded">暗闇状態中</string>
+    <string name="blinded">物理暗闇状態中</string>
     <string name="charmed_or_confused">魅了か混乱状態中</string>
     <string name="decoying">挑発状態中</string>
     <string name="burned">火傷状態中</string>

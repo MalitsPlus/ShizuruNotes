@@ -70,6 +70,7 @@ public enum ActionType {
     logBarrier(73),
     divide(74),
     actionByHitCount(75),
+    healDown(76),
     ex(90),
     exPlus(91),
     changeEnergyRecoveryRatioByDamage(92),
