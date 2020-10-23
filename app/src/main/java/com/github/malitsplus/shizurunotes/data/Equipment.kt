@@ -26,11 +26,23 @@ class Equipment(
     var craftMap: Map<Item, Int>? = null
 
     fun getCeiledProperty(): Property {
-        return equipmentProperty.plus(equipmentEnhanceRate.multiply(maxEnhanceLevel.toDouble())).ceiled
+        return if (equipmentId in uniqueEquipmentIdRange) {
+            maxEnhanceLevel - 1
+        } else {
+            maxEnhanceLevel
+        }.let {
+            equipmentProperty.plus(equipmentEnhanceRate.multiply(it.toDouble())).ceiled
+        }
     }
 
     fun getEnhancedProperty(level: Int): Property {
-        return equipmentProperty.plus(equipmentEnhanceRate.multiply(level.toDouble())).ceiled
+        return if (equipmentId in uniqueEquipmentIdRange) {
+            level - 1
+        } else {
+            level
+        }.let {
+            equipmentProperty.plus(equipmentEnhanceRate.multiply(it.toDouble())).ceiled
+        }
     }
 
     fun getLeafCraftMap(): Map<Item, Int> {
@@ -56,6 +68,7 @@ class Equipment(
     }
 
     companion object {
+        val uniqueEquipmentIdRange = 130000..139999
         val getNull = Equipment(999999,
             I18N.getString(R.string.unimplemented),
             "",
