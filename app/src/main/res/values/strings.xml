@@ -230,7 +230,6 @@
     <string name="icon_previous">前回の選択</string>
     <string name="icon_cancel_all">クリア</string>
     <string name="space_modifier" translatable="false">&#160;%s&#160;</string>
-    <string name="space_modifier_2" translatable="false">&#160;&#160;%s&#160;&#160;</string>
     <string name="text_log_clean">ログファイルをすべて削除します、よろしいですか？</string>
     <string name="text_delete">削除</string>
     <string name="text_deney">いいえ</string>
