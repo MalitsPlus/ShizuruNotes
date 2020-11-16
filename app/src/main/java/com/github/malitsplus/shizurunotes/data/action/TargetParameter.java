@@ -386,9 +386,9 @@ enum TargetType{
             case self:
                 return I18N.getString(R.string.self);
             case forward:
-                return I18N.getString(R.string.the_most_backward);
-            case backward:
                 return I18N.getString(R.string.the_most_forward);
+            case backward:
+                return I18N.getString(R.string.the_most_backward);
             case absolute:
                 return I18N.getString(R.string.targets_within_the_scope);
             case tpDescending:
@@ -452,9 +452,9 @@ enum TargetType{
             case hpDescendingOrNearForward:
                 return I18N.getString(R.string.s_highest_HP, localizedModifier);
             case forward:
-                return I18N.getString(R.string.s_most_backward, localizedModifier);
-            case backward:
                 return I18N.getString(R.string.s_most_forward, localizedModifier);
+            case backward:
+                return I18N.getString(R.string.s_most_backward, localizedModifier);
             case tpDescending:
             case tpDescendingOrNear:
             case tpDescendingOrMaxForward:
@@ -523,9 +523,9 @@ enum TargetType{
                 case hpDescendingOrNearForward:
                     return I18N.getString(R.string.the_s_highest_HP, localizedModifier);
                 case forward:
-                    return I18N.getString(R.string.the_s_most_backward, localizedModifier);
-                case backward:
                     return I18N.getString(R.string.the_s_most_forward, localizedModifier);
+                case backward:
+                    return I18N.getString(R.string.the_s_most_backward, localizedModifier);
                 case tpDescending:
                 case tpDescendingOrNear:
                     return I18N.getString(R.string.the_s_highest_TP, localizedModifier);

@@ -71,13 +71,13 @@ public class AilmentAction extends ActionParameter {
                 switch ((Ailment.DotDetail)ailment.ailmentDetail.detail){
                     case poison:
                         return I18N.getString(R.string.Poison_s1_and_deal_s2_damage_per_second_for_s3_sec,
-                                targetParameter.buildTargetClause(), buildExpression(level, RoundingMode.UP, property), buildExpression(level, durationValues, RoundingMode.HALF_UP, property));
+                                targetParameter.buildTargetClause(), buildExpression(level, property), buildExpression(level, durationValues, RoundingMode.HALF_UP, property));
                     case violentPoison:
                         return I18N.getString(R.string.Poison_s1_violently_and_deal_s2_damage_per_second_for_s3_sec,
-                                targetParameter.buildTargetClause(), buildExpression(level, RoundingMode.UP, property), buildExpression(level, durationValues, RoundingMode.HALF_UP, property));
+                                targetParameter.buildTargetClause(), buildExpression(level, property), buildExpression(level, durationValues, RoundingMode.HALF_UP, property));
                     default:
                         return I18N.getString(R.string.s1_s2_and_deal_s3_damage_per_second_for_s4_sec,
-                                ailment.description(), targetParameter.buildTargetClause(), buildExpression(level, RoundingMode.UP, property), buildExpression(level, durationValues, RoundingMode.HALF_UP, property));
+                                ailment.description(), targetParameter.buildTargetClause(), buildExpression(level, property), buildExpression(level, durationValues, RoundingMode.HALF_UP, property));
                 }
             case silence:
                 return I18N.getString(R.string.Silence_s1_with_s2_chance_for_s3_sec,
