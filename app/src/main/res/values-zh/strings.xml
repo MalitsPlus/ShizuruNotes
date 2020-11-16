@@ -617,4 +617,6 @@
     <string name="max_HP">最大HP</string>
     <string name="Deal_damage_equal_to_s1_of_targets_original_max_HP_to_s2">对%2$s造成原本的最大HP [%1$s%%] 伤害。</string>
     <string name="Multiple_attack_speed_of_s1_with_s2_for_s3_sec">使%1$s的行动速度变为原本的 [%2$s%%]，持续时间 [%3$s] 秒。</string>
+    <string name="Multiple_heal_effects_from_s1_with_s2_for_s3_sec">使%1$s的治疗效果变为原本的 [%2$s] 倍，持续时间 [%3$s] 秒。</string>
+    <string name="barriers">护盾</string>
 </resources>
