@@ -156,7 +156,7 @@ public class ActionParameter {
             case 91:
                 return new PassiveInermittentAction();
             case 92:
-            return new ChangeEnergyRecoveryRatioByDamageAction();
+                return new ChangeEnergyRecoveryRatioByDamageAction();
             case 93:
                 return new IgnoreDecoyAction();
             default:
