@@ -35,6 +35,11 @@ enum class CampaignType {
     coinDungeon(51),
     cooltimeArena(61),
     cooltimeGrandArena,
+    playerExpAmountNormal(81),
+    playerExpAmountHard,
+    playerExpAmountVeryHard,
+    playerExpAmountUniqueEquip,
+    playerExpAmountHightRarityEquip,
     masterCoin(90),
     masterCoinNormal,
     masterCoinHard,
@@ -71,7 +76,9 @@ enum class CampaignType {
     manaRevivalEventNormal(241),
     manaRevivalEventHard,
     expRevivalEventNormal(251),
-    expRevivalEventHard;
+    expRevivalEventHard,
+    playerExpAmountShioriNormal(351),
+    playerExpAmountShioriHard;
 
     var value: Int = 0
     companion object {
@@ -114,7 +121,7 @@ enum class CampaignType {
 
     fun isVisible(): Boolean = shortDescription().isNotEmpty()
 
-    private fun category(): String = when (this) {
+    fun category(): String = when (this) {
         coinDungeon,
         manaDungeon,
         dropAmountDungeon -> I18N.getString(R.string.dungeon)
@@ -122,12 +129,14 @@ enum class CampaignType {
         dropRareNormal,
         masterCoinNormal,
         halfStaminaNormal,
+        playerExpAmountNormal,
         dropAmountNormal -> I18N.getString(R.string.normal)
         expEventNormal,
         manaEventNormal,
         dropRareEventNormal,
         dropAmountEventNormal,
         masterCoinDropShioriNormal,
+        playerExpAmountShioriNormal,
         masterCoinEventNormal -> I18N.getString(R.string.hatsune_normal)
         expRevivalEventNormal,
         manaRevivalEventNormal,
@@ -138,12 +147,14 @@ enum class CampaignType {
         dropRareHard,
         masterCoinHard,
         halfStaminaHard,
+        playerExpAmountHard,
         dropAmountHard -> I18N.getString(R.string.hard)
         expEventHard,
         manaEventHard,
         dropRareEventHard,
         dropAmountEventHard,
         masterCoinDropShioriHard,
+        playerExpAmountShioriHard,
         masterCoinEventHard -> I18N.getString(R.string.hatsune_hard)
         expRevivalEventHard,
         manaRevivalEventHard,
@@ -152,10 +163,12 @@ enum class CampaignType {
         masterCoinRevivalEventHard -> I18N.getString(R.string.revival_event_hard)
         dropAmountShrine,
         masterCoinShrine,
+        playerExpAmountHightRarityEquip,
         halfStaminaShrine -> I18N.getString(R.string.shrine)
         manaTemple,
         dropAmountTemple,
         masterCoinTemple,
+        playerExpAmountUniqueEquip,
         halfStaminaTemple -> I18N.getString(R.string.temple)
         manaExploration,
         dropAmountExploration -> I18N.getString(R.string.exploration)
@@ -163,16 +176,25 @@ enum class CampaignType {
         dropRareVeryHard,
         dropAmountVeryHard,
         masterCoinVeryHard,
+        playerExpAmountVeryHard,
         halfStaminaVeryHard -> I18N.getString(R.string.very_hard)
         else -> I18N.getString(R.string.others)
     }
 
-    private fun bonus(): String = when (value /10 % 10) {
-        3 -> I18N.getString(R.string.drop_s)
-        4 -> I18N.getString(R.string.mana_s)
-        5 -> I18N.getString(R.string.exp_s)
-        9 -> I18N.getString(R.string.master_coin_s)
-        else -> I18N.getString(R.string.others)
+    private fun bonus(): String = when (this) {
+        playerExpAmountNormal,
+        playerExpAmountHard,
+        playerExpAmountVeryHard,
+        playerExpAmountUniqueEquip,
+        playerExpAmountHightRarityEquip -> I18N.getString(R.string.exp_s)
+
+        else -> when (value / 10 % 10) {
+            3 -> I18N.getString(R.string.drop_s)
+            4 -> I18N.getString(R.string.mana_s)
+            5 -> I18N.getString(R.string.exp_s)
+            9 -> I18N.getString(R.string.master_coin_s)
+            else -> I18N.getString(R.string.others)
+        }
     }
 
     //完整的活动日程字符串
