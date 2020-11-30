@@ -151,6 +151,10 @@ public class ActionParameter {
                 return new ActionByHitCountAction();
             case 76:
                 return new HealDownAction();
+            case 77:
+                return new PassiveSealAction();
+            case 78:
+                return new PassiveDamageUpAction();
             case 90:
                 return new PassiveAction();
             case 91:
