@@ -35,7 +35,11 @@ public class TargetParameter {
     private boolean hasDirectionPhrase;
     private boolean hasTargetType;
     private boolean hasDependAction(){
-        return dependAction != null && (dependAction.getActionId() != 0 && targetType != TargetType.absolute);
+        return dependAction != null && (
+                dependAction.getActionId() != 0
+                && targetType != TargetType.absolute
+                && dependAction.parameter.actionType != ActionType.chooseArea
+        );
     }
 
     private void setBooleans(){
