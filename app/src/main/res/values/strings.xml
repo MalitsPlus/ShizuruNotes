@@ -687,5 +687,5 @@
     <string name="Passive_Whenever_s1_get_s2_seals_s3_with_d4_marks_id_d5_for_s6_sec_caps_at_d7_This_passive_skill_will_listen_for_s8_sec">パッシブ：%1$sが%2$sを受けるたび、%3$sにマーク[ID: %5$s]を [%4$s] 追加する、マークの継続時間 [%6$s] 秒、最大 [%7$s] までスタックする。このパッシブ効果は [%8$s] 秒継続する。</string>
     <string name="add">+</string>
     <string name="subtract">-</string>
-    <string name="Make_s1_damage_changes_into_s234_times_caps_to_s5_times_dur_s6_sec">%1$sのダメージを [1 %2$s %3$s * %1$sの%4$s数] 倍にする（最大%5$s倍）、効果時間 [%6$s] 秒。</string>
+    <string name="Make_s1_damage_changes_into_s234_times_caps_to_s5_times_dur_s6_sec">パッシブ：%1$sが与えられるダメージを [1 %2$s %3$s * %1$sの%4$s数] 倍にする（最大%5$s倍）、効果時間 [%6$s] 秒。</string>
 </resources>
