@@ -624,5 +624,5 @@
     <string name="Passive_Whenever_s1_get_s2_seals_s3_with_d4_marks_id_d5_for_s6_sec_caps_at_d7_This_passive_skill_will_listen_for_s8_sec">被动效果：每当%1$s受到%2$s时，为%3$s增加 [%4$s层] 标记 [ID: %5$s]，标记持续时间 [%6$s] 秒，最大叠 [%7$s] 层。本被动效果将持续监听 [%8$s] 秒。</string>
     <string name="add">+</string>
     <string name="subtract">-</string>
-    <string name="Make_s1_damage_changes_into_s234_times_caps_to_s5_times_dur_s6_sec">使%1$s的伤害变为 [1 %2$s %3$s * %1$s的%4$s数] 倍（最大不超过 %5$s 倍），持续时间 [%6$s] 秒。</string>
+    <string name="Make_s1_damage_changes_into_s234_times_caps_to_s5_times_dur_s6_sec">被动效果：使%1$s受到的伤害变为 [1 %2$s %3$s * %1$s的%4$s数] 倍（最大不超过 %5$s 倍），持续时间 [%6$s] 秒。</string>
 </resources>
