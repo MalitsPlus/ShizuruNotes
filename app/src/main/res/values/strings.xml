@@ -441,7 +441,7 @@
     <string name="physical">物理</string>
     <string name="inevitable_physical">必中の物理</string>
     <string name="Deal_s1_s2_damage_to_s3">%3$sに [%1$s] の%2$sダメージを与える。</string>
-    <string name="Deal_s1_s2_damage_to_s3_and_this_attack_is_ensured_critical">%3$sに [%1$s] の%2$sダメージを与える。このアクションは必ずクリティカルする。</string>
+    <string name="Deal_s1_s2_damage_to_s3_and_this_attack_is_ensured_critical">%3$sに [%1$s] の%2$sダメージを与える。このアクションの %4$shitは必ずクリティカルする。</string>
     <string name="Critical_damage_is_s_times_as_normal_damage">クリティカルした場合、ダメージ倍率が [%s] 倍になる。</string>
     <string name="Change_self_position_to_s_then_return">%sの位置まで移動し、スキル終了後元の位置に戻る。</string>
     <string name="Change_self_position_s_forward_then_return">前へ [%s] 移動し、スキル終了後元の位置に戻る。</string>

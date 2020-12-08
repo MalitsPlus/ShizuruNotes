@@ -4,6 +4,7 @@ import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.I18N;
 import com.github.malitsplus.shizurunotes.data.Property;
 import com.github.malitsplus.shizurunotes.data.PropertyKey;
+import com.github.malitsplus.shizurunotes.utils.Utils;
 
 public class DamageAction extends ActionParameter {
 
@@ -37,7 +38,7 @@ public class DamageAction extends ActionParameter {
                 string.append(I18N.getString(R.string.Deal_s1_s2_damage_to_s3, buildExpression(level, property), damageClass.description(), targetParameter.buildTargetClause()));
                 break;
             case critical:
-                string.append(I18N.getString(R.string.Deal_s1_s2_damage_to_s3_and_this_attack_is_ensured_critical, buildExpression(level, property), damageClass.description(), targetParameter.buildTargetClause()));
+                string.append(I18N.getString(R.string.Deal_s1_s2_damage_to_s3_and_this_attack_is_ensured_critical, buildExpression(level, property), damageClass.description(), targetParameter.buildTargetClause(), Utils.roundIfNeed(actionValue5)));
                 break;
         }
         if (actionValue6 != 0) {
