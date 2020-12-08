@@ -257,7 +257,7 @@
     <string name="physical">物理</string>
     <string name="inevitable_physical">必中的物理</string>
     <string name="Deal_s1_s2_damage_to_s3">对%3$s造成 [%1$s] %2$s伤害。</string>
-    <string name="Deal_s1_s2_damage_to_s3_and_this_attack_is_ensured_critical">对%3$s造成 [%1$s] %2$s伤害，且此动作必定暴击。</string>
+    <string name="Deal_s1_s2_damage_to_s3_and_this_attack_is_ensured_critical">对%3$s造成 [%1$s] %2$s伤害，且此动作第%4$shit必定暴击。</string>
     <string name="Critical_damage_is_s_times_as_normal_damage">触发暴击的场合，爆伤倍率将变为 [%s] 倍。</string>
     <string name="Change_self_position_to_s_then_return">移动至%s的位置，技能施放完成后回到原来的位置。</string>
     <string name="Change_self_position_s_forward_then_return">向前移动 [%s]，技能施放完成后回到原来的位置。</string>
