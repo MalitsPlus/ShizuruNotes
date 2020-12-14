@@ -10,7 +10,9 @@ import com.github.malitsplus.shizurunotes.data.action.ActionParameter
 import com.github.malitsplus.shizurunotes.data.action.ActionRaw
 import com.github.malitsplus.shizurunotes.data.action.SummonAction
 import com.github.malitsplus.shizurunotes.db.DBHelper
+import com.github.malitsplus.shizurunotes.user.UserSettings
 import java.util.*
+import java.util.regex.Pattern
 
 /***
  *
@@ -246,18 +248,35 @@ class Skill(
                 .append((i + 1).toString())
                 .append("  ")
             builder.setSpan(
-                BackgroundSpan(
-                    BackgroundSpan.BORDER_RECT
-                ),
+                BackgroundSpan(BackgroundSpan.BORDER_RECT),
                 builder.length - 4,
                 builder.length - 1,
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
             )
-            builder.append(actions[i].parameter.localizedDetail(level, property))
-                .append("\n")
+            val currentLength = builder.length
+            var original = actions[i].parameter.localizedDetail(level, property)
+            var result: List<MatchResult>? = null
+            if (UserSettings.get().getExpression() == UserSettings.EXPRESSION_ORIGINAL) {
+                result = Regex("""##.+?##""").findAll(original).toList()
+                result.forEach {
+                    original = original.replace(it.value, it.value.replace("##", "  "))
+                }
+            }
+            builder.append(original)
+            if (!result.isNullOrEmpty()) {
+                result.forEach {
+                    builder.setSpan(
+                        BackgroundSpan(BackgroundSpan.BACKGROUND_RECT),
+                        it.range.first + currentLength + 1,
+                        it.range.last + currentLength,
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                }
+            }
+            if (i != actions.size - 1) {
+                builder.append("\n")
+            }
         }
-        if (builder.isNotEmpty())
-            builder.delete(builder.length - 1, builder.length)
         actionDescriptions = builder
     }
 

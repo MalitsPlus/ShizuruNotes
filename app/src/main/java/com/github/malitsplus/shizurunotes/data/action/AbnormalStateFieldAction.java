@@ -21,7 +21,7 @@ public class AbnormalStateFieldAction extends ActionParameter {
     @Override
     public String localizedDetail(int level, Property property) {
         return I18N.getString(R.string.Summon_a_field_of_radius_d1_on_s2_to_cast_effect_d3_for_s4_sec,
-                (int)actionValue3,
+                (int)actionValue3.value,
                 targetParameter.buildTargetClause(),
                 actionDetail1 % 10,
                 buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property));

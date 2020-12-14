@@ -115,7 +115,7 @@ public class AuraAction extends ActionParameter {
 
     @Override
     protected void childInit() {
-        percentModifier = PercentModifier.parse((int) actionValue1);
+        percentModifier = PercentModifier.parse((int) actionValue1.value);
         actionValues.add(new ActionValue(actionValue2, actionValue3, null));
         durationValues.add(new ActionValue(actionValue4, actionValue5, null));
         auraActionType = AuraActionType.parse(actionDetail1);

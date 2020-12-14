@@ -39,7 +39,7 @@ public class ReflexiveAction extends ActionParameter {
     @Override
     public String localizedDetail(int level, Property property) {
         if(targetParameter.targetType == TargetType.absolute)
-            return I18N.getString(R.string.Change_the_perspective_to_s1_d2, targetParameter.buildTargetClause(), (int)actionValue1);
+            return I18N.getString(R.string.Change_the_perspective_to_s1_d2, targetParameter.buildTargetClause(), (int)actionValue1.value);
         else if(reflexiveType == ReflexiveType.search)
             return I18N.getString(R.string.Scout_and_change_the_perspective_on_s, targetParameter.buildTargetClause());
         else

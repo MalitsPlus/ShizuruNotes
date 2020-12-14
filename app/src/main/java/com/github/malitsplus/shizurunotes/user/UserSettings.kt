@@ -20,13 +20,16 @@ class UserSettings private constructor(
     companion object {
         const val LANGUAGE_KEY = "language"
         const val SERVER_KEY = "server"
-        const val EXPRESSION_STYLE = "expressionStyle"
+        const val EXPRESSION_STYLE = "expressionStyle2"
         const val LOG = "log"
         const val DB_VERSION = "dbVersion_new"
         const val DB_VERSION_JP = "dbVersion_jp"
         const val DB_VERSION_CN = "dbVersion_cn"
         const val APP_VERSION = "appVersion"
         const val ABOUT = "about"
+        const val EXPRESSION_VALUE = 0
+        const val EXPRESSION_EXPRESSION = 1
+        const val EXPRESSION_ORIGINAL = 2
 
         private const val userDataFileName = "userData.json"
 
@@ -137,11 +140,11 @@ class UserSettings private constructor(
         }
     }
 
-    fun getExpression(): Boolean {
-        return preference.getBoolean(EXPRESSION_STYLE, false)
+    fun getExpression(): Int {
+        return preference.getString(EXPRESSION_STYLE, "0")?.toInt() ?: 0
     }
 
-    fun setExpression(newValue: Boolean) {
-        preference.edit().putBoolean(EXPRESSION_STYLE, newValue).apply()
+    fun setExpression(newValue: Int) {
+        preference.edit().putString(EXPRESSION_STYLE, newValue.toString()).apply()
     }
 }

@@ -12,6 +12,6 @@ public class SkillExecCountAction extends ActionParameter {
 
     @Override
     public String localizedDetail(int level, Property property) {
-        return I18N.getString(R.string.Add_d_to_the_counter, (int)actionValue1);
+        return I18N.getString(R.string.Add_d_to_the_counter, (int)actionValue1.value);
     }
 }

@@ -48,32 +48,32 @@ public class BarrierAction extends ActionParameter {
                 return I18N.getString(R.string.Cast_a_barrier_on_s1_to_nullify_s2_physical_damage_for_s3_sec,
                         targetParameter.buildTargetClause(),
                         buildExpression(level, property),
-                        Utils.roundDouble(actionValue3));
+                        Utils.roundDouble(actionValue3.value));
             case magicalGuard:
                 return I18N.getString(R.string.Cast_a_barrier_on_s1_to_nullify_s2_magical_damage_for_s3_sec,
                         targetParameter.buildTargetClause(),
                         buildExpression(level, property),
-                        Utils.roundDouble(actionValue3));
+                        Utils.roundDouble(actionValue3.value));
             case physicalDrain:
                 return I18N.getString(R.string.Cast_a_barrier_on_s1_to_absorb_s2_physical_damage_for_s3_sec,
                         targetParameter.buildTargetClause(),
                         buildExpression(level, property),
-                        Utils.roundDouble(actionValue3));
+                        Utils.roundDouble(actionValue3.value));
             case magicalDrain:
                 return I18N.getString(R.string.Cast_a_barrier_on_s1_to_absorb_s2_magical_damage_for_s3_sec,
                         targetParameter.buildTargetClause(),
                         buildExpression(level, property),
-                        Utils.roundDouble(actionValue3));
+                        Utils.roundDouble(actionValue3.value));
             case bothDrain:
                 return I18N.getString(R.string.Cast_a_barrier_on_s1_to_absorb_s2_physical_and_magical_damage_for_s3_sec,
                         targetParameter.buildTargetClause(),
                         buildExpression(level, property),
-                        Utils.roundDouble(actionValue3));
+                        Utils.roundDouble(actionValue3.value));
             case bothGuard:
                 return I18N.getString(R.string.Cast_a_barrier_on_s1_to_nullify_s2_physical_and_magical_damage_for_s3_sec,
                         targetParameter.buildTargetClause(),
                         buildExpression(level, property),
-                        Utils.roundDouble(actionValue3));
+                        Utils.roundDouble(actionValue3.value));
             default:
                 return super.localizedDetail(level, property);
         }

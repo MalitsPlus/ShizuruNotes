@@ -15,7 +15,7 @@ class HealDownAction extends ActionParameter {
 
     @Override
     protected void childInit() {
-        percentModifier = PercentModifier.parse((int)actionValue1);
+        percentModifier = PercentModifier.parse((int)actionValue1.value);
         actionValues.add(new ActionValue(actionValue1, actionValue2, null));
         durationValues.add(new ActionValue(actionValue3, actionValue4, null));
     }

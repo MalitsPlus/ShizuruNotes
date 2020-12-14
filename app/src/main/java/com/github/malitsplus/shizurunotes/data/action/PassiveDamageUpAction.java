@@ -14,9 +14,9 @@ class PassiveDamageUpAction extends ActionParameter {
 
     @Override
     protected void childInit() {
-        debuffDamageUpLimitValue = actionValue2;
-        debuffDamageUpValue = actionValue1;
-        debuffDamageUpTimer = actionValue3;
+        debuffDamageUpLimitValue = actionValue2.value;
+        debuffDamageUpValue = actionValue1.value;
+        debuffDamageUpTimer = actionValue3.value;
         countType = eCountType.parse(actionDetail1);
         effectType = eEffectType.parse(actionDetail2);
         actionValues.add(new ActionValue(actionValue3, actionValue4, null));

@@ -16,7 +16,7 @@ public class AdditiveAction extends ActionParameter {
     protected void childInit() {
         actionValues.add(new ActionValue(actionValue2, actionValue3, null));
 
-        switch ((int) actionValue1) {
+        switch ((int) actionValue1.value) {
             case 7:
                 keyType = PropertyKey.atk; break;
             case 8:
@@ -32,7 +32,7 @@ public class AdditiveAction extends ActionParameter {
 
     @Override
     public String localizedDetail(int level, Property property) {
-        switch ((int) actionValue1) {
+        switch ((int) actionValue1.value) {
             case 0:
                 return I18N.getString(R.string.Modifier_add_s1_HP_to_value_d2_of_effect_d3,
                         buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
@@ -76,11 +76,11 @@ public class AdditiveAction extends ActionParameter {
                         buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
                         actionDetail2, actionDetail1 % 10);
         }
-        if(actionValue1 >= 200 && actionValue1 < 300){
+        if(actionValue1.value >= 200 && actionValue1.value < 300){
             return I18N.getString(R.string.Modifier_add_s1_stacks_of_mark_ID_d2_to_value_d3_of_effect_d4,
                     buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
-                    ((int)actionValue1) % 200, actionDetail2, actionDetail1 % 10);
-        } else if(actionValue1 >= 7 && actionValue1 <= 10){
+                    ((int)actionValue1.value) % 200, actionDetail2, actionDetail1 % 10);
+        } else if(actionValue1.value >= 7 && actionValue1.value <= 10){
             return I18N.getString(R.string.Modifier_add_s1_s2_of_s3_to_value_d4_of_effect_d5,
                     buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
                     keyType.description(), targetParameter.buildTargetClause(), actionDetail2, actionDetail1 % 10);

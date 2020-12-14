@@ -34,6 +34,6 @@ public class PassiveAction extends ActionParameter {
     }
 
     public Property propertyItem(int level){
-        return Property.getPropertyWithKeyAndValue(null, propertyKey, actionValue2 + actionValue3 * level);
+        return Property.getPropertyWithKeyAndValue(null, propertyKey, actionValue2.value + actionValue3.value * level);
     }
 }

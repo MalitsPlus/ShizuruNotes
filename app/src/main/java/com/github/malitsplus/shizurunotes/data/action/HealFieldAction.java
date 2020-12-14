@@ -44,14 +44,14 @@ public class HealFieldAction extends ActionParameter {
             case repeat:
                 if (targetParameter.targetType == TargetType.absolute) {
                     return I18N.getString(R.string.Summon_a_healing_field_of_radius_d1_to_heal_s2_s3_s4_HP_per_second_for_5s_sec,
-                            (int)actionValue7,
+                            (int)actionValue7.value,
                             targetParameter.buildTargetClause(),
                             buildExpression(level, property),
                             percentModifier.description(),
                             buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property));
                 } else{
                     return I18N.getString(R.string.Summon_a_healing_field_of_radius_d1_at_position_of_s2_to_heal_s3_s4_HP_per_second_for_s5_sec,
-                            (int)actionValue7,
+                            (int)actionValue7.value,
                             targetParameter.buildTargetClause(),
                             buildExpression(level, property),
                             percentModifier.description(),

@@ -75,17 +75,17 @@ public class SummonAction extends ActionParameter {
     @Override
     protected void childInit() {
         side = Side.parse(actionDetail3);
-        unitType = UnitType.parse((int) actionValue5);
+        unitType = UnitType.parse((int) actionValue5.value);
     }
 
     @Override
     public String localizedDetail(int level, Property property) {
-        if(actionValue7 > 0){
+        if(actionValue7.value > 0){
             return I18N.getString(R.string.At_d1_in_front_of_s2_summon_a_minion_id_d3,
-                    (int)actionValue7, targetParameter.buildTargetClause(), actionDetail2);
-        } else if (actionValue7 < 0){
+                    (int)actionValue7.value, targetParameter.buildTargetClause(), actionDetail2);
+        } else if (actionValue7.value < 0){
             return I18N.getString(R.string.At_d1_behind_of_s2_summon_a_minion_id_d3,
-                    (int)-actionValue7, targetParameter.buildTargetClause(), actionDetail2);
+                    (int)-actionValue7.value, targetParameter.buildTargetClause(), actionDetail2);
         } else {
             return I18N.getString(R.string.At_the_position_of_s1_summon_a_minion_id_d2,
                     targetParameter.buildTargetClause(), actionDetail2);

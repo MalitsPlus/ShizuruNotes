@@ -17,12 +17,24 @@
             app:entryValues="@array/setting_language_values"
             app:dialogTitle="@string/setting_language_dialog_title" />
 
+        <ListPreference
+            app:key="expressionStyle2"
+            app:title="@string/setting_kill_expression_title"
+            app:defaultValue="0"
+            app:useSimpleSummaryProvider="true"
+            app:icon="@drawable/mic_symbols"
+            app:entries="@array/setting_kill_expression_options"
+            app:entryValues="@array/setting_kill_expression_values"
+            app:dialogTitle="@string/setting_kill_expression_title" />
+
+        <!--
         <SwitchPreferenceCompat
             app:key="expressionStyle"
             app:defaultValue="false"
             app:icon="@drawable/mic_symbols"
             app:summary="@string/setting_kill_expression_summary"
             app:title="@string/setting_kill_expression_title" />
+        -->
 
     </PreferenceCategory>
 

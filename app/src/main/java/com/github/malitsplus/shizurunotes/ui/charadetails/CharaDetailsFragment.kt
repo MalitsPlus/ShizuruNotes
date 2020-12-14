@@ -1,6 +1,7 @@
 package com.github.malitsplus.shizurunotes.ui.charadetails
 
 import android.os.Bundle
+import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +11,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.preference.ListPreference
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.TransitionInflater
+import com.afollestad.materialdialogs.MaterialDialog
 import com.github.malitsplus.shizurunotes.R
+import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.Chara
 import com.github.malitsplus.shizurunotes.databinding.FragmentCharaDetailsBinding
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
@@ -21,6 +25,7 @@ import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelCharaFactory
 import com.github.malitsplus.shizurunotes.ui.base.AttackPatternContainerAdapter
 import com.github.malitsplus.shizurunotes.ui.base.BaseHintAdapter
 import com.github.malitsplus.shizurunotes.user.UserSettings
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 // TODO: 改成使用ViewType接口和适配器，避免NestedScrollView一次性渲染全部视图造成丢帧
 class CharaDetailsFragment : Fragment(), View.OnClickListener {
@@ -46,10 +51,10 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
                 .inflateTransition(android.R.transition.move).setDuration(300)
     }
 
-    override fun onResume() {
-        super.onResume()
-        binding.toolbar.menu.findItem(R.id.menu_chara_show_expression).isChecked = UserSettings.get().getExpression()
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        binding.toolbar.menu.findItem(R.id.menu_chara_show_expression).isChecked = UserSettings.get().getExpression()
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,16 +67,12 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
             container,
             false
         ).apply {
-
             detailsItemChara.transitionName = "transItem_${args.charaId}"
-
             if (sharedChara.backFlag)
                 appbar.setExpanded(false, false)
-
             detailsVM = detailsViewModel
             clickListener = this@CharaDetailsFragment
         }
-
         return binding.root
     }
 
@@ -81,7 +82,6 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
             toolbar.setNavigationOnClickListener { view ->
                 view.findNavController().navigateUp()
             }
-
             toolbar.setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.menu_chara_customize -> {
@@ -90,10 +90,18 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
                         )
                     }
                     R.id.menu_chara_show_expression -> {
-                        it.isChecked = !it.isChecked
-                        UserSettings.get().setExpression(it.isChecked)
-                        sharedChara.mSetSelectedChara(sharedChara.selectedChara)
-                        adapterSkill.notifyDataSetChanged()
+                        val singleItems = I18N.getStringArray(R.array.setting_kill_expression_options)
+                        val checkedItem = UserSettings.get().getExpression()
+                        MaterialAlertDialogBuilder(requireContext())
+                            .setTitle(I18N.getString(R.string.setting_kill_expression_title))
+                            .setSingleChoiceItems(singleItems, checkedItem) { dialog, which ->
+                                if (UserSettings.get().getExpression() != which) {
+                                    UserSettings.get().setExpression(which)
+                                    sharedChara.mSetSelectedChara(sharedChara.selectedChara)
+                                    adapterSkill.notifyDataSetChanged()
+                                }
+                                dialog.dismiss()
+                            }.show()
                     }
                 }
                 true
