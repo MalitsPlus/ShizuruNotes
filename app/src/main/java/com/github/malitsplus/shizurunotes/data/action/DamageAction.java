@@ -14,7 +14,7 @@ public class DamageAction extends ActionParameter {
     @Override
     protected void childInit() {
         damageClass = ClassModifier.parse(actionDetail1);
-        criticalModifier = CriticalModifier.parse((int)actionValue5);
+        criticalModifier = CriticalModifier.parse((int)actionValue5.value);
 
         switch (damageClass) {
             case magical:
@@ -38,11 +38,11 @@ public class DamageAction extends ActionParameter {
                 string.append(I18N.getString(R.string.Deal_s1_s2_damage_to_s3, buildExpression(level, property), damageClass.description(), targetParameter.buildTargetClause()));
                 break;
             case critical:
-                string.append(I18N.getString(R.string.Deal_s1_s2_damage_to_s3_and_this_attack_is_ensured_critical, buildExpression(level, property), damageClass.description(), targetParameter.buildTargetClause(), Utils.roundIfNeed(actionValue5)));
+                string.append(I18N.getString(R.string.Deal_s1_s2_damage_to_s3_and_this_attack_is_ensured_critical, buildExpression(level, property), damageClass.description(), targetParameter.buildTargetClause(), Utils.roundIfNeed(actionValue5.value)));
                 break;
         }
-        if (actionValue6 != 0) {
-            string.append(I18N.getString(R.string.Critical_damage_is_s_times_as_normal_damage, 2 * actionValue6));
+        if (actionValue6.value != 0) {
+            string.append(I18N.getString(R.string.Critical_damage_is_s_times_as_normal_damage, 2 * actionValue6.value));
         }
         return string.toString();
     }

@@ -13,7 +13,7 @@ public class HealAction extends ActionParameter {
     @Override
     protected void childInit() {
         healClass = ClassModifier.parse(actionDetail1);
-        percentModifier = PercentModifier.parse((int)actionValue1);
+        percentModifier = PercentModifier.parse((int)actionValue1.value);
         switch (healClass){
             case magical:
                 actionValues.add(new ActionValue(actionValue4, actionValue5, PropertyKey.magicStr));

@@ -42,7 +42,7 @@ public class AilmentAction extends ActionParameter {
                     case slow:
                         str = I18N.getString(R.string.Multiple_attack_speed_of_s1_with_s2_for_s3_sec,
                                 targetParameter.buildTargetClause(),
-                                Utils.roundIfNeed(Double.parseDouble(buildExpression(level, actionValues, RoundingMode.UNNECESSARY, property)) * 100),
+                                buildExpression(level, actionValues, RoundingMode.UNNECESSARY, property),
                                 buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property)
                         );
                         break;

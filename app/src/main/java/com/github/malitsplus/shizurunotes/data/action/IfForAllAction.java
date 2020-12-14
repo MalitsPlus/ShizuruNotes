@@ -25,7 +25,7 @@ public class IfForAllAction extends ActionParameter {
                         actionDetail2 % 10, targetParameter.buildTargetClause());
             } else if(actionDetail1 >= 600 && actionDetail1 < 700){
                 trueClause = I18N.getString(R.string.use_d1_if_s2_is_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4,
-                        actionDetail2 % 10, targetParameter.buildTargetClause(), actionDetail1 - 600, (int)actionValue3);
+                        actionDetail2 % 10, targetParameter.buildTargetClause(), actionDetail1 - 600, (int)actionValue3.value);
             } else if(actionDetail1 == 700){
                 trueClause = I18N.getString(R.string.use_d1_if_s2_is_alone,
                         actionDetail2 % 10, targetParameter.buildTargetClause());
@@ -34,7 +34,7 @@ public class IfForAllAction extends ActionParameter {
                         actionDetail2 % 10, targetParameter.buildTargetClause(), actionDetail1 - 700);
             } else if(actionDetail1 == 720) {
                 trueClause = I18N.getString(R.string.use_d1_if_among_s2_exists_unit_ID_d3,
-                        actionDetail2 % 10, targetParameter.buildTargetClause(), (int) actionValue3);
+                        actionDetail2 % 10, targetParameter.buildTargetClause(), (int) actionValue3.value);
             } else if (actionDetail1 >=901 && actionDetail1 < 1000) {
                 trueClause = I18N.getString(R.string.use_d1_if_s2_HP_is_below_d3,
                         actionDetail2 % 10, targetParameter.buildTargetClause(true), actionDetail1 - 900);
@@ -64,7 +64,7 @@ public class IfForAllAction extends ActionParameter {
                         actionDetail3 % 10, targetParameter.buildTargetClause());
             } else if(actionDetail1 >= 600 && actionDetail1 < 700){
                 falseClause = I18N.getString(R.string.use_d1_if_s2_is_not_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4,
-                        actionDetail3 % 10, targetParameter.buildTargetClause(), actionDetail1 - 600, (int)actionValue3);
+                        actionDetail3 % 10, targetParameter.buildTargetClause(), actionDetail1 - 600, (int)actionValue3.value);
             } else if(actionDetail1 == 700){
                 falseClause = I18N.getString(R.string.use_d1_if_s2_is_not_alone,
                         actionDetail3 % 10, targetParameter.buildTargetClause());
@@ -73,7 +73,7 @@ public class IfForAllAction extends ActionParameter {
                         actionDetail3 % 10, targetParameter.buildTargetClause(), actionDetail1 - 700);
             } else if(actionDetail1 == 720) {
                 falseClause = I18N.getString(R.string.use_d1_if_among_s2_does_not_exists_unit_ID_d3,
-                        actionDetail3 % 10, targetParameter.buildTargetClause(), (int) actionValue3);
+                        actionDetail3 % 10, targetParameter.buildTargetClause(), (int) actionValue3.value);
             } else if (actionDetail1 >=901 && actionDetail1 < 1000) {
                 falseClause = I18N.getString(R.string.use_d1_if_s2_HP_is_not_below_d3,
                         actionDetail2 % 10, targetParameter.buildTargetClause(true), actionDetail1 - 900);

@@ -40,7 +40,7 @@ public class LogBarrierAction extends ActionParameter {
     @Override
     protected void childInit() {
         super.childInit();
-        barrierType = BarrierType.parse((int) actionValue1);
+        barrierType = BarrierType.parse((int) actionValue1.value);
         actionValues.add(new ActionValue(actionValue1, actionValue2, null));
         durationValues.add(new ActionValue(actionValue3, actionValue4, null));
     }
@@ -49,7 +49,7 @@ public class LogBarrierAction extends ActionParameter {
     public String localizedDetail(int level, Property property) {
         return I18N.getString(R.string.Cast_a_barrier_on_s1_to_reduce_damage_over_s2_with_coefficient_s3_the_greater_the_less_reduced_amount_for_s4_s,
                 targetParameter.buildTargetClause(),
-                Utils.roundDouble(actionValue5),
+                Utils.roundDouble(actionValue5.value),
                 buildExpression(level, RoundingMode.UNNECESSARY, property),
                 buildExpression(level, durationValues, null, property));
     }

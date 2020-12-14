@@ -37,7 +37,7 @@ public class KnightGuardAction extends ActionParameter {
     @Override
     protected void childInit() {
         super.childInit();
-        guardType = GuardType.parse((int)actionValue1);
+        guardType = GuardType.parse((int)actionValue1.value);
         switch (guardType){
             case magic:
                 actionValues.add(new ActionValue(actionValue4, actionValue5, PropertyKey.magicStr));

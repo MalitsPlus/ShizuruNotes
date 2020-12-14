@@ -42,10 +42,10 @@ public class CharmAction extends ActionParameter {
         durationValues.add(new ActionValue(actionValue1, actionValue2, null));
         switch (charmType){
             case charm:
-                chanceValues.add(new ActionValue(actionValue3, actionValue4 * 100, null));
+                chanceValues.add(new ActionValue(actionValue3.value, actionValue4.value * 100, eActionValue.VALUE3, eActionValue.VALUE4, null));
                 break;
             default:
-                chanceValues.add(new ActionValue(actionValue3 * 100, actionValue4 * 100, null));
+                chanceValues.add(new ActionValue(actionValue3.value * 100, actionValue4.value * 100, eActionValue.VALUE3, eActionValue.VALUE4, null));
                 break;
         }
     }
@@ -54,7 +54,12 @@ public class CharmAction extends ActionParameter {
     public String localizedDetail(int level, Property property) {
         switch (charmType){
             case charm:
-                return I18N.getString(R.string.Charm_s1_with_s2_chance_for_s3_sec, targetParameter.buildTargetClause(), buildExpression(level, chanceValues, RoundingMode.UNNECESSARY, property), buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property));
+                return I18N.getString(
+                        R.string.Charm_s1_with_s2_chance_for_s3_sec,
+                        targetParameter.buildTargetClause(),
+                        buildExpression(level, chanceValues, RoundingMode.UNNECESSARY, property),
+                        buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property)
+                );
             case confusion:
                 return I18N.getString(R.string.Confuse_s1_with_s2_chance_for_s3_sec, targetParameter.buildTargetClause(), buildExpression(level, chanceValues, RoundingMode.UNNECESSARY, property), buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property));
             default:

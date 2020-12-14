@@ -47,8 +47,8 @@ public class ActionByHitCountAction extends ActionParameter {
     @Override
     public String localizedDetail(int level, Property property) {
         String limitation;
-        if (actionValue5 > 0) {
-            limitation = I18N.getString(R.string.max_s_times, Utils.roundIfNeed(actionValue5));
+        if (actionValue5.value > 0) {
+            limitation = I18N.getString(R.string.max_s_times, Utils.roundIfNeed(actionValue5.value));
         } else {
             limitation = "";
         }
@@ -57,7 +57,7 @@ public class ActionByHitCountAction extends ActionParameter {
                 return I18N.getString(R.string.Use_d1_s2_every_s3_hits_in_next_s4_sec,
                     actionDetail2 % 10,
                     limitation,
-                    Utils.roundIfNeed(actionValue1),
+                    Utils.roundIfNeed(actionValue1.value),
                     buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property)
                 );
             default:

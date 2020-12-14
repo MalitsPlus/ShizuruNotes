@@ -34,7 +34,7 @@ public class CountBlindAction extends ActionParameter {
 
     @Override
     protected void childInit() {
-        countType = CountType.parse((int) actionValue1);
+        countType = CountType.parse((int) actionValue1.value);
         actionValues.add(new ActionValue(actionValue2, actionValue3, null));
     }
 

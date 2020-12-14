@@ -12,6 +12,7 @@
     <color name="green_500">#018786</color> <!--Color secondary variant-->
     <color name="red_200">#cf6679</color> <!--Color error (dark)-->
     <color name="red_200_alpha">#a4cf6679</color> <!--Color error (light)-->
+    <color name="red_200_beta">#68cf6679</color>
     <color name="red_500">#cf6679</color>
     <color name="blue_100">#90caf9</color>
     <color name="yellow_100">#FFF9C4</color>

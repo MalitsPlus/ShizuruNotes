@@ -9,9 +9,13 @@ import android.text.style.ReplacementSpan;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.github.malitsplus.shizurunotes.R;
+import com.github.malitsplus.shizurunotes.common.ResourceManager;
+
 public class BackgroundSpan extends ReplacementSpan {
 
     public static final int BORDER_RECT = 1;
+    public static final int BACKGROUND_RECT = 2;
 
     private int type;
 
@@ -40,6 +44,9 @@ public class BackgroundSpan extends ReplacementSpan {
             case BORDER_RECT:
                 drawBorderRect(canvas, paint, rectF);
                 break;
+            case BACKGROUND_RECT:
+                drawBackgroundRect(canvas, paint, rectF);
+                break;
         }
     }
 
@@ -52,6 +59,20 @@ public class BackgroundSpan extends ReplacementSpan {
 
         //画无边框的纯填充色方框背景
         paint.setColor(Color.TRANSPARENT);
+        canvas.drawRoundRect(rectF, cornerRadius, cornerRadius, paint);
+
+        //画边框线
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setColor(Color.GRAY);
+        paint.setAntiAlias(true);
+        canvas.drawRoundRect(rectF, cornerRadius, cornerRadius, paint);
+    }
+
+    private void drawBackgroundRect(Canvas canvas, Paint paint, RectF rectF) {
+        int cornerRadius = 10;
+
+        //画无边框的纯填充色方框背景
+        paint.setColor(ResourceManager.Companion.get().getColor(R.color.red_200_beta));
         canvas.drawRoundRect(rectF, cornerRadius, cornerRadius, paint);
 
         //画边框线

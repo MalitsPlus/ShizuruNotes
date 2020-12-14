@@ -31,14 +31,24 @@
         <item>en</item>
     </string-array>
     <string-array name="setting_server_options">
-        <item>日本錆</item>
-        <item>中華錆</item>
+        <item>日本鯖</item>
+        <item>大陸鯖</item>
     </string-array>
     <string-array name="setting_server_values">
         <item>jp</item>
         <item>cn</item>
     </string-array>
     <string name="setting_kill_expression_title">スキル計算式</string>
+    <string-array name="setting_kill_expression_options">
+        <item>値</item>
+        <item>計算式</item>
+        <item>オリジナル</item>
+    </string-array>
+    <string-array name="setting_kill_expression_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
     <string name="setting_kill_expression_summary">スキルアクションの計算式を表示</string>
     <string name="setting_appearance">表示</string>
     <string name="setting_system">システム</string>
@@ -436,7 +446,7 @@
     <string name="s1_to_s2">%1$sから%2$sまで</string>
     <string name="s1_front_s2_s3">前方%1$s%2$s%3$s</string>
     <string name="any_of_s">（ターゲット別）%sの中任意のターゲット</string>
-    <string name="Unknown_effect_d1_to_s2_with_details_s3_values_s4">%2$sに不明な効果[%1$d]、内容%3$s、媒介変数%4$s。</string>
+    <string name="Unknown_effect_d1_to_s2_with_details_s3_values_s4">%2$sに不明な効果[%1$d]、内容%3$s、係数%4$s。</string>
     <string name="magical">魔法</string>
     <string name="physical">物理</string>
     <string name="inevitable_physical">必中の物理</string>
@@ -567,19 +577,19 @@
     <string name="Condition_s">条件分岐：%s</string>
     <string name="separator">、</string>
     <string name="Revive_s1_with_d2_HP">%1$sを復活させ、HPを [%2$d%%] 回復させる。（この値はキャラの回復量上昇値に影響される）</string>
-    <string name="Modifier_add_s1_HP_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dを [%1$s * HP] アップさせる。</string>
-    <string name="Modifier_add_s1_lost_HP_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dを [%1$s * 損失したHP] アップさせる。</string>
-    <string name="Modifier_add_s1_count_of_defeated_enemies_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dを [%1$s * 倒した敵の数] アップさせる。</string>
-    <string name="Modifier_add_s1_stacks_of_mark_ID_d2_to_value_d3_of_effect_d4">[アクション%4$d]の媒介変数%3$dを [%1$s * マーク[ID：%2$d]のスタック数] アップさせる。</string>
-    <string name="Modifier_add_s1_count_of_targets_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dを [%1$s * ターゲットの数] アップさせる。</string>
-    <string name="Modifier_add_s1_total_damage_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dを [%1$s * ダメージ量] アップさせる。</string>
-    <string name="Modifier_add_s1_s2_of_s3_to_value_d4_of_effect_d5">[アクション%5$d]の媒介変数%4$dを [%1$s * %3$sの%2$s] アップさせる。</string>
-    <string name="Modifier_add_s1_count_of_s2_behind_self_to_value_d3_of_effect_d4">[アクション%4$d]の媒介変数%3$dを [%1$s * 後ろの%2$sの数] アップさせる。</string>
-    <string name="Modifier_add_s1_count_of_omemes_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dを [%1$s * オメメちゃんの数] アップさせる。</string>
-    <string name="Modifier_multiple_s1_HP_max_HP_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dに [%1$s * HP / MaxHP] を乗じる。</string>
-    <string name="Modifier_multiple_s1_lost_HP_max_HP_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dに [%1$s * 損失したHP / MaxHP] を乗じる。</string>
-    <string name="Modifier_multiple_s1_count_of_defeated_enemies_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dに [%1$s * 倒した敵の数] を乗じる。</string>
-    <string name="Modifier_multiple_s1_stacks_of_mark_ID_d2_to_value_d3_of_effect_d4">[アクション%4$d]の媒介変数%3$dに [%1$s * マーク[ID：%2$d]のスタック数] を乗じる。</string>
+    <string name="Modifier_add_s1_HP_to_value_d2_of_effect_d3">[アクション%3$d]の係数%2$dを [%1$s * HP] アップさせる。</string>
+    <string name="Modifier_add_s1_lost_HP_to_value_d2_of_effect_d3">[アクション%3$d]の係数%2$dを [%1$s * 損失したHP] アップさせる。</string>
+    <string name="Modifier_add_s1_count_of_defeated_enemies_to_value_d2_of_effect_d3">[アクション%3$d]の係数%2$dを [%1$s * 倒した敵の数] アップさせる。</string>
+    <string name="Modifier_add_s1_stacks_of_mark_ID_d2_to_value_d3_of_effect_d4">[アクション%4$d]の係数%3$dを [%1$s * マーク[ID：%2$d]のスタック数] アップさせる。</string>
+    <string name="Modifier_add_s1_count_of_targets_to_value_d2_of_effect_d3">[アクション%3$d]の係数%2$dを [%1$s * ターゲットの数] アップさせる。</string>
+    <string name="Modifier_add_s1_total_damage_to_value_d2_of_effect_d3">[アクション%3$d]の係数%2$dを [%1$s * ダメージ量] アップさせる。</string>
+    <string name="Modifier_add_s1_s2_of_s3_to_value_d4_of_effect_d5">[アクション%5$d]の係数%4$dを [%1$s * %3$sの%2$s] アップさせる。</string>
+    <string name="Modifier_add_s1_count_of_s2_behind_self_to_value_d3_of_effect_d4">[アクション%4$d]の係数%3$dを [%1$s * 後ろの%2$sの数] アップさせる。</string>
+    <string name="Modifier_add_s1_count_of_omemes_value_d2_of_effect_d3">[アクション%3$d]の係数%2$dを [%1$s * オメメちゃんの数] アップさせる。</string>
+    <string name="Modifier_multiple_s1_HP_max_HP_to_value_d2_of_effect_d3">[アクション%3$d]の係数%2$dに [%1$s * HP / MaxHP] を乗じる。</string>
+    <string name="Modifier_multiple_s1_lost_HP_max_HP_to_value_d2_of_effect_d3">[アクション%3$d]の係数%2$dに [%1$s * 損失したHP / MaxHP] を乗じる。</string>
+    <string name="Modifier_multiple_s1_count_of_defeated_enemies_to_value_d2_of_effect_d3">[アクション%3$d]の係数%2$dに [%1$s * 倒した敵の数] を乗じる。</string>
+    <string name="Modifier_multiple_s1_stacks_of_mark_ID_d2_to_value_d3_of_effect_d4">[アクション%4$d]の係数%3$dに [%1$s * マーク[ID：%2$d]のスタック数] を乗じる。</string>
     <string name="d1_chance_use_d2">[%1$d%%] の確率で[アクション%2$d]を使う。</string>
     <string name="use_d1_if_s2_has_any_dot_debuff">%2$sが継続ダメージデバフを掛けられている場合、[アクション%1$d]を使う。</string>
     <string name="use_d1_if_s2_is_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4">%2$sが持っているマーク[ID：%3$d]のスタック数が%4$d以上の場合、[アクション%1$d]を使う。</string>
@@ -656,7 +666,7 @@
     <string name="Ignore_the_other_units_taunt_when_attacking_s">%sを攻撃する時、他のターゲットの挑発効果を無視する。</string>
     <string name="time_stop">時間停止</string>
     <string name="Stop_s1_for_s2_sec">%1$sを時間停止状態にする、効果時間 [%2$s] 秒。</string>
-    <string name="Modifier_add_s1_count_of_damaged_to_value_d2_of_effect_d3">[アクション%3$d]の媒介変数%2$dを [%1$s * ダメージを与えられたターゲットの数] アップさせる。</string>
+    <string name="Modifier_add_s1_count_of_damaged_to_value_d2_of_effect_d3">[アクション%3$d]の係数%2$dを [%1$s * ダメージを与えられたターゲットの数] アップさせる。</string>
     <string name="nearest_without_self">自分以外最も近い</string>
     <string name="s_nearest_without_self">%s自分以外最も近い</string>
     <string name="the_s_nearest_without_self">自分以外%s近い</string>
@@ -679,7 +689,7 @@
     <string name="the_lowest_HP">HPが一番低い</string>
     <string name="max_HP">最大HP</string>
     <string name="Deal_damage_equal_to_s1_of_targets_original_max_HP_to_s2">%2$sに本来の最大HP [%1$s%%] 分のダメージを与える。</string>
-    <string name="Multiple_attack_speed_of_s1_with_s2_for_s3_sec">%1$sの行動速度を本来の [%2$s%%] にする、効果時間 [%3$s] 秒。</string>
+    <string name="Multiple_attack_speed_of_s1_with_s2_for_s3_sec">%1$sの行動速度を本来の [%2$s] 倍にする、効果時間 [%3$s] 秒。</string>
     <string name="barriers">バリア</string>
     <string name="Multiple_heal_effects_from_s1_with_s2_for_s3_sec">%1$sの回復量は本来の [%2$s] 倍にする、効果時間 [%3$s] 秒。</string>
     <string name="buff">バフ効果</string>
@@ -688,4 +698,11 @@
     <string name="add">+</string>
     <string name="subtract">-</string>
     <string name="Make_s1_damage_changes_into_s234_times_caps_to_s5_times_dur_s6_sec">パッシブ：%1$sが与えられるダメージを [1 %2$s %3$s * %1$sの%4$s数] 倍にする（最大%5$s倍）、効果時間 [%6$s] 秒。</string>
+    <string name="value1">係数1</string>
+    <string name="value2">係数2</string>
+    <string name="value3">係数3</string>
+    <string name="value4">係数4</string>
+    <string name="value5">係数5</string>
+    <string name="value6">係数6</string>
+    <string name="value7">係数7</string>
 </resources>
