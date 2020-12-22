@@ -13,6 +13,6 @@ public class WaveStartIdleAction extends ActionParameter {
     @Override
     public String localizedDetail(int level, Property property) {
         return I18N.getString(R.string.Appear_after_s_sec_since_wave_start,
-                actionValue1);
+                actionValue1.valueString());
     }
 }

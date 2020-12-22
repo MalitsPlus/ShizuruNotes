@@ -42,7 +42,7 @@ public class ModeChangeAction extends ActionParameter {
         switch (modeChangeType){
             case time:
                 return I18N.getString(R.string.Change_attack_pattern_to_d1_for_s2_sec,
-                        actionDetail2 % 10, actionValue1);
+                        actionDetail2 % 10, actionValue1.valueString());
             case energy:
                 return I18N.getString(R.string.Cost_s1_TP_sec_change_attack_pattern_to_d2_until_TP_is_zero,
                         Utils.roundDownDouble(actionValue1.value), actionDetail2 % 10);

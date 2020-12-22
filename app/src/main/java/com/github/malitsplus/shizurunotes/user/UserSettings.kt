@@ -21,6 +21,9 @@ class UserSettings private constructor(
         const val LANGUAGE_KEY = "language"
         const val SERVER_KEY = "server"
         const val EXPRESSION_STYLE = "expressionStyle2"
+        const val LIMIT_CLAN_BATTLE_KEY = "limitClanBattleNum"
+        const val BADGE_KEY = "isBadgeVisible"
+        const val HIDE_SERVER_SWITCH_HINT_KEY = "hideServerSwitchHint"
         const val LOG = "log"
         const val DB_VERSION = "dbVersion_new"
         const val DB_VERSION_JP = "dbVersion_jp"
@@ -30,6 +33,8 @@ class UserSettings private constructor(
         const val EXPRESSION_VALUE = 0
         const val EXPRESSION_EXPRESSION = 1
         const val EXPRESSION_ORIGINAL = 2
+        const val SERVER_JP = "jp"
+        const val SERVER_CN = "cn"
 
         private const val userDataFileName = "userData.json"
 
@@ -105,11 +110,11 @@ class UserSettings private constructor(
     }
 
     fun getUserServer(): String {
-        return preference.getString(SERVER_KEY, "jp") ?: "jp"
+        return preference.getString(SERVER_KEY, SERVER_JP) ?: SERVER_JP
     }
 
     fun getDbVersion(): Long {
-        return if (preference.getString(SERVER_KEY, null) == "cn") {
+        return if (preference.getString(SERVER_KEY, null) == SERVER_CN) {
             preference.getLong(DB_VERSION_CN, 0)
         } else {
             preference.getLong(DB_VERSION_JP, 0)
@@ -122,15 +127,15 @@ class UserSettings private constructor(
 
     @SuppressLint("ApplySharedPref")
     fun setDbVersion(newVersion: Long, async: Boolean = true) {
-        when (preference.getString(SERVER_KEY, "jp")) {
-            "jp" -> {
+        when (preference.getString(SERVER_KEY, SERVER_JP)) {
+            SERVER_JP -> {
                 if (async) {
                     preference.edit().putLong(DB_VERSION_JP, newVersion).apply()
                 } else {
                     preference.edit().putLong(DB_VERSION_JP, newVersion).commit()
                 }
             }
-            "cn" -> {
+            SERVER_CN -> {
                 if (async) {
                     preference.edit().putLong(DB_VERSION_CN, newVersion).apply()
                 } else {
@@ -143,8 +148,22 @@ class UserSettings private constructor(
     fun getExpression(): Int {
         return preference.getString(EXPRESSION_STYLE, "0")?.toInt() ?: 0
     }
-
     fun setExpression(newValue: Int) {
         preference.edit().putString(EXPRESSION_STYLE, newValue.toString()).apply()
+    }
+    fun getClanBattleLimit(): Boolean {
+        return preference.getBoolean(LIMIT_CLAN_BATTLE_KEY, false)
+    }
+    fun getBadgeVisibility(): Boolean {
+        return preference.getBoolean(BADGE_KEY, true)
+    }
+    fun setBadgeVisibility(visible: Boolean) {
+        preference.edit().putBoolean(BADGE_KEY, visible).apply()
+    }
+    fun getHideServerSwitchHint(): Boolean {
+        return preference.getBoolean(HIDE_SERVER_SWITCH_HINT_KEY, false)
+    }
+    fun setHideServerSwitchHint(isHide: Boolean) {
+        preference.edit().putBoolean(HIDE_SERVER_SWITCH_HINT_KEY, isHide).apply()
     }
 }

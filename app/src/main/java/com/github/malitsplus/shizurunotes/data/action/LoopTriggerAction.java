@@ -46,7 +46,7 @@ public class LoopTriggerAction extends ActionParameter {
         switch (triggerType){
             case damaged:
                 return I18N.getString(R.string.Condition_s1_chance_use_d2_when_takes_damage_within_s3_sec,
-                        buildExpression(level, property), actionDetail2 % 10, actionValue4);
+                        buildExpression(level, property), actionDetail2 % 10, actionValue4.valueString());
             default:
                 return super.localizedDetail(level, property);
         }
