@@ -27,7 +27,7 @@ public class ChangeEnergyRecoveryRatioByDamageAction extends ActionParameter {
     public String localizedDetail(int level, Property property) {
         return I18N.getString(R.string.change_energy_recovery_ratio_of_action_s1_to_s2_when_s3_get_damage,
                 getChildrenActionString(),
-                actionValue1,
+                actionValue1.valueString(),
                 targetParameter.buildTargetClause());
     }
 }

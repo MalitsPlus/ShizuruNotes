@@ -193,7 +193,7 @@ public class ActionParameter {
         }
 
         public String valueString() {
-            return String.valueOf(value);
+            return Utils.roundIfNeed(value);
         }
     }
 
@@ -363,7 +363,7 @@ public class ActionParameter {
                 expression.delete(expression.lastIndexOf(" +"), expression.length());
                 return hasBracesIfNeeded ? bracesIfNeeded(expression.toString()) : expression.toString();
             }
-        } else if (UserSettings.get().getExpression() == UserSettings.EXPRESSION_ORIGINAL && !isEnemySkill) {
+        } else if (UserSettings.get().getExpression() == UserSettings.EXPRESSION_ORIGINAL) {
             StringBuilder expression = new StringBuilder();
             for(ActionValue value : actionValues){
                 StringBuilder part = new StringBuilder();

@@ -233,7 +233,6 @@
                     android:id="@+id/constraint_place_holder2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:foreground="?android:attr/selectableItemBackground"
                     android:onClick="@{clickListener}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -250,6 +249,110 @@
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:layout_weight="1">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraint_7"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:onClick="@{clickListener}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/constraint_8"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imageView7_1"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.35" />
+
+                    <TextView
+                        android:id="@+id/textView7_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView7_1"
+                        app:layout_constraintStart_toStartOf="@+id/imageView7_1"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView7_1" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraint_8"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:onClick="@{clickListener}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/constraint_community"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/constraint_7"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <ImageView
+                        android:id="@+id/image8_1"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.35" />
+
+                    <TextView
+                        android:id="@+id/textView8_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="@+id/image8_1"
+                        app:layout_constraintStart_toStartOf="@+id/image8_1"
+                        app:layout_constraintTop_toBottomOf="@+id/image8_1" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraint_community"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:onClick="@{clickListener}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/constraint_8"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <ImageView
+                        android:id="@+id/imageView9_1"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@drawable/mic_community"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.35" />
+
+                    <TextView
+                        android:id="@+id/textView9_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/title_community"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView9_1"
+                        app:layout_constraintStart_toStartOf="@+id/imageView9_1"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView9_1" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

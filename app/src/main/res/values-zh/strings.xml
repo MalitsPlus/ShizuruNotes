@@ -10,14 +10,26 @@
     <string name="title_dungeon">迷宫</string>
     <string name="title_enemy">怪物</string>
     <string name="title_calendar">日历</string>
+    <string name="title_community">社区讨论</string>
+    <string name="community_dialog_title">加入社区交流</string>
+    <string name="community_dialog_text">为方便各位骑士君讨论游戏，我们新建立了井盖「公主连接」群，这里有国服日服台服大佬，欢迎大家来吹水，讨论攻略，交流xp。\n同时可以在这里反馈静流笔记的bug，以及你对静流笔记的建议。国服、日服、台服均可加入！</string>
     <string name="setting_language_dialog_title">Language</string>
     <string name="setting_kill_expression_title">技能公式</string>
     <string name="setting_kill_expression_summary">在技能动作详情中显示计算公式</string>
+    <string name="do_not_show_anymore">不再显示此提示</string>
     <string-array name="setting_kill_expression_options">
         <item>值</item>
         <item>公式</item>
         <item>原始</item>
     </string-array>
+    <string-array name="setting_server_options">
+        <item>日服</item>
+        <item>国服</item>
+    </string-array>
+    <string name="setting_limit_clan_battle_num">限制会战数据</string>
+    <string name="setting_limit_clan_battle_num_description">只显示最近13期会战，可加快读取速度</string>
+    <string name="setting_server">服务器</string>
+    <string name="setting_server_dialog_title">切换服务器</string>
     <string name="setting_appearance">显示</string>
     <string name="setting_system">系统</string>
     <string name="setting_db_version">数据库版本</string>
@@ -418,12 +430,12 @@
     <string name="Exclusive_condition_s">全体条件分歧：%s</string>
     <string name="Kill_s_instantly">使%s即死。</string>
     <string name="Add_additional_s1_s2_to_s3_for_next_s4_attacks">为%3$s的下 [%4$s] 次攻击附加效果 [%1$s] %2$s。</string>
-    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_physical_damage">为%1$s展开护盾，受到物理伤害时反射 [%2$s] 伤害。</string>
-    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_magical_damage">为%1$s展开护盾，受到魔法伤害时反射 [%2$s] 伤害。</string>
-    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_physical_damage">为%1$s展开护盾，受到物理伤害时反射 [%2$s] 伤害，并使自身HP恢复同等的值。</string>
-    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_magical_damage">为%1$s展开护盾，受到魔法伤害时反射 [%2$s] 伤害，并使自身HP恢复同等的值。</string>
-    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_damage">为%1$s展开护盾，受到伤害时反射 [%2$s] 伤害，并使自身HP恢复同等的值。</string>
-    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_damage">为%1$s展开护盾，受到伤害时反射 [%2$s] 伤害。</string>
+    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_physical_damage">为%1$s展开可无效化 [%3$s] 次物理伤害的护盾，受到物理伤害时反射 [%2$s] 伤害。</string>
+    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_magical_damage">为%1$s展开可无效化 [%3$s] 次魔法伤害的护盾，受到魔法伤害时反射 [%2$s] 伤害。</string>
+    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_physical_damage">为%1$s展开可无效化 [%3$s] 次物理伤害的护盾，受到物理伤害时反射 [%2$s] 伤害，并使自身HP恢复同等的值。</string>
+    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_magical_damage">为%1$s展开可无效化 [%3$s] 次魔法伤害的护盾，受到魔法伤害时反射 [%2$s] 伤害，并使自身HP恢复同等的值。</string>
+    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_damage">为%1$s展开可无效化 [%3$s] 次伤害的护盾，受到伤害时反射 [%2$s] 伤害，并使自身HP恢复同等的值。</string>
+    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_damage">为%1$s展开可无效化 [%3$s] 次伤害的护盾，受到伤害时反射 [%2$s] 伤害。</string>
     <string name="Add_additional_s1_damage_per_attack_with_max_s2_stacks_to_current_target">每次攻击当前的目标，将会追加 [%1$s] 伤害，本效果最多叠 [%2$s] 层。</string>
     <string name="Add_s1_mark_stacks_max_s2_ID_s3_on_s4_for_s5_sec">对%4$s追加 [%1$s] 层标记[ID：%3$s]，持续时间 [%5$s] 秒，最大叠 [%2$s] 层。</string>
     <string name="Remove_s1_mark_stacks_ID_s2_on_s3">使%3$s的标记[ID：%2$s]层数减少 [%1$s] 层。</string>
@@ -559,7 +571,7 @@
     <string name="text_calculate">计算</string>
     <string name="rank_comparison_description">计算方法说明：\nx → Rank1\ny → Rank2\n{[∑(y的装备满强值) + ∑(比y低的Rank装备值) + (当前最大Lv + y)的角色基础值]小数点后四舍五入} - {[∑(x的装备满强值) + ∑(比x低的Rank装备值) + (当前最大Lv + x)的角色基础值]小数点后四舍五入}\n*上记的角色基础值是基于☆MAX的角色成长值来进行计算\n\n一句话来说就是本计算结果包含了Rank上升对角色基础状态值产生的影响。</string>
     <string name="dialog_server_switch_title">切换服务器</string>
-    <string name="dialog_server_switch_text">请注意，如果已在日历中开启活动通知功能，一旦切换服务器，已注册的原本服务器的活动日程通知将全部解除，重启应用后将注册新服务器的活动日程通知</string>
+    <string name="dialog_server_switch_text">请注意，如果已在日历中开启活动通知功能，一旦切换服务器，已注册的原本服务器的活动日程通知将全部解除，重启应用后将注册新服务器的活动日程通知。</string>
     <string name="text_equipment_level">强化等级</string>
     <string name="text_equipment_craft_requirement">所需素材</string>
     <string name="princess_heart">公主之心</string>

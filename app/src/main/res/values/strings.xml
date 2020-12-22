@@ -15,6 +15,10 @@
     <string name="title_rank_comparison">ランク比較</string>
     <string name="title_hatsune_stage">イベント</string>
     <string name="title_hatsune_wave">イベント</string>
+    <string name="title_community">コミュニティ</string>
+    <string name="community_dialog_title">コミュニティに参加</string>
+    <string name="community_dialog_text">コミュニティに参加しましょう\n（飛び先中国語注意）</string>
+    <string name="do_not_show_anymore">今度から表示しない</string>
     <string name="title_analyze">データ分析</string>
     <string name="setting_language" translatable="false">Language</string>
     <string name="setting_language_dialog_title">Language</string>
@@ -49,6 +53,8 @@
         <item>1</item>
         <item>2</item>
     </string-array>
+    <string name="setting_limit_clan_battle_num">クラバトの表示数を制限</string>
+    <string name="setting_limit_clan_battle_num_description">最も近い13期のクラバトデータのみを表示、ロードスピードを上げることができます</string>
     <string name="setting_kill_expression_summary">スキルアクションの計算式を表示</string>
     <string name="setting_appearance">表示</string>
     <string name="setting_system">システム</string>
@@ -324,7 +330,7 @@
     <string name="short_wave_energy_recovery">TP自\n%s</string>
     <string name="short_hp_recovery">回上\n%s</string>
     <string name="dialog_server_switch_title">サーバー切り替え</string>
-    <string name="dialog_server_switch_text">注意事項：カレンダーにてイベント通知機能をONにした場合、サーバーを切り替えると元のサーバーのスケジュール通知が全て解除され、アプリが再起動した後新しいサーバーのスケジュール通知に切り替えされます</string>
+    <string name="dialog_server_switch_text">注意事項：カレンダーにてイベント通知機能をONにした場合、サーバーを切り替えると元のサーバーのスケジュール通知が全て解除され、アプリが再起動した後新しいサーバーのスケジュール通知に切り替えされます。</string>
     <string name="menu_drop_normal">ノーマル</string>
     <string name="menu_drop_hard">ハード</string>
     <string name="text_unique_equipment">専用装備</string>
@@ -608,12 +614,12 @@
     <string name="Exclusive_condition_s">全体的条件分岐：%s</string>
     <string name="Kill_s_instantly">%sを即死させる。</string>
     <string name="Add_additional_s1_s2_to_s3_for_next_s4_attacks">%3$sの次の [%4$s] 回攻撃に [%1$s] %2$s効果を付与する。</string>
-    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_physical_damage">%1$sにシールドを展開し、物理ダメージを受けた時 [%2$s] 分のダメージを反射する。</string>
-    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_magical_damage">%1$sにシールドを展開し、魔法ダメージを受けた時 [%2$s] 分のダメージを反射する。</string>
-    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_physical_damage">%1$sにシールドを展開する、物理ダメージを受けた時 [%2$s] 分のダメージを反射し、自分のHPを同等の値回復させる。</string>
-    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_magical_damage">%1$sにシールドを展開する、魔法ダメージを受けた時 [%2$s] 分のダメージを反射し、自分のHPを同等の値回復させる。</string>
-    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_damage">%1$sにシールドを展開する、ダメージを受けた時 [%2$s] 分のダメージを反射し、自分のHPを同等の値回復させる。</string>
-    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_damage">%1$sにシールドを展開し、ダメージを受けた時 [%2$s] 分のダメージを反射する。</string>
+    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_physical_damage">%1$sに [%3$s] 回分の物理ダメージを無効化できるシールドを展開し、物理ダメージを受けた時 [%2$s] 分のダメージを反射する。</string>
+    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_magical_damage">%1$sに [%3$s] 回分の魔法ダメージを無効化できるシールドを展開し、魔法ダメージを受けた時 [%2$s] 分のダメージを反射する。</string>
+    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_physical_damage">%1$sに [%3$s] 回分の物理ダメージを無効化できるシールドを展開する、物理ダメージを受けた時 [%2$s] 分のダメージを反射し、自分のHPを同等の値回復させる。</string>
+    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_magical_damage">%1$sに [%3$s] 回分の魔法ダメージを無効化できるシールドを展開する、魔法ダメージを受けた時 [%2$s] 分のダメージを反射し、自分のHPを同等の値回復させる。</string>
+    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_damage">%1$sに [%3$s] 回分のダメージを無効化できるシールドを展開する、ダメージを受けた時 [%2$s] 分のダメージを反射し、自分のHPを同等の値回復させる。</string>
+    <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_damage">%1$sに [%3$s] 回分のダメージを無効化できるシールドを展開し、ダメージを受けた時 [%2$s] 分のダメージを反射する。</string>
     <string name="Add_additional_s1_damage_per_attack_with_max_s2_stacks_to_current_target">現在のターゲットに攻撃するたび、ダメージ量が [%1$s] 追加する、この効果は [%2$s] 回まで累計する。</string>
     <string name="Add_s1_mark_stacks_max_s2_ID_s3_on_s4_for_s5_sec">%4$sにマーク[ID：%3$s]を [%1$s] スタック追加する、効果時間 [%5$s] 秒、この効果は最大 [%2$s] までスタックする。</string>
     <string name="Remove_s1_mark_stacks_ID_s2_on_s3">%3$sのマーク[ID：%2$s]を [%1$s] スタック減らせる。</string>

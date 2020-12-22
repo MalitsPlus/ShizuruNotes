@@ -21,7 +21,7 @@ public class LoopMotionRepeatAction extends ActionParameter {
     @Override
     public String localizedDetail(int level, Property property) {
         String mainClause = I18N.getString(R.string.Repeat_effect_d1_every_s2_sec_up_to_s3_sec_break_if_taken_more_than_s4_damage,
-                actionDetail1 % 10, actionValue2, actionValue1, actionValue3);
+                actionDetail1 % 10, actionValue2.valueString(), actionValue1.valueString(), actionValue3.valueString());
         if(successClause != null && failureClause != null)
             return mainClause + successClause + failureClause;
         else if(successClause != null)

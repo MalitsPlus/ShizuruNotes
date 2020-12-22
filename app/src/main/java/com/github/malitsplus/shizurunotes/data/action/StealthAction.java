@@ -12,6 +12,6 @@ public class StealthAction extends ActionParameter {
 
     @Override
     public String localizedDetail(int level, Property property) {
-        return I18N.getString(R.string.Stealth_for_s_sec, actionValue1);
+        return I18N.getString(R.string.Stealth_for_s_sec, actionValue1.valueString());
     }
 }

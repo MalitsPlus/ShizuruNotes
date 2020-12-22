@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.databinding.FragmentBottomNavigationBinding
+import com.github.malitsplus.shizurunotes.user.UserSettings
 
 class BottomNaviFragment : Fragment() {
 
@@ -22,21 +23,27 @@ class BottomNaviFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentBottomNavigationBinding.inflate(inflater, container, false)
-
         binding.bottomNavView.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.bottom_menu_chara -> switchFragments(CHARA_INDEX)
                 R.id.bottom_menu_drop -> switchFragments(DROP_INDEX)
                 R.id.bottom_menu_clan_battle -> switchFragments(CLAN_BATTLE_INDEX)
-                R.id.bottom_menu_menu -> switchFragments(MENU_INDEX)
+                R.id.bottom_menu_menu -> {
+                    switchFragments(MENU_INDEX)
+                    if (UserSettings.get().getBadgeVisibility()) {
+                        UserSettings.get().setBadgeVisibility(false)
+                        binding.bottomNavView.removeBadge(R.id.bottom_menu_menu)
+                    }
+                }
             }
             true
         }
-
         if (currentIndex == -1) {
             switchFragments(CHARA_INDEX)
         }
-
+        if (UserSettings.get().getBadgeVisibility()) {
+            binding.bottomNavView.getOrCreateBadge(R.id.bottom_menu_menu)
+        }
         return binding.root
     }
 
