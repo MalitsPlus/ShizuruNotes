@@ -1,9 +1,9 @@
 {
-	"versionCode": "27",
-	"versionName": "1.0.11",
+	"versionCode": "28",
+	"versionName": "1.1.0",
 	"recommend": "false",
-	"messageJa": "・クリティカルに関する説明文を訂正",
-	"messageZh": "・订正暴击相关的效果说明",
+	"messageJa": "・スキルのオリジナル計算式表示機能を実装",
+	"messageZh": "・新增显示技能原始表达式功能",
 	"infoJa": "",
 	"infoZh": ""
 }
