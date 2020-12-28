@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.github.malitsplus.shizurunotes.BuildConfig
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.ui.MainActivity
 import kotlin.random.Random
@@ -13,8 +14,8 @@ import kotlin.random.Random
 const val NOTIFICATION_CHANNEL_DEFAULT = "default"
 const val NOTIFICATION_CHANNEL_LOW = "low"
 
-const val NOTIFICATION_ACTION = "com.github.malitsplus.shizurunotes.NOTIFICATION"
-const val NOTIFICATION_EXTRA_TYPE = "com.github.malitsplus.shizurunotes.NOTIFICATION_EXTRA"
+const val NOTIFICATION_ACTION = BuildConfig.APPLICATION_ID + ".NOTIFICATION"
+const val NOTIFICATION_EXTRA_TYPE = BuildConfig.APPLICATION_ID + ".NOTIFICATION_EXTRA"
 
 const val NORMAL_BEFORE = "normal_before"
 const val DUNGEON_BEFORE_2 = "dungeon_before_2"

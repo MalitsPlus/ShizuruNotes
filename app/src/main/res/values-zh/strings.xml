@@ -27,7 +27,7 @@
         <item>国服</item>
     </string-array>
     <string name="setting_limit_clan_battle_num">限制会战数据</string>
-    <string name="setting_limit_clan_battle_num_description">只显示最近13期会战，可加快读取速度</string>
+    <string name="setting_limit_clan_battle_num_description">只显示最近13期会战，可缩短读取时间</string>
     <string name="setting_server">服务器</string>
     <string name="setting_server_dialog_title">切换服务器</string>
     <string name="setting_appearance">显示</string>
