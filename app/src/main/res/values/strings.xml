@@ -54,7 +54,7 @@
         <item>2</item>
     </string-array>
     <string name="setting_limit_clan_battle_num">クラバトの表示数を制限</string>
-    <string name="setting_limit_clan_battle_num_description">最も近い13期のクラバトデータのみを表示、ロードスピードを上げることができます</string>
+    <string name="setting_limit_clan_battle_num_description">最も近い13期のクラバトデータのみを表示、ロード時間を短縮できます</string>
     <string name="setting_kill_expression_summary">スキルアクションの計算式を表示</string>
     <string name="setting_appearance">表示</string>
     <string name="setting_system">システム</string>

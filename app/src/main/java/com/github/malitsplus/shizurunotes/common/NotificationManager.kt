@@ -72,7 +72,7 @@ class NotificationManager private constructor(
                 if (newValue) {
                     setAlarm(it, typeString)
                 } else {
-                    cancelAlarm(getIntent(typeString), it.id)
+                    cancelAlarm(getIntent(typeString), getSpecificId(it, typeString))
                 }
             }
         }
@@ -82,40 +82,22 @@ class NotificationManager private constructor(
         if (eventSchedule is CampaignSchedule) {
             when (eventSchedule.campaignType) {
                 CampaignType.dropAmountNormal -> {
-                    setOrCancelAlarm(eventSchedule,
-                        NORMAL_BEFORE,
-                        cancel
-                    )
+                    setOrCancelAlarm(eventSchedule, NORMAL_BEFORE, cancel)
                 }
                 CampaignType.manaDungeon -> {
-                    setOrCancelAlarm(eventSchedule,
-                        DUNGEON_BEFORE_2,
-                        cancel
-                    )
-                    setOrCancelAlarm(eventSchedule,
-                        DUNGEON_BEFORE,
-                        cancel
-                    )
+                    setOrCancelAlarm(eventSchedule, DUNGEON_BEFORE_2, cancel)
+                    setOrCancelAlarm(eventSchedule, DUNGEON_BEFORE, cancel)
                 }
                 else -> {  }
             }
         } else {
             when (eventSchedule.type) {
                 EventType.Hatsune -> {
-                    setOrCancelAlarm(eventSchedule,
-                        HATSUNE_LAST,
-                        cancel
-                    )
-                    setOrCancelAlarm(eventSchedule,
-                        HATSUNE_LAST_HOUR,
-                        cancel
-                    )
+                    setOrCancelAlarm(eventSchedule, HATSUNE_LAST, cancel)
+                    setOrCancelAlarm(eventSchedule, HATSUNE_LAST_HOUR, cancel)
                 }
                 EventType.Tower -> {
-                    setOrCancelAlarm(eventSchedule,
-                        TOWER_LAST_HOUR,
-                        cancel
-                    )
+                    setOrCancelAlarm(eventSchedule, TOWER_LAST_HOUR, cancel)
                 }
                 else -> {  }
             }
@@ -126,7 +108,7 @@ class NotificationManager private constructor(
         if (UserSettings.get().preference.getBoolean(typeString, false) && !cancel) {
             setAlarm(eventSchedule, typeString)
         } else {
-            cancelAlarm(getIntent(typeString), eventSchedule.id)
+            cancelAlarm(getIntent(typeString), getSpecificId(eventSchedule, typeString))
         }
     }
 
