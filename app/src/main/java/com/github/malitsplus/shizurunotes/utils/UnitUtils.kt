@@ -1,11 +1,15 @@
 package com.github.malitsplus.shizurunotes.utils
 
-import android.icu.text.RelativeDateTimeFormatter
+import com.google.android.material.math.MathUtils
+import kotlin.math.abs
 import kotlin.math.roundToInt
 
 class UnitUtils {
     companion object {
 
+        fun approximately(a: Double, b: Double): Boolean {
+            return abs(a - b) < 1e-9
+        }
 
         fun getCriticalRate(critical: Int, lLevel: Int, rLevel: Int): Double {
             val rate = critical * 0.05 * lLevel / rLevel * 0.01

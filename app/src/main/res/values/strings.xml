@@ -85,6 +85,7 @@
     <string name="db_update_check_failed">データベースのアップデートチェックが失敗しました、詳細はログを参照してください</string>
     <string name="db_update_failed">データベースのアップデートが失敗しました、詳細はログを参照してください</string>
     <string name="app_update_check_failed">アプリのアップデートチェックが失敗しました</string>
+    <string name="chara_load_failed">データの初期化が失敗しました、詳細はログを参照してください</string>
     <string name="ui_text_filter">絞り込み</string>
     <string name="ui_text_position">位置</string>
     <string name="ui_text_atk_type">タイプ</string>
@@ -711,4 +712,5 @@
     <string name="value5">係数5</string>
     <string name="value6">係数6</string>
     <string name="value7">係数7</string>
+    <string name="The_upper_limit_of_this_effect_is_s">アップ値の上限は [%s]。</string>
 </resources>
