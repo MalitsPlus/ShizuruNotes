@@ -6,6 +6,7 @@ import com.github.malitsplus.shizurunotes.user.UserSettings;
 import com.github.malitsplus.shizurunotes.data.Property;
 import com.github.malitsplus.shizurunotes.data.PropertyKey;
 import com.github.malitsplus.shizurunotes.data.Skill;
+import com.github.malitsplus.shizurunotes.utils.UnitUtils;
 import com.github.malitsplus.shizurunotes.utils.Utils;
 
 import java.math.BigDecimal;
@@ -416,6 +417,10 @@ public class ActionParameter {
                 }
                 if(value.key != null){
                     part = part * property.getItem(value.key);
+                }
+                int num = (int)part;
+                if (UnitUtils.Companion.approximately(part, (double)num)) {
+                    part = num;
                 }
                 fixedValue += part;
             }

@@ -9,11 +9,9 @@ import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.Chara
 import com.github.malitsplus.shizurunotes.ui.base.CharaListVT
-import com.github.malitsplus.shizurunotes.ui.base.MaterialSpinnerAdapter
 import com.github.malitsplus.shizurunotes.ui.base.OnItemActionListener
 import com.github.malitsplus.shizurunotes.ui.base.ViewType
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
-import com.mancj.materialsearchbar.MaterialSearchBar
 import java.util.*
 
 class CharaListViewModel(
@@ -169,16 +167,40 @@ class CharaListViewModel(
                     valueB = b.charaProperty.getEnergyReduceRate()
                 }
                 "13" -> {
-                    valueA = if (a.age.contains("?")) 9999 else a.age.toInt()
-                    valueB = if (b.age.contains("?")) 9999 else b.age.toInt()
+                    valueA = try {
+                        a.age.toInt()
+                    } catch (ex: Exception) {
+                        9999
+                    }
+                    valueB = try {
+                        b.age.toInt()
+                    } catch (ex: Exception) {
+                        9999
+                    }
                 }
                 "14" -> {
-                    valueA = if (a.height.contains("?")) 9999 else a.height.toInt()
-                    valueB = if (b.height.contains("?")) 9999 else b.height.toInt()
+                    valueA = try {
+                        a.height.toInt()
+                    } catch (ex: Exception) {
+                        9999
+                    }
+                    valueB = try {
+                        b.height.toInt()
+                    } catch (ex: Exception) {
+                        9999
+                    }
                 }
                 "15" -> {
-                    valueA = if (a.weight.contains("?")) 9999 else a.weight.toInt()
-                    valueB = if (b.weight.contains("?")) 9999 else b.weight.toInt()
+                    valueA = try {
+                        a.weight.toInt()
+                    } catch (ex: Exception) {
+                        9999
+                    }
+                    valueB = try {
+                        b.weight.toInt()
+                    } catch (ex: Exception) {
+                        9999
+                    }
                 }
                 else -> {
                     valueA = a.unitId
@@ -217,7 +239,7 @@ class CharaListViewModel(
             "11" -> chara.sortValue = chara.charaProperty.getEnergyRecoveryRate().toString()
             "12" -> chara.sortValue = chara.charaProperty.getEnergyReduceRate().toString()
             "13" -> {
-                if (chara.actualName == "出雲 宮子") {
+                if (chara.actualName == "出雲 宮子" || chara.actualName == "出云宫子") {
                     chara.sortValue = I18N.getString(R.string.aged_s, chara.age)
                 } else {
                     chara.sortValue = chara.age

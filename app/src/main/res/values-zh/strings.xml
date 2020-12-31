@@ -49,6 +49,7 @@
     <string name="db_update_check_failed">数据库更新检测失败，详情请参照日志</string>
     <string name="db_update_failed">数据库更新失败，详情请参照日志</string>
     <string name="app_update_check_failed">应用更新检测失败</string>
+    <string name="chara_load_failed">数据初始化失败，详情请参照日志</string>
     <string name="ui_text_filter">筛选</string>
     <string name="ui_text_position">位置</string>
     <string name="ui_text_atk_type">类型</string>
@@ -649,4 +650,5 @@
     <string name="value5">系数5</string>
     <string name="value6">系数6</string>
     <string name="value7">系数7</string>
+    <string name="The_upper_limit_of_this_effect_is_s">提高值的上限为 [%s]。</string>
 </resources>

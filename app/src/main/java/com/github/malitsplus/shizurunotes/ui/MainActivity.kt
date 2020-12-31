@@ -79,7 +79,10 @@ class MainActivity : AppCompatActivity(),
         sharedQuest = ViewModelProvider(this)[SharedViewModelQuest::class.java]
     }
 
-    override fun charaLoadFinished() {
+    override fun charaLoadFinished(succeeded: Boolean) {
+        if (!succeeded) {
+            showSnackBar(R.string.chara_load_failed)
+        }
         checkUpdate()
     }
 
