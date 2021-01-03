@@ -76,7 +76,7 @@ public class IfForAllAction extends ActionParameter {
                         actionDetail3 % 10, targetParameter.buildTargetClause(), (int) actionValue3.value);
             } else if (actionDetail1 >=901 && actionDetail1 < 1000) {
                 falseClause = I18N.getString(R.string.use_d1_if_s2_HP_is_not_below_d3,
-                        actionDetail2 % 10, targetParameter.buildTargetClause(true), actionDetail1 - 900);
+                        actionDetail3 % 10, targetParameter.buildTargetClause(true), actionDetail1 - 900);
             } else if(actionDetail1 == 1000){
                 falseClause = I18N.getString(R.string.if_target_is_not_defeated_by_the_last_effect_then_use_d,
                         actionDetail3 % 10);
