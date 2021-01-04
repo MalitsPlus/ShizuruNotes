@@ -1,9 +1,9 @@
 {
-	"versionCode": "31",
-	"versionName": "1.2.2",
+	"versionCode": "32",
+	"versionName": "1.2.3",
 	"recommend": "false",
-	"messageJa": "・一部のキャラが表示されない不具合を修正\n・クラッシュ問題の修正\n・ヒヨリ（プリンセス）のスキルの説明文を訂正\n・アプリの安定性の向上",
-	"messageZh": "・修正部分角色未被正常显示的问题\n・修正崩溃问题\n・订正ヒヨリ（プリンセス）的技能描述\n・提高程序的健壮性",
+	"messageJa": "・HPに関する条件分岐の説明文を訂正",
+	"messageZh": "・订正HP相关条件子句的描述",
 	"infoJa": "",
 	"infoZh": ""
 }
