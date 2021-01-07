@@ -64,7 +64,7 @@ public class RawUnitBasic {
 
         chara.setComment(comment);
         chara.kana = kana;
-        chara.setSelfText(self_text.replaceAll("\\\\n", "\n"));
+        chara.setSelfText(self_text == null ? "" : self_text.replaceAll("\\\\n", "\n"));
 
         //需要处理的字串
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd H:mm:ss");

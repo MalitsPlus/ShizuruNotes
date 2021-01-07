@@ -3,10 +3,7 @@ package com.github.malitsplus.shizurunotes.ui.shared
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.malitsplus.shizurunotes.common.Statics
-import com.github.malitsplus.shizurunotes.data.Chara
-import com.github.malitsplus.shizurunotes.data.Equipment
-import com.github.malitsplus.shizurunotes.data.Minion
-import com.github.malitsplus.shizurunotes.data.Property
+import com.github.malitsplus.shizurunotes.data.*
 import com.github.malitsplus.shizurunotes.db.DBHelper.Companion.get
 import com.github.malitsplus.shizurunotes.db.MasterUniqueEquipment
 import com.github.malitsplus.shizurunotes.utils.LogUtils
@@ -98,10 +95,8 @@ class SharedViewModelChara : ViewModel() {
     }
 
     private fun setCharaStoryStatus(chara: Chara) {
-        chara.storyProperty = Property().apply {
-            get().getCharaStoryStatus(chara.charaId)?.forEach {
-                this.plusEqual(it.getCharaStoryStatus(chara))
-            }
+        get().getCharaStoryStatus(chara.charaId)?.forEach {
+            chara.storyStatusList.add(it.getCharaStoryStatus(chara))
         }
     }
 

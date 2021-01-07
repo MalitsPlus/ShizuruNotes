@@ -123,6 +123,11 @@
         <item name="android:background">@drawable/shape_text_tag_background</item>
     </style>
 
+    <style name="textTag_alpha">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:background">@drawable/shape_text_tag_background_alpha</item>
+    </style>
+
     <style name="hintText" parent="@style/TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">8sp</item>
     </style>

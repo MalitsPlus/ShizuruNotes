@@ -35,7 +35,6 @@ class Chara: Cloneable {
     var maxUniqueEquipmentLevel: Int = 0
     var maxRarity: Int = 5
     var rarity: Int = 5
-
     lateinit var actualName: String
     lateinit var age: String
     lateinit var unitName: String
@@ -56,19 +55,24 @@ class Chara: Cloneable {
     var comment: String? = null
     var selfText: String? = null
     var sortValue: String? = null
-
     lateinit var startTime: LocalDateTime
-
     lateinit var charaProperty: Property
     val rarityProperty = mutableMapOf<Int, Property>()
     val rarityPropertyGrowth = mutableMapOf<Int, Property>()
-    lateinit var storyProperty: Property
     lateinit var promotionStatus: Map<Int, Property>
     lateinit var rankEquipments: Map<Int, List<Equipment>>
     var uniqueEquipment: Equipment? = null
-
     var attackPatternList = mutableListOf<AttackPattern>()
     var skills = mutableListOf<Skill>()
+    val storyStatusList = mutableListOf<OneStoryStatus>()
+
+    val storyProperty: Property by lazy {
+        Property().apply {
+            storyStatusList.forEach {
+                this.plusEqual(it.allProperty)
+            }
+        }
+    }
 
     val birthDate: String by lazy {
         if (birthMonth.contains("?") || birthDay.contains("?")) {

@@ -357,6 +357,8 @@
     <string name="show_or_hide_expression">スキル倍率を表示</string>
     <string name="level_d1_rank_d2">"Lv%1$d        Rank%2$d"</string>
     <string name="message">メッセージ</string>
+    <string name="chara_story_status">ストーリーステータス</string>
+    <string name="episode_d">第 %d 話</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>

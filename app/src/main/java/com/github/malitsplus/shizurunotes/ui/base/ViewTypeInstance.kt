@@ -129,3 +129,9 @@ data class AnalyzePanelVT(
     override val layoutId: Int = R.layout.item_analyze_adjust,
     override val isUserInteractionEnabled: Boolean = true
 ) : ViewType<AnalyzeViewModel>
+
+data class TextTagAlphaVT(
+    override val data: String,
+    override val layoutId: Int = R.layout.item_text,
+    override val isUserInteractionEnabled: Boolean = false
+) : ViewType<String>

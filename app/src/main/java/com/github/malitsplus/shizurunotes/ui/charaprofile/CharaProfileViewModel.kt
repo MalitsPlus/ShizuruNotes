@@ -1,11 +1,11 @@
 package com.github.malitsplus.shizurunotes.ui.charaprofile
 
-import android.view.View
 import androidx.lifecycle.ViewModel
+import com.github.malitsplus.shizurunotes.R
+import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.Equipment
 import com.github.malitsplus.shizurunotes.ui.base.*
 import com.github.malitsplus.shizurunotes.ui.shared.SharedViewModelChara
-import kotlin.collections.LinkedHashMap
 
 class CharaProfileViewModel(
     val sharedChara: SharedViewModelChara
@@ -16,6 +16,16 @@ class CharaProfileViewModel(
             field.clear()
             sharedChara.selectedChara?.let { chara ->
                 field.add(CharaProfileVT(chara))
+                field.add(TextTagVT(I18N.getString(R.string.chara_story_status)))
+                chara.storyStatusList.forEach { story ->
+                    if (chara.charaId == story.charaId) {
+                        field.add(TextTagAlphaVT(story.storyParsedName))
+                        story.allProperty.nonZeroPropertiesMap.forEach {
+                            field.add(PropertyVT(it))
+                        }
+                    }
+                }
+                field.add(SpaceVT())
                 field.add(CharaUniqueEquipmentVT(chara.uniqueEquipment ?: Equipment.getNull))
                 chara.rankEquipments.entries.forEach {
                     field.add(CharaRankEquipmentVT(it))
