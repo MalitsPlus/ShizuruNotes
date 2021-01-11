@@ -9,3 +9,4 @@ ShizuruNotes uses these open source software and tools, thanks them:
 * SuperTextView: https://github.com/lygttpod/SuperTextView
 * MaterialSearchBar: https://github.com/mancj/MaterialSearchBar
 * ProcessPhoenix: https://github.com/JakeWharton/ProcessPhoenix
+* AndroidUtilCode: https://github.com/Blankj/AndroidUtilCode
