@@ -57,7 +57,7 @@
     <string name="db_update_download_finished_text">Download complete. Unpacking…</string>
     <string name="db_update_finished_text">Update complete</string>
     <string name="db_update_dialog_text">A newer version of the database is available. Would you like to update now?</string>
-    <string name="text_weight">&#160;Weight</string>
+    <string name="text_weight">&#160;Weight&#160;</string>
     <string name="text_height">&#160;Height&#160;</string>
     <string name="text_race">&#160;Race&#160;</string>
     <string name="text_guild">&#160;Guild&#160;</string>
@@ -377,7 +377,7 @@
     <string name="Cast_a_barrier_on_s1_to_nullify_s2_physical_and_magical_damage_for_s3_sec">Deploys a Barrier over %1$s that nullifies [%2$s] Physical and Magic damage for [%3$s]s.</string>
     <string name="Change_the_perspective_on_s">Shifts focus to %s.</string>
     <string name="Polymorph">Transform</string>
-    <string name="Make_s1_fall_asleep_for_s2_sec">"Inflicts Sleep on %1$s for [%2$s]s. "</string>
+    <string name="Make_s1_fall_asleep_for_s2_sec">Inflicts Sleep on %1$s for [%2$s]s.&#160;</string>
     <string name="Make_s1_fall_into_faint_for_s2_sec">Inflicts Faint on %1$s for [%2$s]s.</string>
     <string name="s1_s2_for_s3_sec">Inflicts %1$s on %2$s for [%3$s]s.</string>
     <string name="Poison_s1_and_deal_s2_damage_per_second_for_s3_sec">Inflicts Poison on %1$s for [%3$s]s, dealing [%2$s] damage per second.</string>
