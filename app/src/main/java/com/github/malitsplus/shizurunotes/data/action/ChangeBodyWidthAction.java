@@ -12,6 +12,6 @@ public class ChangeBodyWidthAction extends ActionParameter {
 
     @Override
     public String localizedDetail(int level, Property property) {
-        return I18N.getString(R.string.Change_body_width_to_s, actionValue1);
+        return I18N.getString(R.string.Change_body_width_to_s, actionValue1.valueString());
     }
 }
