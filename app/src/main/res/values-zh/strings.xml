@@ -39,6 +39,7 @@
     <string name="setting_about">关于静流笔记</string>
     <string name="db_update_dialog_title">数据库更新</string>
     <string name="db_update_dialog_text">检测到数据库有新版本，需要现在更新吗？</string>
+    <string name="db_update_duplicate">下载已完成，但数据并没有被更新。如果游戏刚更新数据不久，出现这种情况是正常的，请等待数分钟后重试（请勿在短时间内多次尝试更新）</string>
     <string name="db_update_dialog_confirm">更新</string>
     <string name="db_update_dialog_cancel">稍后</string>
     <string name="db_update_progress_title">数据库更新</string>

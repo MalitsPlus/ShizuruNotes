@@ -35,6 +35,7 @@ class UserSettings private constructor(
         const val EXPRESSION_ORIGINAL = 2
         const val SERVER_JP = "jp"
         const val SERVER_CN = "cn"
+        const val LAST_DB_HASH = "last_db_hash"
 
         private const val userDataFileName = "userData.json"
 
@@ -165,5 +166,11 @@ class UserSettings private constructor(
     }
     fun setHideServerSwitchHint(isHide: Boolean) {
         preference.edit().putBoolean(HIDE_SERVER_SWITCH_HINT_KEY, isHide).apply()
+    }
+    fun getDBHash(): String {
+        return preference.getString(LAST_DB_HASH, "0") ?: "0"
+    }
+    fun setDBHash(newValue: String) {
+        preference.edit().putString(LAST_DB_HASH, newValue).apply()
     }
 }
