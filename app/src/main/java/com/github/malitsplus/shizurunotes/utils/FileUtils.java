@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.security.DigestInputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class FileUtils {
 
@@ -113,7 +116,7 @@ public class FileUtils {
             return false;
         }
         if (file.length() < border * 1024) {
-            LogUtils.file(LogUtils.I, "FileCheck", "AbnormalDbFileSize: " + file.length() / 1024 + "KB." + " At: " + file.getAbsolutePath());
+            LogUtils.file(LogUtils.W, "FileCheck", "AbnormalDbFileSize: " + file.length() / 1024 + "KB." + " At: " + file.getAbsolutePath());
             return false;
         }
         LogUtils.file(LogUtils.I, "FileCheck", file.getAbsolutePath() + ". Size: " + file.length() / 1024 + "KB.");
@@ -122,5 +125,69 @@ public class FileUtils {
 
     public static void checkFileAndDeleteIfExists(File file){
         if (file.exists()) deleteFile(file);
+    }
+
+    /**
+     * Return the MD5 of file.
+     *
+     * @param filePath The path of file.
+     * @return the md5 of file
+     */
+    public static String getFileMD5ToString(final String filePath) {
+        File file = new File(filePath);
+        return getFileMD5ToString(file);
+    }
+
+    /**
+     * Return the MD5 of file.
+     *
+     * @param file The file.
+     * @return the md5 of file
+     */
+    public static String getFileMD5ToString(final File file) {
+        return Utils.bytes2HexString(getFileMD5(file), true);
+    }
+
+    /**
+     * Return the MD5 of file.
+     *
+     * @param filePath The path of file.
+     * @return the md5 of file
+     */
+    public static byte[] getFileMD5(final String filePath) {
+        return getFileMD5(new File(filePath));
+    }
+
+    /**
+     * Return the MD5 of file.
+     *
+     * @param file The file.
+     * @return the md5 of file
+     */
+    public static byte[] getFileMD5(final File file) {
+        if (file == null) return null;
+        DigestInputStream dis = null;
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            dis = new DigestInputStream(fis, md);
+            byte[] buffer = new byte[1024 * 256];
+            while (true) {
+                if (!(dis.read(buffer) > 0)) break;
+            }
+            md = dis.getMessageDigest();
+            return md.digest();
+        } catch (NoSuchAlgorithmException | IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (dis != null) {
+                    dis.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 }

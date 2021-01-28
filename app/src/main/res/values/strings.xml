@@ -82,6 +82,7 @@
     <string name="db_update_finished_title">データベース更新</string>
     <string name="db_update_download_finished_text">ダウンロード完了、解凍中…</string>
     <string name="db_update_finished_text">アップデート完了しました</string>
+    <string name="db_update_duplicate">アップデートが完了しましたが、データは更新されてません。数分後また試してみてください</string>
     <string name="db_update_check_failed">データベースのアップデートチェックが失敗しました、詳細はログを参照してください</string>
     <string name="db_update_failed">データベースのアップデートが失敗しました、詳細はログを参照してください</string>
     <string name="app_update_check_failed">アプリのアップデートチェックが失敗しました</string>
