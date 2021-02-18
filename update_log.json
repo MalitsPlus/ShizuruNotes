@@ -1,9 +1,9 @@
 {
-	"versionCode": "32",
-	"versionName": "1.2.3",
+	"versionCode": "33",
+	"versionName": "1.3.0",
 	"recommend": "false",
-	"messageJa": "・HPに関する条件分岐の説明文を訂正",
-	"messageZh": "・订正HP相关条件子句的描述",
+	"messageJa": "・キャラの絆ステータスを画面上に表示\n・英語Stringsの更新（提供者：southrop）\n・スキル説明文の更新\n・一部不具合の修正",
+	"messageZh": "・显示角色的羁绊剧情属性\n・更新英文Strings\n・更新技能描述\n・修正一部分bug",
 	"infoJa": "",
 	"infoZh": ""
 }
