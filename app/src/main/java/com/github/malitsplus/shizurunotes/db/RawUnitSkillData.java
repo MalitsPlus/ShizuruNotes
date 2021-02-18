@@ -44,7 +44,7 @@ public class RawUnitSkillData {
             chara.getSkills().add(new Skill(union_burst_evolution, Skill.SkillClass.UB_EVO));
         if(main_skill_1 != 0)
             chara.getSkills().add(new Skill(main_skill_1, Skill.SkillClass.MAIN1));
-        if(main_skill_evolution_1 != 0)
+        if(main_skill_evolution_1 != 0 && chara.getUniqueEquipment() != null)
             chara.getSkills().add(new Skill(main_skill_evolution_1, Skill.SkillClass.MAIN1_EVO));
         if(main_skill_2 != 0)
             chara.getSkills().add(new Skill(main_skill_2, Skill.SkillClass.MAIN2));

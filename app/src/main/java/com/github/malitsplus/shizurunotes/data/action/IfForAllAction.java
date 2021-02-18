@@ -45,8 +45,8 @@ public class IfForAllAction extends ActionParameter {
                 trueClause = I18N.getString(R.string.Use_s_if_this_skill_get_critical,
                         actionDetail2 % 10);
             } else if(actionDetail1 >= 1200 && actionDetail1 < 1300){
-                trueClause = I18N.getString(R.string.counter_is_greater_than_or_equal_to_d1_then_use_d2,
-                        actionDetail1 % 10, actionDetail2 % 10);
+                trueClause = I18N.getString(R.string.counter_d3_is_greater_than_or_equal_to_d1_then_use_d2,
+                        actionDetail1 % 10, actionDetail2 % 10, actionDetail1 % 100 / 10);
             }
         }
 
@@ -84,8 +84,8 @@ public class IfForAllAction extends ActionParameter {
                 falseClause = I18N.getString(R.string.Use_s_if_this_skill_not_get_critical,
                         actionDetail3 % 10);
             } else if(actionDetail1 >= 1200 && actionDetail1 < 1300){
-                falseClause = I18N.getString(R.string.counter_is_less_than_d1_then_use_d2,
-                        actionDetail1 % 10, actionDetail3 % 10);
+                falseClause = I18N.getString(R.string.counter_d3_is_less_than_d1_then_use_d2,
+                        actionDetail1 % 10, actionDetail3 % 10, actionDetail1 % 100 / 10);
             }
         }
 

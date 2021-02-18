@@ -490,7 +490,7 @@
     <string name="notification_hatsune_last_hour_text">The event ends in an hour! Have you used up all your tickets yet?</string>
     <string name="notification_tower_last_hour_title">Final Hour of Tower</string>
     <string name="notification_tower_last_hour_text">The Tower of Luna ends in an hour! Have you used up all your attempts yet?</string>
-    <string name="Add_d_to_the_counter">Increments the counter by [%d].</string>
+    <string name="Add_d1_to_the_counter_d2">Increments the counter%2$d by [%1$d].</string>
     <string name="Make_s1_to_be_invulnerable_to_break_for_s2_sec">Applies Break Invulnerability to %1$s for [%2$s]s.</string>
     <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_magical_damage">Deploys a Shield over %1$s that reflects [%2$s] of received Magic damage.</string>
     <string name="Make_s1_lose_s2_TP">Drains [%2$s] TP from %1$s.</string>
@@ -510,8 +510,8 @@
     <string name="Summon_a_healing_field_of_radius_d1_at_position_of_s2_to_heal_s3_s4_HP_per_second_for_s5_sec">Deploys a field of radius [%1$d] at position of %2$s that restores [%3$s%4$s] HP per second for [%5$s] seconds.</string>
     <string name="Appear_after_s_sec_since_wave_start">Appears [%s] seconds after the wave begins.</string>
     <string name="Make_s1_when_deal_critical_damage_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">Adds 1 mark [ID: %3$s] each time %1$s deals Critical Damage for [%4$s]s (caps at [%2$s]).</string>
-    <string name="counter_is_greater_than_or_equal_to_d1_then_use_d2">If the counter is [%1$d] or greater, performs [Action %2$d].</string>
-    <string name="counter_is_less_than_d1_then_use_d2">If the counter is less than [%1$d], performs [Action %2$d].</string>
+    <string name="counter_d3_is_greater_than_or_equal_to_d1_then_use_d2">If the counter%3$d is [%1$d] or greater, performs [Action %2$d].</string>
+    <string name="counter_d3_is_less_than_d1_then_use_d2">If the counter%3$d is less than [%1$d], performs [Action %2$d].</string>
     <string name="Summon_a_field_of_radius_d1_at_position_of_s2_to_s3_s4_s5_for_s6_sec">Deploys a field of radius [%1$d] at position of %2$s that %3$ss %5$s by [%4$s] for [%6$s]s.</string>
     <string name="Count_Blind">Clairvoyance</string>
     <string name="When_s1_HP_reaches_0_restore_s2_HP_once_in_next_s3_sec">Apply a buff to the %1$s that grants \"Right before HP reaches 0, restore [%2$s] HP and remove this buff\", lasting for [%3$s]s.</string>

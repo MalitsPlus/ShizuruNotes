@@ -398,14 +398,14 @@
     <string name="use_d1_if_the_count_of_s2_except_stealth_units_is_d3">잠복상태의 유닛을 제외하고, %2$s의 수가 %3$d일 경우 [액션%1$d]을 사용한다. </string>
     <string name="use_d1_if_among_s2_exists_unit_ID_d3">잠복상태의 유닛을 제외하고, %2$s중 유닛 （ID：%3$d）가 존재할 경우 [액션%1$d]을 사용한다. </string>
     <string name="if_target_is_defeated_by_the_last_effect_then_use_d">전 액션이 타겟을 쓰러뜨렸을 경우, [액션%d]을 사용한다. </string>
-    <string name="counter_is_greater_than_or_equal_to_d1_then_use_d2">카운터의 수가 %1$d이상일 경우, [액션%2$d]을 사용한다. </string>
+    <string name="counter_d3_is_greater_than_or_equal_to_d1_then_use_d2">카운터의 수가 %1$d이상일 경우, [액션%2$d]을 사용한다. </string>
     <string name="use_d1_if_s2_has_no_dot_debuff">%2$s가 지속데미지 디버프가 걸려있지 않으면 [액션%1$d]을 사용한다. </string>
     <string name="use_d1_if_s2_is_not_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4">%2$s가 가지고 있는 마크 [ID：%3$d]의 스택 수が%4$d미만일 경우 [액션%1$d]을 사용한다. </string>
     <string name="use_d1_if_s2_is_not_alone">%2$s가 혼자가 아닐 경우, [액션%1$d]을 사용한다. </string>
     <string name="use_d1_if_the_count_of_s2_except_stealth_units_is_not_d3">잠복상태의 유닛을 제외하고, %2$s의 수가 %3$d가 아닌 경우, [액션%1$d]을 사용한다. </string>
     <string name="use_d1_if_among_s2_does_not_exists_unit_ID_d3">잠복상태의 유닛을 제외하고, %2$s중 유닛 （ID：%3$d）가 존재하지 않는 경우, [액션%1$d]을 사용한다. </string>
     <string name="if_target_is_not_defeated_by_the_last_effect_then_use_d">전 액션이 타겟을 쓰러뜨리지 못했을 경우, [액션%d]을 사용한다. </string>
-    <string name="counter_is_less_than_d1_then_use_d2">카운터의 수가 %1$d미만일 경우 [액션%2$d]을 사용한다. </string>
+    <string name="counter_d3_is_less_than_d1_then_use_d2">카운터의 수가 %1$d미만일 경우 [액션%2$d]을 사용한다. </string>
     <string name="Exclusive_condition_s">전체적 조건분기：%s</string>
     <string name="Kill_s_instantly">%s을 즉사시킨다. </string>
     <string name="Add_additional_s1_s2_to_s3_for_next_s4_attacks">%3$s의 다음 %4$s회의 공격에[%1$s]%2$s효과를 부여한다.</string>
@@ -427,7 +427,7 @@
     <string name="Summon_a_field_of_radius_d1_on_s2_to_cast_effect_d3_for_s4_sec">%2$s의 위치에 반경 %1$d의 필드를 전개하고, [액션%3$d]を지속的に放る、지속시간 [%4$s]초.</string>
     <string name="Condition_s1_chance_use_d2_when_takes_damage_within_s3_sec">조건분기：[%3$s]초 이내에 데미지를 받은 경우, [%1$s%%]의 확률로 [액션%2$d]을 사용한다. </string>
     <string name="Appear_after_s_sec_since_wave_start">웨이브 시작 %s초 후에 입장한다.</string>
-    <string name="Add_d_to_the_counter">카운터의 수를 %d 증가시킨다.</string>
+    <string name="Add_d1_to_the_counter_d2">카운터의 수를 %d 증가시킨다.</string>
     <string name="Deal_damage_equal_to_s1_of_target_max_HP_to_s2">%2$s에 최대HP%1$s%%분의 데미지를 준다.</string>
     <string name="Deal_damage_equal_to_s1_of_target_current_HP_to_s2">%2$s의 남은 HP%1$s%%분의 데미지를 준다.</string>
     <string name="s_Damage_is_reduced_on_low_level_players">%s데미지는 레벨이 낮은 플레이어에 대해 경감된다.</string>
