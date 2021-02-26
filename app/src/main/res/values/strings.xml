@@ -723,5 +723,5 @@
     <string name="the_s_lowest_ATK_or_Magic_STR">物理or魔法攻撃力が%s低い</string>
     <string name="the_highest_ATK_or_Magic_STR">物理or魔法攻撃力が最も高い</string>
     <string name="the_lowest_ATK_or_Magic_STR">物理or魔法攻撃力が最も低い</string>
-    <string name="Received_Critical_Damage">受けたクリティカルダメージ</string>
+    <string name="Received_Critical_Damage">受けるクリティカルダメージ</string>
 </resources>
