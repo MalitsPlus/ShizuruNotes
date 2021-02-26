@@ -655,4 +655,11 @@
     <string name="value7">系数7</string>
     <string name="The_upper_limit_of_this_effect_is_s">提高值的上限为 [%s]。</string>
     <string name="Modifier_add_s1_number_on_counter_d2_to_value_d3_of_effect_d4">使 [动作%4$d] 的系数%3$d提高 [%1$s * [计数器%2$d] 的数值] 。</string>
+    <string name="s_the_highest_ATK_or_Magic_STR">物理或魔法攻击力最高的%s</string>
+    <string name="s_the_lowest_ATK_or_Magic_STR">物理或魔法攻击力最低的%s</string>
+    <string name="the_s_highest_ATK_or_Magic_STR">物理或魔法攻击力%s高的</string>
+    <string name="the_s_lowest_ATK_or_Magic_STR">物理或魔法攻击力%s低的</string>
+    <string name="the_highest_ATK_or_Magic_STR">物理或魔法攻击力最高的</string>
+    <string name="the_lowest_ATK_or_Magic_STR">物理或魔法攻击力最低的</string>
+    <string name="Received_Critical_Damage">受到的暴击伤害</string>
 </resources>
