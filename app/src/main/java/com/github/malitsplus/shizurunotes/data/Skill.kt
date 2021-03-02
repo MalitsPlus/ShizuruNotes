@@ -57,6 +57,7 @@ class Skill(
         EX4_EVO("E4+"),
         EX5("E5"),
         EX5_EVO("E5+"),
+        SP_UB("SPUB"),
         UNKNOWN("");
 
         fun description(): String {
@@ -123,6 +124,8 @@ class Skill(
                     I18N.getStringWithSpace(R.string.ex_skill_4_evo)
                 EX5_EVO ->
                     I18N.getStringWithSpace(R.string.ex_skill_5_evo)
+                SP_UB ->
+                    I18N.getStringWithSpace(R.string.sp_union_burst)
                 else ->
                     I18N.getStringWithSpace(R.string.unknown)
             }
