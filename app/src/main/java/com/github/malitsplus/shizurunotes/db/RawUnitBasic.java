@@ -76,6 +76,10 @@ public class RawUnitBasic {
         if (unit_name.startsWith("カスミ") && voice.equals("水瀬いのり")) {
             chara.age = "15";
         }
+        // The correct age of Monika should be 17
+        if (unit_name.startsWith("モニカ") && voice.equals("辻あゆみ")) {
+            chara.age = "17";
+        }
         // 109301: ルゥ
         if (unit_id == 109301) {
             chara.age = "16";
