@@ -159,7 +159,11 @@ class UpdateManager private constructor(
                 val newFileHash = FileUtils.getFileMD5ToString(FileUtils.getDbFilePath())
                 if (UserSettings.get().getDBHash() == newFileHash) {
                     LogUtils.file(LogUtils.W, "duplicate DB file.")
-                    iActivityCallBack?.showSnackBar(R.string.db_update_duplicate)
+                    UserSettings.get().setDBHash(newFileHash)
+                    UserSettings.get().setDbVersion(serverVersion)
+                    iActivityCallBack?.showSnackBar(R.string.db_update_finished_text)
+                    iActivityCallBack?.dbUpdateFinished()
+//                    iActivityCallBack?.showSnackBar(R.string.db_update_duplicate)
                 } else {
                     UserSettings.get().setDBHash(newFileHash)
                     UserSettings.get().setDbVersion(serverVersion)
