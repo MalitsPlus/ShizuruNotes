@@ -1,9 +1,9 @@
 {
-	"versionCode": "36",
-	"versionName": "1.4.1",
+	"versionCode": "37",
+	"versionName": "1.4.2",
 	"recommend": "false",
-	"messageJa": "・データベース更新時のハッシュ値チェック仕様を削除",
-	"messageZh": "・移除数据库更新时的hash检测",
+	"messageJa": "・バジリスクのスキル説明テキストを訂正",
+	"messageZh": "・订正バジリスク的技能说明",
 	"infoJa": "",
 	"infoZh": ""
 }
