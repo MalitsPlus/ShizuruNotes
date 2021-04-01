@@ -1,9 +1,9 @@
 {
-	"versionCode": "37",
-	"versionName": "1.4.2",
+	"versionCode": "38",
+	"versionName": "1.4.3",
 	"recommend": "false",
-	"messageJa": "・バジリスクのスキル説明テキストを訂正",
-	"messageZh": "・订正バジリスク的技能说明",
+	"messageJa": "・チエル（聖学祭）、名もなき芸術のスキル説明テキストを訂正",
+	"messageZh": "・订正チエル（聖学祭）、名もなき芸術的技能描述",
 	"infoJa": "",
 	"infoZh": ""
 }
