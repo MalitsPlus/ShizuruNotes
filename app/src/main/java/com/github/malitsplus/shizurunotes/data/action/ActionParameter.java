@@ -289,6 +289,9 @@ public class ActionParameter {
     }
 
     public String localizedDetail(int level, Property property){
+        if (rawActionType == 0) {
+            return I18N.getString(R.string.no_effect);
+        }
         return I18N.getString(R.string.Unknown_effect_d1_to_s2_with_details_s3_values_s4,
                 rawActionType,
                 targetParameter.buildTargetClause(),

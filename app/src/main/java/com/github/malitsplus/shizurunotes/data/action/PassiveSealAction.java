@@ -40,7 +40,8 @@ class PassiveSealAction extends ActionParameter {
 
     protected enum ePassiveTiming {
         Unknown(-1),
-        Buff(1);
+        Buff(1),
+        Damage(2);
 
         private int value;
         ePassiveTiming(int value){
@@ -62,6 +63,8 @@ class PassiveSealAction extends ActionParameter {
             switch (this) {
                 case Buff:
                     return I18N.getString(R.string.buffs);
+                case Damage:
+                    return I18N.getString(R.string.damage);
                 default:
                     return I18N.getString(R.string.Unknown);
             }
