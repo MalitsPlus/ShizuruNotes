@@ -54,27 +54,27 @@ class MenuFragment : Fragment() {
                         it.findNavController().navigate(
                             BottomNaviFragmentDirections.actionNavBottomNavigationToNavHatsuneStage()
                         )
-                    R.id.constraint_community -> {
-                        val communityView = DataBindingUtil.inflate<ViewCommunityBinding>(
-                            layoutInflater, R.layout.view_community, container, false
-                        ).apply {
-                            if (UserSettings.get().getLanguage() == "zh") {
-                                val spannable = SpannableString(I18N.getString(R.string.community_dialog_text)).apply {
-                                    setSpan(StrikethroughSpan(), 54, 58, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-                                }
-                                textView11.text = spannable
-                            } else {
-                                textView11.text = I18N.getString(R.string.community_dialog_text)
-                            }
-                            clickListener = View.OnClickListener {
-                                val transferIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://jgchat.net/i/g2xUk79U"))
-                                startActivity(transferIntent)
-                            }
-                        }.root
-                        MaterialAlertDialogBuilder(requireContext())
-                            .setView(communityView)
-                            .show()
-                    }
+//                    R.id.constraint_community -> {
+//                        val communityView = DataBindingUtil.inflate<ViewCommunityBinding>(
+//                            layoutInflater, R.layout.view_community, container, false
+//                        ).apply {
+//                            if (UserSettings.get().getLanguage() == "zh") {
+//                                val spannable = SpannableString(I18N.getString(R.string.community_dialog_text)).apply {
+//                                    setSpan(StrikethroughSpan(), 54, 58, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+//                                }
+//                                textView11.text = spannable
+//                            } else {
+//                                textView11.text = I18N.getString(R.string.community_dialog_text)
+//                            }
+//                            clickListener = View.OnClickListener {
+//                                val transferIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://jgchat.net/i/g2xUk79U"))
+//                                startActivity(transferIntent)
+//                            }
+//                        }.root
+//                        MaterialAlertDialogBuilder(requireContext())
+//                            .setView(communityView)
+//                            .show()
+//                    }
                 }
             }
         }
