@@ -1,11 +1,9 @@
 package com.github.malitsplus.shizurunotes.ui
 
-import android.app.AlarmManager
 import android.content.Context
 import android.os.Bundle
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -13,13 +11,10 @@ import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.*
 import com.github.malitsplus.shizurunotes.databinding.ActivityMainBinding
 import com.github.malitsplus.shizurunotes.db.DBHelper
-import com.github.malitsplus.shizurunotes.db.MasterSchedule
 import com.github.malitsplus.shizurunotes.ui.calendar.CalendarViewModel
 import com.github.malitsplus.shizurunotes.ui.shared.*
 import com.github.malitsplus.shizurunotes.user.UserSettings
 import com.github.malitsplus.shizurunotes.utils.FileUtils
-import com.github.malitsplus.shizurunotes.utils.LogUtils
-import com.github.malitsplus.shizurunotes.utils.Utils
 import com.google.android.material.snackbar.Snackbar
 import kotlin.concurrent.thread
 
@@ -40,6 +35,8 @@ class MainActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        val defaultCrashHandler = Thread.getDefaultUncaughtExceptionHandler()
+        Thread.setDefaultUncaughtExceptionHandler(CrashManager(this, defaultCrashHandler))
 
         UpdateManager.with(this).setIActivityCallBack(this)
         initSharedViewModels()
@@ -48,6 +45,10 @@ class MainActivity : AppCompatActivity(),
         } else {
             checkUpdate()
             sharedChara.charaList.value = mutableListOf()
+        }
+        if (UserSettings.get().getAbnormalExit()) {
+            Snackbar.make(binding.activityFrame, R.string.abnormal_exit_message, Snackbar.LENGTH_LONG).show()
+            UserSettings.get().setAbnormalExit(false)
         }
     }
 

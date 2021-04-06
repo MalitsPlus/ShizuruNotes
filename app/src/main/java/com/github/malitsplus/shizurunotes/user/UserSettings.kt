@@ -36,6 +36,7 @@ class UserSettings private constructor(
         const val SERVER_JP = "jp"
         const val SERVER_CN = "cn"
         const val LAST_DB_HASH = "last_db_hash"
+        const val ABNORMAL_EXIT = "abnormal_exit"
 
         private const val userDataFileName = "userData.json"
 
@@ -172,5 +173,11 @@ class UserSettings private constructor(
     }
     fun setDBHash(newValue: String) {
         preference.edit().putString(LAST_DB_HASH, newValue).apply()
+    }
+    fun getAbnormalExit(): Boolean {
+        return preference.getBoolean(ABNORMAL_EXIT, false)
+    }
+    fun setAbnormalExit(value: Boolean) {
+        preference.edit().putBoolean(ABNORMAL_EXIT, value).apply()
     }
 }

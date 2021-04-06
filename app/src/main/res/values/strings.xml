@@ -87,6 +87,7 @@
     <string name="db_update_failed">データベースのアップデートが失敗しました、詳細はログを参照してください</string>
     <string name="app_update_check_failed">アプリのアップデートチェックが失敗しました</string>
     <string name="chara_load_failed">データの初期化が失敗しました、詳細はログを参照してください</string>
+    <string name="abnormal_exit_message">前回実行した時に致命的なエラーが発生しました、詳細はログを参照してください</string>
     <string name="ui_text_filter">絞り込み</string>
     <string name="ui_text_position">位置</string>
     <string name="ui_text_atk_type">タイプ</string>
