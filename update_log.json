@@ -1,9 +1,9 @@
 {
-	"versionCode": "38",
-	"versionName": "1.4.3",
+	"versionCode": "39",
+	"versionName": "1.4.4",
 	"recommend": "false",
-	"messageJa": "・チエル（聖学祭）、名もなき芸術のスキル説明テキストを訂正",
-	"messageZh": "・订正チエル（聖学祭）、名もなき芸術的技能描述",
+	"messageJa": "・スキル計算式にてオリジナルを選択する際アプリが落ちる不具合を修正",
+	"messageZh": "・修复技能公式选择“原始”时导致崩溃的问题",
 	"infoJa": "",
 	"infoZh": ""
 }
