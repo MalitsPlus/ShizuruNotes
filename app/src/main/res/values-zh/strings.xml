@@ -51,6 +51,7 @@
     <string name="db_update_failed">数据库更新失败，详情请参照日志</string>
     <string name="app_update_check_failed">应用更新检测失败</string>
     <string name="chara_load_failed">数据初始化失败，详情请参照日志</string>
+    <string name="abnormal_exit_message">程序上次运行时出现致命异常，错误详情请参照日志</string>
     <string name="ui_text_filter">筛选</string>
     <string name="ui_text_position">位置</string>
     <string name="ui_text_atk_type">类型</string>

@@ -4,6 +4,7 @@ import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.I18N;
 import com.github.malitsplus.shizurunotes.data.Ailment;
 import com.github.malitsplus.shizurunotes.data.Property;
+import com.github.malitsplus.shizurunotes.user.UserSettings;
 import com.github.malitsplus.shizurunotes.utils.Utils;
 
 import java.math.RoundingMode;
@@ -42,11 +43,19 @@ public class AilmentAction extends ActionParameter {
 //                        break;
                     case haste:
                     case slow:
-                        str = I18N.getString(R.string.Multiple_attack_speed_of_s1_with_s2_for_s3_sec,
-                                targetParameter.buildTargetClause(),
-                                Utils.roundIfNeed(Double.parseDouble(buildExpression(level, actionValues, RoundingMode.UNNECESSARY, property)) * 100),
-                                buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property)
-                        );
+                        if (UserSettings.get().getExpression() == UserSettings.EXPRESSION_ORIGINAL) {
+                            str = I18N.getString(R.string.Multiple_attack_speed_of_s1_with_s2_for_s3_sec,
+                                    targetParameter.buildTargetClause(),
+                                    buildExpression(level, actionValues, RoundingMode.UNNECESSARY, property) + " * 100",
+                                    buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property)
+                            );
+                        } else {
+                            str = I18N.getString(R.string.Multiple_attack_speed_of_s1_with_s2_for_s3_sec,
+                                    targetParameter.buildTargetClause(),
+                                    Utils.roundIfNeed(Double.parseDouble(buildExpression(level, actionValues, RoundingMode.UNNECESSARY, property)) * 100),
+                                    buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property)
+                            );
+                        }
                         break;
                     case sleep:
                         str = I18N.getString(R.string.Make_s1_fall_asleep_for_s2_sec,
