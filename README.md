@@ -23,8 +23,8 @@ Dependents could be found in `./app/build.gradle` and it might be changed time t
 * Rank Comparison   
 
 ## Localization  
-Japanese and Chinese fully supported, Korean and English partially supported.
-Korean strings are provided by [applemintia](https://twitter.com/_applemintia).
+Japanese and Chinese fully supported, Korean and English partially supported.  
+Korean strings are provided by [applemintia](https://twitter.com/_applemintia).  
 English strings are provided by [southrop](https://github.com/southrop).  
 
 ## References  
