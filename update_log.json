@@ -1,9 +1,9 @@
 {
-	"versionCode": "39",
-	"versionName": "1.4.4",
+	"versionCode": "40",
+	"versionName": "1.5.0",
 	"recommend": "false",
-	"messageJa": "・スキル計算式にてオリジナルを選択する際アプリが落ちる不具合を修正",
-	"messageZh": "・修复技能公式选择“原始”时导致崩溃的问题",
+	"messageJa": "・複数ボスのダンジョンエリアに対応",
+	"messageZh": "・适配存在复数Boss的地下城关卡",
 	"infoJa": "",
 	"infoZh": ""
 }
