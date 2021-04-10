@@ -6,5 +6,5 @@ class Dungeon(
     val enemyId: Int,
     val dungeonName: String,
     val description: String,
-    val dungeonBoss: Enemy
+    val dungeonBoss: List<Enemy>
 )

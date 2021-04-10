@@ -1,6 +1,11 @@
 package com.github.malitsplus.shizurunotes.db;
 
 import com.github.malitsplus.shizurunotes.data.Dungeon;
+import com.github.malitsplus.shizurunotes.data.Enemy;
+import com.google.common.collect.Lists;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RawDungeon {
     public int dungeon_area_id;
@@ -8,17 +13,25 @@ public class RawDungeon {
     public String description;
     public int wave_group_id;
     public int enemy_id_1;
+    public int enemy_id_2;
+    public int enemy_id_3;
+    public int enemy_id_4;
+    public int enemy_id_5;
 
     public Dungeon getDungeon(){
-        RawEnemy raw = DBHelper.get().getEnemy(enemy_id_1);
-        if (raw != null){
+        List<RawEnemy> rawEnemyList = DBHelper.get().getEnemy(Lists.newArrayList(enemy_id_1, enemy_id_2, enemy_id_3, enemy_id_4, enemy_id_5));
+        List<Enemy> enemyList = new ArrayList<>();
+        for (RawEnemy raw: rawEnemyList) {
+            enemyList.add(raw.getEnemy());
+        }
+        if (enemyList.size() > 0){
             return new Dungeon(
                     dungeon_area_id,
                     wave_group_id,
                     enemy_id_1,
                     dungeon_name,
                     description,
-                    raw.getEnemy()
+                    enemyList
             );
         } else {
             return null;
