@@ -39,7 +39,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            bind:imageUrl="@{dungeon.dungeonBoss.iconUrl}"
+            bind:imageUrl="@{dungeon.dungeonBoss[0].iconUrl}"
             bind:placeHolder="@{R.drawable.mic_chara_icon_place_holder}" />
 
         <TextView
