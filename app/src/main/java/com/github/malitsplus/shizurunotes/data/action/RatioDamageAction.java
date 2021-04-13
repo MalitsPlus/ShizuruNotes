@@ -3,6 +3,7 @@ package com.github.malitsplus.shizurunotes.data.action;
 import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.I18N;
 import com.github.malitsplus.shizurunotes.data.Property;
+import com.github.malitsplus.shizurunotes.user.UserSettings;
 
 import java.math.RoundingMode;
 
@@ -42,16 +43,20 @@ public class RatioDamageAction extends ActionParameter {
 
     @Override
     public String localizedDetail(int level, Property property) {
+        String r = buildExpression(level, RoundingMode.UNNECESSARY, property);
+        if (UserSettings.get().getExpression() != UserSettings.EXPRESSION_VALUE) {
+            r = String.format("(%s)", r);
+        }
         switch (hptype){
             case max:
                 return I18N.getString(R.string.Deal_damage_equal_to_s1_of_target_max_HP_to_s2,
-                        buildExpression(level, RoundingMode.UNNECESSARY, property), targetParameter.buildTargetClause());
+                        r, targetParameter.buildTargetClause());
             case current:
                 return I18N.getString(R.string.Deal_damage_equal_to_s1_of_target_current_HP_to_s2,
-                        buildExpression(level, RoundingMode.UNNECESSARY, property), targetParameter.buildTargetClause());
+                        r, targetParameter.buildTargetClause());
             case originalMax:
                 return I18N.getString(R.string.Deal_damage_equal_to_s1_of_targets_original_max_HP_to_s2,
-                        buildExpression(level, RoundingMode.UNNECESSARY, property), targetParameter.buildTargetClause());
+                        r, targetParameter.buildTargetClause());
             default:
                 return super.localizedDetail(level, property);
         }

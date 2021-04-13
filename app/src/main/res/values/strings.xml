@@ -362,6 +362,7 @@
     <string name="message">メッセージ</string>
     <string name="chara_story_status">ストーリーステータス</string>
     <string name="episode_d">第 %d 話</string>
+    <string name="slv">SLv.%d</string>
     <!-- 拼接字符串领域开始 -->
     <string name="enemy">敵</string>
     <string name="friendly">味方</string>

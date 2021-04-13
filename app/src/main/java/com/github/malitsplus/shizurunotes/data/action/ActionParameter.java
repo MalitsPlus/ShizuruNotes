@@ -325,7 +325,7 @@ public class ActionParameter {
         if(property == null)
             property = new Property();
 
-        if(UserSettings.get().getExpression() == UserSettings.EXPRESSION_EXPRESSION && !isEnemySkill){
+        if(UserSettings.get().getExpression() == UserSettings.EXPRESSION_EXPRESSION){
             StringBuilder expression = new StringBuilder();
             for(ActionValue value : actionValues){
                 StringBuilder part = new StringBuilder();
@@ -352,8 +352,9 @@ public class ActionParameter {
                          } else if (initialValue == 0 || perLevelValue == 0){
                              part.append(String.format(" * %s", value.key.description()));
                          } else {
+                             String c = part.toString();
                              part.setLength(0);
-                             part.append(String.format("(%s) * %s", part, value.key.description()));
+                             part.append(String.format("(%s) * %s", c, value.key.description()));
                          }
                     }
                 }
@@ -394,8 +395,9 @@ public class ActionParameter {
                         } else if (initialValue == 0 || perLevelValue == 0){
                             part.append(String.format(" * %s", value.key.description()));
                         } else {
+                            String c = part.toString();
                             part.setLength(0);
-                            part.append(String.format("##%s## * %s", part, value.key.description()));
+                            part.append(String.format("(%s) * %s", c, value.key.description()));
                         }
                     }
                 }
