@@ -4,6 +4,7 @@ import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.I18N;
 import com.github.malitsplus.shizurunotes.data.Property;
 import com.github.malitsplus.shizurunotes.data.PropertyKey;
+import com.github.malitsplus.shizurunotes.user.UserSettings;
 
 import java.math.RoundingMode;
 import java.util.ArrayList;
@@ -143,18 +144,23 @@ public class AuraAction extends ActionParameter {
 
     @Override
     public String localizedDetail(int level, Property property) {
+        String r = buildExpression(level, RoundingMode.UP, property);
+        if (percentModifier == PercentModifier.percent && UserSettings.get().getExpression() != UserSettings.EXPRESSION_VALUE) {
+            r = String.format("(%s)", r);
+        }
         switch (breakType){
             case Break:
                 return I18N.getString(R.string.s1_s2_s3_s4_s5_during_break,
-                        auraActionType.description(), targetParameter.buildTargetClause(), buildExpression(level, RoundingMode.UP, property), percentModifier.description(), auraType.description());
-            default:
+                        auraActionType.description(), targetParameter.buildTargetClause(), r, percentModifier.description(), auraType.description());
+            default: {
                 return I18N.getString(R.string.s1_s2_s3_s4_s5_for_s6_sec,
                         auraActionType.description(),
                         targetParameter.buildTargetClause(),
-                        buildExpression(level, RoundingMode.UP, property),
+                        r,
                         percentModifier.description(),
                         auraType.description(),
                         buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property));
+            }
         }
     }
 }
