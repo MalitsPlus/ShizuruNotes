@@ -370,7 +370,7 @@
     <string name="Restore_s1_s2_TP">恢复%1$s [%2$s] TP（此值会受到被恢复角色的TP上升值影响）。</string>
     <string name="Make_s1_lose_s2_TP">使%1$s失去 [%2$s] TP。</string>
     <string name="Trigger_HP_is_below_d">触发条件：HP为 [%d%%] 以下时触发。</string>
-    <string name="Trigger_Left_time_is_below_s_sec">触发条件：战斗剩余时间为 [%s] 秒以下时触发。</string>
+    <string name="Trigger_Left_time_is_below_s_sec">触发条件：战斗剩余时间为 [%s] 秒时触发。</string>
     <string name="Trigger_d_on_damaged">触发条件：受到伤害时 [%d%%] 的概率触发。</string>
     <string name="Trigger_d_on_dead">触发条件：死亡时 [%d%%] 的概率触发。</string>
     <string name="Trigger_d_on_critical_damaged">触发条件：受到暴击时 [%d%%] 的概率触发。</string>
