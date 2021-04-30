@@ -554,7 +554,7 @@
     <string name="Restore_s1_s2_TP">%1$sのTPを [%2$s] 回復させる。（この値は回復を受けるキャラのTP上昇に影響される）</string>
     <string name="Make_s1_lose_s2_TP">%1$sのTPを [%2$s] 失わせる。</string>
     <string name="Trigger_HP_is_below_d">トリガー：HPが [%d%%] 以下の時発動。</string>
-    <string name="Trigger_Left_time_is_below_s_sec">トリガー：戦闘の残り時間は [%s] 秒以下の時発動。</string>
+    <string name="Trigger_Left_time_is_below_s_sec">トリガー：戦闘の残り時間は [%s] 秒の時発動。</string>
     <string name="Trigger_d_on_damaged">トリガー：ダメージを受けた時 [%d%%] の確率で発動。</string>
     <string name="Trigger_d_on_dead">トリガー：死亡時 [%d%%] の確率で発動。</string>
     <string name="Trigger_d_on_critical_damaged">トリガー：クリティカルダメージを受けた時 [%d%%] の確率で発動。</string>
