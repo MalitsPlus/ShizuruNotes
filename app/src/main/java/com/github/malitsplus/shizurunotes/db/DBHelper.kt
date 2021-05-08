@@ -750,7 +750,6 @@ class DBHelper private constructor(
             """
                 SELECT * 
                 FROM clan_battle_period 
-                WHERE clan_battle_id > 1014 
                 ORDER BY clan_battle_id DESC 
                 ${if (UserSettings.get().getClanBattleLimit()) "LIMIT 13 " else ""}
                 """,
