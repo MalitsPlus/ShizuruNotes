@@ -1,9 +1,9 @@
 {
-	"versionCode": "40",
-	"versionName": "1.5.0",
+	"versionCode": "42",
+	"versionName": "1.6.1",
 	"recommend": "false",
-	"messageJa": "・複数ボスのダンジョンエリアに対応",
-	"messageZh": "・适配存在复数Boss的地下城关卡",
+	"messageJa": "・一部のスキル計算式を修正\n・大陸鯖のデータベースに関する調整",
+	"messageZh": "・修正一部分技能公式\n・适配国服新数据库结构（会导致公会战历史数据清空）",
 	"infoJa": "",
 	"infoZh": ""
 }
