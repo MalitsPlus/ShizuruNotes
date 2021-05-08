@@ -735,17 +735,17 @@ class DBHelper private constructor(
      */
     fun getClanBattlePeriod(): List<RawClanBattlePeriod>? {
         // 国服-> 读取1014前记录
-        if (UserSettings.get().getUserServer() == UserSettings.SERVER_CN) {
-            return getBeanListByRaw(
-                """
-                SELECT * 
-                FROM clan_battle_period 
-                WHERE clan_battle_id <= 1014 
-                ORDER BY clan_battle_id DESC 
-                """,
-                RawClanBattlePeriod::class.java
-            )
-        }
+//        if (UserSettings.get().getUserServer() == UserSettings.SERVER_CN) {
+//            return getBeanListByRaw(
+//                """
+//                SELECT *
+//                FROM clan_battle_period
+//                WHERE clan_battle_id <= 1014
+//                ORDER BY clan_battle_id DESC
+//                """,
+//                RawClanBattlePeriod::class.java
+//            )
+//        }
         return getBeanListByRaw(
             """
                 SELECT * 
@@ -765,38 +765,38 @@ class DBHelper private constructor(
      */
     fun getClanBattlePhase(clanBattleId: Int): List<RawClanBattlePhase>? {
         // 国服-> 迎合日服结构
-        if (UserSettings.get().getUserServer() == UserSettings.SERVER_CN) {
-            return getBeanListByRaw(
-                """
-                SELECT a.clan_battle_id,
-                CASE 
-                WHEN a.lap_num_from = 1 THEN 1
-                WHEN a.lap_num_from = 2 AND a.clan_battle_id <= 1009 THEN 2
-                WHEN a.lap_num_from = 2 THEN 1
-                WHEN a.lap_num_from = 4 THEN 2
-                WHEN a.lap_num_from = 6 THEN 3
-                WHEN a.lap_num_from = 11 THEN 3
-                WHEN a.lap_num_from = 35 THEN 4
-                ELSE 1 END 'phase'
-                ,b1.wave_group_id 'wave_group_id_1'
-                ,b2.wave_group_id 'wave_group_id_2'
-                ,b3.wave_group_id 'wave_group_id_3'
-                ,b4.wave_group_id 'wave_group_id_4'
-                ,b5.wave_group_id 'wave_group_id_5'
-                FROM clan_battle_map_data AS a 
-                JOIN clan_battle_boss_group AS b1 ON a.clan_battle_boss_group_id = b1.clan_battle_boss_group_id AND b1.order_num = 1
-                JOIN clan_battle_boss_group AS b2 ON a.clan_battle_boss_group_id = b2.clan_battle_boss_group_id AND b2.order_num = 2
-                JOIN clan_battle_boss_group AS b3 ON a.clan_battle_boss_group_id = b3.clan_battle_boss_group_id AND b3.order_num = 3
-                JOIN clan_battle_boss_group AS b4 ON a.clan_battle_boss_group_id = b4.clan_battle_boss_group_id AND b4.order_num = 4
-                JOIN clan_battle_boss_group AS b5 ON a.clan_battle_boss_group_id = b5.clan_battle_boss_group_id AND b5.order_num = 5
-                WHERE 1=1
-                AND a.clan_battle_id = $clanBattleId 
-                AND (a.lap_num_from <> a.lap_num_to OR a.rsl_unlock_lap = 1)
-                ORDER BY a.clan_battle_id,a.lap_num_from DESC 
-                """,
-                RawClanBattlePhase::class.java
-            )
-        }
+//        if (UserSettings.get().getUserServer() == UserSettings.SERVER_CN) {
+//            return getBeanListByRaw(
+//                """
+//                SELECT a.clan_battle_id,
+//                CASE
+//                WHEN a.lap_num_from = 1 THEN 1
+//                WHEN a.lap_num_from = 2 AND a.clan_battle_id <= 1009 THEN 2
+//                WHEN a.lap_num_from = 2 THEN 1
+//                WHEN a.lap_num_from = 4 THEN 2
+//                WHEN a.lap_num_from = 6 THEN 3
+//                WHEN a.lap_num_from = 11 THEN 3
+//                WHEN a.lap_num_from = 35 THEN 4
+//                ELSE 1 END 'phase'
+//                ,b1.wave_group_id 'wave_group_id_1'
+//                ,b2.wave_group_id 'wave_group_id_2'
+//                ,b3.wave_group_id 'wave_group_id_3'
+//                ,b4.wave_group_id 'wave_group_id_4'
+//                ,b5.wave_group_id 'wave_group_id_5'
+//                FROM clan_battle_map_data AS a
+//                JOIN clan_battle_boss_group AS b1 ON a.clan_battle_boss_group_id = b1.clan_battle_boss_group_id AND b1.order_num = 1
+//                JOIN clan_battle_boss_group AS b2 ON a.clan_battle_boss_group_id = b2.clan_battle_boss_group_id AND b2.order_num = 2
+//                JOIN clan_battle_boss_group AS b3 ON a.clan_battle_boss_group_id = b3.clan_battle_boss_group_id AND b3.order_num = 3
+//                JOIN clan_battle_boss_group AS b4 ON a.clan_battle_boss_group_id = b4.clan_battle_boss_group_id AND b4.order_num = 4
+//                JOIN clan_battle_boss_group AS b5 ON a.clan_battle_boss_group_id = b5.clan_battle_boss_group_id AND b5.order_num = 5
+//                WHERE 1=1
+//                AND a.clan_battle_id = $clanBattleId
+//                AND (a.lap_num_from <> a.lap_num_to OR a.rsl_unlock_lap = 1)
+//                ORDER BY a.clan_battle_id,a.lap_num_from DESC
+//                """,
+//                RawClanBattlePhase::class.java
+//            )
+//        }
         return getBeanListByRaw(
             """
                 SELECT DISTINCT 
@@ -854,58 +854,58 @@ class DBHelper private constructor(
      */
     fun getEnemy(enemyIdList: List<Int>): List<RawEnemy>? {
         // 国服->去掉 [enemy_m_parts] 表
-        if (UserSettings.get().getUserServer() == UserSettings.SERVER_CN) {
-            return getBeanListByRaw(
-                """
-                    SELECT 
-                    a.* 
-                    ,b.union_burst 
-                    ,b.union_burst_evolution 
-                    ,b.main_skill_1 
-                    ,b.main_skill_evolution_1 
-                    ,b.main_skill_2 
-                    ,b.main_skill_evolution_2 
-                    ,b.ex_skill_1 
-                    ,b.ex_skill_evolution_1 
-                    ,b.main_skill_3 
-                    ,b.main_skill_4 
-                    ,b.main_skill_5 
-                    ,b.main_skill_6 
-                    ,b.main_skill_7 
-                    ,b.main_skill_8 
-                    ,b.main_skill_9 
-                    ,b.main_skill_10 
-                    ,b.ex_skill_2 
-                    ,b.ex_skill_evolution_2 
-                    ,b.ex_skill_3 
-                    ,b.ex_skill_evolution_3 
-                    ,b.ex_skill_4 
-                    ,b.ex_skill_evolution_4 
-                    ,b.ex_skill_5 
-                    ,b.sp_skill_1 
-                    ,b.ex_skill_evolution_5 
-                    ,b.sp_skill_2 
-                    ,b.sp_skill_3 
-                    ,b.sp_skill_4 
-                    ,b.sp_skill_5 
-                    ,u.prefab_id 
-                    ,u.atk_type 
-                    ,u.normal_atk_cast_time
-					,u.search_area_width
-                    ,u.comment
-                    FROM 
-                    unit_skill_data b 
-                    ,enemy_parameter a 
-                    LEFT JOIN unit_enemy_data u ON a.unit_id = u.unit_id 
-                    WHERE 
-                    a.unit_id = b.unit_id 
-                    AND a.enemy_id in ( %s )  
-                    """.format(enemyIdList.toString()
-                    .replace("[", "")
-                    .replace("]", "")),
-                RawEnemy::class.java
-            )
-        }
+//        if (UserSettings.get().getUserServer() == UserSettings.SERVER_CN) {
+//            return getBeanListByRaw(
+//                """
+//                    SELECT
+//                    a.*
+//                    ,b.union_burst
+//                    ,b.union_burst_evolution
+//                    ,b.main_skill_1
+//                    ,b.main_skill_evolution_1
+//                    ,b.main_skill_2
+//                    ,b.main_skill_evolution_2
+//                    ,b.ex_skill_1
+//                    ,b.ex_skill_evolution_1
+//                    ,b.main_skill_3
+//                    ,b.main_skill_4
+//                    ,b.main_skill_5
+//                    ,b.main_skill_6
+//                    ,b.main_skill_7
+//                    ,b.main_skill_8
+//                    ,b.main_skill_9
+//                    ,b.main_skill_10
+//                    ,b.ex_skill_2
+//                    ,b.ex_skill_evolution_2
+//                    ,b.ex_skill_3
+//                    ,b.ex_skill_evolution_3
+//                    ,b.ex_skill_4
+//                    ,b.ex_skill_evolution_4
+//                    ,b.ex_skill_5
+//                    ,b.sp_skill_1
+//                    ,b.ex_skill_evolution_5
+//                    ,b.sp_skill_2
+//                    ,b.sp_skill_3
+//                    ,b.sp_skill_4
+//                    ,b.sp_skill_5
+//                    ,u.prefab_id
+//                    ,u.atk_type
+//                    ,u.normal_atk_cast_time
+//					,u.search_area_width
+//                    ,u.comment
+//                    FROM
+//                    unit_skill_data b
+//                    ,enemy_parameter a
+//                    LEFT JOIN unit_enemy_data u ON a.unit_id = u.unit_id
+//                    WHERE
+//                    a.unit_id = b.unit_id
+//                    AND a.enemy_id in ( %s )
+//                    """.format(enemyIdList.toString()
+//                    .replace("[", "")
+//                    .replace("]", "")),
+//                RawEnemy::class.java
+//            )
+//        }
         return getBeanListByRaw(
                 """
                     SELECT 
