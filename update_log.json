@@ -1,9 +1,9 @@
 {
-	"versionCode": "42",
-	"versionName": "1.6.1",
+	"versionCode": "43",
+	"versionName": "1.6.2",
 	"recommend": "false",
-	"messageJa": "・一部のスキル計算式を修正\n・大陸鯖のデータベースに関する調整",
-	"messageZh": "・修正一部分技能公式\n・适配国服新数据库结构（会导致公会战历史数据清空）",
+	"messageJa": "・クラバトデータに関する調整",
+	"messageZh": "・调整会战相关的数据",
 	"infoJa": "",
 	"infoZh": ""
 }
