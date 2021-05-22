@@ -172,11 +172,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linear4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linear3">
@@ -196,6 +196,35 @@
                     android:layout_weight="1"
                     app:sLeftTextString="@string/text_dodge"
                     bind:sRightText="@{String.valueOf(itemModel.property.dodge)}" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear4">
+
+                <com.allen.library.SuperTextView
+                    android:id="@+id/txt_tp_up_rate"
+                    style="@style/StatusSuperTextView"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    app:sLeftTextString="@string/text_energy_recovery"
+                    bind:sRightText="@{String.valueOf(itemModel.property.energyRecoveryRate)}" />
+
+                <com.allen.library.SuperTextView
+                    android:id="@+id/txt_tp_remaining"
+                    style="@style/StatusSuperTextView"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    app:sLeftTextString="@string/text_energy_reduce"
+                    bind:sRightText="@{String.valueOf(itemModel.property.energyReduceRate)}" />
 
             </LinearLayout>
 

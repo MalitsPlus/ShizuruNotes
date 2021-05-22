@@ -147,9 +147,12 @@ class Skill(
     var skillType = 0
     var skillAreaWidth = 0
     var skillCastTime = 0.0
+    var bossUbCoolTime = 0.0
     var iconType = 0
     val castTimeText: String
         get() = I18N.getString(R.string.text_cast_time) + skillCastTime + "s"
+    val ubCoolTimeText: String
+        get() =  I18N.getString(R.string.text_cool_time) + bossUbCoolTime + "s"
 
     lateinit var skillName: String
     lateinit var description: String
@@ -229,6 +232,7 @@ class Skill(
         skillType: Int,
         skillAreaWidth: Int,
         skillCastTime: Double,
+        bossUbCoolTime: Double,
         description: String,
         iconType: Int
     ) {
@@ -236,6 +240,7 @@ class Skill(
         this.skillType = skillType
         this.skillAreaWidth = skillAreaWidth
         this.skillCastTime = skillCastTime
+        this.bossUbCoolTime = bossUbCoolTime
         this.description = description
         this.iconType = iconType
         iconUrl = Statics.SKILL_ICON_URL.format(iconType)

@@ -65,6 +65,15 @@
             app:layout_constraintTop_toBottomOf="@+id/boss_skill_type" />
 
         <TextView
+            android:id="@+id/boss_skill_cool_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@{itemModel.ubCoolTimeText, default=coolTime}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/boss_skill_cast_time" />
+
+        <TextView
             android:id="@+id/boss_skill_actions"
             style="@style/longMultipleLineText"
             android:layout_width="match_parent"
@@ -78,7 +87,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boss_skill_cast_time"
+            app:layout_constraintTop_toBottomOf="@+id/boss_skill_cool_time"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button

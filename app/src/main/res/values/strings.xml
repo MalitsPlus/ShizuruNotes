@@ -165,6 +165,7 @@
     <string name="text_attack_pattern">&#160;行動パターン%d&#160;</string>
     <string name="text_normal_mode">通常モード</string>
     <string name="text_cast_time">待機時間：</string>
+    <string name="text_cool_time">クールタイム：</string>
     <string name="text_skill_action">スキルアクション</string>
     <string name="text_profile">プロフィール</string>
     <string name="text_age">&#160;年齢&#160;</string>
@@ -577,6 +578,7 @@
     <string name="Random_event_d1_chance_use_d2_otherwise_d3">ランダム事件：[%1$d%%] の確率で [アクション%2$d] を使う、それ以外の場合は [アクション%3$d] を使う。</string>
     <string name="Random_event_d1_chance_use_d2">ランダム事件：[%1$d%%] の確率で [アクション%2$d] を使う。</string>
     <string name="controlled">行動不能状態中</string>
+    <string name="hastened">行動速度アップ状態中</string>
     <string name="blinded">物理暗闇状態中</string>
     <string name="charmed_or_confused">魅了か混乱状態中</string>
     <string name="decoying">挑発状態中</string>
