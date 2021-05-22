@@ -107,6 +107,7 @@
     <string name="text_attack_pattern">&#160;技能循环%d&#160;</string>
     <string name="text_normal_mode">通常模式</string>
     <string name="text_cast_time">待机时间：</string>
+    <string name="text_cool_time">冷却时间：</string>
     <string name="text_skill_action">技能动作</string>
     <string name="text_profile">个人情报</string>
     <string name="text_age">&#160;年龄&#160;</string>
@@ -393,6 +394,7 @@
     <string name="Random_event_d1_chance_use_d2_otherwise_d3">随机事件：[%1$d%%] 的概率使用 [动作%2$d]，否则使用 [动作%3$d]。</string>
     <string name="Random_event_d1_chance_use_d2">随机事件：[%1$d%%] 的概率使用 [动作%2$d]。</string>
     <string name="controlled">无法行动状态中</string>
+    <string name="hastened">加速状态中</string>
     <string name="blinded">物理致盲状态中</string>
     <string name="charmed_or_confused">魅惑或混乱状态中</string>
     <string name="decoying">挑衅状态中</string>

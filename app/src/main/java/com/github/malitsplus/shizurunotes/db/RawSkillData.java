@@ -9,6 +9,7 @@ public class RawSkillData {
     public int skill_type;
     public int skill_area_width;
     public double skill_cast_time;
+    public double boss_ub_cool_time;
     public int action_1;
     public int action_2;
     public int action_3;
@@ -32,6 +33,7 @@ public class RawSkillData {
                 skill_type,
                 skill_area_width,
                 skill_cast_time,
+                boss_ub_cool_time,
                 description,
                 icon_type
         );

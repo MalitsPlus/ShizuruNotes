@@ -17,8 +17,8 @@ android {
         applicationId "com.github.malitsplus.shizurunotes"
         minSdkVersion 26
         targetSdkVersion 29
-        versionCode 43
-        versionName "1.6.2"
+        versionCode 45
+        versionName "1.7.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

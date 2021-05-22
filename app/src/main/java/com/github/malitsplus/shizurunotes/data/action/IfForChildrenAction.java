@@ -61,7 +61,7 @@ public class IfForChildrenAction extends ActionParameter {
 
     @Override
     public String localizedDetail(int level, Property property) {
-        if(actionDetail1 == 100 || actionDetail1 == 200 || actionDetail1 == 300 || actionDetail1 == 500 || actionDetail1 == 501
+        if(actionDetail1 == 100 || actionDetail1 == 101 || actionDetail1 == 200 || actionDetail1 == 300 || actionDetail1 == 500 || actionDetail1 == 501
                 || actionDetail1 == 502 || actionDetail1 == 503 || actionDetail1 == 512
                 || (actionDetail1 >=600 && actionDetail1 < 900) || (actionDetail1 >= 901 && actionDetail1 < 1000)
                 || actionDetail1 == 1300 || actionDetail1 == 1400) {
@@ -86,6 +86,7 @@ public class IfForChildrenAction extends ActionParameter {
 
 enum IfType{
     controllered(100),
+    hastened(101),
     blind(200),
     convert(300),
     decoy(400),
@@ -116,6 +117,7 @@ enum IfType{
     public String description(){
         switch (this){
             case controllered: return I18N.getString(R.string.controlled);
+            case hastened: return I18N.getString(R.string.hastened);
             case blind: return I18N.getString(R.string.blinded);
             case convert: return I18N.getString(R.string.charmed_or_confused);
             case decoy: return I18N.getString(R.string.decoying);
