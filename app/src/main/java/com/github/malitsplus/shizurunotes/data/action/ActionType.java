@@ -73,6 +73,7 @@ public enum ActionType {
     healDown(76),
     passiveSeal(77),
     passiveDamageUp(78),
+    damageByBehaviourAction(79),
     ex(90),
     exPlus(91),
     changeEnergyRecoveryRatioByDamage(92),

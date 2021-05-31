@@ -670,4 +670,5 @@
     <string name="use_d1_if_s2_does_not_have_s3">%2$s不在%3$s的场合，使用 [动作%1$d]。</string>
     <string name="no_effect">无效果。</string>
     <string name="damage">伤害</string>
+    <string name="s1_will_be_applied_the_s2_once_they_take_any_actions_will_take_s3_damage_every_second_lasted_4s_seconds">每当%1$s行动时，使其进入%2$s状态，每次行动受到 [%3$s] 伤害，持续时间 [%4$s] 秒。</string>
 </resources>
