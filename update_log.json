@@ -1,9 +1,9 @@
 {
-	"versionCode": "43",
-	"versionName": "1.6.2",
+	"versionCode": "45",
+	"versionName": "1.7.0",
 	"recommend": "false",
-	"messageJa": "・クラバトデータに関する調整",
-	"messageZh": "・调整会战相关的数据",
+	"messageJa": "・スキルクールタイムを追加\n・敵のTP上昇値を表示\n・カヤ（タイムトラベル）のスキル説明文を訂正",
+	"messageZh": "・新增技能冷却时间\n・显示敌方的TP上升值\n・订正カヤ（タイムトラベル）的技能描述",
 	"infoJa": "",
 	"infoZh": ""
 }
