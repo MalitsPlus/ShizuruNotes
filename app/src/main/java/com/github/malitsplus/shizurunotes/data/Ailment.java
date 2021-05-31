@@ -31,6 +31,7 @@ public class Ailment {
         curse(3),
         violentPoison(4),
         hex(5),
+        compensation(6),
         unknown(-1);
 
         private int value;
@@ -177,7 +178,10 @@ public class Ailment {
         awe(62),
         toad(69),
         maxHP(70),
-        unknown(71);
+        hPRegenerationDown(76),
+        damageTakenIncreased(78),
+        damageByBehaviour(79),
+        unknown(80);
 
         private int value;
         AilmentType(int value){
@@ -227,6 +231,12 @@ public class Ailment {
                     return I18N.getString(R.string.Polymorph);
                 case maxHP:
                     return I18N.getString(R.string.Changing_Max_HP);
+                case hPRegenerationDown:
+                    return I18N.getString(R.string.HP_Regeneration_Down);
+                case damageTakenIncreased:
+                    return I18N.getString(R.string.Damage_Taken_Increased);
+                case damageByBehaviour:
+                    return I18N.getString(R.string.Damage_By_Behaviour);
                 default:
                     return I18N.getString(R.string.Unknown_Effect);
             }
@@ -245,6 +255,7 @@ public class Ailment {
                 ailmentDetail.setDetail(ActionDetail.parse(detail));
                 break;
             case dot:
+            case damageByBehaviour:
                 ailmentDetail.setDetail(DotDetail.parse(detail));
                 break;
             case charm:

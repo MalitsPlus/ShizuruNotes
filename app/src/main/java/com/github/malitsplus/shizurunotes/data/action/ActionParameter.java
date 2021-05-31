@@ -156,6 +156,8 @@ public class ActionParameter {
                 return new PassiveSealAction();
             case 78:
                 return new PassiveDamageUpAction();
+            case 79:
+                return new DamageByBehaviourAction();
             case 90:
                 return new PassiveAction();
             case 91:
