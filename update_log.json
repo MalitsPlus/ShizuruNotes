@@ -1,9 +1,9 @@
 {
-	"versionCode": "45",
-	"versionName": "1.7.0",
+	"versionCode": "46",
+	"versionName": "1.7.1",
 	"recommend": "false",
-	"messageJa": "・スキルクールタイムを追加\n・敵のTP上昇値を表示\n・カヤ（タイムトラベル）のスキル説明文を訂正",
-	"messageZh": "・新增技能冷却时间\n・显示敌方的TP上升值\n・订正カヤ（タイムトラベル）的技能描述",
+	"messageJa": "・アオイ（作業服）のスキル説明文を訂正",
+	"messageZh": "・订正アオイ（作業服）的技能说明",
 	"infoJa": "",
 	"infoZh": ""
 }
