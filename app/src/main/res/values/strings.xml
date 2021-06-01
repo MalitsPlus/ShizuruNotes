@@ -736,5 +736,5 @@
     <string name="use_d1_if_s2_does_not_have_s3">%2$sが%3$sでない場合，[アクション%1$d] を使う。</string>
     <string name="no_effect">効果なし。</string>
     <string name="damage">ダメージ</string>
-    <string name="s1_will_be_applied_the_s2_once_they_take_any_actions_will_take_s3_damage_every_second_lasted_4s_seconds">%1$sが行動する度に、%2$s状態にし、行動する度に [%3$s] のダメージを与える、効果時間 [%4$s] 秒。</string>
+    <string name="s1_will_be_applied_the_s2_once_they_take_any_actions_will_take_s3_damage_every_second_lasted_4s_seconds">%1$sが行動する度、[%3$s] の%2$sダメージを与える、効果時間 [%4$s] 秒。</string>
 </resources>
