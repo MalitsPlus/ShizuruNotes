@@ -123,6 +123,7 @@ public class AuraAction extends ActionParameter {
     protected AuraActionType auraActionType;
     protected AuraType auraType;
     protected BreakType breakType;
+    protected boolean isConstant = false;
 
     @Override
     protected void childInit() {
@@ -132,6 +133,9 @@ public class AuraAction extends ActionParameter {
         auraActionType = AuraActionType.parse(actionDetail1);
         if (actionDetail1 == 1) {
             auraType = AuraType.maxHP;
+        } else if (actionDetail1 >= 1000){
+            auraType = AuraType.parse(actionDetail1 % 1000 / 10);
+            isConstant = true;
         } else {
             auraType = AuraType.parse(actionDetail1 / 10);
         }
@@ -159,7 +163,8 @@ public class AuraAction extends ActionParameter {
                         r,
                         percentModifier.description(),
                         auraType.description(),
-                        buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property));
+                        buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property),
+                        isConstant ? I18N.getString(R.string.this_buff_is_constant) : "");
             }
         }
     }
