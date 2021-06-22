@@ -355,7 +355,7 @@
     <string name="Raise">提高</string>
     <string name="Reduce">降低</string>
     <string name="s1_s2_s3_s4_s5_during_break">Break期间中，%1$s%2$s [%3$s%4$s] %5$s。</string>
-    <string name="s1_s2_s3_s4_s5_for_s6_sec">%1$s%2$s [%3$s%4$s] 的%5$s，持续时间 [%6$s] 秒。</string>
+    <string name="s1_s2_s3_s4_s5_for_s6_sec">%1$s%2$s [%3$s%4$s] 的%5$s，持续时间 [%6$s] 秒。%7$s</string>
     <string name="Charm_s1_with_s2_chance_for_s3_sec">以 [%2$s%%] 的概率使%1$s进入魅惑状态，持续时间 [%3$s] 秒。</string>
     <string name="Confuse_s1_with_s2_chance_for_s3_sec">以 [%2$s%%] 的概率使%1$s进入混乱状态，持续时间 [%3$s] 秒。</string>
     <string name="Change_attack_pattern_to_d1_for_s2_sec">切换至技能循环%1$d，持续时间 [%2$s] 秒。</string>
@@ -671,4 +671,5 @@
     <string name="no_effect">无效果。</string>
     <string name="damage">伤害</string>
     <string name="s1_will_be_applied_the_s2_once_they_take_any_actions_will_take_s3_damage_every_second_lasted_4s_seconds">每当%1$s行动时，使其受到 [%3$s] %2$s伤害，持续时间 [%4$s] 秒。</string>
+    <string name="this_buff_is_constant">此效果不会受到其他改变数值效果的影响（会受到驱散等直接解除效果的影响）。</string>
 </resources>
