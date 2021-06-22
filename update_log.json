@@ -1,9 +1,9 @@
 {
-	"versionCode": "46",
-	"versionName": "1.7.1",
+	"versionCode": "47",
+	"versionName": "1.7.2",
 	"recommend": "false",
-	"messageJa": "・アオイ（作業服）のスキル説明文を訂正",
-	"messageZh": "・订正アオイ（作業服）的技能说明",
+	"messageJa": "・バフタイプの修正",
+	"messageZh": "・修正Buff类型",
 	"infoJa": "",
 	"infoZh": ""
 }
