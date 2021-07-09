@@ -60,6 +60,7 @@ class Chara: Cloneable {
     val rarityProperty = mutableMapOf<Int, Property>()
     val rarityPropertyGrowth = mutableMapOf<Int, Property>()
     lateinit var promotionStatus: Map<Int, Property>
+    lateinit var promotionBonus: Map<Int, Property>
     lateinit var rankEquipments: Map<Int, List<Equipment>>
     var uniqueEquipment: Equipment? = null
     var attackPatternList = mutableListOf<AttackPattern>()
@@ -96,6 +97,7 @@ class Chara: Cloneable {
             plusEqual(getRarityGrowthProperty(rarity, rank))
             plusEqual(storyProperty)
             plusEqual(promotionStatus[rank])
+            plusEqual(promotionBonus[rank])
             plusEqual(getAllEquipmentProperty(rank))
             plusEqual(getPassiveSkillProperty(rarity))
             if (hasUnique) {
@@ -114,6 +116,7 @@ class Chara: Cloneable {
             plusEqual(getRarityGrowthProperty(rarity, rank))
             plusEqual(storyProperty)
             plusEqual(promotionStatus[rank])
+            plusEqual(promotionBonus[rank])
             plusEqual(getAllEquipmentProperty(rank))
             plusEqual(getPassiveSkillProperty(rarity))
             if (hasUnique) {

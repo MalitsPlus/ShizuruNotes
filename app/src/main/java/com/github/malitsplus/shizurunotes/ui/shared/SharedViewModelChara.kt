@@ -43,6 +43,7 @@ class SharedViewModelChara : ViewModel() {
                         setCharaRarity(it)
                         setCharaStoryStatus(it)
                         setCharaPromotionStatus(it)
+                        setCharaPromotionBonus(it)
                         setCharaEquipments(it, equipmentMap)
                         setUniqueEquipment(it)
                         setUnitSkillData(it)
@@ -106,6 +107,14 @@ class SharedViewModelChara : ViewModel() {
             promotionStatus[it.promotion_level] = it.promotionStatus
         }
         chara.promotionStatus = promotionStatus
+    }
+
+    private fun setCharaPromotionBonus(chara: Chara) {
+        val promotionBonus = mutableMapOf<Int, Property>()
+        get().getCharaPromotionBonus(chara.unitId)?.forEach {
+            promotionBonus[it.promotion_level] = it.promotionBonus
+        }
+        chara.promotionBonus = promotionBonus
     }
 
     private fun setCharaEquipments(chara: Chara, equipmentMap: Map<Int, Equipment>) {
