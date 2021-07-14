@@ -490,15 +490,23 @@ class DBHelper private constructor(
      * @return
      */
     fun getCharaPromotionBonus(unitId: Int): List<RawPromotionBonus>? {
-        return  getBeanListByRaw(
-            """
-                SELECT * 
-                FROM promotion_bonus
-                WHERE unit_id=$unitId 
-                ORDER BY promotion_level DESC 
-                """,
-            RawPromotionBonus::class.java
-        )
+        // 考虑国服未实装的情况
+        val count = getOne("""SELECT COUNT(*) 
+                                FROM sqlite_master 
+                                WHERE type='table' 
+                                AND name='promotion_bonus'""")
+
+        return if (count.equals("1")) {
+            getBeanListByRaw(
+                """
+                    SELECT * 
+                    FROM promotion_bonus
+                    WHERE unit_id=$unitId 
+                    ORDER BY promotion_level DESC 
+                    """,
+                RawPromotionBonus::class.java
+            )
+        } else null
     }
 
     /***
