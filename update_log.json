@@ -1,9 +1,9 @@
 {
-	"versionCode": "47",
-	"versionName": "1.7.2",
+	"versionCode": "48",
+	"versionName": "1.8.0",
 	"recommend": "false",
-	"messageJa": "・バフタイプの修正",
-	"messageZh": "・修正Buff类型",
+	"messageJa": "・ランクボーナスを追加",
+	"messageZh": "・追加Rank Bonus",
 	"infoJa": "",
 	"infoZh": ""
 }
