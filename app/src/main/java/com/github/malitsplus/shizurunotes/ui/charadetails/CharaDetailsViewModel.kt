@@ -19,12 +19,15 @@ class CharaDetailsViewModel(private val sharedViewModelChara: SharedViewModelCha
             skills.forEach {
                 it.setActionDescriptions(maxCharaLevel, charaProperty)
             }
+        }?.also {
+            mutableChara.value = it
         }
-        mutableChara.value = chara
     }
 
     fun setChara(chara: Chara?) {
-        mutableChara.value = chara
+        chara?.let {
+            mutableChara.value = it
+        }
     }
 
     fun getChara(): Chara?{
