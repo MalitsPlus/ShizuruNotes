@@ -1,9 +1,9 @@
 {
-	"versionCode": "48",
-	"versionName": "1.8.0",
+	"versionCode": "50",
+	"versionName": "1.8.2",
 	"recommend": "false",
-	"messageJa": "・ランクボーナスを追加",
-	"messageZh": "・追加Rank Bonus",
+	"messageJa": "・ツムギ（サマー）のスキル説明文を訂正",
+	"messageZh": "・订正ツムギ（サマー）的技能描述",
 	"infoJa": "",
 	"infoZh": ""
 }
