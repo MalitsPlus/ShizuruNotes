@@ -1,15 +1,3 @@
-//apply plugin: 'com.android.application'
-//
-//apply plugin: 'kotlin-android'
-//
-//apply plugin: 'kotlin-android-extensions'
-//
-//apply plugin: 'kotlin-kapt'
-//
-//apply plugin: 'androidx.navigation.safeargs'
-//
-//apply plugin: 'com.google.android.gms.oss-licenses-plugin'
-
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
@@ -20,7 +8,6 @@ plugins {
 
 android {
     compileSdk 30
-//    buildToolsVersion "30.0.2"
     defaultConfig {
         applicationId "com.github.malitsplus.shizurunotes"
         minSdk 26
