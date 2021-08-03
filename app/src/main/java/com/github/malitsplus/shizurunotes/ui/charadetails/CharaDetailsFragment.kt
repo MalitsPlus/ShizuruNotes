@@ -134,13 +134,10 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
         }
 
         // 观察chara变化（1.0.0去掉rank下拉框后已经可以删掉了，留着备用）
-        detailsViewModel.mutableChara.observe(
-            viewLifecycleOwner,
-            Observer<Chara> { chara: Chara ->
+        detailsViewModel.mutableChara.observe(viewLifecycleOwner, { chara: Chara ->
                 binding.detailsVM = detailsViewModel
                 adapterSkill.update(chara.skills)
-            }
-        )
+        })
     }
 
     override fun onClick(v: View?) {
