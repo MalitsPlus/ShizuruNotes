@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.databinding.FragmentAboutBinding
-import kotlinx.android.synthetic.main.fragment_about.*
 
 class AboutFragment: Fragment() {
 

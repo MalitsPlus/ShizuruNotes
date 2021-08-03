@@ -23,7 +23,7 @@ class BottomNaviFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentBottomNavigationBinding.inflate(inflater, container, false)
-        binding.bottomNavView.setOnNavigationItemSelectedListener {
+        binding.bottomNavView.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.bottom_menu_chara -> switchFragments(CHARA_INDEX)
                 R.id.bottom_menu_drop -> switchFragments(DROP_INDEX)
