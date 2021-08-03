@@ -4,13 +4,11 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-//        jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
-//        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
         classpath 'com.google.android.gms:oss-licenses-plugin:0.10.4'
         // NOTE: Do not place your application dependencies here; they belong
@@ -22,7 +20,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-//        jcenter()
         maven { url "https://jitpack.io" }
     }
     gradle.projectsEvaluated {
