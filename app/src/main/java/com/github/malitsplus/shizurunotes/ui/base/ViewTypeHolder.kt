@@ -117,7 +117,7 @@ sealed class ViewTypeHolder(
     open fun bindItem(item: ViewType<*>) {
         binding.setVariable(BR.itemModel, item.data)
         if (item.isUserInteractionEnabled) {
-            binding.setVariable(BR.itemPosition, adapterPosition)
+            binding.setVariable(BR.itemPosition, absoluteAdapterPosition)
             binding.setVariable(BR.itemActionListener, onItemActionListener)
         }
         binding.executePendingBindings()

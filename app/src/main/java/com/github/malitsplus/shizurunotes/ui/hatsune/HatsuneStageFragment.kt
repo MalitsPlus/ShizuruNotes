@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
@@ -41,14 +42,14 @@ class HatsuneStageFragment : Fragment(), OnHatsuneClickListener<HatsuneStage> {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedHatsune.loadData()
-        sharedHatsune.hatsuneStageList.observe(viewLifecycleOwner) {
+        sharedHatsune.hatsuneStageList.observe(viewLifecycleOwner, Observer {
             binding.hatsuneStageProgressBar.visibility = if (it.isEmpty()) {
                 View.VISIBLE
             } else {
                 View.GONE
             }
             hatsuneStageAdapter.setUpdatedList(hatsuneStageVM.viewList)
-        }
+        })
         binding.hatsuneStageToolbar.setNavigationOnClickListener {
             it.findNavController().navigateUp()
         }

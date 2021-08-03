@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.Uri
 import android.os.Handler
+import android.os.Looper
 import android.os.Message
 import androidx.annotation.StringRes
 import androidx.core.content.FileProvider
@@ -382,7 +383,7 @@ class UpdateManager private constructor(
         return BuildConfig.VERSION_CODE
     }
 
-    val updateHandler = Handler(Handler.Callback { msg: Message ->
+    val updateHandler = Handler(Looper.getMainLooper()) { msg: Message ->
         when (msg.what) {
             APP_UPDATE_CHECK_COMPLETED ->
                 callBack.appCheckUpdateCompleted()
@@ -402,7 +403,7 @@ class UpdateManager private constructor(
             }
         }
         true
-    })
+    }
 
     interface UpdateCallBack {
         fun appCheckUpdateCompleted()
