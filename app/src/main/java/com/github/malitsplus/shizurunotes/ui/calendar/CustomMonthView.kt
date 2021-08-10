@@ -6,8 +6,11 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.view.View
 import com.github.malitsplus.shizurunotes.R
+import com.github.malitsplus.shizurunotes.user.UserSettings
 import com.haibin.calendarview.Calendar
 import com.haibin.calendarview.MonthView
+import java.time.ZoneId
+import java.time.ZonedDateTime
 
 class CustomMonthView(context: Context) : MonthView(context) {
 
@@ -148,11 +151,10 @@ class CustomMonthView(context: Context) : MonthView(context) {
             color = context.getColor(R.color.blue_100)
         }
 
-        if (calendar.isCurrentDay) {
+        val date = getCurrentServerDate()
+        if (calendar.year == date.year && calendar.month == date.monthValue && calendar.day == date.dayOfMonth) {
             canvas.drawCircle(centerX, mTextBaseLine + textCenterY, dayTextSize * 3 / 4, mCurrentDayBackgroundPaint)
-            canvas.drawText(
-                calendar.day.toString(), centerX, mTextBaseLine + top, mCurDayTextPaint
-            )
+            canvas.drawText(calendar.day.toString(), centerX, mTextBaseLine + top, mCurDayTextPaint)
             return
         }
 
@@ -172,5 +174,14 @@ class CustomMonthView(context: Context) : MonthView(context) {
     private fun dipToPx(context: Context, dpValue: Float): Int {
         val scale = context.resources.displayMetrics.density
         return (dpValue * scale + 0.5f).toInt()
+    }
+
+    private fun getCurrentServerDate(): ZonedDateTime {
+        val serverZone = if (UserSettings.get().getUserServer() == UserSettings.SERVER_CN) {
+            "Asia/Shanghai"
+        } else {
+            "Asia/Tokyo"
+        }
+        return ZonedDateTime.now().withZoneSameInstant(ZoneId.of(serverZone))
     }
 }
