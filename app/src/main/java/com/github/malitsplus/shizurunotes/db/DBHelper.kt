@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.text.TextUtils
+import android.widget.Switch
 import com.github.malitsplus.shizurunotes.utils.FileUtils
 import com.github.malitsplus.shizurunotes.common.Statics
 import com.github.malitsplus.shizurunotes.user.UserSettings
@@ -1112,6 +1113,58 @@ class DBHelper private constructor(
                 """,
             RawDungeon::class.java
         )
+    }
+
+    /***
+     * 获取特殊活动
+     */
+    fun getSpEvents(): List<RawSpEvent>? {
+        return when(getSpEventCount()) {
+            1 -> getBeanListByRaw(
+                """
+                SELECT
+                a.kaiser_boss_id 'boss_id',
+                a.name,
+                b.*
+                FROM
+                kaiser_quest_data AS a 
+                JOIN wave_group_data AS b ON a.wave_group_id=b.wave_group_id 
+                """,
+                RawSpEvent::class.java)
+            2 -> getBeanListByRaw(
+                """
+                SELECT
+                a.legion_boss_id 'boss_id',
+                a.name,
+                b.*
+                FROM
+                legion_quest_data AS a 
+                JOIN wave_group_data AS b ON a.wave_group_id=b.wave_group_id 
+                UNION ALL
+                SELECT
+                a.kaiser_boss_id 'boss_id',
+                a.name,
+                b.*
+                FROM
+                kaiser_quest_data AS a 
+                JOIN wave_group_data AS b ON a.wave_group_id=b.wave_group_id 
+                """,
+                RawSpEvent::class.java)
+            else -> null
+        }
+    }
+
+    private fun getSpEventCount(): Int {
+        return getOne(
+            """
+                SELECT COUNT(*) 'num'
+                FROM sqlite_master 
+                WHERE type = 'table' 
+                AND name in ('legion_quest_data', 'kaiser_quest_data')
+            """
+        ).let {
+            it!!.toInt()
+        }
     }
 
     /***

@@ -16,6 +16,7 @@
     <string name="title_hatsune_stage">イベント</string>
     <string name="title_hatsune_wave">イベント</string>
     <string name="title_community">コミュニティ</string>
+    <string name="title_sp_event">SPイベント</string>
     <string name="community_dialog_title">コミュニティに参加</string>
     <string name="community_dialog_text">コミュニティに参加しましょう\n（飛び先中国語注意）</string>
     <string name="do_not_show_anymore">今度から表示しない</string>
@@ -739,4 +740,6 @@
     <string name="s1_will_be_applied_the_s2_once_they_take_any_actions_will_take_s3_damage_every_second_lasted_4s_seconds">%1$sが行動する度、[%3$s] の%2$sダメージを与える、効果時間 [%4$s] 秒。</string>
     <string name="this_buff_is_constant">この効果は他の値への効果の影響を受けない（ディスペルなど効果解除の影響は受ける）。</string>
     <string name="drag_s1_to_a_position_s2_forward_of_the_caster">%1$sを自分の前 [%2$s] の位置に引き寄せる。</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

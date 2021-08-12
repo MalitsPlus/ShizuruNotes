@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.github.malitsplus.shizurunotes.data.Enemy
 import com.github.malitsplus.shizurunotes.data.ClanBattlePeriod
 import com.github.malitsplus.shizurunotes.data.Dungeon
+import com.github.malitsplus.shizurunotes.data.SpEvent
 import com.github.malitsplus.shizurunotes.db.DBHelper
 import kotlin.concurrent.thread
 
@@ -17,6 +18,7 @@ class SharedViewModelClanBattle : ViewModel() {
     var selectedMinion: MutableList<Enemy>? = null
 
     var dungeonList = mutableListOf<Dungeon>()
+    var spEventList = mutableListOf<SpEvent>()
 
     /***
      * 从数据库读取所有会战数据。
@@ -42,6 +44,18 @@ class SharedViewModelClanBattle : ViewModel() {
                 loadingFlag.postValue(true)
                 DBHelper.get().getDungeons()?.forEach {
                     dungeonList.add(it.dungeon)
+                }
+                loadingFlag.postValue(false)
+            }
+        }
+    }
+
+    fun loadSpEvent() {
+        if (spEventList.isNullOrEmpty()){
+            thread(start = true){
+                loadingFlag.postValue(true)
+                DBHelper.get().getSpEvents()?.forEach {
+                    spEventList.add(it.spEvent)
                 }
                 loadingFlag.postValue(false)
             }

@@ -11,6 +11,7 @@
     <string name="title_enemy">怪物</string>
     <string name="title_calendar">日历</string>
     <string name="title_community">社区讨论</string>
+    <string name="title_sp_event">特别活动</string>
     <string name="community_dialog_title">加入社区交流</string>
     <string name="community_dialog_text">为方便各位骑士君讨论游戏，我们新建立了井盖「公主连接」群，这里有国服日服台服大佬，欢迎大家来吹水，讨论攻略，交流xp。\n同时可以在这里反馈静流笔记的bug，以及你对静流笔记的建议。国服、日服、台服均可加入！</string>
     <string name="setting_language_dialog_title">Language</string>
