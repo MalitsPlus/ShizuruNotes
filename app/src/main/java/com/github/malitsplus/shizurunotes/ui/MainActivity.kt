@@ -112,6 +112,7 @@ class MainActivity : AppCompatActivity(),
         sharedChara.charaList.value = mutableListOf()
         sharedClanBattle.periodList.value = mutableListOf()
         sharedClanBattle.dungeonList = mutableListOf()
+        sharedClanBattle.spEventList = mutableListOf()
         sharedQuest.questList.value = mutableListOf()
         sharedEquipment.selectedDrops.value = mutableListOf()
         ViewModelProvider(this)[SharedViewModelHatsune::class.java].hatsuneStageList.value = listOf()

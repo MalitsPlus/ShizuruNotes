@@ -78,6 +78,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_nav_bottom_navigation_to_nav_sp_event"
+            app:destination="@id/nav_sp_event"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -363,4 +370,17 @@
         android:name="com.github.malitsplus.shizurunotes.ui.analyze.AnalyzeFragment"
         android:label="analyze_fragment"
         tools:layout="@layout/fragment_analyze" />
+    <fragment
+        android:id="@+id/nav_sp_event"
+        android:name="com.github.malitsplus.shizurunotes.ui.spevent.SpEventFragment"
+        android:label="fragment_sp_event"
+        tools:layout="@layout/fragment_sp_event" >
+        <action
+            android:id="@+id/action_nav_sp_event_to_nav_enemy"
+            app:destination="@id/nav_enemy"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
 </navigation>

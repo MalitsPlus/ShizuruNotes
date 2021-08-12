@@ -36,24 +36,23 @@ class MenuFragment : Fragment() {
                 when(it.id){
                     R.id.constraint_dungeon ->
                         it.findNavController().navigate(
-                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavDungeon()
-                        )
+                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavDungeon())
                     R.id.constraint_calendar ->
                         it.findNavController().navigate(
-                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavCalendar()
-                        )
+                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavCalendar())
                     R.id.constraint_setting ->
                         it.findNavController().navigate(
-                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavSettingContainer()
-                        )
+                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavSettingContainer())
                     R.id.constraint_rank_comparison ->
                         it.findNavController().navigate(
-                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavRankCompare()
-                        )
+                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavRankCompare())
                     R.id.constraint_hatsune ->
                         it.findNavController().navigate(
-                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavHatsuneStage()
-                        )
+                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavHatsuneStage())
+                    R.id.constraint_sp_event ->
+                        it.findNavController().navigate(
+                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavSpEvent())
+
 //                    R.id.constraint_community -> {
 //                        val communityView = DataBindingUtil.inflate<ViewCommunityBinding>(
 //                            layoutInflater, R.layout.view_community, container, false
