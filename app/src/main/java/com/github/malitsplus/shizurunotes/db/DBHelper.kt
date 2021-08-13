@@ -1123,30 +1123,51 @@ class DBHelper private constructor(
             1 -> getBeanListByRaw(
                 """
                 SELECT
-                a.kaiser_boss_id 'boss_id',
-                a.name,
-                b.*
-                FROM
-                kaiser_quest_data AS a 
+                a.kaiser_boss_id 'boss_id'
+                ,a.name
+                ,b.*
+                FROM kaiser_quest_data AS a 
+                JOIN wave_group_data AS b ON a.wave_group_id=b.wave_group_id 
+                WHERE NOT EXISTS (SELECT 1 FROM kaiser_special_battle WHERE wave_group_id=a.wave_group_id)
+                UNION ALL
+                SELECT 
+                0 'boss_id'
+                ,'メインボスMODE'||a.mode 'name'
+                ,b.*
+                FROM kaiser_special_battle AS a
                 JOIN wave_group_data AS b ON a.wave_group_id=b.wave_group_id 
                 """,
                 RawSpEvent::class.java)
             2 -> getBeanListByRaw(
                 """
                 SELECT
-                a.legion_boss_id 'boss_id',
-                a.name,
-                b.*
-                FROM
-                legion_quest_data AS a 
+                a.legion_boss_id 'boss_id'
+                ,a.name
+                ,b.*
+                FROM legion_quest_data AS a 
+                JOIN wave_group_data AS b ON a.wave_group_id=b.wave_group_id 
+                WHERE NOT EXISTS (SELECT 1 FROM legion_special_battle WHERE wave_group_id=a.wave_group_id)
+                UNION ALL
+                SELECT
+                0 'boss_id'
+                ,'メインボスMODE'||a.mode 'name'
+                ,b.*
+                FROM legion_special_battle AS a 
                 JOIN wave_group_data AS b ON a.wave_group_id=b.wave_group_id 
                 UNION ALL
                 SELECT
-                a.kaiser_boss_id 'boss_id',
-                a.name,
-                b.*
-                FROM
-                kaiser_quest_data AS a 
+                a.kaiser_boss_id 'boss_id'
+                ,a.name
+                ,b.*
+                FROM kaiser_quest_data AS a 
+                JOIN wave_group_data AS b ON a.wave_group_id=b.wave_group_id 
+                WHERE NOT EXISTS (SELECT 1 FROM kaiser_special_battle WHERE wave_group_id=a.wave_group_id)
+                UNION ALL
+                SELECT 
+                0 'boss_id'
+                ,'メインボスMODE'||a.mode 'name'
+                ,b.*
+                FROM kaiser_special_battle AS a
                 JOIN wave_group_data AS b ON a.wave_group_id=b.wave_group_id 
                 """,
                 RawSpEvent::class.java)
