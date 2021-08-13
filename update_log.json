@@ -1,9 +1,9 @@
 {
-	"versionCode": "51",
-	"versionName": "1.9.0",
+	"versionCode": "52",
+	"versionName": "1.9.1",
 	"recommend": "false",
-	"messageJa": "・カレンダーにて選択した鯖のタイムゾーンを基準に日付を表示するように変更\n・「SPイベント」画面を実装",
-	"messageZh": "・修改日历以所选服务器所在时区为基准显示日期\n・新增“特别活动”界面",
+	"messageJa": "・SPイベントにて一部の敵情報が表示されない不具合を修正",
+	"messageZh": "・修正部分特别活动Boss信息缺失的问题",
 	"infoJa": "",
 	"infoZh": ""
 }
