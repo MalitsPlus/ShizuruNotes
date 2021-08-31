@@ -674,4 +674,5 @@
     <string name="s1_will_be_applied_the_s2_once_they_take_any_actions_will_take_s3_damage_every_second_lasted_4s_seconds">每当%1$s行动时，使其受到 [%3$s] %2$s伤害，持续时间 [%4$s] 秒。</string>
     <string name="this_buff_is_constant">此效果不会受到其他改变数值效果的影响（会受到驱散等直接解除效果的影响）。</string>
     <string name="drag_s1_to_a_position_s2_forward_of_the_caster">将%1$s拉至自身前方 [%2$s] 的位置。</string>
+    <string name="hint_text_search_no_result">未检索到该角色\n（当前仅支持角色名及其平假名）</string>
 </resources>
