@@ -6,6 +6,7 @@ import com.github.malitsplus.shizurunotes.R
 import com.github.malitsplus.shizurunotes.common.I18N
 import com.github.malitsplus.shizurunotes.data.action.PassiveAction
 import com.github.malitsplus.shizurunotes.user.UserSettings
+import com.github.malitsplus.shizurunotes.utils.LogUtils
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.util.*
@@ -76,14 +77,15 @@ class Chara: Cloneable {
     }
 
     val birthDate: String by lazy {
-        if (birthMonth.contains("?") || birthDay.contains("?")) {
-            birthMonth + I18N.getString(R.string.text_month) + birthDay + I18N.getString(R.string.text_day)
-        } else {
+        try {
             val calendar = Calendar.getInstance()
             calendar.set(calendar.get(Calendar.YEAR), birthMonth.toInt() - 1, birthDay.toInt())
             val locale =  Locale(UserSettings.get().getLanguage())
             val format = DateFormat.getBestDateTimePattern(locale, "d MMM")
             SimpleDateFormat(format, locale).format(calendar.time)
+        } catch (e: Exception) {
+            LogUtils.file(LogUtils.E, "Failed to format ${unitName}'s birthDate string. Details: ${e.message}")
+            birthMonth + I18N.getString(R.string.text_month) + birthDay + I18N.getString(R.string.text_day)
         }
     }
 

@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="app_name">シズノト</string>
+    <string name="app_name">シズルノート</string>
     <string name="app_full_name">シズルノート</string>
     <string name="title_chara_list">キャラ</string>
     <string name="title_equipment">装備</string>
@@ -68,7 +68,7 @@
     <string name="setting_about">シズルノートについて</string>
     <string name="about_version" translatable="false">Version: %s</string>
     <string name="about_disclaimer" translatable="false">This is an unofficial fan-made application, copyright of all resources associate with the game \"Princess Connect Re:Dive\" are belong to Cygames, Inc. </string>
-    <string name="about_hp" translatable="false">Open source home page \nhttps://github.com/MalitsPlus/ShizuruNotes</string>
+    <string name="about_hp" translatable="false">Open source homepage \nhttps://github.com/MalitsPlus/ShizuruNotes</string>
     <string name="about_developer" translatable="false">Development &lt;br/>Vibbit&lt;a href=\"https://twitter.com/L8102259\">@L8102259&lt;/a></string>
     <string name="about_translator" translatable="false">Localization &lt;br/>(Korean)applemintia&lt;a href=\"https://twitter.com/_applemintia\">@_applemintia&lt;/a>&lt;br/>(English)&lt;a href=\"https://twitter.com/southro_p\">southrop&lt;/a></string>
     <string name="about_api" translatable="false">API by https://redive.estertion.win</string>
@@ -383,7 +383,7 @@
     <string name="self">自分</string>
     <string name="the_most_backward">一番後ろの</string>
     <string name="the_most_forward">一番前の</string>
-    <string name="targets_within_the_scope">範囲内のターゲット</string>
+    <string name="targets_within_the_scope">範囲内の対象</string>
     <string name="the_highest_TP">TPが一番高い</string>
     <string name="the_lowest_TP">TPが一番低い</string>
     <string name="the_highest_ATK">物理攻撃力が一番高い</string>
@@ -401,8 +401,8 @@
     <string name="three">3体</string>
     <string name="four">4体</string>
     <string name="all">全体</string>
-    <string name="target">ターゲット</string>
-    <string name="targets">ターゲット</string>
+    <string name="target">対象</string>
+    <string name="targets">対象</string>
     <string name="front">前方</string>
     <string name="front_including_self">自分を含めて前方</string>
     <string name="front_and_back">前方と後方</string>
@@ -437,19 +437,19 @@
     <string name="the_s_lowest_ATK">物理攻撃力が%s低い</string>
     <string name="the_s_highest_Magic_STR">魔法攻撃力が%s高い</string>
     <string name="the_s_lowest_Magic_STR">魔法攻撃力が%s低い</string>
-    <string name="targets_those_damaged_by_effect_d">[アクション%d] にダメージを与えられたターゲット</string>
-    <string name="targets_of_effect_d">[アクション%d] のターゲット</string>
-    <string name="targets_of_last_effect">前のアクションのターゲット</string>
+    <string name="targets_those_damaged_by_effect_d">[アクション%d] にダメージを与えられた対象</string>
+    <string name="targets_of_effect_d">[アクション%d] の目標</string>
+    <string name="targets_of_last_effect">前のアクションの目標</string>
     <string name="all_s_targets">%s全体</string>
     <string name="all_s_s_targets">%2$s%1$s全体</string>
     <string name="s_s_target">%1$s%2$s</string>
     <string name="s_s_s">%1$s%2$s%3$s</string>
     <string name="all_front_enemy_targets">前方すべての敵</string>
     <string name="all_front_including_self_friendly_targets">自分を含めて前方すべての味方</string>
-    <string name="all_front_targets">前方のターゲットすべて</string>
+    <string name="all_front_targets">前方の対象すべて</string>
     <string name="all_front_s_enemy_targets">前方%sすべての敵</string>
     <string name="all_front_including_self_s_friendly_targets">自分を含めて前方%sすべての味方</string>
-    <string name="all_front_s_targets">前方%sすべてのターゲット</string>
+    <string name="all_front_s_targets">前方%sすべての対象</string>
     <string name="s1_targets_in_range_d2">範囲 [%2$d] 内の%1$s</string>
     <string name="front_s1_targets_in_range_d2">前方範囲 [%2$d] 内の%1$s</string>
     <string name="s1_s2_targets_in_range_d3">範囲 [%3$d] 内の%2$s%1$s</string>
@@ -600,7 +600,7 @@
     <string name="Modifier_add_s1_lost_HP_to_value_d2_of_effect_d3">[アクション%3$d] の係数%2$dを [%1$s * 損失したHP] アップさせる。</string>
     <string name="Modifier_add_s1_count_of_defeated_enemies_to_value_d2_of_effect_d3">[アクション%3$d] の係数%2$dを [%1$s * 倒した敵の数] アップさせる。</string>
     <string name="Modifier_add_s1_stacks_of_mark_ID_d2_to_value_d3_of_effect_d4">[アクション%4$d] の係数%3$dを [%1$s * マーク [ID: %2$d] のスタック数] アップさせる。</string>
-    <string name="Modifier_add_s1_count_of_targets_to_value_d2_of_effect_d3">[アクション%3$d] の係数%2$dを [%1$s * ターゲットの数] アップさせる。</string>
+    <string name="Modifier_add_s1_count_of_targets_to_value_d2_of_effect_d3">[アクション%3$d] の係数%2$dを [%1$s * 対象の数] アップさせる。</string>
     <string name="Modifier_add_s1_total_damage_to_value_d2_of_effect_d3">[アクション%3$d] の係数%2$dを [%1$s * ダメージ量] アップさせる。</string>
     <string name="Modifier_add_s1_s2_of_s3_to_value_d4_of_effect_d5">[アクション%5$d] の係数%4$dを [%1$s * %3$sの%2$s] アップさせる。</string>
     <string name="Modifier_add_s1_count_of_s2_behind_self_to_value_d3_of_effect_d4">[アクション%4$d] の係数%3$dを [%1$s * 後ろの%2$sの数] アップさせる。</string>
@@ -615,14 +615,14 @@
     <string name="use_d1_if_s2_is_alone">%2$sが単独の場合、[アクション%1$d] を使う。</string>
     <string name="use_d1_if_the_count_of_s2_except_stealth_units_is_d3">潜伏状態のユニットを除いて、%2$sの数が%3$dの場合、[アクション%1$d] を使う。</string>
     <string name="use_d1_if_among_s2_exists_unit_ID_d3">潜伏状態のユニットを除いて、%2$sの中ユニット[ID: %3$d]が存在する場合、[アクション%1$d] を使う。</string>
-    <string name="if_target_is_defeated_by_the_last_effect_then_use_d">前のアクションがターゲットを倒した場合、[アクション%d] を使う。</string>
+    <string name="if_target_is_defeated_by_the_last_effect_then_use_d">前のアクションが対象を倒した場合、[アクション%d] を使う。</string>
     <string name="counter_d3_is_greater_than_or_equal_to_d1_then_use_d2">[カウンター%3$d] の数が [%1$d] 以上の場合、[アクション%2$d] を使う。</string>
     <string name="use_d1_if_s2_has_no_dot_debuff">%2$sが継続ダメージデバフを掛けられていない場合、[アクション%1$d] を使う。</string>
     <string name="use_d1_if_s2_is_not_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4">%2$sが持っているマーク [ID: %3$d] のスタック数が [%4$d] 未満の場合、[アクション%1$d] を使う。</string>
     <string name="use_d1_if_s2_is_not_alone">%2$sが単独でない場合、[アクション%1$d] を使う。</string>
     <string name="use_d1_if_the_count_of_s2_except_stealth_units_is_not_d3">潜伏状態のユニットを除いて、%2$sの数が [%3$d] でない場合、[アクション%1$d] を使う。</string>
     <string name="use_d1_if_among_s2_does_not_exists_unit_ID_d3">潜伏状態のユニットを除いて、%2$sの中ユニット[ID: %3$d]が存在しない場合、[アクション%1$d] を使う。</string>
-    <string name="if_target_is_not_defeated_by_the_last_effect_then_use_d">前のアクションがターゲットを倒してない場合、[アクション%d] を使う。</string>
+    <string name="if_target_is_not_defeated_by_the_last_effect_then_use_d">前のアクションが対象を倒してない場合、[アクション%d] を使う。</string>
     <string name="counter_d3_is_less_than_d1_then_use_d2">[カウンター%3$d] の数が [%1$d] 未満の場合、[アクション%2$d] を使う。</string>
     <string name="Exclusive_condition_s">全体的条件分岐：%s</string>
     <string name="Kill_s_instantly">%sを即死させる。</string>
@@ -633,7 +633,7 @@
     <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_magical_damage">%1$sに [%3$s] 回分の魔法ダメージを無効化できるシールドを展開する、魔法ダメージを受けた時 [%2$s] 分のダメージを反射し、自分のHPを同等の値回復させる。</string>
     <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_and_recover_the_same_HP_when_taking_damage">%1$sに [%3$s] 回分のダメージを無効化できるシールドを展開する、ダメージを受けた時 [%2$s] 分のダメージを反射し、自分のHPを同等の値回復させる。</string>
     <string name="Cast_a_barrier_on_s1_to_strike_back_s2_damage_when_taking_damage">%1$sに [%3$s] 回分のダメージを無効化できるシールドを展開し、ダメージを受けた時 [%2$s] 分のダメージを反射する。</string>
-    <string name="Add_additional_s1_damage_per_attack_with_max_s2_stacks_to_current_target">現在のターゲットに攻撃するたび、ダメージ量が [%1$s] 追加する、この効果は [%2$s] 回まで累計する。</string>
+    <string name="Add_additional_s1_damage_per_attack_with_max_s2_stacks_to_current_target">現在の目標に攻撃するたび、ダメージ量が [%1$s] 追加する、この効果は [%2$s] 回まで累計する。</string>
     <string name="Add_s1_mark_stacks_max_s2_ID_s3_on_s4_for_s5_sec">%4$sにマーク [ID: %3$s] を [%1$s] スタック追加する、効果時間 [%5$s] 秒、この効果は最大 [%2$s] までスタックする。</string>
     <string name="Remove_s1_mark_stacks_ID_s2_on_s3">%3$sのマーク [ID: %2$s] を [%1$s] スタック減らせる。</string>
     <string name="Summon_a_field_of_radius_d1_to_deal_s2_s3_damage_per_second_for_s4_sec_to_s5">半径 [%1$d] のフィールドを展開し、%5$sに毎秒 [%2$s] の%3$sダメージを与える、効果時間 [%4$s] 秒。</string>
@@ -664,8 +664,8 @@
     <string name="Make_s1_when_get_one_hit_by_the_caster_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">自分がHitするたび、%1$sにマーク [ID: %3$s] を1スタック増やせる、効果時間 [%4$s] 秒。この効果は最大 [%2$s] までスタックする。</string>
     <string name="Make_s1_when_deal_damage_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec">%1$sがダメージを与えるたび、マーク [ID: %3$s] を1スタック増やせる、効果時間 [%4$s] 秒、この効果は最大 [%2$s] までスタックする。</string>
     <string name="Fear_s1_with_s2_chance_for_s3_sec">[%2$s%%] の確率で%1$sを恐慌状態にする、効果時間 [%3$s] 秒。</string>
-    <string name="Reduce_s1_damage_or_instant_healing_effect_of_union_burst_and_main_skills_cast_by_s2_for_s3_sec">%2$sのユニオンバーストかスキルが任意のターゲットにダメージか直接回復を与えるたび、その値を [%1$s%%] ダウンさせる、効果時間 [%3$s] 秒。</string>
-    <string name="Reduce_s1_damage_or_instant_healing_effect_of_union_burst_cast_by_s2_for_s3_sec">%2$sのユニオンバーストが任意のターゲットにダメージか直接回復を与えるたび、その値を [%1$s%%] ダウンさせる、効果時間 [%3$s] 秒。</string>
+    <string name="Reduce_s1_damage_or_instant_healing_effect_of_union_burst_and_main_skills_cast_by_s2_for_s3_sec">%2$sのユニオンバーストかスキルが任意の対象にダメージか直接回復を与えるたび、その値を [%1$s%%] ダウンさせる、効果時間 [%3$s] 秒。</string>
+    <string name="Reduce_s1_damage_or_instant_healing_effect_of_union_burst_cast_by_s2_for_s3_sec">%2$sのユニオンバーストが任意の対象にダメージか直接回復を与えるたび、その値を [%1$s%%] ダウンさせる、効果時間 [%3$s] 秒。</string>
     <string name="Repeat_effect_d1_every_s2_sec_up_to_s3_sec_break_if_taken_more_than_s4_damage">[%2$s] 秒ごとに [アクション%1$d] を使い、最大 [%3$s] 秒まで続く。受けたダメージ量が [%4$s] を超えた時この効果を中断する。</string>
     <string name="use_d_after_time_up">効果時間終了後、[アクション%d] を使う。</string>
     <string name="use_d_after_break">効果が中断されたあと、[アクション%d] を使う。</string>
@@ -682,10 +682,10 @@
     <string name="use_d1_to_s2_if_target_is_magical_type">%2$sが魔法攻撃を行う対象の場合、[アクション%1$d] を使う。</string>
     <string name="use_d1_to_s2_if_target_is_not_magical_type">%2$sが魔法攻撃を行う対象でない場合、[アクション%1$d] を使う。</string>
     <string name="change_energy_recovery_ratio_of_action_s1_to_s2_when_s3_get_damage">ダメージによるTP回復を含めて、%3$sが [アクション%1$s] を受けた時全てのTP回復効果を [本来の値 * %2$s] に変更させる。</string>
-    <string name="Ignore_the_other_units_taunt_when_attacking_s">%sを攻撃する時、他のターゲットの挑発効果を無視する。</string>
+    <string name="Ignore_the_other_units_taunt_when_attacking_s">%sを攻撃する時、他の対象の挑発効果を無視する。</string>
     <string name="time_stop">時間停止</string>
     <string name="Stop_s1_for_s2_sec">%1$sを時間停止状態にする、効果時間 [%2$s] 秒。</string>
-    <string name="Modifier_add_s1_count_of_damaged_to_value_d2_of_effect_d3">[アクション%3$d] の係数%2$dを [%1$s * ダメージを与えられたターゲットの数] アップさせる。</string>
+    <string name="Modifier_add_s1_count_of_damaged_to_value_d2_of_effect_d3">[アクション%3$d] の係数%2$dを [%1$s * ダメージを与えられた対象の数] アップさせる。</string>
     <string name="nearest_without_self">自分以外最も近い</string>
     <string name="s_nearest_without_self">%s自分以外最も近い</string>
     <string name="the_s_nearest_without_self">自分以外%s近い</string>
@@ -740,6 +740,4 @@
     <string name="s1_will_be_applied_the_s2_once_they_take_any_actions_will_take_s3_damage_every_second_lasted_4s_seconds">%1$sが行動する度、[%3$s] の%2$sダメージを与える、効果時間 [%4$s] 秒。</string>
     <string name="this_buff_is_constant">この効果は他の値への効果の影響を受けない（ディスペルなど効果解除の影響は受ける）。</string>
     <string name="drag_s1_to_a_position_s2_forward_of_the_caster">%1$sを自分の前 [%2$s] の位置に引き寄せる。</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
