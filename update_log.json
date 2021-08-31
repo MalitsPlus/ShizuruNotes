@@ -1,9 +1,9 @@
 {
-	"versionCode": "52",
-	"versionName": "1.9.1",
+	"versionCode": "53",
+	"versionName": "1.9.2",
 	"recommend": "false",
-	"messageJa": "・SPイベントにて一部の敵情報が表示されない不具合を修正",
-	"messageZh": "・修正部分特别活动Boss信息缺失的问题",
+	"messageJa": "・2人組キャラプロファイル画面でのクラッシュ問題を修正",
+	"messageZh": "・修复进入多人角色个人信息画面时崩溃的问题",
 	"infoJa": "",
 	"infoZh": ""
 }
