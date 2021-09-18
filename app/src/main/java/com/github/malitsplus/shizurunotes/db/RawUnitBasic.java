@@ -11,6 +11,7 @@ import java.util.Locale;
 
 public class RawUnitBasic {
     public int unit_id;
+    public int unit_conversion_id;
     public String unit_name;
     public int prefab_id;
     public int move_speed;
@@ -35,10 +36,12 @@ public class RawUnitBasic {
     public String actual_name;
     public String kana;
 
+
     public void setCharaBasic(Chara chara){
         chara.setCharaId(unit_id / 100);
 
         chara.setUnitId(unit_id);
+        chara.setUnitConversionId(unit_conversion_id);
         chara.unitName = unit_name;
         chara.setPrefabId(prefab_id);
         chara.setSearchAreaWidth(search_area_width);
@@ -88,10 +91,10 @@ public class RawUnitBasic {
         if(search_area_width < 300) {
             chara.position = "1";
             chara.setPositionIcon(R.drawable.position_forward);
-        } else if(search_area_width > 300 && search_area_width < 600){
+        } else if(search_area_width < 600){
             chara.position = "2";
             chara.setPositionIcon(R.drawable.position_middle);
-        } else if(search_area_width > 600) {
+        } else {
             chara.position = "3";
             chara.setPositionIcon(R.drawable.position_rear);
         }

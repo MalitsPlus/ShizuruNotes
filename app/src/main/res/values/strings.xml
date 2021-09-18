@@ -162,7 +162,7 @@
     <string name="text_magical_penetrate">&#160;魔法貫通&#160;</string>
     <string name="text_hp_recovery">&#160;回復量上昇&#160;</string>
     <string name="text_search_area_width">&#160;攻撃距離&#160;</string>
-    <string name="text_status_tips">*上記のステータスは☆MAX、装備&amp;専用装備フル強化、ストーリーステータス&amp;Exスキルを含めての値になります。</string>
+    <string name="text_status_tips">*上記のステータスは☆MAX、装備&amp;専用装備フル強化、ストーリーステータス&amp;Exスキル&amp;Rank Bonusを含めての値になります。</string>
     <string name="text_attack_pattern">&#160;行動パターン%d&#160;</string>
     <string name="text_normal_mode">通常モード</string>
     <string name="text_cast_time">待機時間：</string>
@@ -645,7 +645,7 @@
     <string name="Summon_a_field_of_radius_d1_on_s2_to_cast_effect_d3_for_s4_sec">%2$sの位置で半径 [%1$d] のフィールドを展開し、[アクション%3$d] を継続的に放る、効果時間 [%4$s] 秒。</string>
     <string name="Condition_s1_chance_use_d2_when_takes_damage_within_s3_sec">条件分岐：[%3$s] 秒内ダメージを受けた場合、[%1$s%%] の確率で [アクション%2$d] を使う。</string>
     <string name="Appear_after_s_sec_since_wave_start">ウェーブ開始 [%s] 秒後入場する。</string>
-    <string name="Add_d1_to_the_counter_d2">[カウンター%2$d] の数を [%1$d] 増やせる。</string>
+    <string name="Add_d1_to_the_counter_d2">[カウンター%1$d] の数を [1] 増やせる。（最大 [%2$d] まで）</string>
     <string name="Deal_damage_equal_to_s1_of_target_max_HP_to_s2">%2$sに最大HP [%1$s%%] 分のダメージを与える。</string>
     <string name="Deal_damage_equal_to_s1_of_target_current_HP_to_s2">%2$sに残りHP [%1$s%%] 分のダメージを与える。</string>
     <string name="s_Damage_is_reduced_on_low_level_players">%sダメージはレベルの低いプレイヤーに対して減軽する。</string>
@@ -740,4 +740,5 @@
     <string name="s1_will_be_applied_the_s2_once_they_take_any_actions_will_take_s3_damage_every_second_lasted_4s_seconds">%1$sが行動する度、[%3$s] の%2$sダメージを与える、効果時間 [%4$s] 秒。</string>
     <string name="this_buff_is_constant">この効果は他の値への効果の影響を受けない（ディスペルなど効果解除の影響は受ける）。</string>
     <string name="drag_s1_to_a_position_s2_forward_of_the_caster">%1$sを自分の前 [%2$s] の位置に引き寄せる。</string>
+    <string name="DMG_shall_be_increased_by_s_percents_of_base_DMG_through_each_tick">さらに、この継続ダメージは毎秒ごとに基礎ダメージの [%s%%] 増加する。</string>
 </resources>
