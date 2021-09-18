@@ -23,6 +23,7 @@ class Chara: Cloneable {
     }
 
     var unitId: Int = 0
+    var unitConversionId: Int = 0
     var charaId: Int = 0
     var prefabId: Int = 0
     var searchAreaWidth: Int = 0

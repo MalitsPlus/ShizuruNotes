@@ -11,8 +11,6 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.internal.Util;
-
 public class AilmentAction extends ActionParameter {
 
     private Ailment ailment;
@@ -79,17 +77,22 @@ public class AilmentAction extends ActionParameter {
                 }
                 return str;
             case dot:
+                String r;
                 switch ((Ailment.DotDetail)ailment.ailmentDetail.detail){
                     case poison:
-                        return I18N.getString(R.string.Poison_s1_and_deal_s2_damage_per_second_for_s3_sec,
+                        r = I18N.getString(R.string.Poison_s1_and_deal_s2_damage_per_second_for_s3_sec,
                                 targetParameter.buildTargetClause(), buildExpression(level, property), buildExpression(level, durationValues, RoundingMode.HALF_UP, property));
                     case violentPoison:
-                        return I18N.getString(R.string.Poison_s1_violently_and_deal_s2_damage_per_second_for_s3_sec,
+                        r = I18N.getString(R.string.Poison_s1_violently_and_deal_s2_damage_per_second_for_s3_sec,
                                 targetParameter.buildTargetClause(), buildExpression(level, property), buildExpression(level, durationValues, RoundingMode.HALF_UP, property));
                     default:
-                        return I18N.getString(R.string.s1_s2_and_deal_s3_damage_per_second_for_s4_sec,
+                        r = I18N.getString(R.string.s1_s2_and_deal_s3_damage_per_second_for_s4_sec,
                                 ailment.description(), targetParameter.buildTargetClause(), buildExpression(level, property), buildExpression(level, durationValues, RoundingMode.HALF_UP, property));
                 }
+                if (actionValue5.value > 0) {
+                    r += I18N.getString(R.string.DMG_shall_be_increased_by_s_percents_of_base_DMG_through_each_tick, actionValue5.valueString());
+                }
+                return r;
             case silence:
                 return I18N.getString(R.string.Silence_s1_with_s2_chance_for_s3_sec,
                         targetParameter.buildTargetClause(), buildExpression(level, chanceValues, RoundingMode.UNNECESSARY, property), buildExpression(level, property));

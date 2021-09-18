@@ -358,8 +358,9 @@ class DBHelper private constructor(
      * 获取角色基础数据
      */
     fun getCharaBase(): List<RawUnitBasic>? {
-        return getBeanListByRaw(
-            """
+        return if (getConversionCount == "0") {
+            getBeanListByRaw(
+                """
                 SELECT ud.unit_id
                 ,ud.unit_name
                 ,ud.kana
@@ -390,8 +391,50 @@ class DBHelper private constructor(
                 WHERE ud.comment <> '' 
                 AND ud.unit_id < 400000 
                 """,
-            RawUnitBasic::class.java
-        )
+                RawUnitBasic::class.java
+            )
+        } else {
+            getBeanListByRaw(
+                """
+                SELECT ud.unit_id
+                ,ud.unit_name
+                ,ud.kana
+                ,ud.prefab_id
+                ,ud.move_speed
+                ,ud.search_area_width
+                ,ud.atk_type
+                ,ud.normal_atk_cast_time
+                ,ud.guild_id
+                ,ud.comment
+                ,ud.start_time
+                ,up.age
+                ,up.guild
+                ,up.race
+                ,up.height
+                ,up.weight
+                ,up.birth_month
+                ,up.birth_day
+                ,up.blood_type
+                ,up.favorite
+                ,up.voice
+                ,up.catch_copy
+                ,up.self_text
+                ,IFNULL(au.unit_name, ud.unit_name) 'actual_name' 
+                ,uc.unit_id 'unit_conversion_id' 
+                FROM unit_data AS ud 
+                JOIN unit_profile AS up ON ud.unit_id = up.unit_id 
+                LEFT JOIN actual_unit_background AS au ON substr(ud.unit_id,1,4) = substr(au.unit_id,1,4) 
+                LEFT JOIN unit_conversion AS uc ON ud.unit_id = uc.original_unit_id 
+                WHERE ud.comment <> '' 
+                AND ud.unit_id < 400000 
+                """,
+                RawUnitBasic::class.java
+            )
+        }
+    }
+
+    private val getConversionCount: String by lazy {
+        getOne("SELECT count(*) FROM sqlite_master WHERE type='table' AND name='unit_conversion'")!!
     }
 
     /***

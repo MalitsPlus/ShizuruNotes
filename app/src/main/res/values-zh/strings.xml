@@ -104,7 +104,7 @@
     <string name="text_magical_penetrate">&#160;魔法贯通&#160;</string>
     <string name="text_hp_recovery">&#160;回复量上升&#160;</string>
     <string name="text_search_area_width">&#160;攻击距离&#160;</string>
-    <string name="text_status_tips">*上记的状态参数为☆MAX，装备&amp;专用装备最大强化，且包含羁绊剧情&amp;Ex技能的值。</string>
+    <string name="text_status_tips">*上记的状态参数为☆MAX，装备&amp;专用装备最大强化，且包含羁绊剧情&amp;Ex技能&amp;Rank Bonus的值。</string>
     <string name="text_attack_pattern">&#160;技能循环%d&#160;</string>
     <string name="text_normal_mode">通常模式</string>
     <string name="text_cast_time">待机时间：</string>
@@ -457,7 +457,7 @@
     <string name="Summon_a_field_of_radius_d1_on_s2_to_cast_effect_d3_for_s4_sec">在%2$s的位置展开半径为 [%1$d] 的领域，持续施放 [动作%3$d]，持续时间 [%4$s] 秒。</string>
     <string name="Condition_s1_chance_use_d2_when_takes_damage_within_s3_sec">条件分歧：[%3$s] 秒内受到伤害的场合，以 [%1$s%%] 的概率使用 [动作%2$d]。</string>
     <string name="Appear_after_s_sec_since_wave_start">战斗开始 [%s] 秒后入场。</string>
-    <string name="Add_d1_to_the_counter_d2">增加 [%1$d] 枚 [计数器%2$d]。</string>
+    <string name="Add_d1_to_the_counter_d2">增加 [1] 枚 [计数器%1$d]。（最大可持有 [%2$d] 枚）</string>
     <string name="Deal_damage_equal_to_s1_of_target_max_HP_to_s2">对%2$s造成最大HP [%1$s%%] 伤害。</string>
     <string name="Deal_damage_equal_to_s1_of_target_current_HP_to_s2">对%2$s造成剩余HP [%1$s%%] 伤害。</string>
     <string name="s_Damage_is_reduced_on_low_level_players">%s对低等级的玩家造成的伤害将被减轻。</string>
@@ -675,4 +675,5 @@
     <string name="this_buff_is_constant">此效果不会受到其他改变数值效果的影响（会受到驱散等直接解除效果的影响）。</string>
     <string name="drag_s1_to_a_position_s2_forward_of_the_caster">将%1$s拉至自身前方 [%2$s] 的位置。</string>
     <string name="hint_text_search_no_result">未检索到该角色\n（当前仅支持角色名及其平假名）</string>
+    <string name="DMG_shall_be_increased_by_s_percents_of_base_DMG_through_each_tick">并且此伤害每秒会增加基础伤害的 [%s%%]。</string>
 </resources>

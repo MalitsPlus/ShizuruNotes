@@ -414,39 +414,29 @@ public class ActionParameter {
                 return hasBracesIfNeeded ? bracesIfNeeded(expression.toString()) : expression.toString();
             }
         } else {
-            double fixedValue = 0.0;
+            BigDecimal fixedValue = new BigDecimal("0.0");
             for(ActionValue value : actionValues){
-                double part = 0.0;
+                BigDecimal part = new BigDecimal("0.0");
                 if(value.initial != null && value.perLevel != null) {
-                    double initialValue = Double.parseDouble(value.initial);
-                    double perLevelValue = Double.parseDouble(value.perLevel);
-                    part = initialValue + perLevelValue * level;
+                    BigDecimal initialValue = new BigDecimal(value.initial);
+                    BigDecimal perLevelValue = new BigDecimal(value.perLevel);
+                    part = initialValue.add(perLevelValue.multiply(new BigDecimal(level)));
                 }
                 if(value.key != null){
-                    part = part * property.getItem(value.key);
+                    part = part.multiply(BigDecimal.valueOf(property.getItem(value.key)));
                 }
-                int num = (int)part;
-                if (UnitUtils.Companion.approximately(part, (double)num)) {
-                    part = num;
-                }
-                fixedValue += part;
+//                int num = (int)part;
+//                if (UnitUtils.Companion.approximately(part, (double)num)) {
+//                    part = num;
+//                }
+                fixedValue = fixedValue.add(part);
             }
-            /*
-            if(isHealing){
-                fixedValue *= (property.hpRecoveryRate / 100 + 1);
-            }
-            if(isSelfTPRestoring){
-                fixedValue *= (property.energyRecoveryRate / 100 + 1);
-            */
             if(roundingMode == RoundingMode.UNNECESSARY)
-                return Utils.roundIfNeed(fixedValue);
+                return fixedValue.stripTrailingZeros().toPlainString();
 
-            BigDecimal bigDecimal = new BigDecimal(fixedValue);
-            return String.valueOf(bigDecimal.setScale(0, roundingMode).intValue());
+            return fixedValue.setScale(0, roundingMode).toPlainString();
         }
     }
-
-
 
     protected List<ActionValue> actionValues = new ArrayList<>();
 

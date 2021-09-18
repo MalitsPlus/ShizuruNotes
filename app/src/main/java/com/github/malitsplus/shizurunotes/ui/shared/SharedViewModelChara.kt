@@ -136,17 +136,32 @@ class SharedViewModelChara : ViewModel() {
     }
 
     private fun setUnitSkillData(chara: Chara) {
-        get().getUnitSkillData(chara.unitId)?.setCharaSkillList(chara)
+        if (chara.unitConversionId == 0) {
+            get().getUnitSkillData(chara.unitId)?.setCharaSkillList(chara)
+        } else {
+            get().getUnitSkillData(chara.unitConversionId)?.setCharaSkillList(chara)
+        }
     }
 
     private fun setUnitAttackPattern(chara: Chara) {
-        get().getUnitAttackPattern(chara.unitId)?.forEach {
-            chara.attackPatternList.add(
-                it.attackPattern.setItems(
-                    chara.skills,
-                    chara.atkType
+        if (chara.unitConversionId == 0) {
+            get().getUnitAttackPattern(chara.unitId)?.forEach {
+                chara.attackPatternList.add(
+                    it.attackPattern.setItems(
+                        chara.skills,
+                        chara.atkType
+                    )
                 )
-            )
+            }
+        } else {
+            get().getUnitAttackPattern(chara.unitConversionId)?.forEach {
+                chara.attackPatternList.add(
+                    it.attackPattern.setItems(
+                        chara.skills,
+                        chara.atkType
+                    )
+                )
+            }
         }
     }
 
