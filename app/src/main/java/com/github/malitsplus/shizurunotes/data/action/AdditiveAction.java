@@ -82,6 +82,11 @@ public class AdditiveAction extends ActionParameter {
                         buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
                         targetParameter.buildTargetClause(), actionDetail2, actionDetail1 % 10);
                 break;
+            case 13:
+                result = I18N.getString(R.string.Modifier_add_s1_lost_hp_total_hp_of_s2_behind_self_to_value_d3_of_effect_d4,
+                        buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
+                        targetParameter.buildTargetClause(), actionDetail2, actionDetail1 % 10);
+                break;
             case 102:
                 result = I18N.getString(R.string.Modifier_add_s1_count_of_omemes_value_d2_of_effect_d3,
                         buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
