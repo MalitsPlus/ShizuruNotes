@@ -741,4 +741,5 @@
     <string name="this_buff_is_constant">この効果は他の値への効果の影響を受けない（ディスペルなど効果解除の影響は受ける）。</string>
     <string name="drag_s1_to_a_position_s2_forward_of_the_caster">%1$sを自分の前 [%2$s] の位置に引き寄せる。</string>
     <string name="DMG_shall_be_increased_by_s_percents_of_base_DMG_through_each_tick">さらに、この継続ダメージは毎秒ごとに基礎ダメージの [%s%%] 増加する。</string>
+    <string name="Modifier_add_s1_lost_hp_total_hp_of_s2_behind_self_to_value_d3_of_effect_d4">[アクション%4$d] の係数%3$dを [%1$s * (%2$sが損失したHP / 最大HP)] アップさせる。</string>
 </resources>
