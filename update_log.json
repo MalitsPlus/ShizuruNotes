@@ -1,9 +1,11 @@
 {
-	"versionCode": "54",
-	"versionName": "1.10.0",
+	"versionCode": "55",
+	"versionName": "1.10.1",
 	"recommend": "false",
-	"messageJa": "・チカ（サマー）、ジータ（☆6）、ミツキ（オーエド）のスキル説明文を訂正\n・浮動小数点数の誤差を修正",
-	"messageZh": "・订正チカ（サマー）、ジータ（☆6）、ミツキ（オーエド）的技能描述\n・消除浮点计算精度问题",
+	"messageJa": "・カオリ（ハロウィン）のスキル説明文を訂正",
+	"messageZh": "・订正カオリ（ハロウィン）的技能说明",
 	"infoJa": "",
 	"infoZh": ""
 }
+-+
+..
