@@ -74,6 +74,7 @@ public enum ActionType {
     passiveSeal(77),
     passiveDamageUp(78),
     damageByBehaviourAction(79),
+    changeSpeedOverlapAction(83),
     ex(90),
     exPlus(91),
     changeEnergyRecoveryRatioByDamage(92),

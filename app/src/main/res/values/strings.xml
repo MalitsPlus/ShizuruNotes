@@ -742,4 +742,6 @@
     <string name="drag_s1_to_a_position_s2_forward_of_the_caster">%1$sを自分の前 [%2$s] の位置に引き寄せる。</string>
     <string name="DMG_shall_be_increased_by_s_percents_of_base_DMG_through_each_tick">さらに、この継続ダメージは毎秒ごとに基礎ダメージの [%s%%] 増加する。</string>
     <string name="Modifier_add_s1_lost_hp_total_hp_of_s2_behind_self_to_value_d3_of_effect_d4">[アクション%4$d] の係数%3$dを [%1$s * (%2$sが損失したHP / 最大HP)] アップさせる。</string>
+    <string name="Increase_s1_ATK_SPD_by_s2_for_s3_sec">%1$sの行動速度を [%2$s%%] アップさせる、効果時間 [%3$s] 秒。この効果は他の行動速度変化スキルと重ね掛け可能。</string>
+    <string name="Decrease_s1_ATK_SPD_by_s2_for_s3_sec">%1$sの行動速度を [%2$s%%] ダウンさせる、効果時間 [%3$s] 秒。この効果は他の行動速度変化スキルと重ね掛け可能。</string>
 </resources>

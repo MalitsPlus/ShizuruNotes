@@ -158,6 +158,8 @@ public class ActionParameter {
                 return new PassiveDamageUpAction();
             case 79:
                 return new DamageByBehaviourAction();
+            case 83:
+                return new ChangeSpeedOverlapAction();
             case 90:
                 return new PassiveAction();
             case 91:
