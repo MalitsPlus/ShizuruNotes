@@ -677,4 +677,6 @@
     <string name="hint_text_search_no_result">未检索到该角色\n（当前仅支持角色名及其平假名）</string>
     <string name="DMG_shall_be_increased_by_s_percents_of_base_DMG_through_each_tick">并且此伤害每秒会增加基础伤害的 [%s%%]。</string>
     <string name="Modifier_add_s1_lost_hp_total_hp_of_s2_behind_self_to_value_d3_of_effect_d4">使 [动作%4$d] 的系数%3$d 提高 [%1$s * (%2$s损失的HP / 最大HP)]。</string>
+    <string name="Increase_s1_ATK_SPD_by_s2_for_s3_sec">提高%1$s的行动速度 [%2$s%%]，持续时间 [%3$s] 秒。本效果可与其他行动速度变化效果叠加。</string>
+    <string name="Decrease_s1_ATK_SPD_by_s2_for_s3_sec">降低%1$s的行动速度 [%2$s%%]，持续时间 [%3$s] 秒。本效果可与其他行动速度变化效果叠加。</string>
 </resources>
