@@ -1,9 +1,9 @@
 {
-	"versionCode": "55",
-	"versionName": "1.10.1",
+	"versionCode": "56",
+	"versionName": "1.10.2",
 	"recommend": "false",
-	"messageJa": "・カオリ（ハロウィン）のスキル説明文を訂正",
-	"messageZh": "・订正カオリ（ハロウィン）的技能说明",
+	"messageJa": "・カリンのスキル説明文を訂正",
+	"messageZh": "・订正カリン的技能说明",
 	"infoJa": "",
 	"infoZh": ""
 }
