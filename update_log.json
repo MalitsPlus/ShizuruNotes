@@ -1,9 +1,9 @@
 {
-	"versionCode": "56",
-	"versionName": "1.10.2",
+	"versionCode": "57",
+	"versionName": "1.10.3",
 	"recommend": "false",
-	"messageJa": "・カリンのスキル説明文を訂正",
-	"messageZh": "・订正カリン的技能说明",
+	"messageJa": "・ホマレのスキル説明文を訂正",
+	"messageZh": "・订正ホマレ的技能说明",
 	"infoJa": "",
 	"infoZh": ""
 }
