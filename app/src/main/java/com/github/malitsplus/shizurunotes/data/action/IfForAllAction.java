@@ -41,6 +41,9 @@ public class IfForAllAction extends ActionParameter {
             } else if(actionDetail1 == 720) {
                 trueClause = I18N.getString(R.string.use_d1_if_among_s2_exists_unit_ID_d3,
                         actionDetail2 % 10, targetParameter.buildTargetClause(), (int) actionValue3.value);
+            } else if(actionDetail1 == 721) {
+                trueClause = I18N.getString(R.string.use_d1_to_s2_in_state_of_ID_d3,
+                        actionDetail2 % 10, targetParameter.buildTargetClause(true), (int) actionValue3.value);
             } else if (actionDetail1 >=901 && actionDetail1 < 1000) {
                 trueClause = I18N.getString(R.string.use_d1_if_s2_HP_is_below_d3,
                         actionDetail2 % 10, targetParameter.buildTargetClause(true), actionDetail1 - 900);
@@ -54,6 +57,8 @@ public class IfForAllAction extends ActionParameter {
                 trueClause = I18N.getString(R.string.counter_d3_is_greater_than_or_equal_to_d1_then_use_d2,
                         actionDetail1 % 10, actionDetail2 % 10, actionDetail1 % 100 / 10);
             }
+        } else {
+            trueClause = I18N.getString(R.string.no_effect);
         }
 
         if (actionDetail3 != 0){
@@ -83,6 +88,9 @@ public class IfForAllAction extends ActionParameter {
             } else if(actionDetail1 == 720) {
                 falseClause = I18N.getString(R.string.use_d1_if_among_s2_does_not_exists_unit_ID_d3,
                         actionDetail3 % 10, targetParameter.buildTargetClause(), (int) actionValue3.value);
+            } else if(actionDetail1 == 721) {
+                falseClause = I18N.getString(R.string.use_d1_to_s2_if_not_in_state_of_ID_d3,
+                        actionDetail3 % 10, targetParameter.buildTargetClause(true), (int) actionValue3.value);
             } else if (actionDetail1 >=901 && actionDetail1 < 1000) {
                 falseClause = I18N.getString(R.string.use_d1_if_s2_HP_is_not_below_d3,
                         actionDetail3 % 10, targetParameter.buildTargetClause(true), actionDetail1 - 900);
@@ -96,6 +104,8 @@ public class IfForAllAction extends ActionParameter {
                 falseClause = I18N.getString(R.string.counter_d3_is_less_than_d1_then_use_d2,
                         actionDetail1 % 10, actionDetail3 % 10, actionDetail1 % 100 / 10);
             }
+        } else {
+            falseClause = I18N.getString(R.string.no_effect);
         }
 
     }

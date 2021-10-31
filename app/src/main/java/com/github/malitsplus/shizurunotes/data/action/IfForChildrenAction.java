@@ -31,6 +31,9 @@ public class IfForChildrenAction extends ActionParameter {
                 } else if (actionDetail1 == 1300) {
                     trueClause = I18N.getString(R.string.use_d1_to_s2_if_target_is_magical_type,
                             actionDetail2 % 10, targetParameter.buildTargetClause(true));
+                } else if (actionDetail1 >= 6000 && actionDetail1 < 7000) {
+                    trueClause = I18N.getString(R.string.use_d1_to_s2_in_state_of_ID_d3,
+                            actionDetail2 % 10, targetParameter.buildTargetClause(true), actionDetail1 - 6000);
                 }
             }
         }
@@ -53,6 +56,9 @@ public class IfForChildrenAction extends ActionParameter {
                 } else if (actionDetail1 == 1300) {
                     falseClause = I18N.getString(R.string.use_d1_to_s2_if_target_is_not_magical_type,
                             actionDetail3 % 10, targetParameter.buildTargetClause(true));
+                } else if (actionDetail1 >= 6000 && actionDetail1 < 7000) {
+                    falseClause = I18N.getString(R.string.use_d1_to_s2_if_not_in_state_of_ID_d3,
+                            actionDetail3 % 10, targetParameter.buildTargetClause(true), actionDetail1 - 6000);
                 }
             }
         }
@@ -64,7 +70,7 @@ public class IfForChildrenAction extends ActionParameter {
         if(actionDetail1 == 100 || actionDetail1 == 101 || actionDetail1 == 200 || actionDetail1 == 300 || actionDetail1 == 500 || actionDetail1 == 501
                 || actionDetail1 == 502 || actionDetail1 == 503 || actionDetail1 == 512
                 || (actionDetail1 >=600 && actionDetail1 < 900) || (actionDetail1 >= 901 && actionDetail1 < 1000)
-                || actionDetail1 == 1300 || actionDetail1 == 1400) {
+                || actionDetail1 == 1300 || actionDetail1 == 1400 || (actionDetail1 >= 6000 && actionDetail1 < 7000)) {
             if(trueClause != null && falseClause != null)
                 return I18N.getString(R.string.Condition_s, trueClause + falseClause);
             else if(trueClause != null)
