@@ -57,7 +57,7 @@ public class IfForAllAction extends ActionParameter {
                 trueClause = I18N.getString(R.string.counter_d3_is_greater_than_or_equal_to_d1_then_use_d2,
                         actionDetail1 % 10, actionDetail2 % 10, actionDetail1 % 100 / 10);
             }
-        } else {
+        } else if (actionDetail3 == 0){
             trueClause = I18N.getString(R.string.no_effect);
         }
 
@@ -104,7 +104,7 @@ public class IfForAllAction extends ActionParameter {
                 falseClause = I18N.getString(R.string.counter_d3_is_less_than_d1_then_use_d2,
                         actionDetail1 % 10, actionDetail3 % 10, actionDetail1 % 100 / 10);
             }
-        } else {
+        } else if (actionDetail2 == 0){
             falseClause = I18N.getString(R.string.no_effect);
         }
 
