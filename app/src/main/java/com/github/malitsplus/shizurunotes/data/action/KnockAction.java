@@ -3,6 +3,9 @@ package com.github.malitsplus.shizurunotes.data.action;
 import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.I18N;
 import com.github.malitsplus.shizurunotes.data.Property;
+import com.github.malitsplus.shizurunotes.data.PropertyKey;
+
+import java.util.ArrayList;
 
 public class KnockAction extends ActionParameter {
 
@@ -14,7 +17,8 @@ public class KnockAction extends ActionParameter {
         moveTarget(4),
         moveTargetParaboric(5),
         backLimited(6),
-        dragForwardCaster(8);
+        dragForwardCaster(8),
+        knockBackGiveValue(9);
 
         private int value;
         KnockType(int value){
@@ -38,6 +42,7 @@ public class KnockAction extends ActionParameter {
     @Override
     protected void childInit() {
         knockType = KnockType.parse(actionDetail1);
+        actionValues.add(new ActionValue(actionValue1, actionValue2, null));
     }
 
     @Override
@@ -53,6 +58,8 @@ public class KnockAction extends ActionParameter {
                     return I18N.getString(R.string.Draw_s1_toward_self_d2, targetParameter.buildTargetClause(), (int)-actionValue1.value);
             case dragForwardCaster:
                 return I18N.getString(R.string.drag_s1_to_a_position_s2_forward_of_the_caster, targetParameter.buildTargetClause(), (int)actionValue1.value);
+            case knockBackGiveValue:
+                return I18N.getString(R.string.Knock_s1_away_s2, targetParameter.buildTargetClause(), buildExpression(level, property));
             default:
                 return super.localizedDetail(level, property);
         }

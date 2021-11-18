@@ -209,7 +209,8 @@ public class ActionParameter {
         VALUE4,
         VALUE5,
         VALUE6,
-        VALUE7;
+        VALUE7,
+        VALUE_NULL;
         public String description() {
             switch (this) {
                 case VALUE1: return I18N.getString(R.string.value1);
@@ -219,7 +220,7 @@ public class ActionParameter {
                 case VALUE5: return I18N.getString(R.string.value5);
                 case VALUE6: return I18N.getString(R.string.value6);
                 case VALUE7: return I18N.getString(R.string.value7);
-                default: return "";
+                default: return "NULL";
             }
         }
     }

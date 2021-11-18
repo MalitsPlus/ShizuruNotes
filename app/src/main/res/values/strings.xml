@@ -747,5 +747,6 @@
     <string name="received_damage">受けるダメージ</string>
     <string name="received_physical_damage">受ける物理ダメージ</string>
     <string name="received_magical_damage">受ける魔法ダメージ</string>
-
+    <string name="Modifier_multiple_s1_count_of_targets_to_value_d2_of_effect_d3">[アクション%3$d] の係数%2$dに [%1$s / 対象の数] を乗じる。</string>
+    <string name="Knock_s1_away_s2">%1$sをノックバックする、距離 [%2$s]。</string>
 </resources>
