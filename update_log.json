@@ -1,9 +1,9 @@
 {
-	"versionCode": "58",
-	"versionName": "1.10.4",
+	"versionCode": "59",
+	"versionName": "1.11.0",
 	"recommend": "false",
-	"messageJa": "・ホマレのスキル説明文を訂正",
-	"messageZh": "・订正ホマレ的技能说明",
+	"messageJa": "・軽微な不具合の修正",
+	"messageZh": "・修正某个小bug",
 	"infoJa": "",
 	"infoZh": ""
 }
