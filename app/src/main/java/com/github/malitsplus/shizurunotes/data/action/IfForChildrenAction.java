@@ -68,7 +68,7 @@ public class IfForChildrenAction extends ActionParameter {
     @Override
     public String localizedDetail(int level, Property property) {
         if(actionDetail1 == 100 || actionDetail1 == 101 || actionDetail1 == 200 || actionDetail1 == 300 || actionDetail1 == 500 || actionDetail1 == 501
-                || actionDetail1 == 502 || actionDetail1 == 503 || actionDetail1 == 512
+                || actionDetail1 == 502 || actionDetail1 == 503 || actionDetail1 == 504 || actionDetail1 == 511 || actionDetail1 == 512
                 || (actionDetail1 >=600 && actionDetail1 < 900) || (actionDetail1 >= 901 && actionDetail1 < 1000)
                 || actionDetail1 == 1300 || actionDetail1 == 1400 || (actionDetail1 >= 6000 && actionDetail1 < 7000)) {
             if(trueClause != null && falseClause != null)
@@ -100,6 +100,8 @@ enum IfType{
     curse(501),
     poison(502),
     venom(503),
+    hex(504),
+    curseOrHex(511),
     poisonOrVenom(512),
     Break(710),
     polymorph(1400);
@@ -134,6 +136,8 @@ enum IfType{
             case poisonOrVenom: return I18N.getString(R.string.poisoned_or_venomed);
             case Break: return I18N.getString(R.string.breaking);
             case polymorph: return I18N.getString(R.string.polymorphed);
+            case hex: return I18N.getString(R.string.hexed);
+            case curseOrHex: return I18N.getString(R.string.cursed_or_hexed);
             default: return "";
         }
     }

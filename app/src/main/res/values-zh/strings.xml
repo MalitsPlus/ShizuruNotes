@@ -684,4 +684,6 @@
     <string name="received_magical_damage">受到的魔法伤害</string>
     <string name="Modifier_multiple_s1_count_of_targets_to_value_d2_of_effect_d3">使 [动作%3$d] 的系数%2$d乘以 [%1$s / 对象的数量]。</string>
     <string name="Knock_s1_away_s2">击退%1$s，距离 [%2$s]。</string>
+    <string name="hexed">恶咒状态中</string>
+    <string name="cursed_or_hexed">诅咒或恶咒状态中</string>
 </resources>
