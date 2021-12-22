@@ -6,7 +6,7 @@
     <data>
         <variable
             name="itemModel"
-            type="java.util.Map.Entry&lt;com.github.malitsplus.shizurunotes.data.PropertyKey, Integer>" />
+            type="java.util.Map.Entry&lt;com.github.nyanfantasia.shizurunotes.data.PropertyKey, Integer>" />
         <variable
             name="itemPosition"
             type="Integer" />

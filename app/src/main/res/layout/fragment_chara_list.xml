@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.github.malitsplus.shizurunotes.ui.charalist.CharaListViewModel" />
+            type="com.github.nyanfantasia.shizurunotes.ui.charalist.CharaListViewModel" />
         <variable
             name="clickListener"
             type="android.view.View.OnClickListener" />

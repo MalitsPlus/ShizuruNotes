@@ -7,14 +7,14 @@
     <data>
         <variable
             name="itemModel"
-            type="java.util.Map.Entry&lt;com.github.malitsplus.shizurunotes.data.Item, Integer>" />
+            type="java.util.Map.Entry&lt;com.github.nyanfantasia.shizurunotes.data.Item, Integer>" />
         <variable
             name="itemPosition"
             type="Integer" />
         <variable
             name="itemActionListener"
-            type="com.github.malitsplus.shizurunotes.ui.equipment.OnEquipmentActionListener" />
-        <import type="com.github.malitsplus.shizurunotes.R" />
+            type="com.github.nyanfantasia.shizurunotes.ui.equipment.OnEquipmentActionListener" />
+        <import type="com.github.nyanfantasia.shizurunotes.R" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

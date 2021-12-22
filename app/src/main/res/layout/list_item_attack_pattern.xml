@@ -7,8 +7,8 @@
     <data>
         <variable
             name="patternItem"
-            type="com.github.malitsplus.shizurunotes.data.AttackPattern.AttackPatternItem" />
-        <import type="com.github.malitsplus.shizurunotes.R"/>
+            type="com.github.nyanfantasia.shizurunotes.data.AttackPattern.AttackPatternItem" />
+        <import type="com.github.nyanfantasia.shizurunotes.R"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="schedule"
-            type="com.github.malitsplus.shizurunotes.data.EventSchedule" />
+            type="com.github.nyanfantasia.shizurunotes.data.EventSchedule" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

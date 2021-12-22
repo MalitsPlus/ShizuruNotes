@@ -6,7 +6,7 @@
     <data>
         <variable
             name="aboutVM"
-            type="com.github.malitsplus.shizurunotes.ui.setting.AboutViewModel" />
+            type="com.github.nyanfantasia.shizurunotes.ui.setting.AboutViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

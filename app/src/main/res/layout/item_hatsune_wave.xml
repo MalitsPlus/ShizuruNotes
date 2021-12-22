@@ -7,14 +7,14 @@
     <data>
         <variable
             name="itemModel"
-            type="java.util.Map.Entry&lt;String, com.github.malitsplus.shizurunotes.data.WaveGroup>" />
+            type="java.util.Map.Entry&lt;String, com.github.nyanfantasia.shizurunotes.data.WaveGroup>" />
         <variable
             name="itemPosition"
             type="Integer" />
         <variable
             name="itemActionListener"
-            type="com.github.malitsplus.shizurunotes.ui.hatsune.OnWaveClickListener" />
-        <import type="com.github.malitsplus.shizurunotes.R" />
+            type="com.github.nyanfantasia.shizurunotes.ui.hatsune.OnWaveClickListener" />
+        <import type="com.github.nyanfantasia.shizurunotes.R" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

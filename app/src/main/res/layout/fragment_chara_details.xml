@@ -10,8 +10,8 @@
             type="android.view.View.OnClickListener"/>
         <variable
             name="detailsVM"
-            type="com.github.malitsplus.shizurunotes.ui.charadetails.CharaDetailsViewModel" />
-        <import type="com.github.malitsplus.shizurunotes.R"/>
+            type="com.github.nyanfantasia.shizurunotes.ui.charadetails.CharaDetailsViewModel" />
+        <import type="com.github.nyanfantasia.shizurunotes.R"/>
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

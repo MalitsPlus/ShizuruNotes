@@ -6,14 +6,14 @@
     <data>
         <variable
             name="itemModel"
-            type="com.github.malitsplus.shizurunotes.data.Chara" />
+            type="com.github.nyanfantasia.shizurunotes.data.Chara" />
         <variable
             name="itemPosition"
             type="Integer" />
         <variable
             name="itemActionListener"
             type="android.view.View.OnClickListener" />
-        <import type="com.github.malitsplus.shizurunotes.R" />
+        <import type="com.github.nyanfantasia.shizurunotes.R" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.github.malitsplus.shizurunotes.R" />
+        <import type="com.github.nyanfantasia.shizurunotes.R" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

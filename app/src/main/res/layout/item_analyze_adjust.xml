@@ -7,13 +7,13 @@
     <data>
         <variable
             name="itemModel"
-            type="com.github.malitsplus.shizurunotes.ui.analyze.AnalyzeViewModel" />
+            type="com.github.nyanfantasia.shizurunotes.ui.analyze.AnalyzeViewModel" />
         <variable
             name="itemPosition"
             type="Integer" />
         <variable
             name="itemActionListener"
-            type="com.github.malitsplus.shizurunotes.ui.analyze.OnAnalyzeActionListener" />
+            type="com.github.nyanfantasia.shizurunotes.ui.analyze.OnAnalyzeActionListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

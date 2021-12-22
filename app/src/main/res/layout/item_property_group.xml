@@ -6,7 +6,7 @@
     <data>
         <variable
             name="itemModel"
-            type="com.github.malitsplus.shizurunotes.data.Property" />
+            type="com.github.nyanfantasia.shizurunotes.data.Property" />
         <variable
             name="itemPosition"
             type="Integer" />

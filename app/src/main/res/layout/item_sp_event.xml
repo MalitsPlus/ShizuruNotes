@@ -7,11 +7,11 @@
     <data>
         <variable
             name="spEvent"
-            type="com.github.malitsplus.shizurunotes.data.SpEvent" />
+            type="com.github.nyanfantasia.shizurunotes.data.SpEvent" />
         <variable
             name="clickListener"
             type="android.view.View.OnClickListener" />
-        <import type="com.github.malitsplus.shizurunotes.R"/>
+        <import type="com.github.nyanfantasia.shizurunotes.R"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

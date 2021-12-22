@@ -7,11 +7,11 @@
     <data>
         <variable
             name="boss"
-            type="com.github.malitsplus.shizurunotes.data.Enemy" />
+            type="com.github.nyanfantasia.shizurunotes.data.Enemy" />
         <variable
             name="clickListener"
             type="android.view.View.OnClickListener" />
-        <import type="com.github.malitsplus.shizurunotes.R"/>
+        <import type="com.github.nyanfantasia.shizurunotes.R"/>
     </data>
 
     <LinearLayout

@@ -10,8 +10,8 @@
             type="android.view.View.OnClickListener"/>
         <variable
             name="boss"
-            type="com.github.malitsplus.shizurunotes.data.Enemy" />
-        <import type="com.github.malitsplus.shizurunotes.R"/>
+            type="com.github.nyanfantasia.shizurunotes.data.Enemy" />
+        <import type="com.github.nyanfantasia.shizurunotes.R"/>
     </data>
 
     <com.google.android.material.card.MaterialCardView

@@ -7,14 +7,14 @@
     <data>
         <variable
             name="itemModel"
-            type="com.github.malitsplus.shizurunotes.data.HatsuneStage" />
+            type="com.github.nyanfantasia.shizurunotes.data.HatsuneStage" />
         <variable
             name="itemPosition"
             type="Integer" />
         <variable
             name="itemActionListener"
-            type="com.github.malitsplus.shizurunotes.ui.hatsune.OnHatsuneClickListener" />
-        <import type="com.github.malitsplus.shizurunotes.R" />
+            type="com.github.nyanfantasia.shizurunotes.ui.hatsune.OnHatsuneClickListener" />
+        <import type="com.github.nyanfantasia.shizurunotes.R" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

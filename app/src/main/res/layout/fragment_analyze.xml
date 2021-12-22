@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.github.malitsplus.shizurunotes.ui.analyze.AnalyzeViewModel" />
+            type="com.github.nyanfantasia.shizurunotes.ui.analyze.AnalyzeViewModel" />
     </data>
 
     <LinearLayout

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="minion"
-            type="com.github.malitsplus.shizurunotes.data.Minion" />
+            type="com.github.nyanfantasia.shizurunotes.data.Minion" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

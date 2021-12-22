@@ -7,11 +7,11 @@
     <data>
         <variable
             name="period"
-            type="com.github.malitsplus.shizurunotes.data.ClanBattlePeriod" />
+            type="com.github.nyanfantasia.shizurunotes.data.ClanBattlePeriod" />
         <variable
             name="clickListener"
             type="android.view.View.OnClickListener"/>
-        <import type="com.github.malitsplus.shizurunotes.R"/>
+        <import type="com.github.nyanfantasia.shizurunotes.R"/>
     </data>
 
     <com.google.android.material.card.MaterialCardView

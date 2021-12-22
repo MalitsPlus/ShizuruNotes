@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/activity_main.xml" value="0.1598731884057971" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/dropdown_item_chara_list.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/fragment_about.xml" value="0.17300724637681159" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/fragment_analyze.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/fragment_bottom_navigation.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/fragment_calendar.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/fragment_chara_details.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/fragment_chara_list.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/fragment_clan_battle.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/fragment_clan_battle_boss_details.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/fragment_clan_battle_view_pager.xml" value="0.17300724637681159" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_analyze_adjust.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_attack_pattern.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_chara.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_chara_rank_equipment.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_chara_unique_equipment.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_comparison.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_drop_equipment.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_enemy_basic.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_enemy_child.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_enemy_skill.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_equipment_basic.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_equipment_craft_num.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_equipment_level.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_grid_icon.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_hatsune_stage.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_hatsune_wave.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_minion_basic.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_property.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_property_group.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_quest_drop.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_schedule.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_sp_event.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/item_text_tag.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/list_item_attack_pattern.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/list_item_clan_battle_period.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/list_item_clan_battle_phase.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/list_item_dungeon.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/list_item_minion.xml" value="0.1265625" />
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/list_item_skill.xml" value="0.1265625" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

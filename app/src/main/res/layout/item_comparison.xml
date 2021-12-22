@@ -7,8 +7,8 @@
     <data>
         <variable
             name="comparison"
-            type="com.github.malitsplus.shizurunotes.data.RankComparison" />
-        <import type="com.github.malitsplus.shizurunotes.R"/>
+            type="com.github.nyanfantasia.shizurunotes.data.RankComparison" />
+        <import type="com.github.nyanfantasia.shizurunotes.R"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

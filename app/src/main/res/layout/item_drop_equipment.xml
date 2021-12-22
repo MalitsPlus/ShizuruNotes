@@ -7,8 +7,8 @@
     <data>
         <variable
             name="reward"
-            type="com.github.malitsplus.shizurunotes.data.RewardData" />
-        <import type="com.github.malitsplus.shizurunotes.R"/>
+            type="com.github.nyanfantasia.shizurunotes.data.RewardData" />
+        <import type="com.github.nyanfantasia.shizurunotes.R"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

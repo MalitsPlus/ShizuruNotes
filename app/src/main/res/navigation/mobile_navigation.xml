@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_bottom_navigation"
-        android:name="com.github.malitsplus.shizurunotes.ui.BottomNaviFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.BottomNaviFragment"
         android:label="fragment_bottom_navigation"
         tools:layout="@layout/fragment_bottom_navigation">
         <action
@@ -89,13 +89,13 @@
 
     <fragment
         android:id="@+id/nav_chara_list"
-        android:name="com.github.malitsplus.shizurunotes.ui.charalist.CharaListFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.charalist.CharaListFragment"
         android:label="@string/title_chara_list"
         tools:layout="@layout/fragment_chara_list"/>
 
     <fragment
         android:id="@+id/nav_chara_details"
-        android:name="com.github.malitsplus.shizurunotes.ui.charadetails.CharaDetailsFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.charadetails.CharaDetailsFragment"
         tools:layout="@layout/fragment_chara_details" >
         <action
             android:id="@+id/action_nav_chara_details_to_nav_chara_profile"
@@ -131,7 +131,7 @@
 
     <fragment
         android:id="@+id/nav_chara_profile"
-        android:name="com.github.malitsplus.shizurunotes.ui.charaprofile.CharaProfileFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.charaprofile.CharaProfileFragment"
         tools:layout="@layout/fragment_chara_profile" >
         <action
             android:id="@+id/action_nav_chara_profile_to_nav_equipment"
@@ -144,13 +144,13 @@
 
     <fragment
         android:id="@+id/nav_clan_battle"
-        android:name="com.github.malitsplus.shizurunotes.ui.clanbattle.ClanBattleFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.clanbattle.ClanBattleFragment"
         android:label="@string/title_clan_battle"
         tools:layout="@layout/fragment_clan_battle" />
 
     <fragment
         android:id="@+id/nav_clan_battle_view_pager"
-        android:name="com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails.ClanBattleViewPagerFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.clanbattle.clanbattledetails.ClanBattleViewPagerFragment"
         android:label="fragment_clan_battle_view_pager"
         tools:layout="@layout/fragment_clan_battle_view_pager" >
         <action
@@ -164,7 +164,7 @@
 
     <fragment
         android:id="@+id/nav_setting_container"
-        android:name="com.github.malitsplus.shizurunotes.ui.setting.SettingContainerFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.setting.SettingContainerFragment"
         android:label="fragment_setting_container"
         tools:layout="@layout/fragment_setting_container" >
         <action
@@ -184,18 +184,18 @@
     </fragment>
     <fragment
         android:id="@+id/nav_setting_about"
-        android:name="com.github.malitsplus.shizurunotes.ui.setting.AboutFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.setting.AboutFragment"
         android:label="fragment_setting_about"
         tools:layout="@layout/fragment_about" />
 
     <fragment
         android:id="@+id/nav_clan_battle_details"
-        android:name="com.github.malitsplus.shizurunotes.ui.clanbattle.clanbattledetails.ClanBattleDetailsFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.clanbattle.clanbattledetails.ClanBattleDetailsFragment"
         android:label="fragment_clan_battle_details"
         tools:layout="@layout/fragment_clan_battle_details" />
     <fragment
         android:id="@+id/nav_minion"
-        android:name="com.github.malitsplus.shizurunotes.ui.minion.MinionFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.minion.MinionFragment"
         android:label="fragment_minion"
         tools:layout="@layout/fragment_minion">
         <argument
@@ -205,12 +205,12 @@
     </fragment>
     <fragment
         android:id="@+id/nav_menu"
-        android:name="com.github.malitsplus.shizurunotes.ui.menu.MenuFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.menu.MenuFragment"
         android:label="fragment_menu"
         tools:layout="@layout/fragment_menu" />
     <fragment
         android:id="@+id/nav_dungeon"
-        android:name="com.github.malitsplus.shizurunotes.ui.dungeon.DungeonFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.dungeon.DungeonFragment"
         android:label="fragment_dungeon"
         tools:layout="@layout/fragment_dungeon" >
         <action
@@ -223,17 +223,17 @@
     </fragment>
     <fragment
         android:id="@+id/nav_drop"
-        android:name="com.github.malitsplus.shizurunotes.ui.drop.DropFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.drop.DropFragment"
         android:label="fragment_drop"
         tools:layout="@layout/fragment_drop" />
     <fragment
         android:id="@+id/nav_drop_quest"
-        android:name="com.github.malitsplus.shizurunotes.ui.drop.DropQuestFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.drop.DropQuestFragment"
         android:label="fragment_drop_quest"
         tools:layout="@layout/fragment_drop_quest" />
     <fragment
         android:id="@+id/nav_log"
-        android:name="com.github.malitsplus.shizurunotes.ui.setting.log.LogFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.setting.log.LogFragment"
         android:label="fragment_log"
         tools:layout="@layout/fragment_log" >
         <action
@@ -251,7 +251,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_log_text"
-        android:name="com.github.malitsplus.shizurunotes.ui.setting.log.LogTextFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.setting.log.LogTextFragment"
         android:label="fragment_log_text"
         tools:layout="@layout/fragment_log_text">
         <argument
@@ -261,7 +261,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_calendar"
-        android:name="com.github.malitsplus.shizurunotes.ui.calendar.CalendarFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.calendar.CalendarFragment"
         android:label="fragment_calendar"
         tools:layout="@layout/fragment_calendar" >
         <action
@@ -281,17 +281,17 @@
     </fragment>
     <fragment
         android:id="@+id/nav_day"
-        android:name="com.github.malitsplus.shizurunotes.ui.calendar.DayFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.calendar.DayFragment"
         android:label="fragment_day"
         tools:layout="@layout/fragment_day" />
     <fragment
         android:id="@+id/nav_event_notification"
-        android:name="com.github.malitsplus.shizurunotes.ui.calendar.notification.EventNotificationContainerFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.calendar.notification.EventNotificationContainerFragment"
         android:label="fragment_event_notification"
         tools:layout="@layout/fragment_event_notification" />
     <fragment
         android:id="@+id/nav_rank_comparison"
-        android:name="com.github.malitsplus.shizurunotes.ui.comparison.RankComparisonFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.comparison.RankComparisonFragment"
         android:label="fragment_rank_comparison"
         tools:layout="@layout/fragment_rank_comparison" >
         <action
@@ -304,13 +304,13 @@
     </fragment>
     <fragment
         android:id="@+id/nav_comparison_list"
-        android:name="com.github.malitsplus.shizurunotes.ui.comparison.ComparisonListFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.comparison.ComparisonListFragment"
         android:label="fragment_comparison_list"
         tools:layout="@layout/fragment_comparison_list" >
     </fragment>
     <fragment
         android:id="@+id/nav_equipment"
-        android:name="com.github.malitsplus.shizurunotes.ui.equipment.EquipmentFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.equipment.EquipmentFragment"
         android:label="fragment_equipment"
         tools:layout="@layout/fragment_equipment" >
         <action
@@ -323,7 +323,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_enemy"
-        android:name="com.github.malitsplus.shizurunotes.ui.enemy.EnemyFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.enemy.EnemyFragment"
         android:label="fragment_enemy"
         tools:layout="@layout/fragment_enemy" >
         <action
@@ -341,7 +341,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_hatsune_stage"
-        android:name="com.github.malitsplus.shizurunotes.ui.hatsune.HatsuneStageFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.hatsune.HatsuneStageFragment"
         android:label="fragment_hatsune_stage"
         tools:layout="@layout/fragment_hatsune_stage" >
         <action
@@ -354,7 +354,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_hatsune_wave"
-        android:name="com.github.malitsplus.shizurunotes.ui.hatsune.HatsuneWaveFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.hatsune.HatsuneWaveFragment"
         android:label="fragment_hatsune_wave"
         tools:layout="@layout/fragment_hatsune_wave" >
         <action
@@ -367,12 +367,12 @@
     </fragment>
     <fragment
         android:id="@+id/nav_analyze"
-        android:name="com.github.malitsplus.shizurunotes.ui.analyze.AnalyzeFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.analyze.AnalyzeFragment"
         android:label="analyze_fragment"
         tools:layout="@layout/fragment_analyze" />
     <fragment
         android:id="@+id/nav_sp_event"
-        android:name="com.github.malitsplus.shizurunotes.ui.spevent.SpEventFragment"
+        android:name="com.github.nyanfantasia.shizurunotes.ui.spevent.SpEventFragment"
         android:label="fragment_sp_event"
         tools:layout="@layout/fragment_sp_event" >
         <action

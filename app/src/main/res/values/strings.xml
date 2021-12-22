@@ -26,12 +26,14 @@
     <string-array name="setting_language_options">
         <item>日本語</item>
         <item>简体中文</item>
+        <item>正體中文</item>
         <item>한국어</item>
         <item>English</item>
     </string-array>
     <string-array name="setting_language_values">
         <item>ja</item>
-        <item>zh</item>
+        <item>zh-CN</item>
+        <item>zh-TW</item>
         <item>ko</item>
         <item>en</item>
     </string-array>

@@ -7,11 +7,11 @@
     <data>
         <variable
             name="itemModel"
-            type="com.github.malitsplus.shizurunotes.data.Enemy" />
+            type="com.github.nyanfantasia.shizurunotes.data.Enemy" />
         <variable
             name="itemPosition"
             type="Integer" />
-        <import type="com.github.malitsplus.shizurunotes.R" />
+        <import type="com.github.nyanfantasia.shizurunotes.R" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -57,7 +57,7 @@
                 android:background="?attr/colorSurface"
                 app:day_text_size="12sp"
 
-                app:month_view="com.github.malitsplus.shizurunotes.ui.calendar.CustomMonthView" />
+                app:month_view="com.github.nyanfantasia.shizurunotes.ui.calendar.CustomMonthView" />
         </com.haibin.calendarview.CalendarLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
