@@ -1,4 +1,4 @@
-[中文说明请点此处](README_CN.md)
+[繁體中文說明請點選此處](README_TW.md)
 
 # ShizuruNotes
 An **unofficial** Android tool application for "Princess Connect Re:Dive".
@@ -26,7 +26,7 @@ Dependents could be found in `./app/build.gradle` and it might be changed time t
 Japanese and Chinese fully supported, Korean and English partially supported.  
 Korean strings are provided by [applemintia](https://twitter.com/_applemintia).  
 English strings are provided by [southrop](https://github.com/southrop).  
-Chinese Traditional strings are provided by Nyan Fantasia.
+Chinese Traditional strings and switch logic are provided by Nyan Fantasia.
 
 ## References  
 ShizuruNotes is highly inspired by the following illustrious repos, thanks them:  
