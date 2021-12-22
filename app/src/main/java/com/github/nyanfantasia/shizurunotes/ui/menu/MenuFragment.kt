@@ -45,7 +45,7 @@ class MenuFragment : Fragment() {
 //                        val communityView = DataBindingUtil.inflate<ViewCommunityBinding>(
 //                            layoutInflater, R.layout.view_community, container, false
 //                        ).apply {
-//                            if (UserSettings.get().getLanguage() == "zh-CN") {
+//                            if (UserSettings.get().getLanguage() == "zh-Hans") {
 //                                val spannable = SpannableString(I18N.getString(R.string.community_dialog_text)).apply {
 //                                    setSpan(StrikethroughSpan(), 54, 58, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 //                                }

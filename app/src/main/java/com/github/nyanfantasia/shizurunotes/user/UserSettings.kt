@@ -124,7 +124,11 @@ class UserSettings private constructor(
     }
 
     fun getLanguage(): String {
-        return preference.getString(LANGUAGE_KEY, null) ?: "ja"
+        return if (preference.getString(LANGUAGE_KEY, null).equals("zh-Hant") || equals("zh-Hans")){
+            "zh"
+        } else {
+            preference.getString(LANGUAGE_KEY, null) ?: "ja"
+        }
     }
 
     @SuppressLint("ApplySharedPref")

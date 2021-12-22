@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/drawable/ic_detail_back.xml" value="0.26153846153846155" />
         <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/activity_main.xml" value="0.1598731884057971" />
         <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/dropdown_item_chara_list.xml" value="0.1265625" />
         <entry key="..\:/Documents/Android/Project/ShizuruNotes/app/src/main/res/layout/fragment_about.xml" value="0.17300724637681159" />

@@ -40,55 +40,33 @@ public class LocaleManager {
     }
 
     public Context setLocale(Context context) {
-        return updateResources(context, getLanguage().toLanguageTag());
-    }
-
-    public Locale regionExplicit(String inputL){
-        //轉換語言資訊的文字資料為 Android 在地化格式，用於修正 Arrays 的手動切換功能
-        Locale outputL;
-        if (inputL.equals("zh-CN")|| equals("zh-Hans-CN")|| equals("zh-Hans-HK")|| equals("zh-Hans-MO")){
-            outputL = new Locale("zh", "CN");
-        }
-        else if (inputL.equals("zh-TW") || equals("zh-HK") || equals("zh-MO")|| equals("zh-Hant-TW")|| equals("zh-Hant-HK")|| equals("zh-Hant-MO")){
-            outputL = new Locale("zh", "TW");
-        }
-        else {
-            outputL = new Locale(inputL);
-        }
-        return outputL;
-        // 英文韓文會爆炸，不應該處理
+        return updateResources(context, getLanguage());
     }
 
     public Context setNewLocale(Context context, String language) {
         return updateResources(context, language);
     }
 
-    public Locale getLanguage() {
+    public String getLanguage() {
         String currentLanguage = prefs.getString(UserSettings.LANGUAGE_KEY, null);
         if(currentLanguage != null)
-            return regionExplicit(currentLanguage);
+            return currentLanguage;
 
         Locale systemLanguage = Locale.getDefault();
         if(LocaleManager.SUPPORTED_LANGUAGE.contains(systemLanguage.getLanguage())) {
             if (systemLanguage.getLanguage().equals("zh")) {
-                if (systemLanguage.toLanguageTag().equals("zh-Hant-TW") || equals("zh-Hant-HK") || equals("zh-Hant-MO")|| equals("zh-TW")|| equals("zh-HK")|| equals("zh-MO")) {
-                    persistLanguage("zh-TW");
-                }
-                else {
-                    persistLanguage("zh-CN");
-                }
-                return regionExplicit(getLanguage().toLanguageTag());
-                // 要命，都是 if else
+                persistLanguage(systemLanguage.getLanguage()+"-"+systemLanguage.getScript());
+                // API 21+
             }
             else {
                 persistLanguage(systemLanguage.getLanguage());
-                return regionExplicit(systemLanguage.getLanguage());
             }
+                return getLanguage();
             // 比對資料庫，擁有紀錄再設定為系統語言
         }
         else {
             persistLanguage(Locale.JAPANESE.getLanguage());
-            return Locale.JAPANESE;
+            return Locale.JAPANESE.getLanguage();
             // 無匹配資料庫，設定為日文
         }
     }
@@ -101,7 +79,12 @@ public class LocaleManager {
     }
 
     private Context updateResources(Context context, String language) {
-        Locale locale = regionExplicit(language);
+        Locale locale =new Locale(language);
+        if(language.equals("zh-Hant"))
+            locale = Locale.TAIWAN;
+        else if (language.equals("zh-Hans"))
+        locale = Locale.CHINA;
+        else
         Locale.setDefault(locale);
         Resources res = context.getResources();
         Configuration config = new Configuration(res.getConfiguration());
