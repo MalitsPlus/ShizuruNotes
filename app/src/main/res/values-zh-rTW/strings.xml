@@ -76,7 +76,7 @@
     <string name="ui_chip_sort_way_down">降序</string>
     <string name="ui_switch_change_value">切換表示</string>
     <string name="snack_bar_cant_sort">由於資料不足本項排序暫時無法使用</string>
-    <string name="button_minion_info">召喚物情報</string>
+    <string name="button_minion_info">召喚物資料</string>
     <string name="text_normal_attack_only">僅普通攻擊</string>
     <string name="tab_phase">階段&#160;</string>
     <string name="text_year">年</string>
@@ -101,7 +101,7 @@
     <string name="text_magical_penetrate">&#160;魔法貫通&#160;</string>
     <string name="text_hp_recovery">&#160;回復量上升&#160;</string>
     <string name="text_search_area_width">&#160;攻擊距離&#160;</string>
-    <string name="text_status_tips">*上述的狀態為☆MAX，裝備 &amp; 專用裝備最大強化，且包含羈絆劇情 &amp; EX技能 &amp; Rank Bonus 的數值。</string>
+    <string name="text_status_tips">*上述的狀態為☆MAX，裝備 &amp; 專用裝備最大強化，且包含羈絆劇情 &amp; EX 技能 &amp; Rank Bonus 的數值。</string>
     <string name="text_attack_pattern">&#160;技能循環%d&#160;</string>
     <string name="text_normal_mode">通常模式</string>
     <string name="text_cast_time">待機時間：</string>
@@ -374,7 +374,7 @@
     <string name="Trigger_d_on_dead">觸發條件：死亡時 [%d%%] 的概率觸發。</string>
     <string name="Trigger_d_on_critical_damaged">觸發條件：受到暴擊時 [%d%%] 的概率觸發。</string>
     <string name="Trigger_d_on_stealth">觸發條件：潛伏時 [%d%%] 的概率觸發。</string>
-    <string name="Trigger_d1_on_break_and_last_for_s2_sec">觸發條件：Break時 [%1$d%%] 的概率觸發，持續時間 [%2$s] 秒。</string>
+    <string name="Trigger_d1_on_break_and_last_for_s2_sec">觸發條件：Break 時 [%1$d%%] 的概率觸發，持續時間 [%2$s] 秒。</string>
     <string name="Trigger_d_on_dot_damaged">觸發條件：受到持續傷害時 [%d%%] 的概率觸發。</string>
     <string name="Charge_for_s1_sec_and_deal_s2_damage_taken_additional_damage_on_the_next_effect">蓄力 [%1$s] 秒，使下一個動作的效果提高 [%2$s * 蓄力中受到的傷害]。</string>
     <string name="Make_s1_attract_enemy_attacks_last_for_s2_sec">使%1$s進入挑釁狀態，持續時間 [%2$s] 秒。</string>
@@ -401,7 +401,7 @@
     <string name="poisoned">中毒狀態中</string>
     <string name="venomed">猛毒狀態中</string>
     <string name="poisoned_or_venomed">中毒或猛毒狀態中</string>
-    <string name="breaking">Break 狀態中</string>
+    <string name="breaking">Break狀態中</string>
     <string name="Condition_s">條件分歧：%s</string>
     <string name="separator">，</string>
     <string name="Revive_s1_with_d2_HP">使%1$s復活，並恢復其 [%2$d%%] HP（未計算回復量上升產生的影響）。</string>
@@ -532,7 +532,7 @@
     <string name="shrine">聖蹟調查</string>
     <string name="temple">神殿調查</string>
     <string name="exploration">探索</string>
-    <string name="very_hard">Very Hard</string>
+    <string name="very_hard">"Very Hard "</string>
     <string name="short_dungeon_s">地下城%s倍</string>
     <string name="short_normal_drop_s">Normal %s倍</string>
     <string name="short_hard_s">Hard %s倍</string>
@@ -543,7 +543,7 @@
     <string name="short_master_coin_s">大師硬幣%s倍</string>
     <string name="drop_s">裝備掉落%s倍</string>
     <string name="mana_s">瑪那獲得%s倍</string>
-    <string name="exp_s">EXP 獲得%s倍</string>
+    <string name="exp_s">EXP獲得%s倍</string>
     <string name="master_coin_s">大師硬幣獲得%s倍</string>
     <string name="others">其它</string>
     <string name="icon_notification">通知</string>
@@ -575,7 +575,7 @@
     <string name="hint_rank_from">Rank 1</string>
     <string name="hint_rank_to">Rank 2</string>
     <string name="text_calculate">計算</string>
-    <string name="rank_comparison_description">計算方法說明：\nx → Rank1\ny → Rank2\n{[∑(y的裝備滿強值) + ∑(比y低的 Rank 裝備值) + (當前最大Lv + y)的角色基礎值]小數點後四捨五入} - {[∑(x的裝備滿強值) + ∑(比x低的 Rank 裝備值) + (當前最大Lv + x)的角色基礎值]小數點後四捨五入}\n*上記的角色基礎值是基於 ☆MAX 的角色成長值來進行計算\n\n一句話來說就是本計算結果包含了 Rank 上升對角色基礎狀態值產生的影響。</string>
+    <string name="rank_comparison_description">計算方法說明：\nx → Rank 1\ny → Rank 2\n{[∑(y的裝備滿強值) + ∑(比y低的 Rank 裝備值) + (當前最大Lv + y)的角色基礎值]小數點後四捨五入} - {[∑(x的裝備滿強值) + ∑(比x低的 Rank 裝備值) + (當前最大Lv + x)的角色基礎值]小數點後四捨五入}\n*上記的角色基礎值是基於 ☆MAX 的角色成長值來進行計算\n\n一句話來說就是本計算結果包含了 Rank 上升對角色基礎狀態值產生的影響。</string>
     <string name="dialog_server_switch_title">切換伺服器</string>
     <string name="dialog_server_switch_text">請注意，如果已在行事曆中開啟活動通知功能，一旦切換伺服器，已註冊的原本伺服器的活動日程通知將全部解除，重新啟動應用程式後將註冊新伺服器的活動日程通知。</string>
     <string name="text_equipment_level">強化等級</string>
@@ -688,8 +688,13 @@
     <string name="slv">技能 Lv.%d</string>
     <string name="about_version">版本: %s</string>
     <string name="about_disclaimer">這是一個由第三方製作的非官方應用程式，與遊戲「超異域公主連結 Re:Dive」相關的所有資源的版權均屬於 Cygames, Inc.</string>
-    <string name="about_hp">開放原始碼專案主頁面 (Fork) \nhttps://github.com/TragicLifeHu/ShizuruNotes</string>
-    <string name="about_developer">開發 &lt;br/>Vibbit&lt;a href=\"https://twitter.com/L8102259\">@L8102259&lt;/a></string>
+    <string name="about_hp">開放原始碼專案主頁面 (Fork)\nhttps://github.com/TragicLifeHu/ShizuruNotes</string>
+    <string name="about_developer">開發&lt;br/>Vibbit&lt;a href=\"https://twitter.com/L8102259\">@L8102259&lt;/a></string>
     <string name="short_magical_crt">魔爆\n%s</string>
     <string name="short_energy_reduce">TP輕\n%s</string>
+    <string name="short_physical_crt">物爆\n%s</string>
+    <string name="about_translator">在地化&lt;br/>(韓文) applemintia&lt;a href=\"https://twitter.com/_applemintia\">@_applemintia&lt;/a>&lt;br/>(英文) &lt;a href=\"https://twitter.com/southro_p\">southrop&lt;/a>&lt;br/>(繁體中文) 喵幻</string>
+    <string name="rank_d">Rank %d</string>
+    <string name="sp_skill_1_evo">SP技能 1+</string>
+    <string name="sp_skill_2_evo">SP技能 2+</string>
 </resources>

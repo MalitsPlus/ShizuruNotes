@@ -18,7 +18,6 @@ package com.haibin.calendarview;
 import android.text.TextUtils;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -209,32 +208,32 @@ public final class Calendar implements Serializable, Comparable<Calendar> {
         schemes.add(scheme);
     }
 
-    public void addScheme(int schemeColor, String scheme, LocalDateTime startTime, LocalDateTime endTime) {
+    public void addScheme(int schemeColor, String scheme) {
         if (schemes == null) {
             schemes = new ArrayList<>();
         }
-        schemes.add(new Scheme(schemeColor, scheme, startTime, endTime));
+        schemes.add(new Scheme(schemeColor, scheme));
     }
 
-    public void addScheme(int type, int schemeColor, String scheme, LocalDateTime startTime, LocalDateTime endTime) {
+    public void addScheme(int type, int schemeColor, String scheme) {
         if (schemes == null) {
             schemes = new ArrayList<>();
         }
-        schemes.add(new Scheme(type, schemeColor, scheme, startTime, endTime));
+        schemes.add(new Scheme(type, schemeColor, scheme));
     }
 
-    public void addScheme(int type, int schemeColor, String scheme, String other, LocalDateTime startTime, LocalDateTime endTime) {
+    public void addScheme(int type, int schemeColor, String scheme, String other) {
         if (schemes == null) {
             schemes = new ArrayList<>();
         }
-        schemes.add(new Scheme(type, schemeColor, scheme, other, startTime, endTime));
+        schemes.add(new Scheme(type, schemeColor, scheme, other));
     }
 
-    public void addScheme(int schemeColor, String scheme, String other, LocalDateTime startTime, LocalDateTime endTime) {
+    public void addScheme(int schemeColor, String scheme, String other) {
         if (schemes == null) {
             schemes = new ArrayList<>();
         }
-        schemes.add(new Scheme(schemeColor, scheme, other, startTime, endTime));
+        schemes.add(new Scheme(schemeColor, scheme, other));
     }
 
     public boolean isWeekend() {
@@ -326,7 +325,7 @@ public final class Calendar implements Serializable, Comparable<Calendar> {
      * 比较日期
      *
      * @param calendar 日期
-     * @return -1 0 1
+     * @return <0 0 >0
      */
     public int compareTo(Calendar calendar) {
         if (calendar == null) {
@@ -414,42 +413,32 @@ public final class Calendar implements Serializable, Comparable<Calendar> {
         private String scheme;
         private String other;
         private Object obj;
-        private LocalDateTime startTime;
-        private LocalDateTime endTime;
 
         public Scheme() {
         }
 
-        public Scheme(int type, int shcemeColor, String scheme, String other, LocalDateTime startTime, LocalDateTime endTime) {
+        public Scheme(int type, int shcemeColor, String scheme, String other) {
             this.type = type;
             this.shcemeColor = shcemeColor;
             this.scheme = scheme;
             this.other = other;
-            this.startTime = startTime;
-            this.endTime = endTime;
         }
 
-        public Scheme(int type, int shcemeColor, String scheme, LocalDateTime startTime, LocalDateTime endTime) {
+        public Scheme(int type, int shcemeColor, String scheme) {
             this.type = type;
             this.shcemeColor = shcemeColor;
             this.scheme = scheme;
-            this.startTime = startTime;
-            this.endTime = endTime;
         }
 
-        public Scheme(int shcemeColor, String scheme, LocalDateTime startTime, LocalDateTime endTime) {
+        public Scheme(int shcemeColor, String scheme) {
             this.shcemeColor = shcemeColor;
             this.scheme = scheme;
-            this.startTime = startTime;
-            this.endTime = endTime;
         }
 
-        public Scheme(int shcemeColor, String scheme, String other, LocalDateTime startTime, LocalDateTime endTime) {
+        public Scheme(int shcemeColor, String scheme, String other) {
             this.shcemeColor = shcemeColor;
             this.scheme = scheme;
             this.other = other;
-            this.startTime = startTime;
-            this.endTime = endTime;
         }
 
         public int getShcemeColor() {
@@ -490,22 +479,6 @@ public final class Calendar implements Serializable, Comparable<Calendar> {
 
         public void setObj(Object obj) {
             this.obj = obj;
-        }
-
-        public LocalDateTime getStartTime() {
-            return startTime;
-        }
-
-        public void setStartTime(LocalDateTime startTime) {
-            this.startTime = startTime;
-        }
-
-        public LocalDateTime getEndTime() {
-            return endTime;
-        }
-
-        public void setEndTime(LocalDateTime endTime) {
-            this.endTime = endTime;
         }
     }
 }

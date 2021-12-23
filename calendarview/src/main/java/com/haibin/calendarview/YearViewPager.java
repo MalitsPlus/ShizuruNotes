@@ -17,7 +17,6 @@ package com.haibin.calendarview;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.Display;
 import android.view.MotionEvent;
@@ -170,7 +169,7 @@ public final class YearViewPager extends ViewPager {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        heightMeasureSpec = MeasureSpec.makeMeasureSpec(getHeight(getContext(), this), MeasureSpec.EXACTLY);
+        //heightMeasureSpec = MeasureSpec.makeMeasureSpec(getHeight(getContext(), this), MeasureSpec.EXACTLY);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
@@ -179,15 +178,13 @@ public final class YearViewPager extends ViewPager {
      *
      * @param context context
      * @param view    view
-     * @return 月视图选择器最适合的高度
+     * @return 年月视图选择器最适合的高度
      */
     private static int getHeight(Context context, View view) {
         WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         assert manager != null;
         Display display = manager.getDefaultDisplay();
-        Point p = new Point();
-        display.getSize(p);
-        int h = p.y;
+        int h = display.getHeight();
         int[] location = new int[2];
         view.getLocationInWindow(location);
         view.getLocationOnScreen(location);

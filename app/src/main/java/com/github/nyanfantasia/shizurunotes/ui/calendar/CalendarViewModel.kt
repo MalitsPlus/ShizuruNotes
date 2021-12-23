@@ -7,7 +7,6 @@ import com.github.nyanfantasia.shizurunotes.db.MasterSchedule
 import com.github.nyanfantasia.shizurunotes.utils.Utils
 import com.haibin.calendarview.Calendar
 import java.time.LocalDate
-import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 
@@ -45,10 +44,10 @@ class CalendarViewModel : ViewModel() {
                 val datePattern = thisDate.format(DateTimeFormatter.ofPattern("yyyyMMdd"))
                 if (it is CampaignSchedule) {
                     if (it.campaignType.isVisible()) {
-                        addSchemeCalendar(datePattern, thisDate.year, thisDate.monthValue, thisDate.dayOfMonth, it.campaignType.shortColor(), it.shortTitle, it.startTime, it.endTime)
+                        addSchemeCalendar(datePattern, thisDate.year, thisDate.monthValue, thisDate.dayOfMonth, it.campaignType.shortColor(), it.shortTitle)
                     }
                 } else {
-                    addSchemeCalendar(datePattern, thisDate.year, thisDate.monthValue, thisDate.dayOfMonth, it.type.color, it.type.description, it.startTime, it.endTime)
+                    addSchemeCalendar(datePattern, thisDate.year, thisDate.monthValue, thisDate.dayOfMonth, it.type.color, it.type.description)
                 }
                 if (scheduleMap[datePattern] == null) {
                     scheduleMap[datePattern] = mutableListOf()
@@ -67,8 +66,6 @@ class CalendarViewModel : ViewModel() {
         day: Int,
         color: Int,
         text: String,
-        startTime: LocalDateTime,
-        endTime: LocalDateTime
     ) {
         if (calendarMap[datePattern] == null) {
             calendarMap[datePattern] = Calendar().apply {
@@ -77,12 +74,12 @@ class CalendarViewModel : ViewModel() {
                 this.day = day
                 schemeColor = color
                 scheme = text
-                addScheme(color, text, startTime, endTime)
+                addScheme(color, text)
             }
         } else {
             calendarMap[datePattern]?.let {
                 if (it.schemes.size < maxDisplayNum) {
-                    it.addScheme(color, text, startTime, endTime)
+                    it.addScheme(color, text)
                 }
             }
         }

@@ -53,6 +53,7 @@ public abstract class BaseMonthView extends BaseView {
      */
     protected int mNextDiff;
 
+
     public BaseMonthView(Context context) {
         super(context);
     }
@@ -114,14 +115,53 @@ public abstract class BaseMonthView extends BaseView {
         if (mItemWidth == 0 || mItemHeight == 0) {
             return null;
         }
-        int indexX = (int) (mX - mDelegate.getCalendarPadding()) / mItemWidth;
+        if (mX <= mDelegate.getCalendarPaddingLeft() || mX >= getWidth() - mDelegate.getCalendarPaddingRight()) {
+            onClickCalendarPadding();
+            return null;
+        }
+        int indexX = (int) (mX - mDelegate.getCalendarPaddingLeft()) / mItemWidth;
         if (indexX >= 7) {
             indexX = 6;
         }
         int indexY = (int) mY / mItemHeight;
         int position = indexY * 7 + indexX;// 选择项
-        if (position >= 0 && position < mItems.size())
+        if (position >= 0 && position < mItems.size()) {
             return mItems.get(position);
+        }
+        return null;
+    }
+
+    private void onClickCalendarPadding() {
+        if (mDelegate.mClickCalendarPaddingListener == null) {
+            return;
+        }
+        Calendar calendar = null;
+        int indexX = (int) (mX - mDelegate.getCalendarPaddingLeft()) / mItemWidth;
+        if (indexX >= 7) {
+            indexX = 6;
+        }
+        int indexY = (int) mY / mItemHeight;
+        int position = indexY * 7 + indexX;// 选择项
+        if (position >= 0 && position < mItems.size()) {
+            calendar = mItems.get(position);
+        }
+        if (calendar == null) {
+            return;
+        }
+        mDelegate.mClickCalendarPaddingListener.onClickCalendarPadding(mX, mY, true, calendar,
+                getClickCalendarPaddingObject(mX, mY, calendar));
+    }
+
+    /**
+     * 获取点击事件处的对象
+     *
+     * @param x                x
+     * @param y                y
+     * @param adjacentCalendar adjacent calendar
+     * @return obj can as null
+     */
+    @SuppressWarnings("unused")
+    protected Object getClickCalendarPaddingObject(float x, float y, Calendar adjacentCalendar) {
         return null;
     }
 
@@ -140,7 +180,7 @@ public abstract class BaseMonthView extends BaseView {
      */
     final void updateShowMode() {
         mLineCount = CalendarUtil.getMonthViewLineCount(mYear, mMonth,
-                mDelegate.getWeekStart(),mDelegate.getMonthViewShowMode());
+                mDelegate.getWeekStart(), mDelegate.getMonthViewShowMode());
         mHeight = CalendarUtil.getMonthViewHeight(mYear, mMonth, mItemHeight, mDelegate.getWeekStart(),
                 mDelegate.getMonthViewShowMode());
         invalidate();

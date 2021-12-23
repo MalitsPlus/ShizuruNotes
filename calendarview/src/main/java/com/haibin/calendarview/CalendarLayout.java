@@ -141,7 +141,6 @@ public class CalendarLayout extends LinearLayout {
 
     private int mCalendarShowMode;
 
-    private int mTouchSlop;
     private int mContentViewTranslateY; //ContentView  可滑动的最大距离距离 , 固定
     private int mViewPagerTranslateY = 0;// ViewPager可以平移的距离，不代表mMonthView的平移距离
 
@@ -176,7 +175,7 @@ public class CalendarLayout extends LinearLayout {
         array.recycle();
         mVelocityTracker = VelocityTracker.obtain();
         final ViewConfiguration configuration = ViewConfiguration.get(context);
-        mTouchSlop = configuration.getScaledTouchSlop();
+        int mTouchSlop = configuration.getScaledTouchSlop();
         mMaximumVelocity = configuration.getScaledMaximumFlingVelocity();
     }
 
@@ -347,7 +346,7 @@ public class CalendarLayout extends LinearLayout {
                         mDelegate.mViewChangeListener.onViewChange(false);
                     }
                     isWeekView = true;
-                    return false;
+                    return true;
                 }
                 hideWeek(false);
 
@@ -597,9 +596,6 @@ public class CalendarLayout extends LinearLayout {
         }
         mContentView = findViewById(mContentViewId);
         mYearView = findViewById(R.id.selectLayout);
-        if (mContentView != null) {
-            mContentView.setOverScrollMode(View.OVER_SCROLL_NEVER);
-        }
     }
 
 

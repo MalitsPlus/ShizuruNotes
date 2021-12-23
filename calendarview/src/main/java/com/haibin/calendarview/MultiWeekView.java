@@ -38,16 +38,18 @@ public abstract class MultiWeekView extends BaseWeekView {
     protected void onDraw(Canvas canvas) {
         if (mItems.size() == 0)
             return;
-        mItemWidth = (getWidth() - 2 * mDelegate.getCalendarPadding()) / 7;
+        mItemWidth = (getWidth() -
+                mDelegate.getCalendarPaddingLeft() -
+                mDelegate.getCalendarPaddingRight()) / 7;
         onPreviewHook();
 
         for (int i = 0; i < 7; i++) {
-            int x = i * mItemWidth + mDelegate.getCalendarPadding();
+            int x = i * mItemWidth + mDelegate.getCalendarPaddingLeft();
             onLoopStart(x);
             Calendar calendar = mItems.get(i);
             boolean isSelected = isCalendarSelected(calendar);
-            boolean isPreSelected = isSelectPreCalendar(calendar);
-            boolean isNextSelected = isSelectNextCalendar(calendar);
+            boolean isPreSelected = isSelectPreCalendar(calendar, i);
+            boolean isNextSelected = isSelectNextCalendar(calendar, i);
             boolean hasScheme = calendar.hasScheme();
             if (hasScheme) {
                 boolean isDrawSelected = false;//是否继续绘制选中的onDrawScheme
@@ -143,24 +145,36 @@ public abstract class MultiWeekView extends BaseWeekView {
     /**
      * 上一个日期是否选中
      *
-     * @param calendar 当前日期
+     * @param calendar      当前日期
+     * @param calendarIndex 当前位置
      * @return 上一个日期是否选中
      */
-    protected final boolean isSelectPreCalendar(Calendar calendar) {
-        Calendar preCalendar = CalendarUtil.getPreCalendar(calendar);
-        mDelegate.updateCalendarScheme(preCalendar);
+    protected final boolean isSelectPreCalendar(Calendar calendar, int calendarIndex) {
+        Calendar preCalendar;
+        if (calendarIndex == 0) {
+            preCalendar = CalendarUtil.getPreCalendar(calendar);
+            mDelegate.updateCalendarScheme(preCalendar);
+        } else {
+            preCalendar = mItems.get(calendarIndex - 1);
+        }
         return isCalendarSelected(preCalendar);
     }
 
     /**
      * 下一个日期是否选中
      *
-     * @param calendar 当前日期
+     * @param calendar      当前日期
+     * @param calendarIndex 当前位置
      * @return 下一个日期是否选中
      */
-    protected final boolean isSelectNextCalendar(Calendar calendar) {
-        Calendar nextCalendar = CalendarUtil.getNextCalendar(calendar);
-        mDelegate.updateCalendarScheme(nextCalendar);
+    protected final boolean isSelectNextCalendar(Calendar calendar, int calendarIndex) {
+        Calendar nextCalendar;
+        if (calendarIndex == mItems.size() - 1) {
+            nextCalendar = CalendarUtil.getNextCalendar(calendar);
+            mDelegate.updateCalendarScheme(nextCalendar);
+        } else {
+            nextCalendar = mItems.get(calendarIndex + 1);
+        }
         return isCalendarSelected(nextCalendar);
     }
 
