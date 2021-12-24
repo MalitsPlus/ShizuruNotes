@@ -61,7 +61,7 @@ public class LocaleManager {
             if (systemLanguage.getLanguage().equals("zh")) {
                 if (!systemLanguage.getScript().equals("")) {
                     persistLanguage(systemLanguage.getLanguage() + "-" + systemLanguage.getScript());
-                    //API 21+, but some Android version/edition doesn't report Script for Chinese
+                    //API 21+, but some Android version/editions don't report Script for Chinese
                 }
                 else if (systemLanguage.getCountry().equals("CN")){
                     //yeah, for MIUI and else shit
