@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    compileSdk 30
+    compileSdk 31
     defaultConfig {
         applicationId "com.github.nyanfantasia.shizurunotes"
         minSdk 26
-        targetSdk 30
+        targetSdk 31
         versionCode 61
         versionName "1.11.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -45,9 +45,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'com.google.android.material:material:1.6.0-alpha01'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
@@ -57,7 +57,7 @@ dependencies {
     implementation 'junit:junit:4.13.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
@@ -71,7 +71,7 @@ dependencies {
     implementation 'androidx.preference:preference-ktx:1.1.1'
     implementation 'com.google.guava:guava:31.0.1-jre'
     implementation "androidx.viewpager2:viewpager2:1.0.0"
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
 //    implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
 
     implementation 'com.jakewharton:process-phoenix:2.1.2'

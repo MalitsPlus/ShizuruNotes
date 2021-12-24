@@ -10,7 +10,7 @@ class DropQuestViewModelFactory(
     private val sharedQuest: SharedViewModelQuest,
     private val equipmentList: List<Item>?
 ) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return try {
             modelClass.getConstructor(SharedViewModelQuest::class.java, List::class.java)
                 .newInstance(sharedQuest, equipmentList)

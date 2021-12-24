@@ -7,7 +7,7 @@ import java.lang.reflect.InvocationTargetException
 class SharedViewModelHatsuneFactory (
     private val sharedViewModelHatsune: SharedViewModelHatsune
 ) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return try {
             modelClass.getConstructor(SharedViewModelHatsune::class.java)
                 .newInstance(sharedViewModelHatsune)

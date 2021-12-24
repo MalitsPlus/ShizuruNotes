@@ -7,7 +7,7 @@ import java.lang.reflect.InvocationTargetException
 class SharedViewModelClanBattleFactory (
     private val sharedViewModelClanBattle: SharedViewModelClanBattle
 ) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return try {
             modelClass.getConstructor(SharedViewModelClanBattle::class.java)
                 .newInstance(sharedViewModelClanBattle)
