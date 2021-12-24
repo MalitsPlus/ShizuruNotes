@@ -31,19 +31,22 @@ public class LocaleManager {
         SUPPORTED_LANGUAGE.add(Locale.KOREAN.getLanguage());
         SUPPORTED_LANGUAGE.add(Locale.ENGLISH.getLanguage());
     }
-    //對比完整語言資料的文字格式
+    //已支援語言的資料庫，對比完整語言資料的文字格式(String)
 
     private final SharedPreferences prefs;
 
     LocaleManager(Context context) {
+        //從 Android Shared preference 取得資料
         prefs = android.preference.PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     public Context setLocale(Context context) {
         return updateResources(context, getLanguage());
     }
+    //設定語言時使用
 
     public Context setNewLocale(Context context, String language) {
+        //用於處理更換新語言
         return updateResources(context, language);
     }
 
@@ -51,18 +54,29 @@ public class LocaleManager {
         String currentLanguage = prefs.getString(UserSettings.LANGUAGE_KEY, null);
         if(currentLanguage != null)
             return currentLanguage;
+        //每次啟動(非首次)應用程式的語言判斷
 
         Locale systemLanguage = Locale.getDefault();
         if(LocaleManager.SUPPORTED_LANGUAGE.contains(systemLanguage.getLanguage())) {
             if (systemLanguage.getLanguage().equals("zh")) {
-                persistLanguage(systemLanguage.getLanguage()+"-"+systemLanguage.getScript());
-                // API 21+
+                if (!systemLanguage.getScript().equals("")) {
+                    persistLanguage(systemLanguage.getLanguage() + "-" + systemLanguage.getScript());
+                    //API 21+, but some Android version/edition doesn't report Script for Chinese
+                }
+                else if (systemLanguage.getCountry().equals("CN")){
+                    //yeah, for MIUI and else shit
+                    persistLanguage("zh-Hans");
+                }
+                else {
+                    persistLanguage("zh-Hant");
+                    //I guess there's no other things like zh-CN for zh-Hans
+                }
             }
             else {
                 persistLanguage(systemLanguage.getLanguage());
             }
                 return getLanguage();
-            // 比對資料庫，擁有紀錄再設定為系統語言
+            // 比對資料庫，擁有紀錄再設定為系統語言，此工作為初始化處理程序
         }
         else {
             persistLanguage(Locale.JAPANESE.getLanguage());
@@ -85,6 +99,7 @@ public class LocaleManager {
         else if (language.equals("zh-Hans"))
         locale = Locale.CHINA;
         else
+            // Workaround for String and Locale conversion
         Locale.setDefault(locale);
         Resources res = context.getResources();
         Configuration config = new Configuration(res.getConfiguration());
