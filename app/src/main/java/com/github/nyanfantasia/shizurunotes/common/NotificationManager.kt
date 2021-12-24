@@ -4,6 +4,7 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import com.github.nyanfantasia.shizurunotes.data.CampaignSchedule
 import com.github.nyanfantasia.shizurunotes.data.CampaignType
 import com.github.nyanfantasia.shizurunotes.data.EventSchedule
@@ -116,12 +117,21 @@ class NotificationManager private constructor(
             if (triggerTime.isAfter(LocalDateTime.now())) {
                 val alarmMgr = mContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
                 val intent = getIntent(typeString)
-                val pendingIntent = PendingIntent.getBroadcast(
-                    mContext,
-                    getSpecificId(eventSchedule, typeString),
-                    intent,
-                    0
-                )
+                val pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    PendingIntent.getBroadcast(
+                        mContext,
+                        getSpecificId(eventSchedule, typeString),
+                        intent,
+                        PendingIntent.FLAG_MUTABLE
+                    )
+                } else {
+                    PendingIntent.getBroadcast(
+                        mContext,
+                        getSpecificId(eventSchedule, typeString),
+                        intent,
+                        0
+                    )
+                }
 //                val zoneOffset = TimeZone.getDefault().toZoneId().rules.getOffset(LocalDateTime.now())
 
                 alarmMgr.set(
@@ -136,7 +146,11 @@ class NotificationManager private constructor(
 
     private fun cancelAlarm(intent: Intent, id: Int) {
         val alarmMgr = mContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val pendingIntent = PendingIntent.getBroadcast(mContext, id, intent, 0)
+        val pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            PendingIntent.getBroadcast(mContext, id, intent, PendingIntent.FLAG_MUTABLE)
+        } else {
+            PendingIntent.getBroadcast(mContext, id, intent, 0)
+        }
         alarmMgr.cancel(pendingIntent)
     }
 

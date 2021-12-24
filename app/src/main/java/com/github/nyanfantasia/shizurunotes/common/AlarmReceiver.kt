@@ -4,6 +4,7 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.databinding.ktx.BuildConfig
@@ -72,7 +73,11 @@ class AlarmReceiver : BroadcastReceiver() {
                     }
                 }
                 val newIntent = Intent(context, MainActivity::class.java)
-                val pendingIntent = PendingIntent.getActivity(context, 0, newIntent, 0)
+                val pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    PendingIntent.getActivity(context, 0, newIntent, PendingIntent.FLAG_MUTABLE)
+                } else {
+                    PendingIntent.getActivity(context, 0, newIntent, 0)
+                }
                 val builder = NotificationCompat.Builder(context, channelId)
                     .setSmallIcon(R.drawable.mic_crepe_filled)
                     .setContentTitle(title)
