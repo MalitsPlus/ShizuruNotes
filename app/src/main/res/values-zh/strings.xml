@@ -686,4 +686,5 @@
     <string name="Knock_s1_away_s2">击退%1$s，距离 [%2$s]。</string>
     <string name="hexed">恶咒状态中</string>
     <string name="cursed_or_hexed">诅咒或恶咒状态中</string>
+    <string name="Implement_some_visual_effects_to_s1">对%s付与一些特殊的视觉效果。</string>
 </resources>
