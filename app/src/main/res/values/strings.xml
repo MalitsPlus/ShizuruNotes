@@ -751,4 +751,5 @@
     <string name="Knock_s1_away_s2">%1$sをノックバックする、距離 [%2$s]。</string>
     <string name="hexed">呪詛状態中</string>
     <string name="cursed_or_hexed">呪い或いは呪詛状態中</string>
+    <string name="Implement_some_visual_effects_to_s1">%sに特別なビジュアル効果を付与する。</string>
 </resources>
