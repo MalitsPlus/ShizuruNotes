@@ -697,4 +697,5 @@
     <string name="rank_d">Rank %d</string>
     <string name="sp_skill_1_evo">SP技能 1+</string>
     <string name="sp_skill_2_evo">SP技能 2+</string>
+    <string name="Implement_some_visual_effects_to_s1">對%s給予一些特殊視覺效果。</string>
 </resources>
