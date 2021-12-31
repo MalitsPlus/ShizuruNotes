@@ -3,6 +3,7 @@ package com.github.malitsplus.shizurunotes.data.action;
 import com.github.malitsplus.shizurunotes.R;
 import com.github.malitsplus.shizurunotes.common.I18N;
 import com.github.malitsplus.shizurunotes.data.Property;
+import com.github.malitsplus.shizurunotes.utils.Utils;
 
 public class IfForAllAction extends ActionParameter {
 
@@ -31,10 +32,10 @@ public class IfForAllAction extends ActionParameter {
                         actionDetail2 % 10, targetParameter.buildTargetClause());
             } else if(actionDetail1 >= 600 && actionDetail1 < 700){
                 trueClause = I18N.getString(R.string.use_d1_if_s2_is_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4,
-                        actionDetail2 % 10, targetParameter.buildTargetClause(), actionDetail1 - 600, (int)actionValue3.value);
+                        actionDetail2 % 10, targetParameter.buildTargetClause(true), actionDetail1 - 600, (int)actionValue3.value);
             } else if(actionDetail1 == 700){
                 trueClause = I18N.getString(R.string.use_d1_if_s2_is_alone,
-                        actionDetail2 % 10, targetParameter.buildTargetClause());
+                        actionDetail2 % 10, targetParameter.buildTargetClause(true));
             } else if(actionDetail1 >= 701 && actionDetail1 < 710){
                 trueClause = I18N.getString(R.string.use_d1_if_the_count_of_s2_except_stealth_units_is_d3,
                         actionDetail2 % 10, targetParameter.buildTargetClause(), actionDetail1 - 700);
@@ -56,9 +57,12 @@ public class IfForAllAction extends ActionParameter {
             } else if(actionDetail1 >= 1200 && actionDetail1 < 1300){
                 trueClause = I18N.getString(R.string.counter_d3_is_greater_than_or_equal_to_d1_then_use_d2,
                         actionDetail1 % 10, actionDetail2 % 10, actionDetail1 % 100 / 10);
-            } else if(actionDetail1 >= 6000 && actionDetail1 < 7000) {
+            } else if(actionDetail1 >= 6000 && actionDetail1 < 7000 && actionValue3.value == 0) {
                 trueClause = I18N.getString(R.string.use_d1_to_s2_in_state_of_ID_d3,
                         actionDetail2 % 10, targetParameter.buildTargetClause(true), actionDetail1 - 6000);
+            } else if(actionDetail1 >= 6000 && actionDetail1 < 7000) {
+                trueClause = I18N.getString(R.string.use_d1_if_s2_is_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4,
+                        actionDetail2 % 10, targetParameter.buildTargetClause(true), actionDetail1 - 6000, (int)actionValue3.value);
             }
         } else if (actionDetail3 == 0){
             trueClause = I18N.getString(R.string.no_effect);
@@ -81,10 +85,10 @@ public class IfForAllAction extends ActionParameter {
                         actionDetail3 % 10, targetParameter.buildTargetClause());
             } else if(actionDetail1 >= 600 && actionDetail1 < 700){
                 falseClause = I18N.getString(R.string.use_d1_if_s2_is_not_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4,
-                        actionDetail3 % 10, targetParameter.buildTargetClause(), actionDetail1 - 600, (int)actionValue3.value);
+                        actionDetail3 % 10, targetParameter.buildTargetClause(true), actionDetail1 - 600, (int)actionValue3.value);
             } else if(actionDetail1 == 700){
                 falseClause = I18N.getString(R.string.use_d1_if_s2_is_not_alone,
-                        actionDetail3 % 10, targetParameter.buildTargetClause());
+                        actionDetail3 % 10, targetParameter.buildTargetClause(true));
             } else if(actionDetail1 >= 701 && actionDetail1 < 710){
                 falseClause = I18N.getString(R.string.use_d1_if_the_count_of_s2_except_stealth_units_is_not_d3,
                         actionDetail3 % 10, targetParameter.buildTargetClause(), actionDetail1 - 700);
@@ -106,9 +110,12 @@ public class IfForAllAction extends ActionParameter {
             } else if(actionDetail1 >= 1200 && actionDetail1 < 1300){
                 falseClause = I18N.getString(R.string.counter_d3_is_less_than_d1_then_use_d2,
                         actionDetail1 % 10, actionDetail3 % 10, actionDetail1 % 100 / 10);
-            } else if(actionDetail1 >= 6000 && actionDetail1 < 7000) {
+            } else if(actionDetail1 >= 6000 && actionDetail1 < 7000 && actionValue3.value == 0) {
                 falseClause = I18N.getString(R.string.use_d1_to_s2_if_not_in_state_of_ID_d3,
                         actionDetail3 % 10, targetParameter.buildTargetClause(true), actionDetail1 - 6000);
+            } else if(actionDetail1 >= 6000 && actionDetail1 < 7000) {
+                falseClause = I18N.getString(R.string.use_d1_if_s2_is_not_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4,
+                        actionDetail3 % 10, targetParameter.buildTargetClause(true), actionDetail1 - 6000, (int)actionValue3.value);
             }
         } else if (actionDetail2 == 0){
             falseClause = I18N.getString(R.string.no_effect);
