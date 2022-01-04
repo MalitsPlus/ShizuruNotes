@@ -754,4 +754,5 @@
     <string name="hexed">呪詛状態中</string>
     <string name="cursed_or_hexed">呪い或いは呪詛状態中</string>
     <string name="Implement_some_visual_effects_to_s1">%sに特別なビジュアル効果を付与する。</string>
+    <string name="This_damage_type_is_judged_by_the_lower_defence_value_of_targeted_enemy">このスキルのダメージタイプは目標の低いほうの防御タイプによって決められる。</string>
 </resources>

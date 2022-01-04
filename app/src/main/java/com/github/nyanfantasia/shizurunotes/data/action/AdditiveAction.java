@@ -96,6 +96,10 @@ public class AdditiveAction extends ActionParameter {
                 if (actionValue1.value >= 200 && actionValue1.value < 300){
                     result = I18N.getString(R.string.Modifier_add_s1_stacks_of_mark_ID_d2_to_value_d3_of_effect_d4,
                             buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
+                            ((int)actionValue1.value) % 2000, actionDetail2, actionDetail1 % 10);
+                } else if(actionValue1.value >= 2000 && actionValue1.value < 3000){
+                    result = I18N.getString(R.string.Modifier_add_s1_stacks_of_mark_ID_d2_to_value_d3_of_effect_d4,
+                            buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
                             ((int)actionValue1.value) % 200, actionDetail2, actionDetail1 % 10);
                 } else if(actionValue1.value >= 7 && actionValue1.value <= 10){
                     result = I18N.getString(R.string.Modifier_add_s1_s2_of_s3_to_value_d4_of_effect_d5,

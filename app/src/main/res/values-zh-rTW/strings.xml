@@ -698,4 +698,5 @@
     <string name="sp_skill_1_evo">SP技能 1+</string>
     <string name="sp_skill_2_evo">SP技能 2+</string>
     <string name="Implement_some_visual_effects_to_s1">對%s給予一些特殊視覺效果。</string>
+    <string name="This_damage_type_is_judged_by_the_lower_defence_value_of_targeted_enemy">本傷害的類型會切換為目標防禦數值較低項的類型，再進行計算。</string>
 </resources>

@@ -8,7 +8,7 @@ An **unofficial** Android tool application for "Princess Connect Re:Dive".
 
 ## Build
 Requires Android Studio 4.0 or later.  
-Dependents could be found in `./app/build.gradle` and it might be changed time to time.  
+Dependencies could be found in `./app/build.gradle` and it might be changed time to time.  
 
 ## Features
 * Chara 
