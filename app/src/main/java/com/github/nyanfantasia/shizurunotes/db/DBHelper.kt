@@ -67,24 +67,34 @@ class DBHelper private constructor(
                             f.isAccessible = true
                         }
                         val type = f.type
-                        if (type == Byte::class.javaPrimitiveType) {
-                            f[bean] = cursor.getShort(columnIdx).toByte()
-                        } else if (type == Short::class.javaPrimitiveType) {
-                            f[bean] = cursor.getShort(columnIdx)
-                        } else if (type == Int::class.javaPrimitiveType) {
-                            f[bean] = cursor.getInt(columnIdx)
-                        } else if (type == Long::class.javaPrimitiveType) {
-                            f[bean] = cursor.getLong(columnIdx)
-                        } else if (type == String::class.java) {
-                            f[bean] = cursor.getString(columnIdx)
-                        } else if (type == ByteArray::class.java) {
-                            f[bean] = cursor.getBlob(columnIdx)
-                        } else if (type == Boolean::class.javaPrimitiveType) {
-                            f[bean] = cursor.getInt(columnIdx) == 1
-                        } else if (type == Float::class.javaPrimitiveType) {
-                            f[bean] = cursor.getFloat(columnIdx)
-                        } else if (type == Double::class.javaPrimitiveType) {
-                            f[bean] = cursor.getDouble(columnIdx)
+                        when (type) {
+                            Byte::class.javaPrimitiveType -> {
+                                f[bean] = cursor.getShort(columnIdx).toByte()
+                            }
+                            Short::class.javaPrimitiveType -> {
+                                f[bean] = cursor.getShort(columnIdx)
+                            }
+                            Int::class.javaPrimitiveType -> {
+                                f[bean] = cursor.getInt(columnIdx)
+                            }
+                            Long::class.javaPrimitiveType -> {
+                                f[bean] = cursor.getLong(columnIdx)
+                            }
+                            String::class.java -> {
+                                f[bean] = cursor.getString(columnIdx)
+                            }
+                            ByteArray::class.java -> {
+                                f[bean] = cursor.getBlob(columnIdx)
+                            }
+                            Boolean::class.javaPrimitiveType -> {
+                                f[bean] = cursor.getInt(columnIdx) == 1
+                            }
+                            Float::class.javaPrimitiveType -> {
+                                f[bean] = cursor.getFloat(columnIdx)
+                            }
+                            Double::class.javaPrimitiveType -> {
+                                f[bean] = cursor.getDouble(columnIdx)
+                            }
                         }
                     }
                 }
@@ -156,8 +166,8 @@ class DBHelper private constructor(
      * 由表名、类名、条件键值从数据库获取实体列表
      * @param tableName 表名
      * @param theClass 类名
-     * @param key WHERE [key] IN ([keyValue])
-     * @param keyValues WHERE [key] IN ([keyValue])
+     * @param key WHERE [key] IN ([keyValues])
+     * @param keyValues WHERE [key] IN ([keyValues])
      * @param <T> theClass的类
      * @return 生成的实体列表
     </T> */
@@ -216,7 +226,6 @@ class DBHelper private constructor(
     /***
      * 由SQL语句、SQL中的键值从数据库获取单个实体
      * @param sql SQL语句
-     * @param keyValue IN (?) => ?=keyValue
      * @param theClass 类名
      * @param <T> theClass的类
      * @return 生成的实体
@@ -258,7 +267,6 @@ class DBHelper private constructor(
     /***
      * 由SQL语句无条件从数据库获取实体列表
      * @param sql SQL语句
-     * @param keyValue 替换？的值
      * @param theClass 类名
      * @param <T> theClass的类
      * @return 生成的实体列表
@@ -335,6 +343,7 @@ class DBHelper private constructor(
      * @param sql
      * @return
      */
+    @SuppressLint("Range")
     private fun getIntStringMap(
         sql: String,
         key: String?,
@@ -649,7 +658,7 @@ class DBHelper private constructor(
 
     /***
      * 获取装备强化数据
-     * @param id 装备ids
+     * @param equipmentId 装备ids
      * @return
      */
     fun getEquipmentEnhance(equipmentId: Int): RawEquipmentEnhanceData? {

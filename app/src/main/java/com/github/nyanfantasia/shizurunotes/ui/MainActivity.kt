@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.github.nyanfantasia.shizurunotes.R
 import com.github.nyanfantasia.shizurunotes.common.*
@@ -28,7 +27,7 @@ class MainActivity : AppCompatActivity(),
     private lateinit var sharedQuest: SharedViewModelQuest
     private lateinit var binding: ActivityMainBinding
 
-    override fun attachBaseContext(base: Context?) {
+    override fun attachBaseContext(base: Context) {
         super.attachBaseContext(App.localeManager.setLocale(base))
     }
 
@@ -67,7 +66,7 @@ class MainActivity : AppCompatActivity(),
 
     private fun initSharedViewModels() {
         sharedEquipment = ViewModelProvider(this)[SharedViewModelEquipment::class.java].apply {
-            equipmentMap.observe(this@MainActivity, Observer {
+            equipmentMap.observe(this@MainActivity, {
                 if (it.isNotEmpty()) {
                     sharedChara.loadData(it)
                 }

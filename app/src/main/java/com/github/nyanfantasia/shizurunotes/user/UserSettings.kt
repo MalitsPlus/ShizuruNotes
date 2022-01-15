@@ -77,7 +77,7 @@ class UserSettings private constructor(
         }
 
     private val userData: UserData = if (json.isNotEmpty()) {
-        JsonUtils.getBeanFromJson<UserData>(json, UserData::class.java)
+        JsonUtils.getBeanFromJson(json, UserData::class.java)
     } else {
         UserData()
     }
@@ -87,11 +87,7 @@ class UserSettings private constructor(
 
     var lastEquipmentIds: List<Int>
         get() {
-            return if (userData.lastEquipmentIds != null) {
-                userData.lastEquipmentIds
-            } else {
-                emptyList()
-            }
+            return userData.lastEquipmentIds ?: emptyList()
         }
         set(ids) {
             userData.lastEquipmentIds = ids
