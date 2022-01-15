@@ -16,7 +16,7 @@ class MenuFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = DataBindingUtil.inflate<FragmentMenuBinding>(
             inflater, R.layout.fragment_menu, container, false
         ).apply {

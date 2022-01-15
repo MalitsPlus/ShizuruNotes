@@ -11,7 +11,7 @@ import kotlin.concurrent.thread
 class SharedViewModelEquipment : ViewModel() {
     val equipmentFragmentMap = mutableMapOf<Int, EquipmentPiece>()
     val equipmentMap = MutableLiveData<MutableMap<Int, Equipment>>()
-    val loadingFlag = MutableLiveData<Boolean>(false)
+    val loadingFlag = MutableLiveData(false)
     val selectedDrops = MutableLiveData<MutableList<Item>>(mutableListOf())
     var selectedEquipment: Equipment? = null
 

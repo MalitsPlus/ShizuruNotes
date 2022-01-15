@@ -70,7 +70,7 @@ public class BrotliUtils {
         BrotliCompressorInputStream bcis = new BrotliCompressorInputStream(is);
 
         int count;
-        byte data[] = new byte[BUFFER];
+        byte[] data = new byte[BUFFER];
 
         while((count = bcis.read(data, 0, BUFFER)) != -1){
             os.write(data, 0, count);

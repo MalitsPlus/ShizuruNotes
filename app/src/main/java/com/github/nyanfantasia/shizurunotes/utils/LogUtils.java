@@ -26,7 +26,6 @@ import org.json.JSONObject;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.StringReader;
@@ -35,6 +34,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -45,6 +45,7 @@ import java.util.Formatter;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -232,12 +233,7 @@ public final class LogUtils {
                 print2Console(type_low, tagHead.tag, tagHead.consoleHead, body);
             }
             if ((CONFIG.isLog2FileSwitch() || type_high == FILE) && type_low >= CONFIG.mFileFilter) {
-                EXECUTOR.execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        print2File(type_low, tagHead.tag, tagHead.fileHead + body);
-                    }
-                });
+                EXECUTOR.execute(() -> print2File(type_low, tagHead.tag, tagHead.fileHead + body));
             }
         }
     }
@@ -246,13 +242,9 @@ public final class LogUtils {
         String dir = CONFIG.getDir();
         File logDir = new File(dir);
         if (!logDir.exists()) return new ArrayList<>();
-        File[] files = logDir.listFiles(new FilenameFilter() {
-            @Override
-            public boolean accept(File dir, String name) {
-                return isMatchLogFileName(name);
-            }
-        });
+        File[] files = logDir.listFiles((dir1, name) -> isMatchLogFileName(name));
         List<File> list = new ArrayList<>();
+        assert files != null;
         Collections.addAll(list, files);
         return list;
     }
@@ -429,6 +421,7 @@ public final class LogUtils {
             return;
         }
         StringBuilder sb = new StringBuilder();
+        assert LINE_SEP != null;
         String[] lines = msg.split(LINE_SEP);
         for (String line : lines) {
             Log.println(type, tag, LEFT_BORDER + line);
@@ -449,6 +442,7 @@ public final class LogUtils {
                 }
                 sb.append(MIDDLE_BORDER).append(LINE_SEP);
             }
+            assert LINE_SEP != null;
             for (String line : msg.split(LINE_SEP)) {
                 sb.append(LEFT_BORDER).append(line).append(LINE_SEP);
             }
@@ -548,28 +542,21 @@ public final class LogUtils {
         if (CONFIG.getSaveDays() <= 0) return;
         File file = new File(filePath);
         File parentFile = file.getParentFile();
-        File[] files = parentFile.listFiles(new FilenameFilter() {
-            @Override
-            public boolean accept(File dir, String name) {
-                return isMatchLogFileName(name);
-            }
-        });
+        assert parentFile != null;
+        File[] files = parentFile.listFiles((dir, name) -> isMatchLogFileName(name));
         if (files == null || files.length <= 0) return;
         final SimpleDateFormat sdf = new SimpleDateFormat("yyyy_MM_dd", Locale.getDefault());
         try {
-            long dueMillis = sdf.parse(date).getTime() - CONFIG.getSaveDays() * 86400000L;
+            long dueMillis = Objects.requireNonNull(sdf.parse(date)).getTime() - CONFIG.getSaveDays() * 86400000L;
             for (final File aFile : files) {
                 String name = aFile.getName();
                 int l = name.length();
                 String logDay = findDate(name);
-                if (sdf.parse(logDay).getTime() <= dueMillis) {
-                    EXECUTOR.execute(new Runnable() {
-                        @Override
-                        public void run() {
-                            boolean delete = aFile.delete();
-                            if (!delete) {
-                                Log.e("LogUtils", "delete " + aFile + " failed!");
-                            }
+                if (Objects.requireNonNull(sdf.parse(logDay)).getTime() <= dueMillis) {
+                    EXECUTOR.execute(() -> {
+                        boolean delete = aFile.delete();
+                        if (!delete) {
+                            Log.e("LogUtils", "delete " + aFile + " failed!");
                         }
                     });
                 }
@@ -593,8 +580,8 @@ public final class LogUtils {
     }
 
     private static void printDeviceInfo(final String filePath, final String date) {
-        String versionName = "";
-        int versionCode = 0;
+        String versionName;
+        int versionCode;
         versionName = BuildConfig.VERSION_NAME;
         versionCode = BuildConfig.VERSION_CODE;
         final String head = "************* Log Head ****************" +
@@ -627,7 +614,7 @@ public final class LogUtils {
         if (CONFIG.mFileWriter == null) {
             BufferedWriter bw = null;
             try {
-                bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filePath, true), "UTF-8"));
+                bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filePath, true), StandardCharsets.UTF_8));
                 bw.write(input);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -712,6 +699,7 @@ public final class LogUtils {
             if (isSpace(dir)) {
                 mDir = null;
             } else {
+                assert FILE_SEP != null;
                 mDir = dir.endsWith(FILE_SEP) ? dir : dir + FILE_SEP;
             }
             return this;
@@ -1022,15 +1010,13 @@ public final class LogUtils {
                 first = false;
                 sb.append("bnds=").append(mSourceBounds.toShortString());
             }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                ClipData mClipData = intent.getClipData();
-                if (mClipData != null) {
-                    if (!first) {
-                        sb.append(' ');
-                    }
-                    first = false;
-                    clipData2String(mClipData, sb);
+            ClipData mClipData = intent.getClipData();
+            if (mClipData != null) {
+                if (!first) {
+                    sb.append(' ');
                 }
+                first = false;
+                clipData2String(mClipData, sb);
             }
             Bundle mExtras = intent.getExtras();
             if (mExtras != null) {
@@ -1042,17 +1028,15 @@ public final class LogUtils {
                 sb.append(bundle2String(mExtras));
                 sb.append('}');
             }
-            if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
-                Intent mSelector = intent.getSelector();
-                if (mSelector != null) {
-                    if (!first) {
-                        sb.append(' ');
-                    }
-                    first = false;
-                    sb.append("sel={");
-                    sb.append(mSelector == intent ? "(this Intent)" : intent2String(mSelector));
-                    sb.append("}");
+            Intent mSelector = intent.getSelector();
+            if (mSelector != null) {
+                if (!first) {
+                    sb.append(' ');
                 }
+                first = false;
+                sb.append("sel={");
+                sb.append(mSelector == intent ? "(this Intent)" : intent2String(mSelector));
+                sb.append("}");
             }
             sb.append(" }");
             return sb.toString();
@@ -1173,6 +1157,7 @@ public final class LogUtils {
         } else {
             type = formatter.getClass().getGenericSuperclass();
         }
+        assert type != null;
         type = ((ParameterizedType) type).getActualTypeArguments()[0];
         while (type instanceof ParameterizedType) {
             type = ((ParameterizedType) type).getRawType();
@@ -1196,19 +1181,17 @@ public final class LogUtils {
         if (objClass.isAnonymousClass() || objClass.isSynthetic()) {
             Type[] genericInterfaces = objClass.getGenericInterfaces();
             String className;
+            Type type;
             if (genericInterfaces.length == 1) {// interface
-                Type type = genericInterfaces[0];
-                while (type instanceof ParameterizedType) {
-                    type = ((ParameterizedType) type).getRawType();
-                }
-                className = type.toString();
+                type = genericInterfaces[0];
             } else {// abstract class or lambda
-                Type type = objClass.getGenericSuperclass();
-                while (type instanceof ParameterizedType) {
-                    type = ((ParameterizedType) type).getRawType();
-                }
-                className = type.toString();
+                type = objClass.getGenericSuperclass();
             }
+            while (type instanceof ParameterizedType) {
+                type = ((ParameterizedType) type).getRawType();
+            }
+            assert type != null;
+            className = type.toString();
 
             if (className.startsWith("class ")) {
                 className = className.substring(6);

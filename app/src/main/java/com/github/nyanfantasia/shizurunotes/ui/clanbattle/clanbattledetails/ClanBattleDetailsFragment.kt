@@ -28,7 +28,7 @@ class ClanBattleDetailsFragment(
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = DataBindingUtil.inflate<FragmentClanBattleDetailsBinding>(
             inflater, R.layout.fragment_clan_battle_details, container, false
         ).apply {

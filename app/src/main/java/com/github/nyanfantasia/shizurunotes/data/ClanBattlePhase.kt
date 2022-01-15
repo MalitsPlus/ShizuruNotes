@@ -4,11 +4,11 @@ import com.github.nyanfantasia.shizurunotes.db.DBHelper
 
 class ClanBattlePhase(
     val phase: Int,
-    val waveGroupId1: Int?,
-    val waveGroupId2: Int?,
-    val waveGroupId3: Int?,
-    val waveGroupId4: Int?,
-    val waveGroupId5: Int?) {
+    waveGroupId1: Int?,
+    waveGroupId2: Int?,
+    waveGroupId3: Int?,
+    waveGroupId4: Int?,
+    waveGroupId5: Int?) {
 
     val bossList = mutableListOf<Enemy>()
 

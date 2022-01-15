@@ -32,12 +32,16 @@ class ComparisonListAdapter : BaseRecyclerAdapter<RankComparison, ItemComparison
     }
 
     private fun setTextColor(num: Int, textView: TextView) {
-        if (num > 0) {
-            textView.setTextColor(ResourceManager.get().getColor(R.color.green_350))
-        } else if (num < 0) {
-            textView.setTextColor(ResourceManager.get().getColor(R.color.red_500))
-        } else {
-            textView.setTextColor(ResourceManager.get().getColor(R.color.textPrimary))
+        when {
+            num > 0 -> {
+                textView.setTextColor(ResourceManager.get().getColor(R.color.green_350))
+            }
+            num < 0 -> {
+                textView.setTextColor(ResourceManager.get().getColor(R.color.red_500))
+            }
+            else -> {
+                textView.setTextColor(ResourceManager.get().getColor(R.color.textPrimary))
+            }
         }
     }
 }

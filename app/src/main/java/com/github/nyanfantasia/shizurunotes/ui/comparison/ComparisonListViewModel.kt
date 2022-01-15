@@ -69,9 +69,9 @@ class ComparisonListViewModel(
             }
         }
 
-        comparisonToShow.sortWith(kotlin.Comparator{ a: RankComparison, b: RankComparison ->
-            val valueA : Int
-            val valueB : Int
+        comparisonToShow.sortWith { a: RankComparison, b: RankComparison ->
+            val valueA: Int
+            val valueB: Int
             when (selectedSort) {
                 "0" -> {
                     valueA = a.property.getEnergyRecoveryRate()
@@ -115,7 +115,7 @@ class ComparisonListViewModel(
                 }
             }
             (if (isAsc) -1 else 1) * valueB.compareTo(valueA)
-        })
+        }
         liveComparisonList.postValue(comparisonToShow)
     }
 

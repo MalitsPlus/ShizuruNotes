@@ -12,7 +12,7 @@ import kotlin.concurrent.thread
 class SharedViewModelClanBattle : ViewModel() {
 
     val periodList = MutableLiveData<MutableList<ClanBattlePeriod>>()
-    val loadingFlag = MutableLiveData<Boolean>(false)
+    val loadingFlag = MutableLiveData(false)
     var selectedPeriod: ClanBattlePeriod? = null
     var selectedEnemyList: List<Enemy>? = null
     var selectedMinion: MutableList<Enemy>? = null

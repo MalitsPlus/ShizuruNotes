@@ -1,12 +1,11 @@
 package com.github.nyanfantasia.shizurunotes.ui.comparison
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,9 +31,9 @@ class ComparisonListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentComparisonListBinding.inflate(inflater, container, false)
-        comparisonListVM.liveComparisonList.observe(viewLifecycleOwner, Observer {
+        comparisonListVM.liveComparisonList.observe(viewLifecycleOwner, {
             binding.comparisonListProgressbar.visibility = if (it.isEmpty()) {
                 View.VISIBLE
             } else {
@@ -81,7 +80,7 @@ class ComparisonListFragment : Fragment() {
                     MaterialSpinnerAdapter(
                         this@ComparisonListFragment.requireContext(),
                         R.layout.dropdown_item_chara_list,
-                        comparisonListVM.attackTypeMap.values.toTypedArray<String>()
+                        comparisonListVM.attackTypeMap.values.toTypedArray()
                     )
                 )
                 setText(comparisonListVM.attackTypeMap[0].toString())
@@ -95,7 +94,7 @@ class ComparisonListFragment : Fragment() {
                     MaterialSpinnerAdapter(
                         this@ComparisonListFragment.requireContext(),
                         R.layout.dropdown_item_chara_list,
-                        comparisonListVM.positionMap.values.toTypedArray<String>()
+                        comparisonListVM.positionMap.values.toTypedArray()
                     )
                 )
                 setText(comparisonListVM.positionMap[0].toString())
@@ -109,7 +108,7 @@ class ComparisonListFragment : Fragment() {
                     MaterialSpinnerAdapter(
                         this@ComparisonListFragment.requireContext(),
                         R.layout.dropdown_item_chara_list,
-                        comparisonListVM.sortMap.values.toTypedArray<String>()
+                        comparisonListVM.sortMap.values.toTypedArray()
                     )
                 )
                 setText(comparisonListVM.sortMap[0].toString())

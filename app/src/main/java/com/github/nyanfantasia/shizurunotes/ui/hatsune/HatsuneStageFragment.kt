@@ -1,11 +1,10 @@
 package com.github.nyanfantasia.shizurunotes.ui.hatsune
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -33,7 +32,7 @@ class HatsuneStageFragment : Fragment(), OnHatsuneClickListener<HatsuneStage> {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentHatsuneStageBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -41,7 +40,7 @@ class HatsuneStageFragment : Fragment(), OnHatsuneClickListener<HatsuneStage> {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedHatsune.loadData()
-        sharedHatsune.hatsuneStageList.observe(viewLifecycleOwner, Observer {
+        sharedHatsune.hatsuneStageList.observe(viewLifecycleOwner, {
             binding.hatsuneStageProgressBar.visibility = if (it.isEmpty()) {
                 View.VISIBLE
             } else {

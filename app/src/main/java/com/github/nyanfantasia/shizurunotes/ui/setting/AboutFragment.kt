@@ -17,9 +17,9 @@ class AboutFragment: Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        val aboutViewModel = ViewModelProvider(this).get(AboutViewModel::class.java)
+        val aboutViewModel = ViewModelProvider(this)[AboutViewModel::class.java]
         val binding = DataBindingUtil.inflate<FragmentAboutBinding>(
             inflater, R.layout.fragment_about, container, false
         ).apply {

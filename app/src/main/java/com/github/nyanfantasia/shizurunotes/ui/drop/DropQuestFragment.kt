@@ -1,11 +1,10 @@
 package com.github.nyanfantasia.shizurunotes.ui.drop
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,7 +28,7 @@ class DropQuestFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val mAdapter = DropQuestAdapter(requireContext(), sharedEquipment)
         val binding = FragmentDropQuestBinding.inflate(
             inflater, container, false
@@ -45,14 +44,14 @@ class DropQuestFragment : Fragment() {
         }
 
         sharedQuest.apply {
-            loadingFlag.observe(viewLifecycleOwner, Observer {
+            loadingFlag.observe(viewLifecycleOwner, {
                 binding.questProgressBar.visibility = if (it) {
                     View.VISIBLE
                 } else {
                     View.GONE
                 }
             })
-            questList.observe(viewLifecycleOwner, Observer {
+            questList.observe(viewLifecycleOwner, {
                 if (it.isNotEmpty()) {
                     dropQuestVM.search()
                 }
@@ -62,7 +61,7 @@ class DropQuestFragment : Fragment() {
             }
         }
 
-        dropQuestVM.searchedQuestList.observe(viewLifecycleOwner, Observer {
+        dropQuestVM.searchedQuestList.observe(viewLifecycleOwner, {
             mAdapter.update(it)
         })
 

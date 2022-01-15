@@ -36,7 +36,7 @@ class EnemyFragment : Fragment(), OnEnemyActionListener {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentEnemyBinding.inflate(inflater, container, false)
         return binding.root
     }

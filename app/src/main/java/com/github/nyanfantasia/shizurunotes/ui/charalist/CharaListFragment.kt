@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
@@ -15,7 +14,10 @@ import com.github.nyanfantasia.shizurunotes.data.Chara
 import com.github.nyanfantasia.shizurunotes.databinding.FragmentCharaListBinding
 import com.github.nyanfantasia.shizurunotes.databinding.ItemCharaBinding
 import com.github.nyanfantasia.shizurunotes.ui.BottomNaviFragmentDirections
-import com.github.nyanfantasia.shizurunotes.ui.base.*
+import com.github.nyanfantasia.shizurunotes.ui.base.MaterialSpinnerAdapter
+import com.github.nyanfantasia.shizurunotes.ui.base.ViewType
+import com.github.nyanfantasia.shizurunotes.ui.base.ViewTypeAdapter
+import com.github.nyanfantasia.shizurunotes.ui.base.ViewTypeHolder
 import com.github.nyanfantasia.shizurunotes.ui.shared.SharedViewModelChara
 import com.github.nyanfantasia.shizurunotes.ui.shared.SharedViewModelCharaFactory
 import com.github.nyanfantasia.shizurunotes.ui.shared.SharedViewModelEquipment
@@ -49,7 +51,7 @@ class CharaListFragment : Fragment(), OnCharaActionListener
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentCharaListBinding.inflate(inflater, container, false)
         setDropdownText()
         setObserver()
@@ -81,7 +83,7 @@ class CharaListFragment : Fragment(), OnCharaActionListener
     }
 
     private fun setObserver() {
-        charaListVM.liveCharaList.observe(viewLifecycleOwner, Observer {
+        charaListVM.liveCharaList.observe(viewLifecycleOwner, {
             if (sharedChara.charaList.value.isNullOrEmpty() && sharedChara.loadingFlag.value == false && sharedEquipment.loadingFlag.value == false) {
                 setHintTextVisibility(downloadDb = true)
             } else if (sharedChara.charaList.value?.isNotEmpty() == true && it.isEmpty()) {
@@ -92,7 +94,7 @@ class CharaListFragment : Fragment(), OnCharaActionListener
             charaListAdapter.setUpdatedList(charaListVM.getViewList(it))
         })
 
-        sharedChara.loadingFlag.observe(viewLifecycleOwner, Observer {
+        sharedChara.loadingFlag.observe(viewLifecycleOwner, {
             binding.charaListProgressBar.visibility = if (it) {
                 View.VISIBLE
             } else {
@@ -100,13 +102,13 @@ class CharaListFragment : Fragment(), OnCharaActionListener
             }
         })
 
-        sharedEquipment.loadingFlag.observe(viewLifecycleOwner, Observer {
+        sharedEquipment.loadingFlag.observe(viewLifecycleOwner, {
             if (it) {
                 binding.charaListProgressBar.visibility = View.VISIBLE
             }
         })
 
-        sharedChara.charaList.observe(viewLifecycleOwner, Observer {
+        sharedChara.charaList.observe(viewLifecycleOwner, {
             updateList()
         })
     }

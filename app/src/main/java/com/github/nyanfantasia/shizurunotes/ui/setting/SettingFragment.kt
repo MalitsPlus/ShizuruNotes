@@ -15,7 +15,6 @@ import com.github.nyanfantasia.shizurunotes.common.UpdateManager
 import com.github.nyanfantasia.shizurunotes.user.UserSettings
 import com.github.nyanfantasia.shizurunotes.user.UserSettings.Companion.DB_VERSION
 import com.jakewharton.processphoenix.ProcessPhoenix
-import java.util.*
 import kotlin.concurrent.thread
 
 class SettingFragment : PreferenceFragmentCompat() {
@@ -85,7 +84,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                 Preference.OnPreferenceChangeListener { _: Preference?, newValue: Any? ->
                     App.localeManager.setNewLocale(
                         requireActivity().application,
-                        newValue as String?
+                        newValue as String
                     )
                     thread(start = true){
                         Thread.sleep(100)

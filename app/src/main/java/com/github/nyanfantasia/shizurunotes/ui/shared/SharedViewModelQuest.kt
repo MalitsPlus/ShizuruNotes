@@ -8,7 +8,7 @@ import kotlin.concurrent.thread
 
 class SharedViewModelQuest : ViewModel() {
     val questList = MutableLiveData<List<Quest>>()
-    val loadingFlag = MutableLiveData<Boolean>(false)
+    val loadingFlag = MutableLiveData(false)
     var includeNormal = false
     var includeHard = false
 

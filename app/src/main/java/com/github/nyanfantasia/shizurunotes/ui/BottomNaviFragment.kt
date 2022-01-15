@@ -21,7 +21,7 @@ class BottomNaviFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentBottomNavigationBinding.inflate(inflater, container, false)
         binding.bottomNavView.setOnItemSelectedListener {
             when(it.itemId) {

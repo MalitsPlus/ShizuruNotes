@@ -28,7 +28,7 @@ class RankComparisonFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentRankComparisonBinding.inflate(layoutInflater, container, false).apply {
             rankComparisonToolbar.setNavigationOnClickListener {
                 it.findNavController().navigateUp()

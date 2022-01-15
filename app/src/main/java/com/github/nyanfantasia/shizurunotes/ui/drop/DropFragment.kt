@@ -1,22 +1,23 @@
 package com.github.nyanfantasia.shizurunotes.ui.drop
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.github.nyanfantasia.shizurunotes.R
-import com.github.nyanfantasia.shizurunotes.user.UserSettings
 import com.github.nyanfantasia.shizurunotes.data.Equipment
 import com.github.nyanfantasia.shizurunotes.databinding.FragmentDropBinding
 import com.github.nyanfantasia.shizurunotes.ui.BottomNaviFragmentDirections
 import com.github.nyanfantasia.shizurunotes.ui.base.BaseHintAdapter
 import com.github.nyanfantasia.shizurunotes.ui.shared.SharedViewModelEquipment
 import com.github.nyanfantasia.shizurunotes.ui.shared.SharedViewModelQuest
+import com.github.nyanfantasia.shizurunotes.user.UserSettings
 import com.github.nyanfantasia.shizurunotes.utils.Utils
 
 class DropFragment : Fragment() {
@@ -38,7 +39,7 @@ class DropFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDropBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -96,13 +97,13 @@ class DropFragment : Fragment() {
     }
 
     private fun setObservers() {
-        sharedEquipment.equipmentMap.observe(viewLifecycleOwner, Observer {
+        sharedEquipment.equipmentMap.observe(viewLifecycleOwner, {
             if (!it.isNullOrEmpty()) {
                 dropVM.refreshList(it.values.toList())
                 mAdapter.update(dropVM.itemList)
             }
         })
-        sharedEquipment.loadingFlag.observe(viewLifecycleOwner, Observer {
+        sharedEquipment.loadingFlag.observe(viewLifecycleOwner, {
             binding.dropProgressBar.visibility = if (it) {
                 View.VISIBLE
             } else {

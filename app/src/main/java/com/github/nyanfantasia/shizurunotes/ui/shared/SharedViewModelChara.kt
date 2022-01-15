@@ -11,7 +11,7 @@ import kotlin.concurrent.thread
 
 class SharedViewModelChara : ViewModel() {
 
-    val loadingFlag = MutableLiveData<Boolean>(false)
+    val loadingFlag = MutableLiveData(false)
     val charaList = MutableLiveData<MutableList<Chara>>()
 
     var maxCharaLevel: Int = 0

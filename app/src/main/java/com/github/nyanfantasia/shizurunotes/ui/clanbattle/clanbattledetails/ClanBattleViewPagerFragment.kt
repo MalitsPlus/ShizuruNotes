@@ -23,10 +23,10 @@ class ClanBattleViewPagerFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentClanBattleViewPagerBinding.inflate(inflater, container, false)
 
-        sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModelClanBattle::class.java)
+        sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModelClanBattle::class.java]
         period = sharedViewModel.selectedPeriod!!
 
         val tabLayout = binding.clanBattleViewPagerTab

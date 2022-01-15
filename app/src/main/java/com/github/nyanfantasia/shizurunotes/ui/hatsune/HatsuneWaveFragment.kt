@@ -34,7 +34,7 @@ class HatsuneWaveFragment : Fragment(), OnWaveClickListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentHatsuneWaveBinding.inflate(inflater, container, false)
         return binding.root
     }

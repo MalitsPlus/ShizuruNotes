@@ -45,7 +45,7 @@ class EquipmentFragment : Fragment(), OnEquipmentActionListener<Equipment> {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentEquipmentBinding.inflate(inflater, container, false)
         return binding.root
     }

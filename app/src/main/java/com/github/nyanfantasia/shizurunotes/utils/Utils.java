@@ -1,7 +1,6 @@
 package com.github.nyanfantasia.shizurunotes.utils;
 
 import android.app.Application;
-import android.os.Build;
 import android.util.DisplayMetrics;
 
 import androidx.annotation.NonNull;
@@ -48,10 +47,6 @@ public class Utils {
             e.printStackTrace();
             return null;
         }
-    }
-
-    public static boolean isAtLeastVersion(int version) {
-        return Build.VERSION.SDK_INT >= version;
     }
 
 
