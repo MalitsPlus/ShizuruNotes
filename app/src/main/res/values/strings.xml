@@ -24,6 +24,7 @@
     <string name="setting_language" translatable="false">Language</string>
     <string name="setting_language_dialog_title">Language</string>
     <string-array name="setting_language_options">
+        <item>システム言語</item>
         <item>日本語</item>
         <item>简体中文</item>
         <item>繁體中文</item>
@@ -31,6 +32,7 @@
         <item>English</item>
     </string-array>
     <string-array name="setting_language_values">
+        <item>system</item>
         <item>ja</item>
         <item>zh-Hans</item>
         <item>zh-Hant</item>

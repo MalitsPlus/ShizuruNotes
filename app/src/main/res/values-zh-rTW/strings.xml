@@ -15,6 +15,14 @@
     <string name="setting_kill_expression_title">技能公式</string>
     <string name="setting_kill_expression_summary">在技能動作詳情中顯示計算公式</string>
     <string name="do_not_show_anymore">不再顯示此提示</string>
+    <string-array name="setting_language_options">
+        <item>跟隨系統</item>
+        <item>日本語</item>
+        <item>简体中文</item>
+        <item>繁體中文</item>
+        <item>한국어</item>
+        <item>English</item>
+    </string-array>
     <string-array name="setting_kill_expression_options">
         <item>數值</item>
         <item>公式</item>

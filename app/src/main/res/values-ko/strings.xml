@@ -10,6 +10,14 @@
     <string name="title_dungeon">던전</string>
     <string name="title_enemy">몬스터</string>
     <string name="setting_language_dialog_title">Language</string>
+    <string-array name="setting_language_options">
+        <item>시스템 언어</item>
+        <item>日本語</item>
+        <item>简体中文</item>
+        <item>繁體中文</item>
+        <item>한국어</item>
+        <item>English</item>
+    </string-array>
     <string name="setting_kill_expression_title">스킬 계산식</string>
     <string name="setting_kill_expression_summary">스킬 액션의 계산식을 표시</string>
     <string name="setting_appearance">표시</string>
