@@ -35,7 +35,7 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedChara = ViewModelProvider(requireActivity()).get(SharedViewModelChara::class.java)
+        sharedChara = ViewModelProvider(requireActivity())[SharedViewModelChara::class.java]
         detailsViewModel = ViewModelProvider(this, SharedViewModelCharaFactory(sharedChara))[CharaDetailsViewModel::class.java]
 
         sharedElementEnterTransition =
@@ -56,7 +56,7 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentCharaDetailsBinding.inflate(
             inflater,

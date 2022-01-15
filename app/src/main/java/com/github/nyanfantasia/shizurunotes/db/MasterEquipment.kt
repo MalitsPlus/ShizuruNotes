@@ -20,7 +20,7 @@ class MasterEquipment {
         }
 
         rawEquipmentList?.forEach {
-            var enhanceProperty: Property = Property()
+            var enhanceProperty = Property()
             if (rawEquipmentEnhanceList != null) {
                 for (enhance in rawEquipmentEnhanceList) {
                     if (it.equipment_id == enhance.equipment_id) {

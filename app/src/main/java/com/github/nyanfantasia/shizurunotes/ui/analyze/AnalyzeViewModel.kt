@@ -149,5 +149,4 @@ class AnalyzeViewModel(
 }
 
 interface OnAnalyzeActionListener : OnItemActionListener,
-    AdapterView.OnItemClickListener {
-}
+    AdapterView.OnItemClickListener

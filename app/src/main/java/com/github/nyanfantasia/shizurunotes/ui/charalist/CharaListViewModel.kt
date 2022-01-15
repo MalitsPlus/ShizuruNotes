@@ -74,7 +74,7 @@ class CharaListViewModel(
         15 to I18N.getString(R.string.ui_chip_sort_weight)
     )
 
-    val dropDownValuesMap = mapOf<Int, Array<String>>(
+    val dropDownValuesMap = mapOf(
         1 to attackTypeMap.values.toTypedArray(),
         2 to positionMap.values.toTypedArray(),
         3 to sortMap.values.toTypedArray()

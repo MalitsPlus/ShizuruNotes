@@ -29,7 +29,7 @@ class CalendarFragment : Fragment(),
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentCalendarBinding.inflate(layoutInflater, container, false)
         calendarVM = ViewModelProvider(requireActivity())[CalendarViewModel::class.java]
         calendarVM.initData()

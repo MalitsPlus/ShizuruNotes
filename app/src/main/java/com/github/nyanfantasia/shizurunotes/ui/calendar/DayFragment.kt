@@ -27,7 +27,7 @@ class DayFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         val binding = FragmentDayBinding.inflate(inflater, container, false).apply {
             dayToolbar.setNavigationOnClickListener { view ->

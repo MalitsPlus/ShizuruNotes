@@ -33,7 +33,7 @@ class AnalyzeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAnalyzeBinding.inflate(inflater, container, false)
         binding.viewModel = analyzeVM
         return binding.root

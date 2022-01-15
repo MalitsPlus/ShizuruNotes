@@ -162,7 +162,7 @@ public class ActionParameter {
             case 90:
                 return new PassiveAction();
             case 91:
-                return new PassiveInermittentAction();
+                return new PassiveIntermittentAction();
             case 92:
                 return new ChangeEnergyRecoveryRatioByDamageAction();
             case 93:

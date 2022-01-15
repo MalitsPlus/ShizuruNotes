@@ -66,8 +66,7 @@ class DBHelper private constructor(
                         if (!f.isAccessible) {
                             f.isAccessible = true
                         }
-                        val type = f.type
-                        when (type) {
+                        when (f.type) {
                             Byte::class.javaPrimitiveType -> {
                                 f[bean] = cursor.getShort(columnIdx).toByte()
                             }

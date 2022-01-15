@@ -1,15 +1,10 @@
-package com.github.nyanfantasia.shizurunotes.data.action;
+package com.github.nyanfantasia.shizurunotes.data.action
 
-import com.github.nyanfantasia.shizurunotes.data.Property;
+import com.github.nyanfantasia.shizurunotes.data.Property
 
-public class SearchAreaChangeAction extends ActionParameter {
-    @Override
-    protected void childInit() {
-        super.childInit();
-    }
+class SearchAreaChangeAction : ActionParameter() {
 
-    @Override
-    public String localizedDetail(int level, Property property) {
-        return super.localizedDetail(level, property);
+    override fun localizedDetail(level: Int, property: Property): String {
+        return super.localizedDetail(level, property)
     }
 }

@@ -1,39 +1,37 @@
-package com.github.nyanfantasia.shizurunotes.data.action;
+package com.github.nyanfantasia.shizurunotes.data.action
 
-import com.github.nyanfantasia.shizurunotes.R;
-import com.github.nyanfantasia.shizurunotes.common.I18N;
-import com.github.nyanfantasia.shizurunotes.data.Property;
-import com.github.nyanfantasia.shizurunotes.data.PropertyKey;
+import com.github.nyanfantasia.shizurunotes.R
+import com.github.nyanfantasia.shizurunotes.common.I18N.Companion.getString
+import com.github.nyanfantasia.shizurunotes.data.Property
+import com.github.nyanfantasia.shizurunotes.data.PropertyKey
 
-public class PassiveAction extends ActionParameter {
-
-    protected PropertyKey propertyKey;
-
-    @Override
-    protected void childInit() {
-        switch (actionDetail1){
-            case 1:
-                propertyKey = PropertyKey.hp; break;
-            case 2:
-                propertyKey = PropertyKey.atk; break;
-            case 3:
-                propertyKey = PropertyKey.def; break;
-            case 4:
-                propertyKey = PropertyKey.magicStr; break;
-            case 5:
-                propertyKey = PropertyKey.magicDef; break;
-            default:
-                propertyKey = PropertyKey.unknown; break;
+class PassiveAction : ActionParameter() {
+    private var propertyKey: PropertyKey? = null
+    override fun childInit() {
+        propertyKey = when (actionDetail1) {
+            1 -> PropertyKey.hp
+            2 -> PropertyKey.atk
+            3 -> PropertyKey.def
+            4 -> PropertyKey.magicStr
+            5 -> PropertyKey.magicDef
+            else -> PropertyKey.unknown
         }
-        actionValues.add(new ActionValue(actionValue2, actionValue3, null));
+        actionValues.add(ActionValue(actionValue2, actionValue3, null))
     }
 
-    @Override
-    public String localizedDetail(int level, Property property) {
-        return I18N.getString(R.string.Raise_s1_s2, buildExpression(level, property), propertyKey.description());
+    override fun localizedDetail(level: Int, property: Property): String {
+        return getString(
+            R.string.Raise_s1_s2,
+            buildExpression(level, property),
+            propertyKey!!.description()
+        )
     }
 
-    public Property propertyItem(int level){
-        return Property.getPropertyWithKeyAndValue(null, propertyKey, actionValue2.value + actionValue3.value * level);
+    fun propertyItem(level: Int): Property {
+        return Property.getPropertyWithKeyAndValue(
+            null,
+            propertyKey,
+            actionValue2.value + actionValue3.value * level
+        )
     }
 }

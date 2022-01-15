@@ -43,7 +43,7 @@ class SharedViewModelClanBattle : ViewModel() {
             thread(start = true){
                 loadingFlag.postValue(true)
                 DBHelper.get().getDungeons()?.forEach {
-                    dungeonList.add(it.dungeon)
+                    dungeonList.add(it.dungeon!!)
                 }
                 loadingFlag.postValue(false)
             }
@@ -55,7 +55,7 @@ class SharedViewModelClanBattle : ViewModel() {
             thread(start = true){
                 loadingFlag.postValue(true)
                 DBHelper.get().getSpEvents()?.forEach {
-                    spEventList.add(it.spEvent)
+                    spEventList.add(it.spEvent!!)
                 }
                 loadingFlag.postValue(false)
             }
