@@ -1,2 +1,2 @@
-include ':app', ':calendarview'
+include ':app'
 rootProject.name='ShizuruNotes'
