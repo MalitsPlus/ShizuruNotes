@@ -20,9 +20,9 @@ public class Utils {
     }
 
     /***
-     * 以逗号分隔字符串
-     * @param list
-     * @return
+     * Divide by ","
+     * @param list Array list to split
+     * @return Split array list
      */
     public static String splitIntegerWithComma(ArrayList<Integer> list){
         if(list.isEmpty())

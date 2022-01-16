@@ -1,76 +1,29 @@
-package com.github.nyanfantasia.shizurunotes.data;
+package com.github.nyanfantasia.shizurunotes.data
 
-public class CharaStoryStatus {
-
-    public int charaId;
-    public int statusType;
-    public double statusRate;
-
-    public CharaStoryStatus(int charaId, int statusType, double statusRate){
-        this.charaId = charaId;
-        this.statusType = statusType;
-        this.statusRate = statusRate;
-    }
-
-
-    public Property getProperty(){
-        Property property = new Property();
-        switch (statusType){
-            case 1:
-                property.hp = statusRate;
-                break;
-            case 2:
-                property.atk = statusRate;
-                break;
-            case 3:
-                property.def = statusRate;
-                break;
-            case 4:
-                property.magicStr = statusRate;
-                break;
-            case 5:
-                property.magicDef = statusRate;
-                break;
-            case 6:
-                property.physicalCritical = statusRate;
-                break;
-            case 7:
-                property.magicCritical = statusRate;
-                break;
-            case 8:
-                property.dodge = statusRate;
-                break;
-            case 9:
-                property.lifeSteal = statusRate;
-                break;
-            case 10:
-                property.waveHpRecovery = statusRate;
-                break;
-            case 11:
-                property.waveEnergyRecovery = statusRate;
-                break;
-            case 12:
-                property.physicalPenetrate = statusRate;
-                break;
-            case 13:
-                property.magicPenetrate = statusRate;
-                break;
-            case 14:
-                property.energyRecoveryRate = statusRate;
-                break;
-            case 15:
-                property.hpRecoveryRate = statusRate;
-                break;
-            case 16:
-                property.energyReduceRate = statusRate;
-                break;
-            case 17:
-                property.accuracy = statusRate;
-                break;
-            default:
-                break;
+class CharaStoryStatus(var charaId: Int, var statusType: Int, var statusRate: Double) {
+    val property: Property
+        get() {
+            val property = Property()
+            when (statusType) {
+                1 -> property.hp = statusRate
+                2 -> property.atk = statusRate
+                3 -> property.def = statusRate
+                4 -> property.magicStr = statusRate
+                5 -> property.magicDef = statusRate
+                6 -> property.physicalCritical = statusRate
+                7 -> property.magicCritical = statusRate
+                8 -> property.dodge = statusRate
+                9 -> property.lifeSteal = statusRate
+                10 -> property.waveHpRecovery = statusRate
+                11 -> property.waveEnergyRecovery = statusRate
+                12 -> property.physicalPenetrate = statusRate
+                13 -> property.magicPenetrate = statusRate
+                14 -> property.energyRecoveryRate = statusRate
+                15 -> property.hpRecoveryRate = statusRate
+                16 -> property.energyReduceRate = statusRate
+                17 -> property.accuracy = statusRate
+                else -> {}
+            }
+            return property
         }
-        return property;
-    }
-
 }

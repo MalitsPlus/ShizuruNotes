@@ -12,22 +12,22 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class BrotliUtils {
-    /**缓冲字节*/
+    /** Buffer byte */
     public static final int BUFFER = 1024;
-    /**后缀名*/
+    /** Postfix name */
     public static final String EXT = ".br";
 
     /**
-     * 数据解压缩
-     * @param data 压缩的数据
-     * @return
-     * @throws IOException
+     * deCompress data
+     * @param data Compressed data
+     * @return  deCompressed data
+     * @throws IOException Exception
      */
     public static byte[] deCompress(byte[] data) throws IOException{
         ByteArrayInputStream bais = new ByteArrayInputStream(data);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-        // 解压缩
+        // deCompress
         deCompress(bais, baos);
 
         data = baos.toByteArray();
@@ -40,10 +40,10 @@ public class BrotliUtils {
     }
 
     /**
-     * 文件解压缩
-     * @param file 压缩文件
-     * @param delete 是否删除源文件
-     * @throws IOException
+     * File deCompress
+     * @param file Compressed file
+     * @param delete Delete source file
+     * @throws IOException Exception
      */
     public static void deCompress(File file, boolean delete) throws IOException{
         FileInputStream fis = new FileInputStream(file);
@@ -61,10 +61,10 @@ public class BrotliUtils {
     }
 
     /**
-     * 解压缩
-     * @param is 输入流
-     * @param os 输出流
-     * @throws IOException
+     * deCompress
+     * @param is Input Stream
+     * @param os Output Stream
+     * @throws IOException Exception
      */
     private static void deCompress(InputStream is, OutputStream os) throws IOException {
         BrotliCompressorInputStream bcis = new BrotliCompressorInputStream(is);
@@ -80,10 +80,10 @@ public class BrotliUtils {
     }
 
     /**
-     * 文件解压缩
-     * @param path 文件路径
-     * @param delete 是否删除源文件
-     * @throws IOException
+     * File deCompress
+     * @param path File path
+     * @param delete Delete source file
+     * @throws IOException Exception
      */
     public static void deCompress(String path, boolean delete) throws IOException{
         File file = new File(path);
