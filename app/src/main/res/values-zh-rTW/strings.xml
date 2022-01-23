@@ -354,7 +354,7 @@
     <string name="Poison_s1_violently_and_deal_s2_damage_per_second_for_s3_sec">使%1$s進入猛毒狀態，每秒造成 [%2$s] 傷害，持續時間 [%3$s] 秒。</string>
     <string name="s1_s2_and_deal_s3_damage_per_second_for_s4_sec">使%2$s%1$s，每秒造成 [%3$s] 傷害，持續時間 [%4$s] 秒。</string>
     <string name="Silence_s1_with_s2_chance_for_s3_sec">以 [%2$s%%] 的概率使%1$s進入沉默狀態，持續時間 [%3$s] 秒。</string>
-    <string name="Blind_s1_with_s2_chance_for_s3_sec_physical_attack_has_d4_chance_to_miss">以 [%2$s%%] 的概率使%1$s進入物理致盲狀態，持續時間 [%3$s] 秒。物件進行物理攻擊時有 [%4$s%%] 的概率 Miss。</string>
+    <string name="Blind_s1_with_s2_chance_for_s3_sec_physical_attack_has_d4_chance_to_miss">以 [%2$s%%] 的概率使%1$s進入物理致盲狀態，持續時間 [%3$s] 秒。目標進行物理攻擊時有 [%4$s%%] 的概率 Miss。</string>
     <string name="Move_Speed">移動速度</string>
     <string name="Physical_Critical_Damage">物理暴擊傷害</string>
     <string name="Magical_Critical_Damage">魔法暴擊傷害</string>
