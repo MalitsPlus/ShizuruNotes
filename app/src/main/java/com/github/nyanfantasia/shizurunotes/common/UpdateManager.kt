@@ -26,6 +26,7 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
+import java.util.*
 import kotlin.concurrent.thread
 
 class UpdateManager private constructor(
@@ -74,6 +75,11 @@ class UpdateManager private constructor(
                     val log = when (UserSettings.get().preference.getString(UserSettings.LANGUAGE_KEY, "ja")){
                         "zh-Hans" -> appVersionJsonInstance?.messageZhS
                         "zh-Hant" -> appVersionJsonInstance?.messageZhT
+                        "system" -> when (Locale.getDefault()){
+                            Locale.TRADITIONAL_CHINESE -> appVersionJsonInstance?.messageZhT
+                            Locale.SIMPLIFIED_CHINESE -> appVersionJsonInstance?.messageZhS
+                            else -> appVersionJsonInstance?.messageJa
+                        }
                         else -> appVersionJsonInstance?.messageJa
                     }
                     MaterialDialog(mContext, MaterialDialog.DEFAULT_BEHAVIOR)
@@ -95,6 +101,11 @@ class UpdateManager private constructor(
                 val info = when (UserSettings.get().preference.getString(UserSettings.LANGUAGE_KEY, "ja")){
                     "zh-Hans" -> appVersionJsonInstance?.infoZhS
                     "zh-Hant" -> appVersionJsonInstance?.infoZhT
+                    "system" -> when (Locale.getDefault()){
+                        Locale.TRADITIONAL_CHINESE -> appVersionJsonInstance?.infoZhT
+                        Locale.SIMPLIFIED_CHINESE -> appVersionJsonInstance?.infoZhS
+                        else -> appVersionJsonInstance?.infoJa
+                    }
                     else -> appVersionJsonInstance?.infoJa
                 }
                 if (!info.isNullOrEmpty()) {
