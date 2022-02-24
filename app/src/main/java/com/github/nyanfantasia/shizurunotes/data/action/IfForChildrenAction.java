@@ -70,7 +70,7 @@ public class IfForChildrenAction extends ActionParameter {
         if(actionDetail1 == 100 || actionDetail1 == 101 || actionDetail1 == 200 || actionDetail1 == 300 || actionDetail1 == 500 || actionDetail1 == 501
                 || actionDetail1 == 502 || actionDetail1 == 503 || actionDetail1 == 504 || actionDetail1 == 511 || actionDetail1 == 512
                 || (actionDetail1 >=600 && actionDetail1 < 900) || (actionDetail1 >= 901 && actionDetail1 < 1000)
-                || actionDetail1 == 1300 || actionDetail1 == 1400 || (actionDetail1 >= 6000 && actionDetail1 < 7000)) {
+                || actionDetail1 == 1300 || actionDetail1 == 1400 || actionDetail1 == 1600 || (actionDetail1 >= 6000 && actionDetail1 < 7000)) {
             if(trueClause != null && falseClause != null)
                 return I18N.getString(R.string.Condition_s, trueClause + falseClause);
             else if(trueClause != null)
@@ -91,6 +91,7 @@ public class IfForChildrenAction extends ActionParameter {
 }
 
 enum IfType{
+    unknown(-1),
     controllered(100),
     hastened(101),
     blind(200),
@@ -104,7 +105,8 @@ enum IfType{
     curseOrHex(511),
     poisonOrVenom(512),
     Break(710),
-    polymorph(1400);
+    polymorph(1400),
+    fear(1600);
 
     private int value;
     IfType(int value){
@@ -119,7 +121,7 @@ enum IfType{
             if(item.getValue() == value)
                 return item;
         }
-        return null;
+        return IfType.unknown;
     }
 
     public String description(){
@@ -138,7 +140,8 @@ enum IfType{
             case polymorph: return I18N.getString(R.string.polymorphed);
             case hex: return I18N.getString(R.string.hexed);
             case curseOrHex: return I18N.getString(R.string.cursed_or_hexed);
-            default: return "";
+            case fear: return I18N.getString(R.string.feared);
+            default: return I18N.getString(R.string.unknown);
         }
     }
 }
