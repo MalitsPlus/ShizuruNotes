@@ -82,7 +82,7 @@ public enum ActionType {
     effectAction(94);
 
     private int value;
-    private ActionType(int value){
+    ActionType(int value){
         this.value = value;
     }
     public int getValue(){

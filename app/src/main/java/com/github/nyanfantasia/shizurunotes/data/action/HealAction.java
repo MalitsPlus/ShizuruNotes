@@ -24,7 +24,6 @@ public class HealAction extends ActionParameter {
                 actionValues.add(new ActionValue(actionValue2, actionValue3, null));
                 break;
             default:
-                return;
         }
     }
 
