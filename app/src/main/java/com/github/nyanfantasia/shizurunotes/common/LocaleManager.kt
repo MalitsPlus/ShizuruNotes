@@ -21,7 +21,7 @@ class LocaleManager internal constructor(context: Context?) {
         }
     }
 
-    private val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+    private val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context!!)
     fun setLocale(context: Context): Context {
         return updateResources(context, language)
     }

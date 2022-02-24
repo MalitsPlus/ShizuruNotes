@@ -39,12 +39,16 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
         detailsViewModel = ViewModelProvider(this, SharedViewModelCharaFactory(sharedChara))[CharaDetailsViewModel::class.java]
 
         sharedElementEnterTransition =
-            TransitionInflater.from(context)
-                .inflateTransition(android.R.transition.move).setDuration(300)
+            context?.let {
+                TransitionInflater.from(it)
+                    .inflateTransition(android.R.transition.move).setDuration(300)
+            }
 
         sharedElementReturnTransition =
-            TransitionInflater.from(context)
-                .inflateTransition(android.R.transition.move).setDuration(300)
+            context?.let {
+                TransitionInflater.from(it)
+                    .inflateTransition(android.R.transition.move).setDuration(300)
+            }
     }
 
 //    override fun onResume() {
@@ -130,10 +134,10 @@ class CharaDetailsFragment : Fragment(), View.OnClickListener {
         }
 
         // 观察chara变化（1.0.0去掉rank下拉框后已经可以删掉了，留着备用）
-        detailsViewModel.mutableChara.observe(viewLifecycleOwner, { chara: Chara ->
-                binding.detailsVM = detailsViewModel
-                adapterSkill.update(chara.skills)
-        })
+        detailsViewModel.mutableChara.observe(viewLifecycleOwner) { chara: Chara ->
+            binding.detailsVM = detailsViewModel
+            adapterSkill.update(chara.skills)
+        }
     }
 
     override fun onClick(v: View?) {
