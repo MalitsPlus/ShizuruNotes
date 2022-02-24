@@ -68,7 +68,7 @@ class UpdateManager private constructor(
     init {
         callBack = object: UpdateCallBack {
             /***
-             * APP更新检查完成，弹出更新确认对话框
+             * APP檢查更新完成，跳出確認提示框
              */
             override fun appCheckUpdateCompleted() {
                 if (appHasNewVersion) {
@@ -119,7 +119,7 @@ class UpdateManager private constructor(
             }
 
             /***
-             * 数据库检查更新完成，弹出更新确认对话框
+             * 資料庫更新檢查完成，跳出確認提示框
              */
             override fun dbCheckUpdateCompleted(hasUpdate: Boolean, updateInfo: CharSequence?) {
                 if (hasUpdate) {
@@ -140,7 +140,7 @@ class UpdateManager private constructor(
             }
 
             /***
-             * 更新数据库时进度条变化
+             * 更新資料庫進度條顯示
              */
             override fun dbDownloadProgressChanged(progress: Int, maxLength: Int) {
                 if (progressDialog?.isShowing == true) {
@@ -153,12 +153,12 @@ class UpdateManager private constructor(
             }
 
             /***
-             * 取消数据库更新
+             * 取消資料庫下載
              */
             override fun dbDownloadCanceled() {}
 
             /***
-             * 数据库下载完成
+             * 資料庫下載完成
              */
             override fun dbDownloadCompleted(success: Boolean, errorMsg: CharSequence?) {
                 LogUtils.file(LogUtils.I, "DB download finished.")
@@ -166,7 +166,7 @@ class UpdateManager private constructor(
             }
 
             /***
-             * 数据库更新整个流程结束
+             * 資料庫更新流程結束
              */
             override fun dbUpdateCompleted() {
                 LogUtils.file(LogUtils.I, "DB update finished.")
@@ -188,7 +188,7 @@ class UpdateManager private constructor(
             }
 
             /***
-             * 更新失败
+             * 更新失敗
              */
             override fun dbUpdateError() {
                 progressDialog?.cancel()
