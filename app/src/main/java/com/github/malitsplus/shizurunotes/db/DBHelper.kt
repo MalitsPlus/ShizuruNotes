@@ -1145,14 +1145,32 @@ class DBHelper private constructor(
         return getBeanListByRaw(
             """
                 SELECT
-                a.dungeon_area_id,
-                a.dungeon_name,
-                a.description,
-                b.*
+                    a.dungeon_area_id 'dungeon_area_id',
+                    a.dungeon_name 'dungeon_name',
+                    a.description 'description',
+                    sp.mode 'mode',
+                    w.*
                 FROM
-                dungeon_area_data AS a 
-                JOIN wave_group_data AS b ON a.wave_group_id=b.wave_group_id 
-                ORDER BY a.dungeon_area_id DESC 
+                    dungeon_area AS a
+                JOIN dungeon_quest_data AS b ON a.dungeon_area_id = b.dungeon_area_id
+                AND b.quest_type = 4
+                JOIN dungeon_special_battle AS sp ON b.quest_id = sp.quest_id
+                JOIN wave_group_data AS w ON sp.wave_group_id = w.wave_group_id
+                UNION ALL
+                SELECT
+                    a.dungeon_area_id,
+                    a.dungeon_name,
+                    a.description,
+                    0 AS 'mode',
+                    w.*
+                FROM
+                    dungeon_area AS a
+                JOIN dungeon_quest_data AS b ON a.dungeon_area_id = b.dungeon_area_id
+                AND b.quest_type = 3
+                JOIN wave_group_data AS w ON b.wave_group_id = w.wave_group_id
+                ORDER BY
+                    a.dungeon_area_id DESC,
+                    sp.mode DESC
                 """,
             RawDungeon::class.java
         )
