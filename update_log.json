@@ -1,9 +1,9 @@
 {
-	"versionCode": "63",
-	"versionName": "1.11.4",
+	"versionCode": "64",
+	"versionName": "1.12.0",
 	"recommend": "false",
-	"messageJa": "・新しいスキルの説明文を追加（ルカ（ニューイヤー）、リトリリ三人組）",
-	"messageZh": "・追加新的技能说明（ルカ（ニューイヤー）、リトリリ三人組）",
+	"messageJa": "・追加迷宫SP数据支持\n・新しいスキルの説明文を追加（キャルOL、水キャル）",
+	"messageZh": "・ダンジョンSPバトルデータに対応\n・追加新的技能说明（キャルOL、水キャル）",
 	"infoJa": "",
 	"infoZh": ""
 }
