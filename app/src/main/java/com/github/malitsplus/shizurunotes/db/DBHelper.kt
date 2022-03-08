@@ -1142,6 +1142,27 @@ class DBHelper private constructor(
      * @return
      */
     fun getDungeons(): List<RawDungeon>? {
+        // 考虑国服未实装的情况
+        val count = getOne("""SELECT COUNT(*) 
+                                FROM sqlite_master 
+                                WHERE type='table' 
+                                AND name='dungeon_area'""")
+        if (!count.equals("1")) {
+            return getBeanListByRaw(
+                """
+                SELECT
+                a.dungeon_area_id,
+                a.dungeon_name,
+                a.description,
+                b.*
+                FROM
+                dungeon_area_data AS a 
+                JOIN wave_group_data AS b ON a.wave_group_id=b.wave_group_id 
+                ORDER BY a.dungeon_area_id DESC 
+                """,
+                RawDungeon::class.java
+            )
+        }
         return getBeanListByRaw(
             """
                 SELECT
