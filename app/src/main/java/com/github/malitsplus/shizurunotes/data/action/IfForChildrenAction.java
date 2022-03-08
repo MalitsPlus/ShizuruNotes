@@ -106,7 +106,8 @@ enum IfType{
     poisonOrVenom(512),
     Break(710),
     polymorph(1400),
-    fear(1600);
+    fear(1600),
+    magicDefDecreased(1700);
 
     private int value;
     IfType(int value){
@@ -141,6 +142,7 @@ enum IfType{
             case hex: return I18N.getString(R.string.hexed);
             case curseOrHex: return I18N.getString(R.string.cursed_or_hexed);
             case fear: return I18N.getString(R.string.feared);
+            case magicDefDecreased: return I18N.getString(R.string.magic_defence_decreased);
             default: return I18N.getString(R.string.unknown);
         }
     }

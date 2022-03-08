@@ -16,7 +16,7 @@ public class IfForAllAction extends ActionParameter {
         ifType = IfType.parse(actionDetail1);
 
         if (actionDetail2 != 0){
-            if(actionDetail1 == 710 || actionDetail1 == 100){
+            if(actionDetail1 == 710 || actionDetail1 == 100 || actionDetail1 == 1700){
                 IfType ifType = IfType.parse(actionDetail1);
                 if (ifType != null)
                     trueClause = I18N.getString(R.string.use_d1_to_s2_if_s3,
@@ -69,7 +69,7 @@ public class IfForAllAction extends ActionParameter {
         }
 
         if (actionDetail3 != 0){
-            if(actionDetail1 == 710){
+            if(actionDetail1 == 710 || actionDetail1 == 100 || actionDetail1 == 1700){
                 IfType ifType = IfType.parse(actionDetail1);
                 if (ifType != null)
                     falseClause = I18N.getString(R.string.use_d1_to_s2_if_not_s3,
