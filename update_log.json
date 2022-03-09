@@ -1,10 +1,10 @@
 {
-	"versionCode": "64",
-	"versionName": "1.11.5",
+	"versionCode": "65",
+	"versionName": "1.12.1",
 	"recommend": "false",
-	"messageJa": "・新しいスキルの説明文を追加（キャル（オーバーロード））",
-	"messageZhS": "・追加新的技能说明（キャル（オーバーロード））",
-	"messageZhT": "・追加新的技能說明（凱留（過載））",
+	"messageJa": "・ダンジョンSPバトルデータに対応\n・新しいスキルの説明文を追加（キャル（サマー））",
+	"messageZhS": "・追加迷宫SP数据支持\n・追加新的技能说明（キャル（サマー））",
+	"messageZhT": "・追加地下城特殊關卡支援\n・追加新的技能說明（凱留（夏日））",
 	"infoJa": "",
 	"infoZhS": "",
 	"infoZhT": ""

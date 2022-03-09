@@ -6,7 +6,7 @@
 * Android 8+ (由於系統需求，不支援低於 Android 8 的模擬器)
 
 ## 組建
-需要 Android Studio 4.0 或更高版本.  
+需要 Android Studio 4.1 或更高版本.
 所有依賴可在 `./app/build.gradle` 中找到.
 
 ## 功能

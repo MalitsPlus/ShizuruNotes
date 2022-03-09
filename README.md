@@ -8,7 +8,7 @@ It supports the server of Japan and Mainland China at present.
 * Android 8+ (Doesn't support Android Emulator lower than Android 8)
 
 ## Build
-Requires Android Studio 4.0 or later.  
+Requires Android Studio 4.1 or later.
 Dependencies could be found in `./app/build.gradle` and it might be changed time to time.  
 
 ## Features
