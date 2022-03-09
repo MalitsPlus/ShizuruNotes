@@ -31,6 +31,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="mode"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/period_date"
+            app:layout_constraintTop_toTopOf="@+id/period_date" />
+
         <ImageView
             android:id="@+id/clan_b1_icon"
             android:layout_width="50dp"

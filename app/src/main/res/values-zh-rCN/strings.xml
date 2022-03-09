@@ -697,4 +697,5 @@
     <string name="Implement_some_visual_effects_to_s1">对%s付与一些特殊的视觉效果。</string>
     <string name="This_damage_type_is_judged_by_the_lower_defence_value_of_targeted_enemy">本伤害的类型会切换为目标的较低数值的防御类型进行计算。</string>
     <string name="feared">恐慌状态中</string>
+    <string name="magic_defence_decreased">魔法防御力降低状态中</string>
 </resources>

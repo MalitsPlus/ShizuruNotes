@@ -17,6 +17,7 @@ class DungeonAdapter(
             val thisDungeon = itemList[position]
             dungeon = thisDungeon
             textDungeonDescription.text = thisDungeon.description
+            mode.text = thisDungeon.modeText
             clickListener = View.OnClickListener {
                 sharedClanBattle.mSetSelectedBoss(thisDungeon.dungeonBoss)
                 it.findNavController().navigate(

@@ -758,4 +758,5 @@
     <string name="Implement_some_visual_effects_to_s1">%sに特別なビジュアル効果を付与する。</string>
     <string name="This_damage_type_is_judged_by_the_lower_defence_value_of_targeted_enemy">このスキルのダメージタイプは目標の低いほうの防御タイプによって決められる。</string>
     <string name="feared">恐慌状態中</string>
+    <string name="magic_defence_decreased">魔法防御力ダウン状態中</string>
 </resources>
