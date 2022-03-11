@@ -74,7 +74,7 @@
     <string name="about_disclaimer">This is an unofficial fan-made application, copyright of all resources associate with the game \"Princess Connect Re:Dive\" are belong to Cygames, Inc. </string>
     <string name="about_hp">Open source homepage (Fork) \nhttps://github.com/TragicLifeHu/ShizuruNotes</string>
     <string name="about_developer">Development &lt;br/>Vibbit&lt;a href=\"https://twitter.com/L8102259\">@L8102259&lt;/a>&lt;br/>Nyan Fantasia</string>
-    <string name="about_translator">Localization &lt;br/>(Korean)applemintia&lt;a href=\"https://twitter.com/_applemintia\">@_applemintia&lt;/a>&lt;br/>(English)&lt;a href=\"https://twitter.com/southro_p\">southrop&lt;/a>&lt;br/>(Chinese Traditional) Nyan Fantasia</string>
+    <string name="about_translator">Localization &lt;br/>(Korean) applemintia&lt;br/>(English) &lt;a href=\"https://twitter.com/southro_p\">southrop&lt;/a> &amp; &lt;a href=\"https://github.com/MightyZanark\">MightyZanark&lt;/a>&lt;br/>(Chinese Traditional) Nyan Fantasia</string>
     <string name="about_api" translatable="false">API by https://redive.estertion.win</string>
     <string name="about_license" translatable="false">This application is licensed under the &lt;a href=\"http://www.apache.org/licenses/LICENSE-2.0.txt\">Apache License 2.0&lt;/a></string>
     <string name="text_ok" translatable="false">OK</string>
@@ -258,7 +258,7 @@
     <string name="space_modifier" translatable="false">&#160;%s&#160;</string>
     <string name="text_log_clean">ログファイルをすべて削除します、よろしいですか？</string>
     <string name="text_delete">削除</string>
-    <string name="text_deney">いいえ</string>
+    <string name="text_deny">いいえ</string>
     <string name="text_copy">コピー</string>
     <string name="text_copy_finished">テキストをクリップボードにコピーしました</string>
     <string name="campaign">キャンペーン</string>
@@ -324,15 +324,15 @@
     <string name="hint_rank_to">ランク2</string>
     <string name="rank_comparison_description">計算方法説明：\nx → 左のランク\ny → 右のランク\n{[∑(yの装備フル強化値) + ∑(yより低いランクの装備ステータス) + (最大レベル + y)の基礎ステータス]端数四捨五入} - {[∑(xの装備フル強化値) + ∑(xより低いランクの装備ステータス) + (最大レベル + x)の基礎ステータス]端数四捨五入}\n*上記の計算式はキャラの最大☆数の基礎ステータスを基に計算してます</string>
     <string name="text_calculate">計算</string>
-    <string name="short_energy_recovery">TP上\n%s</string>
+    <string name="short_energy_recovery">TP上 %s</string>
     <string name="short_energy_reduce">TP軽\n%s</string>
-    <string name="short_physical_atk">物攻\n%s</string>
+    <string name="short_physical_atk">物攻 %s</string>
     <string name="short_physical_crt">物ク\n%s</string>
-    <string name="short_physical_def">物防\n%s</string>
-    <string name="short_magical_atk">魔攻\n%s</string>
+    <string name="short_physical_def">物防 %s</string>
+    <string name="short_magical_atk">魔攻 %s</string>
     <string name="short_magical_crt">魔ク\n%s</string>
-    <string name="short_magical_def">魔防\n%s</string>
-    <string name="short_hp">HP\n%s</string>
+    <string name="short_magical_def">魔防 %s</string>
+    <string name="short_hp">HP %s</string>
     <string name="short_life_steal">HP吸\n%s</string>
     <string name="short_accuracy">命中\n%s</string>
     <string name="short_dodge">回避\n%s</string>

@@ -20,7 +20,7 @@ class LogFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentLogBinding.inflate(inflater, container, false).apply {
             logProgressBar.visibility = View.VISIBLE
             logToolbar.setNavigationOnClickListener { view ->
@@ -34,7 +34,7 @@ class LogFragment : Fragment() {
                         positiveButton(res = R.string.text_delete) {
                             deleteLogFiles()
                         }
-                        negativeButton(res = R.string.text_deney)
+                        negativeButton(res = R.string.text_deny)
                     }
             }
         }

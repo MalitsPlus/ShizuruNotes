@@ -513,7 +513,7 @@
     <string name="icon_cancel_all">清空</string>
     <string name="text_log_clean">确定删除所有日志？</string>
     <string name="text_delete">删除</string>
-    <string name="text_deney">否</string>
+    <string name="text_deny">否</string>
     <string name="text_copy">复制</string>
     <string name="text_copy_finished">已将文字复制至剪贴板</string>
     <string name="text_condition_and">全命中</string>
