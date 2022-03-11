@@ -11,7 +11,7 @@
 
 ## 功能
 * 角色資料
-* 角色派生資料計算
+* 角色衍生資料計算
 * 戰隊競賽 Boss 資料
 * 地下城 Boss 資料
 * 裝備資訊
@@ -24,8 +24,8 @@
 ## 在地化
 完整支持中文、日文. 部分支援韓文、英文.  
 韓文字串由 [applemintia](https://twitter.com/_applemintia) 提供.  
-英文字串由 [southrop](https://github.com/southrop) 提供.  
-繁體中文字串及切換邏輯由喵幻製作.  
+英文字串由 [southrop](https://github.com/southrop) 和 [MightyZanark](https://github.com/MightyZanark) 提供.  
+繁體中文字串及多語言切換邏輯由喵幻製作.  
 歡迎志願者完成英文翻譯.
 
 ## 引用與參考
@@ -39,5 +39,5 @@
 ## 許可證
 使用、改造、分發靜流筆記時請遵循 Apache License 2.0 開源許可證.
 
-## 安裝套件
+## 安裝套件包
 [下載頁面](https://github.com/TragicLifeHu/ShizuruNotes/releases)  
