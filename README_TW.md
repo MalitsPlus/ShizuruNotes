@@ -22,10 +22,10 @@
 * Rank 對比
 
 ## 在地化
-完整支持中文、日文. 部分支援韓文、英文.  
+完整支持中文、日文、英文. 部分支援韓文.  
 韓文字串由 [applemintia](https://twitter.com/_applemintia) 提供.  
-英文字串由 [southrop](https://github.com/southrop) 和 [MightyZanark](https://github.com/MightyZanark) 提供.  
-繁體中文字串及多語言切換邏輯由喵幻製作.  
+英文字串由 [southrop](https://github.com/southrop) 和 [MightyZanark](https://github.com/MightyZanark) 提供，喵幻對最終文字進行了一些修改.  
+繁體中文字串及改進的多語言支援由喵幻製作.  
 歡迎志願者完成英文翻譯.
 
 ## 引用與參考
