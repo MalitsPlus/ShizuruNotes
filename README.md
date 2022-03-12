@@ -30,19 +30,19 @@ Dependencies could be found in `./app/build.gradle` and it might be changed time
 * TBD
 
 ## Localization  
-Japanese and Chinese fully supported, Korean and English partially supported.  
+Japanese, English and Chinese fully supported, Korean partially supported.  
 Korean strings are provided by [applemintia](https://twitter.com/_applemintia).  
-English strings are provided by [southrop](https://github.com/southrop) & [MightyZanark](https://github.com/MightyZanark).
-Chinese Traditional strings and switch logic are provided by Nyan Fantasia.  
+English strings are provided by [southrop](https://github.com/southrop) & [MightyZanark](https://github.com/MightyZanark) (With some change made by Nyan Fantasia).
+Chinese Traditional strings and improved localization functions are provided by Nyan Fantasia.  
 Any contribution is welcomed, I could handle it.
 
-## References  
-ShizuruNotes is highly inspired by the following illustrious repos, thanks them:  
-* [PrincessGuide](https://github.com/superk589/PrincessGuide)  
-* [redive_master_db_diff](https://github.com/esterTion/redive_master_db_diff)  
-* [DereHelper](https://github.com/Lazyeraser/DereHelper)  
+## References
+ShizuruNotes is highly inspired by the following illustrious repos, thanks them:
+* [PrincessGuide](https://github.com/superk589/PrincessGuide)
+* [redive_master_db_diff](https://github.com/esterTion/redive_master_db_diff)
+* [DereHelper](https://github.com/Lazyeraser/DereHelper)
 
-ShizuruNotes also uses [these](OPENSOURCE.md) open source software.  
+ShizuruNotes also uses [these](OPENSOURCE.md) open source software.
 
 ## Related projects
 * [KasumiNotes](https://github.com/HerDataSam/KasumiNotes) The KR server version of ShizuruNotes, developed by [HerDataSam](https://github.com/HerDataSam).  
