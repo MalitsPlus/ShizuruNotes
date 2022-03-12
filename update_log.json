@@ -1,10 +1,10 @@
 {
-	"versionCode": "65",
-	"versionName": "1.12.1",
+	"versionCode": "66",
+	"versionName": "1.12.2",
 	"recommend": "false",
-	"messageJa": "・ダンジョンSPバトルデータに対応\n・新しいスキルの説明文を追加（キャル（サマー））",
-	"messageZhS": "・追加迷宫SP数据支持\n・追加新的技能说明（キャル（サマー））",
-	"messageZhT": "・追加地下城特殊關卡支援\n・追加新的技能說明（凱留（夏日））",
+	"messageJa": "・英語翻訳の更新",
+	"messageZhS": "・更新英文翻译",
+	"messageZhT": "・更新英文翻譯",
 	"infoJa": "",
 	"infoZhS": "",
 	"infoZhT": ""
