@@ -70,7 +70,7 @@
     <string name="about_disclaimer" translatable="false">This is an unofficial fan-made application, copyright of all resources associate with the game \"Princess Connect Re:Dive\" are belong to Cygames, Inc. </string>
     <string name="about_hp" translatable="false">Open source homepage \nhttps://github.com/MalitsPlus/ShizuruNotes</string>
     <string name="about_developer" translatable="false">Development &lt;br/>Vibbit&lt;a href=\"https://twitter.com/L8102259\">@L8102259&lt;/a></string>
-    <string name="about_translator" translatable="false">Localization &lt;br/>(Korean)applemintia&lt;a href=\"https://twitter.com/_applemintia\">@_applemintia&lt;/a>&lt;br/>(English)&lt;a href=\"https://twitter.com/southro_p\">southrop&lt;/a></string>
+    <string name="about_translator" translatable="false">Localization &lt;br/>(Korean)applemintia&lt;a href=\"https://twitter.com/_applemintia\">@_applemintia&lt;/a>&lt;br/>(English)&lt;a href=\"https://twitter.com/southro_p\">southrop&lt;/a>&lt;br/>(English)&lt;a href=\"https://github.com/MightyZanark\">MightyZanark&lt;/a></string>
     <string name="about_api" translatable="false">API by https://redive.estertion.win</string>
     <string name="about_license" translatable="false">This application is licensed under the &lt;a href=\"http://www.apache.org/licenses/LICENSE-2.0.txt\">Apache License 2.0&lt;/a></string>
     <string name="text_ok" translatable="false">OK</string>
