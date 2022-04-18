@@ -1327,6 +1327,9 @@ class DBHelper private constructor(
         var sqlString = """
             SELECT a.event_id, a.start_time, a.end_time, b.title 
             FROM hatsune_schedule AS a JOIN event_story_data AS b ON a.event_id = b.value
+            UNION ALL
+            SELECT a.event_id, a.start_time, a.end_time, b.title 
+            FROM hatsune_schedule AS a JOIN event_story_data AS b ON a.event_id = b.value-10000
             """
         nowTimeString?.let {
             sqlString += " WHERE a.end_time > '$it' "
