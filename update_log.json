@@ -1,9 +1,9 @@
 {
-	"versionCode": "66",
-	"versionName": "1.12.2",
+	"versionCode": "67",
+	"versionName": "1.13.0",
 	"recommend": "false",
-	"messageJa": "・英語のstringsを追加(Provides by MightyZanark)",
-	"messageZh": "・追加英文strings(Provides by MightyZanark)",
+	"messageJa": "・新スキルの追加\n・一部のイベントが表示されない問題を修正",
+	"messageZh": "・追加新技能\n・修复部分历史活动未显示的问题",
 	"infoJa": "",
 	"infoZh": ""
 }
