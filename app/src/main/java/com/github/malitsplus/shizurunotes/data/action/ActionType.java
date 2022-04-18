@@ -67,6 +67,7 @@ public enum ActionType {
     loop(63),
     toad(69),
     knightGuard(71),
+    damageCut(72),
     logBarrier(73),
     divide(74),
     actionByHitCount(75),
@@ -79,7 +80,8 @@ public enum ActionType {
     exPlus(91),
     changeEnergyRecoveryRatioByDamage(92),
     ignoreDecoyAction(93),
-    effectAction(94);
+    effectAction(94),
+    spyAction(95);
 
     private int value;
     private ActionType(int value){
