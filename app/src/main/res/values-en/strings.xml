@@ -687,7 +687,7 @@
     <string name="This_damage_type_is_judged_by_the_lower_defence_value_of_targeted_enemy">The damage type of this skill is determined by whichever defense is lower on the target (Will become Magic Attack if target has lower Physical Defense and vice versa).</string>
     <string name="feared">inflicted with Fear</string>
     <string name="magic_defence_decreased">having its Magic Defense lowered</string>
-    <string name="Make_s1_invisible_for_s2_cancels_on_taking_damage">Makes %1$s enter the Spy state for [%2$s]s, during which %1$s can't be targetted as a single target (AoE can still target). This effect is removed when taking damage from AoEs.</string>
+    <string name="Make_s1_invisible_for_s2_cancels_on_taking_damage">Makes %1$s enter the Spy state for [%2$s]s, during which %1$s can't be targetted as a single target (AoE can still target). This effect is removed when taking damage.</string>
     <string name="Reduce_s1_all_damage_taken_by_s2_for_s3_sec">Cuts [%1$s%%] of All Damage taken by %2$s for [%3$s]s.</string>
     <string name="Reduce_s1_magical_damage_taken_by_s2_for_s3_sec">Cuts [%1$s%%] of Magic Damage taken by %2$s for [%3$s]s.</string>
     <string name="Reduce_s1_physical_damage_taken_by_s2_for_s3_sec">Cuts [%1$s%%] of Physical Damage taken by %2$s for [%3$s]s.</string>
