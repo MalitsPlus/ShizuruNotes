@@ -1,9 +1,9 @@
 {
-	"versionCode": "68",
-	"versionName": "1.13.1",
+	"versionCode": "69",
+	"versionName": "1.14.0",
 	"recommend": "false",
-	"messageJa": "・ホマレのスキルターゲットを修正\n・英語 strings の追加",
-	"messageZh": "・修正ホマレ技能目标\n・追加英文 strings",
+	"messageJa": "・大陸鯖のデータが正常に読み込めない問題の修正",
+	"messageZh": "・修正国服数据加载失败问题",
 	"infoJa": "",
 	"infoZh": ""
 }
