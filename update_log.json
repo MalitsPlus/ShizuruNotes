@@ -1,9 +1,9 @@
 {
-	"versionCode": "69",
-	"versionName": "1.14.0",
+	"versionCode": "70",
+	"versionName": "1.14.1",
 	"recommend": "false",
-	"messageJa": "・大陸鯖のデータが正常に読み込めない問題の修正",
-	"messageZh": "・修正国服数据加载失败问题",
+	"messageJa": "・新スキルの追加",
+	"messageZh": "・追加新技能",
 	"infoJa": "",
 	"infoZh": ""
 }
