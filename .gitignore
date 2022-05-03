@@ -89,3 +89,5 @@ app/release/
 
 #vscode files
 .vscode/
+
+app/google-services.json
