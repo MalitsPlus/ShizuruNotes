@@ -760,4 +760,6 @@
     <string name="Reduce_s1_magical_damage_taken_by_s2_for_s3_sec">%2$sが受ける魔法ダメージを [%1$s%%] カットする、効果時間 [%3$s] 秒。</string>
     <string name="Reduce_s1_physical_damage_taken_by_s2_for_s3_sec">%2$sが受ける物理ダメージを [%1$s%%] カットする、効果時間 [%3$s] 秒。</string>
     <string name="is_invisible">隠密状態中</string>
+    <string name="Summon_a_field_with_radius_d1_at_position_s2_which_continuous_lose_tp_s3_of_units_within_the_field_for_s4_sec">%2$sの位置で半径 [%1$d] のフィールドを展開する、毎秒 [%3$s] のTPを失わせる。効果時間 [%4$s] 秒。</string>
+    <string name="Summon_a_field_with_radius_d1_at_position_s2_which_continuous_restore_tp_s3_of_units_within_the_field_for_s4_sec">%2$sの位置で半径 [%1$d] のフィールドを展開する、毎秒 [%3$s] のTPを回復させる。効果時間 [%4$s] 秒。</string>
 </resources>

@@ -695,4 +695,6 @@
     <string name="Reduce_s1_magical_damage_taken_by_s2_for_s3_sec">降低%2$s受到的魔法伤害 [%1$s%%]，持续时间 [%3$s] 秒。</string>
     <string name="Reduce_s1_physical_damage_taken_by_s2_for_s3_sec">降低%2$s受到的物理伤害 [%1$s%%]，持续时间 [%3$s] 秒。</string>
     <string name="is_invisible">隐密状态中</string>
+    <string name="Summon_a_field_with_radius_d1_at_position_s2_which_continuous_lose_tp_s3_of_units_within_the_field_for_s4_sec">在%2$s的位置展开半径 [%1$d] 的领域，每秒失去 [%3$s] TP。持续时间 [%4$s] 秒。</string>
+    <string name="Summon_a_field_with_radius_d1_at_position_s2_which_continuous_restore_tp_s3_of_units_within_the_field_for_s4_sec">在%2$s的位置展开半径 [%1$d] 的领域，每秒恢复 [%3$s] TP。持续时间 [%4$s] 秒。</string>
 </resources>

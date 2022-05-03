@@ -174,6 +174,8 @@ public class ActionParameter {
                 return new EffectAction();
             case 95:
                 return new SpyAction();
+            case 96:
+                return new ChangeEnergyFieldAction();
             default:
                 return new ActionParameter();
         }
