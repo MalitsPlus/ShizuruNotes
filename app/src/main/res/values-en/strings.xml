@@ -692,4 +692,6 @@
     <string name="Reduce_s1_magical_damage_taken_by_s2_for_s3_sec">Cuts [%1$s%%] of Magic Damage taken by %2$s for [%3$s]s.</string>
     <string name="Reduce_s1_physical_damage_taken_by_s2_for_s3_sec">Cuts [%1$s%%] of Physical Damage taken by %2$s for [%3$s]s.</string>
     <string name="is_invisible">under Spy state</string>
+    <string name="Summon_a_field_with_radius_d1_at_position_s2_which_continuous_lose_tp_s3_of_units_within_the_field_for_s4_sec">Deploys a field of radius [%1$d] at position of %2$s that reduces the TP of all units inside by [%3$s] per second for [%4$s]s.</string>
+    <string name="Summon_a_field_with_radius_d1_at_position_s2_which_continuous_restore_tp_s3_of_units_within_the_field_for_s4_sec">Deploys a field of radius [%1$d] at position of %2$s that restores the TP of all units inside by [%3$s] per second for [%4$s]s.</string>
 </resources>
