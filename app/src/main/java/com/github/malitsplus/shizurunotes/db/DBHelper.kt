@@ -1198,6 +1198,53 @@ class DBHelper private constructor(
     }
 
     /***
+     * get secret dungeon schedule list
+     */
+    fun getSecretDungeonSchedules(): List<RawSecretDungeonSchedule>? {
+        // 考虑国服未实装的情况
+        val count = getOne("""SELECT COUNT(*) 
+                                FROM sqlite_master 
+                                WHERE type='table' 
+                                AND name='secret_dungeon_schedule'""")
+        if (!count.equals("1")) {
+            return null;
+        }
+        return getBeanListByRaw(
+            """
+                SELECT
+                    *
+                FROM
+                    secret_dungeon_schedule
+                ORDER BY
+                    start_time DESC;
+                """,
+            RawSecretDungeonSchedule::class.java
+        )
+    }
+
+    /***
+     * get specified secret dungeon quest list
+     */
+    fun getSecretDungeonQuests(dungeon_area_id: Int): List<RawSecretDungeonQuestData>? {
+        return getBeanListByRaw(
+            """
+                SELECT
+                    a.*, b.*
+                FROM
+                    secret_dungeon_quest_data AS a
+                JOIN wave_group_data AS b ON a.wave_group_id = b.wave_group_id
+                WHERE
+                    a.dungeon_area_id = $dungeon_area_id
+                AND a.wave_group_id <> 0
+                ORDER BY
+                    a.difficulty DESC,
+                    a.floor_num DESC
+                """,
+            RawSecretDungeonQuestData::class.java
+        )
+    }
+
+    /***
      * 获取特殊活动
      */
     fun getSpEvents(): List<RawSpEvent>? {

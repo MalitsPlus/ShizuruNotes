@@ -199,7 +199,7 @@
                     android:foreground="?android:attr/selectableItemBackground"
                     android:onClick="@{clickListener}"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/constraint_setting"
+                    app:layout_constraintEnd_toStartOf="@+id/constraint_secret_dungeon"
                     app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toEndOf="@+id/constraint_hatsune"
                     app:layout_constraintTop_toTopOf="parent"
@@ -230,7 +230,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraint_setting"
+                    android:id="@+id/constraint_secret_dungeon"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -246,7 +246,7 @@
                         android:id="@+id/imageView8"
                         android:layout_width="75dp"
                         android:layout_height="75dp"
-                        android:src="@drawable/mic_setting"
+                        android:src="@drawable/mic_castle"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -258,7 +258,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="@string/title_setting"
+                        android:text="@string/title_secret_dungeon"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="@+id/imageView8"
                         app:layout_constraintStart_toStartOf="@+id/imageView8"
@@ -274,9 +274,10 @@
                 android:layout_weight="1">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraint_7"
+                    android:id="@+id/constraint_setting"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:foreground="?android:attr/selectableItemBackground"
                     android:onClick="@{clickListener}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/constraint_8"
@@ -285,9 +286,10 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
-                        android:id="@+id/imageView7_1"
+                        android:id="@+id/imageView10"
                         android:layout_width="75dp"
                         android:layout_height="75dp"
+                        android:src="@drawable/mic_setting"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -295,14 +297,15 @@
                         app:layout_constraintVertical_bias="0.35" />
 
                     <TextView
-                        android:id="@+id/textView7_2"
+                        android:id="@+id/textView98"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:text="@string/title_setting"
                         android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="@+id/imageView7_1"
-                        app:layout_constraintStart_toStartOf="@+id/imageView7_1"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView7_1" />
+                        app:layout_constraintEnd_toEndOf="@+id/imageView10"
+                        app:layout_constraintStart_toStartOf="@+id/imageView10"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -314,7 +317,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/constraint_community"
                     app:layout_constraintHorizontal_weight="1"
-                    app:layout_constraintStart_toEndOf="@+id/constraint_7"
+                    app:layout_constraintStart_toEndOf="@+id/constraint_setting"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0">
 

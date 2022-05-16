@@ -17,6 +17,7 @@
     <string name="title_hatsune_wave">イベント</string>
     <string name="title_community">コミュニティ</string>
     <string name="title_sp_event">SPイベント</string>
+    <string name="title_secret_dungeon">SPダンジョン</string>
     <string name="community_dialog_title">コミュニティに参加</string>
     <string name="community_dialog_text">コミュニティに参加しましょう\n（飛び先中国語注意）</string>
     <string name="do_not_show_anymore">今度から表示しない</string>
