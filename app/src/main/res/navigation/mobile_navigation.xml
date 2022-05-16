@@ -85,6 +85,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_nav_bottom_navigation_to_nav_secret_dungeon"
+            app:destination="@id/nav_secret_dungeon"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -377,6 +384,32 @@
         tools:layout="@layout/fragment_sp_event" >
         <action
             android:id="@+id/action_nav_sp_event_to_nav_enemy"
+            app:destination="@id/nav_enemy"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_secret_dungeon"
+        android:name="com.github.malitsplus.shizurunotes.ui.secretdungeon.SecretDungeonFragment"
+        android:label="fragment_secret_dungeon"
+        tools:layout="@layout/fragment_secret_dungeon">
+        <action
+            android:id="@+id/action_nav_secret_dungeon_to_nav_secret_dungeon_wave"
+            app:destination="@id/nav_secret_dungeon_wave"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_secret_dungeon_wave"
+        android:name="com.github.malitsplus.shizurunotes.ui.secretdungeon.SecretDungeonWaveFragment"
+        android:label="fragment_secret_dungeon_wave"
+        tools:layout="@layout/fragment_secret_dungeon_wave">
+        <action
+            android:id="@+id/action_nav_secret_dungeon_wave_wave_to_nav_enemy"
             app:destination="@id/nav_enemy"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
