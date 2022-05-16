@@ -1,9 +1,9 @@
 {
-	"versionCode": "70",
-	"versionName": "1.14.1",
+	"versionCode": "71",
+	"versionName": "1.15.0",
 	"recommend": "false",
-	"messageJa": "・新スキルの追加",
-	"messageZh": "・追加新技能",
+	"messageJa": "・SPダンジョン画面を追加\n・英語Stringsの追加",
+	"messageZh": "・新增SP地下城界面\n・追加英文字符串",
 	"infoJa": "",
 	"infoZh": ""
 }
