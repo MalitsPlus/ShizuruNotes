@@ -763,4 +763,7 @@
     <string name="is_invisible">隠密状態中</string>
     <string name="Summon_a_field_with_radius_d1_at_position_s2_which_continuous_lose_tp_s3_of_units_within_the_field_for_s4_sec">%2$sの位置で半径 [%1$d] のフィールドを展開する、毎秒 [%3$s] のTPを失わせる。効果時間 [%4$s] 秒。</string>
     <string name="Summon_a_field_with_radius_d1_at_position_s2_which_continuous_restore_tp_s3_of_units_within_the_field_for_s4_sec">%2$sの位置で半径 [%1$d] のフィールドを展開する、毎秒 [%3$s] のTPを回復させる。効果時間 [%4$s] 秒。</string>
+    <string name="s_the_lowest_TP_except_self">自分以外 TP がもっとも低い%1$s</string>
+    <string name="the_s_th_lowest_TP_except_self">自分以外%1$s TP が低い</string>
+    <string name="the_lowest_TP_except_self">自分以外 TP がもっとも低い</string>
 </resources>

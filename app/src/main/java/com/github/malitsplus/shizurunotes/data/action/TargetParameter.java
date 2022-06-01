@@ -308,7 +308,8 @@ enum TargetType{
     hpAscendingOrNearForward(36),
     tpDescendingOrMaxForward(37),
     bothAtkDescending(38),
-    bothAtkAscending(39);
+    bothAtkAscending(39),
+    energyAscBackWithoutOwner(41);
 
     private int value;
     TargetType(int value){
@@ -432,6 +433,8 @@ enum TargetType{
                 return I18N.getString(R.string.the_highest_ATK_or_Magic_STR);
             case bothAtkAscending:
                 return I18N.getString(R.string.the_lowest_ATK_or_Magic_STR);
+            case energyAscBackWithoutOwner:
+                return I18N.getString(R.string.the_lowest_TP_except_self);
             default:
                 return "";
         }
@@ -499,6 +502,8 @@ enum TargetType{
                 return I18N.getString(R.string.s_the_highest_ATK_or_Magic_STR, localizedModifier);
             case bothAtkAscending:
                 return I18N.getString(R.string.s_the_lowest_ATK_or_Magic_STR, localizedModifier);
+            case energyAscBackWithoutOwner:
+                return I18N.getString(R.string.s_the_lowest_TP_except_self, localizedModifier);
             default:
                 return description();
         }
@@ -560,6 +565,8 @@ enum TargetType{
                     return I18N.getString(R.string.the_s_highest_ATK_or_Magic_STR, localizedModifier);
                 case bothAtkAscending:
                     return I18N.getString(R.string.the_s_lowest_ATK_or_Magic_STR, localizedModifier);
+                case energyAscBackWithoutOwner:
+                    return I18N.getString(R.string.the_s_th_lowest_TP_except_self, localizedModifier);
                 default:
                     return description();
             }
