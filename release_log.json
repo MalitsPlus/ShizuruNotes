@@ -1,0 +1,20 @@
+[
+  {
+    "versionCode": "72",
+    "versionName": "1.15.1",
+    "recommend": "false",
+    "messageJa": "・新スキル効果の追加",
+    "messageZh": "・追加新技能效果",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
+    "versionCode": "71",
+    "versionName": "1.15.0",
+    "recommend": "false",
+    "messageJa": "・SPダンジョン画面を追加\n・英語Stringsの追加",
+    "messageZh": "・新增SP地下城界面\n・追加英文字符串",
+    "infoJa": "",
+    "infoZh": ""
+  }
+]
