@@ -91,3 +91,4 @@ app/release/
 .vscode/
 
 app/google-services.json
+releaselog_cache.txt
