@@ -8,7 +8,35 @@ An **unofficial** Android tool application for "Princess Connect Re:Dive".
 
 ## Build
 Requires Android Studio Arctic Fox or later.  
-Dependencies could be found in `./app/build.gradle` and it might be updated from time to time.
+
+Before executing build commands, you need to create a `local.properties` in project's root directory if it does not exist.
+
+```sh
+$ touch local.properties
+```
+
+#### Debug Version App
+You can build app with **debug variant** by excuting the following command directly. 
+
+```sh
+$ ./gradlew :app:assembleDebug
+```
+
+#### Release Version App
+If you want to build a release version app, you must add the following lines into `local.properties` first:
+
+```sh
+signing.storeFile=${PATH_TO_YOUR_KEY_STORE_FILE}
+signing.storePassword=${YOUR_KEY_STORE_PASSWORD}
+signing.keyAlias=${YOUR_KEY_ALIAS}
+signing.keyPassword=${YOUR_KEY_PASSWORD}
+```
+
+Then you can excute build command with **release variant**:
+
+```sh
+$ ./gradlew :app:assembleRelease
+```
 
 ## Features
 * Chara
@@ -25,8 +53,8 @@ Dependencies could be found in `./app/build.gradle` and it might be updated from
 ## Localization
 Japanese and Chinese are fully supported and maintained with each update.  
 Korean and English are also somehow supported, yet may be updated with less frequency.  
-Korean strings are provided by [applemintia](https://twitter.com/_applemintia).  
-English strings are provided by [southrop](https://github.com/southrop) & [MightyZanark](https://github.com/MightyZanark).
+* Korean strings are provided by [applemintia](https://twitter.com/_applemintia).  
+* English strings are provided by [southrop](https://github.com/southrop) & [MightyZanark](https://github.com/MightyZanark).
 
 ## References
 ShizuruNotes is highly inspired by the following illustrious repos, thanks them:
