@@ -15,7 +15,7 @@ public class IfForChildrenAction extends ActionParameter {
 
         if(actionDetail2 != 0){
             ifType = IfType.parse(actionDetail1);
-            if(ifType != null) {
+            if(ifType != IfType.unknown) {
                 trueClause = I18N.getString(R.string.use_d1_to_s2_if_s3,
                         actionDetail2 % 100, targetParameter.buildTargetClause(true), ifType.description());
             } else {
@@ -40,7 +40,7 @@ public class IfForChildrenAction extends ActionParameter {
 
         if(actionDetail3 != 0){
             ifType = IfType.parse(actionDetail1);
-            if(ifType != null) {
+            if(ifType != IfType.unknown) {
                 falseClause = I18N.getString(R.string.use_d1_to_s2_if_not_s3,
                         actionDetail3 % 100, targetParameter.buildTargetClause(true), ifType.description());
             } else {
@@ -107,6 +107,7 @@ enum IfType{
     Break(710),
     polymorph(1400),
     fear(1600),
+    spy(1601),
     magicDefDecreased(1700);
 
     private int value;
@@ -142,6 +143,7 @@ enum IfType{
             case hex: return I18N.getString(R.string.hexed);
             case curseOrHex: return I18N.getString(R.string.cursed_or_hexed);
             case fear: return I18N.getString(R.string.feared);
+            case spy: return I18N.getString(R.string.is_invisible);
             case magicDefDecreased: return I18N.getString(R.string.magic_defence_decreased);
             default: return I18N.getString(R.string.unknown);
         }

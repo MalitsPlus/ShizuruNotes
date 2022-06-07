@@ -70,7 +70,7 @@
     <string name="about_disclaimer" translatable="false">This is an unofficial fan-made application, copyright of all resources associate with the game \"Princess Connect Re:Dive\" are belong to Cygames, Inc. </string>
     <string name="about_hp" translatable="false">Open source homepage \nhttps://github.com/MalitsPlus/ShizuruNotes</string>
     <string name="about_developer" translatable="false">Development &lt;br/>Vibbit&lt;a href=\"https://twitter.com/L8102259\">@L8102259&lt;/a></string>
-    <string name="about_translator" translatable="false">Localization &lt;br/>(Korean)applemintia&lt;a href=\"https://twitter.com/_applemintia\">@_applemintia&lt;/a>&lt;br/>(English)&lt;a href=\"https://twitter.com/southro_p\">southrop&lt;/a></string>
+    <string name="about_translator" translatable="false">Localization &lt;br/>(Korean)applemintia&lt;a href=\"https://twitter.com/_applemintia\">@_applemintia&lt;/a>&lt;br/>(English)&lt;a href=\"https://twitter.com/southro_p\">southrop&lt;/a>&lt;br/>(English)&lt;a href=\"https://github.com/MightyZanark\">MightyZanark&lt;/a></string>
     <string name="about_api" translatable="false">API by https://redive.estertion.win</string>
     <string name="about_license" translatable="false">This application is licensed under the &lt;a href=\"http://www.apache.org/licenses/LICENSE-2.0.txt\">Apache License 2.0&lt;/a></string>
     <string name="text_ok" translatable="false">OK</string>
@@ -755,4 +755,11 @@
     <string name="Implement_some_visual_effects_to_s1">%sに特別なビジュアル効果を付与する。</string>
     <string name="This_damage_type_is_judged_by_the_lower_defence_value_of_targeted_enemy">このスキルのダメージタイプは目標の低いほうの防御タイプによって決められる。</string>
     <string name="magic_defence_decreased">魔法防御力ダウン状態中</string>
+    <string name="Make_s1_invisible_for_s2_cancels_on_taking_damage">%1$sを隠密状態にする、効果時間 [%2$s] 秒。この効果はダメージを受けた時に解除される。</string>
+    <string name="Reduce_s1_all_damage_taken_by_s2_for_s3_sec">%2$sが受ける全てのダメージを [%1$s%%] カットする、効果時間 [%3$s] 秒。</string>
+    <string name="Reduce_s1_magical_damage_taken_by_s2_for_s3_sec">%2$sが受ける魔法ダメージを [%1$s%%] カットする、効果時間 [%3$s] 秒。</string>
+    <string name="Reduce_s1_physical_damage_taken_by_s2_for_s3_sec">%2$sが受ける物理ダメージを [%1$s%%] カットする、効果時間 [%3$s] 秒。</string>
+    <string name="is_invisible">隠密状態中</string>
+    <string name="Summon_a_field_with_radius_d1_at_position_s2_which_continuous_lose_tp_s3_of_units_within_the_field_for_s4_sec">%2$sの位置で半径 [%1$d] のフィールドを展開する、毎秒 [%3$s] のTPを失わせる。効果時間 [%4$s] 秒。</string>
+    <string name="Summon_a_field_with_radius_d1_at_position_s2_which_continuous_restore_tp_s3_of_units_within_the_field_for_s4_sec">%2$sの位置で半径 [%1$d] のフィールドを展開する、毎秒 [%3$s] のTPを回復させる。効果時間 [%4$s] 秒。</string>
 </resources>

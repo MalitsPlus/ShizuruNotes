@@ -4,6 +4,7 @@ plugins {
     id 'androidx.navigation.safeargs'
     id 'com.google.android.gms.oss-licenses-plugin'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -12,8 +13,8 @@ android {
         applicationId "com.github.malitsplus.shizurunotes"
         minSdk 26
         targetSdk 30
-        versionCode 65
-        versionName "1.12.1"
+        versionCode 70
+        versionName "1.14.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -78,4 +79,7 @@ dependencies {
     implementation 'com.github.lygttpod:SuperTextView:2.4.2'
     implementation 'com.afollestad.material-dialogs:core:3.3.0'
     implementation 'com.github.mancj:MaterialSearchBar:0.8.5'
+
+    implementation platform('com.google.firebase:firebase-bom:29.3.1')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }

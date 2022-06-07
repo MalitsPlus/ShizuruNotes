@@ -1,9 +1,9 @@
 {
-	"versionCode": "65",
-	"versionName": "1.12.1",
+	"versionCode": "70",
+	"versionName": "1.14.1",
 	"recommend": "false",
-	"messageJa": "・ダンジョンSPバトルデータに対応\n・新しいスキルの説明文を追加（キャルOL、水キャル）",
-	"messageZh": "・追加迷宫SP数据支持\n・追加新的技能说明（キャルOL、水キャル）",
+	"messageJa": "・新スキルの追加",
+	"messageZh": "・追加新技能",
 	"infoJa": "",
 	"infoZh": ""
 }
