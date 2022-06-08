@@ -14,6 +14,7 @@
     <string name="title_calendar">Calendar</string>
     <string name="title_community">Community</string>
     <string name="title_sp_event">SP Event</string>
+    <string name="title_secret_dungeon">SP Dungeon</string>
     <string name="community_dialog_title">Join the community</string>
     <string name="community_dialog_text">Join our community!\n(primarily for Chinese speakers)</string>
     <string name="setting_language_dialog_title">Language</string>
@@ -694,4 +695,7 @@
     <string name="is_invisible">under Spy state</string>
     <string name="Summon_a_field_with_radius_d1_at_position_s2_which_continuous_lose_tp_s3_of_units_within_the_field_for_s4_sec">Deploys a field of radius [%1$d] at position of %2$s that reduces the TP of all units inside by [%3$s] per second for [%4$s]s.</string>
     <string name="Summon_a_field_with_radius_d1_at_position_s2_which_continuous_restore_tp_s3_of_units_within_the_field_for_s4_sec">Deploys a field of radius [%1$d] at position of %2$s that restores the TP of all units inside by [%3$s] per second for [%4$s]s.</string>
+    <string name="s_the_lowest_TP_except_self">%1$s with the lowest TP except Self</string>
+    <string name="the_s_th_lowest_TP_except_self">the %1$s lowest TP except Self</string>
+    <string name="the_lowest_TP_except_self">the lowest TP except Self</string>
 </resources>
