@@ -52,6 +52,9 @@ class MenuFragment : Fragment() {
                     R.id.constraint_sp_event ->
                         it.findNavController().navigate(
                             BottomNaviFragmentDirections.actionNavBottomNavigationToNavSpEvent())
+                    R.id.constraint_secret_dungeon ->
+                        it.findNavController().navigate(
+                            BottomNaviFragmentDirections.actionNavBottomNavigationToNavSecretDungeon())
 
 //                    R.id.constraint_community -> {
 //                        val communityView = DataBindingUtil.inflate<ViewCommunityBinding>(

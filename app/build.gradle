@@ -7,21 +7,33 @@ plugins {
     id 'com.google.gms.google-services'
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     compileSdk 30
     defaultConfig {
         applicationId "com.github.malitsplus.shizurunotes"
         minSdk 26
         targetSdk 30
-        versionCode 70
-        versionName "1.14.1"
+        versionCode 72
+        versionName "1.15.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        release {
+            storeFile file(System.getenv("SIGNING_STORE_FILE") ?: properties.getProperty('signing.storeFile'))
+            storePassword System.getenv("SIGNING_STORE_PASSWORD") ?: properties.getProperty('signing.storePassword')
+            keyAlias System.getenv("SIGNING_KEY_ALIAS") ?: properties.getProperty('signing.keyAlias')
+            keyPassword System.getenv("SIGNING_KEY_PASSWORD") ?: properties.getProperty('signing.keyPassword')
+        }
     }
     buildTypes {
         release {
             shrinkResources false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
         debug {
             applicationIdSuffix ".debug"

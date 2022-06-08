@@ -135,3 +135,15 @@ data class TextTagAlphaVT(
     override val layoutId: Int = R.layout.item_text,
     override val isUserInteractionEnabled: Boolean = false
 ) : ViewType<String>
+
+data class SecretDungeonScheduleVT(
+    override val data: SecretDungeonSchedule,
+    override val layoutId: Int = R.layout.item_secret_dungeon_schedule,
+    override val isUserInteractionEnabled: Boolean = true
+) : ViewType<SecretDungeonSchedule>
+
+data class SecretDungeonQuestVT(
+    override val data: Map.Entry<String, WaveGroup>,
+    override val layoutId: Int = R.layout.item_secret_dungeon_quest,
+    override val isUserInteractionEnabled: Boolean = true
+) : ViewType<Map.Entry<String, WaveGroup>>

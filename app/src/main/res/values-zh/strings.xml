@@ -697,4 +697,7 @@
     <string name="is_invisible">隐密状态中</string>
     <string name="Summon_a_field_with_radius_d1_at_position_s2_which_continuous_lose_tp_s3_of_units_within_the_field_for_s4_sec">在%2$s的位置展开半径 [%1$d] 的领域，每秒失去 [%3$s] TP。持续时间 [%4$s] 秒。</string>
     <string name="Summon_a_field_with_radius_d1_at_position_s2_which_continuous_restore_tp_s3_of_units_within_the_field_for_s4_sec">在%2$s的位置展开半径 [%1$d] 的领域，每秒恢复 [%3$s] TP。持续时间 [%4$s] 秒。</string>
+    <string name="s_the_lowest_TP_except_self">除自身以外 TP 最低的%1$s</string>
+    <string name="the_s_th_lowest_TP_except_self">除自身以外 TP %1$s 低的</string>
+    <string name="the_lowest_TP_except_self">除自身以外 TP 最低的</string>
 </resources>

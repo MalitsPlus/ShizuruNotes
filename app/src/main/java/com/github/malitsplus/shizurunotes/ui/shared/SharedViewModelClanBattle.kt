@@ -2,11 +2,9 @@ package com.github.malitsplus.shizurunotes.ui.shared
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.github.malitsplus.shizurunotes.data.Enemy
-import com.github.malitsplus.shizurunotes.data.ClanBattlePeriod
-import com.github.malitsplus.shizurunotes.data.Dungeon
-import com.github.malitsplus.shizurunotes.data.SpEvent
+import com.github.malitsplus.shizurunotes.data.*
 import com.github.malitsplus.shizurunotes.db.DBHelper
+import com.github.malitsplus.shizurunotes.db.MasterSecretDungeon
 import kotlin.concurrent.thread
 
 class SharedViewModelClanBattle : ViewModel() {
@@ -19,6 +17,7 @@ class SharedViewModelClanBattle : ViewModel() {
 
     var dungeonList = mutableListOf<Dungeon>()
     var spEventList = mutableListOf<SpEvent>()
+
 
     /***
      * 从数据库读取所有会战数据。
