@@ -5,7 +5,7 @@ from pathlib import Path
 _MSG_TEMPLATE = """
 {msg_ja}
 
-<br />
+---
 
 {msg_zh}
 """
