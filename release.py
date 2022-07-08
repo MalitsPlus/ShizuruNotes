@@ -16,9 +16,9 @@ def main():
     log_list: list[dict] = json.load(fp)
   latest = log_list[0]
   _MSG_TEMPLATE = _MSG_TEMPLATE.replace(
-      "{msg_ja}", latest["messageJa"].replace("・", "- "))
+      "{msg_ja}", latest["messageJa"])
   _MSG_TEMPLATE = _MSG_TEMPLATE.replace(
-      "{msg_zh}", latest["messageZh"].replace("・", "- "))
+      "{msg_zh}", latest["messageZh"])
 
   Path("releaselog_cache.txt").write_text(_MSG_TEMPLATE, "utf8")
   # os.environ["RELEASE_APK_VERSION"] = latest["versionName"]
