@@ -15,14 +15,14 @@ Before executing build commands, you need to create a `local.properties` in proj
 $ touch local.properties
 ```
 
-#### Debug Version App
+### Debug Version App
 You can build app with **debug variant** by excuting the following command directly. 
 
 ```sh
 $ ./gradlew :app:assembleDebug
 ```
 
-#### Release Version App
+### Release Version App
 If you want to build a release version app, you must add the following lines into `local.properties` first:
 
 ```sh
