@@ -724,7 +724,7 @@ class DBHelper private constructor(
         return getBeanByRaw<RawUniqueEquipmentEnhanceData>(
             """
                 SELECT e.* 
-                FROM unique_equipment_enhance_rate AS e 
+                FROM unique_equip_enhance_rate AS e 
                 JOIN unit_unique_equip AS u ON e.equipment_id=u.equip_id 
                 WHERE u.unit_id=$unitId 
                 """,
