@@ -766,4 +766,8 @@
     <string name="s_the_lowest_TP_except_self">自分以外 TP がもっとも低い%1$s</string>
     <string name="the_s_th_lowest_TP_except_self">自分以外%1$s TP が低い</string>
     <string name="the_lowest_TP_except_self">自分以外 TP がもっとも低い</string>
+    <string name="Performs_d1_if_s2_is_a_multi_target_unit">%2$s はマルチターゲットの場合、[アクション%1$s] を使う。</string>
+    <string name="Performs_d1_if_s2_is_not_a_multi_target_unit">%2$s はマルチターゲットでない場合、[アクション%1$s] を使う。</string>
+    <string name="Performs_d1_to_s2_if_it_is_a_multi_target_unit">%2$s はマルチターゲットの場合、それに [アクション%1$s] を使う。</string>
+    <string name="Performs_d1_to_s2_if_it_is_not_a_multi_target_unit">%2$s はマルチターゲットでないの場合、それに [アクション%1$s] を使う。</string>
 </resources>

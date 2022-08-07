@@ -67,7 +67,7 @@ jobs:
 
       - name: Bump version
         run: |
-          git config user.name Actions
+          git config user.name actions
           git config user.email anonymous@e.mail
           git add .
           git commit -m "chore: bump to v${{ env.RELEASE_APK_VERSION }}"

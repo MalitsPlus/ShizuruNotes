@@ -721,10 +721,21 @@ class DBHelper private constructor(
      * @return
      */
     fun getUniqueEquipmentEnhance(unitId: Int): RawUniqueEquipmentEnhanceData? {
+        var tableName = "unique_equip_enhance_rate"
+        // 考虑国服未实装的情况
+        val count = getOne("""
+            SELECT COUNT(*) 
+            FROM sqlite_master 
+            WHERE type='table' 
+            AND name='$tableName'"""
+        )
+        if (!count.equals("1")) {
+            tableName = "unique_equipment_enhance_rate"
+        }
         return getBeanByRaw<RawUniqueEquipmentEnhanceData>(
             """
                 SELECT e.* 
-                FROM unique_equipment_enhance_rate AS e 
+                FROM $tableName AS e 
                 JOIN unit_unique_equip AS u ON e.equipment_id=u.equip_id 
                 WHERE u.unit_id=$unitId 
                 """,
