@@ -698,4 +698,8 @@
     <string name="s_the_lowest_TP_except_self">%1$s with the lowest TP except Self</string>
     <string name="the_s_th_lowest_TP_except_self">the %1$s lowest TP except Self</string>
     <string name="the_lowest_TP_except_self">the lowest TP except Self</string>
+    <string name="Performs_d1_if_s2_is_a_multi_target_unit">If %2$s is Multi-Target, performs [Action %1$s].</string>
+    <string name="Performs_d1_if_s2_is_not_a_multi_target_unit">If %2$s is not Multi-Target, performs [Action %1$s].</string>
+    <string name="Performs_d1_to_s2_if_it_is_a_multi_target_unit">If %2$s is Multi-Target, performs [Action %1$s] on it.</string>
+    <string name="Performs_d1_to_s2_if_it_is_not_a_multi_target_unit">If %2$s is not Multi-Target, performs [Action %1$s] on it.</string>
 </resources>
