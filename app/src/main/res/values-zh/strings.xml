@@ -700,4 +700,8 @@
     <string name="s_the_lowest_TP_except_self">除自身以外 TP 最低的%1$s</string>
     <string name="the_s_th_lowest_TP_except_self">除自身以外 TP %1$s 低的</string>
     <string name="the_lowest_TP_except_self">除自身以外 TP 最低的</string>
+    <string name="Performs_d1_if_s2_is_a_multi_target_unit">%2$s 是多目标单位的场合，使用 [动作%1$s]。</string>
+    <string name="Performs_d1_if_s2_is_not_a_multi_target_unit">%2$s 不是多目标单位的场合，使用 [动作%1$s]。</string>
+    <string name="Performs_d1_to_s2_if_it_is_a_multi_target_unit">%2$s 是多目标单位的场合，对其使用 [动作%1$s]。</string>
+    <string name="Performs_d1_to_s2_if_it_is_not_a_multi_target_unit">%2$s 不是多目标单位的场合，对其使用 [动作%1$s]。</string>
 </resources>

@@ -1,5 +1,50 @@
 [
   {
+    "versionCode": "77",
+    "versionName": "1.16.3",
+    "recommend": "false",
+    "messageJa": "- 新スキルの追加",
+    "messageZh": "- 追加新技能",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
+    "versionCode": "76",
+    "versionName": "1.16.2",
+    "recommend": "false",
+    "messageJa": "- クラバト画面が正常に表示できない問題の修正",
+    "messageZh": "- 修复公会战页面无法打开的bug",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
+    "versionCode": "75",
+    "versionName": "1.16.1",
+    "recommend": "false",
+    "messageJa": "- データ初期化失敗の問題を修正",
+    "messageZh": "- 修复角色数据加载失败的bug",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
+    "versionCode": "74",
+    "versionName": "1.16.0",
+    "recommend": "false",
+    "messageJa": "- データ初期化失敗の問題を修正",
+    "messageZh": "- 修复角色数据加载失败的bug",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
+    "versionCode": "73",
+    "versionName": "1.15.2",
+    "recommend": "false",
+    "messageJa": "・英語翻訳の追加",
+    "messageZh": "・追加英文翻译",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
     "versionCode": "72",
     "versionName": "1.15.1",
     "recommend": "false",

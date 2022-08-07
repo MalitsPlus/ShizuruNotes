@@ -13,14 +13,14 @@
 $ touch local.properties
 ```
 
-#### Debug 版本 App
+### Debug 版本 App
 可直接执行以下指令以构建 **Debug 版本** 的 app:
 
 ```sh
 $ ./gradlew :app:assembleDebug
 ```
 
-#### Release 版本 App
+### Release 版本 App
 如果你想构建 Release 版本的 App，必须先向 `local.properties` 中添加以下代码：
 
 ```sh
