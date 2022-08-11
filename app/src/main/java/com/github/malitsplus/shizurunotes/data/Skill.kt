@@ -198,6 +198,13 @@ class Skill(
                                 propertyGrowthMap[it.rarity] = it.propertyGrowth
                             }
                         }
+                        // 220811: fixes missing of promotionStatus
+                        // https://github.com/MalitsPlus/ShizuruNotes/issues/63
+                        DBHelper.get().getCharaPromotionStatus(unitId)?.forEach {
+                            minion?.apply {
+                                promotionStatuses[it.promotion_level] = it.promotionStatus
+                            }
+                        }
                         DBHelper.get().getUnitAttackPattern(unitId)?.forEach {
                             minion?.attackPattern?.add(it.attackPattern)
                         }
