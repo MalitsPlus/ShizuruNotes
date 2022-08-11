@@ -18,12 +18,14 @@ class Minion(
     val skills = mutableListOf<Skill>()
     val propertyMap = mutableMapOf<Int, Property>()
     val propertyGrowthMap = mutableMapOf<Int, Property>()
+    val promotionStatuses = mutableMapOf<Int, Property>()
     var minionProperty = Property()
 
     fun initialMinion(level: Int, rank: Int, rarity: Int) {
         minionProperty = Property()
             .plusEqual(propertyMap[rarity])
             .plusEqual(propertyGrowthMap[rarity]?.multiply((level + rank).toDouble()))
+            .plusEqual(promotionStatuses.get(rank) ?: Property())
 
         skills.forEach { skill ->
             skill.actions.forEach { a ->
