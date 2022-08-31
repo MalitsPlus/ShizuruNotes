@@ -770,4 +770,6 @@
     <string name="Performs_d1_if_s2_is_not_a_multi_target_unit">%2$s はマルチターゲットでない場合、[アクション%1$s] を使う。</string>
     <string name="Performs_d1_to_s2_if_it_is_a_multi_target_unit">%2$s はマルチターゲットの場合、それに [アクション%1$s] を使う。</string>
     <string name="Performs_d1_to_s2_if_it_is_not_a_multi_target_unit">%2$s はマルチターゲットでないの場合、それに [アクション%1$s] を使う。</string>
+    <string name="Performs_d1_on_s2_if_the_target_possesses_a_barrier">%2$s はバリアに保護されている場合、それに [アクション%1$s] を使う。</string>
+    <string name="Performs_d1_on_s2_if_the_target_does_not_possess_a_barrier">%2$s はバリアに保護されていない場合、それに [アクション%1$s] を使う。</string>
 </resources>
