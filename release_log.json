@@ -1,5 +1,14 @@
 [
   {
+    "versionCode": "81",
+    "versionName": "1.17.2",
+    "recommend": "false",
+    "messageJa": "- 新スキルの追加",
+    "messageZh": "- 追加新技能",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
     "versionCode": "80",
     "versionName": "1.17.1",
     "recommend": "false",

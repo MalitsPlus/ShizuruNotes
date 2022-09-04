@@ -82,7 +82,8 @@ public enum ActionType {
     ignoreDecoyAction(93),
     effectAction(94),
     spyAction(95),
-    changeEnergyFieldAction(96);
+    changeEnergyFieldAction(96),
+    changeEnergyByDamageAction(97);
 
     private int value;
     private ActionType(int value){
