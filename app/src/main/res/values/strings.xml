@@ -772,4 +772,5 @@
     <string name="Performs_d1_to_s2_if_it_is_not_a_multi_target_unit">%2$s はマルチターゲットでないの場合、それに [アクション%1$s] を使う。</string>
     <string name="Performs_d1_on_s2_if_the_target_possesses_a_barrier">%2$s はバリアに保護されている場合、それに [アクション%1$s] を使う。</string>
     <string name="Performs_d1_on_s2_if_the_target_does_not_possess_a_barrier">%2$s はバリアに保護されていない場合、それに [アクション%1$s] を使う。</string>
+    <string name="Adds_s1_marks_to_s5_max_s2_id_d3_lasts_for_s4_sec_removes_1_mark_while_taking_dmg_and_restores_s6_tp">%5$s に マーク[ID: %3$d] を [%1$s] スタックを追加する（最大 [%2$s] スタック）、継続時間 [%4$s] 秒。ダメージを受けた時にスタック数を [1] 減らして TP を [%6$s] 回復させる。</string>
 </resources>
