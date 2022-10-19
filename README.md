@@ -1,4 +1,6 @@
-[中文说明请点此处](README_CN.md)
+[中文](README_CN.md)
+
+Try [another app](https://github.com/wthee/pcr-tool) with a more modern design and powerful features!
 
 # ShizuruNotes
 An **unofficial** Android tool application for "Princess Connect Re:Dive".
@@ -9,14 +11,14 @@ An **unofficial** Android tool application for "Princess Connect Re:Dive".
 ## Build
 Requires Android Studio Arctic Fox or later.  
 
-Before executing build commands, you need to create a `local.properties` in project's root directory if it does not exist.
+Before building, you need to create a `local.properties` in project's root directory if it does not exist.
 
 ```sh
 $ touch local.properties
 ```
 
 ### Debug Version App
-You can build app with **debug variant** by excuting the following command directly. 
+You can build app with **debug variant** by executing the following command directly. 
 
 ```sh
 $ ./gradlew :app:assembleDebug
@@ -32,7 +34,7 @@ signing.keyAlias=${YOUR_KEY_ALIAS}
 signing.keyPassword=${YOUR_KEY_PASSWORD}
 ```
 
-Then you can excute build command with **release variant**:
+After that you can build app with **release variant**:
 
 ```sh
 $ ./gradlew :app:assembleRelease
