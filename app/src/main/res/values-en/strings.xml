@@ -702,4 +702,10 @@
     <string name="Performs_d1_if_s2_is_not_a_multi_target_unit">If %2$s is not Multi-Target, performs [Action %1$s].</string>
     <string name="Performs_d1_to_s2_if_it_is_a_multi_target_unit">If %2$s is Multi-Target, performs [Action %1$s] on it.</string>
     <string name="Performs_d1_to_s2_if_it_is_not_a_multi_target_unit">If %2$s is not Multi-Target, performs [Action %1$s] on it.</string>
+    <string name="Adds_s1_marks_to_s5_max_s2_id_d3_lasts_for_s4_sec_removes_1_mark_while_taking_dmg_and_restores_s6_tp">Adds [%1$s] mark [ID: %3$d] to %5$s (caps at [%2$s]) for [%4$s]s. When damage is taken, remove [1] mark and recovers [%6$s] TP.</string>
+    <string name="s1_the_highest_ATK_except_caster">%1$s with the highest Physical Attack except self</string>
+    <string name="the_s1_highest_ATK_except_caster">the %1$s with the highest Physical Attack except self</string>
+    <string name="the_highest_ATK_except_caster">the highest Physical Attack except self</string>
+    <string name="parts">part</string>
+    <string name="Decreases_s1_healing_received_by_s2_last_for_s3_sec_or_unlimited_time_if_triggered_by_field">Reduces the HP Recovery Boost of %2$s by [%1$s]%% for [%3$s]s. If this effect is triggered by a field, the effect lasts for an unlimited amount of time.</string>
 </resources>
