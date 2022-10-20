@@ -1,5 +1,14 @@
 [
   {
+    "versionCode": "83",
+    "versionName": "1.18.1",
+    "recommend": "false",
+    "messageJa": "- 英語Stringsの追加",
+    "messageZh": "- 追加英文Strings",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
     "versionCode": "82",
     "versionName": "1.18.0",
     "recommend": "false",
