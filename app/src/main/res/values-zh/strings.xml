@@ -704,4 +704,12 @@
     <string name="Performs_d1_if_s2_is_not_a_multi_target_unit">%2$s 不是多目标单位的场合，使用 [动作%1$s]。</string>
     <string name="Performs_d1_to_s2_if_it_is_a_multi_target_unit">%2$s 是多目标单位的场合，对其使用 [动作%1$s]。</string>
     <string name="Performs_d1_to_s2_if_it_is_not_a_multi_target_unit">%2$s 不是多目标单位的场合，对其使用 [动作%1$s]。</string>
+    <string name="Performs_d1_on_s2_if_the_target_possesses_a_barrier">%2$s 拥有护盾时，对其使用 [动作%1$s]。</string>
+    <string name="Performs_d1_on_s2_if_the_target_does_not_possess_a_barrier">%2$s 未拥有护盾时，对其使用 [动作%1$s]。</string>
+    <string name="Adds_s1_marks_to_s5_max_s2_id_d3_lasts_for_s4_sec_removes_1_mark_while_taking_dmg_and_restores_s6_tp">对%5$s追加 [%1$s] 层标记 [ID: %3$d]（最大 [%2$s] 层），持续时间 [%4$s] 秒。当受到伤害时，移除 1 层标记并恢复 [%6$s] TP。</string>
+    <string name="s1_the_highest_ATK_except_caster">除自己外物理攻击最高的%1$s</string>
+    <string name="the_s1_highest_ATK_except_caster">除自己外物理攻击%1$s高的</string>
+    <string name="the_highest_ATK_except_caster">除自己外物理攻击最高的</string>
+    <string name="parts">部位</string>
+    <string name="Decreases_s1_healing_received_by_s2_last_for_s3_sec_or_unlimited_time_if_triggered_by_field">当%2$s受到治疗时，使治疗效果降低 [%1$s]%%，持续 [%3$s] 秒。如果是场地效果触发的，持续时间无限大。</string>
 </resources>

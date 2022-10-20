@@ -1,5 +1,50 @@
 [
   {
+    "versionCode": "82",
+    "versionName": "1.18.0",
+    "recommend": "false",
+    "messageJa": "- 新スキルの追加",
+    "messageZh": "- 追加新技能",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
+    "versionCode": "81",
+    "versionName": "1.17.2",
+    "recommend": "false",
+    "messageJa": "- 新スキルの追加",
+    "messageZh": "- 追加新技能",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
+    "versionCode": "80",
+    "versionName": "1.17.1",
+    "recommend": "false",
+    "messageJa": "- 新スキルの追加",
+    "messageZh": "- 追加新技能",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
+    "versionCode": "79",
+    "versionName": "1.17.0",
+    "recommend": "false",
+    "messageJa": "- 召喚物のステータス計算式を修正",
+    "messageZh": "- 修正召唤物的状态参数计算公式",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
+    "versionCode": "78",
+    "versionName": "1.16.4",
+    "recommend": "false",
+    "messageJa": "- 英語Stringsの追加",
+    "messageZh": "- 追加英文Strings",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
     "versionCode": "77",
     "versionName": "1.16.3",
     "recommend": "false",

@@ -34,7 +34,10 @@ public class IfForChildrenAction extends ActionParameter {
                 } else if (actionDetail1 == 1800) {
                     trueClause = I18N.getString(R.string.Performs_d1_to_s2_if_it_is_a_multi_target_unit,
                             actionDetail2 % 10, targetParameter.buildTargetClause());
-                } else if (actionDetail1 >= 6000 && actionDetail1 < 7000) {
+                } else if (actionDetail1 == 1900) {
+                    trueClause = I18N.getString(R.string.Performs_d1_on_s2_if_the_target_possesses_a_barrier,
+                            actionDetail2 % 10, targetParameter.buildTargetClause(true));
+                }else if (actionDetail1 >= 6000 && actionDetail1 < 7000) {
                     trueClause = I18N.getString(R.string.use_d1_to_s2_in_state_of_ID_d3,
                             actionDetail2 % 10, targetParameter.buildTargetClause(true), actionDetail1 - 6000);
                 }
@@ -62,7 +65,10 @@ public class IfForChildrenAction extends ActionParameter {
                 } else if (actionDetail1 == 1800) {
                     trueClause = I18N.getString(R.string.Performs_d1_to_s2_if_it_is_not_a_multi_target_unit,
                             actionDetail3 % 10, targetParameter.buildTargetClause());
-                } else if (actionDetail1 >= 6000 && actionDetail1 < 7000) {
+                } else if (actionDetail1 == 1900) {
+                    trueClause = I18N.getString(R.string.Performs_d1_on_s2_if_the_target_does_not_possess_a_barrier,
+                            actionDetail3 % 10, targetParameter.buildTargetClause(true));
+                }else if (actionDetail1 >= 6000 && actionDetail1 < 7000) {
                     falseClause = I18N.getString(R.string.use_d1_to_s2_if_not_in_state_of_ID_d3,
                             actionDetail3 % 10, targetParameter.buildTargetClause(true), actionDetail1 - 6000);
                 }
@@ -77,7 +83,7 @@ public class IfForChildrenAction extends ActionParameter {
                 || actionDetail1 == 502 || actionDetail1 == 503 || actionDetail1 == 504 || actionDetail1 == 511 || actionDetail1 == 512
                 || (actionDetail1 >=600 && actionDetail1 < 900) || (actionDetail1 >= 901 && actionDetail1 < 1000)
                 || actionDetail1 == 1300 || actionDetail1 == 1400 || actionDetail1 == 1600 || actionDetail1 == 1800
-                || (actionDetail1 >= 6000 && actionDetail1 < 7000)) {
+                || actionDetail1 == 1900 || (actionDetail1 >= 6000 && actionDetail1 < 7000)) {
             if(trueClause != null && falseClause != null)
                 return I18N.getString(R.string.Condition_s, trueClause + falseClause);
             else if(trueClause != null)
