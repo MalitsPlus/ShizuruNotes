@@ -14,6 +14,7 @@ public class DispelAction extends ActionParameter {
         unknown(0),
         buff(1),
         debuff(2),
+        statusUpBuff(3),
         barriers(10);
 
         private int value;
@@ -38,6 +39,8 @@ public class DispelAction extends ActionParameter {
                     return I18N.getString(R.string.buffs);
                 case debuff:
                     return I18N.getString(R.string.debuffs);
+                case statusUpBuff:
+                    return I18N.getString(R.string.status_up_buffs);
                 case barriers:
                     return I18N.getString(R.string.barriers);
                 default:
