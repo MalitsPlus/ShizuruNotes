@@ -16,8 +16,8 @@ android {
         applicationId "com.github.malitsplus.shizurunotes"
         minSdk 26
         targetSdk 30
-        versionCode 84
-        versionName "1.18.2"
+        versionCode 85
+        versionName "1.18.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
