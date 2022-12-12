@@ -1,5 +1,14 @@
 [
   {
+    "versionCode": "86",
+    "versionName": "1.19.0-beta",
+    "recommend": "false",
+    "messageJa": "- 新SPイベントに対応",
+    "messageZh": "- 对应新SP活动",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
     "versionCode": "85",
     "versionName": "1.18.3",
     "recommend": "false",
