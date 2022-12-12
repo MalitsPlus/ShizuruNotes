@@ -1311,6 +1311,68 @@ class DBHelper private constructor(
                 JOIN wave_group_data AS b ON a.wave_group_id=b.wave_group_id 
                 """,
                 RawSpEvent::class.java)
+            3 -> getBeanListByRaw(
+                """
+                SELECT
+                    a.sre_boss_id 'boss_id',
+                    a.difficulty || '-' || b.phase || ' ' || b.name 'name',
+                    c.*
+                FROM
+                    sre_quest_difficulty_data AS a
+                JOIN sre_boss_data AS b ON a.sre_boss_id = b.sre_boss_id
+                JOIN wave_group_data AS c ON a.wave_group_id = c.wave_group_id
+                UNION ALL
+                SELECT
+                    a.legion_boss_id 'boss_id',
+                    a.name,
+                    b.*
+                FROM
+                    legion_quest_data AS a
+                JOIN wave_group_data AS b ON a.wave_group_id = b.wave_group_id
+                WHERE
+                    NOT EXISTS (
+                        SELECT
+                            1
+                        FROM
+                            legion_special_battle
+                        WHERE
+                            wave_group_id = a.wave_group_id
+                    )
+                UNION ALL
+                SELECT
+                    0 'boss_id',
+                    'メインボスMODE' || a.mode 'name',
+                    b.*
+                FROM
+                    legion_special_battle AS a
+                JOIN wave_group_data AS b ON a.wave_group_id = b.wave_group_id
+                UNION ALL
+                SELECT
+                    a.kaiser_boss_id 'boss_id',
+                    a.name,
+                    b.*
+                FROM
+                    kaiser_quest_data AS a
+                JOIN wave_group_data AS b ON a.wave_group_id = b.wave_group_id
+                WHERE
+                    NOT EXISTS (
+                        SELECT
+                            1
+                        FROM
+                            kaiser_special_battle
+                        WHERE
+                            wave_group_id = a.wave_group_id
+                    )
+                UNION ALL
+                SELECT
+                    0 'boss_id',
+                    'メインボスMODE' || a.mode 'name',
+                    b.*
+                FROM
+                    kaiser_special_battle AS a
+                JOIN wave_group_data AS b ON a.wave_group_id = b.wave_group_id
+                """,
+                RawSpEvent::class.java)
             else -> null
         }
     }
@@ -1321,7 +1383,7 @@ class DBHelper private constructor(
                 SELECT COUNT(*) 'num'
                 FROM sqlite_master 
                 WHERE type = 'table' 
-                AND name in ('legion_quest_data', 'kaiser_quest_data')
+                AND name in ('legion_quest_data', 'kaiser_quest_data', 'sre_quest_difficulty_data')
             """
         ).let {
             it!!.toInt()
