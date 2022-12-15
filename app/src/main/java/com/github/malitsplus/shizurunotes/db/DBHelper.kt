@@ -1422,9 +1422,9 @@ class DBHelper private constructor(
      * 获取campaign日程
      */
     fun getCampaignSchedule(nowTimeString: String?): List<RawScheduleCampaign>? {
-        var sqlString = " SELECT * FROM campaign_schedule "
+        var sqlString = " SELECT * FROM campaign_schedule WHERE lv_from = 1 AND lv_to = -1 "
         nowTimeString?.let {
-            sqlString += " WHERE end_time > '$it' "
+            sqlString += " AND end_time > '$it' "
         }
         return getBeanListByRaw(sqlString, RawScheduleCampaign::class.java)
     }
