@@ -932,60 +932,9 @@ class DBHelper private constructor(
      * @return
      */
     fun getEnemy(enemyIdList: List<Int>): List<RawEnemy>? {
-        // 国服->去掉 [enemy_m_parts] 表
-//        if (UserSettings.get().getUserServer() == UserSettings.SERVER_CN) {
-//            return getBeanListByRaw(
-//                """
-//                    SELECT
-//                    a.*
-//                    ,b.union_burst
-//                    ,b.union_burst_evolution
-//                    ,b.main_skill_1
-//                    ,b.main_skill_evolution_1
-//                    ,b.main_skill_2
-//                    ,b.main_skill_evolution_2
-//                    ,b.ex_skill_1
-//                    ,b.ex_skill_evolution_1
-//                    ,b.main_skill_3
-//                    ,b.main_skill_4
-//                    ,b.main_skill_5
-//                    ,b.main_skill_6
-//                    ,b.main_skill_7
-//                    ,b.main_skill_8
-//                    ,b.main_skill_9
-//                    ,b.main_skill_10
-//                    ,b.ex_skill_2
-//                    ,b.ex_skill_evolution_2
-//                    ,b.ex_skill_3
-//                    ,b.ex_skill_evolution_3
-//                    ,b.ex_skill_4
-//                    ,b.ex_skill_evolution_4
-//                    ,b.ex_skill_5
-//                    ,b.sp_skill_1
-//                    ,b.ex_skill_evolution_5
-//                    ,b.sp_skill_2
-//                    ,b.sp_skill_3
-//                    ,b.sp_skill_4
-//                    ,b.sp_skill_5
-//                    ,u.prefab_id
-//                    ,u.atk_type
-//                    ,u.normal_atk_cast_time
-//					,u.search_area_width
-//                    ,u.comment
-//                    FROM
-//                    unit_skill_data b
-//                    ,enemy_parameter a
-//                    LEFT JOIN unit_enemy_data u ON a.unit_id = u.unit_id
-//                    WHERE
-//                    a.unit_id = b.unit_id
-//                    AND a.enemy_id in ( %s )
-//                    """.format(enemyIdList.toString()
-//                    .replace("[", "")
-//                    .replace("]", "")),
-//                RawEnemy::class.java
-//            )
-//        }
-        return getBeanListByRaw(
+        // 国服->去掉 [sre_enemy_parameter] 表
+        if (UserSettings.get().getUserServer() == UserSettings.SERVER_CN) {
+            return getBeanListByRaw(
                 """
                     SELECT 
                     a.* 
@@ -1031,6 +980,63 @@ class DBHelper private constructor(
                     FROM 
                     unit_skill_data b 
                     ,enemy_parameter a 
+                    LEFT JOIN enemy_m_parts c ON a.enemy_id = c.enemy_id 
+                    LEFT JOIN unit_enemy_data u ON a.unit_id = u.unit_id 
+                    WHERE 
+                    a.unit_id = b.unit_id 
+                    AND a.enemy_id in ( %s )  
+                    """.format(enemyIdList.toString()
+                        .replace("[", "")
+                        .replace("]", "")),
+                RawEnemy::class.java
+            )
+        }
+        return getBeanListByRaw(
+                """
+                    SELECT 
+                    a.* 
+                    ,b.union_burst 
+                    ,b.union_burst_evolution 
+                    ,b.main_skill_1 
+                    ,b.main_skill_evolution_1 
+                    ,b.main_skill_2 
+                    ,b.main_skill_evolution_2 
+                    ,b.ex_skill_1 
+                    ,b.ex_skill_evolution_1 
+                    ,b.main_skill_3 
+                    ,b.main_skill_4 
+                    ,b.main_skill_5 
+                    ,b.main_skill_6 
+                    ,b.main_skill_7 
+                    ,b.main_skill_8 
+                    ,b.main_skill_9 
+                    ,b.main_skill_10 
+                    ,b.ex_skill_2 
+                    ,b.ex_skill_evolution_2 
+                    ,b.ex_skill_3 
+                    ,b.ex_skill_evolution_3 
+                    ,b.ex_skill_4 
+                    ,b.ex_skill_evolution_4 
+                    ,b.ex_skill_5 
+                    ,b.sp_skill_1 
+                    ,b.ex_skill_evolution_5 
+                    ,b.sp_skill_2 
+                    ,b.sp_skill_3 
+                    ,b.sp_skill_4 
+                    ,b.sp_skill_5 
+                    ,c.child_enemy_parameter_1 
+                    ,c.child_enemy_parameter_2 
+                    ,c.child_enemy_parameter_3 
+                    ,c.child_enemy_parameter_4 
+                    ,c.child_enemy_parameter_5 
+                    ,u.prefab_id 
+                    ,u.atk_type 
+                    ,u.normal_atk_cast_time
+					,u.search_area_width
+                    ,u.comment
+                    FROM 
+                    unit_skill_data b 
+                    ,(SELECT * FROM enemy_parameter UNION ALL SELECT * FROM sre_enemy_parameter) a 
                     LEFT JOIN enemy_m_parts c ON a.enemy_id = c.enemy_id 
                     LEFT JOIN unit_enemy_data u ON a.unit_id = u.unit_id 
                     WHERE 
