@@ -1320,7 +1320,7 @@ class DBHelper private constructor(
                 FROM
                     sre_quest_difficulty_data AS a
                 JOIN sre_boss_data AS b ON a.sre_boss_id = b.sre_boss_id
-                JOIN wave_group_data AS c ON a.wave_group_id = c.wave_group_id
+                JOIN sre_wave_group_data AS c ON a.wave_group_id = c.wave_group_id
                 UNION ALL
                 SELECT
                     a.legion_boss_id 'boss_id',
