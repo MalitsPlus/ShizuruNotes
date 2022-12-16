@@ -1,5 +1,14 @@
 [
   {
+    "versionCode": "91",
+    "versionName": "1.20.1",
+    "recommend": "false",
+    "messageJa": "- 一部のキャンペーンがカレンダーにて表示されない不具合を修正",
+    "messageZh": "- 修正部分活动未在日历显示的bug",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
     "versionCode": "90",
     "versionName": "1.20.0",
     "recommend": "false",
