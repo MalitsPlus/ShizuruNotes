@@ -178,6 +178,8 @@ public class ActionParameter {
                 return new ChangeEnergyFieldAction();
             case 97:
                 return new ChangeEnergyByDamageAction();
+            case 98:
+                return new EnergyDamageReduceAction();
             default:
                 return new ActionParameter();
         }

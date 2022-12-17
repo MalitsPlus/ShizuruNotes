@@ -83,7 +83,8 @@ public enum ActionType {
     effectAction(94),
     spyAction(95),
     changeEnergyFieldAction(96),
-    changeEnergyByDamageAction(97);
+    changeEnergyByDamageAction(97),
+    energyDamageReduceAction(98);
 
     private int value;
     private ActionType(int value){

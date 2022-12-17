@@ -932,60 +932,9 @@ class DBHelper private constructor(
      * @return
      */
     fun getEnemy(enemyIdList: List<Int>): List<RawEnemy>? {
-        // 国服->去掉 [enemy_m_parts] 表
-//        if (UserSettings.get().getUserServer() == UserSettings.SERVER_CN) {
-//            return getBeanListByRaw(
-//                """
-//                    SELECT
-//                    a.*
-//                    ,b.union_burst
-//                    ,b.union_burst_evolution
-//                    ,b.main_skill_1
-//                    ,b.main_skill_evolution_1
-//                    ,b.main_skill_2
-//                    ,b.main_skill_evolution_2
-//                    ,b.ex_skill_1
-//                    ,b.ex_skill_evolution_1
-//                    ,b.main_skill_3
-//                    ,b.main_skill_4
-//                    ,b.main_skill_5
-//                    ,b.main_skill_6
-//                    ,b.main_skill_7
-//                    ,b.main_skill_8
-//                    ,b.main_skill_9
-//                    ,b.main_skill_10
-//                    ,b.ex_skill_2
-//                    ,b.ex_skill_evolution_2
-//                    ,b.ex_skill_3
-//                    ,b.ex_skill_evolution_3
-//                    ,b.ex_skill_4
-//                    ,b.ex_skill_evolution_4
-//                    ,b.ex_skill_5
-//                    ,b.sp_skill_1
-//                    ,b.ex_skill_evolution_5
-//                    ,b.sp_skill_2
-//                    ,b.sp_skill_3
-//                    ,b.sp_skill_4
-//                    ,b.sp_skill_5
-//                    ,u.prefab_id
-//                    ,u.atk_type
-//                    ,u.normal_atk_cast_time
-//					,u.search_area_width
-//                    ,u.comment
-//                    FROM
-//                    unit_skill_data b
-//                    ,enemy_parameter a
-//                    LEFT JOIN unit_enemy_data u ON a.unit_id = u.unit_id
-//                    WHERE
-//                    a.unit_id = b.unit_id
-//                    AND a.enemy_id in ( %s )
-//                    """.format(enemyIdList.toString()
-//                    .replace("[", "")
-//                    .replace("]", "")),
-//                RawEnemy::class.java
-//            )
-//        }
-        return getBeanListByRaw(
+        // 国服->去掉 [sre_enemy_parameter] 表
+        if (UserSettings.get().getUserServer() == UserSettings.SERVER_CN) {
+            return getBeanListByRaw(
                 """
                     SELECT 
                     a.* 
@@ -1031,6 +980,63 @@ class DBHelper private constructor(
                     FROM 
                     unit_skill_data b 
                     ,enemy_parameter a 
+                    LEFT JOIN enemy_m_parts c ON a.enemy_id = c.enemy_id 
+                    LEFT JOIN unit_enemy_data u ON a.unit_id = u.unit_id 
+                    WHERE 
+                    a.unit_id = b.unit_id 
+                    AND a.enemy_id in ( %s )  
+                    """.format(enemyIdList.toString()
+                        .replace("[", "")
+                        .replace("]", "")),
+                RawEnemy::class.java
+            )
+        }
+        return getBeanListByRaw(
+                """
+                    SELECT 
+                    a.* 
+                    ,b.union_burst 
+                    ,b.union_burst_evolution 
+                    ,b.main_skill_1 
+                    ,b.main_skill_evolution_1 
+                    ,b.main_skill_2 
+                    ,b.main_skill_evolution_2 
+                    ,b.ex_skill_1 
+                    ,b.ex_skill_evolution_1 
+                    ,b.main_skill_3 
+                    ,b.main_skill_4 
+                    ,b.main_skill_5 
+                    ,b.main_skill_6 
+                    ,b.main_skill_7 
+                    ,b.main_skill_8 
+                    ,b.main_skill_9 
+                    ,b.main_skill_10 
+                    ,b.ex_skill_2 
+                    ,b.ex_skill_evolution_2 
+                    ,b.ex_skill_3 
+                    ,b.ex_skill_evolution_3 
+                    ,b.ex_skill_4 
+                    ,b.ex_skill_evolution_4 
+                    ,b.ex_skill_5 
+                    ,b.sp_skill_1 
+                    ,b.ex_skill_evolution_5 
+                    ,b.sp_skill_2 
+                    ,b.sp_skill_3 
+                    ,b.sp_skill_4 
+                    ,b.sp_skill_5 
+                    ,c.child_enemy_parameter_1 
+                    ,c.child_enemy_parameter_2 
+                    ,c.child_enemy_parameter_3 
+                    ,c.child_enemy_parameter_4 
+                    ,c.child_enemy_parameter_5 
+                    ,u.prefab_id 
+                    ,u.atk_type 
+                    ,u.normal_atk_cast_time
+					,u.search_area_width
+                    ,u.comment
+                    FROM 
+                    unit_skill_data b 
+                    ,(SELECT * FROM enemy_parameter UNION ALL SELECT * FROM sre_enemy_parameter) a 
                     LEFT JOIN enemy_m_parts c ON a.enemy_id = c.enemy_id 
                     LEFT JOIN unit_enemy_data u ON a.unit_id = u.unit_id 
                     WHERE 
@@ -1311,6 +1317,68 @@ class DBHelper private constructor(
                 JOIN wave_group_data AS b ON a.wave_group_id=b.wave_group_id 
                 """,
                 RawSpEvent::class.java)
+            3 -> getBeanListByRaw(
+                """
+                SELECT
+                    a.sre_boss_id 'boss_id',
+                    a.difficulty || '-' || b.phase || ' ' || b.name 'name',
+                    c.*
+                FROM
+                    sre_quest_difficulty_data AS a
+                JOIN sre_boss_data AS b ON a.sre_boss_id = b.sre_boss_id
+                JOIN sre_wave_group_data AS c ON a.wave_group_id = c.wave_group_id
+                UNION ALL
+                SELECT
+                    a.legion_boss_id 'boss_id',
+                    a.name,
+                    b.*
+                FROM
+                    legion_quest_data AS a
+                JOIN wave_group_data AS b ON a.wave_group_id = b.wave_group_id
+                WHERE
+                    NOT EXISTS (
+                        SELECT
+                            1
+                        FROM
+                            legion_special_battle
+                        WHERE
+                            wave_group_id = a.wave_group_id
+                    )
+                UNION ALL
+                SELECT
+                    0 'boss_id',
+                    'メインボスMODE' || a.mode 'name',
+                    b.*
+                FROM
+                    legion_special_battle AS a
+                JOIN wave_group_data AS b ON a.wave_group_id = b.wave_group_id
+                UNION ALL
+                SELECT
+                    a.kaiser_boss_id 'boss_id',
+                    a.name,
+                    b.*
+                FROM
+                    kaiser_quest_data AS a
+                JOIN wave_group_data AS b ON a.wave_group_id = b.wave_group_id
+                WHERE
+                    NOT EXISTS (
+                        SELECT
+                            1
+                        FROM
+                            kaiser_special_battle
+                        WHERE
+                            wave_group_id = a.wave_group_id
+                    )
+                UNION ALL
+                SELECT
+                    0 'boss_id',
+                    'メインボスMODE' || a.mode 'name',
+                    b.*
+                FROM
+                    kaiser_special_battle AS a
+                JOIN wave_group_data AS b ON a.wave_group_id = b.wave_group_id
+                """,
+                RawSpEvent::class.java)
             else -> null
         }
     }
@@ -1321,7 +1389,7 @@ class DBHelper private constructor(
                 SELECT COUNT(*) 'num'
                 FROM sqlite_master 
                 WHERE type = 'table' 
-                AND name in ('legion_quest_data', 'kaiser_quest_data')
+                AND name in ('legion_quest_data', 'kaiser_quest_data', 'sre_quest_difficulty_data')
             """
         ).let {
             it!!.toInt()
@@ -1360,9 +1428,9 @@ class DBHelper private constructor(
      * 获取campaign日程
      */
     fun getCampaignSchedule(nowTimeString: String?): List<RawScheduleCampaign>? {
-        var sqlString = " SELECT * FROM campaign_schedule "
+        var sqlString = " SELECT * FROM campaign_schedule WHERE lv_to = -1 "
         nowTimeString?.let {
-            sqlString += " WHERE end_time > '$it' "
+            sqlString += " AND end_time > '$it' "
         }
         return getBeanListByRaw(sqlString, RawScheduleCampaign::class.java)
     }
