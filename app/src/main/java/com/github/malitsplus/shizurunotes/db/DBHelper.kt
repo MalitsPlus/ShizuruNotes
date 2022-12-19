@@ -1428,7 +1428,7 @@ class DBHelper private constructor(
      * 获取campaign日程
      */
     fun getCampaignSchedule(nowTimeString: String?): List<RawScheduleCampaign>? {
-        var sqlString = " SELECT * FROM campaign_schedule WHERE lv_to = -1 "
+        var sqlString = " SELECT * FROM campaign_schedule WHERE id < 5000 "
         nowTimeString?.let {
             sqlString += " AND end_time > '$it' "
         }
