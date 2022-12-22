@@ -713,5 +713,5 @@
     <string name="parts">部位</string>
     <string name="Decreases_s1_healing_received_by_s2_last_for_s3_sec_or_unlimited_time_if_triggered_by_field">当%2$s受到治疗时，使治疗效果降低 [%1$s]%%，持续 [%3$s] 秒。如果是场地效果触发的，持续时间无限大。</string>
     <string name="status_up_buffs">增益效果</string>
-    <string name="Reduces_incoming_energy_damage_down_to_s1_percent_of_s2_for_s3_sec">使%2$s受到的TP减少效果量变为原本的值的 [%1$s%%]，持续时间 [%3$s] 秒。</string>
+    <string name="Reduces_incoming_energy_damage_down_to_s1_percent_of_s2_for_s3_sec">使%2$s受到的TP减少效果量变为原本的值的 [%1$s] 倍，持续时间 [%3$s] 秒。</string>
 </resources>
