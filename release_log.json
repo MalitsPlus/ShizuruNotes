@@ -1,5 +1,14 @@
 [
   {
+    "versionCode": "95",
+    "versionName": "1.21.2",
+    "recommend": "false",
+    "messageJa": "- 大陸サーバー方面に関するバグの修正",
+    "messageZh": "- 修复国服数据库会战数据解析崩溃问题",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
     "versionCode": "94",
     "versionName": "1.21.1",
     "recommend": "false",
