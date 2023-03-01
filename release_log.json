@@ -1,5 +1,14 @@
 [
   {
+    "versionCode": "99",
+    "versionName": "1.22.1",
+    "recommend": "false",
+    "messageJa": "- Fixes date strings formatting issues",
+    "messageZh": "- 修复日历字符串格式化问题",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
     "versionCode": "98",
     "versionName": "1.22.0",
     "recommend": "false",
