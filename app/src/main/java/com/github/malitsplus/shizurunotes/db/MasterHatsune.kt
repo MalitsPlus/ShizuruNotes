@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter
 class MasterHatsune {
     fun getHatsune(): MutableList<HatsuneStage> {
         val hatsuneStageList = mutableListOf<HatsuneStage>()
-        val formatter = DateTimeFormatter.ofPattern("yyyy/M/dd H:mm:ss")
+        val formatter = DateTimeFormatter.ofPattern("yyyy/M/d H:m:s")
         DBHelper.get().getHatsuneSchedule(null)?.forEach { schedule ->
             val hatsuneStage = HatsuneStage(
                 schedule.event_id,
