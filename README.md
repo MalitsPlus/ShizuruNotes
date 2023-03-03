@@ -27,7 +27,7 @@ $ ./gradlew :app:assembleDebug
 ### Release Version App
 If you want to build a release version app, you must add the following lines into `local.properties` first:
 
-```sh
+imre```sh
 signing.storeFile=${PATH_TO_YOUR_KEY_STORE_FILE}
 signing.storePassword=${YOUR_KEY_STORE_PASSWORD}
 signing.keyAlias=${YOUR_KEY_ALIAS}
