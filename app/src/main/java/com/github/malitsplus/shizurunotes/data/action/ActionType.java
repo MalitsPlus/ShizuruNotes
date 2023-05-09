@@ -84,7 +84,9 @@ public enum ActionType {
     spyAction(95),
     changeEnergyFieldAction(96),
     changeEnergyByDamageAction(97),
-    energyDamageReduceAction(98);
+    energyDamageReduceAction(98),
+    changeSpeedOverwriteFieldAction(99),
+    unableStateGuardAction(100);
 
     private int value;
     private ActionType(int value){
