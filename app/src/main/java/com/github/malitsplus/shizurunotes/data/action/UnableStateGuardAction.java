@@ -22,9 +22,13 @@ public class UnableStateGuardAction extends ActionParameter {
     @Override
     public String localizedDetail(int level, Property property) {
         String amount = buildExpression(level, property);
-        if (Integer.parseInt(amount) < 0) {
-            amount = String.valueOf((long)Integer.MAX_VALUE - Integer.MIN_VALUE + Integer.parseInt(amount));
-        }
+        try {
+            int intAmount = Integer.parseInt(amount);
+            if (intAmount < 0) {
+                amount = String.valueOf((long)Integer.MAX_VALUE - Integer.MIN_VALUE + intAmount);
+            }
+        } catch (Exception ignored) { }
+
         return I18N.getString(R.string.Enable_s1_to_resist_all_sorts_of_incapacity_efficacies_up_to_s2_times_in_a_period_of_s3_sec,
                 targetParameter.buildTargetClause(),
                 amount,
