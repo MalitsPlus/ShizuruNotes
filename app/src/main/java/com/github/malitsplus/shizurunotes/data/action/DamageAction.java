@@ -36,7 +36,7 @@ public class DamageAction extends ActionParameter {
     @Override
     protected void childInit() {
         damageClass = ClassModifier.parse(actionDetail1);
-        criticalModifier = CriticalModifier.parse((int)actionValue5.value);
+        criticalModifier = CriticalModifier.parse(Math.abs((int)actionValue5.value));
         decideTargetAtkType = DecideTargetAtkType.parse(actionDetail2);
 
         switch (damageClass) {
@@ -69,6 +69,9 @@ public class DamageAction extends ActionParameter {
         }
         if (decideTargetAtkType == DecideTargetAtkType.lowerDef) {
             string.append(I18N.getString(R.string.This_damage_type_is_judged_by_the_lower_defence_value_of_targeted_enemy));
+        }
+        if (actionValue7.value != 0) {
+            string.append(I18N.getString(R.string.This_damage_ignores_s1_s2_defense, actionValue7.value, damageClass.description()));
         }
         return string.toString();
     }
