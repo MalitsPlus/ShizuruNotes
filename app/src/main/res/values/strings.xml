@@ -779,5 +779,8 @@
     <string name="parts">部位</string>
     <string name="Decreases_s1_healing_received_by_s2_last_for_s3_sec_or_unlimited_time_if_triggered_by_field">%2$sが回復効果を受けた時、回復効果を [%1$s]%% 低下させる、効果時間 [%3$s] 秒。フィールド効果である場合、効果時間は無限。</string>
     <string name="status_up_buffs">ステータスアップ効果</string>
-    <string name="Reduces_incoming_energy_damage_down_to_s1_percent_of_s2_for_s3_sec">%2$sが受けるTP減少効果を本来の値の [%1$s%%] にする、効果時間 [%3$s] 秒。</string>
+    <string name="Reduces_incoming_energy_damage_down_to_s1_percent_of_s2_for_s3_sec">%2$sが受けるTP減少効果を本来の値の [%1$s] 倍にする、効果時間 [%3$s] 秒。</string>
+    <string name="Multiplies_parameter_d2_of_action_d3_by_s1_x_Number_of_allies">[アクション%3$d] の係数%2$dに [%1$s * 味方の数] を乗じる。</string>
+    <string name="Deploys_a_filed_of_radius_d1_which_s2_attack_speed_of_s3_for_s4_sec">半径 [%1$d] のフィールドを展開し、行動速度を [%3$s%%] %2$sさせる、効果時間 [%4$s] 秒。この効果は他の同種類効果と重ね掛け可能。</string>
+    <string name="Enable_s1_to_resist_all_sorts_of_incapacity_efficacies_up_to_s2_times_in_a_period_of_s3_sec">%1$sが受ける行動不能効果を最大 [%2$s] 回無効化にする、効果時間 [%3$s] 秒。</string>
 </resources>

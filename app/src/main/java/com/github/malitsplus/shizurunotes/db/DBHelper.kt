@@ -720,7 +720,7 @@ class DBHelper private constructor(
      * @param unitId 角色id
      * @return
      */
-    fun getUniqueEquipmentEnhance(unitId: Int): RawUniqueEquipmentEnhanceData? {
+    fun getUniqueEquipmentEnhance(unitId: Int): List<RawUniqueEquipmentEnhanceData>? {
         var tableName = "unique_equip_enhance_rate"
         // 考虑国服未实装的情况
         val count = getOne("""
@@ -732,7 +732,7 @@ class DBHelper private constructor(
         if (!count.equals("1")) {
             tableName = "unique_equipment_enhance_rate"
         }
-        return getBeanByRaw<RawUniqueEquipmentEnhanceData>(
+        return getBeanListByRaw<RawUniqueEquipmentEnhanceData>(
             """
                 SELECT e.* 
                 FROM $tableName AS e 
@@ -1428,7 +1428,7 @@ class DBHelper private constructor(
      * 获取campaign日程
      */
     fun getCampaignSchedule(nowTimeString: String?): List<RawScheduleCampaign>? {
-        var sqlString = " SELECT * FROM campaign_schedule WHERE lv_to = -1 "
+        var sqlString = " SELECT * FROM campaign_schedule WHERE id < 5000 "
         nowTimeString?.let {
             sqlString += " AND end_time > '$it' "
         }

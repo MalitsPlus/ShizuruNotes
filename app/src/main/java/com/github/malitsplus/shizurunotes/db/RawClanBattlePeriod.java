@@ -12,7 +12,7 @@ public class RawClanBattlePeriod {
     public String end_time;
 
     public ClanBattlePeriod transToClanBattlePeriod(){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd H:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/M/d H:m:s");
         return new ClanBattlePeriod(
                 clan_battle_id,
                 LocalDateTime.parse(start_time, formatter),

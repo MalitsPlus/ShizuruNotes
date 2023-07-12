@@ -180,6 +180,10 @@ public class ActionParameter {
                 return new ChangeEnergyByDamageAction();
             case 98:
                 return new EnergyDamageReduceAction();
+            case 99:
+                return new ChangeSpeedOverwriteFieldAction();
+            case 100:
+                return new UnableStateGuardAction();
             default:
                 return new ActionParameter();
         }

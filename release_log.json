@@ -1,5 +1,95 @@
 [
   {
+    "versionCode": "101",
+    "versionName": "1.22.3",
+    "recommend": "false",
+    "messageJa": "- 新スキルの追加",
+    "messageZh": "- 追加新技能",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
+    "versionCode": "100",
+    "versionName": "1.22.2",
+    "recommend": "false",
+    "messageJa": "- 新スキルの追加",
+    "messageZh": "- 追加新技能",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
+    "versionCode": "99",
+    "versionName": "1.22.1",
+    "recommend": "false",
+    "messageJa": "- Fixes date strings formatting issues",
+    "messageZh": "- 修复日历字符串格式化问题",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
+    "versionCode": "98",
+    "versionName": "1.22.0",
+    "recommend": "false",
+    "messageJa": "- 専用装備Lv261から上昇するステータスの修正",
+    "messageZh": "- 修正角色专武Lv高于261时的数值",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
+    "versionCode": "97",
+    "versionName": "1.21.4",
+    "recommend": "false",
+    "messageJa": "- 新スキルを追加",
+    "messageZh": "- 追加新技能",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
+    "versionCode": "96",
+    "versionName": "1.21.3",
+    "recommend": "false",
+    "messageJa": "- 大陸サーバー方面に関するバグの修正",
+    "messageZh": "- 修复国服活动数据解析崩溃问题",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
+    "versionCode": "95",
+    "versionName": "1.21.2",
+    "recommend": "false",
+    "messageJa": "- 大陸サーバー方面に関するバグの修正",
+    "messageZh": "- 修复国服数据库会战数据解析崩溃问题",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
+    "versionCode": "94",
+    "versionName": "1.21.1",
+    "recommend": "false",
+    "messageJa": "- 大陸サーバー方面に関するバグの修正",
+    "messageZh": "- 修复国服数据库会战数据解析崩溃问题",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
+    "versionCode": "93",
+    "versionName": "1.21.0",
+    "recommend": "false",
+    "messageJa": "・スキル説明文の修正\n・クラバトシーズンの表示画面を修正",
+    "messageZh": "・修正技能描述\n・修正公会战期次表示界面",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
+    "versionCode": "92",
+    "versionName": "1.20.2",
+    "recommend": "false",
+    "messageJa": "- 一部のキャンペーンがカレンダーにて表示されない不具合を修正",
+    "messageZh": "- 修正部分活动未在日历显示的bug",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
     "versionCode": "91",
     "versionName": "1.20.1",
     "recommend": "false",

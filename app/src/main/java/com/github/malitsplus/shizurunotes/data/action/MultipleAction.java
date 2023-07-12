@@ -26,6 +26,10 @@ public class MultipleAction extends ActionParameter {
             return I18N.getString(R.string.Modifier_multiple_s1_count_of_defeated_enemies_to_value_d2_of_effect_d3,
                     buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
                     actionDetail2, actionDetail1 % 10);
+        else if (actionValue1.value == 4)
+            return I18N.getString(R.string.Multiplies_parameter_d2_of_action_d3_by_s1_x_Number_of_allies,
+                    buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
+                    actionDetail2, actionDetail1 % 10);
         else if(actionValue1.value >= 200 && actionValue1.value < 300)
             return I18N.getString(R.string.Modifier_multiple_s1_stacks_of_mark_ID_d2_to_value_d3_of_effect_d4,
                     buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),

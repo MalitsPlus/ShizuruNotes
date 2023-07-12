@@ -15,7 +15,7 @@ class Equipment(
     val requireLevel: Int,
     val maxEnhanceLevel: Int,
     val equipmentProperty: Property,
-    var equipmentEnhanceRate: Property,
+    var equipmentEnhanceRates: List<Property>,
     val catalog: String,
     val rarity: Int
 ) : Item {
@@ -26,22 +26,23 @@ class Equipment(
     var craftMap: Map<Item, Int>? = null
 
     fun getCeiledProperty(): Property {
-        return if (equipmentId in uniqueEquipmentIdRange) {
-            maxEnhanceLevel - 1
-        } else {
-            maxEnhanceLevel
-        }.let {
-            equipmentProperty.plus(equipmentEnhanceRate.multiply(it.toDouble())).ceiled
-        }
+        return getEnhancedProperty(maxEnhanceLevel)
     }
 
     fun getEnhancedProperty(level: Int): Property {
+        if (equipmentEnhanceRates.isEmpty()) {
+            return Property()
+        }
         return if (equipmentId in uniqueEquipmentIdRange) {
-            level - 1
+            if (level <= 260 || equipmentEnhanceRates.size == 1) {
+                equipmentProperty.plus(equipmentEnhanceRates[0].multiply((level - 1).toDouble())).ceiled
+            } else {
+                equipmentProperty
+                    .plus(equipmentEnhanceRates[0].multiply(259.toDouble())).ceiled
+                    .plus(equipmentEnhanceRates[1].multiply((level - 260).toDouble())).ceiled
+            }
         } else {
-            level
-        }.let {
-            equipmentProperty.plus(equipmentEnhanceRate.multiply(it.toDouble())).ceiled
+            equipmentProperty.plus(equipmentEnhanceRates[0].multiply(level.toDouble())).ceiled
         }
     }
 
@@ -79,7 +80,7 @@ class Equipment(
             0,
             0,
             Property(),
-            Property(),
+            listOf(Property(), Property()),
             "",
             0
         )
