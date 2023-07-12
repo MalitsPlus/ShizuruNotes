@@ -708,4 +708,9 @@
     <string name="the_highest_ATK_except_caster">the highest Physical Attack except self</string>
     <string name="parts">part</string>
     <string name="Decreases_s1_healing_received_by_s2_last_for_s3_sec_or_unlimited_time_if_triggered_by_field">Reduces the HP Recovery Boost of %2$s by [%1$s]%% for [%3$s]s. If this effect is triggered by a field, the effect lasts for an unlimited amount of time.</string>
+    <string name="status_up_buffs">generic buffs</string>
+    <string name="Reduces_incoming_energy_damage_down_to_s1_percent_of_s2_for_s3_sec">Changes the TP lowered taken by %2$s to [Original Value × %1$s] for [%3$s]s</string>
+    <string name="Multiplies_parameter_d2_of_action_d3_by_s1_x_Number_of_allies">Multiplies Parameter %2$d of [Action %3$d] by [%1$s × Number of Allies].</string>
+    <string name="Deploys_a_filed_of_radius_d1_which_s2_attack_speed_of_s3_for_s4_sec">Deploys a field of radius [%1$d] that %2$ss the Attack Speed of targets within range by [%3$s%%] for [%4$s]s. This effect can be stacked with other effects of the same type.</string>
+    <string name="Enable_s1_to_resist_all_sorts_of_incapacity_efficacies_up_to_s2_times_in_a_period_of_s3_sec">Nullifies up to [%2$s] immobility effects on %1$s for [%3$s]s.</string>
 </resources>
