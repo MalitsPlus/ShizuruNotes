@@ -1,5 +1,14 @@
 [
   {
+    "versionCode": "102",
+    "versionName": "1.23.0",
+    "recommend": "false",
+    "messageJa": "- 新スキルの追加\n- 一部専用装備のステータス値を修正",
+    "messageZh": "- 追加新技能描述\n- 修正一部分专属装备属性值",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
     "versionCode": "101",
     "versionName": "1.22.3",
     "recommend": "false",
