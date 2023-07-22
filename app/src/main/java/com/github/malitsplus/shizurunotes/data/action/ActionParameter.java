@@ -332,13 +332,19 @@ public class ActionParameter {
         return buildExpression(level, actionValues, roundingMode, property, false, false, false);
     }
 
+    public String buildExpression(int level, RoundingMode roundingMode, Property property, boolean isConstant){
+        return buildExpression(level, actionValues, roundingMode, property, false, false, false, true);
+    }
+
     public String buildExpression(int level,
                                   List<ActionValue> actionValues,
                                   RoundingMode roundingMode,
                                   Property property,
                                   boolean isHealing,
                                   boolean isSelfTPRestoring,
-                                  boolean hasBracesIfNeeded){
+                                  boolean hasBracesIfNeeded,
+                                  boolean... redundancy){
+        boolean isConstant = redundancy.length > 0 && redundancy[0];
         if(actionValues == null)
             actionValues = this.actionValues;
         if(roundingMode == null)
@@ -389,7 +395,7 @@ public class ActionParameter {
                 expression.delete(expression.lastIndexOf(" +"), expression.length());
                 return hasBracesIfNeeded ? bracesIfNeeded(expression.toString()) : expression.toString();
             }
-        } else if (UserSettings.get().getExpression() == UserSettings.EXPRESSION_ORIGINAL) {
+        } else if (UserSettings.get().getExpression() == UserSettings.EXPRESSION_ORIGINAL && !isConstant) {
             StringBuilder expression = new StringBuilder();
             for(ActionValue value : actionValues){
                 StringBuilder part = new StringBuilder();
