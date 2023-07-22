@@ -56,7 +56,7 @@ public class ChangeSpeedOverwriteFieldAction extends ActionParameter {
         return I18N.getString(R.string.Deploys_a_filed_of_radius_d1_which_s2_attack_speed_of_s3_for_s4_sec,
                 (int)actionValue5.value,
                 speedChangeType.description(),
-                Utils.roundDouble(Double.parseDouble(buildExpression(level, RoundingMode.UNNECESSARY, property)) * 100),
+                Utils.roundDouble(Double.parseDouble(buildExpression(level, RoundingMode.UNNECESSARY, property, true)) * 100),
                 buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property)
         );
     }

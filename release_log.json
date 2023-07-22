@@ -1,5 +1,14 @@
 [
   {
+    "versionCode": "103",
+    "versionName": "1.24.0",
+    "recommend": "false",
+    "messageJa": "- スキルフォーミュラの表示形式が「オリジナル」に設定された場合、特定の条件下でアプリがクラッシュする問題を修正",
+    "messageZh": "- 修复技能公式显示设置为「原始」时部分情况下会导致崩溃的问题",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
     "versionCode": "102",
     "versionName": "1.23.0",
     "recommend": "false",
