@@ -333,7 +333,7 @@ public class ActionParameter {
     }
 
     public String buildExpression(int level, RoundingMode roundingMode, Property property, boolean isConstant){
-        return buildExpression(level, actionValues, roundingMode, property, false, false, false, true);
+        return buildExpression(level, actionValues, roundingMode, property, false, false, false, isConstant);
     }
 
     public String buildExpression(int level,
