@@ -1598,6 +1598,18 @@ class DBHelper private constructor(
             return result?.toInt() ?: 0
         }
 
+    val hasAction10: Boolean
+        get() {
+            val result = getOne("""
+                SELECT COUNT(*)
+                FROM sqlite_master 
+                WHERE type='table'
+                AND name='skill_data'
+                AND sql like '%action_10%';"""
+            )
+            return result == "1"
+        }
+
     /***
      * 随机生成16位随机英数字符串
      * @return

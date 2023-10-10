@@ -17,6 +17,9 @@ public class RawSkillData {
     public int action_5;
     public int action_6;
     public int action_7;
+    public int action_8;
+    public int action_9;
+    public int action_10;
     public int depend_action_1;
     public int depend_action_2;
     public int depend_action_3;
@@ -24,6 +27,9 @@ public class RawSkillData {
     public int depend_action_5;
     public int depend_action_6;
     public int depend_action_7;
+    public int depend_action_8;
+    public int depend_action_9;
+    public int depend_action_10;
     public String description;
     public int icon_type;
 
@@ -37,7 +43,8 @@ public class RawSkillData {
                 description,
                 icon_type
         );
-        for(int i = 1; i <= 7; i++){
+        int iteration = DBHelper.get().getHasAction10() ? 10 : 7;
+        for(int i = 1; i <= iteration; i++){
             int action = (int)Utils.getValueFromObject(this, "action_" + i);
             if(action != 0) {
                 skill.getActions().add(skill.new Action(action, (int) Utils.getValueFromObject(this, "depend_action_" + i)));
