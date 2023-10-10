@@ -1,5 +1,14 @@
 [
   {
+    "versionCode": "104",
+    "versionName": "1.25.0",
+    "recommend": "false",
+    "messageJa": "- Skill Action 8 ~ 10 へのサポート",
+    "messageZh": "- 追加对 Skill Action 8 ~ 10 的支持",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
     "versionCode": "103",
     "versionName": "1.24.0",
     "recommend": "false",
