@@ -55,7 +55,7 @@ public class ActionByHitCountAction extends ActionParameter {
         switch (conditionType) {
             case hit:
                 return I18N.getString(R.string.Use_d1_s2_every_s3_hits_in_next_s4_sec,
-                    actionDetail2 % 10,
+                        getActionNum(actionDetail2),
                     limitation,
                     Utils.roundIfNeed(actionValue1.value),
                     buildExpression(level, durationValues, RoundingMode.UNNECESSARY, property)

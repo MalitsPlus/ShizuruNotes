@@ -468,6 +468,11 @@ public class ActionParameter {
     protected void setActionValues(List<ActionValue> actionValues){
         this.actionValues = actionValues;
     }
+
+    protected int getActionNum(int actionDetail) {
+        return actionDetail % 100;
+    }
+
     protected List<ActionValue> getActionValues() {
         return actionValues;
     }

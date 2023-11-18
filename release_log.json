@@ -1,5 +1,14 @@
 [
   {
+    "versionCode": "105",
+    "versionName": "1.26.0",
+    "recommend": "false",
+    "messageJa": "- スキルに関連する潜在的な不具合を修正",
+    "messageZh": "- 修复与技能描述相关的潜在 bug",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
     "versionCode": "104",
     "versionName": "1.25.0",
     "recommend": "false",

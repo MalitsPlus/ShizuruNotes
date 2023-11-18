@@ -41,12 +41,12 @@ public class GiveValueAction extends ActionParameter{
             case 0:
                 result = I18N.getString(R.string.Modifier_add_s1_HP_to_value_d2_of_effect_d3,
                         buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
-                        actionDetail2, actionDetail1 % 10);
+                        actionDetail2, getActionNum(actionDetail1));
                 break;
             case 1:
                 result = I18N.getString(R.string.Modifier_add_s1_lost_HP_to_value_d2_of_effect_d3,
                         buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
-                        actionDetail2, actionDetail1 % 10);
+                        actionDetail2, getActionNum(actionDetail1));
                 break;
             case 2:
                 /*
@@ -61,51 +61,51 @@ public class GiveValueAction extends ActionParameter{
                 result = I18N.getString(R.string.Modifier_add_s1_count_of_defeated_enemies_to_value_d2_of_effect_d3,
                         s1,
                         actionDetail2,
-                        actionDetail1 % 10);
+                        getActionNum(actionDetail1));
                 break;
             case 4:
                 result = I18N.getString(R.string.Modifier_add_s1_count_of_targets_to_value_d2_of_effect_d3,
                         buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
-                        actionDetail2, actionDetail1 % 10);
+                        actionDetail2, getActionNum(actionDetail1));
                 break;
             case 5:
                 result = I18N.getString(R.string.Modifier_add_s1_count_of_damaged_to_value_d2_of_effect_d3,
                         buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
-                        actionDetail2, actionDetail1 % 10);
+                        actionDetail2, getActionNum(actionDetail1));
                 break;
             case 6:
                 result = I18N.getString(R.string.Modifier_add_s1_total_damage_to_value_d2_of_effect_d3,
                         buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
-                        actionDetail2, actionDetail1 % 10);
+                        actionDetail2, getActionNum(actionDetail1));
                 break;
             case 12:
                 result = I18N.getString(R.string.Modifier_add_s1_count_of_s2_behind_self_to_value_d3_of_effect_d4,
                         buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
-                        targetParameter.buildTargetClause(), actionDetail2, actionDetail1 % 10);
+                        targetParameter.buildTargetClause(), actionDetail2, getActionNum(actionDetail1));
                 break;
             case 13:
                 result = I18N.getString(R.string.Modifier_add_s1_lost_hp_total_hp_of_s2_behind_self_to_value_d3_of_effect_d4,
                         buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
-                        targetParameter.buildTargetClause(), actionDetail2, actionDetail1 % 10);
+                        targetParameter.buildTargetClause(), actionDetail2, getActionNum(actionDetail1));
                 break;
             case 102:
                 result = I18N.getString(R.string.Modifier_add_s1_count_of_omemes_value_d2_of_effect_d3,
                         buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
-                        actionDetail2, actionDetail1 % 10);
+                        actionDetail2, getActionNum(actionDetail1));
                 break;
             default:
                 if (actionValue1.value >= 200 && actionValue1.value < 300){
                     result = I18N.getString(R.string.Modifier_add_s1_stacks_of_mark_ID_d2_to_value_d3_of_effect_d4,
                             buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
-                            ((int)actionValue1.value) % 200, actionDetail2, actionDetail1 % 10);
+                            ((int)actionValue1.value) % 200, actionDetail2, getActionNum(actionDetail1));
                 } else if(actionValue1.value >= 7 && actionValue1.value <= 10){
                     result = I18N.getString(R.string.Modifier_add_s1_s2_of_s3_to_value_d4_of_effect_d5,
                             buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
-                            keyType.description(), targetParameter.buildTargetClause(), actionDetail2, actionDetail1 % 10);
+                            keyType.description(), targetParameter.buildTargetClause(), actionDetail2, getActionNum(actionDetail1));
                 } else if(actionValue1.value >= 20 && actionValue1.value < 30) {
                     result = I18N.getString(R.string.Modifier_add_s1_number_on_counter_d2_to_value_d3_of_effect_d4,
                             buildExpression(level, null, RoundingMode.UNNECESSARY, property, false, false, true),
-                            (int)actionValue1.value % 10, actionDetail2, actionDetail1 % 10);
+                            (int)actionValue1.value % 10, actionDetail2, getActionNum(actionDetail1));
                 }
                 break;
         }
