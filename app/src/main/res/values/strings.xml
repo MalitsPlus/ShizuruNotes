@@ -548,8 +548,11 @@
     <string name="Charm_s1_with_s2_chance_for_s3_sec">[%2$s%%] の確率で%1$sを魅了状態にする、効果時間 [%3$s] 秒。</string>
     <string name="Confuse_s1_with_s2_chance_for_s3_sec">[%2$s%%] の確率で%1$sを混乱状態にする、効果時間 [%3$s] 秒。</string>
     <string name="Change_attack_pattern_to_d1_for_s2_sec">行動パターンを%1$dに変化させる、効果時間 [%2$s] 秒。</string>
+    <string name="Applies_s1_status_to_self">自分に%1$s状態を付与する。</string>
+    <string name="none">なし</string>
+    <string name="flight">飛行</string>
     <string name="Cost_s1_TP_sec_change_attack_pattern_to_d2_until_TP_is_zero">TPが使い切るまで行動パターンを%2$dに変化させ、TPを毎秒 [%1$s] 消耗する。</string>
-    <string name="Change_attack_pattern_back_to_d_after_effect_over">効果終了後、行動パターンを%dに戻させる。</string>
+    <string name="Change_attack_pattern_back_to_d_after_effect_over">効果終了後、行動パターンを%dに変化させる。</string>
     <string name="own_side">味方側</string>
     <string name="opposite">敵側</string>
     <string name="normal_type">ノーマルタイプ</string>

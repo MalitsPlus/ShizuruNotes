@@ -360,8 +360,11 @@
     <string name="Charm_s1_with_s2_chance_for_s3_sec">以 [%2$s%%] 的概率使%1$s进入魅惑状态，持续时间 [%3$s] 秒。</string>
     <string name="Confuse_s1_with_s2_chance_for_s3_sec">以 [%2$s%%] 的概率使%1$s进入混乱状态，持续时间 [%3$s] 秒。</string>
     <string name="Change_attack_pattern_to_d1_for_s2_sec">切换至技能循环%1$d，持续时间 [%2$s] 秒。</string>
+    <string name="Applies_s1_status_to_self">对自身赋予%1$s状态。</string>
+    <string name="none">无</string>
+    <string name="flight">飞行</string>
     <string name="Cost_s1_TP_sec_change_attack_pattern_to_d2_until_TP_is_zero">TP耗光前切换至技能循环%2$d，每秒消费TP [%1$s]。</string>
-    <string name="Change_attack_pattern_back_to_d_after_effect_over">效果结束后，切换回技能循环%d。</string>
+    <string name="Change_attack_pattern_back_to_d_after_effect_over">效果结束后，切换至技能循环%d。</string>
     <string name="own_side">我方</string>
     <string name="opposite">敌方</string>
     <string name="normal_type">普通类型</string>
