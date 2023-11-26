@@ -84,12 +84,12 @@ public class ModeChangeAction extends ActionParameter {
                     R.string.Cost_s1_TP_sec_change_attack_pattern_to_d2_until_TP_is_zero,
                     Utils.roundDownDouble(actionValue1.value),
                     actionDetail2 % 10
-                ) + additionalDescription;
+                );
             case release:
                 return I18N.getString(
                     R.string.Change_attack_pattern_back_to_d_after_effect_over,
                     actionDetail2 % 10
-                ) + additionalDescription;
+                );
             default:
                 return super.localizedDetail(level, property);
         }
