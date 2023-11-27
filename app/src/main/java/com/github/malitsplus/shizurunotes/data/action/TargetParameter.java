@@ -311,7 +311,8 @@ enum TargetType{
     bothAtkAscending(39),
     energyAscBackWithoutOwner(41),
     parentTargetParts(42),
-    atkDecForwardWithoutOwner(43);
+    atkDecForwardWithoutOwner(43),
+    hpAscendingExcludeSelf(44);
 
     private int value;
     TargetType(int value){
@@ -441,6 +442,8 @@ enum TargetType{
                 return I18N.getString(R.string.parts);
             case atkDecForwardWithoutOwner:
                 return I18N.getString(R.string.the_highest_ATK_except_caster);
+            case hpAscendingExcludeSelf:
+                return I18N.getString(R.string.the_lowest_hp_excludes_self);
             default:
                 return "";
         }
@@ -512,6 +515,8 @@ enum TargetType{
                 return I18N.getString(R.string.s_the_lowest_TP_except_self, localizedModifier);
             case atkDecForwardWithoutOwner:
                 return I18N.getString(R.string.s1_the_highest_ATK_except_caster);
+            case hpAscendingExcludeSelf:
+                return I18N.getString(R.string.s1_the_lowest_hp_excludes_self);
             default:
                 return description();
         }
@@ -577,6 +582,8 @@ enum TargetType{
                     return I18N.getString(R.string.the_s_th_lowest_TP_except_self, localizedModifier);
                 case atkDecForwardWithoutOwner:
                     return I18N.getString(R.string.the_s1_highest_ATK_except_caster);
+                case hpAscendingExcludeSelf:
+                    return I18N.getString(R.string.the_s1_lowest_hp_excludes_self);
                 default:
                     return description();
             }

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class AccumulativeDamageAction extends ActionParameter {
 
-    private List<ActionValue> stackValues = new ArrayList<>();
+    protected List<ActionValue> stackValues = new ArrayList<>();
 
     @Override
     protected void childInit() {

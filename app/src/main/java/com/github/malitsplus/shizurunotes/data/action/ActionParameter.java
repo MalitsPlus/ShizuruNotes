@@ -184,6 +184,22 @@ public class ActionParameter {
                 return new ChangeSpeedOverwriteFieldAction();
             case 100:
                 return new UnableStateGuardAction();
+            case 101:
+                return new AttackSealActionForAllEnemy();
+            case 102:
+                return new AccumulativeDamageActionForAllEnemy();
+            case 103:
+                return new CopyAtkParamAction();
+            case 104:
+                return new EveryAttackCriticalAction();
+            case 105:
+                return new EnvironmentAction();
+            case 106:
+                return new ProtectAction();
+            case 107:
+                return new ChangeCriticalReferenceAction();
+            case 108:
+                return new IfContainsUnitGroupAction();
             default:
                 return new ActionParameter();
         }

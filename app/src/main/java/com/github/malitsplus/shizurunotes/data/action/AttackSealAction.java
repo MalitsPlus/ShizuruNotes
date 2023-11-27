@@ -15,8 +15,9 @@ public class AttackSealAction extends ActionParameter {
         unknown(-1),
         damage(1),
         target(2),
-        hit(3),
-        criticalHit(4);
+        damageMulti(3),
+        criticalHit(4),
+        hit(5);
 
         private int value;
         Condition(int value){
@@ -66,7 +67,7 @@ public class AttackSealAction extends ActionParameter {
         super.childInit();
         condition = Condition.parse(actionDetail1);
         target = Target.parse(actionDetail3);
-        durationValues.add(new ActionValue(actionValue3, actionValue4, null));
+        durationValues.add(new ActionValue(actionValue5, actionValue6, null));
     }
 
     @Override

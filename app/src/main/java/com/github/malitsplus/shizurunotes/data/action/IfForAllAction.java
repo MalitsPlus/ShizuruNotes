@@ -66,6 +66,11 @@ public class IfForAllAction extends ActionParameter {
             } else if(actionDetail1 >= 6000 && actionDetail1 < 7000) {
                 trueClause = I18N.getString(R.string.use_d1_if_s2_is_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4,
                         getActionNum(actionDetail2), targetParameter.buildTargetClause(true), actionDetail1 - 6000, (int)actionValue3.value);
+            } else if(actionDetail1 >= 3000 && actionDetail1 < 4000) {
+                trueClause = I18N.getString(R.string.Performs_action_d1_in_case_of_the_battle_field_is_covered_by_s2,
+                    getActionNum(actionDetail2),
+                    EnvironmentAction.EnvironmentType.parse(actionDetail1 - 3000).description()
+                );
             }
         } else if (actionDetail3 == 0){
             trueClause = I18N.getString(R.string.no_effect);
@@ -122,6 +127,11 @@ public class IfForAllAction extends ActionParameter {
             } else if(actionDetail1 >= 6000 && actionDetail1 < 7000) {
                 falseClause = I18N.getString(R.string.use_d1_if_s2_is_not_in_state_of_ID_d3_with_stacks_greater_than_or_equal_to_d4,
                         getActionNum(actionDetail3), targetParameter.buildTargetClause(true), actionDetail1 - 6000, (int)actionValue3.value);
+            } else if(actionDetail1 >= 3000 && actionDetail1 < 4000) {
+                falseClause = I18N.getString(R.string.Performs_action_d1_in_case_of_the_battle_field_is_not_covered_by_s2,
+                    getActionNum(actionDetail3),
+                    EnvironmentAction.EnvironmentType.parse(actionDetail1 - 3000).description()
+                );
             }
         } else if (actionDetail2 == 0){
             falseClause = I18N.getString(R.string.no_effect);

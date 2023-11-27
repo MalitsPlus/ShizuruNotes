@@ -280,6 +280,7 @@
     <string name="Unknown_effect_d1_to_s2_with_details_s3_values_s4">对%2$s使用不明的效果[%1$d]，内容%3$s，系数%4$s。</string>
     <string name="magical">魔法</string>
     <string name="physical">物理</string>
+    <string name="both">物理和魔法</string>
     <string name="inevitable_physical">必中的物理</string>
     <string name="Deal_s1_s2_damage_to_s3">对%3$s造成 [%1$s] %2$s伤害。</string>
     <string name="Deal_s1_s2_damage_to_s3_and_this_attack_is_ensured_critical">对%3$s造成 [%1$s] %2$s伤害，且此动作第%4$shit必定暴击。</string>
@@ -721,4 +722,22 @@
     <string name="Deploys_a_filed_of_radius_d1_which_s2_attack_speed_of_s3_for_s4_sec">展开半径 [%1$d] 的领域，使行动速度%2$s [%3$s%%] ，持续时间 [%4$s] 秒。本效果可与其他同种类效果叠加。</string>
     <string name="Enable_s1_to_resist_all_sorts_of_incapacity_efficacies_up_to_s2_times_in_a_period_of_s3_sec">使%1$s免疫所有控制效果，最大 [%2$s] 次，持续时间 [%3$s] 秒。</string>
     <string name="This_damage_ignores_s1_s2_defense">本技能无视敌方 [%1$s] %2$s防御力。</string>
+    <string name="Make_s1_when_get_one_hit_by_the_caster_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec_for_all_enemy">自身每对敌方hit时，对%1$s增加1层标记 [ID: %3$s]，持续时间 [%4$s] 秒，本效果最多叠加 [%2$s] 层。</string>
+    <string name="Make_s1_when_deal_damage_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec_for_all_enemy">%1$s每次对敌方造成伤害时，增加1层标记 [ID: %3$s]，持续时间 [%4$s] 秒，本效果最多叠加 [%2$s] 层。</string>
+    <string name="Make_s1_when_deal_critical_damage_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec_for_all_enemy">%1$s每次对敌方造成暴击时，增加1层标记 [ID: %3$s]，持续时间 [%4$s] 秒，本效果最多叠加 [%2$s] 层。</string>
+    <string name="Add_additional_s1_damage_per_attack_with_max_s2_stacks_to_current_target_for_all_enemy">每次攻击敌方时，将会追加 [%1$s] 伤害，本效果最多叠 [%2$s] 层。</string>
+    <string name="Use_param_s1_of_s2_for_action_d3">施展 [动作%3$d] 时，使用%2$s的%1$s替代自身的数值。</string>
+    <string name="Make_s1_dmg_dealt_by_self_promised_to_get_critical_for_s2_sec">使自身%1$s攻击必定暴击，持续时间 [%2$s] 秒。</string>
+    <string name="thundering">界雷</string>
+    <string name="Summon_a_field_of_s1_environment_for_s2_for_s3_sec">使战场环境变为%1$s，并对环境内的%2$s施加相应的效果，持续时间 [%3$s] 秒。</string>
+    <string name="Protect_s1_from_certain_skill_max_s2_for_s3_sec">当%1$s受到某些伤害时，自身代替其承受（最大 [%2$s] 次），持续时间 [%3$s] 秒。</string>
+    <string name="Use_critical_reference_s1_for_skill_d2">使 [动作%2$s] 在计算暴击率时，使用%1$s率进行计算。</string>
+    <string name="Sum_of_phy_and_mag">物理暴击和魔法暴击</string>
+    <string name="Enabled_if_s1_in_group_d2_or_d3">仅当%1$s在组%2$d或%3$d中时生效。</string>
+    <string name="Performs_action_d1_in_case_of_the_battle_field_is_covered_by_s2">战场的环境在%2$s的场合，使用 [动作%1$d]。</string>
+    <string name="Performs_action_d1_in_case_of_the_battle_field_is_not_covered_by_s2">战场的环境不在%2$s的场合，使用 [动作%1$d]。</string>
+    <string name="the_lowest_hp_excludes_self">除自身以外HP最低的</string>
+    <string name="s1_the_lowest_hp_excludes_self">除自身以外HP最低的%1$s</string>
+    <string name="the_s1_lowest_hp_excludes_self">除自身以外HP第%1$s低的</string>
+    <string name="Modifier_add_s1_remnant_of_HP_of_s2_value_d3_of_effect_d4">使 [动作%4$d] 的系数%3$d提高 [%1$s * %2$sHP的残量]。</string>
 </resources>

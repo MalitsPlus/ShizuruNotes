@@ -465,6 +465,7 @@
     <string name="Unknown_effect_d1_to_s2_with_details_s3_values_s4">%2$sに不明な効果[%1$d]、内容%3$s、係数%4$s。</string>
     <string name="magical">魔法</string>
     <string name="physical">物理</string>
+    <string name="both">物理と魔法</string>
     <string name="inevitable_physical">必中の物理</string>
     <string name="Deal_s1_s2_damage_to_s3">%3$sに [%1$s] の%2$sダメージを与える。</string>
     <string name="Deal_s1_s2_damage_to_s3_and_this_attack_is_ensured_critical">%3$sに [%1$s] の%2$sダメージを与える。このアクションの %4$shitは必ずクリティカルする。</string>
@@ -787,4 +788,22 @@
     <string name="Deploys_a_filed_of_radius_d1_which_s2_attack_speed_of_s3_for_s4_sec">半径 [%1$d] のフィールドを展開し、行動速度を [%3$s%%] %2$sさせる、効果時間 [%4$s] 秒。この効果は他の同種類効果と重ね掛け可能。</string>
     <string name="Enable_s1_to_resist_all_sorts_of_incapacity_efficacies_up_to_s2_times_in_a_period_of_s3_sec">%1$sが受ける行動不能効果を最大 [%2$s] 回無効化にする、効果時間 [%3$s] 秒。</string>
     <string name="This_damage_ignores_s1_s2_defense">このスキルは敵の%2$s防御力を [%1$s] 無視する。</string>
+    <string name="Make_s1_when_get_one_hit_by_the_caster_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec_for_all_enemy">自分が敵にHitするたび、%1$sにマーク [ID: %3$s] を1スタック増やせる、効果時間 [%4$s] 秒。この効果は最大 [%2$s] までスタックする。</string>
+    <string name="Make_s1_when_deal_damage_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec_for_all_enemy">%1$sが敵にダメージを与えるたび、マーク [ID: %3$s] を1スタック増やせる、効果時間 [%4$s] 秒、この効果は最大 [%2$s] までスタックする。</string>
+    <string name="Make_s1_when_deal_critical_damage_gain_one_mark_stack_max_s2_ID_s3_for_s4_sec_for_all_enemy">%1$sが敵にクリティカルダメージを与えるたび、マーク [ID: %3$s] を1スタック増やせる、効果時間 [%4$s] 秒。この効果は最大 [%2$s] までスタックする。</string>
+    <string name="Add_additional_s1_damage_per_attack_with_max_s2_stacks_to_current_target_for_all_enemy">敵に攻撃するたび、ダメージ量が [%1$s] 追加する、この効果は [%2$s] 回まで累計する。</string>
+    <string name="Use_param_s1_of_s2_for_action_d3">[アクション%3$d] を実行する際に、自身のパラメータの代りに%2$sの%1$sを使用する。</string>
+    <string name="Make_s1_dmg_dealt_by_self_promised_to_get_critical_for_s2_sec">自身の%1$s攻撃が必ずクリティカルするようにする、継続時間 [%2$s] 秒。</string>
+    <string name="thundering">界雷</string>
+    <string name="Summon_a_field_of_s1_environment_for_s2_for_s3_sec">バトルフィールドの環境を%1$sに変化させ、環境内の%2$sに影響を与える。継続時間 [%3$s] 秒。</string>
+    <string name="Protect_s1_from_certain_skill_max_s2_for_s3_sec">$1%sが一部のダメージを受ける際に、自身が代りにダメージを受ける（最大 [%2$s] 回）。継続時間 [%3$s] 秒。</string>
+    <string name="Use_critical_reference_s1_for_skill_d2">[アクション%2$s] を実行する際のクリティカル率を%1$s率を使用して計算させる。</string>
+    <string name="Sum_of_phy_and_mag">物理クリティカルと魔法クリティカル</string>
+    <string name="Enabled_if_s1_in_group_d2_or_d3">%1$sがグループ%2$d or グループ%3$d内の場合のみ有効。</string>
+    <string name="Performs_action_d1_in_case_of_the_battle_field_is_covered_by_s2">バトルフィールドの環境が%2$sの場合、[アクション%1$d] を使う。</string>
+    <string name="Performs_action_d1_in_case_of_the_battle_field_is_not_covered_by_s2">バトルフィールドの環境が%1$sでない場合、[アクション%2$s] を使う。</string>
+    <string name="the_lowest_hp_excludes_self">自分以外HPが一番低い</string>
+    <string name="s1_the_lowest_hp_excludes_self">自分以外HPが一番低い%1$s</string>
+    <string name="the_s1_lowest_hp_excludes_self">自分以外HPが%1$s番目低い</string>
+    <string name="Modifier_add_s1_remnant_of_HP_of_s2_value_d3_of_effect_d4">[アクション%4$d] の係数%3$dを [%1$s * %2$sのHP残量] アップさせる。</string>
 </resources>
