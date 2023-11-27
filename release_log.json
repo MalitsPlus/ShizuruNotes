@@ -1,5 +1,14 @@
 [
   {
+    "versionCode": "106",
+    "versionName": "1.27.0",
+    "recommend": "false",
+    "messageJa": "- Ver 7.1.0 以来欠けているスキル説明を追加 #85\n- スキルアクション 8 ~ 10 の追加により起こり得る潜在的なバグを修正 #86\n- 行動パターン変更スキルの説明文を修正 #87",
+    "messageZh": "- 新增自 Ver 7.1.0 以来缺失的大量新技能描述 #85\n- 修复追加技能动作 8 ~ 10 后可能造成的潜在 bug #86\n- 订正攻击模式切换的技能描述 #87",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
     "versionCode": "105",
     "versionName": "1.26.0",
     "recommend": "false",
