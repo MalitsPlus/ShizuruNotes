@@ -20,6 +20,8 @@ import com.github.malitsplus.shizurunotes.utils.FileUtils
 import com.github.malitsplus.shizurunotes.utils.JsonUtils
 import com.github.malitsplus.shizurunotes.utils.LogUtils
 import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import java.io.File
 import java.io.FileOutputStream
@@ -234,9 +236,14 @@ class UpdateManager private constructor(
     fun checkDatabaseVersion() {
         val client = OkHttpClient()
 
+        val mediaType = "application/json".toMediaType()
+        val regionCode = JSONObject()
+        regionCode.put("regionCode", UserSettings.get().preference.getString(UserSettings.SERVER_KEY, "jp"))
+        val postBody = regionCode.toString().toRequestBody(mediaType)
         val request = Request.Builder()
             .url(Statics.LATEST_VERSION_URL)
             .header("User-Agent", userAgent)
+            .post(postBody)
             .build()
         val call = client.newCall(request)
         call.enqueue(object : Callback {
@@ -252,7 +259,9 @@ class UpdateManager private constructor(
                     if (lastVersionJson.isNullOrEmpty())
                         throw Exception("No response from server.")
                     val obj = JSONObject(lastVersionJson)
-                    serverVersion = obj.getLong("TruthVersion")
+                    if (obj.getInt("status") != 0)
+                        throw Exception("Failed to get latest version.")
+                    serverVersion = obj.getJSONObject("data").getLong("truthVersion")
                     hasNewVersion = serverVersion != UserSettings.get().getDbVersion()
 //                    hasNewVersion = true
                     updateHandler.sendEmptyMessage(UPDATE_CHECK_COMPLETED)
