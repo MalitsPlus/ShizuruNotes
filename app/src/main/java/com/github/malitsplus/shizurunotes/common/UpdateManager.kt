@@ -185,6 +185,10 @@ class UpdateManager private constructor(
                 progressDialog?.cancel()
                 iActivityCallBack?.showSnackBar(R.string.db_update_failed)
             }
+
+            override fun dbUnhashing() {
+                progressDialog?.message(R.string.Unhashing_db, null, null)
+            }
         }
     }
 
@@ -342,7 +346,7 @@ class UpdateManager private constructor(
                     progress = totalDownload
                     updateHandler.sendMessage(updateHandler.obtainMessage(UPDATE_DOWNLOADING))
                     if (numRead <= 0) {
-                        updateHandler.sendEmptyMessage(UPDATE_DOWNLOAD_COMPLETED)
+                        updateHandler.sendEmptyMessage(UPDATE_UNHASHING)
                         break
                     }
                     fileOutputStream.write(buf, 0, numRead)
@@ -368,7 +372,6 @@ class UpdateManager private constructor(
             updateHandler.sendEmptyMessage(UPDATE_COMPLETED)
             return
         }
-        progressDialog?.message(R.string.Unhashing_db, null, null)
         val rainbowJson = AssetUtils.readStringFromRaw(mContext, R.raw.rainbow)
         if (rainbowJson == null) {
             LogUtils.file(LogUtils.E, "Rainbow table not found, unhashing skipped.")
@@ -452,7 +455,8 @@ class UpdateManager private constructor(
                 callBack.dbUpdateError()
             UPDATE_DOWNLOAD_COMPLETED ->
                 callBack.dbDownloadCompleted(true, "")
-
+            UPDATE_UNHASHING ->
+                callBack.dbUnhashing()
             UPDATE_COMPLETED ->
                 callBack.dbUpdateCompleted()
             UPDATE_DOWNLOAD_CANCELED ->
@@ -471,6 +475,7 @@ class UpdateManager private constructor(
         fun dbUpdateError()
         fun dbDownloadCompleted(success: Boolean, errorMsg: CharSequence?)
         fun dbUpdateCompleted()
+        fun dbUnhashing()
     }
 
     interface IActivityCallBack {
