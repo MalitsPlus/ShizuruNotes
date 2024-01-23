@@ -806,4 +806,5 @@
     <string name="s1_the_lowest_hp_excludes_self">自分以外HPが一番低い%1$s</string>
     <string name="the_s1_lowest_hp_excludes_self">自分以外HPが%1$s番目低い</string>
     <string name="Modifier_add_s1_remnant_of_HP_of_s2_value_d3_of_effect_d4">[アクション%4$d] の係数%3$dを [%1$s * %2$sのHP残量] アップさせる。</string>
+    <string name="Unhashing_db">データ復号化中、本操作は数十秒掛かる場合があります…</string>
 </resources>

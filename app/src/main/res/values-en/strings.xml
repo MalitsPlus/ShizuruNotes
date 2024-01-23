@@ -714,4 +714,5 @@
     <string name="Deploys_a_filed_of_radius_d1_which_s2_attack_speed_of_s3_for_s4_sec">Deploys a field of radius [%1$d] that %2$ss the Attack Speed of targets within range by [%3$s%%] for [%4$s]s. This effect can be stacked with other effects of the same type.</string>
     <string name="Enable_s1_to_resist_all_sorts_of_incapacity_efficacies_up_to_s2_times_in_a_period_of_s3_sec">Nullifies up to [%2$s] immobility effects on %1$s for [%3$s]s.</string>
     <string name="This_damage_ignores_s1_s2_defense">This damage ignores [%1$s] of the target\'s %2$s Defense.</string>
+    <string name="Unhashing_db">Decrypting database file, this may take a while…</string>
 </resources>

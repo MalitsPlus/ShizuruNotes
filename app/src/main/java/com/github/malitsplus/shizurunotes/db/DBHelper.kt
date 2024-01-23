@@ -6,7 +6,6 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.text.TextUtils
-import android.widget.Switch
 import com.github.malitsplus.shizurunotes.utils.FileUtils
 import com.github.malitsplus.shizurunotes.common.Statics
 import com.github.malitsplus.shizurunotes.user.UserSettings
@@ -353,6 +352,79 @@ class DBHelper private constructor(
 
 
     /************************* public field **************************/
+
+    /***
+     * Alter table name
+     * @param tableName
+     * @return
+     */
+    fun alterTableName(hashedTableName: String, intactTableName: String): Boolean {
+        return try {
+            writableDatabase.execSQL("ALTER TABLE $hashedTableName RENAME TO $intactTableName")
+            true
+        } catch (e: Exception) {
+            e.printStackTrace()
+            false
+        }
+    }
+
+    /***
+     * Alter table name.
+     * Note that sqlite did not support the ALTER TABLE RENAME COLUMN syntax before version 3.25.0.
+     * @param tableName
+     * @return
+     */
+    fun alterColumnName(intactTableName: String, hashedColName: String, intactColName: String): Boolean {
+        return try {
+            writableDatabase.execSQL("ALTER TABLE $intactTableName RENAME COLUMN $hashedColName TO $intactColName")
+            true
+        } catch (e: Exception) {
+            e.printStackTrace()
+            false
+        }
+    }
+
+    fun getCreateTable(tableName: String): String? {
+        if (!FileUtils.checkFile(FileUtils.getDbFilePath())) return null
+        return try {
+            val cursor = readableDatabase.rawQuery(
+                "SELECT sql FROM sqlite_master WHERE type='table' AND name='$tableName'", null
+            )
+            cursor.moveToNext()
+            val result = cursor.getString(0)
+            cursor.close()
+            result
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
+    }
+
+    fun execSql(sql: String): Boolean {
+        return try {
+            writableDatabase.execSQL(sql)
+            true
+        } catch (e: Exception) {
+            e.printStackTrace()
+            false
+        }
+    }
+
+    fun execTransaction(sqls: List<String>): Boolean {
+        writableDatabase.beginTransaction()
+        return try {
+            sqls.forEach {
+                writableDatabase.execSQL(it)
+            }
+            writableDatabase.setTransactionSuccessful()
+            true
+        } catch (e: Exception) {
+            e.printStackTrace()
+            false
+        } finally {
+            writableDatabase.endTransaction()
+        }
+    }
 
     /***
      * 获取角色基础数据

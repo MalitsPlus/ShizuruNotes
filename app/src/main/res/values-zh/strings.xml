@@ -740,4 +740,5 @@
     <string name="s1_the_lowest_hp_excludes_self">除自身以外HP最低的%1$s</string>
     <string name="the_s1_lowest_hp_excludes_self">除自身以外HP第%1$s低的</string>
     <string name="Modifier_add_s1_remnant_of_HP_of_s2_value_d3_of_effect_d4">使 [动作%4$d] 的系数%3$d提高 [%1$s * %2$sHP的残量]。</string>
+    <string name="Unhashing_db">正在解密数据库，本操作可能需要数十秒…</string>
 </resources>

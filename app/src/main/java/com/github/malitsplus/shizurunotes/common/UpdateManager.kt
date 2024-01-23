@@ -9,12 +9,15 @@ import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
+import android.util.Log
 import androidx.annotation.StringRes
 import androidx.core.content.FileProvider
 import com.afollestad.materialdialogs.MaterialDialog
 import com.github.malitsplus.shizurunotes.BuildConfig
 import com.github.malitsplus.shizurunotes.R
+import com.github.malitsplus.shizurunotes.db.DBHelper
 import com.github.malitsplus.shizurunotes.user.UserSettings
+import com.github.malitsplus.shizurunotes.utils.AssetUtils
 import com.github.malitsplus.shizurunotes.utils.BrotliUtils
 import com.github.malitsplus.shizurunotes.utils.FileUtils
 import com.github.malitsplus.shizurunotes.utils.JsonUtils
@@ -39,6 +42,7 @@ class UpdateManager private constructor(
         private const val UPDATE_DOWNLOAD_COMPLETED = 4
         private const val UPDATE_COMPLETED = 5
         private const val UPDATE_DOWNLOAD_CANCELED = 6
+        private const val UPDATE_UNHASHING = 7
         private const val APP_UPDATE_CHECK_COMPLETED = 11
         private lateinit var updateManager: UpdateManager
 
@@ -357,6 +361,59 @@ class UpdateManager private constructor(
         FileUtils.deleteFile(FileUtils.getDbFilePath())
         LogUtils.file(LogUtils.I, "Start decompress DB.")
         BrotliUtils.deCompress(FileUtils.getCompressedDbFilePath(), true)
+    }
+
+    fun unHashDb(){
+        if (UserSettings.get().getUserServer() != UserSettings.SERVER_JP) {
+            updateHandler.sendEmptyMessage(UPDATE_COMPLETED)
+            return
+        }
+        progressDialog?.message(R.string.Unhashing_db, null, null)
+        val rainbowJson = AssetUtils.readStringFromRaw(mContext, R.raw.rainbow)
+        if (rainbowJson == null) {
+            LogUtils.file(LogUtils.E, "Rainbow table not found, unhashing skipped.")
+        } else {
+            val jsonObject = JSONObject(rainbowJson)
+            val keysIterator = jsonObject.keys()
+            LogUtils.file(LogUtils.I, "Start Unhashing DB.")
+            while (keysIterator.hasNext()) {
+                val hashedTableName = keysIterator.next()
+                val colsObject = JSONObject(jsonObject.get(hashedTableName).toString())
+                val colsIterator = colsObject.keys()
+
+                val intactTableName = colsObject.getString("--table_name")
+                var createTableStatement = DBHelper.get().getCreateTable(hashedTableName)
+                if (createTableStatement == null) {
+                    LogUtils.file(LogUtils.W, "CreateTableStatement for '$intactTableName' not found.")
+                    continue
+                }
+                val hashedCols = mutableListOf<String>()
+                val intactCols = mutableListOf<String>()
+                while (colsIterator.hasNext()) {
+                    val hashedColName = colsIterator.next()
+                    val intactColName = colsObject.getString(hashedColName)
+                    if (hashedColName != "--table_name") {
+                        hashedCols.add(hashedColName)
+                        intactCols.add(intactColName)
+                    }
+                    createTableStatement = createTableStatement?.replace(
+                        if (hashedColName == "--table_name") hashedTableName else hashedColName,
+                        if (hashedColName == "--table_name") intactTableName else intactColName
+                    )
+                }
+                val insertStatement = "INSERT INTO $intactTableName(${intactCols.joinToString("`,`", "`", "`")}) SELECT ${hashedCols.joinToString("`,`", "`", "`")} FROM $hashedTableName"
+                val dropTableStatement = "DROP TABLE $hashedTableName"
+
+                val transactionCmd = listOf(createTableStatement!!, insertStatement, dropTableStatement)
+
+                if (!DBHelper.get().execTransaction(transactionCmd)) {
+                    Log.e("shizurunotes", "Failed when executing a transaction for '$intactTableName' ($hashedTableName). Transaction: $transactionCmd")
+                    LogUtils.file(LogUtils.W, "Failed when executing a transaction for '$intactTableName' ($hashedTableName). Transaction: $transactionCmd")
+                    continue
+                }
+            }
+            LogUtils.file(LogUtils.I, "Unhashing complete.")
+        }
         updateHandler.sendEmptyMessage(UPDATE_COMPLETED)
     }
 
@@ -395,6 +452,7 @@ class UpdateManager private constructor(
                 callBack.dbUpdateError()
             UPDATE_DOWNLOAD_COMPLETED ->
                 callBack.dbDownloadCompleted(true, "")
+
             UPDATE_COMPLETED ->
                 callBack.dbUpdateCompleted()
             UPDATE_DOWNLOAD_CANCELED ->
