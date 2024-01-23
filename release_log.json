@@ -1,5 +1,14 @@
 [
   {
+    "versionCode": "107",
+    "versionName": "2.0.0",
+    "recommend": "false",
+    "messageJa": "- 新データベースのサポート\n\n新バージョンのアプリデータは旧バージョンとの互換性がないため、予めアプリを削除してからアップデートするか、アップデート後にアプリデータをクリアするかをしてください。",
+    "messageZh": "- 适配新版数据库\n\n本次更新破坏了旧版本数据的兼容性，请在更新前先卸载 app，或在更新后完全清除 app 数据。",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
     "versionCode": "106",
     "versionName": "1.27.0",
     "recommend": "false",
