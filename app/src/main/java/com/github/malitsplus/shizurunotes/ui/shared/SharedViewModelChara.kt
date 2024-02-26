@@ -121,8 +121,9 @@ class SharedViewModelChara : ViewModel() {
         val rankEquipments = mutableMapOf<Int, List<Equipment>>()
         get().getCharaPromotion(chara.unitId)?.forEach { slots ->
             val equipmentList = mutableListOf<Equipment>()
-            slots.charaSlots.forEach { id ->
-                equipmentMap[id]?.let {
+            for (i in 0..5) {
+                val id = slots.charaSlots.getOrElse(i, fun(_: Int): Int {return 999999})
+                equipmentMap.getOrElse(id, fun(): Equipment {return Equipment.getNull}).let {
                     equipmentList.add(it)
                 }
             }
