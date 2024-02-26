@@ -1,5 +1,14 @@
 [
   {
+    "versionCode": "109",
+    "versionName": "2.0.2",
+    "recommend": "false",
+    "messageJa": "- キャラクタープロフィールページを開く際にクラッシュする問題を修正 #91",
+    "messageZh": "- 修复进入角色个人信息界面时崩溃的 bug #91",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
     "versionCode": "108",
     "versionName": "2.0.1",
     "recommend": "false",
