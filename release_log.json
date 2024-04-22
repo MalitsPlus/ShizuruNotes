@@ -1,5 +1,14 @@
 [
   {
+    "versionCode": "110",
+    "versionName": "3.0.0",
+    "recommend": "false",
+    "messageJa": "- データが正常に表示されない問題の修正 #93\nアップデート後データが相変わらず表示されない場合はアプリのストレージをクリアしてから使用してください",
+    "messageZh": "- 修复无法显示数据的 bug #93\n本次更新需要清除应用数据后使用",
+    "infoJa": "",
+    "infoZh": ""
+  },
+  {
     "versionCode": "109",
     "versionName": "2.0.2",
     "recommend": "false",
