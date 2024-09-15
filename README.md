@@ -6,6 +6,26 @@ Try [another app](https://github.com/wthee/pcr-tool) with a more modern design a
 
 An **unofficial** Android information application for "Princess Connect Re:Dive".
 
+## About v3.1.0 (Archive Version)
+
+ShizuruNotes is archived as of v3.1.0, we suggest that all users migrate to [pcr-tool](https://github.com/wthee/pcr-tool).
+
+However for users still willing to stick on ShizuruNotes, we also provide manually database file importing as an escape hatch. Please refer to the following documentations for details.
+
+Changes in v3.1.0:
+
+### Manually database file importing
+
+Go to *Settings - Manually select DB file* and select a file in your local storage. Note the followings:
+
+- Selected file must be an unhashed DB file
+- Selected file can be safely deleted after importing because a duplication will be saved in the App's private directory
+- Since we can't retrieve the version information from DB directly, *Setting - Database Version* will always display 0
+
+### Removal of update checking
+
+Automatic update check is removed in v3.1.0 as the project is going to archive.
+
 ## Requirement
 
 * Android 8+
