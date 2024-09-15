@@ -41,6 +41,7 @@
     <string name="setting_re_download_db">Redownload Database</string>
     <string name="setting_re_download_db_summary">This shouldn\'t be necessary under normal circumstances.</string>
     <string name="setting_about">About Shizuru\'s Notes</string>
+    <string name="import_db_manually">Manually select DB file</string>
     <string name="db_update_dialog_title">Update Database</string>
     <string name="db_update_dialog_text">A newer version of the database is available. Would you like to update now?</string>
     <string name="db_update_duplicate">The update is complete, but the data has not been updated. Please try again in a few minutes.</string>
@@ -124,7 +125,7 @@
     <string name="text_self_text">Introduction</string>
     <string name="text_normal_attack_cast_time">Normal Attack Cast Time: %ss</string>
     <string name="text_rank">Rank</string>
-    <string name="text_please_download_db">Please download the latest database.</string>
+    <string name="text_please_download_db">Please import the latest database.</string>
     <string name="text_resist_data">&#160;Abnormal Status Resistance&#160;</string>
     <string name="ATK">Physical Attack</string>
     <string name="DEF">Physical Defense</string>

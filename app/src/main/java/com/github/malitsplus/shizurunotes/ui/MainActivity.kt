@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity(),
         if (checkDbFile()) {
             loadData()
         } else {
-            checkUpdate()
+//            checkUpdate()
             sharedChara.charaList.value = mutableListOf()
         }
         if (UserSettings.get().getAbnormalExit()) {
@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity(),
         if (!succeeded) {
             showSnackBar(R.string.chara_load_failed)
         }
-        checkUpdate()
+//        checkUpdate()
     }
 
     override fun dbDownloadFinished() {

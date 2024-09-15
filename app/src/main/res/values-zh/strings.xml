@@ -38,6 +38,7 @@
     <string name="setting_re_download_db">强制重新下载数据库</string>
     <string name="setting_re_download_db_summary">正常情况下无需使用此功能</string>
     <string name="setting_about">关于静流笔记</string>
+    <string name="import_db_manually">手动导入数据库文件</string>
     <string name="db_update_dialog_title">数据库更新</string>
     <string name="db_update_dialog_text">检测到数据库有新版本，需要现在更新吗？</string>
     <string name="db_update_duplicate">下载已完成，但数据并没有被更新。如果游戏刚更新数据不久，出现这种情况是正常的，请等待数分钟后重试（请勿在短时间内多次尝试更新）</string>
@@ -124,7 +125,7 @@
     <string name="text_self_text">自我介绍</string>
     <string name="text_normal_attack_cast_time">通常攻击待机时间：%ss</string>
     <string name="text_rank">Rank</string>
-    <string name="text_please_download_db">请下载数据库</string>
+    <string name="text_please_download_db">请导入数据库</string>
     <string name="text_resist_data">&#160;异常状态耐性&#160;</string>
     <string name="ATK">物理攻击力</string>
     <string name="DEF">物理防御力</string>

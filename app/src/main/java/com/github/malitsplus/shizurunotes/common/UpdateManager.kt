@@ -36,14 +36,14 @@ class UpdateManager private constructor(
 {
 
     companion object {
-        private const val UPDATE_CHECK_COMPLETED = 1
-        private const val UPDATE_DOWNLOADING = 2
-        private const val UPDATE_DOWNLOAD_ERROR = 3
-        private const val UPDATE_DOWNLOAD_COMPLETED = 4
-        private const val UPDATE_COMPLETED = 5
-        private const val UPDATE_DOWNLOAD_CANCELED = 6
-        private const val UPDATE_UNHASHING = 7
-        private const val APP_UPDATE_CHECK_COMPLETED = 11
+        const val UPDATE_CHECK_COMPLETED = 1
+        const val UPDATE_DOWNLOADING = 2
+        const val UPDATE_DOWNLOAD_ERROR = 3
+        const val UPDATE_DOWNLOAD_COMPLETED = 4
+        const val UPDATE_COMPLETED = 5
+        const val UPDATE_DOWNLOAD_CANCELED = 6
+        const val UPDATE_UNHASHING = 7
+        const val APP_UPDATE_CHECK_COMPLETED = 11
         private lateinit var updateManager: UpdateManager
 
         fun with(context: Context): UpdateManager{
