@@ -41,7 +41,9 @@ class RankComparisonFragment : Fragment() {
                         comparisonViewModel.rankList.toTypedArray()
                     )
                 )
-                setText(comparisonViewModel.rankList[1].toString())
+                if (comparisonViewModel.rankList.size >= 2) {
+                    setText(comparisonViewModel.rankList[1].toString())
+                }
             }
             dropdownRankTo.apply {
                 setAdapter(
@@ -51,7 +53,9 @@ class RankComparisonFragment : Fragment() {
                         comparisonViewModel.rankList.toTypedArray()
                     )
                 )
-                setText(comparisonViewModel.rankList[0].toString())
+                if (comparisonViewModel.rankList.size >= 1) {
+                    setText(comparisonViewModel.rankList[0].toString())
+                }
             }
             calculateButton.setOnClickListener {
                 sharedChara.rankComparisonFrom = dropdownRankFrom.text.toString().toInt()
