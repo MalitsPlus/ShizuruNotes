@@ -1,1 +1,1 @@
-{"versionCode":"110","versionName":"3.0.0","recommend":"false","messageJa":"- データが正常に表示されない問題の修正 #93\nアップデート後データが相変わらず表示されない場合はアプリのストレージをクリアしてから使用してください","messageZh":"- 修复无法显示数据的 bug #93\n本次更新需要清除应用数据后使用","infoJa":"","infoZh":""}
+{"versionCode":"111","versionName":"3.1.0","recommend":"false","messageJa":"- データベースファイルインポート機能の追加\n- 自動更新機能の削除\n- インデックス範囲外エクセプションの修正","messageZh":"- 新增手动导入数据库功能（使用方法请参考文档）#95\n- 移除自动更新检测\n- 修复 Rank Comparison 索引越界 Bug #96","infoJa":"","infoZh":""}
